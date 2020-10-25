@@ -1,0 +1,4 @@
+python-dateutil >= 2.8.0
+networkx >= 2.5
+rdflib >= 4.2.2
+rdflib-jsonld >= 0.4.0
