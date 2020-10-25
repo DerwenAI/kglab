@@ -1,0 +1,1 @@
+from .kglab import KnowledgeGraph
