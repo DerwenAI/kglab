@@ -1,6 +1,7 @@
 *~
-tmp.ttl
+tmp.html
 tmp.jsonld
+tmp.ttl
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,5 +1,6 @@
 networkx >= 2.5
 pandas >= 1.1.1
 python-dateutil >= 2.8.0
+pyvis >= 0.1.7.0
 rdflib >= 4.2.2
 rdflib-jsonld >= 0.4.0

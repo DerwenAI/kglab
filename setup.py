@@ -29,9 +29,10 @@ setuptools.setup(
     ],
     python_requires=">=3.5",
     install_requires=[
+          "networkx",
           "pandas",
           "python-dateutil",
-          "networkx",
+          "pyvis",
           "rdflib",
           "rdflib-jsonld",
     ],

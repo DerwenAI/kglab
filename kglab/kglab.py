@@ -5,11 +5,11 @@ from rdflib import plugin
 from rdflib.serializer import Serializer
 # NB: while `plugin` isn't used directly, loading it
 # here causes it to become registered within `rdflib`
+from pyvis.network import Network
 import dateutil.parser as dup
-import pathlib
 import json
+import pathlib
 import rdflib as rdf
-import rdflib.namespace
 
 
 ######################################################################
@@ -29,13 +29,12 @@ class KnowledgeGraph:
 
     def __init__ (self, name="KGlab", base_uri=None, language="en", namespaces={}):
         self._g = rdf.Graph()
-        self.label_dict = {}
+        self.id_list = []
 
         self.name = name
         self.base_uri = base_uri
         self.language = language
 
-        self._nm = rdflib.namespace.NamespaceManager(self._g)
         self._ns = {}
         self.merge_ns({ **self.DEFAULT_NAMESPACES, **namespaces })
 
@@ -50,7 +49,7 @@ class KnowledgeGraph:
 
     def add_ns (self, prefix, uri):
         self._ns[prefix] = rdf.Namespace(uri)
-        self._nm.bind(prefix, self._ns[prefix])
+        self._g.namespace_manager.bind(prefix, self._ns[prefix])
 
 
     def get_ns (self, prefix):
@@ -132,6 +131,56 @@ class KnowledgeGraph:
             filename = path
 
         self._g.serialize(destination=filename, format=format, encoding=encoding)
+
+
+    ######################################################################
+    ## visualization
+
+    def get_node_id (self, label):
+        if not label in self.id_list:
+            self.id_list.append(label)
+
+        return self.id_list.index(label)
+
+
+    def style_node (self, g, node_id, label, style={}):
+        prefix = label.split(":")[0]
+    
+        if prefix in style:
+            g.add_node(
+                node_id,
+                label=label,
+                color=style[prefix]["color"],
+                size=style[prefix]["size"],
+            )
+        else:
+            g.add_node(node_id, label=label)
+
+
+    def vis (self, notebook=False, style={}):
+        g = Network(notebook=notebook)
+        g.force_atlas_2based()
+
+        for s, p, o in self._g:
+            s_label = s.n3(self._g.namespace_manager)
+            s_id = self.get_node_id(s_label)
+
+            p_label = p.n3(self._g.namespace_manager)
+            p_id = self.get_node_id(p_label)
+
+            if isinstance(o, rdf.term.Literal):
+                o_label = str(o.toPython())
+            else:
+                o_label = o.n3(self._g.namespace_manager)
+
+            o_id = self.get_node_id(o_label)
+    
+            self.style_node(g, s_id, s_label, style=style)
+            self.style_node(g, o_id, o_label, style=style)
+
+            g.add_edge(s_id, o_id, label=p_label)
+
+        return g
 
 
     ######################################################################
