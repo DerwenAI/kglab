@@ -40,7 +40,18 @@ class KnowledgeGraph:
 
 
     ######################################################################
-    ## namespace management
+    ## namespace management and graph building
+    ##
+    ## Using and building ontologies: To attribute characteristics and
+    ## relationships to well-understood entities, we want to research
+    ## the implementation of existing top-level ontologies. In such an
+    ## implementation, however, we would not want to prevent mid-level
+    ## and domain specific ontologies from being developed organically
+    ## for classification with greater precision and nuance. We want
+    ## to explore ways to perform entity recognition and
+    ## entity-resolution probabilistically rather than by strict
+    ## rulesets.
+
 
     def merge_ns (self, ns_set):
         for prefix, uri in ns_set.items():
@@ -72,9 +83,6 @@ class KnowledgeGraph:
         return context
 
 
-    ######################################################################
-    ## graph building
-
     def add (self, s, p, o):
         self._g.add((s, p, o,))
 
@@ -87,15 +95,16 @@ class KnowledgeGraph:
 
 
     ######################################################################
-    ## queries
-
-    def query (self, query):
-        for row in self._g.query(query):
-            yield row
-
-
-    ######################################################################
     ## serialization
+    ##
+    ## Format and software agnostic: We are interested in technology
+    ## that will not be a barrier to widespread use. We want to allow
+    ## the export of the entity triples in a variety of formats, at
+    ## the most basic level as a csv, so that an analyst can load the
+    ## results into their system of choice. By prioritizing
+    ## non-proprietary, universal formats the results can be easily
+    ## integrated into several of the existing tools for network
+    ## graphing.
 
     def load_json (self, path, encoding="utf-8"):
         with open(path, "r", encoding=encoding) as f:
@@ -135,6 +144,11 @@ class KnowledgeGraph:
 
     ######################################################################
     ## visualization
+    ##
+    ## Automated Network Graph: The triples describing relationships
+    ## between entities can be ingested into graph visualization tools
+    ## to extend or create an analyst's account-specific network
+    ## model.
 
     def get_node_id (self, label):
         if not label in self.id_list:
@@ -181,6 +195,14 @@ class KnowledgeGraph:
             g.add_edge(s_id, o_id, label=p_label)
 
         return g
+
+
+    ######################################################################
+    ## queries
+
+    def query (self, query):
+        for row in self._g.query(query):
+            yield row
 
 
     ######################################################################
