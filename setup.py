@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="kglab",
     version="0.1.0",
-    author="Paco Xander Nathan",
+    author="Paco Nathan",
     author_email="paco@derwen.ai",
     description="Python wrapper for knowledge graph construction tools",
     long_description=long_description,
@@ -29,6 +29,7 @@ setuptools.setup(
     ],
     python_requires=">=3.5",
     install_requires=[
+          "pandas",
           "python-dateutil",
           "networkx",
           "rdflib",
