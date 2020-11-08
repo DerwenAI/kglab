@@ -28,7 +28,7 @@ class KnowledgeGraph:
 
 
     def __init__ (self, name="KGlab", base_uri=None, language="en", namespaces={}):
-            self._g = rdf.Graph()
+        self._g = rdf.Graph()
         self.label_dict = {}
 
         self.name = name
