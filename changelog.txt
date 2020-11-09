@@ -1,5 +1,11 @@
 # `kglab` changelog
 
+## 0.1.1
+
+2020-11-09
+
+  * first distribution on PyPi
+
 ## 0.1.0
 
 2020-10-25

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="kglab",
-    version="0.1.0",
+    version="0.1.1",
     author="Paco Nathan",
     author_email="paco@derwen.ai",
     description="Python wrapper for knowledge graph construction tools",
@@ -17,7 +17,7 @@ setuptools.setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-        "Development Status :: 5 - Production/Stable",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Intended Audience :: Education",
         "Intended Audience :: Information Technology",
@@ -36,7 +36,7 @@ setuptools.setup(
           "rdflib",
           "rdflib-jsonld",
     ],
-    keywords="knowledge graph, graph algorithms, graph visualization, rdf, skos, owl, controlled vocabulary, n3, turtle, json-ld",
+    keywords="knowledge graph, graph algorithms, interactive visualization, rdf, skos, owl, controlled vocabulary, managing namespaces, serialization, n3, turtle, json-ld",
     license="MIT",
     zip_safe=False,
 )

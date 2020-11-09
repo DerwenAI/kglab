@@ -1,6 +1,7 @@
 # kglab
 
-This library provides a simple to use abstraction layer in Python for building knowledge graphs.
+The **kglab** library provides a simple to use abstraction layer in Python
+for building knowledge graphs.
 For several KG projects, we kept reusing a similar working set of libraries:
 
   * [`rdflib`](https://rdflib.readthedocs.io/)
@@ -10,11 +11,17 @@ For several KG projects, we kept reusing a similar working set of libraries:
   * [`richcontext.scholapi`](https://pypi.org/project/richcontext-scholapi/)
   * [`skosify`](https://skosify.readthedocs.io/)
 
-Each of those libraries provides a useful piece of the pizzle when you need to leverage *knowledge representation*, *graph algorithms*, *entity linking*, *interactive visualization*, *metadata queries*, *axioms*, etc.
-However, some of them are relatively low-level (e.g., `rdflib`) or perhaps not maintained as much (e.g., `skosify`) and there are challenges integrating them.
+
+## Background
+
+Each of those libraries provides a useful piece of the pizzle when you need
+to leverage *knowledge representation*, *graph algorithms*, *entity linking*,
+*interactive visualization*, *metadata queries*, *axioms*, etc.
+However, some of them are relatively low-level (e.g., `rdflib`) or perhaps not
+maintained as much (e.g., `skosify`) and there are challenges integrating them.
 Challenges we kept having to reinvent work-arounds to resolve.
 
-There are general kinds of operations that you need to perform on knowledge graphs:
+There are general operations that one must perform on knowledge graphs:
 
   * building triples
   * quality assurance (e.g., axioms)
@@ -27,16 +34,44 @@ There are general kinds of operations that you need to perform on knowledge grap
   * embedding
   * other ML integrations
  
-The `kglab` library, which is used in production at [Derwen](https://derwen.ai/) and its client projects, provides a reasonably "Pythonic" abstraction layer for these operations on KGs.
-These class definitions can be subclassed and extended to handle more specific needs.
-Meanwhile, we're also extending some of the key components with distributed versions, based on [`ray`](https://ray.io/) for better use of horizontal scale-out and parallelization.
+The **kglab** library provides a reasonably "Pythonic" abstraction layer
+for these operations on KGs.
+These class definitions can be subclassed and extended to handle more 
+specific needs.
+Meanwhile, we're also extending some of the key components with distributed
+versions, based on [`ray`](https://ray.io/) for better use of horizontal
+scale-out and parallelization.
 
-NB: this repo is *UNDER CONSTRUCTION* and will undergo much iteration prior to the "KG 101" tutorial at https://www.knowledgeconnexions.world/talks/kg-101/
+NB: this repo is *UNDER CONSTRUCTION* and will undergo much iteration prior
+to the "KG 101" tutorial at https://www.knowledgeconnexions.world/talks/kg-101/
 
-See [wiki](https://github.com/DerwenAI/kglab/wiki) for further details
+See [wiki](https://github.com/DerwenAI/kglab/wiki) for further details.
 
 
-## Outline
+## Installation
+
+Prerequisites:
+
+- [Python 3.5+](https://www.python.org/downloads/)
+- [rdflib](https://rdflib.readthedocs.io/)
+- [NetworkX](https://networkx.org/)
+- [pyvis](https://pyvis.readthedocs.io/)
+
+To install from [PyPi](https://pypi.python.org/pypi/kglab):
+
+```
+pip install kglab
+```
+
+If you work directly from this Git repo, be sure to install the dependencies
+as well:
+
+```
+pip install -r requirements.txt
+```
+
+
+## Tutorial Outline
 
 1. Building a graph in RDF using `rdflib`
   * [`ex01_0.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_0.ipynb)
@@ -52,3 +87,10 @@ See [wiki](https://github.com/DerwenAI/kglab/wiki) for further details
 3. Interactive graph visualization with `pyvis`
   * [`ex01_3.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_3.ipynb)
     * render triples as an interactive graph
+
+
+---
+
+## Production Use Cases
+
+  * [Derwen](https://derwen.ai/) and its client projects
