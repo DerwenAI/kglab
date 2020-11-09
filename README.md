@@ -1,7 +1,11 @@
 # kglab
 
-The **kglab** library provides a simple to use abstraction layer in Python
+The **kglab** library provides a simple abstraction layer in Python
 for building knowledge graphs.
+
+
+## Background
+
 For several KG projects, we kept reusing a similar working set of libraries:
 
   * [`rdflib`](https://rdflib.readthedocs.io/)
@@ -11,10 +15,7 @@ For several KG projects, we kept reusing a similar working set of libraries:
   * [`richcontext.scholapi`](https://pypi.org/project/richcontext-scholapi/)
   * [`skosify`](https://skosify.readthedocs.io/)
 
-
-## Background
-
-Each of those libraries provides a useful piece of the pizzle when you need
+Each of these libraries provides a useful piece of the pizzle when you need
 to leverage *knowledge representation*, *graph algorithms*, *entity linking*,
 *interactive visualization*, *metadata queries*, *axioms*, etc.
 However, some of them are relatively low-level (e.g., `rdflib`) or perhaps not
@@ -36,8 +37,8 @@ There are general operations that one must perform on knowledge graphs:
  
 The **kglab** library provides a reasonably "Pythonic" abstraction layer
 for these operations on KGs.
-These class definitions can be subclassed and extended to handle more 
-specific needs.
+The class definitions can be subclassed and extended to handle specific needs.
+
 Meanwhile, we're also extending some of the key components with distributed
 versions, based on [`ray`](https://ray.io/) for better use of horizontal
 scale-out and parallelization.
