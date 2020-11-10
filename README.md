@@ -15,7 +15,7 @@ For several KG projects, we kept reusing a similar working set of libraries:
   * [`richcontext.scholapi`](https://pypi.org/project/richcontext-scholapi/)
   * [`skosify`](https://skosify.readthedocs.io/)
 
-Each of these libraries provides a useful piece of the pizzle when you need
+Each of these libraries provides a useful piece of the puzzle when you need
 to leverage *knowledge representation*, *graph algorithms*, *entity linking*,
 *interactive visualization*, *metadata queries*, *axioms*, etc.
 However, some of them are relatively low-level (e.g., `rdflib`) or perhaps not
