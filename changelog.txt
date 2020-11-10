@@ -1,5 +1,12 @@
 # `kglab` changelog
 
+## 0.1.2
+
+2020-11-??
+
+  * support for dependabot
+  * added a logo
+
 ## 0.1.1
 
 2020-11-09
