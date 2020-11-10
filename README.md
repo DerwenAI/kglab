@@ -95,3 +95,6 @@ pip install -r requirements.txt
 ## Production Use Cases
 
   * [Derwen](https://derwen.ai/) and its client projects
+
+
+[![kg+lab](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)
