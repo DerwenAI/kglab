@@ -2,6 +2,7 @@
 tmp.html
 tmp.jsonld
 tmp.ttl
+dat/food_com
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
