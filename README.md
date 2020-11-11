@@ -88,8 +88,9 @@ pip install -r requirements.txt
 3. Interactive graph visualization with `pyvis`
   * [`ex01_3.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_3.ipynb)
     * render triples as an interactive graph
-
-
+4. Build a medium size KG from a CSV dataset
+  * [`ex01_4.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_4.ipynb)
+    * iterate through a dataset, representing a recipe for each row
 ---
 
 ## Production Use Cases
