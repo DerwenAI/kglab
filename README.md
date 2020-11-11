@@ -91,6 +91,10 @@ pip install -r requirements.txt
 4. Build a medium size KG from a CSV dataset
   * [`ex01_4.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_4.ipynb)
     * iterate through a dataset, representing a recipe for each row
+5. Running SPARQL queries
+  * [`ex01_5.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_5.ipynb)
+    * load the medium size KG from the previous example
+    * run a SPARQL query to identify recipes with special ingredients and cooking times
 ---
 
 ## Production Use Cases
