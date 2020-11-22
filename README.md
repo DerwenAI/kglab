@@ -63,6 +63,7 @@ Prerequisites:
 - [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
 - [pandas](https://pandas.pydata.org/)
 - [NetworkX](https://networkx.org/)
+- [dateutil](https://pypi.org/project/python-dateutil/)
 - [pyvis](https://pyvis.readthedocs.io/)
 - [grave](https://github.com/networkx/grave)
 - [matplotlib](https://matplotlib.org/)
