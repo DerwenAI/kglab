@@ -6,6 +6,7 @@
 
   * support for dependabot
   * added a logo
+  * adding support for `pyvis` and `grave` visualizations
 
 ## 0.1.1
 

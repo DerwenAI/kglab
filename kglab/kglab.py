@@ -5,11 +5,15 @@ from rdflib import plugin
 from rdflib.serializer import Serializer
 # NB: while `plugin` isn't used directly, loading it
 # here causes it to become registered within `rdflib`
-from pyvis.network import Network
 import dateutil.parser as dup
+import grave
 import json
+import matplotlib.pyplot as plt
+import networkx as nx
 import pathlib
+import pyvis.network
 import rdflib as rdf
+
 
 
 ######################################################################
@@ -157,22 +161,26 @@ class KnowledgeGraph:
         return self.id_list.index(label)
 
 
-    def style_node (self, g, node_id, label, style={}):
+    def pyvis_style_node (self, g, node_id, label, style={}):
         prefix = label.split(":")[0]
     
         if prefix in style:
             g.add_node(
                 node_id,
                 label=label,
+                title=label,
                 color=style[prefix]["color"],
                 size=style[prefix]["size"],
             )
         else:
-            g.add_node(node_id, label=label)
+            g.add_node(node_id, label=label, title=label)
 
 
-    def vis (self, notebook=False, style={}):
-        g = Network(notebook=notebook)
+    def vis_pyvis (self, notebook=False, style={}):
+        """
+        https://pyvis.readthedocs.io/
+        """
+        g = pyvis.network.Network(notebook=notebook)
         g.force_atlas_2based()
 
         for s, p, o in self._g:
@@ -189,10 +197,23 @@ class KnowledgeGraph:
 
             o_id = self.get_node_id(o_label)
     
-            self.style_node(g, s_id, s_label, style=style)
-            self.style_node(g, o_id, o_label, style=style)
+            self.pyvis_style_node(g, s_id, s_label, style=style)
+            self.pyvis_style_node(g, o_id, o_label, style=style)
 
             g.add_edge(s_id, o_id, label=p_label)
+
+        return g
+
+
+    def vis_grave (self):
+        """
+        https://networkx.org/grave/
+        """
+        g = nx.Graph()
+
+        #g.add_node("A")
+        #g.add_node("B")
+        #g.add_edge("A", "B", weight=1)
 
         return g
 
