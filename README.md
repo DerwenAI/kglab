@@ -3,6 +3,9 @@
 The **kglab** library provides a simple abstraction layer in Python
 for building knowledge graphs.
 
+> **SPECIAL REQUEST:**
+> Which features would you like to see the most in an open source Python library for building and using knowledge graphs? Please add suggestions to this online survey: https://forms.gle/FMHgtmxHYWocprMn6  This will help us prioritize our roadmap for **kglab**.
+
 
 ## Background
 
@@ -28,11 +31,13 @@ There are general operations that one must perform on knowledge graphs:
   * quality assurance (e.g., axioms)
   * managing a mix of namespaces
   * serialization to/from multiple formats
+  * parallel processing across a cluster
   * interactive visualization
   * queries
   * graph algorithms
-  * inference, transitivity, etc.
-  * embedding
+  * transitivity and other forms of enriching a graph
+  * embedding (deep learning integration)
+  * inference (e.g., PSL, Bayesian Networks, Causal, MLN, etc.)
   * other ML integrations
  
 The **kglab** library provides a reasonably "Pythonic" abstraction layer
@@ -55,8 +60,13 @@ Prerequisites:
 
 - [Python 3.5+](https://www.python.org/downloads/)
 - [rdflib](https://rdflib.readthedocs.io/)
+- [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
+- [pandas](https://pandas.pydata.org/)
 - [NetworkX](https://networkx.org/)
 - [pyvis](https://pyvis.readthedocs.io/)
+- [grave](https://github.com/networkx/grave)
+- [matplotlib](https://matplotlib.org/)
+- [pslpython](https://psl.linqs.org/)
 
 To install from [PyPi](https://pypi.python.org/pypi/kglab):
 
