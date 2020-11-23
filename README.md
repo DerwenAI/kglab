@@ -108,6 +108,7 @@ pip install -r requirements.txt
   * [`ex01_5.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_5.ipynb)
     * load the medium size KG from the earlier example
     * run a SPARQL query to identify recipes with special ingredients and cooking times
+    * use SPARQL queries and post-processing to create annotations
 6. Graph algorithms with `networkx`
   * [`ex01_6.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_6.ipynb)
     * load the medium size KG from the earlier example

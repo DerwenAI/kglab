@@ -10,6 +10,7 @@
   * SPARQL query examples
   * running graph algorithms in `networkx`
   * Parquet files using `pyarrow`
+  * examples of annotation that combine use of SPARQL, SKOS, etc.
 
 ## 0.1.1
 
