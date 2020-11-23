@@ -32,6 +32,7 @@ setuptools.setup(
           "rdflib",
           "rdflib-jsonld",
           "pandas",
+          "pyarrow",
           "networkx",
           "python-dateutil",
           "pyvis",
@@ -39,7 +40,7 @@ setuptools.setup(
           "matplotlib",
           "pslpython",
     ],
-    keywords="knowledge graph, graph algorithms, interactive visualization, rdf, skos, owl, controlled vocabulary, managing namespaces, serialization, n3, turtle, json-ld",
+    keywords="knowledge graph, graph algorithms, interactive visualization, inference, rdf, skos, owl, controlled vocabulary, managing namespaces, serialization, n3, turtle, json-ld, parquet",
     license="MIT",
     zip_safe=False,
 )

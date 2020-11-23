@@ -3,6 +3,7 @@ matplotlib >= 3.2.1
 networkx >= 2.5
 pandas >= 1.1.1
 pslpython >= 2.2.2
+pyarrow >= 2.0.0
 python-dateutil >= 2.8.0
 pyvis >= 0.1.7.0
 rdflib >= 4.2.2

@@ -10,7 +10,10 @@ import grave
 import json
 import matplotlib.pyplot as plt
 import networkx as nx
+import pandas as pd
 import pathlib
+import pyarrow as pa
+import pyarrow.parquet as pq
 import pyvis.network
 import rdflib as rdf
 
@@ -110,13 +113,13 @@ class KnowledgeGraph:
     ## integrated into several of the existing tools for network
     ## graphing.
 
-    def load_json (self, path, encoding="utf-8"):
+    def load_jsonld (self, path, encoding="utf-8"):
         with open(path, "r", encoding=encoding) as f:
             data = json.load(f)
             self._g.parse(data=json.dumps(data), format="json-ld", encoding=encoding)
 
 
-    def save_json (self, path, encoding="utf-8"):
+    def save_jsonld (self, path, encoding="utf-8"):
         data = self._g.serialize(
             format = "json-ld",
             context = self.get_context(),
@@ -146,6 +149,42 @@ class KnowledgeGraph:
         self._g.serialize(destination=filename, format=format, encoding=encoding)
 
 
+    def load_parquet (self, path):
+        df = pq.read_pandas(path).to_pandas()
+
+        for index, row in df.iterrows():
+            triple = "{} {} {} .".format(row[0], row[1], row[2])
+            self._g.parse(data=triple, format="n3")
+
+
+    def save_parquet (self, path):
+        rows_list = [ {"s": s.n3(), "p": p.n3(), "o": o.n3()} for s, p, o in self._g ]
+        df = pd.DataFrame(rows_list, columns=("s", "p", "o"))
+        table = pa.Table.from_pandas(df)
+        pq.write_table(table, path, use_dictionary=True, compression="gzip")
+
+
+    ######################################################################
+    ## node labels
+
+    def get_node_id (self, node):
+        """return a unique integer ID for the given RDF node"""
+        if not node in self.id_list:
+            self.id_list.append(node)
+
+        return self.id_list.index(node)
+
+
+    def get_node (self, id):
+        """return the RDF node corresponding to a unique integer ID"""
+        return self.id_list[id]
+
+
+    def get_node_label (self, node):
+        """return the label for the given RDF node"""
+        return node.n3(self._g.namespace_manager)
+
+
     ######################################################################
     ## visualization
     ##
@@ -153,17 +192,6 @@ class KnowledgeGraph:
     ## between entities can be ingested into graph visualization tools
     ## to extend or create an analyst's account-specific network
     ## model.
-
-    def get_node_id (self, label):
-        if not label in self.id_list:
-            self.id_list.append(label)
-
-        return self.id_list.index(label)
-
-
-    def get_node_label (self, id):
-        return self.id_list[id]
-
 
     def pyvis_style_node (self, g, node_id, label, style={}):
         prefix = label.split(":")[0]
@@ -189,17 +217,16 @@ class KnowledgeGraph:
 
         for s, p, o in self._g:
             s_label = s.n3(self._g.namespace_manager)
-            s_id = self.get_node_id(s_label)
+            s_id = self.get_node_id(s)
 
             p_label = p.n3(self._g.namespace_manager)
-            p_id = self.get_node_id(p_label)
 
             if isinstance(o, rdf.term.Literal):
                 o_label = str(o.toPython())
             else:
                 o_label = o.n3(self._g.namespace_manager)
 
-            o_id = self.get_node_id(o_label)
+            o_id = self.get_node_id(o)
     
             self.pyvis_style_node(g, s_id, s_label, style=style)
             self.pyvis_style_node(g, o_id, o_label, style=style)

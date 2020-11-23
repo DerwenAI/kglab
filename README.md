@@ -62,6 +62,7 @@ Dependencies:
 - [rdflib](https://rdflib.readthedocs.io/)
 - [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
 - [pandas](https://pandas.pydata.org/)
+- [pyarrow](https://arrow.apache.org/)
 - [NetworkX](https://networkx.org/)
 - [dateutil](https://pypi.org/project/python-dateutil/)
 - [pyvis](https://pyvis.readthedocs.io/)
@@ -102,6 +103,7 @@ pip install -r requirements.txt
 4. Build a medium size KG from a CSV dataset
   * [`ex01_4.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_4.ipynb)
     * iterate through a dataset, representing a recipe for each row
+    * compare relative file sizes for different serialization formats
 5. Running SPARQL queries
   * [`ex01_5.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_5.ipynb)
     * load the medium size KG from the earlier example

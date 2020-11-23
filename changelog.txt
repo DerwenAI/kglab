@@ -6,7 +6,10 @@
 
   * support for dependabot
   * added a logo
-  * adding support for `pyvis` and `grave` visualizations
+  * interactive visualizations in `pyvis` and `grave`
+  * SPARQL query examples
+  * running graph algorithms in `networkx`
+  * Parquet files using `pyarrow`
 
 ## 0.1.1
 
