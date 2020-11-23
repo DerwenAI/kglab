@@ -161,6 +161,10 @@ class KnowledgeGraph:
         return self.id_list.index(label)
 
 
+    def get_node_label (self, id):
+        return self.id_list[id]
+
+
     def pyvis_style_node (self, g, node_id, label, style={}):
         prefix = label.split(":")[0]
     

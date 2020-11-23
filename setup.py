@@ -27,7 +27,7 @@ setuptools.setup(
         "Topic :: Scientific/Engineering :: Information Analysis",
         "Topic :: Text Processing :: Indexing",
     ],
-    python_requires=">=3.5",
+    python_requires=">=3.6",
     install_requires=[
           "rdflib",
           "rdflib-jsonld",

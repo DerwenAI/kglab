@@ -58,7 +58,7 @@ See [wiki](https://github.com/DerwenAI/kglab/wiki) for further details.
 
 Prerequisites:
 
-- [Python 3.5+](https://www.python.org/downloads/)
+- [Python 3.6+](https://www.python.org/downloads/)
 - [rdflib](https://rdflib.readthedocs.io/)
 - [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
 - [pandas](https://pandas.pydata.org/)
@@ -92,7 +92,7 @@ pip install -r requirements.txt
     * construct a graph from RDF triples
     * using multiple namespaces
     * proper handling of literals
-    * seralization to strings and files using `Turtle` and `JSON-LD`
+    * serialization to strings and files using `Turtle` and `JSON-LD`
 2. Leveraging the `kglab` abstraction layer
   * [`ex01_2.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_2.ipynb)
     * construct and serialize the same graph using  `kglab`
@@ -104,8 +104,13 @@ pip install -r requirements.txt
     * iterate through a dataset, representing a recipe for each row
 5. Running SPARQL queries
   * [`ex01_5.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_5.ipynb)
-    * load the medium size KG from the previous example
+    * load the medium size KG from the earlier example
     * run a SPARQL query to identify recipes with special ingredients and cooking times
+6. Graph algorithms with `networkx`
+  * [`ex01_6.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_6.ipynb)
+    * load the medium size KG from the earlier example
+    * run graph algorithms in `networkx` to analyze properties of the KG
+
 ---
 
 ## Production Use Cases
