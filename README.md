@@ -56,7 +56,7 @@ See [wiki](https://github.com/DerwenAI/kglab/wiki) for further details.
 
 ## Installation
 
-Prerequisites:
+Dependencies:
 
 - [Python 3.6+](https://www.python.org/downloads/)
 - [rdflib](https://rdflib.readthedocs.io/)
