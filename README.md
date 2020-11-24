@@ -83,6 +83,26 @@ as well:
 pip install -r requirements.txt
 ```
 
+If you would like to run a local Notebook install Jupyter Lab:
+
+If you use conda, you can install it with:
+```
+conda install -c conda-forge jupyterlab
+```
+
+If you use pip, you can install it with:
+```
+pip install jupyterlab
+```
+If installing using pip install --user, you must add the user-level bin directory to your PATH environment variable in order to launch jupyter lab.
+If you are using a Unix derivative (FreeBSD, GNU / Linux, OS X),you can achieve this by using
+export PATH="$HOME/.local/bin:$PATH" command.
+
+
+Once installed, launch JupyterLab with:
+```
+jupyter-lab
+```
 
 ## Tutorial Outline
 
