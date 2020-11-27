@@ -1,7 +1,7 @@
 # kglab
 
 The **kglab** library provides a simple abstraction layer in Python
-for building knowledge graphs.
+for building and using knowledge graphs.
 
 > **SPECIAL REQUEST:**
 > Which features would you like to see the most in an open source Python library for building and using knowledge graphs? Please add suggestions to this online survey: https://forms.gle/FMHgtmxHYWocprMn6  This will help us prioritize our roadmap for **kglab**.
@@ -133,6 +133,15 @@ jupyter-lab
   * [`ex01_6.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_6.ipynb)
     * load the medium size KG from the earlier example
     * run graph algorithms in `networkx` to analyze properties of the KG
+7. Statistical relational learning with `pslpython`
+  * [`ex01_7.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_7.ipynb)
+    * use RDF to represent the "simple acquaintance" PSL example graph
+    * load the graph into a KG
+    * visualize the KG
+    * run PSL to infer uncertainty in the `knows` relation for grounded nodes
+8. Graph embedding with `pytorch`
+  * [`ex01_8.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_8.ipynb)
+    * WIP: using `dat/all_ind.csv`
 
 ---
 
@@ -142,3 +151,10 @@ jupyter-lab
 
 
 [![kg+lab](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)
+
+
+## Kudos
+
+Many thanks to our contributors:
+[@jake-aft](https://github.com/jake-aft),
+plus general support from [Derwen, Inc.](https://derwen.ai/)

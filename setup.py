@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="kglab",
-    version="0.1.1",
+    version="0.1.2",
     author="Paco Nathan",
     author_email="paco@derwen.ai",
-    description="Python wrapper for knowledge graph construction tools",
+    description="Python wrapper for knowledge graph abstraction layer",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="http://github.com/DerwenAI/kglab",
@@ -40,7 +40,7 @@ setuptools.setup(
           "matplotlib",
           "pslpython",
     ],
-    keywords="knowledge graph, graph algorithms, interactive visualization, inference, rdf, skos, owl, controlled vocabulary, managing namespaces, serialization, n3, turtle, json-ld, parquet",
+    keywords="knowledge graph, graph algorithms, interactive visualization, inference, rdf, skos, owl, controlled vocabulary, managing namespaces, serialization, n3, turtle, json-ld, parquet, psl, probabilistic soft logic",
     license="MIT",
     zip_safe=False,
 )

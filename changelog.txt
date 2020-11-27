@@ -11,6 +11,8 @@
   * running graph algorithms in `networkx`
   * Parquet files using `pyarrow`
   * examples of annotation that combine use of SPARQL, SKOS, etc.
+  * added instructions for installing/running JupyterLab
+  * examples of SRL inference using `pslpython`
 
 ## 0.1.1
 

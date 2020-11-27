@@ -1,0 +1,11 @@
+{
+    "globalThings": 5,
+    "localLikesVariance": 1.0,
+    "localThings": 5,
+    "people": 25,
+    "places": 5,
+    "placesLivedMean": 3.0,
+    "placesLivedStandardDeviation": 1.0,
+    "seed": 3723668548,
+    "targetRatio": 0.2
+}
