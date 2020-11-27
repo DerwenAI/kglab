@@ -1,0 +1,10 @@
+0	Machine Learning
+1	Futball
+2	Chess
+3	Super Smash Brothers Melee
+4	Badminton
+5	Surfing
+6	Hiking
+7	Programming
+8	Photography
+9	Running
