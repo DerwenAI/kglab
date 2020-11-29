@@ -62,6 +62,7 @@ Dependencies:
 - [rdflib](https://rdflib.readthedocs.io/)
 - [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
 - [pandas](https://pandas.pydata.org/)
+- [numpy](https://numpy.org/)
 - [pyarrow](https://arrow.apache.org/)
 - [NetworkX](https://networkx.org/)
 - [dateutil](https://pypi.org/project/python-dateutil/)
@@ -69,6 +70,9 @@ Dependencies:
 - [grave](https://github.com/networkx/grave)
 - [matplotlib](https://matplotlib.org/)
 - [pslpython](https://psl.linqs.org/)
+- [pytorch](https://pytorch.org/)
+- [gensim](https://radimrehurek.com/gensim/)
+- [pylev](https://github.com/toastdriven/pylev)
 
 To install from [PyPi](https://pypi.python.org/pypi/kglab):
 
@@ -139,9 +143,12 @@ jupyter-lab
     * load the graph into a KG
     * visualize the KG
     * run PSL to infer uncertainty in the `knows` relation for grounded nodes
-8. Graph embedding with `pytorch`
+8. Vector embedding with `gensim`
   * [`ex01_8.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_8.ipynb)
-    * WIP: using `dat/all_ind.csv`
+    * curating annotations
+    * analyze ingredient labels from 250K recipes
+    * use vector embedding to rank relatedness for labels
+    * add string similarity for an approximate pareto archive
 
 ---
 
@@ -158,3 +165,5 @@ jupyter-lab
 Many thanks to our contributors:
 [@jake-aft](https://github.com/jake-aft),
 plus general support from [Derwen, Inc.](https://derwen.ai/)
+and [The Knowledge Graph Conference](https://www.knowledgegraph.tech/).
+

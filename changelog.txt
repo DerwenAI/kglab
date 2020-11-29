@@ -13,6 +13,8 @@
   * examples of annotation that combine use of SPARQL, SKOS, etc.
   * added instructions for installing/running JupyterLab
   * examples of SRL inference using `pslpython`
+  * demo use of vector embedding with `gensim`
+  * examples of string similarity with `pylev`
 
 ## 0.1.1
 
