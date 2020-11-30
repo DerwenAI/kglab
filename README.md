@@ -67,10 +67,8 @@ Dependencies:
 - [NetworkX](https://networkx.org/)
 - [dateutil](https://pypi.org/project/python-dateutil/)
 - [pyvis](https://pyvis.readthedocs.io/)
-- [grave](https://github.com/networkx/grave)
 - [matplotlib](https://matplotlib.org/)
 - [pslpython](https://psl.linqs.org/)
-- [pytorch](https://pytorch.org/)
 - [gensim](https://radimrehurek.com/gensim/)
 - [pylev](https://github.com/toastdriven/pylev)
 
