@@ -212,7 +212,7 @@ class KnowledgeGraph:
         """
         https://pyvis.readthedocs.io/
         """
-        g = pyvis.network.Network(notebook=notebook)
+        g = pyvis.network.Network(notebook=notebook, directed=True)
         g.force_atlas_2based()
 
         for s, p, o in self._g:
