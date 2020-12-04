@@ -6,7 +6,6 @@ from rdflib.serializer import Serializer
 # NB: while `plugin` isn't used directly, loading it
 # here causes it to become registered within `rdflib`
 import dateutil.parser as dup
-import grave
 import json
 import matplotlib.pyplot as plt
 import networkx as nx
@@ -232,19 +231,6 @@ class KnowledgeGraph:
             self.pyvis_style_node(g, o_id, o_label, style=style)
 
             g.add_edge(s_id, o_id, label=p_label)
-
-        return g
-
-
-    def vis_grave (self):
-        """
-        https://networkx.org/grave/
-        """
-        g = nx.Graph()
-
-        #g.add_node("A")
-        #g.add_node("B")
-        #g.add_edge("A", "B", weight=1)
 
         return g
 

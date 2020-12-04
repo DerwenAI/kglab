@@ -1,5 +1,13 @@
 # `kglab` changelog
 
+## 0.1.3
+
+2020-12-04
+
+  * resolved removal of `grave` dependencies
+  * add arrows to `pyvis` exampl by making it a directed graph
+  * kudos @dmoore247
+
 ## 0.1.2
 
 2020-11-30

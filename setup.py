@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="kglab",
-    version="0.1.2",
+    version="0.1.3",
     author="Paco Nathan",
     author_email="paco@derwen.ai",
     description="Python wrapper for knowledge graph abstraction layer",
