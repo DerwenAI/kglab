@@ -161,6 +161,6 @@ jupyter-lab
 
 Many thanks to our contributors:
 [@jake-aft](https://github.com/jake-aft),
+[@dmoore247](https://github.com/dmoore247),
 plus general support from [Derwen, Inc.](https://derwen.ai/)
 and [The Knowledge Graph Conference](https://www.knowledgegraph.tech/).
-
