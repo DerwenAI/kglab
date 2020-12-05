@@ -2,9 +2,16 @@
 # encoding: utf-8
 
 from rdflib import plugin
-from rdflib.serializer import Serializer
+from rdflib.plugin import register, Parser, Serializer
 # NB: while `plugin` isn't used directly, loading it
 # here causes it to become registered within `rdflib`
+register("json-ld", Parser, "rdflib_jsonld.parser", "JsonLDParser")
+register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
+
+import rdflib as rdf
+from rdflib.serializer import Serializer
+
+
 import dateutil.parser as dup
 import json
 import matplotlib.pyplot as plt
@@ -14,8 +21,6 @@ import pathlib
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pyvis.network
-import rdflib as rdf
-
 
 
 ######################################################################

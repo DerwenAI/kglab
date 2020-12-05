@@ -28,16 +28,16 @@ Challenges we kept having to reinvent work-arounds to resolve.
 There are general operations that one must perform on knowledge graphs:
 
   * building triples
-  * quality assurance (e.g., axioms)
   * managing a mix of namespaces
   * serialization to/from multiple formats
-  * parallel processing across a cluster
-  * interactive visualization
   * queries
-  * graph algorithms
+  * interactive visualization
   * transitivity and other forms of enriching a graph
-  * embedding (deep learning integration)
+  * graph algorithms
   * inference (e.g., PSL, Bayesian Networks, Causal, MLN, etc.)
+  * quality assurance (e.g., axioms)
+  * parallel processing across a cluster
+  * embedding (deep learning integration)
   * other ML integrations
  
 The **kglab** library provides a reasonably "Pythonic" abstraction layer
@@ -47,11 +47,6 @@ The class definitions can be subclassed and extended to handle specific needs.
 Meanwhile, we're also extending some of the key components with distributed
 versions, based on [`ray`](https://ray.io/) for better use of horizontal
 scale-out and parallelization.
-
-NB: this repo is *UNDER CONSTRUCTION* and will undergo much iteration prior
-to the "KG 101" tutorial at https://www.knowledgeconnexions.world/talks/kg-101/
-
-See [wiki](https://github.com/DerwenAI/kglab/wiki) for further details.
 
 
 ## Installation
@@ -83,7 +78,7 @@ as well:
 pip install -r requirements.txt
 ```
 
-If you would like to run a local Notebook install Jupyter Lab:
+If you would like to run a local notebook, install JupyterLab:
 
 If you use conda, you can install it with:
 ```
@@ -97,7 +92,7 @@ pip install jupyterlab
 If installing via `pip install --user` you must add the user-level bin 
 directory to your PATH environment variable in order to launch JupyterLab.
 
-If you are using a Unix derivative (FreeBSD, GNU / Linux, OS X), you can 
+If you are using a Unix derivative (FreeBSD, GNU/Linux, OS X), you can 
 achieve this by using the `export PATH="$HOME/.local/bin:$PATH"` command.
 
 Once installed, launch JupyterLab with:
@@ -155,6 +150,33 @@ jupyter-lab
 
 
 [![kg+lab](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)
+
+
+## Similar Projects
+
+See also:
+
+  * [zincbase](https://github.com/complexdb/zincbase)
+
+
+## Attribution
+
+**kglab** has an [MIT](https://spdx.org/licenses/MIT.html) license,
+which is succinct and simplifies use in commercial applications.
+
+Please use the following BibTeX entry for citing **kglab** if you use it in your research or software.
+Citations are helpful for the continued development and maintenance of this library.
+
+```
+@misc{kglab,
+    author    = {Paco Nathan},
+    title     = {{kglab: a simple-to-use, pythonic, knowledge graph abstraction layer}},
+    month     = nov,
+    year      = 2020,
+    publisher = {Derwen},
+    url       = {https://github.com/DerwenAI/kglab}
+    }
+```
 
 
 ## Kudos
