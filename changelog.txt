@@ -4,7 +4,9 @@
 
 2020-12-??
 
-  * resolve Google Colab errors with registration of `rdflib-jsonld` plugin
+  * added `pySHACL` example
+  * resolved Google Colab errors with registration of `rdflib-jsonld` plugin
+  * simplified example notebook naming
 
 
 ## 0.1.3
@@ -12,7 +14,7 @@
 2020-12-04
 
   * resolved removal of `grave` dependencies
-  * add arrows to `pyvis` exampl by making it a directed graph
+  * added arrows to `pyvis` example by making it a directed graph
   * kudos @dmoore247
 
 
