@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.1.4",
     author="Paco Nathan",
     author_email="paco@derwen.ai",
-    description="Python wrapper for knowledge graph abstraction layer",
+    description="A simple abstraction layer in Python for building and using knowledge graphs",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="http://github.com/DerwenAI/kglab",

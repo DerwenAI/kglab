@@ -170,7 +170,7 @@ Citations are helpful for the continued development and maintenance of this libr
 ```
 @misc{kglab,
     author    = {Paco Nathan},
-    title     = {{kglab: a simple-to-use, pythonic, knowledge graph abstraction layer}},
+    title     = {{kglab: a simple abstraction layer in Python for building and using knowledge graphs}},
     month     = nov,
     year      = 2020,
     publisher = {Derwen},

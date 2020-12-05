@@ -4,7 +4,7 @@
 
 2020-12-??
 
-  * attempting to resolve Google Colab errors with `rdflib-jsonld` plugin
+  * resolve Google Colab errors with registration of `rdflib-jsonld` plugin
 
 
 ## 0.1.3
