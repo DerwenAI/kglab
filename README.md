@@ -54,10 +54,11 @@ scale-out and parallelization.
 Dependencies:
 
 - [Python 3.6+](https://www.python.org/downloads/)
-- [rdflib](https://rdflib.readthedocs.io/)
+- [RDFlib](https://rdflib.readthedocs.io/)
 - [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
+- [pySHACL](https://github.com/RDFLib/pySHACL)
 - [pandas](https://pandas.pydata.org/)
-- [numpy](https://numpy.org/)
+- [NumPy](https://numpy.org/)
 - [pyarrow](https://arrow.apache.org/)
 - [NetworkX](https://networkx.org/)
 - [dateutil](https://pypi.org/project/python-dateutil/)
@@ -100,56 +101,59 @@ Once installed, launch JupyterLab with:
 jupyter-lab
 ```
 
+
 ## Tutorial Outline
 
 1. Building a graph in RDF using `rdflib`
-  * [`ex01_0.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_0.ipynb)
+  * [`ex00.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex00.ipynb)
     * examine the dataset
-  * [`ex01_1.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_1.ipynb)
+  * [`ex01.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01.ipynb)
     * construct a graph from RDF triples
     * using multiple namespaces
     * proper handling of literals
     * serialization to strings and files using `Turtle` and `JSON-LD`
 2. Leveraging the `kglab` abstraction layer
-  * [`ex01_2.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_2.ipynb)
+  * [`ex02.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex02.ipynb)
     * construct and serialize the same graph using  `kglab`
 3. Interactive graph visualization with `pyvis`
-  * [`ex01_3.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_3.ipynb)
+  * [`ex03.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex03.ipynb)
     * render triples as an interactive graph
 4. Build a medium size KG from a CSV dataset
-  * [`ex01_4.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_4.ipynb)
+  * [`ex04.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex04.ipynb)
     * iterate through a dataset, representing a recipe for each row
     * compare relative file sizes for different serialization formats
 5. Running SPARQL queries
-  * [`ex01_5.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_5.ipynb)
+  * [`ex05.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex05.ipynb)
     * load the medium size KG from the earlier example
     * run a SPARQL query to identify recipes with special ingredients and cooking times
     * use SPARQL queries and post-processing to create annotations
-6. Graph algorithms with `networkx`
-  * [`ex01_6.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_6.ipynb)
+6. SHACL validation with `pySHACL`
+  * [`ex06.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex06.ipynb)
+    * SHACL examples with recipe data
+7. Graph algorithms with `networkx`
+  * [`ex07.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex07.ipynb)
     * load the medium size KG from the earlier example
     * run graph algorithms in `networkx` to analyze properties of the KG
-7. Statistical relational learning with `pslpython`
-  * [`ex01_7.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_7.ipynb)
+8. Statistical relational learning with `pslpython`
+  * [`ex08.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex08.ipynb)
     * use RDF to represent the "simple acquaintance" PSL example graph
     * load the graph into a KG
     * visualize the KG
     * run PSL to infer uncertainty in the `knows` relation for grounded nodes
-8. Vector embedding with `gensim`
-  * [`ex01_8.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex01_8.ipynb)
+9. Vector embedding with `gensim`
+  * [`ex09.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex09.ipynb)
     * curating annotations
     * analyze ingredient labels from 250K recipes
     * use vector embedding to rank relatedness for labels
-    * add string similarity for an approximate pareto archive
+    * add string similarity, and an approximate pareto archive
 
 ---
+
+[![kg+lab](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)
 
 ## Production Use Cases
 
   * [Derwen](https://derwen.ai/) and its client projects
-
-
-[![kg+lab](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)
 
 
 ## Similar Projects
@@ -170,7 +174,7 @@ Citations are helpful for the continued development and maintenance of this libr
 ```
 @misc{kglab,
     author    = {Paco Nathan},
-    title     = {{kglab: a simple-to-use, pythonic, knowledge graph abstraction layer}},
+    title     = {{kglab: a simple abstraction layer in Python for building and using knowledge graphs}},
     month     = nov,
     year      = 2020,
     publisher = {Derwen},
