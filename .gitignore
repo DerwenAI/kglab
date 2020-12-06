@@ -6,6 +6,7 @@ tmp.jsonld
 tmp.parquet
 tmp.pkl
 tmp.ttl
+tmp.xml
 tmp.w2v
 
 # Byte-compiled / optimized / DLL files
