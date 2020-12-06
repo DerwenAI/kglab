@@ -2,10 +2,11 @@
 # encoding: utf-8
 
 from rdflib import plugin
+from rdflib.serializer import Serializer
 from rdflib.plugin import register, Parser, Serializer
 import rdflib as rdf
-# NB: while `plugin` isn't used directly, loading it
-# here causes it to become registered within `rdflib`
+# NB: while `plugin` and `Serializer` aren't used directly, loading
+# them explicitly here causes them to become registered in `rdflib`
 register("json-ld", Parser, "rdflib_jsonld.parser", "JsonLDParser")
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
