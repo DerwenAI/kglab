@@ -115,24 +115,6 @@ class KnowledgeGraph:
     ## integrated into several of the existing tools for network
     ## graphing.
 
-    def load_jsonld (self, path, encoding="utf-8"):
-        with open(path, "r", encoding=encoding) as f:
-            data = json.load(f)
-            self._g.parse(data=json.dumps(data), format="json-ld", encoding=encoding)
-
-
-    def save_jsonld (self, path, encoding="utf-8"):
-        data = self._g.serialize(
-            format = "json-ld",
-            context = self.get_context(),
-            indent = 2,
-            encoding = encoding
-            )
-
-        with open(path, "wb") as f:
-            f.write(data)
-
-
     def load_ttl (self, path, encoding="utf-8", format="n3"):
         if isinstance(path, pathlib.Path):
             filename = path.as_posix()
@@ -149,6 +131,24 @@ class KnowledgeGraph:
             filename = path
 
         self._g.serialize(destination=filename, format=format, encoding=encoding)
+
+
+    def load_jsonld (self, path, encoding="utf-8"):
+        with open(path, "r", encoding=encoding) as f:
+            data = json.load(f)
+            self._g.parse(data=json.dumps(data), format="json-ld", encoding=encoding)
+
+
+    def save_jsonld (self, path, encoding="utf-8"):
+        data = self._g.serialize(
+            format = "json-ld",
+            context = self.get_context(),
+            indent = 2,
+            encoding = encoding
+            )
+
+        with open(path, "wb") as f:
+            f.write(data)
 
 
     def load_parquet (self, path):
@@ -255,9 +255,14 @@ class KnowledgeGraph:
             self._g,
             shacl_graph=shacl_graph,
             shacl_graph_format=shacl_graph_format,
+            ont_graph=ont_graph,
+            advanced=advanced,
             inference=inference,
-            debug=True,
-            serialize_report_graph=True,
+            abort_on_error=abort_on_error,
+
+            debug=debug,
+            serialize_report_graph=serialize_report_graph,
+            *kwargs,
             )
 
         return conforms, v_graph, v_text
