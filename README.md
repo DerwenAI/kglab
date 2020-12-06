@@ -127,18 +127,21 @@ jupyter-lab
     * load the medium size KG from the earlier example
     * run a SPARQL query to identify recipes with special ingredients and cooking times
     * use SPARQL queries and post-processing to create annotations
-6. Graph algorithms with `networkx`
+6. SHACL validation with `pySHACL`
   * [`ex06.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex06.ipynb)
+    * SHACL examples with recipe data
+7. Graph algorithms with `networkx`
+  * [`ex07.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex07.ipynb)
     * load the medium size KG from the earlier example
     * run graph algorithms in `networkx` to analyze properties of the KG
-7. Statistical relational learning with `pslpython`
-  * [`ex07.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex07.ipynb)
+8. Statistical relational learning with `pslpython`
+  * [`ex08.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex08.ipynb)
     * use RDF to represent the "simple acquaintance" PSL example graph
     * load the graph into a KG
     * visualize the KG
     * run PSL to infer uncertainty in the `knows` relation for grounded nodes
-8. Vector embedding with `gensim`
-  * [`ex08.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex08.ipynb)
+9. Vector embedding with `gensim`
+  * [`ex09.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex09.ipynb)
     * curating annotations
     * analyze ingredient labels from 250K recipes
     * use vector embedding to rank relatedness for labels

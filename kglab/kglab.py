@@ -3,17 +3,14 @@
 
 from rdflib import plugin
 from rdflib.plugin import register, Parser, Serializer
+import rdflib as rdf
 # NB: while `plugin` isn't used directly, loading it
 # here causes it to become registered within `rdflib`
 register("json-ld", Parser, "rdflib_jsonld.parser", "JsonLDParser")
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
-import rdflib as rdf
-from rdflib.serializer import Serializer
-
-
-import dateutil.parser as dup
 import json
+import dateutil.parser as dup
 import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
@@ -21,6 +18,7 @@ import pathlib
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pyvis.network
+import pyshacl
 
 
 ######################################################################
@@ -141,7 +139,7 @@ class KnowledgeGraph:
         else:
             filename = path
 
-        self._g.parse(filename, format="n3", encoding=encoding)
+        self._g.parse(filename, format=format, encoding=encoding)
 
 
     def save_ttl (self, path, encoding="utf-8", format="n3"):
@@ -241,11 +239,28 @@ class KnowledgeGraph:
 
 
     ######################################################################
-    ## queries
+    ## SPARQL queries
 
     def query (self, query):
         for row in self._g.query(query):
             yield row
+
+
+    ######################################################################
+    ## SHACL validation
+
+    def validate (self, shacl_graph=None, shacl_graph_format="turtle", ont_graph=None, advanced=False, inference="rdfs", debug=False, abort_on_error=None, serialize_report_graph=False, **kwargs):
+
+        conforms, v_graph, v_text = pyshacl.validate(
+            self._g,
+            shacl_graph=shacl_graph,
+            shacl_graph_format=shacl_graph_format,
+            inference=inference,
+            debug=True,
+            serialize_report_graph=True,
+            )
+
+        return conforms, v_graph, v_text
 
 
     ######################################################################
