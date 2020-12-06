@@ -2,10 +2,10 @@
 
 ## 0.1.4
 
-2020-12-??
+2020-12-06
 
-  * added `pySHACL` example
-  * resolved Google Colab errors registering the  `rdflib-jsonld` plugin
+  * added `pySHACL` examples
+  * resolved Google Colab errors registering the `rdflib-jsonld` plugin
   * comparing timing info across serialization methods
   * simplified the example notebook naming convention
 
