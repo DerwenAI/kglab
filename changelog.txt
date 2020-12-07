@@ -1,5 +1,12 @@
 # `kglab` changelog
 
+## 0.1.5
+
+2020-12-??
+
+  * add `Subgraph` class for projecting onto `networkx` and other simplified directed graphs
+
+
 ## 0.1.4
 
 2020-12-06

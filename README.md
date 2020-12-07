@@ -73,11 +73,24 @@ To install from [PyPi](https://pypi.python.org/pypi/kglab):
 pip install kglab
 ```
 
-If you work directly from this Git repo, be sure to install the dependencies
-as well:
+If you work directly from this Git repo, be sure to install the 
+dependencies as well:
 ```
 pip install -r requirements.txt
 ```
+
+Then to use the library, the simplest form is:
+```
+import kglab
+
+kg = kglab.KnowledgeGraph()
+```
+
+See the tutorial notebooks for sample code and patterns to use in
+integrating `kglab` with other popular related libraries in Python.
+
+
+## Tutorial Setup
 
 If you would like to run a local notebook, install JupyterLab:
 
@@ -129,7 +142,8 @@ jupyter-lab
     * use SPARQL queries and post-processing to create annotations
 6. SHACL validation with `pySHACL`
   * [`ex06.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex06.ipynb)
-    * SHACL examples with recipe data
+    * SHACL validation with `pySHACL`
+    * SHACL examples with `kglab` using the recipe KG
 7. Graph algorithms with `networkx`
   * [`ex07.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex07.ipynb)
     * load the medium size KG from the earlier example
