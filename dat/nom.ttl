@@ -1,4 +1,4 @@
-@base <https://github.com/DerwenAI/kglab/wiki/Vocab#> .
+@base <http://example.com/> .
 
 @prefix dc:             <https://purl.org/dc/terms/> .
 @prefix owl:            <https://www.w3.org/2002/07/owl#> .

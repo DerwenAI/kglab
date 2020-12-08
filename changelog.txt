@@ -5,6 +5,7 @@
 2020-12-??
 
   * add `Subgraph` class for projecting onto `networkx` and other simplified directed graphs
+  * method to return SPARQL query result set as a `pandas` DataFrame
 
 
 ## 0.1.4

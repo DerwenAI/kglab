@@ -1,13 +1,7 @@
 *~
 dat/food_com
 foo.ttl
-tmp.html
-tmp.jsonld
-tmp.parquet
-tmp.pkl
-tmp.ttl
-tmp.xml
-tmp.w2v
+tmp.*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
