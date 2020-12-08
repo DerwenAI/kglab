@@ -246,6 +246,9 @@ class KnowledgeGraph:
         for row in self._g.query(query):
             yield row
 
+    def query_as_df (self, query):
+        return pd.DataFrame([ row.asdict() for row in self._g.query(query) ])
+
 
     ######################################################################
     ## SHACL validation
