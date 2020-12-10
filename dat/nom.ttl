@@ -1,20 +1,19 @@
-@base <http://example.com/> .
+@prefix nom:   <http://example.com/#> .
+@prefix dc:    <https://purl.org/dc/terms/> .
+@prefix owl:   <https://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:  <https://www.w3.org/2004/02/skos/core#> .
+@prefix wd:    <https://www.wikidata.org/entity/> .
 
-@prefix dc:             <https://purl.org/dc/terms/> .
-@prefix owl:            <https://www.w3.org/2002/07/owl#> .
-@prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos:           <https://www.w3.org/2004/02/skos/core#> .
-@prefix wd:             <https://www.wikidata.org/entity/> .
-
-:NOM_Vocab a skos:ConceptScheme ;
+nom:NOM_Vocab a skos:ConceptScheme ;
     skos:prefLabel "NOM Example Vocabulary"@en ;
     skos:definition "A mid-level SKOS/OWL ontology used in the `kglab` examples"@en ;
     dc:publisher <https://derwen.ai/>
 .
 
 
-:Process a skos:Concept ;
+nom:Process a skos:Concept ;
     skos:prefLabel "Process"@en ;
     skos:altLabel "Food Processing"@en ;
     skos:altLabel "Cooking"@en ;
@@ -22,64 +21,64 @@
     dc:identifier wd:Q627371
 .
 
-:Mixing a :Component ;
+nom:Mixing a nom:Component ;
     skos:prefLabel "Mixing"@en ;
     skos:definition "A process of combining two or more separate components to produce a certain level of homogeneity."@en ;
     skos:closeMatch <https://www.foodonline.com/solution/mixing-and-blending> ;
 .
 
-:Kneading a :Component ;
+nom:Kneading a nom:Component ;
     skos:prefLabel "Kneading"@en ;
     skos:definition "A process in the making of bread or dough, used to mix the ingredients and add strength to the final product."@en ;
     dc:identifier wd:Q3089784 ;
 .
 
-:usesProcess rdfs:domain :Component ;
-  rdfs:range :Process ;
+nom:usesProcess rdfs:domain nom:Component ;
+  rdfs:range nom:Process ;
 .
 
 
-:Component a skos:Concept ;
+nom:Component a skos:Concept ;
     skos:prefLabel "Component"@en ;
     skos:altLabel "Dish"@en ;
     skos:definition "A specific prepared food which is ready to eat or used in building another dish."@en ;
     dc:identifier wd:Q746549
 .
 
-:Dough a :Component ;
+nom:Dough a nom:Component ;
     skos:prefLabel "Dough"@en ;
     skos:definition "A flour-based paste used to prepare food."@en ;
     dc:identifier wd:Q178024 ;
-    :usesProcess :Kneading
+    nom:usesProcess nom:Kneading
 .
 
-:Batter a :Component ;
+nom:Batter a nom:Component ;
     skos:prefLabel "Batter"@en ;
     skos:definition "A flour-based mixture used to prepare food."@en ;
     dc:identifier wd:Q29493 ;
-    :usesProcess :Mixing
+    nom:usesProcess nom:Mixing
 .
 
-:madeFrom rdfs:domain :Component ;
-  rdfs:range :Component ;
+nom:madeFrom rdfs:domain nom:Component ;
+  rdfs:range nom:Component ;
 .
 
-:Noodle a :Component ;
+nom:Noodle a nom:Component ;
     skos:prefLabel "Noodle"@en ;
     skos:altLabel "Dumpling"@en ;
     skos:definition "A type of staple food made from some type of unleavened dough."@en ;
     dc:identifier wd:Q192874 ;
     skos:closeMatch wd:Q1854639 ;
     skos:narrower wd:Q178, wd:Q20065 ;
-    :madeFrom :Dough
+    nom:madeFrom nom:Dough
 .
 
-:Pancake a :Component ;
+nom:Pancake a nom:Component ;
     skos:prefLabel "Pancake"@en ;
     skos:altLabel "Crêpe"@fr ;
     skos:definition "A thin, round cake made from a batter of eggs, milk, and flour."@en ;
     dc:identifier wd:Q44541 ;
     skos:closeMatch wd:Q12200 ;
     skos:narrower wd:Q815898, wd:Q899392, wd:Q1025010 ;
-    :madeFrom :Batter
+    nom:madeFrom nom:Batter
 .
