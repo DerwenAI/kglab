@@ -6,6 +6,7 @@
 
   * add `Subgraph` class for projecting onto `networkx` and other simplified directed graphs
   * method to return SPARQL query result set as a `pandas` DataFrame
+  * add `Measure` class for measuring graphs and creating simplex generators
 
 
 ## 0.1.4

@@ -1,1 +1,1 @@
-from .kglab import KnowledgeGraph
+from .kglab import KnowledgeGraph, Measure

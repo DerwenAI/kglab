@@ -10,8 +10,9 @@ import rdflib as rdf
 register("json-ld", Parser, "rdflib_jsonld.parser", "JsonLDParser")
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
-import json
+from collections import defaultdict
 import dateutil.parser as dup
+import json
 import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
@@ -20,6 +21,73 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import pyvis.network
 import pyshacl
+
+
+######################################################################
+## Topological Data Analysis
+
+class Simplex0 (object):
+    def __init__ (self, name="generic"):
+        self.name = name
+        self.count = defaultdict(int)
+        self.df = None
+
+    def increment (self, item):
+        self.count[item] += 1
+
+    def get_tally (self):
+        self.df = pd.DataFrame.from_dict(self.count, orient="index", columns=["count"]).sort_values("count", ascending=False)
+        return self.df
+
+
+class Simplex1 (Simplex0):
+    def __init__ (self, name="generic"):
+        super().__init__(name=name)
+        self.link_map = None
+
+    def increment (self, item0, item1):
+        link = (item0, item1,)
+        self.count[link] += 1
+
+    def get_tally_map (self):
+        super().get_tally()
+        self.link_map = defaultdict(set)
+
+        for index, row in self.df.iterrows():
+            item0, item1 = index
+            self.link_map[item0].add(item1)
+
+        return self.df, self.link_map
+
+
+class Measure (object):
+    def __init__ (self, name="generic"):
+        self.reset()
+
+    def reset (self):
+        self.edge_count = 0
+        self.node_count = 0
+        self.s_gen = Simplex0("subject")
+        self.p_gen = Simplex0("predicate")
+        self.o_gen = Simplex0("object")
+        self.l_gen = Simplex0("literal")
+        self.n_gen = Simplex1("node")
+        self.e_gen = Simplex1("edge")
+
+    def measure_graph (self, kg):
+        for s, p, o in kg._g:
+            self.edge_count += 1
+            self.s_gen.increment(s)
+            self.p_gen.increment(p)
+            self.n_gen.increment(s, p)
+    
+            if isinstance(o, rdf.term.Literal):
+                self.l_gen.increment(o)
+            else:
+                self.o_gen.increment(o)
+                self.e_gen.increment(p, o)
+    
+        self.node_count = len(set(self.s_gen.count.keys()).union(set(self.o_gen.count.keys())))
 
 
 ######################################################################
@@ -423,5 +491,3 @@ class KnowledgeGraph:
             for s, o in self._g.subject_objects(p):
                 for sp in sps:
                     self._g.add((s, sp, o))
-
-
