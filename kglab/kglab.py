@@ -4,13 +4,14 @@
 from rdflib import plugin
 from rdflib.serializer import Serializer
 from rdflib.plugin import register, Parser, Serializer
-import rdflib as rdf
+import rdflib
 # NB: while `plugin` and `Serializer` aren't used directly, loading
 # them explicitly here causes them to become registered in `rdflib`
 register("json-ld", Parser, "rdflib_jsonld.parser", "JsonLDParser")
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
 from collections import defaultdict
+from typing import NamedTuple
 import dateutil.parser as dup
 import json
 import matplotlib.pyplot as plt
@@ -21,10 +22,112 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import pyvis.network
 import pyshacl
+import random
 
 
 ######################################################################
-## Topological Data Analysis
+## Shape Prediction
+
+class EvoShapeNode (object):
+    def __init__ (self, uri=None, terminal=False):
+        self.uri = uri
+        self.terminal = terminal
+        self.done = terminal # initially
+        self.edges = []
+
+
+class EvoShapeEdge(NamedTuple):
+    pred: str
+    obj: EvoShapeNode
+
+
+class EvoShape (object):
+    def __init__ (self, kg, measure):
+        self.kg = kg
+        self.measure = measure
+        self.root = EvoShapeNode(uri=None)
+        self.nodes = set([self.root])
+
+    def add_link (self, s, p, o):
+        edge = EvoShapeEdge(pred=p, obj=o)
+        s.edges.append(edge)
+        self.nodes.add(o)
+        
+    def get_sparql (self):
+        var_list = []
+        clauses = []
+        bindings = {}
+        node_list = list(self.nodes)
+        
+        for node_num in range(len(node_list)):
+            node = node_list[node_num]
+
+            # name the subject
+            if not node.uri:
+                subj = "?v{}".format(node_num)
+                var_list.append(subj)
+            else:
+                subj = "?node{}".format(node_num)
+                bindings[subj] = rdflib.URIRef(node.uri)
+
+            # generate a clause for each tuple
+            pred_name = {}
+            
+            for edge_num in range(len(node.edges)):
+                edge = node.edges[edge_num]
+
+                if edge.pred in pred_name:
+                    pred = pred_name[edge.pred]
+                else:
+                    pred = "?pred{}".format(edge_num)
+                    pred_name[edge.pred] = pred
+
+                bindings[pred] = rdflib.URIRef(edge.pred)
+
+                obj = "?obj{}".format(edge_num)
+                bindings[obj] = rdflib.URIRef(edge.obj.uri)
+
+                clauses.append(" ".join([ subj, pred, obj ]))
+
+        sparql = "SELECT DISTINCT {} WHERE {{ {} }}".format(" ".join(var_list), " . ".join(clauses))
+        return sparql, bindings
+
+    def get_rank_vector (self):
+        nodes = len(list(self.nodes))
+        edges = sum([ len(n.edges) for n in self.nodes ])
+
+        sparql, bindings = self.get_sparql()
+        instances = len(list(self.kg.query(sparql, bindings=bindings)))
+        return nodes, edges, instances
+
+    def calc_distance (self, es1):
+        n0 = set([ n.uri for n in self.nodes ])
+        n1 = set([ n.uri for n in es1.nodes ])
+        distance = len(n0.intersection(n1)) / float(max(len(n0), len(n1)))
+        return distance
+
+
+class ShapeFactory (object):
+    def __init__ (self, kg, measure):
+        self.kg = kg
+        self.measure = measure
+
+        # enum action space of types
+        type_sparql = "SELECT DISTINCT ?n WHERE {[] rdf:type ?n}"
+        self.type_list = [ r.n for r in kg.query(type_sparql) ]
+
+    def new_shape (self):
+        es = EvoShape(self.kg, self.measure)
+        ## RANDOM CHOICE => OBS
+        ## TODO: generate from gamma dist
+        type_uri = random.choice(self.type_list)
+        type_node = EvoShapeNode(type_uri, terminal=True)
+        es.add_link(es.root, rdflib.RDF.type, type_node)
+        return es
+
+
+######################################################################
+## measure graph topology
 
 class Simplex0 (object):
     def __init__ (self, name="generic"):
@@ -81,7 +184,7 @@ class Measure (object):
             self.p_gen.increment(p)
             self.n_gen.increment(s, p)
     
-            if isinstance(o, rdf.term.Literal):
+            if isinstance(o, rdflib.term.Literal):
                 self.l_gen.increment(o)
             else:
                 self.o_gen.increment(o)
@@ -93,7 +196,7 @@ class Measure (object):
 ######################################################################
 ## KG class definition
 
-class KnowledgeGraph:
+class KnowledgeGraph (object):
     DEFAULT_NAMESPACES = {
         "dc":	"https://purl.org/dc/terms/",
         "dct":	"https://purl.org/dc/dcmitype/",
@@ -106,7 +209,7 @@ class KnowledgeGraph:
 
 
     def __init__ (self, name="KGlab", base_uri=None, language="en", namespaces={}):
-        self._g = rdf.Graph()
+        self._g = rdflib.Graph()
         self.id_list = []
 
         self.name = name
@@ -130,14 +233,13 @@ class KnowledgeGraph:
     ## entity-resolution probabilistically rather than by strict
     ## rulesets.
 
-
     def merge_ns (self, ns_set):
         for prefix, uri in ns_set.items():
             self.add_ns(prefix, uri)
 
 
     def add_ns (self, prefix, uri):
-        self._ns[prefix] = rdf.Namespace(uri)
+        self._ns[prefix] = rdflib.Namespace(uri)
         self._g.namespace_manager.bind(prefix, self._ns[prefix])
 
 
@@ -169,7 +271,7 @@ class KnowledgeGraph:
     def type_date (cls, date, tz):
         """input `date` should be interpretable as having a local timezone"""
         date_tz = dup.parse(date, tzinfos=tz)
-        return rdf.Literal(date_tz, datatype=rdf.XSD.dateTime)
+        return rdflib.Literal(date_tz, datatype=rdflib.XSD.dateTime)
 
 
     ######################################################################
@@ -292,7 +394,7 @@ class KnowledgeGraph:
 
             p_label = p.n3(self._g.namespace_manager)
 
-            if isinstance(o, rdf.term.Literal):
+            if isinstance(o, rdflib.term.Literal):
                 o_label = str(o.toPython())
             else:
                 o_label = o.n3(self._g.namespace_manager)
@@ -310,12 +412,12 @@ class KnowledgeGraph:
     ######################################################################
     ## SPARQL queries
 
-    def query (self, query):
-        for row in self._g.query(query):
+    def query (self, sparql, bindings={}):
+        for row in self._g.query(sparql, initBindings=bindings):
             yield row
 
-    def query_as_df (self, query):
-        return pd.DataFrame([ row.asdict() for row in self._g.query(query) ])
+    def query_as_df (self, sparql, bindings={}):
+        return pd.DataFrame([ row.asdict() for row in self._g.query(sparql, initBindings=bindings) ])
 
 
     ######################################################################
