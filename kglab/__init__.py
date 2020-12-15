@@ -1,1 +1,1 @@
-from .kglab import KnowledgeGraph, Measure, ShapeFactory, EvoShape, EvoShapeEdge, EvoShapeNode
+from .kglab import KnowledgeGraph, Measure, Subgraph, ShapeFactory, EvoShape, EvoShapeEdge, EvoShapeNode

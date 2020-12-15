@@ -10,7 +10,7 @@ import rdflib
 register("json-ld", Parser, "rdflib_jsonld.parser", "JsonLDParser")
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
-from collections import defaultdict
+from collections import defaultdict, deque
 from typing import NamedTuple
 import dateutil.parser as dup
 import json
@@ -35,8 +35,37 @@ class EvoShapeNode (object):
         self.done = terminal # initially
         self.edges = []
 
+    def serialize (self, subgraph):
+        edge_list = sorted([ (subgraph.transform(e.pred), subgraph.transform(e.obj.uri),) for e in self.edges ])
+        return subgraph.transform(self.uri), edge_list
 
-class EvoShapeEdge(NamedTuple):
+    @classmethod
+    def deserialize (cls, dat, subgraph, uri_map):
+        node_id, edge_list = dat
+        uri = subgraph.inverse_transform(node_id)
+        
+        if uri in uri_map:
+            node = uri_map[uri]
+        else:
+            node = EvoShapeNode(uri=uri)
+            uri_map[uri] = node
+
+        for p, o in edge_list:
+            uri = subgraph.inverse_transform(o)
+
+            if uri in uri_map:
+                obj = uri_map[uri]
+            else:
+                obj = EvoShapeNode(uri=uri)
+                uri_map[uri] = obj
+            
+            edge = EvoShapeEdge(pred=subgraph.inverse_transform(p), obj=obj)
+            node.edges.append(edge)
+
+        return node
+
+
+class EvoShapeEdge (NamedTuple):
     pred: str
     obj: EvoShapeNode
 
@@ -52,6 +81,21 @@ class EvoShape (object):
         edge = EvoShapeEdge(pred=p, obj=o)
         s.edges.append(edge)
         self.nodes.add(o)
+        
+    def serialize (self, subgraph):
+        """transform to ordinal format which can be serialized/deserialized with a consistent subgraph"""
+        d = deque(sorted([ n.serialize(subgraph) for n in self.nodes.difference({self.root}) ]))
+        d.appendleft(self.root.serialize(subgraph))
+        return list(d)
+
+    def deserialize (self, dat_list, subgraph):
+        uri_map = {}
+        self.root = EvoShapeNode.deserialize(dat_list.pop(0), subgraph, uri_map)
+
+        for dat in dat_list:
+            self.nodes.add(EvoShapeNode.deserialize(dat, subgraph, uri_map))
+        
+        return uri_map
         
     def get_sparql (self):
         var_list = []
@@ -95,9 +139,10 @@ class EvoShape (object):
     def get_rank_vector (self):
         nodes = len(list(self.nodes))
         edges = sum([ len(n.edges) for n in self.nodes ])
-
+        
         sparql, bindings = self.get_sparql()
         instances = len(list(self.kg.query(sparql, bindings=bindings)))
+        
         return nodes, edges, instances
 
     def calc_distance (self, es1):
@@ -112,17 +157,21 @@ class ShapeFactory (object):
         self.kg = kg
         self.measure = measure
 
-        # enum action space of types
+        # enum action space of possible RDF types (i.e., "superclasses")
         type_sparql = "SELECT DISTINCT ?n WHERE {[] rdf:type ?n}"
         self.type_list = [ r.n for r in kg.query(type_sparql) ]
 
-    def new_shape (self):
+    def new_shape (self, type_uri=None):
         es = EvoShape(self.kg, self.measure)
-        ## RANDOM CHOICE => OBS
-        ## TODO: generate from gamma dist
-        type_uri = random.choice(self.type_list)
+
+        if not type_uri:
+            ## RANDOM CHOICE => OBS
+            ## TODO: generate from gamma dist -- or specify
+            type_uri = random.choice(self.type_list)
+    
         type_node = EvoShapeNode(type_uri, terminal=True)
         es.add_link(es.root, rdflib.RDF.type, type_node)
+
         return es
 
 
@@ -193,8 +242,24 @@ class Measure (object):
         self.node_count = len(set(self.s_gen.count.keys()).union(set(self.o_gen.count.keys())))
 
 
+class Subgraph (object):
+    def __init__ (self):
+        self.id_list = []
+
+    def transform (self, node):
+        """label encoding: return a unique integer ID for the given graph node"""
+        if not node in self.id_list:
+            self.id_list.append(node)
+
+        return self.id_list.index(node)
+
+    def inverse_transform (self, id):
+        """label encoding: return the graph node corresponding to a unique integer ID"""
+        return self.id_list[id]
+    
+
 ######################################################################
-## KG class definition
+## main KG class definition
 
 class KnowledgeGraph (object):
     DEFAULT_NAMESPACES = {
