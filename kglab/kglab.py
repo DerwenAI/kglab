@@ -40,10 +40,10 @@ class EvoShapeNode (object):
         return subgraph.transform(self.uri), edge_list
 
     @classmethod
-    def deserialize (cls, dat, subgraph, uri_map):
-        node_id, edge_list = dat
+    def deserialize (cls, dat, subgraph, uri_map, root_node=None):
+        node_id, edge_list = dat    
         uri = subgraph.inverse_transform(node_id)
-        
+
         if uri in uri_map:
             node = uri_map[uri]
         else:
@@ -53,7 +53,9 @@ class EvoShapeNode (object):
         for p, o in edge_list:
             uri = subgraph.inverse_transform(o)
 
-            if uri in uri_map:
+            if not uri and root_node:
+                node = root_node
+            elif uri in uri_map:
                 obj = uri_map[uri]
             else:
                 obj = EvoShapeNode(uri=uri)
@@ -86,19 +88,47 @@ class EvoShape (object):
         """transform to ordinal format which can be serialized/deserialized with a consistent subgraph"""
         d = deque(sorted([ n.serialize(subgraph) for n in self.nodes.difference({self.root}) ]))
         d.appendleft(self.root.serialize(subgraph))
+        d.appendleft(self.get_cardinality())
         return list(d)
 
     def deserialize (self, dat_list, subgraph):
+        # TODO: would this be more efficient as a constructor?
+        instances = dat_list.pop(0) # ignore
         uri_map = {}
-        self.root = EvoShapeNode.deserialize(dat_list.pop(0), subgraph, uri_map)
+        self.nodes = set()
 
-        for dat in dat_list:
-            self.nodes.add(EvoShapeNode.deserialize(dat, subgraph, uri_map))
-        
+        root_dat = dat_list.pop(0)
+        self.root = EvoShapeNode.deserialize(root_dat, subgraph, uri_map)
+        self.nodes.add(self.root)
+
+        for node_dat in dat_list:
+            node = EvoShapeNode.deserialize(node_dat, subgraph, uri_map, root_node=self.root)
+            self.nodes.add(node)
+
         return uri_map
+
+    def get_rdf (self):
+        """for debugging purposes: by definition, a shape is not fully qualified"""
+        rdf_list = []
         
+        for node in list(self.nodes):          
+            if not node.uri:
+                b = rdflib.BNode()
+                subj = str(b.n3())
+            else:
+                subj = rdflib.term.URIRef(node.uri).n3(self.kg._g.namespace_manager)
+
+            for edge in node.edges:
+                pred = rdflib.term.URIRef(edge.pred).n3(self.kg._g.namespace_manager)
+                obj = rdflib.term.URIRef(edge.obj.uri).n3(self.kg._g.namespace_manager)
+                triple = "{} {} {} .".format(subj, pred, obj)
+                rdf_list.append(triple)
+
+        return rdf_list
+
     def get_sparql (self):
         var_list = []
+        uri_map = {}
         clauses = []
         bindings = {}
         node_list = list(self.nodes)
@@ -110,40 +140,39 @@ class EvoShape (object):
             if not node.uri:
                 subj = "?v{}".format(node_num)
                 var_list.append(subj)
+            elif node.uri in uri_map:
+                subj = uri_map[node.uri]
             else:
                 subj = "?node{}".format(node_num)
+                uri_map[node.uri] = subj
                 bindings[subj] = rdflib.URIRef(node.uri)
 
             # generate a clause for each tuple
-            pred_name = {}
-            
             for edge_num in range(len(node.edges)):
                 edge = node.edges[edge_num]
 
-                if edge.pred in pred_name:
-                    pred = pred_name[edge.pred]
+                if edge.pred in uri_map:
+                    pred = uri_map[edge.pred]
                 else:
-                    pred = "?pred{}".format(edge_num)
-                    pred_name[edge.pred] = pred
+                    pred = "?pred{}_{}".format(node_num, edge_num)
+                    uri_map[edge.pred] = pred
+                    bindings[pred] = rdflib.URIRef(edge.pred)
 
-                bindings[pred] = rdflib.URIRef(edge.pred)
-
-                obj = "?obj{}".format(edge_num)
-                bindings[obj] = rdflib.URIRef(edge.obj.uri)
+                if edge.obj.uri in uri_map:
+                    obj = uri_map[edge.obj.uri]
+                else:
+                    obj = "?obj{}_{}".format(node_num, edge_num)
+                    uri_map[edge.obj.uri] = obj
+                    bindings[obj] = rdflib.URIRef(edge.obj.uri)
 
                 clauses.append(" ".join([ subj, pred, obj ]))
 
         sparql = "SELECT DISTINCT {} WHERE {{ {} }}".format(" ".join(var_list), " . ".join(clauses))
         return sparql, bindings
 
-    def get_rank_vector (self):
-        nodes = len(list(self.nodes))
-        edges = sum([ len(n.edges) for n in self.nodes ])
-        
+    def get_cardinality (self):
         sparql, bindings = self.get_sparql()
-        instances = len(list(self.kg.query(sparql, bindings=bindings)))
-        
-        return nodes, edges, instances
+        return len(list(self.kg.query(sparql, bindings=bindings)))
 
     def calc_distance (self, es1):
         n0 = set([ n.uri for n in self.nodes ])
@@ -156,6 +185,7 @@ class ShapeFactory (object):
     def __init__ (self, kg, measure):
         self.kg = kg
         self.measure = measure
+        self.subgraph = Subgraph(preload=measure.get_keyset())
 
         # enum action space of possible RDF types (i.e., "superclasses")
         type_sparql = "SELECT DISTINCT ?n WHERE {[] rdf:type ?n}"
@@ -176,7 +206,7 @@ class ShapeFactory (object):
 
 
 ######################################################################
-## measure graph topology
+## graph topology
 
 class Simplex0 (object):
     def __init__ (self, name="generic"):
@@ -190,6 +220,9 @@ class Simplex0 (object):
     def get_tally (self):
         self.df = pd.DataFrame.from_dict(self.count, orient="index", columns=["count"]).sort_values("count", ascending=False)
         return self.df
+
+    def get_keyset (self):
+        return set([ key.toPython() for key in self.count.keys() ])
 
 
 class Simplex1 (Simplex0):
@@ -241,21 +274,31 @@ class Measure (object):
     
         self.node_count = len(set(self.s_gen.count.keys()).union(set(self.o_gen.count.keys())))
 
+    def get_keyset (self):
+        keys = self.s_gen.get_keyset().union(self.p_gen.get_keyset().union(self.o_gen.get_keyset()))
+        return sorted(list(keys))
+
 
 class Subgraph (object):
-    def __init__ (self):
-        self.id_list = []
+    def __init__ (self, preload=[]):
+        self.id_list = preload
 
     def transform (self, node):
         """label encoding: return a unique integer ID for the given graph node"""
-        if not node in self.id_list:
+        if not node:
+            # null case
+            return -1
+        elif not node in self.id_list:
             self.id_list.append(node)
 
         return self.id_list.index(node)
 
     def inverse_transform (self, id):
         """label encoding: return the graph node corresponding to a unique integer ID"""
-        return self.id_list[id]
+        if id < 0:
+            return None
+        else:
+            return self.id_list[id]
     
 
 ######################################################################
