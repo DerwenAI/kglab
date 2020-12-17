@@ -14,15 +14,40 @@ from collections import defaultdict, deque
 from typing import NamedTuple
 import dateutil.parser as dup
 import json
+import math
 import matplotlib.pyplot as plt
 import networkx as nx
+import numpy as np
 import pandas as pd
 import pathlib
 import pyarrow as pa
 import pyarrow.parquet as pq
-import pyvis.network
 import pyshacl
+import pyvis.network
 import random
+
+
+######################################################################
+## utilities
+
+def stripe_column (values, bins):
+    """stripe a column: interpolate quantiles to discrete indexes"""
+    s = pd.Series(values)
+    q = s.quantile(bins, interpolation="nearest")
+
+    try:
+        stripe = np.digitize(values, q) - 1
+        return stripe
+    except ValueError as e:
+        # should never happen?                                                                                               
+        print("ValueError:", str(e), values, s, q, bins)
+        raise
+
+def rms (values):
+    """calculate root mean square"""
+    numer = sum([x for x in map(lambda x: float(x)**2.0, values)])
+    denom = float(len(values))
+    return math.sqrt(numer / denom)
 
 
 ######################################################################
@@ -92,7 +117,7 @@ class EvoShape (object):
         return list(d)
 
     def deserialize (self, dat_list, subgraph):
-        # TODO: would this be more efficient as a constructor?
+        """replace shape definition with parsed content"""
         instances = dat_list.pop(0) # ignore
         uri_map = {}
         self.nodes = set()
@@ -203,6 +228,69 @@ class ShapeFactory (object):
         es.add_link(es.root, rdflib.RDF.type, type_node)
 
         return es
+
+
+class Leaderboard (object):
+    COLUMNS = ["instances", "nodes", "distance", "rank", "shape"]
+
+    def __init__ (self):
+        self.df = pd.DataFrame([], columns=self.COLUMNS)
+
+    def get_board (self):
+        """return a list of shapes, i.e., dataframe without metrics"""
+        return list(self.df["shape"].to_numpy())
+    
+    @classmethod
+    def compare (cls, shape, board):
+        """compare shape distances"""
+        n0 = set([n for n, e in shape[1:]])
+        
+        if len(board) < 2:
+            min_dist = 0.0
+        else:
+            distances = []
+    
+            for b in board:
+                n1 = set([n for n, e in b[1:]])
+                d = len(n0.intersection(n1)) / float(max(len(n0), len(n1)))
+        
+                if d < 1.0:
+                    distances.append(d)
+
+            min_dist = min(distances)
+
+        return shape[0], len(n0), min_dist
+
+    @classmethod
+    def insert (cls, shape, board):
+        """rank this shape within a new dataframe"""
+        board.append(shape)
+        df1 = pd.DataFrame([ cls.compare(s, board) for s in board ], columns=cls.COLUMNS[:3])
+
+        # normalize by column
+        df2 = df1.apply(lambda x: x/x.max(), axis=0)
+        granularity = max(round(math.log(len(df2.index)) * 4), 1)
+        bins = np.linspace(0, 1, num=granularity, endpoint=True)
+
+        # stripe each column to approximate a pareto front
+        stripes = [ stripe_column(values, bins) for _, values in df2.items() ]
+        df3 = pd.DataFrame(stripes).T
+
+        # rank based on RMS of striped indices per row                                                                  
+        df1["rank"] = df3.apply(lambda row: rms(row), axis=1)
+        df1["shape"] = pd.Series(board, index=df1.index)
+
+        # sort descending
+        return df1.sort_values(by=["rank"], ascending=False)
+
+    def get_position (self, shape):
+        """return distance-from-bottom for the given shape"""
+        return len(self.df.index) - list(self.df["shape"].to_numpy()).index(shape) - 1
+
+    def add_shape (self, shape):
+        """insert the given shape into the leaderboard, returning its position"""
+        self.df = self.insert(shape, self.get_board())
+        return self.get_position(shape)
 
 
 ######################################################################
