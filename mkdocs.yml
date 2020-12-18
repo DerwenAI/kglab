@@ -1,0 +1,7 @@
+site_name: kglab
+
+plugins:
+  - mknotebooks
+
+markdown_extensions:
+  - codehilite
