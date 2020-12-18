@@ -54,7 +54,6 @@ scale-out and parallelization.
 Dependencies:
 
 - [Python 3.6+](https://www.python.org/downloads/)
-- [MkDocs](https://www.mkdocs.org/)
 - [NetworkX](https://networkx.org/)
 - [NumPy](https://numpy.org/)
 - [RDFlib](https://rdflib.readthedocs.io/)
@@ -177,6 +176,24 @@ See also:
 
   * [zincbase](https://github.com/complexdb/zincbase)
 
+
+## Documentation
+
+We use [MkDocs](https://www.mkdocs.org/) and [mknotebooks](https://github.com/greenape/mknotebooks)
+to generate documentation pages.
+Source is in the `docs` subdirectory.
+
+To set up your MkDocs environment locally:
+```
+pip install mkdocs
+pip install mknotebooks
+pip install Pygments
+```
+
+To rebuild the pages from Markdown:
+```
+mkdocs build
+```
 
 ## Attribution
 

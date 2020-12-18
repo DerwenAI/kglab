@@ -217,7 +217,7 @@ class ShapeFactory (object):
     def __init__ (self, kg, measure):
         self.kg = kg
         self.measure = measure
-        self.subgraph = Subgraph(preload=measure.get_keyset())
+        self.subgraph = Subgraph(kg, preload=measure.get_keyset())
 
         # enum action space of possible RDF types (i.e., "superclasses")
         type_sparql = "SELECT DISTINCT ?n WHERE {[] rdf:type ?n}"
@@ -373,9 +373,20 @@ class Measure (object):
         return sorted(list(keys))
 
 
+######################################################################
+## subgraph transforms for visualization, graph algorithms, etc.
+
 class Subgraph (object):
-    def __init__ (self, preload=[]):
+    def __init__ (self, kg, preload=[], excludes=[]):
+        self.kg = kg
         self.id_list = preload
+        self.excludes = excludes
+
+    def triples (self):
+        """iterator for triples to include in the subgraph"""
+        for s, p, o in self.kg._g:
+            if not p in self.excludes:
+                yield s, p, o
 
     def transform (self, node):
         """label encoding: return a unique integer ID for the given graph node"""
@@ -394,6 +405,59 @@ class Subgraph (object):
         else:
             return self.id_list[id]
     
+
+    ######################################################################
+    ## visualization
+    ##
+    ## Automated Network Graph: The triples describing relationships
+    ## between entities can be ingested into graph visualization tools
+    ## to extend or create an analyst's account-specific network
+    ## model.
+
+    def pyvis_style_node (self, g, node_id, label, style={}):
+        prefix = label.split(":")[0]
+    
+        if prefix in style:
+            g.add_node(
+                node_id,
+                label=label,
+                title=label,
+                color=style[prefix]["color"],
+                size=style[prefix]["size"],
+            )
+        else:
+            g.add_node(node_id, label=label, title=label)
+
+
+    def vis_pyvis (self, notebook=False, style={}):
+        """
+        https://pyvis.readthedocs.io/
+        this is one example; you may need to copy and replicate 
+        to construct the graph design you need
+        """
+        g = pyvis.network.Network(notebook=notebook)
+
+        for s, p, o in self.triples():
+            # label the subject
+            s_label = s.n3(self.kg._g.namespace_manager)
+            s_id = self.transform(s_label)
+            self.pyvis_style_node(g, s_id, s_label, style=style)
+
+            # lable the object
+            if isinstance(o, rdflib.term.Literal):
+                o_label = str(o.toPython())
+            else:
+                o_label = o.n3(self.kg._g.namespace_manager)
+
+            o_id = self.transform(o_label)
+            self.pyvis_style_node(g, o_id, o_label, style=style)
+
+            # label the predicate
+            p_label = p.n3(self.kg._g.namespace_manager)
+            g.add_edge(s_id, o_id, label=p_label)
+
+        return g
+
 
 ######################################################################
 ## main KG class definition
@@ -558,57 +622,6 @@ class KnowledgeGraph (object):
     def get_node_label (self, node):
         """return the label for the given RDF node"""
         return node.n3(self._g.namespace_manager)
-
-
-    ######################################################################
-    ## visualization
-    ##
-    ## Automated Network Graph: The triples describing relationships
-    ## between entities can be ingested into graph visualization tools
-    ## to extend or create an analyst's account-specific network
-    ## model.
-
-    def pyvis_style_node (self, g, node_id, label, style={}):
-        prefix = label.split(":")[0]
-    
-        if prefix in style:
-            g.add_node(
-                node_id,
-                label=label,
-                title=label,
-                color=style[prefix]["color"],
-                size=style[prefix]["size"],
-            )
-        else:
-            g.add_node(node_id, label=label, title=label)
-
-
-    def vis_pyvis (self, notebook=False, style={}):
-        """
-        https://pyvis.readthedocs.io/
-        """
-        g = pyvis.network.Network(notebook=notebook)
-        g.force_atlas_2based()
-
-        for s, p, o in self._g:
-            s_label = s.n3(self._g.namespace_manager)
-            s_id = self.get_node_id(s)
-
-            p_label = p.n3(self._g.namespace_manager)
-
-            if isinstance(o, rdflib.term.Literal):
-                o_label = str(o.toPython())
-            else:
-                o_label = o.n3(self._g.namespace_manager)
-
-            o_id = self.get_node_id(o)
-    
-            self.pyvis_style_node(g, s_id, s_label, style=style)
-            self.pyvis_style_node(g, o_id, o_label, style=style)
-
-            g.add_edge(s_id, o_id, label=p_label)
-
-        return g
 
 
     ######################################################################

@@ -31,7 +31,6 @@ setuptools.setup(
     install_requires=[
           "gensim",
           "matplotlib",
-          "mkdocs",
           "networkx",
           "numpy",
           "pandas",
