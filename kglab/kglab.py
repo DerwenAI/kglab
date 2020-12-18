@@ -405,6 +405,10 @@ class Subgraph (object):
         else:
             return self.id_list[id]
     
+    def get_name (self, node):
+        """return a human-readable label for an RDF node"""
+        return node.n3(self.kg._g.namespace_manager)
+
 
     ######################################################################
     ## visualization
@@ -601,27 +605,6 @@ class KnowledgeGraph (object):
         df = pd.DataFrame(rows_list, columns=("s", "p", "o"))
         table = pa.Table.from_pandas(df)
         pq.write_table(table, path, use_dictionary=True, compression="gzip")
-
-
-    ######################################################################
-    ## node labels
-
-    def get_node_id (self, node):
-        """return a unique integer ID for the given RDF node"""
-        if not node in self.id_list:
-            self.id_list.append(node)
-
-        return self.id_list.index(node)
-
-
-    def get_node (self, id):
-        """return the RDF node corresponding to a unique integer ID"""
-        return self.id_list[id]
-
-
-    def get_node_label (self, node):
-        """return the label for the given RDF node"""
-        return node.n3(self._g.namespace_manager)
 
 
     ######################################################################
