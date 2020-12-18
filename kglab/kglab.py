@@ -39,12 +39,19 @@ def stripe_column (values, bins):
         stripe = np.digitize(values, q) - 1
         return stripe
     except ValueError as e:
-        # should never happen?                                                                                               
+        # should never happen?
         print("ValueError:", str(e), values, s, q, bins)
         raise
 
+
+def calc_quantile_bins (num_rows):
+    """calculate the number of bins to use for a quantile stripe"""
+    granularity = max(round(math.log(num_rows) * 4), 1)
+    return np.linspace(0, 1, num=granularity, endpoint=True)
+
+
 def rms (values):
-    """calculate root mean square"""
+    """calculate a root mean square"""
     numer = sum([x for x in map(lambda x: float(x)**2.0, values)])
     denom = float(len(values))
     return math.sqrt(numer / denom)
@@ -269,14 +276,13 @@ class Leaderboard (object):
 
         # normalize by column
         df2 = df1.apply(lambda x: x/x.max(), axis=0)
-        granularity = max(round(math.log(len(df2.index)) * 4), 1)
-        bins = np.linspace(0, 1, num=granularity, endpoint=True)
+        bins = calc_quantile_bins(len(df2.index))
 
         # stripe each column to approximate a pareto front
         stripes = [ stripe_column(values, bins) for _, values in df2.items() ]
         df3 = pd.DataFrame(stripes).T
 
-        # rank based on RMS of striped indices per row                                                                  
+        # rank based on RMS of striped indices per row
         df1["rank"] = df3.apply(lambda row: rms(row), axis=1)
         df1["shape"] = pd.Series(board, index=df1.index)
 

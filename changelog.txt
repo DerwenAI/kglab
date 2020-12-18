@@ -5,6 +5,7 @@
 2020-12-??
 
   * method to return SPARQL query result set as a `pandas` DataFrame
+  * using `mkdocs` to generate documentation
   * add `Subgraph` class for projecting onto `networkx` and other simplified directed graphs
   * add `Measure` class for measuring graphs and creating simplex generators
   * add `ShapeFactory` and related classes for evolving shape prediction

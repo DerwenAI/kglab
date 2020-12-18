@@ -1,13 +1,14 @@
 gensim >= 3.8.3
 matplotlib >= 3.2.1
+mkdocs >= 1.1.2
 networkx >= 2.5
 numpy >= 1.19.4
 pandas >= 1.1.1
 pslpython >= 2.2.2
 pyarrow >= 2.0.0
-python-dateutil >= 2.8.0
 pylev >= 1.3.0
+pyshacl >= 0.14.0
+python-dateutil >= 2.8.0
 pyvis >= 0.1.7.0
 rdflib >= 5.0.0
 rdflib-jsonld >= 0.5.0
-pyshacl >= 0.14.0
