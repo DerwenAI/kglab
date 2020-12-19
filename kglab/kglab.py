@@ -320,6 +320,8 @@ class Simplex0 (object):
 
 
 class Simplex1 (Simplex0):
+    """Measuring a dyad census"""
+
     def __init__ (self, name="generic"):
         super().__init__(name=name)
         self.link_map = None
