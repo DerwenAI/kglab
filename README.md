@@ -56,6 +56,7 @@ Dependencies:
 - [Python 3.6+](https://www.python.org/downloads/)
 - [NetworkX](https://networkx.org/)
 - [NumPy](https://numpy.org/)
+- [OWL-RL](https://github.com/RDFLib/OWL-RL)
 - [RDFlib](https://rdflib.readthedocs.io/)
 - [dateutil](https://pypi.org/project/python-dateutil/)
 - [gensim](https://radimrehurek.com/gensim/)
@@ -160,21 +161,11 @@ jupyter-lab
     * analyze ingredient labels from 250K recipes
     * use vector embedding to rank relatedness for labels
     * add string similarity, and an approximate pareto archive
-
----
-
-[![kg+lab](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)
-
-## Production Use Cases
-
-  * [Derwen](https://derwen.ai/) and its client projects
-
-
-## Similar Projects
-
-See also:
-
-  * [zincbase](https://github.com/complexdb/zincbase)
+10. Inferences and measurement
+  * [`ex10.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex10.ipynb)
+    * measure a KG with `kglab.Measure`
+    * inference based on `owlrl`
+    * inference based on `skosify`
 
 
 ## Documentation
@@ -194,6 +185,29 @@ To rebuild the pages from Markdown:
 ```
 mkdocs build
 ```
+
+To launch the MkDocs microsite locally:
+```
+mkdocs serve
+```
+
+Then browse <http://localhost:8000>
+
+---
+
+[![kg+lab](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)
+
+## Production Use Cases
+
+  * [Derwen](https://derwen.ai/) and its client projects
+
+
+## Similar Projects
+
+See also:
+
+  * [zincbase](https://github.com/complexdb/zincbase)
+
 
 ## Attribution
 
