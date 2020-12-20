@@ -1,0 +1,38 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gorm: <http://example.org/sagas#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+gorm:childOf rdfs:domain gorm:Viking ;
+  rdfs:range gorm:Viking ;
+  owl:inverseOf gorm:anscestorOf
+.
+
+gorm:spouseOf a owl:SymmetricProperty ;
+  rdfs:domain gorm:Viking ;
+  rdfs:range gorm:Viking ;
+.
+
+
+
+gorm:Viking a foaf:Person
+.
+
+gorm:Astrid a gorm:Viking ;
+  gorm:childOf gorm:Leif, gorm:Bodil ;
+.
+
+gorm:Leif a gorm:Viking ;
+  gorm:childOf gorm:Bjorn
+.
+
+gorm:Bodil a gorm:Viking ;
+  gorm:spouseOf gorm:Leif ;
+.
+
+gorm:Bjorn a gorm:Viking ;
+  gorm:childOf gorm:Gorm
+.
+
+gorm:Gorm a gorm:Viking ;
+.

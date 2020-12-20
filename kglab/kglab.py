@@ -18,6 +18,7 @@ import math
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
+import owlrl
 import pandas as pd
 import pathlib
 import pyarrow as pa
@@ -511,6 +512,7 @@ class KnowledgeGraph (object):
 
 
     def add_ns (self, prefix, uri):
+        """Since rdflib converts Namespace bindings to URIRef, we'll keep references to them"""
         self._ns[prefix] = rdflib.Namespace(uri)
         self._g.namespace_manager.bind(prefix, self._ns[prefix])
 
@@ -558,7 +560,7 @@ class KnowledgeGraph (object):
     ## integrated into several of the existing tools for network
     ## graphing.
 
-    def load_ttl (self, path, encoding="utf-8", format="n3"):
+    def load_ttl (self, path, format="n3", encoding="utf-8"):
         if isinstance(path, pathlib.Path):
             filename = path.as_posix()
         else:
@@ -567,13 +569,21 @@ class KnowledgeGraph (object):
         self._g.parse(filename, format=format, encoding=encoding)
 
 
-    def save_ttl (self, path, encoding="utf-8", format="n3"):
+    def load_ttl_text (self, data, encoding="utf-8", format="n3"):
+        self._g.parse(data=data, format=format, encoding=encoding);
+
+
+    def save_ttl (self, path, format="n3", encoding="utf-8"):
         if isinstance(path, pathlib.Path):
             filename = path.as_posix()
         else:
             filename = path
 
         self._g.serialize(destination=filename, format=format, encoding=encoding)
+
+
+    def save_ttl_text (self, format="n3", encoding="utf-8"):
+        return self._g.serialize(destination=None, format=format, encoding=encoding).decode(encoding) 
 
 
     def load_jsonld (self, path, encoding="utf-8"):
@@ -602,11 +612,11 @@ class KnowledgeGraph (object):
             self._g.parse(data=triple, format="n3")
 
 
-    def save_parquet (self, path):
+    def save_parquet (self, path, compression="gzip"):
         rows_list = [ {"s": s.n3(), "p": p.n3(), "o": o.n3()} for s, p, o in self._g ]
         df = pd.DataFrame(rows_list, columns=("s", "p", "o"))
         table = pa.Table.from_pandas(df)
-        pq.write_table(table, path, use_dictionary=True, compression="gzip")
+        pq.write_table(table, path, use_dictionary=True, compression=compression)
 
 
     ######################################################################
@@ -793,3 +803,10 @@ class KnowledgeGraph (object):
             for s, o in self._g.subject_objects(p):
                 for sp in sps:
                     self._g.add((s, sp, o))
+
+                    
+    def infer_owlrl_closure (self):
+        """add inferred triples based on OWL-RL"""
+        owl = owlrl.OWLRL_Semantics(self._g, False, False, False)
+        owl.closure()
+        owl.flush_stored_triples()

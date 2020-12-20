@@ -10,6 +10,7 @@
   * add `Subgraph` class for projecting onto `networkx`
   * add `Measure` class for measuring graphs and creating simplex generators
   * add `ShapeFactory` and related classes for evolving shape prediction
+  * integrating `OWL-RL` inference
 
 
 ## 0.1.4
