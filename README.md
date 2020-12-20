@@ -161,6 +161,11 @@ jupyter-lab
     * analyze ingredient labels from 250K recipes
     * use vector embedding to rank relatedness for labels
     * add string similarity, and an approximate pareto archive
+10. Inferences and measurement
+  * [`ex10.ipynb`](https://github.com/DerwenAI/kglab/blob/main/ex10.ipynb)
+    * measure a KG with `kglab.Measure`
+    * inference based on `owlrl`
+    * inference based on `skosify`
 
 
 ## Documentation
