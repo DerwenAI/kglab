@@ -472,12 +472,11 @@ class Subgraph (object):
 
 class KnowledgeGraph (object):
     DEFAULT_NAMESPACES = {
-        "dc":	"https://purl.org/dc/terms/",
-        "dct":	"https://purl.org/dc/dcmitype/",
+        "dct":	"http://purl.org/dc/terms/",
         "owl":	"http://www.w3.org/2002/07/owl#",
         "rdf":	"http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdfs":	"http://www.w3.org/2000/01/rdf-schema#",
-        "skos":	"https://www.w3.org/2004/02/skos/core#",
+        "skos":	"http://www.w3.org/2004/02/skos/core#",
         "xsd":	"http://www.w3.org/2001/XMLSchema#",
         }
 
