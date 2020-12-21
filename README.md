@@ -207,11 +207,11 @@ Then browse <http://localhost:8000>
 See also:
 
   * [zincbase](https://github.com/complexdb/zincbase)
-    * pro: probabilistic graph measures, complex simulation suite, leverages GPUs
-    * con: lacks interchange with RDF or other standard formats
+    * *pro:* probabilistic graph measures, complex simulation suite, leverages GPUs
+    * *con:* lacks interchange with RDF or other standard formats
   * [KGTK](https://github.com/usc-isi-i2/kgtk)
-    * pro: many excellent example, well-documented in Jupyter notebooks
-    * con: mostly a CLI tool, primarily based on TSV data
+    * *pro:* many excellent examples, well-documented in Jupyter notebooks
+    * *con:* mostly a CLI tool, primarily based on TSV data
 
 
 ## Attribution
