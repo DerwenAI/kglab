@@ -13,6 +13,7 @@ register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 from collections import defaultdict, deque
 from typing import NamedTuple
 import dateutil.parser as dup
+import GPUtil
 import json
 import math
 import matplotlib.pyplot as plt
@@ -473,7 +474,7 @@ class KnowledgeGraph (object):
     DEFAULT_NAMESPACES = {
         "dc":	"https://purl.org/dc/terms/",
         "dct":	"https://purl.org/dc/dcmitype/",
-        "owl":	"https://www.w3.org/2002/07/owl#",
+        "owl":	"http://www.w3.org/2002/07/owl#",
         "rdf":	"http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdfs":	"http://www.w3.org/2000/01/rdf-schema#",
         "skos":	"https://www.w3.org/2004/02/skos/core#",
@@ -483,14 +484,13 @@ class KnowledgeGraph (object):
 
     def __init__ (self, name="KGlab", base_uri=None, language="en", namespaces={}):
         self._g = rdflib.Graph()
-        self.id_list = []
+        self._ns = {}
+        self.merge_ns({ **self.DEFAULT_NAMESPACES, **namespaces })
 
         self.name = name
         self.base_uri = base_uri
         self.language = language
-
-        self._ns = {}
-        self.merge_ns({ **self.DEFAULT_NAMESPACES, **namespaces })
+        self.gpus = GPUtil.getGPUs()
 
 
     ######################################################################
@@ -805,8 +805,19 @@ class KnowledgeGraph (object):
                     self._g.add((s, sp, o))
 
                     
+    def infer_rdfs_closure (self):
+        """add inferred triples from RDFS based on OWL-RL,
+        see https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_RDFLib
+        """
+        rdfs = owlrl.RDFSClosure.RDFS_Semantics(self._g, False, False, False)
+        rdfs.closure()
+        rdfs.flush_stored_triples()
+
+
     def infer_owlrl_closure (self):
-        """add inferred triples based on OWL-RL"""
+        """add inferred triples from OWL based on OWL-RL,
+        see https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_RDFLib
+        """
         owl = owlrl.OWLRL_Semantics(self._g, False, False, False)
         owl.closure()
         owl.flush_stored_triples()

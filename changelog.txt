@@ -11,7 +11,8 @@
   * add `Subgraph` class for projecting onto `networkx`
   * add `Measure` class for measuring graphs and creating simplex generators
   * add `ShapeFactory` and related classes for evolving shape prediction
-  * integrating `OWL-RL` inference
+  * provide simple `OWL-RL` inference with `infer_rdfs_closure()` and `infer_owlrl_closure()`
+  * make `KnowledgeGraph` class GPU-aware
 
 
 ## 0.1.4

@@ -54,19 +54,20 @@ scale-out and parallelization.
 Dependencies:
 
 - [Python 3.6+](https://www.python.org/downloads/)
+- [dateutil](https://pypi.org/project/python-dateutil/)
+- [gensim](https://radimrehurek.com/gensim/)
+- [GPUtil](https://github.com/anderskm/gputil)
+- [matplotlib](https://matplotlib.org/)
 - [NetworkX](https://networkx.org/)
 - [NumPy](https://numpy.org/)
 - [OWL-RL](https://github.com/RDFLib/OWL-RL)
-- [RDFlib](https://rdflib.readthedocs.io/)
-- [dateutil](https://pypi.org/project/python-dateutil/)
-- [gensim](https://radimrehurek.com/gensim/)
-- [matplotlib](https://matplotlib.org/)
 - [pandas](https://pandas.pydata.org/)
 - [pslpython](https://psl.linqs.org/)
 - [pySHACL](https://github.com/RDFLib/pySHACL)
 - [pyarrow](https://arrow.apache.org/)
 - [pylev](https://github.com/toastdriven/pylev)
 - [pyvis](https://pyvis.readthedocs.io/)
+- [RDFlib](https://rdflib.readthedocs.io/)
 - [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
 
 To install from [PyPi](https://pypi.python.org/pypi/kglab):
