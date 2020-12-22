@@ -203,6 +203,20 @@ Then browse <http://localhost:8000>
   * [Derwen](https://derwen.ai/) and its client projects
 
 
+## Type Checking
+
+This project uses `typing` and [`mypy`](https://mypy.readthedocs.io/) for *type checking*.
+To install:
+```
+pip install mypy
+```
+
+To run type checking:
+```
+mypy kglab/*.py
+```
+
+
 ## Similar Projects
 
 See also:
