@@ -168,6 +168,7 @@ jupyter-lab
     * inference based on `owlrl`
     * inference based on `skosify`
 
+---
 
 ## Documentation
 
@@ -194,16 +195,13 @@ mkdocs serve
 
 Then browse <http://localhost:8000>
 
----
 
-[![kg+lab](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)
+## Build
 
-## Production Use Cases
-
-  * [Derwen](https://derwen.ai/) and its client projects
-
-
-## Type Checking
+To update the [PyPi release](https://pypi.org/project/kglab/):
+```
+./push_pypi.sh
+```
 
 This project uses `typing` and [`mypy`](https://mypy.readthedocs.io/) for *type checking*.
 To install:
@@ -215,6 +213,14 @@ To run type checking:
 ```
 mypy kglab/*.py
 ```
+
+---
+
+[![kg+lab](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)](https://github.com/DerwenAI/kglab/blob/main/docs/kglab.png)
+
+## Production Use Cases
+
+  * [Derwen](https://derwen.ai/) and its client projects
 
 
 ## Similar Projects
