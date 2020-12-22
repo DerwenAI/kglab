@@ -5,7 +5,8 @@
 2020-12-??
 
   * use `mkdocs` to generate documentation
-  * impl `load_ttl_text()` and `save_ttl_text()` to DeSer as text
+  * type checking based on `typing` and `mypy`
+  * impl `load_ttl_text()` and `save_ttl_text()` to De/Ser as text
   * corrected the `networkx` examples to use `DiGraph` for directed graphs
   * add method to return SPARQL query result set as a `pandas` DataFrame
   * add `Subgraph` class for projecting onto `networkx`
