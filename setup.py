@@ -30,9 +30,11 @@ setuptools.setup(
     python_requires=">=3.6",
     install_requires=[
           "gensim",
+          "gputil",
           "matplotlib",
           "networkx",
           "numpy",
+          "owlrl",
           "pandas",
           "pslpython",
           "pyarrow",

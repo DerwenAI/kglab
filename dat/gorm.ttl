@@ -2,7 +2,7 @@
 @prefix gorm: <http://example.org/sagas#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <https://www.w3.org/2004/02/skos/core#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 gorm:childOf rdfs:domain gorm:Viking ;
   rdfs:range gorm:Viking ;

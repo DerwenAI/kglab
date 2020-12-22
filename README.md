@@ -54,19 +54,20 @@ scale-out and parallelization.
 Dependencies:
 
 - [Python 3.6+](https://www.python.org/downloads/)
+- [dateutil](https://pypi.org/project/python-dateutil/)
+- [gensim](https://radimrehurek.com/gensim/)
+- [GPUtil](https://github.com/anderskm/gputil)
+- [matplotlib](https://matplotlib.org/)
 - [NetworkX](https://networkx.org/)
 - [NumPy](https://numpy.org/)
 - [OWL-RL](https://github.com/RDFLib/OWL-RL)
-- [RDFlib](https://rdflib.readthedocs.io/)
-- [dateutil](https://pypi.org/project/python-dateutil/)
-- [gensim](https://radimrehurek.com/gensim/)
-- [matplotlib](https://matplotlib.org/)
 - [pandas](https://pandas.pydata.org/)
 - [pslpython](https://psl.linqs.org/)
 - [pySHACL](https://github.com/RDFLib/pySHACL)
 - [pyarrow](https://arrow.apache.org/)
 - [pylev](https://github.com/toastdriven/pylev)
 - [pyvis](https://pyvis.readthedocs.io/)
+- [RDFlib](https://rdflib.readthedocs.io/)
 - [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
 
 To install from [PyPi](https://pypi.python.org/pypi/kglab):
@@ -207,11 +208,11 @@ Then browse <http://localhost:8000>
 See also:
 
   * [zincbase](https://github.com/complexdb/zincbase)
-    * pro: probabilistic graph measures, complex simulation suite, leverages GPUs
-    * con: lacks interchange with RDF or other standard formats
+    * *pro:* probabilistic graph measures, complex simulation suite, leverages GPUs
+    * *con:* lacks interchange with RDF or other standard formats
   * [KGTK](https://github.com/usc-isi-i2/kgtk)
-    * pro: many excellent example, well-documented in Jupyter notebooks
-    * con: mostly a CLI tool, primarily based on TSV data
+    * *pro:* many excellent examples, well-documented in Jupyter notebooks
+    * *con:* mostly a CLI tool, primarily based on TSV data
 
 
 ## Attribution

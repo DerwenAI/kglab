@@ -1,4 +1,4 @@
-@prefix acq: <http://example.org/stuff/> .
+@prefix acq:  <http://example.org/stuff/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
