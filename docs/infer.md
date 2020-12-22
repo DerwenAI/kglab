@@ -25,4 +25,4 @@ These integrations include:
 
   * The *probabilisic soft logic* in [`pslpython`](https://psl.linqs.org/) evaluates systems of rules to infer predicates.  
 
-  * Using [`pgmpy`](https://pgmpy.org/) for *statisical inference* in [Bayesian networks](https://en.wikipedia.org/wiki/Bayesian_network).
+  * Using [`pgmpy`](https://pgmpy.org/) for *statistical inference* in [Bayesian networks](https://en.wikipedia.org/wiki/Bayesian_network).

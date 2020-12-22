@@ -1,5 +1,11 @@
 site_name: kglab
 
+nav:
+    - Home: index.md
+    - What: what.md
+    - Why: why.md
+    - Inference: infer.md
+
 plugins:
   - mknotebooks
 
