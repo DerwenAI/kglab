@@ -3,6 +3,7 @@ GPUtil >= 1.4.0
 matplotlib >= 3.2.1
 networkx >= 2.5
 numpy >= 1.19.4
+owlrl >= 5.2.1
 pandas >= 1.1.1
 pslpython >= 2.2.2
 pyarrow >= 2.0.0

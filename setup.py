@@ -34,6 +34,7 @@ setuptools.setup(
           "matplotlib",
           "networkx",
           "numpy",
+          "owlrl",
           "pandas",
           "pslpython",
           "pyarrow",
