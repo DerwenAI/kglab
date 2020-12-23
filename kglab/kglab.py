@@ -12,7 +12,6 @@ register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
 from collections import defaultdict, deque
 from collections.abc import Collection
-from typing import NamedTuple
 import dateutil.parser as dup
 import datetime as dt
 import GPUtil  # type: ignore
@@ -65,9 +64,14 @@ def rms (values: list) -> float:
 ######################################################################
 ## main KG class definition
 
-Pathlike = typing.TypeVar("Pathlike", str, pathlib.Path)
-Nodelike = typing.TypeVar("Nodelike", typing.Optional[str], rdflib.term.Node)
-RDF_Triple = typing.Tuple[rdflib.term.Node, rdflib.term.Node, rdflib.term.Node]
+PathLike = typing.TypeVar("PathLike", str, pathlib.Path)
+
+RDF_Node = typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]
+RDF_Triple = typing.Tuple[RDF_Node, RDF_Node, RDF_Node]
+NodeLike = typing.TypeVar("NodeLike", typing.Optional[str], RDF_Node)
+
+ConjunctiveLike = typing.Union[rdflib.ConjunctiveGraph, rdflib.Dataset]
+GraphLike = typing.Union[ConjunctiveLike, rdflib.Graph]
 
 
 class KnowledgeGraph (object):
@@ -81,15 +85,25 @@ class KnowledgeGraph (object):
         }
 
 
-    def __init__ (self, name: str = "KGlab", base_uri: str = None, language: str = "en", namespaces: dict = {}) -> None:
-        self._g = rdflib.Graph()
-        self._ns: dict = {}
-        self.merge_ns({ **self.DEFAULT_NAMESPACES, **namespaces })
-
+    def __init__ (self,
+                  name: str = "KGlab",
+                  base_uri: str = None,
+                  language: str = "en",
+                  namespaces: dict = {},
+                  graph: typing.Optional[GraphLike] = None
+                 ) -> None:
         self.name = name
         self.base_uri = base_uri
         self.language = language
         self.gpus = GPUtil.getGPUs()
+
+        if not graph:
+            self._g = rdflib.Graph()
+        else:
+            self._g = graph
+
+        self._ns: dict = {}
+        self.merge_ns({ **self.DEFAULT_NAMESPACES, **namespaces })
 
 
     ######################################################################
@@ -136,7 +150,7 @@ class KnowledgeGraph (object):
         return context
 
 
-    def add (self, s: rdflib.term.Node, p: rdflib.term.Node, o: rdflib.term.Node) -> None:
+    def add (self, s: RDF_Node, p: RDF_Node, o: RDF_Node) -> None:
         self._g.add((s, p, o,))
 
 
@@ -159,7 +173,11 @@ class KnowledgeGraph (object):
     ## integrated into several of the existing tools for network
     ## graphing.
 
-    def load_ttl (self, path: Pathlike, format: str = "n3", encoding: str = "utf-8") -> None:
+    def load_ttl (self,
+                  path: PathLike,
+                  format: str = "n3",
+                  encoding: str = "utf-8"
+                 ) -> None:
         if isinstance(path, pathlib.Path):
             filename = path.as_posix()
         else:
@@ -168,11 +186,19 @@ class KnowledgeGraph (object):
         self._g.parse(filename, format=format, encoding=encoding)
 
 
-    def load_ttl_text (self, data: str, format: str = "n3", encoding: str = "utf-8") -> None:
+    def load_ttl_text (self,
+                       data: typing.AnyStr,
+                       format: str = "n3",
+                       encoding: str = "utf-8"
+                      ) -> None:
         self._g.parse(data=data, format=format, encoding=encoding);
 
 
-    def save_ttl (self, path: Pathlike, format: str = "n3", encoding: str = "utf-8") -> None:
+    def save_ttl (self,
+                  path: PathLike,
+                  format: str = "n3",
+                  encoding: str = "utf-8"
+                 ) -> None:
         if isinstance(path, pathlib.Path):
             filename = path.as_posix()
         else:
@@ -181,17 +207,26 @@ class KnowledgeGraph (object):
         self._g.serialize(destination=filename, format=format, encoding=encoding)
 
 
-    def save_ttl_text (self, format: str = "n3", encoding: str = "utf-8") -> str:
+    def save_ttl_text (self,
+                       format: str = "n3",
+                       encoding: str = "utf-8"
+                      ) -> str:
         return self._g.serialize(destination=None, format=format, encoding=encoding).decode(encoding) 
 
 
-    def load_jsonld (self, path: Pathlike, encoding: str = "utf-8") -> None:
+    def load_jsonld (self,
+                     path: PathLike,
+                     encoding: str = "utf-8"
+                    ) -> None:
         with open(path, "r", encoding=encoding) as f:
             data = json.load(f)
             self._g.parse(data=json.dumps(data), format="json-ld", encoding=encoding)
 
 
-    def save_jsonld (self, path: Pathlike, encoding: str = "utf-8") -> None:
+    def save_jsonld (self,
+                     path: PathLike,
+                     encoding: str = "utf-8"
+                    ) -> None:
         data = self._g.serialize(
             format = "json-ld",
             context = self.get_context(),
@@ -203,7 +238,9 @@ class KnowledgeGraph (object):
             f.write(data)
 
 
-    def load_parquet (self, path: Pathlike) -> None:
+    def load_parquet (self,
+                      path: PathLike
+                     ) -> None:
         df = pq.read_pandas(path).to_pandas()
 
         for index, row in df.iterrows():
@@ -211,7 +248,10 @@ class KnowledgeGraph (object):
             self._g.parse(data=triple, format="n3")
 
 
-    def save_parquet (self, path: Pathlike, compression: str = "gzip") -> None:
+    def save_parquet (self,
+                      path: PathLike,
+                      compression: str = "gzip"
+                     ) -> None:
         rows_list = [ {"s": s.n3(), "p": p.n3(), "o": o.n3()} for s, p, o in self._g ]
         df = pd.DataFrame(rows_list, columns=("s", "p", "o"))
         table = pa.Table.from_pandas(df)
@@ -221,34 +261,91 @@ class KnowledgeGraph (object):
     ######################################################################
     ## SPARQL queries
 
-    def query (self, sparql: str, bindings: dict = {}) -> typing.Iterable:
+    def query (self,
+               sparql: str,
+               bindings: dict = {}
+              ) -> typing.Iterable:
         for row in self._g.query(sparql, initBindings=bindings):
             yield row
 
-    def query_as_df (self, sparql: str, bindings: dict = {}) -> pd.DataFrame:
-        return pd.DataFrame([ row.asdict() for row in self._g.query(sparql, initBindings=bindings) ])
+
+    @classmethod
+    def n3fy (cls, 
+              d: dict, 
+              nm: rdflib.namespace.NamespaceManager, 
+              pythonify: bool = True
+             ) -> dict:
+        if not pythonify:
+            return dict([ (k, v.n3(nm),) for k, v in d.items() ])
+        else:
+            items: list = []
+
+            for k, v in d.items():
+                if isinstance(v, rdflib.term.Literal):
+                    items.append([ k, v.toPython() ])
+                else:
+                    items.append([ k, v.n3(nm) ])
+
+            return dict(items)
+
+
+    def query_as_df (self,
+                     sparql: str,
+                     bindings: dict = {},
+                     simplify: bool = True,
+                     pythonify: bool = True
+                    ) -> pd.DataFrame:
+        iter = self._g.query(sparql, initBindings=bindings)
+
+        if simplify:
+            nm = self._g.namespace_manager
+            df = pd.DataFrame([ self.n3fy(row.asdict(), nm, pythonify) for row in iter ])
+        else:
+            df = df = pd.DataFrame([ row.asdict() for row in iter ])
+        
+        return df
 
 
     ######################################################################
     ## SHACL validation
 
-    def validate (self, shacl_graph=None, shacl_graph_format: str = "turtle", ont_graph=None, advanced=False, inference: str = "rdfs", debug=False, abort_on_error=None, serialize_report_graph=False, **kwargs: typing.Any):
+    def validate (self,
+                  shacl_graph: typing.Optional[typing.Union[GraphLike, typing.AnyStr]] = None,
+                  shacl_graph_format: typing.Optional[str] = None,
+                  ont_graph: typing.Optional[typing.Union[GraphLike, typing.AnyStr]] = None,
+                  ont_graph_format: typing.Optional[str] = None,
+                  advanced: typing.Optional[bool] = False,
+                  inference: typing.Optional[str] = None,
+                  abort_on_error: typing.Optional[bool] = None,
+                  serialize_report_graph: typing.Optional[str] = "n3",
+                  debug: bool = False,
+                  **kwargs: typing.Any
+                 ):
 
-        conforms, v_graph, v_text = pyshacl.validate(
+        conforms, report_graph_data, report_text = pyshacl.validate(
             self._g,
             shacl_graph=shacl_graph,
             shacl_graph_format=shacl_graph_format,
             ont_graph=ont_graph,
+            ont_graph_format=ont_graph_format,
             advanced=advanced,
             inference=inference,
             abort_on_error=abort_on_error,
-
             debug=debug,
             serialize_report_graph=serialize_report_graph,
             *kwargs,
             )
+       
+        namespaces = {
+            "sh":     "http://www.w3.org/ns/shacl#",
+            "schema": "http://schema.org/",
+        }
 
-        return conforms, v_graph, v_text
+        g = rdflib.Graph()
+        g.parse(data=report_graph_data, format="n3", encoding="utf-8")
+        report_graph = KnowledgeGraph(graph=g, name="report graph", namespaces=namespaces)
+
+        return conforms, report_graph, report_text
 
 
     ######################################################################
@@ -425,7 +522,7 @@ class KnowledgeGraph (object):
 ######################################################################
 ## graph topology
 
-Census_Item = typing.TypeVar("Census_Item", str, rdflib.term.Node)
+Census_Item = typing.TypeVar("Census_Item", str, RDF_Node)
 Census_Dyad_Tally = typing.Tuple[pd.DataFrame, dict]
 
 
@@ -517,7 +614,7 @@ class Subgraph (object):
             if not p in self.excludes:
                 yield s, p, o
 
-    def transform (self, node: Nodelike) -> int:
+    def transform (self, node: NodeLike) -> int:
         """label encoding: return a unique integer ID for the given graph node"""
         if not node:
             # null case
@@ -527,14 +624,14 @@ class Subgraph (object):
 
         return self.id_list.index(node)
 
-    def inverse_transform (self, id: int) -> Nodelike:
+    def inverse_transform (self, id: int) -> NodeLike:
         """label encoding: return the graph node corresponding to a unique integer ID"""
         if id < 0:
             return None
         else:
             return self.id_list[id]
     
-    def get_name (self, node: rdflib.term.Node) -> str:
+    def get_name (self, node: RDF_Node) -> str:
         """return a human-readable label for an RDF node"""
         return node.n3(self.kg._g.namespace_manager)
 
@@ -646,7 +743,7 @@ class EvoShapeNode (object):
         return node
 
 
-class EvoShapeEdge (NamedTuple):
+class EvoShapeEdge (typing.NamedTuple):
     pred: str
     obj: EvoShapeNode
 
@@ -658,7 +755,7 @@ class EvoShape (object):
         self.root = EvoShapeNode(uri=None)
         self.nodes = set([self.root])
 
-    def add_link (self, s: rdflib.term.Node, p: rdflib.term.Node, o: rdflib.term.Node) -> None:
+    def add_link (self, s: RDF_Node, p: RDF_Node, o: RDF_Node) -> None:
         edge = EvoShapeEdge(pred=p, obj=o)
         s.edges.append(edge)
         self.nodes.add(o)
