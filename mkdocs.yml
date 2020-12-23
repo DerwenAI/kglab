@@ -4,6 +4,8 @@ nav:
     - Home: index.md
     - What: what.md
     - Why: why.md
+    - Background: background.md
+    - Tutorial: tutorial.md
     - Inference: infer.md
 
 plugins:
