@@ -1,7 +1,7 @@
 *~
 dat/food_com
-foo.ttl
-tmp.*
+examples/foo.ttl
+examples/tmp.*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
