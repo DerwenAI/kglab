@@ -167,13 +167,13 @@ class KnowledgeGraph (object):
     ## Format and software agnostic: We are interested in technology
     ## that will not be a barrier to widespread use. We want to allow
     ## the export of the entity triples in a variety of formats, at
-    ## the most basic level as a csv, so that an analyst can load the
+    ## the most basic level as a CSV, so that an analyst can load the
     ## results into their system of choice. By prioritizing
     ## non-proprietary, universal formats the results can be easily
-    ## integrated into several of the existing tools for network
-    ## graphing.
+    ## integrated into several of the existing tools for creating 
+    ## network graphs.
 
-    def load_ttl (self,
+    def load_rdf (self,
                   path: PathLike,
                   format: str = "n3",
                   encoding: str = "utf-8"
@@ -186,7 +186,7 @@ class KnowledgeGraph (object):
         self._g.parse(filename, format=format, encoding=encoding)
 
 
-    def load_ttl_text (self,
+    def load_rdf_text (self,
                        data: typing.AnyStr,
                        format: str = "n3",
                        encoding: str = "utf-8"
@@ -194,7 +194,7 @@ class KnowledgeGraph (object):
         self._g.parse(data=data, format=format, encoding=encoding);
 
 
-    def save_ttl (self,
+    def save_rdf (self,
                   path: PathLike,
                   format: str = "n3",
                   encoding: str = "utf-8"
@@ -207,7 +207,7 @@ class KnowledgeGraph (object):
         self._g.serialize(destination=filename, format=format, encoding=encoding)
 
 
-    def save_ttl_text (self,
+    def save_rdf_text (self,
                        format: str = "n3",
                        encoding: str = "utf-8"
                       ) -> str:
