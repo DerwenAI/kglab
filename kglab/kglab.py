@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+import sys
+if sys.version_info < (3, 6, ):
+    raise RuntimeError("This version of kglab cannot be used in Python < 3.6")
+
+import kglab.util
+
 from rdflib import plugin  # type: ignore
 from rdflib.serializer import Serializer  # type: ignore
 from rdflib.plugin import register, Parser, Serializer  # type: ignore
@@ -32,36 +38,6 @@ import typing
 
 
 ######################################################################
-## utilities
-
-def stripe_column (values: list, bins: int) -> np.ndarray:
-    """stripe a column: interpolate quantiles to discrete indexes"""
-    s = pd.Series(values)
-    q = s.quantile(bins, interpolation="nearest")
-
-    try:
-        stripe = np.digitize(values, q) - 1
-        return stripe
-    except ValueError as e:
-        # should never happen?
-        print("ValueError:", str(e), values, s, q, bins)
-        raise
-
-
-def calc_quantile_bins (num_rows: int) -> np.ndarray:
-    """calculate the number of bins to use for a quantile stripe"""
-    granularity = max(round(math.log(num_rows) * 4), 1)
-    return np.linspace(0, 1, num=granularity, endpoint=True)
-
-
-def rms (values: list) -> float:
-    """calculate a root mean square"""
-    numer = sum([x for x in map(lambda x: float(x)**2.0, values)])
-    denom = float(len(values))
-    return math.sqrt(numer / denom)
-
-
-######################################################################
 ## main KG class definition
 
 PathLike = typing.TypeVar("PathLike", str, pathlib.Path)
@@ -76,12 +52,12 @@ GraphLike = typing.Union[ConjunctiveLike, rdflib.Graph]
 
 class KnowledgeGraph (object):
     DEFAULT_NAMESPACES: dict = {
-        "dct":	"http://purl.org/dc/terms/",
-        "owl":	"http://www.w3.org/2002/07/owl#",
-        "rdf":	"http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-        "rdfs":	"http://www.w3.org/2000/01/rdf-schema#",
-        "skos":	"http://www.w3.org/2004/02/skos/core#",
-        "xsd":	"http://www.w3.org/2001/XMLSchema#",
+        "dct":  "http://purl.org/dc/terms/",
+        "owl":  "http://www.w3.org/2002/07/owl#",
+        "rdf":  "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "xsd":  "http://www.w3.org/2001/XMLSchema#",
         }
 
 
@@ -320,7 +296,7 @@ class KnowledgeGraph (object):
                   serialize_report_graph: typing.Optional[str] = "n3",
                   debug: bool = False,
                   **kwargs: typing.Any
-                 ):
+                 ) -> typing.Tuple[bool, "KnowledgeGraph", str]:
 
         conforms, report_graph_data, report_text = pyshacl.validate(
             self._g,
@@ -343,7 +319,10 @@ class KnowledgeGraph (object):
 
         g = rdflib.Graph()
         g.parse(data=report_graph_data, format="n3", encoding="utf-8")
-        report_graph = KnowledgeGraph(graph=g, name="report graph", namespaces=namespaces)
+        report_graph = KnowledgeGraph(graph=g, 
+                                      name="report graph", 
+                                      namespaces=namespaces
+                                     )
 
         return conforms, report_graph, report_text
 
@@ -920,14 +899,14 @@ class Leaderboard (object):
 
         # normalize by column
         df2 = df1.apply(lambda x: x/x.max(), axis=0)
-        bins = calc_quantile_bins(len(df2.index))
+        bins = kglab.util.calc_quantile_bins(len(df2.index))
 
         # stripe each column to approximate a pareto front
-        stripes = [ stripe_column(values, bins) for _, values in df2.items() ]
+        stripes = [ kglab.util.stripe_column(values, bins) for _, values in df2.items() ]
         df3 = pd.DataFrame(stripes).T
 
         # rank based on RMS of striped indices per row
-        df1["rank"] = df3.apply(lambda row: rms(row), axis=1)
+        df1["rank"] = df3.apply(lambda row: kglab.util.root_mean_square(row), axis=1)
         df1["shape"] = pd.Series(board, index=df1.index)
 
         # sort descending
