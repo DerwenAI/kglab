@@ -2,13 +2,55 @@
 
 > based on using conventions at <https://www.bibsonomy.org/>
 
+
+@inproceedings{DBLP:conf/cidr/HellersteinSGSA17,
+  author    = {Joseph M. Hellerstein and
+               Vikram Sreekanti and
+               Joseph E. Gonzalez and
+               James Dalton and
+               Akon Dey and
+               Sreyashi Nag and
+               Krishna Ramachandran and
+               Sudhanshu Arora and
+               Arka Bhattacharyya and
+               Shirshanka Das and
+               Mark Donsky and
+               Gabriel Fierro and
+               Chang She and
+               Carl Steinbach and
+               Venkat Subramanian and
+               Eric Sun},
+  title     = {Ground: {A} Data Context Service},
+  booktitle = {{CIDR} 2017, 8th Biennial Conference on Innovative Data Systems Research,
+               Chaminade, CA, USA, January 8-11, 2017, Online Proceedings},
+  publisher = {www.cidrdb.org},
+  year      = {2017},
+  url       = {http://cidrdb.org/cidr2017/papers/p111-hellerstein-cidr17.pdf},
+  timestamp = {Thu, 12 Mar 2020 11:32:37 +0100},
+  biburl    = {https://dblp.org/rec/conf/cidr/HellersteinSGSA17.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+
 @misc{hogan2020knowledge,
   title = {Knowledge Graphs}, 
   author = {Aidan Hogan and Eva Blomqvist and Michael Cochez and Claudia d'Amato and Gerard de Melo and Claudio Gutierrez and José Emilio Labra Gayo and Sabrina Kirrane and Sebastian Neumaier and Axel Polleres and Roberto Navigli and Axel-Cyrille Ngonga Ngomo and Sabbir M. Rashid and Anisa Rula and Lukas Schmelzeisen and Juan Sequeda and Steffen Staab and Antoine Zimmermann},
   year = {2020},
   eprint = {2003.02320},
   archivePrefix = {arXiv},
-  primaryClass = {cs.AI}
+  primaryClass = {cs.AI},
+  url = {https://arxiv.org/abs/2003.02320}
+}
+
+
+@misc{jonas2019cloud,
+  title = {Cloud Programming Simplified: A Berkeley View on Serverless Computing}, 
+  author = {Eric Jonas and Johann Schleier-Smith and Vikram Sreekanti and Chia-Che Tsai and Anurag Khandelwal and Qifan Pu and Vaishaal Shankar and Joao Carreira and Karl Krauth and Neeraja Yadwadkar and Joseph E. Gonzalez and Raluca Ada Popa and Ion Stoica and David A. Patterson},
+  year = {2019},
+  eprint = {1902.03383},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.OS},
+  url = {https://arxiv.org/abs/1902.03383}
 }
 
 

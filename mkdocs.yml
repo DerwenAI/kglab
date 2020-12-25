@@ -1,12 +1,20 @@
 site_name: kglab
+site_url: https://github.com/DerwenAI/kglab
+site_description: Graph-Based Data Science
+site_author: kglab team
+
 
 nav:
     - Home: index.md
-    - What: what.md
-    - Why: why.md
-    - Background: background.md
-    - Tutorial: tutorial.md
-    - Inference: infer.md
+    - User Guide:
+        - What is a knowledge graph?: what.md
+        - Why create another graph library?: why.md
+        - Learning to use kglab: tutorial.md
+        - Inference capabilities: infer.md
+        - Background: background.md
+
+
+theme: readthedocs
 
 plugins:
   - mknotebooks

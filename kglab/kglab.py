@@ -511,12 +511,15 @@ class Simplex0 (object):
         self.count: dict = defaultdict(int)
         self.df = None
 
+
     def increment (self, item: Census_Item) -> None:
         self.count[item] += 1
+
 
     def get_tally (self) ->  typing.Optional[pd.DataFrame]:
         self.df = pd.DataFrame.from_dict(self.count, orient="index", columns=["count"]).sort_values("count", ascending=False)
         return self.df
+
 
     def get_keyset (self) -> set:
         return set([ key.toPython() for key in self.count.keys() ])
@@ -529,9 +532,11 @@ class Simplex1 (Simplex0):
         super().__init__(name=name)  # type: ignore
         self.link_map: typing.Optional[dict] = None
 
+
     def increment (self, item0: Census_Item, item1: Census_Item) -> None:  # type: ignore
         link = (item0, item1,)
         self.count[link] += 1
+
 
     def get_tally_map (self) -> Census_Dyad_Tally:
         super().get_tally()
@@ -548,6 +553,7 @@ class Measure (object):
     def __init__ (self, name: str = "generic") -> None:
         self.reset()
 
+
     def reset (self) -> None:
         self.edge_count = 0
         self.node_count = 0
@@ -557,6 +563,7 @@ class Measure (object):
         self.l_gen = Simplex0("literal")
         self.n_gen = Simplex1("node")
         self.e_gen = Simplex1("edge")
+
 
     def measure_graph (self, kg: KnowledgeGraph) -> None:
         for s, p, o in kg._g:
@@ -573,6 +580,7 @@ class Measure (object):
     
         self.node_count = len(set(self.s_gen.count.keys()).union(set(self.o_gen.count.keys())))
 
+
     def get_keyset (self) -> typing.List[str]:
         keys = self.s_gen.get_keyset().union(self.p_gen.get_keyset().union(self.o_gen.get_keyset()))
         return sorted(list(keys))
@@ -587,11 +595,13 @@ class Subgraph (object):
         self.id_list = preload
         self.excludes = excludes
 
+
     def triples (self) -> typing.Generator[RDF_Triple, None, None]:
         """iterator for triples to include in the subgraph"""
         for s, p, o in self.kg._g:
             if not p in self.excludes:
                 yield s, p, o
+
 
     def transform (self, node: NodeLike) -> int:
         """label encoding: return a unique integer ID for the given graph node"""
@@ -603,6 +613,7 @@ class Subgraph (object):
 
         return self.id_list.index(node)
 
+
     def inverse_transform (self, id: int) -> NodeLike:
         """label encoding: return the graph node corresponding to a unique integer ID"""
         if id < 0:
@@ -610,6 +621,7 @@ class Subgraph (object):
         else:
             return self.id_list[id]
     
+
     def get_name (self, node: RDF_Node) -> str:
         """return a human-readable label for an RDF node"""
         return node.n3(self.kg._g.namespace_manager)
@@ -690,9 +702,11 @@ class EvoShapeNode (object):
         self.done = terminal # initially
         self.edges: typing.List[EvoShapeEdge] = []
 
+
     def serialize (self, subgraph: Subgraph) -> SerializedEvoNode:
         edge_list = sorted([ (subgraph.transform(e.pred), subgraph.transform(e.obj.uri),) for e in self.edges ])
         return subgraph.transform(self.uri), edge_list
+
 
     @classmethod
     def deserialize (cls, dat: SerializedEvoNode, subgraph: Subgraph, uri_map: dict, root_node: "EvoShapeNode" = None) -> "EvoShapeNode":
@@ -734,17 +748,20 @@ class EvoShape (object):
         self.root = EvoShapeNode(uri=None)
         self.nodes = set([self.root])
 
+
     def add_link (self, s: RDF_Node, p: RDF_Node, o: RDF_Node) -> None:
         edge = EvoShapeEdge(pred=p, obj=o)
         s.edges.append(edge)
         self.nodes.add(o)
         
+
     def serialize (self, subgraph: Subgraph) -> SerializedEvoShape:
         """transform to ordinal format which can be serialized/deserialized with a consistent subgraph"""
         d: deque = deque(sorted([ n.serialize(subgraph) for n in self.nodes.difference({self.root}) ]))
         d.appendleft(self.root.serialize(subgraph))
         d.appendleft(self.get_cardinality())
         return list(d)
+
 
     def deserialize (self, dat_list: SerializedEvoShape, subgraph: Subgraph) -> dict:
         """replace shape definition with parsed content"""
@@ -761,6 +778,7 @@ class EvoShape (object):
             self.nodes.add(node)
 
         return uri_map
+
 
     def get_rdf (self) -> typing.List[str]:
         """for debugging purposes: by definition, a shape is not fully qualified"""
@@ -826,9 +844,11 @@ class EvoShape (object):
         sparql = "SELECT DISTINCT {} WHERE {{ {} }}".format(" ".join(var_list), " . ".join(clauses))
         return sparql, bindings
 
+
     def get_cardinality (self) -> int:
         sparql, bindings = self.get_sparql()
         return len(list(self.kg.query(sparql, bindings=bindings)))
+
 
     def calc_distance (self, other: "EvoShape") -> float:
         n0 = set([ n.uri for n in self.nodes ])
@@ -846,6 +866,7 @@ class ShapeFactory (object):
         # enum action space of possible RDF types (i.e., "superclasses")
         type_sparql = "SELECT DISTINCT ?n WHERE {[] rdf:type ?n}"
         self.type_list = [ r.n for r in kg.query(type_sparql) ]
+
 
     def new_shape (self, type_uri: str = None) -> EvoShape:
         es = EvoShape(self.kg, self.measure)
@@ -866,10 +887,12 @@ class Leaderboard (object):
     def __init__ (self) -> None:
         self.df = pd.DataFrame([], columns=self.COLUMNS)
 
+
     def get_board (self) -> EvoShapeBoard:
         """return a list of shapes, i.e., dataframe without metrics"""
         return list(self.df["shape"].to_numpy())
     
+
     @classmethod
     def compare (cls, shape: SerializedEvoShape, board: EvoShapeBoard) -> EvoShapeDistance:
         """compare shape distances"""
@@ -890,6 +913,7 @@ class Leaderboard (object):
             min_dist = min(distances)
 
         return int(shape[0]), len(n0), min_dist
+
 
     @classmethod
     def insert (cls, shape: SerializedEvoShape, board: EvoShapeBoard) -> pd.DataFrame:
@@ -912,9 +936,11 @@ class Leaderboard (object):
         # sort descending
         return df1.sort_values(by=["rank"], ascending=False)
 
+
     def get_position (self, shape: SerializedEvoShape) -> int:
         """return distance-from-bottom for the given shape"""
         return len(self.df.index) - list(self.df["shape"].to_numpy()).index(shape) - 1
+
 
     def add_shape (self, shape: SerializedEvoShape) -> int:
         """insert the given shape into the leaderboard, returning its position"""
