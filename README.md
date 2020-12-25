@@ -126,14 +126,13 @@ Please use the following BibTeX entry for citing **kglab** if you use it in your
 Citations are helpful for the continued development and maintenance of this library.
 
 ```
-@misc{kglab,
-    author    = {Paco Nathan},
-    title     = {{kglab: a simple abstraction layer in Python for building and using knowledge graphs}},
-    month     = nov,
-    year      = 2020,
-    publisher = {Derwen},
-    url       = {https://github.com/DerwenAI/kglab}
-    }
+@software{kglab,
+  author = {Paco Nathan},
+  title = {{kglab: a simple abstraction layer in Python for building and using knowledge graphs}},
+  year = 2020,
+  publisher = {Derwen},
+  url = {https://github.com/DerwenAI/kglab}
+}
 ```
 
 

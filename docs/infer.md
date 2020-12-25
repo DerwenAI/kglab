@@ -1,6 +1,7 @@
-# Inference
+# Inference capabilities
 
-Once you have data organized as a graph, there are several ways to perform *inference*, which is a core capability of AI systems.
+Once you have data organized as a graph, there are several ways to
+perform *inference*, which is a core capability of AI systems.
 
 A general definition for inference is:
 > a conclusion reached on the basis of evidence and reasoning
@@ -12,7 +13,11 @@ For the W3C perspective, see
   * discover new relationships
   * indentify potential inconsistencies in the (integrated) data
 
-The integrations within `kglab` to support inference capabilities may be combined to leverage each other's relative strengths, along with potential use of *human-in-the-loop* approaches such as *active learning* and *weak supervision*.
+The integrations within **kglab** to support inference capabilities
+may be combined to leverage each other's relative strengths, along
+with potential use of *human-in-the-loop* (or "machine teaching")
+approaches such as *active learning* and *weak supervision*.
+
 These integrations include:
 
   * Efforts by [`owlrl`](https://github.com/RDFLib/OWL-RL/) toward [OWL 2 RL](https://www.w3.org/TR/owl2-profiles/#OWL_2_RL) *reasoning*
