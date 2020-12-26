@@ -9,9 +9,20 @@ nav:
     - User Guide:
         - What is a knowledge graph?: what.md
         - Why create another graph library?: why.md
-        - Learning to use kglab: tutorial.md
-        - Inference capabilities: infer.md
         - Background: background.md
+        - Inference capabilities: infer.md
+    - Tutorial:
+        - Learning to use kglab: tutorial.md
+        - Building a graph in RDF using `rdflib`: ex01.ipynb
+        - Leveraging the `kglab` abstraction layer: ex02.ipynb
+        - Interactive graph visualization with `pyvis`: ex03.ipynb
+        - Build a medium size KG from a CSV dataset: ex04.ipynb
+        - Running SPARQL queries: ex05.ipynb
+        - SHACL validation with `pySHACL`: ex06.ipynb
+        - Graph algorithms with `networkx`: ex07.ipynb
+        - Statistical relational learning with `pslpython`: ex08.ipynb
+        - Vector embedding with `gensim`: ex09.ipynb
+        - Measurement and inference: ex10.ipynb
 
 
 theme: readthedocs

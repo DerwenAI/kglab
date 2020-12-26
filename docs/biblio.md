@@ -71,6 +71,17 @@
 }
 
 
+@misc{perrone2020network,
+  title = {Network visualizations with Pyvis and VisJS}, 
+  author = {Giancarlo Perrone and Jose Unpingco and Haw-minn Lu},
+  year = {2020},
+  eprint = {2006.04951},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.SI},
+  url = {https://arxiv.org/abs/2006.04951}
+}
+
+
 https://www.goodreads.com/book/show/53483743-semantic-modeling-for-data
 Semantic Modeling for Data: Avoiding Pitfalls and Breaking Dilemmas
 Panos Alexopoulos
@@ -86,3 +97,17 @@ Graph-Powered Machine Learning
 Alessandro Negro
 Manning (2021)
 
+https://www.manning.com/books/deep-learning-with-python
+Deep Learning with Python 
+François Chollet
+Manning (2017)
+
+https://www.manning.com/books/the-quick-python-book-third-edition?query=python
+The Quick Python Book, Third Edition 
+Naomi Ceder
+Manning (2018)
+
+https://www.manning.com/books/get-programming
+Get Programming: Learn to code with Python
+Ana Bell
+Manning (2018)

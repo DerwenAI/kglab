@@ -35,9 +35,10 @@ integrating `kglab` with other popular related libraries in Python:
 ### Dependencies
 
 - [Python 3.6+](https://www.python.org/downloads/)
-- [dateutil](https://pypi.org/project/python-dateutil/)
+- [cairocffi](https://github.com/Kozea/cairocffi)
 - [gensim](https://radimrehurek.com/gensim/)
 - [GPUtil](https://github.com/anderskm/gputil)
+- [leidenalg](https://github.com/vtraag/leidenalg)
 - [matplotlib](https://matplotlib.org/)
 - [NetworkX](https://networkx.org/)
 - [NumPy](https://numpy.org/)
@@ -47,6 +48,8 @@ integrating `kglab` with other popular related libraries in Python:
 - [pySHACL](https://github.com/RDFLib/pySHACL)
 - [pyarrow](https://arrow.apache.org/)
 - [pylev](https://github.com/toastdriven/pylev)
+- [python-dateutil](https://pypi.org/project/python-dateutil/)
+- [python-igraph](https://igraph.org/python/)
 - [pyvis](https://pyvis.readthedocs.io/)
 - [RDFlib](https://rdflib.readthedocs.io/)
 - [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
@@ -78,12 +81,7 @@ mkdocs serve
 Then browse <http://localhost:8000>
 
 
-## Build
-
-To update the [PyPi release](https://pypi.org/project/kglab/):
-```
-./push_pypi.sh
-```
+## Build Instructions
 
 This project uses `typing` and [`mypy`](https://mypy.readthedocs.io/) for *type checking*.
 To install:
@@ -95,6 +93,12 @@ To run type checking:
 ```
 mypy kglab/*.py
 ```
+
+To update the [PyPi release](https://pypi.org/project/kglab/):
+```
+./push_pypi.sh
+```
+
 
 ---
 

@@ -581,8 +581,12 @@ class Measure (object):
         self.node_count = len(set(self.s_gen.count.keys()).union(set(self.o_gen.count.keys())))
 
 
-    def get_keyset (self) -> typing.List[str]:
-        keys = self.s_gen.get_keyset().union(self.p_gen.get_keyset().union(self.o_gen.get_keyset()))
+    def get_keyset (self, incl_pred: bool = True) -> typing.List[str]:
+        keys = self.s_gen.get_keyset().union(self.o_gen.get_keyset())
+
+        if incl_pred:
+            keys = keys.union(self.p_gen.get_keyset())
+            
         return sorted(list(keys))
 
 
