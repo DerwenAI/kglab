@@ -30,4 +30,7 @@ Python classes:
   * `Measure`
   * `Subgraph`
 
+## Get Help
+
+https://knowledgegraphconf.slack.com/archives/C017LUAML8Z
 

@@ -14,6 +14,7 @@
   * add `ShapeFactory` and related classes for evolving shape prediction
   * provide simple `OWL-RL` inference with `infer_rdfs_closure()` and `infer_owlrl_closure()`
   * make `KnowledgeGraph` class GPU-aware
+  * integrate with `python-igraph`, `leidenalg`, `cairocffi` to support iGraph
 
 
 ## 0.1.4
