@@ -3,9 +3,9 @@ site_url: https://github.com/DerwenAI/kglab
 site_description: Graph-Based Data Science
 site_author: kglab team
 
-
 nav:
     - Home: index.md
+    - Test: foo.md
     - User Guide:
         - Getting Started: start.md
         - What Is A Knowledge Graph?: what.md
@@ -52,6 +52,13 @@ theme:
 plugins:
   - mknotebooks
 
+
 markdown_extensions:
   - admonition
+  - pymdownx.snippets
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.inlinehilite
   - codehilite
+
+copyright: Source code and documentation are licensed under an MIT License; Copyright (c) 2020-2021 Derwen, Inc.

@@ -9,11 +9,15 @@ plus general support from [Derwen, Inc.](https://derwen.ai/)
 and [The Knowledge Graph Conference](https://www.knowledgegraph.tech/).
 
 
-## License
+## License and Copyright
 
-Souce code for **kglab** plus its documentation and examples has an 
-[MIT](https://spdx.org/licenses/MIT.html) license, which is succinct
-and simplifies use in commercial applications.
+Source code for **kglab** plus its logo, documentation, and examples
+have an [MIT license](https://spdx.org/licenses/MIT.html) which is
+succinct and simplifies use in commercial applications.
+
+All materials herein are Copyright (c) 2020-2021 Derwen, Inc.
+
+[![logo for Derwen, Inc.](https://derwen.ai/static/block_logo.png)](https://derwen.ai/)
 
 
 ## Attribution

@@ -42,6 +42,15 @@
   url = {https://arxiv.org/abs/2003.02320}
 }
 
+@article{Gruber1993ATA,
+  title = {A translation approach to portable ontology specifications},
+  author = {T. Gruber},
+  journal = {Knowledge Acquisition},
+  year = {1993},
+  volume = {5},
+  pages = {199-220},
+  url = {https://doi.org/10.1006/KNAC.1993.1008}
+}
 
 @misc{jonas2019cloud,
   title = {Cloud Programming Simplified: A Berkeley View on Serverless Computing}, 
@@ -52,7 +61,6 @@
   primaryClass = {cs.OS},
   url = {https://arxiv.org/abs/1902.03383}
 }
-
 
 @techreport{noy2001ontology,
   added-at = {2009-08-12T19:29:41.000+0200},
@@ -70,7 +78,6 @@
   year = 2001
 }
 
-
 @misc{perrone2020network,
   title = {Network visualizations with Pyvis and VisJS}, 
   author = {Giancarlo Perrone and Jose Unpingco and Haw-minn Lu},
@@ -82,17 +89,7 @@
 }
 
 
-https://www.goodreads.com/book/show/53483743-semantic-modeling-for-data
-Semantic Modeling for Data: Avoiding Pitfalls and Breaking Dilemmas
-Panos Alexopoulos
-O'Reilly Media (2020)
-
-https://www.goodreads.com/book/show/50204616-the-practitioner-s-guide-to-graph-data
-The Practitioner's Guide to Graph Data
-Denise Gosnell, Matthias Broecheler
-O'Reilly Media (2020)
-
-https://www.goodreads.com/book/show/53428148-graph-powered-machine-learning
+https://www.manning.com/books/graph-powered-machine-learning
 Graph-Powered Machine Learning
 Alessandro Negro
 Manning (2021)
@@ -111,3 +108,14 @@ https://www.manning.com/books/get-programming
 Get Programming: Learn to code with Python
 Ana Bell
 Manning (2018)
+
+
+https://www.goodreads.com/book/show/53483743-semantic-modeling-for-data
+Semantic Modeling for Data: Avoiding Pitfalls and Breaking Dilemmas
+Panos Alexopoulos
+O'Reilly Media (2020)
+
+https://www.goodreads.com/book/show/50204616-the-practitioner-s-guide-to-graph-data
+The Practitioner's Guide to Graph Data
+Denise Gosnell, Matthias Broecheler
+O'Reilly Media (2020)

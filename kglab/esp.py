@@ -1,0 +1,282 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+######################################################################
+## Evolunationary Shape Prediction
+
+from kglab import KnowledgeGraph, Measure, Subgraph
+from kglab.types import RDF_Node, SPARQL_Bindings
+import kglab.util
+
+from collections import deque
+import pandas as pd  # type: ignore
+import random
+import rdflib  # type: ignore
+import typing
+
+SerializedEvoEdge = typing.Tuple[int, int]
+SerializedEvoNode = typing.Tuple[int, typing.List[SerializedEvoEdge]]
+
+Evolike = typing.TypeVar("Evolike", int, SerializedEvoNode)
+SerializedEvoShape = typing.List[Evolike]
+
+EvoShapeBoard = typing.List[SerializedEvoShape]
+EvoShapeDistance = typing.Tuple[int, int, float]
+
+
+class EvoShapeNode (object):
+    def __init__ (self, uri: str = None, terminal: bool = False) -> None:
+        self.uri = uri
+        self.terminal = terminal
+        self.done = terminal # initially
+        self.edges: typing.List[EvoShapeEdge] = []
+
+
+    def serialize (self, subgraph: Subgraph) -> SerializedEvoNode:
+        edge_list = sorted([ (subgraph.transform(e.pred), subgraph.transform(e.obj.uri),) for e in self.edges ])
+        return subgraph.transform(self.uri), edge_list
+
+
+    @classmethod
+    def deserialize (cls,
+                     dat: SerializedEvoNode,
+                     subgraph: Subgraph,
+                     uri_map: dict,
+                     root_node: "EvoShapeNode" = None
+                     ) -> "EvoShapeNode":
+        node_id, edge_list = dat    
+        uri = subgraph.inverse_transform(node_id)
+
+        if uri in uri_map:
+            node = uri_map[uri]
+        else:
+            node = EvoShapeNode(uri=uri)
+            uri_map[uri] = node
+
+        for p, o in edge_list:
+            uri = subgraph.inverse_transform(o)
+
+            if not uri and root_node:
+                node = root_node
+            elif uri in uri_map:
+                obj = uri_map[uri]
+            else:
+                obj = EvoShapeNode(uri=uri)
+                uri_map[uri] = obj
+            
+            edge = EvoShapeEdge(pred=subgraph.inverse_transform(p), obj=obj)
+            node.edges.append(edge)
+
+        return node
+
+
+class EvoShapeEdge (typing.NamedTuple):
+    pred: str
+    obj: EvoShapeNode
+
+
+class EvoShape (object):
+    def __init__ (self, kg: KnowledgeGraph, measure: Measure) -> None:
+        self.kg = kg
+        self.measure = measure
+        self.root = EvoShapeNode(uri=None)
+        self.nodes = set([self.root])
+
+
+    def add_link (self, s: RDF_Node, p: RDF_Node, o: RDF_Node) -> None:
+        edge = EvoShapeEdge(pred=p, obj=o)
+        s.edges.append(edge)
+        self.nodes.add(o)
+        
+
+    def serialize (self, subgraph: Subgraph) -> SerializedEvoShape:
+        """transform to ordinal format which can be serialized/deserialized with a consistent subgraph"""
+        d: deque = deque(sorted([ n.serialize(subgraph) for n in self.nodes.difference({self.root}) ]))
+        d.appendleft(self.root.serialize(subgraph))
+        d.appendleft(self.get_cardinality())
+        return list(d)
+
+
+    def deserialize (self, dat_list: SerializedEvoShape, subgraph: Subgraph) -> dict:
+        """replace shape definition with parsed content"""
+        instances = dat_list.pop(0) # ignore
+        uri_map: dict = {}
+        self.nodes = set()
+
+        root_dat = dat_list.pop(0)
+        self.root = EvoShapeNode.deserialize(root_dat, subgraph, uri_map)
+        self.nodes.add(self.root)
+
+        for node_dat in dat_list:
+            node = EvoShapeNode.deserialize(node_dat, subgraph, uri_map, root_node=self.root)
+            self.nodes.add(node)
+
+        return uri_map
+
+
+    def get_rdf (self) -> typing.List[str]:
+        """for debugging purposes: by definition, a shape is not fully qualified"""
+        rdf_list: typing.List[str] = []
+        
+        for node in list(self.nodes):          
+            if not node.uri:
+                b = rdflib.BNode()
+                subj = str(b.n3())
+            else:
+                subj = rdflib.term.URIRef(node.uri).n3(self.kg._g.namespace_manager)
+
+            for edge in node.edges:
+                pred = rdflib.term.URIRef(edge.pred).n3(self.kg._g.namespace_manager)
+                obj = rdflib.term.URIRef(edge.obj.uri).n3(self.kg._g.namespace_manager)
+                triple = "{} {} {} .".format(subj, pred, obj)
+                rdf_list.append(triple)
+
+        return rdf_list
+
+
+    def get_sparql (self) -> SPARQL_Bindings:
+        var_list: typing.List[str] = []
+        clauses: typing.List[str] = []
+        uri_map: dict = {}
+        bindings: dict = {}
+        node_list = list(self.nodes)
+        
+        for node_num in range(len(node_list)):
+            node = node_list[node_num]
+
+            # name the subject
+            if not node.uri:
+                subj = "?v{}".format(node_num)
+                var_list.append(subj)
+            elif node.uri in uri_map:
+                subj = uri_map[node.uri]
+            else:
+                subj = "?node{}".format(node_num)
+                uri_map[node.uri] = subj
+                bindings[subj] = rdflib.URIRef(node.uri)
+
+            # generate a clause for each tuple
+            for edge_num in range(len(node.edges)):
+                edge = node.edges[edge_num]
+
+                if edge.pred in uri_map:
+                    pred = uri_map[edge.pred]
+                else:
+                    pred = "?pred{}_{}".format(node_num, edge_num)
+                    uri_map[edge.pred] = pred
+                    bindings[pred] = rdflib.URIRef(edge.pred)
+
+                if edge.obj.uri in uri_map:
+                    obj = uri_map[edge.obj.uri]
+                else:
+                    obj = "?obj{}_{}".format(node_num, edge_num)
+                    uri_map[edge.obj.uri] = obj
+                    bindings[obj] = rdflib.URIRef(edge.obj.uri)
+
+                clauses.append(" ".join([ subj, pred, obj ]))
+
+        sparql = "SELECT DISTINCT {} WHERE {{ {} }}".format(" ".join(var_list), " . ".join(clauses))
+        return sparql, bindings
+
+
+    def get_cardinality (self) -> int:
+        sparql, bindings = self.get_sparql()
+        return len(list(self.kg.query(sparql, bindings=bindings)))
+
+
+    def calc_distance (self, other: "EvoShape") -> float:
+        n0 = set([ n.uri for n in self.nodes ])
+        n1 = set([ n.uri for n in other.nodes ])
+        distance = len(n0.intersection(n1)) / float(max(len(n0), len(n1)))
+        return distance
+
+
+class ShapeFactory (object):
+    def __init__ (self, kg: KnowledgeGraph, measure: Measure) -> None:
+        self.kg = kg
+        self.measure = measure
+        self.subgraph = Subgraph(kg, preload=measure.get_keyset())
+
+        # enum action space of possible RDF types (i.e., "superclasses")
+        type_sparql = "SELECT DISTINCT ?n WHERE {[] rdf:type ?n}"
+        self.type_list = [ r.n for r in kg.query(type_sparql) ]
+
+
+    def new_shape (self, type_uri: str = None) -> EvoShape:
+        es = EvoShape(self.kg, self.measure)
+
+        if not type_uri:
+            ## RANDOM CHOICE => OBS
+            ## TODO: generate from gamma dist -- or specify
+            type_uri = random.choice(self.type_list)
+    
+        type_node = EvoShapeNode(type_uri, terminal=True)
+        es.add_link(es.root, rdflib.RDF.type, type_node)
+        return es
+
+
+class Leaderboard (object):
+    COLUMNS: typing.List[str] = ["instances", "nodes", "distance", "rank", "shape"]
+
+    def __init__ (self) -> None:
+        self.df = pd.DataFrame([], columns=self.COLUMNS)
+
+
+    def get_board (self) -> EvoShapeBoard:
+        """return a list of shapes, i.e., dataframe without metrics"""
+        return list(self.df["shape"].to_numpy())
+    
+
+    @classmethod
+    def compare (cls, shape: SerializedEvoShape, board: EvoShapeBoard) -> EvoShapeDistance:
+        """compare shape distances"""
+        n0 = set([n for n, e in shape[1:]])
+        
+        if len(board) < 2:
+            min_dist = 0.0
+        else:
+            distances: list = []
+    
+            for b in board:
+                n1 = set([n for n, e in b[1:]])
+                d = len(n0.intersection(n1)) / float(max(len(n0), len(n1)))
+        
+                if d < 1.0:
+                    distances.append(d)
+
+            min_dist = min(distances)
+
+        return int(shape[0]), len(n0), min_dist
+
+
+    @classmethod
+    def insert (cls, shape: SerializedEvoShape, board: EvoShapeBoard) -> pd.DataFrame:
+        """rank this shape within a new dataframe"""
+        board.append(shape)
+        df1 = pd.DataFrame([ cls.compare(s, board) for s in board ], columns=cls.COLUMNS[:3])
+
+        # normalize by column
+        df2 = df1.apply(lambda x: x/x.max(), axis=0)
+        bins = kglab.util.calc_quantile_bins(len(df2.index))
+
+        # stripe each column to approximate a pareto front
+        stripes = [ kglab.util.stripe_column(values, bins) for _, values in df2.items() ]
+        df3 = pd.DataFrame(stripes).T
+
+        # rank based on RMS of striped indices per row
+        df1["rank"] = df3.apply(lambda row: kglab.util.root_mean_square(row), axis=1)
+        df1["shape"] = pd.Series(board, index=df1.index)
+
+        # sort descending
+        return df1.sort_values(by=["rank"], ascending=False)
+
+
+    def get_position (self, shape: SerializedEvoShape) -> int:
+        """return distance-from-bottom for the given shape"""
+        return len(self.df.index) - list(self.df["shape"].to_numpy()).index(shape) - 1
+
+
+    def add_shape (self, shape: SerializedEvoShape) -> int:
+        """insert the given shape into the leaderboard, returning its position"""
+        self.df = self.insert(shape, self.get_board())
+        return self.get_position(shape)

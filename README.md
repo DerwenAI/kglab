@@ -2,6 +2,7 @@
 
 The **kglab** library provides a simple abstraction layer in Python
 for building knowledge graphs.
+Welcome to *graph-based data science*.
 
 > **SPECIAL REQUEST:**
 > Which features would you like to see the most in an open source Python library for building and using knowledge graphs? Please add suggestions to this online survey: https://forms.gle/FMHgtmxHYWocprMn6  This will help us prioritize the roadmap for **kglab**.
@@ -20,14 +21,31 @@ dependencies as well:
 pip install -r requirements.txt
 ```
 
-Then to use the library, the simplest form is:
+Then to use the library with some simple use cases:
 ```
 import kglab
 
+# create a KnowledgeGraph object
 kg = kglab.KnowledgeGraph()
+
+# load RDF from a URL
+kg.load_rdf("http://bigasterisk.com/foaf.rdf", format="xml")
+
+# measure the graph
+measure = kglab.Measure()
+measure.measure_graph(kg)
+
+print("edges: {}\n".format(measure.edge_count))
+print("nodes: {}\n".format(measure.node_count))
+
+# serialize as a string in "Turtle" TTL format
+ttl = kg.save_rdf_text()
+print("```")
+print(ttl[:999])
+print("```")
 ```
 
-See the tutorial notebooks for sample code and patterns to use in
+See the **tutorial notebooks** for sample code and patterns to use in
 integrating `kglab` with other popular related libraries in Python:
 <https://github.com/DerwenAI/kglab/blob/main/docs/tutorial.md>
 
@@ -55,19 +73,46 @@ integrating `kglab` with other popular related libraries in Python:
 - [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
 
 
-## Documentation
+## Build Instructions
 
-We use [MkDocs](https://www.mkdocs.org/) and [mknotebooks](https://github.com/greenape/mknotebooks)
-to generate documentation pages.
-Source is in the `docs` subdirectory.
-
-To set up your MkDocs environment locally:
+To set up the build environment locally:
 ```
+pip install mypy
+pip install coverage
+pip install jupyterlab
+pip install nbconvert
 pip install mkdocs-material
-pip install mknotebooks
+pip install pymdown-extensions
 ```
 
-To rebuild the pages from Markdown:
+This project uses `typing` and [`mypy`](https://mypy.readthedocs.io/) for *type checking*.
+To run type checking:
+```
+mypy kglab/*.py
+```
+
+This project uses `unittest` and [`coverage`](https://coverage.readthedocs.io/) for *unit test* coverage. 
+Source for unit tests is in the `test.py` module.
+To run unit tests:
+```
+coverage run -m unittest discover
+```
+
+To generate a coverage report and upload it to the `codecov.io`
+reporting site (if you have the token):
+```
+coverage report
+bash <(curl -s https://codecov.io/bash) -t @.cc_token
+```
+
+Test coverage reports can be viewed at
+<https://codecov.io/gh/DerwenAI/kglab>
+
+
+This project uses [MkDocs](https://www.mkdocs.org/) and
+[`makedocs-material`](https://squidfunk.github.io/mkdocs-material/) to generate documentation pages.
+Source for documentation is in the `docs` subdirectory.
+To build the documentation:
 ```
 mkdocs build
 ```
@@ -77,23 +122,11 @@ To launch the MkDocs microsite locally:
 mkdocs serve
 ```
 
-Then browse <http://localhost:8000>
+Then browse to <http://localhost:8000> to review the generated
+documentation.
 
 
-## Build Instructions
-
-This project uses `typing` and [`mypy`](https://mypy.readthedocs.io/) for *type checking*.
-To install:
-```
-pip install mypy
-```
-
-To run type checking:
-```
-mypy kglab/*.py
-```
-
-To update the [PyPi release](https://pypi.org/project/kglab/):
+To update the [release on PyPi](https://pypi.org/project/kglab/):
 ```
 ./push_pypi.sh
 ```
@@ -122,8 +155,11 @@ See also:
 
 ## Attribution
 
-**kglab** has an [MIT](https://spdx.org/licenses/MIT.html) license,
-which is succinct and simplifies use in commercial applications.
+Source code for **kglab** plus its logo, documentation, and examples
+have an [MIT license](https://spdx.org/licenses/MIT.html) which is
+succinct and simplifies use in commercial applications.
+
+All materials herein are Copyright (c) 2020-2021 Derwen, Inc.
 
 Please use the following BibTeX entry for citing **kglab** if you use it in your research or software.
 Citations are helpful for the continued development and maintenance of this library.
@@ -131,7 +167,7 @@ Citations are helpful for the continued development and maintenance of this libr
 ```
 @software{kglab,
   author = {Paco Nathan},
-  title = {{kglab: a simple abstraction layer in Python for building and using knowledge graphs}},
+  title = {{kglab: a simple abstraction layer in Python for building knowledge graphs}},
   year = 2020,
   publisher = {Derwen},
   url = {https://github.com/DerwenAI/kglab}

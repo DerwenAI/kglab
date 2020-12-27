@@ -3,6 +3,11 @@ dat/food_com
 examples/foo.ttl
 examples/tmp.*
 
+# codecov.io
+.cc_token
+.coverage
+coverage.xml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
