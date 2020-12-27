@@ -7,23 +7,46 @@ site_author: kglab team
 nav:
     - Home: index.md
     - User Guide:
-        - What is a knowledge graph?: what.md
-        - Why create another graph library?: why.md
+        - Getting Started: start.md
+        - What Is A Knowledge Graph?: what.md
+        - Why Create Another Graph Library?: why.md
+        - Concepts: concepts.md
         - Background: background.md
-        - Inference capabilities: infer.md
+        - Use Cases: use_case.md
+        - API Reference: api.md
+        - Dependencies: depend.md
+        - About The Author: author.md
+        - Acknowledgements: ack.md
+        - Glossary: glossary.md
+        - Bibliography: biblio.md
     - Tutorial:
-        - Learning to use kglab: tutorial.md
-        - Building a graph in RDF using `rdflib`: ex01.ipynb
-        - Leveraging the `kglab` abstraction layer: ex02.ipynb
-        - Interactive graph visualization with `pyvis`: ex03.ipynb
-        - Build a medium size KG from a CSV dataset: ex04.ipynb
-        - Running SPARQL queries: ex05.ipynb
-        - SHACL validation with `pySHACL`: ex06.ipynb
-        - Graph algorithms with `networkx`: ex07.ipynb
-        - Statistical relational learning with `pslpython`: ex08.ipynb
-        - Vector embedding with `gensim`: ex09.ipynb
-        - Measurement and inference: ex10.ipynb
-
+        - Setup:
+            - Learn to use kglab: tutorial.md
+            - Data sources: ex00.ipynb
+        - Construction:
+            - Build an RDF graph using `rdflib`: ex01.ipynb
+            - Leverage the `kglab` abstraction layer: ex02.ipynb
+        - Serialization:
+            - Build a medium size KG from a CSV dataset: ex04.ipynb
+        - Visualization:
+            - Interactive graph visualization with `pyvis`: ex03.ipynb
+        - Querying:
+            - Run SPARQL queries: ex05.ipynb
+        - Validation:
+            - SHACL validation with `pySHACL`: ex06.ipynb
+        - Graph Algorithms:
+            - Graph algorithms with `networkx`: ex07.ipynb
+            - Discover community structure using `igraph` and `leidenalg`: ex11.ipynb
+        - Inference:
+            - Inference capabilities: infer.md
+            - Measurement and inference: ex10.ipynb
+            - Statistical relational learning with `pslpython`: ex08.ipynb
+        - Embedding:
+            - Vector embedding with `gensim`: ex09.ipynb
+        - Topology:
+            - Evolved Shape Prediction: stub.ipynb
+        - Distributed Systems:
+            - Distributed processing with RAPIDS and Ray: stub.ipynb
 
 theme: readthedocs
 
