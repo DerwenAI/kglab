@@ -1,7 +1,7 @@
 # kglab
 
 The **kglab** library provides a simple abstraction layer in Python
-for building and using knowledge graphs.
+for building knowledge graphs.
 
 > **SPECIAL REQUEST:**
 > Which features would you like to see the most in an open source Python library for building and using knowledge graphs? Please add suggestions to this online survey: https://forms.gle/FMHgtmxHYWocprMn6  This will help us prioritize the roadmap for **kglab**.
@@ -63,9 +63,8 @@ Source is in the `docs` subdirectory.
 
 To set up your MkDocs environment locally:
 ```
-pip install mkdocs
+pip install mkdocs-material
 pip install mknotebooks
-pip install Pygments
 ```
 
 To rebuild the pages from Markdown:
