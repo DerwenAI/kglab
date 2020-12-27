@@ -4,17 +4,18 @@
 
 2020-12-??
 
+  * use `coverage` for unit test coverage
   * use `mkdocs` to generate documentation
   * type checking based on `typing` and `mypy`
+  * make `KnowledgeGraph` class GPU-aware
   * impl `load_rdf_text()` and `save_rdf_text()` to De/Ser as text
   * corrected the `networkx` examples to use `DiGraph` for directed graphs
+  * integrate with `python-igraph`, `leidenalg`, `cairocffi` to support iGraph
   * add method to return SPARQL query result set as a `pandas` DataFrame
   * add `Subgraph` class for projecting onto `networkx`
   * add `Measure` class for measuring graphs and creating simplex generators
   * add `ShapeFactory` and related classes for evolving shape prediction
   * provide simple `OWL-RL` inference with `infer_rdfs_closure()` and `infer_owlrl_closure()`
-  * make `KnowledgeGraph` class GPU-aware
-  * integrate with `python-igraph`, `leidenalg`, `cairocffi` to support iGraph
 
 
 ## 0.1.4

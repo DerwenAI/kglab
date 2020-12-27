@@ -23,8 +23,8 @@ emerging practice.
 !!! note
     **FAQ:** Why build yet another graph library, when there are already so many available?
 
-So far, five primary motivations are identified for **kglab**, its
-design criteria, and engineering trade-offs:
+A short list of primary motivations have been identified for
+**kglab**, its design criteria, and engineering trade-offs:
 
 ### Popular Graph Libraries
 
@@ -71,8 +71,6 @@ including:
 [Apache Spark](https://spark.apache.org/),
 etc.
 
-[spaCy](https://spacy.io/),
-
 ### Natural Language Understanding
 
 **Point 4:**
@@ -92,7 +90,7 @@ inference and *knowledge graph embedding*.
 
 
 The overall intent of **kglab** is to build an *abstraction layer* for
-KG work in Python, provided as a *library* not as a *framework*.
+[KG](/glossary/#KG) work in Python, provided as a *library* not as a *framework*.
 
 
 ## Getting Help
@@ -106,6 +104,9 @@ KGC hosts [monthly office hours](https://www.notion.so/KG-Community-Events-Calen
 for [Paco Nathan](https://derwen.ai/paco) and others involved in this 
 open source project, plus a [Q&A site](https://answers.knowledgegraph.tech/)
 for extended discussions.
+
+Also, join the [*Just Enough Math*](https://www.linkedin.com/groups/6725785/)
+group on LinkedIn for related updates, news, conference coupons, etc.
 
 
 ## Feedback
@@ -121,10 +122,11 @@ through this online survey:
 
 ## Just Enough Math, Edition 2
 
-Admittedly, **kglab** originally aimed to develop material for a
+Admittedly, **kglab** originally aimed at developing material for a
 follow-up edition of [*Just Enough Math*](https://derwen.ai/jem).
-Seven years later, the field of *data science* has changed so
-dramatically, and the time for *graph-based data science* has arrived.
+Seven years later the field of *data science* has changed dramatically, 
+and as we'll explore in the section [*What is a knowledge graph?*](/what/)
+the time for *graph-based data science* has arrived.
 
 
 Many thanks,

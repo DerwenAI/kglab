@@ -47,7 +47,7 @@ setuptools.setup(
           "rdflib",
           "rdflib-jsonld",
     ],
-    keywords="knowledge graph, graph algorithms, interactive visualization, inference, rdf, skos, owl, controlled vocabulary, managing namespaces, serialization, n3, turtle, json-ld, parquet, psl, probabilistic soft logic, sparql, shacl, pandas, networkx, igraph",
+    keywords="knowledge graph, graph algorithms, interactive visualization, validation, inference, rdf, owl, skos, sparql, shacl, controlled vocabulary, managing namespaces, serialization, n3, turtle, json-ld, parquet, psl, probabilistic soft logic, pandas, networkx, igraph",
     license="MIT",
     zip_safe=False,
 )

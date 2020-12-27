@@ -1,6 +1,6 @@
 @software{kglab,
   author = {Paco Nathan},
-  title = {{kglab: a simple abstraction layer in Python for building and using knowledge graphs}},
+  title = {{kglab: a simple abstraction layer in Python for building knowledge graphs}},
   year = 2020,
   publisher = {Derwen},
   url = {https://github.com/DerwenAI/kglab}

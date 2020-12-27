@@ -1,14 +1,14 @@
 #!/usr/bin/env python
-# encoding: utf-8
+# -*- coding: utf-8 -*-
+
+######################################################################
+## utilities
 
 import math
 import numpy as np  # type: ignore
 import pandas as pd  # type: ignore
 import typing
 
-
-######################################################################
-## utilities
 
 def calc_quantile_bins (num_rows: int) -> np.ndarray:
     """calculate the number of bins to use for a quantile stripe"""
