@@ -52,7 +52,6 @@ theme:
 plugins:
   - mknotebooks
 
-
 markdown_extensions:
   - admonition
   - pymdownx.snippets
@@ -61,4 +60,5 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - codehilite
 
+use_directory_urls: true
 copyright: Source code and documentation are licensed under an MIT License; Copyright (c) 2020-2021 Derwen, Inc.

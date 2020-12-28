@@ -13,8 +13,8 @@ emerging practice.
 
 ## Cut to the chase
 
-  1. To get started right away, jump to [*Getting Started*](/start/)
-  1. For an extensive, hands-on coding tour through **kglab**, follow the [*Tutorial*](/tutorial/) notebooks
+  1. To get started right away, jump to [*Getting Started*](start/)
+  1. For an extensive, hands-on coding tour through **kglab**, follow the [*Tutorial*](tutorial/) notebooks
   1. Check the source code at <https://github.com/DerwenAI/kglab>
 
 
@@ -125,7 +125,7 @@ through this online survey:
 Admittedly, **kglab** originally aimed at developing material for a
 follow-up edition of [*Just Enough Math*](https://derwen.ai/jem).
 Seven years later the field of *data science* has changed dramatically, 
-and as we'll explore in the section [*What is a knowledge graph?*](/what/)
+and as we'll explore in the section [*What is a knowledge graph?*](what/)
 the time for *graph-based data science* has arrived.
 
 
