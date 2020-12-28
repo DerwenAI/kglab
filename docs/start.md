@@ -38,6 +38,6 @@ print("```")
 
 ## Hands-on Coding Tutorial
 
-See the [*Tutorial*](/tutorial/) notebooks for sample code and
+See the [*Tutorial*](tutorial/) notebooks for sample code and
 patterns to use when integrating **kglab** with other related
 libraries in Python.

@@ -117,9 +117,9 @@ To build the documentation:
 mkdocs build
 ```
 
-To launch the MkDocs microsite locally:
+To test-launch the MkDocs microsite locally:
 ```
-mkdocs serve
+./app.py
 ```
 
 Then browse to <http://localhost:8000> to review the generated
