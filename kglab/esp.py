@@ -25,25 +25,41 @@ EvoShapeDistance = typing.Tuple[int, int, float]
 
 
 class EvoShapeNode (object):
-    def __init__ (self, uri: str = None, terminal: bool = False) -> None:
+    def __init__ (
+        self,
+        *,
+        uri: str = None,
+        terminal: bool = False
+        ) -> None:
+        """
+        """
         self.uri = uri
         self.terminal = terminal
         self.done = terminal # initially
         self.edges: typing.List[EvoShapeEdge] = []
 
 
-    def serialize (self, subgraph: Subgraph) -> SerializedEvoNode:
+    def serialize (
+        self,
+        subgraph: Subgraph
+        ) -> SerializedEvoNode:
+        """
+        """
         edge_list = sorted([ (subgraph.transform(e.pred), subgraph.transform(e.obj.uri),) for e in self.edges ])
         return subgraph.transform(self.uri), edge_list
 
 
     @classmethod
-    def deserialize (cls,
-                     dat: SerializedEvoNode,
-                     subgraph: Subgraph,
-                     uri_map: dict,
-                     root_node: "EvoShapeNode" = None
-                     ) -> "EvoShapeNode":
+    def deserialize (
+        cls,
+        dat: SerializedEvoNode,
+        subgraph: Subgraph,
+        uri_map: dict,
+        *,
+        root_node: "EvoShapeNode" = None
+        ) -> "EvoShapeNode":
+        """
+        """
         node_id, edge_list = dat    
         uri = subgraph.inverse_transform(node_id)
 
@@ -64,7 +80,7 @@ class EvoShapeNode (object):
                 obj = EvoShapeNode(uri=uri)
                 uri_map[uri] = obj
             
-            edge = EvoShapeEdge(pred=subgraph.inverse_transform(p), obj=obj)
+            edge = EvoShapeEdge(pred=str(subgraph.inverse_transform(p)), obj=obj)
             node.edges.append(edge)
 
         return node
@@ -76,30 +92,55 @@ class EvoShapeEdge (typing.NamedTuple):
 
 
 class EvoShape (object):
-    def __init__ (self, kg: KnowledgeGraph, measure: Measure) -> None:
+    def __init__ (
+        self,
+        kg: KnowledgeGraph,
+        measure: Measure
+        ) -> None:
+        """
+        """
         self.kg = kg
         self.measure = measure
         self.root = EvoShapeNode(uri=None)
         self.nodes = set([self.root])
 
 
-    def add_link (self, s: RDF_Node, p: RDF_Node, o: RDF_Node) -> None:
+    def add_link (
+        self,
+        s: RDF_Node,
+        p: RDF_Node,
+        o: RDF_Node
+        ) -> None:
+        """
+        """
         edge = EvoShapeEdge(pred=p, obj=o)
         s.edges.append(edge)
         self.nodes.add(o)
         
 
-    def serialize (self, subgraph: Subgraph) -> SerializedEvoShape:
-        """transform to ordinal format which can be serialized/deserialized with a consistent subgraph"""
+    def serialize (
+        self,
+        subgraph: Subgraph
+        ) -> SerializedEvoShape:
+        """
+        Transform to ordinal format which can be
+        serialized/deserialized with a consistent subgraph.
+        """
         d: deque = deque(sorted([ n.serialize(subgraph) for n in self.nodes.difference({self.root}) ]))
         d.appendleft(self.root.serialize(subgraph))
         d.appendleft(self.get_cardinality())
         return list(d)
 
 
-    def deserialize (self, dat_list: SerializedEvoShape, subgraph: Subgraph) -> dict:
-        """replace shape definition with parsed content"""
-        instances = dat_list.pop(0) # ignore
+    def deserialize (
+        self,
+        dat_list: SerializedEvoShape,
+        subgraph: Subgraph
+        ) -> dict:
+        """
+        Replace shape definition with parsed content.
+        """
+        instances = dat_list.pop(0) # ignore the instances
         uri_map: dict = {}
         self.nodes = set()
 
@@ -114,8 +155,13 @@ class EvoShape (object):
         return uri_map
 
 
-    def get_rdf (self) -> typing.List[str]:
-        """for debugging purposes: by definition, a shape is not fully qualified"""
+    def get_rdf (
+        self
+        ) -> typing.List[str]:
+        """
+        For debugging purposes only:
+        By definition, a shape is not fully qualified RDF.
+        """
         rdf_list: typing.List[str] = []
         
         for node in list(self.nodes):          
@@ -134,7 +180,11 @@ class EvoShape (object):
         return rdf_list
 
 
-    def get_sparql (self) -> SPARQL_Bindings:
+    def get_sparql (
+        self
+        ) -> SPARQL_Bindings:
+        """
+        """
         var_list: typing.List[str] = []
         clauses: typing.List[str] = []
         uri_map: dict = {}
@@ -179,12 +229,21 @@ class EvoShape (object):
         return sparql, bindings
 
 
-    def get_cardinality (self) -> int:
+    def get_cardinality (
+        self
+        ) -> int:
+        """
+        """
         sparql, bindings = self.get_sparql()
         return len(list(self.kg.query(sparql, bindings=bindings)))
 
 
-    def calc_distance (self, other: "EvoShape") -> float:
+    def calc_distance (
+        self,
+        other: "EvoShape"
+        ) -> float:
+        """
+        """
         n0 = set([ n.uri for n in self.nodes ])
         n1 = set([ n.uri for n in other.nodes ])
         distance = len(n0.intersection(n1)) / float(max(len(n0), len(n1)))
@@ -192,7 +251,13 @@ class EvoShape (object):
 
 
 class ShapeFactory (object):
-    def __init__ (self, kg: KnowledgeGraph, measure: Measure) -> None:
+    def __init__ (
+        self,
+        kg: KnowledgeGraph,
+        measure: Measure
+        ) -> None:
+        """
+        """
         self.kg = kg
         self.measure = measure
         self.subgraph = Subgraph(kg, preload=measure.get_keyset())
@@ -202,34 +267,54 @@ class ShapeFactory (object):
         self.type_list = [ r.n for r in kg.query(type_sparql) ]
 
 
-    def new_shape (self, type_uri: str = None) -> EvoShape:
+    def new_shape (
+        self,
+        *,
+        type_uri: str = None
+        ) -> EvoShape:
+        """
+        """
         es = EvoShape(self.kg, self.measure)
 
         if not type_uri:
-            ## RANDOM CHOICE => OBS
+            ## RANDOM CHOICE => RL observation?
             ## TODO: generate from gamma dist -- or specify
             type_uri = random.choice(self.type_list)
     
-        type_node = EvoShapeNode(type_uri, terminal=True)
+        type_node = EvoShapeNode(uri=type_uri, terminal=True)
         es.add_link(es.root, rdflib.RDF.type, type_node)
         return es
 
 
 class Leaderboard (object):
-    COLUMNS: typing.List[str] = ["instances", "nodes", "distance", "rank", "shape"]
+    _COLUMNS: typing.List[str] = ["instances", "nodes", "distance", "rank", "shape"]
 
-    def __init__ (self) -> None:
-        self.df = pd.DataFrame([], columns=self.COLUMNS)
+    def __init__ (
+        self
+        ) -> None:
+        """
+        """
+        self.df = pd.DataFrame([], columns=self._COLUMNS)
 
 
-    def get_board (self) -> EvoShapeBoard:
-        """return a list of shapes, i.e., dataframe without metrics"""
+    def get_board (
+        self
+        ) -> EvoShapeBoard:
+        """
+        Return a list of shapes, i.e., dataframe without any metrics.
+        """
         return list(self.df["shape"].to_numpy())
     
 
     @classmethod
-    def compare (cls, shape: SerializedEvoShape, board: EvoShapeBoard) -> EvoShapeDistance:
-        """compare shape distances"""
+    def compare (
+        cls,
+        shape: SerializedEvoShape,
+        board: EvoShapeBoard
+        ) -> EvoShapeDistance:
+        """
+        Compare distances among the shapes.
+        """
         n0 = set([n for n, e in shape[1:]])
         
         if len(board) < 2:
@@ -250,10 +335,17 @@ class Leaderboard (object):
 
 
     @classmethod
-    def insert (cls, shape: SerializedEvoShape, board: EvoShapeBoard) -> pd.DataFrame:
-        """rank this shape within a new dataframe"""
+    def insert (
+        cls,
+        shape: SerializedEvoShape,
+        board: EvoShapeBoard
+        ) -> pd.DataFrame:
+        """
+        Rank this shape within a dataframe that's newly generated from
+        the given board.
+        """
         board.append(shape)
-        df1 = pd.DataFrame([ cls.compare(s, board) for s in board ], columns=cls.COLUMNS[:3])
+        df1 = pd.DataFrame([ cls.compare(s, board) for s in board ], columns=cls._COLUMNS[:3])
 
         # normalize by column
         df2 = df1.apply(lambda x: x/x.max(), axis=0)
@@ -271,12 +363,22 @@ class Leaderboard (object):
         return df1.sort_values(by=["rank"], ascending=False)
 
 
-    def get_position (self, shape: SerializedEvoShape) -> int:
-        """return distance-from-bottom for the given shape"""
+    def get_position (
+        self,
+        shape: SerializedEvoShape
+        ) -> int:
+        """
+        Return distance-from-bottom for the given shape.
+        """
         return len(self.df.index) - list(self.df["shape"].to_numpy()).index(shape) - 1
 
 
-    def add_shape (self, shape: SerializedEvoShape) -> int:
-        """insert the given shape into the leaderboard, returning its position"""
+    def add_shape (
+        self,
+        shape: SerializedEvoShape
+        ) -> int:
+        """
+        Insert the given shape into the leaderboard, returning its position.
+        """
         self.df = self.insert(shape, self.get_board())
         return self.get_position(shape)

@@ -15,21 +15,38 @@ import typing
 
 
 class Subgraph (object):
-    def __init__ (self, kg: KnowledgeGraph, preload: list = [], excludes: list = []) -> None:
+    def __init__ (
+        self,
+        kg: KnowledgeGraph,
+        *,
+        preload: list = [],
+        excludes: list = []
+        ) -> None:
+        """
+        """
         self.kg = kg
         self.id_list = preload
         self.excludes = excludes
 
 
-    def triples (self) -> typing.Generator[RDF_Triple, None, None]:
-        """iterator for triples to include in the subgraph"""
+    def triples (
+        self
+        ) -> typing.Generator[RDF_Triple, None, None]:
+        """
+        Iterator for the RDF triples to be included in the subgraph.
+        """
         for s, p, o in self.kg._g:
             if not p in self.excludes:
                 yield s, p, o
 
 
-    def transform (self, node: NodeLike) -> int:
-        """label encoding: return a unique integer ID for the given graph node"""
+    def transform (
+        self,
+        node: NodeLike
+        ) -> int:
+        """
+        Label encoding: return a unique integer ID for the given graph node.
+        """
         if not node:
             # null case
             return -1
@@ -39,16 +56,26 @@ class Subgraph (object):
         return self.id_list.index(node)
 
 
-    def inverse_transform (self, id: int) -> NodeLike:
-        """label encoding: return the graph node corresponding to a unique integer ID"""
+    def inverse_transform (
+        self,
+        id: int
+        ) -> NodeLike:
+        """
+        Label encoding: return the graph node corresponding to a unique integer ID.
+        """
         if id < 0:
             return None
         else:
             return self.id_list[id]
     
 
-    def get_name (self, node: RDF_Node) -> str:
-        """return a human-readable label for an RDF node"""
+    def get_name (
+        self,
+        node: RDF_Node
+        ) -> str:
+        """
+        Produce a human-readable label from an RDF node.
+        """
         return node.n3(self.kg._g.namespace_manager)
 
 
@@ -60,7 +87,16 @@ class Subgraph (object):
     ## to extend or create an analyst's account-specific network
     ## model.
 
-    def pyvis_style_node (self, g: pyvis.network.Network, node_id: int, label: str, style: dict = {}) -> None :
+    def pyvis_style_node (
+        self,
+        g: pyvis.network.Network,
+        node_id: int,
+        label: str,
+        *,
+        style: dict = {}
+        ) -> None :
+        """
+        """
         prefix = label.split(":")[0]
     
         if prefix in style:
@@ -75,11 +111,16 @@ class Subgraph (object):
             g.add_node(node_id, label=label, title=label)
 
 
-    def vis_pyvis (self, notebook: bool = False, style: dict = {}) -> pyvis.network.Network:
+    def vis_pyvis (
+        self,
+        *,
+        notebook: bool = False,
+        style: dict = {}
+        ) -> pyvis.network.Network:
         """
-        https://pyvis.readthedocs.io/
-        this is one example; you may need to copy and replicate 
-        to construct the graph design you need
+        This is one example; you may need to copy and replicate 
+        to construct the graph design you need.
+        See <https://pyvis.readthedocs.io/>
         """
         g = pyvis.network.Network(notebook=notebook)
 

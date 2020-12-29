@@ -14,39 +14,78 @@ import typing
 
 
 class Simplex0 (object):
-    def __init__ (self, name: str = "generic") -> None:
+    def __init__ (
+        self,
+        name: str = "generic"
+        ) -> None:
+        """
+        """
         self.name = name
         self.count: dict = defaultdict(int)
         self.df = None
 
 
-    def increment (self, item: Census_Item) -> None:
+    def increment (
+        self,
+        item: Census_Item
+        ) -> None:
+        """
+        """
         self.count[item] += 1
 
 
-    def get_tally (self) ->  typing.Optional[pd.DataFrame]:
-        self.df = pd.DataFrame.from_dict(self.count, orient="index", columns=["count"]).sort_values("count", ascending=False)
+    def get_tally (
+        self
+        ) -> typing.Optional[pd.DataFrame]:
+        """
+        """
+        self.df = pd.DataFrame.from_dict(
+            self.count,
+            orient="index",
+            columns=["count"]
+            ).sort_values("count", ascending=False)
         return self.df
 
 
-    def get_keyset (self) -> set:
+    def get_keyset (
+        self
+        ) -> set:
+        """
+        """
         return set([ key.toPython() for key in self.count.keys() ])
 
 
 class Simplex1 (Simplex0):
-    """Measuring a dyad census"""
+    """
+    Measure a dyad census from the graph.
+    """
 
-    def __init__ (self, name: str = "generic") -> None:
+    def __init__ (
+        self,
+        name: str = "generic"
+        ) -> None:
+        """
+        """
         super().__init__(name=name)  # type: ignore
         self.link_map: typing.Optional[dict] = None
 
 
-    def increment (self, item0: Census_Item, item1: Census_Item) -> None:  # type: ignore
+    def increment (  # type: ignore
+        self,
+        item0: Census_Item,
+        item1: Census_Item
+        ) -> None:
+        """
+        """
         link = (item0, item1,)
         self.count[link] += 1
 
 
-    def get_tally_map (self) -> Census_Dyad_Tally:
+    def get_tally_map (
+        self
+        ) -> Census_Dyad_Tally:
+        """
+        """
         super().get_tally()
         self.link_map = defaultdict(set)
 
@@ -58,11 +97,21 @@ class Simplex1 (Simplex0):
 
 
 class Measure (object):
-    def __init__ (self, name: str = "generic") -> None:
+    def __init__ (
+        self,
+        *,
+        name: str = "generic"
+        ) -> None:
+        """
+        """
         self.reset()
 
 
-    def reset (self) -> None:
+    def reset (
+        self
+        ) -> None:
+        """
+        """
         self.edge_count = 0
         self.node_count = 0
         self.s_gen = Simplex0("subject")
@@ -73,7 +122,12 @@ class Measure (object):
         self.e_gen = Simplex1("edge")
 
 
-    def measure_graph (self, kg: KnowledgeGraph) -> None:
+    def measure_graph (
+        self,
+        kg: KnowledgeGraph
+        ) -> None:
+        """
+        """
         for s, p, o in kg._g:
             self.edge_count += 1
             self.s_gen.increment(s)
@@ -89,7 +143,13 @@ class Measure (object):
         self.node_count = len(set(self.s_gen.count.keys()).union(set(self.o_gen.count.keys())))
 
 
-    def get_keyset (self, incl_pred: bool = True) -> typing.List[str]:
+    def get_keyset (
+        self,
+        *,
+        incl_pred: bool = True
+        ) -> typing.List[str]:
+        """
+        """
         keys = self.s_gen.get_keyset().union(self.o_gen.get_keyset())
 
         if incl_pred:
