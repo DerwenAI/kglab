@@ -25,7 +25,7 @@ docstring support in Python.
 def show_all_elements (module_name):
     module_obj = sys.modules[module_name]
 
-    for name, obj in inspect.getmembers(module_obj, inspect.isclass):
+    for name, obj in inspect.getmembers(module_obj):
         for n, o in inspect.getmembers(obj):
             print("\n", name, n, o)
             print(type(o))
@@ -108,6 +108,23 @@ def document_method (path_list, name, obj, func_kind, gh_src_url):
     return line_num, md
 
 
+def document_type (path_list, name, obj):
+    md = []
+
+    # format a header + anchor
+    frag = ".".join(path_list + [ name ])
+    anchor = "#### [`{}` {}](#{})".format(name, "type", frag)
+    md.append(anchor)
+
+    # show type definition
+    md.append("```python")
+    md.append("{} = {}".format(name, obj))
+    md.append("```")
+    md.append("")
+
+    return md
+
+
 def write_markdown (filename):
     with open(filename, "w") as f:
         for line in md:
@@ -166,6 +183,16 @@ if __name__ == "__main__":
     for func_name, func_obj in inspect.getmembers(module_obj, inspect.isfunction):
         line_num, obj_md = document_method([module_name], func_name, func_obj, "function", gh_src_url)
         md.extend(obj_md)
+
+    # walk the list of types in the module
+    md.append("---")
+    md.append("## [module types](#{})".format(module_name, "types"))
+
+    for name, obj in inspect.getmembers(module_obj):
+        if obj.__class__.__module__ == "typing":
+            if not str(obj).startswith("~"):
+                obj_md = document_type([module_name], name, obj)
+                md.extend(obj_md)
 
     ## output markdown
     print("writing: ", ref_md_file)

@@ -108,10 +108,8 @@ class KnowledgeGraph (object):
         prefix: str
         ) -> rdflib.Namespace:
         """
-        This is a javadoc style.
-
-        @param prefix: the TTL-format prefix used to reference the namespace
-        @return: rdflib.Namespace
+        prefix: the TTL-format prefix used to reference the namespace
+        return: rdflib.Namespace
         """
         return self._ns[prefix]
 
@@ -120,7 +118,7 @@ class KnowledgeGraph (object):
         self
         ) -> dict:
         """
-        return a context needed for JSON-LD serialization
+        Return a context needed for JSON-LD serialization
         """
         context: dict = {
             "@language": self.language,
