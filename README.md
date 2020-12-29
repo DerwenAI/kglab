@@ -77,11 +77,12 @@ integrating `kglab` with other popular related libraries in Python:
 
 To set up the build environment locally:
 ```
-pip install mypy
 pip install coverage
+pip install flask
 pip install jupyterlab
-pip install nbconvert
 pip install mkdocs-material
+pip install mypy
+pip install nbconvert
 pip install pymdown-extensions
 ```
 
@@ -109,11 +110,14 @@ Test coverage reports can be viewed at
 <https://codecov.io/gh/DerwenAI/kglab>
 
 
-This project uses [MkDocs](https://www.mkdocs.org/) and
-[`makedocs-material`](https://squidfunk.github.io/mkdocs-material/) to generate documentation pages.
+This project uses [MkDocs](https://www.mkdocs.org/),
+[`makedocs-material`](https://squidfunk.github.io/mkdocs-material/),
+and [`nbconvert`](https://nbconvert.readthedocs.io/)
+to generate documentation pages.
 Source for documentation is in the `docs` subdirectory.
 To build the documentation:
 ```
+./nb_md.sh
 ./pkg_doc.py docs/ref.md
 mkdocs build
 ```

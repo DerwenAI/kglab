@@ -1,121 +1,80 @@
 # Bibliography
 
-> based on using conventions at <https://www.bibsonomy.org/>
+#### alexopoulos2020
 
+[*Semantic Modeling for Data: Avoiding Pitfalls and Breaking Dilemmas*](https://www.goodreads.com/book/show/53483743-semantic-modeling-for-data)  
+Panos Alexopoulos  
+O'Reilly Media (2020)
 
-@inproceedings{DBLP:conf/cidr/HellersteinSGSA17,
-  author    = {Joseph M. Hellerstein and
-               Vikram Sreekanti and
-               Joseph E. Gonzalez and
-               James Dalton and
-               Akon Dey and
-               Sreyashi Nag and
-               Krishna Ramachandran and
-               Sudhanshu Arora and
-               Arka Bhattacharyya and
-               Shirshanka Das and
-               Mark Donsky and
-               Gabriel Fierro and
-               Chang She and
-               Carl Steinbach and
-               Venkat Subramanian and
-               Eric Sun},
-  title     = {Ground: {A} Data Context Service},
-  booktitle = {{CIDR} 2017, 8th Biennial Conference on Innovative Data Systems Research,
-               Chaminade, CA, USA, January 8-11, 2017, Online Proceedings},
-  publisher = {www.cidrdb.org},
-  year      = {2017},
-  url       = {http://cidrdb.org/cidr2017/papers/p111-hellerstein-cidr17.pdf},
-  timestamp = {Thu, 12 Mar 2020 11:32:37 +0100},
-  biburl    = {https://dblp.org/rec/conf/cidr/HellersteinSGSA17.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
+#### bell2019
 
+[*Get Programming: Learn to code with Python*](https://www.manning.com/books/get-programming)  
+Ana Bell  
+Manning (2018)
 
-@misc{hogan2020knowledge,
-  title = {Knowledge Graphs}, 
-  author = {Aidan Hogan and Eva Blomqvist and Michael Cochez and Claudia d'Amato and Gerard de Melo and Claudio Gutierrez and José Emilio Labra Gayo and Sabrina Kirrane and Sebastian Neumaier and Axel Polleres and Roberto Navigli and Axel-Cyrille Ngonga Ngomo and Sabbir M. Rashid and Anisa Rula and Lukas Schmelzeisen and Juan Sequeda and Steffen Staab and Antoine Zimmermann},
-  year = {2020},
-  eprint = {2003.02320},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.AI},
-  url = {https://arxiv.org/abs/2003.02320}
-}
+#### ceder2018
 
-@article{Gruber1993ATA,
-  title = {A translation approach to portable ontology specifications},
-  author = {T. Gruber},
-  journal = {Knowledge Acquisition},
-  year = {1993},
-  volume = {5},
-  pages = {199-220},
-  url = {https://doi.org/10.1006/KNAC.1993.1008}
-}
+[*The Quick Python Book, Third Edition*](https://www.manning.com/books/the-quick-python-book-third-edition?query=python)  
+Naomi Ceder  
+Manning (2018)
 
-@misc{jonas2019cloud,
-  title = {Cloud Programming Simplified: A Berkeley View on Serverless Computing}, 
-  author = {Eric Jonas and Johann Schleier-Smith and Vikram Sreekanti and Chia-Che Tsai and Anurag Khandelwal and Qifan Pu and Vaishaal Shankar and Joao Carreira and Karl Krauth and Neeraja Yadwadkar and Joseph E. Gonzalez and Raluca Ada Popa and Ion Stoica and David A. Patterson},
-  year = {2019},
-  eprint = {1902.03383},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.OS},
-  url = {https://arxiv.org/abs/1902.03383}
-}
+#### chollet2017
 
-@techreport{noy2001ontology,
-  added-at = {2009-08-12T19:29:41.000+0200},
-  author = {Noy, Natalya F. and McGuinness, Deborah L.},
-  biburl = {https://www.bibsonomy.org/bibtex/2766b8314d938a9f54fb72ac03529692a/utahell},
-  description = {Ontology Development 101: A Guide to Creating Your First Ontology},
-  interhash = {2a496bb63d728d96264a50c0a4960e9a},
-  intrahash = {766b8314d938a9f54fb72ac03529692a},
-  keywords = {engineering ontology},
-  month = {March},
-  tech = {Stanford Knowledge Systems Laboratory Technical Report KSL-01-05 and Stanford Medical Informatics Technical Report SMI-2001-0880},
-  timestamp = {2009-08-12T19:30:13.000+0200},
-  title = {Ontology Development 101: A Guide to Creating Your First Ontology},
-  url = {http://www-ksl.stanford.edu/people/dlm/papers/ontology-tutorial-noy-mcguinness-abstract.html},
-  year = 2001
-}
-
-@misc{perrone2020network,
-  title = {Network visualizations with Pyvis and VisJS}, 
-  author = {Giancarlo Perrone and Jose Unpingco and Haw-minn Lu},
-  year = {2020},
-  eprint = {2006.04951},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.SI},
-  url = {https://arxiv.org/abs/2006.04951}
-}
-
-
-https://www.manning.com/books/graph-powered-machine-learning
-Graph-Powered Machine Learning
-Alessandro Negro
-Manning (2021)
-
-https://www.manning.com/books/deep-learning-with-python
-Deep Learning with Python 
-François Chollet
+[*Deep Learning with Python*](https://www.manning.com/books/deep-learning-with-python)  
+François Chollet  
 Manning (2017)
 
-https://www.manning.com/books/the-quick-python-book-third-edition?query=python
-The Quick Python Book, Third Edition 
-Naomi Ceder
-Manning (2018)
+#### gosnell2020
 
-https://www.manning.com/books/get-programming
-Get Programming: Learn to code with Python
-Ana Bell
-Manning (2018)
-
-
-https://www.goodreads.com/book/show/53483743-semantic-modeling-for-data
-Semantic Modeling for Data: Avoiding Pitfalls and Breaking Dilemmas
-Panos Alexopoulos
+[*The Practitioner's Guide to Graph Data*](https://www.goodreads.com/book/show/50204616-the-practitioner-s-guide-to-graph-data)  
+Denise Gosnell, Matthias Broecheler  
 O'Reilly Media (2020)
 
-https://www.goodreads.com/book/show/50204616-the-practitioner-s-guide-to-graph-data
-The Practitioner's Guide to Graph Data
-Denise Gosnell, Matthias Broecheler
-O'Reilly Media (2020)
+#### gruber1993ata
+
+["A translation approach to portable ontology specifications"](https://doi.org/10.1006/KNAC.1993.1008)  
+Thomas R. Gruber  
+*Knowledge Acquisition* 5, pp. 199-220 (1993)
+
+#### hellersteinsgsa17
+
+["Ground: A Data Context Service"](http://cidrdb.org/cidr2017/papers/p111-hellerstein-cidr17.pdf)  
+Joseph M. Hellerstein, Vikram Sreekanti, Joseph E. Gonzalez, James Dalton, Akon Dey, Sreyashi Nag, Krishna Ramachandran, Sudhanshu Arora, Arka Bhattacharyya, Shirshanka Das, Mark Donsky, Gabriel Fierro, Chang She, Carl Steinbach, Venkat Subramanian, Eric Sun  
+*CIDR* (2017)
+
+#### hogan2020knowledge
+
+["Knowledge Graphs"](https://arxiv.org/abs/2003.02320)  
+Aidan Hogan, Eva Blomqvist, Michael Cochez, Claudia d'Amato, Gerard de Melo, Claudio Gutierrez, José Emilio Labra Gayo, Sabrina Kirrane, Sebastian Neumaier, Axel Polleres, Roberto Navigli, Axel-Cyrille Ngonga Ngomo, Sabbir M. Rashid, Anisa Rula, Lukas Schmelzeisen, Juan Sequeda, Steffen Staab, Antoine Zimmermann  
+*arXiv* (2020)
+
+#### jonas2019cloud
+
+["Cloud Programming Simplified: A Berkeley View on Serverless Computing"](https://arxiv.org/abs/1902.03383)  
+Eric Jonas, Johann Schleier-Smith, Vikram Sreekanti, Chia-Che Tsai, Anurag Khandelwal, Qifan Pu, Vaishaal Shankar, Joao Carreira, Karl Krauth, Neeraja Yadwadkar, Joseph E. Gonzalez, Raluca Ada Popa, Ion Stoica, David A. Patterson  
+*arXiv* (2019)
+
+#### negro2021
+
+[*Graph-Powered Machine Learning*](https://www.manning.com/books/graph-powered-machine-learning)  
+Alessandro Negro  
+Manning (2021)
+
+#### noy2001ontology
+
+["Ontology Development 101: A Guide to Creating Your First Ontology"](http://www-ksl.stanford.edu/people/dlm/papers/ontology-tutorial-noy-mcguinness-abstract.html)  
+Natalya F. Noy, Deborah L. McGuinness  
+*Stanford Knowledge Systems Laboratory Technical Report KSL-01-05* (2001)
+
+#### perrone2020network
+
+["Network visualizations with Pyvis and VisJS"](https://arxiv.org/abs/2006.04951)  
+Giancarlo Perrone, Jose Unpingco, Haw-minn Lu  
+*arXiv* (2020)
+
+
+---
+
+## Notes
+
+  1. Citations are based on conventions at <https://www.bibsonomy.org/>

@@ -95,18 +95,19 @@ The overall intent of **kglab** is to build an *abstraction layer* for
 
 ## Getting Help
 
-The [Knowledge Graph Conference](https://www.knowledgegraph.tech/) has a
-[community Slack](https://knowledgegraphconf.slack.com/archives/C017LUAML8Z)
-specifically on the `#ask` channel, where you can post questions and 
+The [Knowledge Graph Conference](https://www.knowledgegraph.tech/) 
+hosts several community resources where you can post questions and 
 get help about **kglab** and related KG topics.
 
-KGC hosts [monthly office hours](https://www.notion.so/KG-Community-Events-Calendar-8aacbe22efa94d9b8b39b7288e22c2d3)
-for [Paco Nathan](https://derwen.ai/paco) and others involved in this 
-open source project, plus a [Q&A site](https://answers.knowledgegraph.tech/)
-for extended discussions.
+  * [community Slack](https://knowledgegraphconf.slack.com/archives/C017LUAML8Z) – specifically on the `#ask` channel
+  * [Knowledge Tech Q&A site](https://answers.knowledgegraph.tech/) for extended discussions
+  * ["KG 101"](https://knowledge-connexions-conference.heysummit.com/talks/kg-101/) tutorial at *Knowledge Connexions* 2020
+  * [*Just Enough Math*](https://www.linkedin.com/groups/6725785/) group on LinkedIn – join to receive related updates, news, conference coupons, etc.
 
-Also, join the [*Just Enough Math*](https://www.linkedin.com/groups/6725785/)
-group on LinkedIn for related updates, news, conference coupons, etc.
+KGC also hosts 
+[monthly office hours](https://www.notion.so/KG-Community-Events-Calendar-8aacbe22efa94d9b8b39b7288e22c2d3)
+for [Paco Nathan](https://derwen.ai/paco) and others involved in this 
+open source project.
 
 
 ## Feedback
