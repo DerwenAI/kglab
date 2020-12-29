@@ -18,28 +18,28 @@ nav:
         - Bibliography: biblio.md
     - Tutorial:
         - Setup:
-            - Learn to use kglab: tutorial.md
-            - Data sources: ex00.ipynb
+            - Installation: tutorial.md
+            - Data sources: ex00.md
         - Construction:
-            - Build an RDF graph using `RDFlib`: ex01.ipynb
-            - Leverage the `kglab` abstraction layer: ex02.ipynb
+            - Build an RDF graph using `RDFlib`: ex01.md
+            - Leverage the `kglab` abstraction layer: ex02.md
         - Serialization:
-            - Build a medium size KG from a CSV dataset: ex04.ipynb
+            - Build a medium size KG from a CSV dataset: ex04.md
         - Visualization:
-            - Interactive graph visualization with `PyVis`: ex03.ipynb
+            - Interactive graph visualization with `PyVis`: ex03.md
         - Querying:
-            - Run SPARQL queries: ex05.ipynb
+            - Run SPARQL queries: ex05.md
         - Validation:
-            - SHACL validation with `pySHACL`: ex06.ipynb
+            - SHACL validation with `pySHACL`: ex06.md
         - Graph Algorithms:
-            - Graph algorithms with `NetworkX`: ex07.ipynb
-            - Discover community structure using `iGraph` and `leidenalg`: ex11.ipynb
+            - Graph algorithms with `NetworkX`: ex07.md
+            - Discover community structure using `iGraph` and `leidenalg`: ex11.md
         - Inference:
             - Inference capabilities: infer.md
-            - Measurement and inference: ex10.ipynb
-            - Statistical relational learning with `pslpython`: ex08.ipynb
+            - Measurement and inference: ex10.md
+            - Statistical relational learning with `pslpython`: ex08.md
         - Embedding:
-            - Vector embedding with `gensim`: ex09.ipynb
+            - Vector embedding with `gensim`: ex09.md
         - Topology:
             - Evolved Shape Prediction: stub.ipynb
         - Distributed Systems:

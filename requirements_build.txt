@@ -1,0 +1,9 @@
+coverage
+flask
+mkdocs-material
+mypy
+nbconvert
+notebook
+pymdown-extensions
+selenium
+twine
