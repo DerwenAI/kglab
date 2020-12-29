@@ -114,12 +114,13 @@ This project uses [MkDocs](https://www.mkdocs.org/) and
 Source for documentation is in the `docs` subdirectory.
 To build the documentation:
 ```
+./pkg_doc.py docs/ref.md
 mkdocs build
 ```
 
-To test-launch the MkDocs microsite locally:
+To preview the MkDocs microsite locally:
 ```
-./app.py
+./preview.py
 ```
 
 Then browse to <http://localhost:8000> to review the generated

@@ -11,7 +11,14 @@ import typing
 
 
 def calc_quantile_bins (num_rows: int) -> np.ndarray:
-    """calculate the number of bins to use for a quantile stripe"""
+    """calculate the number of bins to use for a quantile stripe
+
+    option : int, optional, default = 10
+        Description of the option.
+
+    another : int, optional, default = 200
+        Description of another option.
+    """
     granularity = max(round(math.log(num_rows) * 4), 1)
     return np.linspace(0, 1, num=granularity, endpoint=True)
 

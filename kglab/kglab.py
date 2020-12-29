@@ -33,7 +33,7 @@ import typing
 
 
 class KnowledgeGraph (object):
-    DEFAULT_NAMESPACES: dict = {
+    _DEFAULT_NAMESPACES: dict = {
         "dct":  "http://purl.org/dc/terms/",
         "owl":  "http://www.w3.org/2002/07/owl#",
         "rdf":  "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -43,25 +43,29 @@ class KnowledgeGraph (object):
         }
 
 
-    def __init__ (self,
-                  name: str = "KGlab",
-                  base_uri: str = None,
-                  language: str = "en",
-                  namespaces: dict = {},
-                  graph: typing.Optional[GraphLike] = None
-                 ) -> None:
+    def __init__ (
+        self,
+        *,
+        name: str = "kg+lab",
+        base_uri: str = None,
+        language: str = "en",
+        namespaces: dict = {},
+        graph: typing.Optional[GraphLike] = None
+        ) -> None:
+        """
+        """
         self.name = name
         self.base_uri = base_uri
         self.language = language
         self.gpus = GPUtil.getGPUs()
 
-        if not graph:
-            self._g = rdflib.Graph()
-        else:
+        if graph:
             self._g = graph
+        else:
+            self._g = rdflib.Graph()
 
         self._ns: dict = {}
-        self.merge_ns({ **self.DEFAULT_NAMESPACES, **namespaces })
+        self.merge_ns({ **self._DEFAULT_NAMESPACES, **namespaces })
 
 
     ######################################################################
@@ -77,23 +81,47 @@ class KnowledgeGraph (object):
     ## entity-resolution probabilistically rather than by strict
     ## rulesets.
 
-    def merge_ns (self, ns_set: dict) -> None:
+    def merge_ns (
+        self,
+        ns_set: dict
+        ) -> None:
+        """
+        """
         for prefix, uri in ns_set.items():
             self.add_ns(prefix, uri)
 
 
-    def add_ns (self, prefix: str, uri: str) -> None:
-        """Since rdflib converts Namespace bindings to URIRef, we'll keep references to them"""
+    def add_ns (
+        self,
+        prefix: str,
+        uri: str
+        ) -> None:
+        """
+        Since rdflib converts Namespace bindings to URIRef, we'll keep references to them
+        """
         self._ns[prefix] = rdflib.Namespace(uri)
         self._g.namespace_manager.bind(prefix, self._ns[prefix])
 
 
-    def get_ns (self, prefix: str) -> rdflib.Namespace:
+    def get_ns (
+        self,
+        prefix: str
+        ) -> rdflib.Namespace:
+        """
+        This is a javadoc style.
+
+        @param prefix: the TTL-format prefix used to reference the namespace
+        @return: rdflib.Namespace
+        """
         return self._ns[prefix]
 
 
-    def get_context (self) -> dict:
-        """return a context needed for JSON-LD serialization"""
+    def get_context (
+        self
+        ) -> dict:
+        """
+        return a context needed for JSON-LD serialization
+        """
         context: dict = {
             "@language": self.language,
             }
@@ -108,13 +136,26 @@ class KnowledgeGraph (object):
         return context
 
 
-    def add (self, s: RDF_Node, p: RDF_Node, o: RDF_Node) -> None:
+    def add (
+        self,
+        s: RDF_Node,
+        p: RDF_Node,
+        o: RDF_Node
+        ) -> None:
+        """
+        """
         self._g.add((s, p, o,))
 
 
     @classmethod
-    def type_date (cls, date: str, tz: dict) -> rdflib.Literal:
-        """input `date` should be interpretable as having a local timezone"""
+    def type_date (
+        cls,
+        date: str,
+        tz: dict
+        ) -> rdflib.Literal:
+        """
+        input `date` should be interpretable as having a local timezone
+        """
         date_tz = dup.parse(date, tzinfos=tz)
         return rdflib.Literal(date_tz, datatype=rdflib.XSD.dateTime)
 
@@ -131,11 +172,15 @@ class KnowledgeGraph (object):
     ## integrated into several of the existing tools for creating 
     ## network graphs.
 
-    def load_rdf (self,
-                  path: PathLike,
-                  format: str = "n3",
-                  encoding: str = "utf-8"
-                 ) -> None:
+    def load_rdf (
+        self,
+        path: PathLike,
+        *,
+        format: str = "n3",
+        encoding: str = "utf-8"
+        ) -> None:
+        """
+        """
         if isinstance(path, pathlib.Path):
             filename = path.as_posix()
         else:
@@ -144,19 +189,27 @@ class KnowledgeGraph (object):
         self._g.parse(filename, format=format, encoding=encoding)
 
 
-    def load_rdf_text (self,
-                       data: typing.AnyStr,
-                       format: str = "n3",
-                       encoding: str = "utf-8"
-                      ) -> None:
+    def load_rdf_text (
+        self,
+        data: typing.AnyStr,
+        *,
+        format: str = "n3",
+        encoding: str = "utf-8"
+        ) -> None:
+        """
+        """
         self._g.parse(data=data, format=format, encoding=encoding);
 
 
-    def save_rdf (self,
-                  path: PathLike,
-                  format: str = "n3",
-                  encoding: str = "utf-8"
-                 ) -> None:
+    def save_rdf (
+        self,
+        path: PathLike,
+        *,
+        format: str = "n3",
+        encoding: str = "utf-8"
+        ) -> None:
+        """
+        """
         if isinstance(path, pathlib.Path):
             filename = path.as_posix()
         else:
@@ -165,26 +218,38 @@ class KnowledgeGraph (object):
         self._g.serialize(destination=filename, format=format, encoding=encoding)
 
 
-    def save_rdf_text (self,
-                       format: str = "n3",
-                       encoding: str = "utf-8"
-                      ) -> str:
+    def save_rdf_text (
+        self,
+        *,
+        format: str = "n3",
+        encoding: str = "utf-8"
+        ) -> str:
+        """
+        """
         return self._g.serialize(destination=None, format=format, encoding=encoding).decode(encoding) 
 
 
-    def load_jsonld (self,
-                     path: PathLike,
-                     encoding: str = "utf-8"
-                    ) -> None:
+    def load_jsonld (
+        self,
+        path: PathLike,
+        *,
+        encoding: str = "utf-8"
+        ) -> None:
+        """
+        """
         with open(path, "r", encoding=encoding) as f:
             data = json.load(f)
             self._g.parse(data=json.dumps(data), format="json-ld", encoding=encoding)
 
 
-    def save_jsonld (self,
-                     path: PathLike,
-                     encoding: str = "utf-8"
-                    ) -> None:
+    def save_jsonld (
+        self,
+        path: PathLike,
+        *,
+        encoding: str = "utf-8"
+        ) -> None:
+        """
+        """
         data = self._g.serialize(
             format = "json-ld",
             context = self.get_context(),
@@ -196,9 +261,12 @@ class KnowledgeGraph (object):
             f.write(data)
 
 
-    def load_parquet (self,
-                      path: PathLike
-                     ) -> None:
+    def load_parquet (
+        self,
+        path: PathLike
+        ) -> None:
+        """
+        """
         df = pq.read_pandas(path).to_pandas()
 
         for index, row in df.iterrows():
@@ -206,10 +274,14 @@ class KnowledgeGraph (object):
             self._g.parse(data=triple, format="n3")
 
 
-    def save_parquet (self,
-                      path: PathLike,
-                      compression: str = "gzip"
-                     ) -> None:
+    def save_parquet (
+        self,
+        path: PathLike,
+        *,
+        compression: str = "gzip"
+        ) -> None:
+        """
+        """
         rows_list = [ {"s": s.n3(), "p": p.n3(), "o": o.n3()} for s, p, o in self._g ]
         df = pd.DataFrame(rows_list, columns=("s", "p", "o"))
         table = pa.Table.from_pandas(df)
@@ -219,20 +291,28 @@ class KnowledgeGraph (object):
     ######################################################################
     ## SPARQL queries
 
-    def query (self,
-               sparql: str,
-               bindings: dict = {}
-              ) -> typing.Iterable:
+    def query (
+        self,
+        sparql: str,
+        *,
+        bindings: dict = {}
+        ) -> typing.Iterable:
+        """
+        """
         for row in self._g.query(sparql, initBindings=bindings):
             yield row
 
 
     @classmethod
-    def n3fy (cls, 
-              d: dict, 
-              nm: rdflib.namespace.NamespaceManager, 
-              pythonify: bool = True
-             ) -> dict:
+    def n3fy (
+        cls,
+        d: dict,
+        nm: rdflib.namespace.NamespaceManager,
+        *,
+        pythonify: bool = True
+        ) -> dict:
+        """
+        """
         if not pythonify:
             return dict([ (k, v.n3(nm),) for k, v in d.items() ])
         else:
@@ -247,12 +327,16 @@ class KnowledgeGraph (object):
             return dict(items)
 
 
-    def query_as_df (self,
-                     sparql: str,
-                     bindings: dict = {},
-                     simplify: bool = True,
-                     pythonify: bool = True
-                    ) -> pd.DataFrame:
+    def query_as_df (
+        self,
+        sparql: str,
+        *,
+        bindings: dict = {},
+        simplify: bool = True,
+        pythonify: bool = True
+        ) -> pd.DataFrame:
+        """
+        """
         iter = self._g.query(sparql, initBindings=bindings)
 
         if simplify:
@@ -267,19 +351,22 @@ class KnowledgeGraph (object):
     ######################################################################
     ## SHACL validation
 
-    def validate (self,
-                  shacl_graph: typing.Optional[typing.Union[GraphLike, typing.AnyStr]] = None,
-                  shacl_graph_format: typing.Optional[str] = None,
-                  ont_graph: typing.Optional[typing.Union[GraphLike, typing.AnyStr]] = None,
-                  ont_graph_format: typing.Optional[str] = None,
-                  advanced: typing.Optional[bool] = False,
-                  inference: typing.Optional[str] = None,
-                  abort_on_error: typing.Optional[bool] = None,
-                  serialize_report_graph: typing.Optional[str] = "n3",
-                  debug: bool = False,
-                  **kwargs: typing.Any
-                 ) -> typing.Tuple[bool, "KnowledgeGraph", str]:
-
+    def validate (
+        self,
+        *,
+        shacl_graph: typing.Optional[typing.Union[GraphLike, typing.AnyStr]] = None,
+        shacl_graph_format: typing.Optional[str] = None,
+        ont_graph: typing.Optional[typing.Union[GraphLike, typing.AnyStr]] = None,
+        ont_graph_format: typing.Optional[str] = None,
+        advanced: typing.Optional[bool] = False,
+        inference: typing.Optional[str] = None,
+        abort_on_error: typing.Optional[bool] = None,
+        serialize_report_graph: typing.Optional[str] = "n3",
+        debug: bool = False,
+        **kwargs: typing.Any
+        ) -> typing.Tuple[bool, "KnowledgeGraph", str]:
+        """
+        """
         conforms, report_graph_data, report_text = pyshacl.validate(
             self._g,
             shacl_graph=shacl_graph,
@@ -314,16 +401,24 @@ class KnowledgeGraph (object):
     ## adapted from `skosify` https://github.com/NatLibFi/Skosify
     ## it wasn't being updated regularly, but may be integrated again
 
-    def infer_skos_related (self) -> None:
-        """Make sure that skos:related is stated in both directions (S23)."""
+    def infer_skos_related (
+        self
+        ) -> None:
+        """
+        Make sure that skos:related is stated in both directions (S23).
+        """
         _skos = self.get_ns("skos")
 
         for s, o in self._g.subject_objects(_skos.related):
             self._g.add((o, _skos.related, s))
 
 
-    def infer_skos_topConcept (self) -> None:
-        """Infer skos:topConceptOf/skos:hasTopConcept (S8) and skos:inScheme (S7)."""
+    def infer_skos_topConcept (
+        self
+        ) -> None:
+        """
+        Infer skos:topConceptOf/skos:hasTopConcept (S8) and skos:inScheme (S7).
+        """
         _skos = self.get_ns("skos")
 
         for s, o in self._g.subject_objects(_skos.hasTopConcept):
@@ -336,8 +431,13 @@ class KnowledgeGraph (object):
             self._g.add((s, _skos.inScheme, o))
 
 
-    def infer_skos_hierarchical (self, narrower: bool = True) -> None:
-        """Infer skos:broader/skos:narrower (S25) but only keep skos:narrower on request.
+    def infer_skos_hierarchical (
+        self,
+        *,
+        narrower: bool = True
+        ) -> None:
+        """
+        Infer skos:broader/skos:narrower (S25) but only keep skos:narrower on request.
         :param bool narrower: If set to False, skos:narrower will not be added,
         but rather removed.
         """
@@ -354,8 +454,14 @@ class KnowledgeGraph (object):
                 self._g.remove((s, _skos.narrower, o))
 
 
-    def infer_skos_transitive (self, narrower: bool = True) -> None:
-        """Perform transitive closure inference (S22, S24)."""
+    def infer_skos_transitive (
+        self,
+        *,
+        narrower: bool = True
+        ) -> None:
+        """
+        Perform transitive closure inference (S22, S24).
+        """
         _skos = self.get_ns("skos")
 
         for conc in self._g.subjects(self.get_ns("rdf").type, _skos.Concept):
@@ -369,8 +475,13 @@ class KnowledgeGraph (object):
                     self._g.add((bt, _skos.narrowerTransitive, conc))
 
 
-    def infer_skos_symmetric_mappings (self, related: bool = True) -> None:
-        """Ensure that the symmetric mapping properties (skos:relatedMatch,
+    def infer_skos_symmetric_mappings (
+        self,
+        *,
+        related: bool = True
+        ) -> None:
+        """
+        Ensure that the symmetric mapping properties (skos:relatedMatch,
         skos:closeMatch and skos:exactMatch) are stated in both directions (S44).
         :param bool related: Add the skos:related super-property for all
             skos:relatedMatch relations (S41).
@@ -391,11 +502,15 @@ class KnowledgeGraph (object):
             self._g.add((o, _skos.exactMatch, s))
 
 
-    def infer_skos_hierarchical_mappings (self, narrower: bool = True) -> None:
-        """Infer skos:broadMatch/skos:narrowMatch (S43) and add the super-properties
+    def infer_skos_hierarchical_mappings (
+        self,
+        *,
+        narrower: bool = True
+        ) -> None:
+        """
+        Infer skos:broadMatch/skos:narrowMatch (S43) and add the super-properties
         skos:broader/skos:narrower (S41).
-        :param bool narrower: If set to False, skos:narrowMatch will not be added,
-            but rather removed.
+        :param bool narrower: If set to False, skos:narrowMatch will be removed not added.
         """
         _skos = self.get_ns("skos")
 
@@ -416,9 +531,13 @@ class KnowledgeGraph (object):
                 self._g.remove((s, _skos.narrowMatch, o))
 
 
-    def infer_rdfs_classes (self) -> None:
-        """Perform RDFS subclass inference.
-        Mark all resources with a subclass type with the upper class."""
+    def infer_rdfs_classes (
+        self
+        ) -> None:
+        """
+        Perform RDFS subclass inference.
+        Mark all resources with a subclass type with the upper class.
+        """
         _rdfs = self.get_ns("rdfs")
 
         # find out the subclass mappings
@@ -439,9 +558,13 @@ class KnowledgeGraph (object):
                     self._g.add((res, self.get_ns("rdf").type, uc))
 
 
-    def infer_rdfs_properties (self) -> None:
-        """Perform RDFS subproperty inference.
-        Add superproperties where subproperties have been used."""
+    def infer_rdfs_properties (
+        self
+        ) -> None:
+        """
+        Perform RDFS subproperty inference.
+        Add superproperties where subproperties have been used.
+        """
         _rdfs = self.get_ns("rdfs")
 
         # find out the subproperty mappings
@@ -462,18 +585,24 @@ class KnowledgeGraph (object):
                     self._g.add((s, sp, o))
 
                     
-    def infer_rdfs_closure (self) -> None:
-        """add inferred triples from RDFS based on OWL-RL,
-        see https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_RDFLib
+    def infer_rdfs_closure (
+        self
+        ) -> None:
+        """
+        Add inferred triples from RDFS based on OWL-RL,
+        see <https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_RDFLib>
         """
         rdfs = owlrl.RDFSClosure.RDFS_Semantics(self._g, False, False, False)
         rdfs.closure()
         rdfs.flush_stored_triples()
 
 
-    def infer_owlrl_closure (self) -> None:
-        """add inferred triples from OWL based on OWL-RL,
-        see https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_RDFLib
+    def infer_owlrl_closure (
+        self
+        ) -> None:
+        """
+        Add inferred triples from OWL based on OWL-RL,
+        see <https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_RDFLib>
         """
         owl = owlrl.OWLRL_Semantics(self._g, False, False, False)
         owl.closure()
