@@ -26,7 +26,7 @@ def static_proxy (path=""):
     else:
         suffix = PurePosixPath(path).suffix
 
-    if suffix not in [".css", ".js", ".png"]:
+    if suffix not in [".css", ".js", ".png", ".svg"]:
         path = os.path.join(path, "index.html")
 
     return send_from_directory(DOCS_FILES, path)

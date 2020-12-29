@@ -341,7 +341,7 @@ class KnowledgeGraph (object):
 
         if simplify:
             nm = self._g.namespace_manager
-            df = pd.DataFrame([ self.n3fy(row.asdict(), nm, pythonify) for row in iter ])
+            df = pd.DataFrame([ self.n3fy(row.asdict(), nm, pythonify=pythonify) for row in iter ])
         else:
             df = df = pd.DataFrame([ row.asdict() for row in iter ])
         
