@@ -77,14 +77,12 @@ integrating `kglab` with other popular related libraries in Python:
 
 To set up the build environment locally:
 ```
-pip install coverage
-pip install flask
-pip install jupyterlab
-pip install mkdocs-material
-pip install mypy
-pip install nbconvert
-pip install pymdown-extensions
+pip install -r requirements_build.txt
 ```
+
+You will also need to download
+[`ChromeDriver`](https://chromedriver.chromium.org/downloads) 
+for your version of the `Chrome` brower, saved as `chromedriver` in this directory.
 
 This project uses `typing` and [`mypy`](https://mypy.readthedocs.io/) for *type checking*.
 To run type checking:
@@ -109,11 +107,16 @@ bash <(curl -s https://codecov.io/bash) -t @.cc_token
 Test coverage reports can be viewed at
 <https://codecov.io/gh/DerwenAI/kglab>
 
+To generate documentation pages, this project uses:
 
-This project uses [MkDocs](https://www.mkdocs.org/),
-[`makedocs-material`](https://squidfunk.github.io/mkdocs-material/),
-and [`nbconvert`](https://nbconvert.readthedocs.io/)
-to generate documentation pages.
+  * [`MkDocs`](https://www.mkdocs.org/)
+  * [`makedocs-material`](https://squidfunk.github.io/mkdocs-material/)
+  * [`Jupyter`](https://jupyter.org/install)
+  * [`nbconvert`](https://nbconvert.readthedocs.io/)
+  * [`Selenium`](https://selenium-python.readthedocs.io/)
+  * [`Chrome`](https://www.google.com/chrome/)
+  * [`Flask`](https://flask.palletsprojects.com/)
+
 Source for documentation is in the `docs` subdirectory.
 To build the documentation:
 ```
@@ -122,7 +125,7 @@ To build the documentation:
 mkdocs build
 ```
 
-To preview the MkDocs microsite locally:
+To preview the generated microsite locally:
 ```
 ./preview.py
 ```
