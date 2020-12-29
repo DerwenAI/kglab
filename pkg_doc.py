@@ -117,6 +117,7 @@ def write_markdown (filename):
 
 if __name__ == "__main__":
     ref_md_file = sys.argv[1]
+    class_list = [ "KnowledgeGraph", "Measure", "Simplex0", "Simplex1", "Subgraph" ]
 
     import kglab
     module_name = "kglab"
@@ -127,15 +128,20 @@ if __name__ == "__main__":
     #sys.exit(0)
 
     ## format markdown
+    todo_list = {}
     md = []
 
     md.append("# Reference: `{}` package".format(module_name))
     append_doc(md, module_obj)
 
-    ## walk the module tree for each class definition
+    ## walk the module tree to find class definitions
     for class_name, class_obj in inspect.getmembers(module_obj, inspect.isclass):
-        if class_name != "KnowledgeGraph":
-            continue
+        if class_name in class_list:
+            todo_list[class_name] = class_obj
+
+    ## format each specified class definition
+    for class_name in class_list:
+        class_obj = todo_list[class_name]
 
         md.append("## [`{}` class](#{})".format(class_name, class_name))
         obj_md_pos = {}

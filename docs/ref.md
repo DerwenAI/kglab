@@ -312,6 +312,178 @@ see <https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_R
 
 
 
+## [`Measure` class](#Measure)
+#### [`__init__` method](#kglab.Measure.__init__)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L61)
+
+```python
+__init__(name="generic")
+```
+
+#### [`reset` method](#kglab.Measure.reset)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L65)
+
+```python
+reset()
+```
+
+#### [`measure_graph` method](#kglab.Measure.measure_graph)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L76)
+
+```python
+measure_graph(kg)
+```
+
+#### [`get_keyset` method](#kglab.Measure.get_keyset)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L92)
+
+```python
+get_keyset(incl_pred=True)
+```
+*returns:* `typing.List[str]`
+
+## [`Simplex0` class](#Simplex0)
+#### [`__init__` method](#kglab.Simplex0.__init__)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L17)
+
+```python
+__init__(name="generic")
+```
+
+#### [`increment` method](#kglab.Simplex0.increment)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L23)
+
+```python
+increment(item)
+```
+
+#### [`get_tally` method](#kglab.Simplex0.get_tally)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L27)
+
+```python
+get_tally()
+```
+*returns:* `typing.Union[pandas.core.frame.DataFrame, NoneType]`
+
+#### [`get_keyset` method](#kglab.Simplex0.get_keyset)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L32)
+
+```python
+get_keyset()
+```
+*returns:* `set`
+
+## [`Simplex1` class](#Simplex1)
+#### [`get_tally` method](#kglab.Simplex1.get_tally)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L27)
+
+```python
+get_tally()
+```
+*returns:* `typing.Union[pandas.core.frame.DataFrame, NoneType]`
+
+#### [`get_keyset` method](#kglab.Simplex1.get_keyset)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L32)
+
+```python
+get_keyset()
+```
+*returns:* `set`
+
+#### [`__init__` method](#kglab.Simplex1.__init__)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L39)
+
+```python
+__init__(name="generic")
+```
+
+#### [`increment` method](#kglab.Simplex1.increment)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L44)
+
+```python
+increment(item0, item1)
+```
+
+#### [`get_tally_map` method](#kglab.Simplex1.get_tally_map)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L49)
+
+```python
+get_tally_map()
+```
+*returns:* `typing.Tuple[pandas.core.frame.DataFrame, dict]`
+
+## [`Subgraph` class](#Subgraph)
+#### [`__init__` method](#kglab.Subgraph.__init__)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L18)
+
+```python
+__init__(kg, preload=[], excludes=[])
+```
+
+#### [`triples` method](#kglab.Subgraph.triples)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L24)
+
+```python
+triples()
+```
+iterator for triples to include in the subgraph
+
+
+*returns:* `typing.Generator[typing.Tuple[typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode], typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode], typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]], NoneType, NoneType]`
+
+#### [`transform` method](#kglab.Subgraph.transform)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L31)
+
+```python
+transform(node)
+```
+label encoding: return a unique integer ID for the given graph node
+
+
+*returns:* `int`
+
+#### [`inverse_transform` method](#kglab.Subgraph.inverse_transform)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L42)
+
+```python
+inverse_transform(id)
+```
+label encoding: return the graph node corresponding to a unique integer ID
+
+
+*returns:* `~NodeLike`
+
+#### [`get_name` method](#kglab.Subgraph.get_name)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L50)
+
+```python
+get_name(node)
+```
+return a human-readable label for an RDF node
+
+
+*returns:* `str`
+
+#### [`pyvis_style_node` method](#kglab.Subgraph.pyvis_style_node)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L63)
+
+```python
+pyvis_style_node(g, node_id, label, style={})
+```
+
+#### [`vis_pyvis` method](#kglab.Subgraph.vis_pyvis)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L78)
+
+```python
+vis_pyvis(notebook=False, style={})
+```
+https://pyvis.readthedocs.io/
+this is one example; you may need to copy and replicate 
+to construct the graph design you need
+
+
+*returns:* `pyvis.network.Network`
+
 ---
 ## [module functions](#kglab)
 #### [`calc_quantile_bins` function](#kglab.calc_quantile_bins)
