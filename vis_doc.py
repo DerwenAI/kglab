@@ -13,7 +13,7 @@ import re
 import sys
 import time
 
-
+PAT_HEADER = re.compile(r"^(```python\n\# for use.*production:\n.*\n```\n)", re.MULTILINE)
 PAT_IFRAME = re.compile(r"^(\<iframe\n(?:\s+\S+\n)+\>\<\/iframe\>\n)", re.MULTILINE)
 PAT_SOURCE = re.compile(r"\s+src\=\"(\S+)\"")
 
@@ -78,6 +78,26 @@ def replace_pyvis_iframe (text, parent, stem):
     return "\n".join(output)
 
 
+def replace_sys_header (text, parent, stem):
+    output = []
+
+    for chunk in PAT_HEADER.split(text):
+        m_iframe = PAT_HEADER.match(chunk)
+
+        if m_iframe:
+            header = """ 
+!!! note
+    To run this notebook in JupyterLab, load [`examples/{}.ipynb`](https://github.com/DerwenAI/kglab/blob/main/examples/{}.ipynb)
+
+""".format(stem, stem)
+
+            output.append(header)
+        else:
+            output.append(chunk)
+
+    return "\n".join(output)
+
+
 if __name__ == "__main__":
     filename = Path(sys.argv[1])
 
@@ -86,6 +106,10 @@ if __name__ == "__main__":
 
     with open(filename, "r") as f:
         text = f.read()
+
+    text = replace_sys_header(text, parent, stem)
+    #print(text)
+    #sys.exit(0)
 
     text = replace_pyvis_iframe(text, parent, stem)
 

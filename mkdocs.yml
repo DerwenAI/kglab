@@ -12,38 +12,38 @@ nav:
         - Use Cases: use_case.md
         - Package Reference: ref.md
         - Dependencies: depend.md
-        - Acknowledgements: ack.md
         - About The Author: author.md
         - Glossary: glossary.md
         - Bibliography: biblio.md
     - Tutorial:
         - Setup:
             - Installation: tutorial.md
-            - Data sources: ex00.md
+            - Data sources: ex0_0.md
         - Construction:
-            - Build an RDF graph using `RDFlib`: ex01.md
-            - Leverage the `kglab` abstraction layer: ex02.md
+            - Build an RDF graph using `RDFlib`: ex1_0.md
+            - Leverage the `kglab` abstraction layer: ex1_1.md
         - Serialization:
-            - Build a medium size KG from a CSV dataset: ex04.md
+            - Build a medium size KG from a CSV dataset: ex2_0.md
         - Visualization:
-            - Interactive graph visualization with `PyVis`: ex03.md
+            - Interactive graph visualization with `PyVis`: ex3_0.md
         - Querying:
-            - Run SPARQL queries: ex05.md
+            - Run SPARQL queries: ex4_0.md
         - Validation:
-            - SHACL validation with `pySHACL`: ex06.md
+            - SHACL validation with `pySHACL`: ex5_0.md
         - Graph Algorithms:
-            - Graph algorithms with `NetworkX`: ex07.md
-            - Discover community structure using `iGraph` and `leidenalg`: ex11.md
+            - Graph algorithms with `NetworkX`: ex6_0.md
+            - Discover community structure using `iGraph` and `leidenalg`: ex6_1.md
         - Inference:
             - Inference capabilities: infer.md
-            - Measurement and inference: ex10.md
-            - Statistical relational learning with `pslpython`: ex08.md
+            - Measurement and inference: ex7_0.md
+            - Statistical relational learning with `pslpython`: ex7_1.md
         - Embedding:
-            - Vector embedding with `gensim`: ex09.md
+            - Vector embedding with `gensim`: ex8_0.md
         - Topology:
-            - Evolved Shape Prediction: stub.ipynb
+            - (TBD) Evolved Shape Prediction: stub.ipynb
         - Distributed Systems:
-            - Distributed processing with `RAPIDS` and `Ray`: stub.ipynb
+            - (TBD) Distributed processing with `RAPIDS` and `Ray`: stub.ipynb
+    - Acknowledgements: ack.md
 
 theme:
   name: material
@@ -60,4 +60,4 @@ markdown_extensions:
   - pymdownx.inlinehilite
 
 use_directory_urls: true
-copyright: Source code and documentation are <strong><a href="ack/">licensed</a></strong> under an MIT License; Copyright (c) 2020-2021 Derwen, Inc.
+copyright: Source code and documentation are <strong><a href="https://github.com/DerwenAI/kglab/blob/main/LICENSE" target="_blank">licensed</a></strong> under an MIT License; Copyright (c) 2020-2021 <strong><a href="https://derwen.ai/" target="_blank">Derwen, Inc.</a></strong>
