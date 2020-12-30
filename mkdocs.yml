@@ -13,8 +13,6 @@ nav:
         - Package Reference: ref.md
         - Dependencies: depend.md
         - About The Author: author.md
-        - Glossary: glossary.md
-        - Bibliography: biblio.md
     - Tutorial:
         - Setup:
             - Installation: tutorial.md
@@ -43,6 +41,8 @@ nav:
             - (TBD) Evolved Shape Prediction: stub.ipynb
         - Distributed Systems:
             - (TBD) Distributed processing with `RAPIDS` and `Ray`: stub.ipynb
+    - Glossary: glossary.md
+    - Bibliography: biblio.md
     - Acknowledgements: ack.md
 
 theme:

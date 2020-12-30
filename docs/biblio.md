@@ -60,6 +60,18 @@ Aidan Hogan, Eva Blomqvist, Michael Cochez, Claudia d'Amato, Gerard de Melo, Cla
 Eric Jonas, Johann Schleier-Smith, Vikram Sreekanti, Chia-Che Tsai, Anurag Khandelwal, Qifan Pu, Vaishaal Shankar, Joao Carreira, Karl Krauth, Neeraja Yadwadkar, Joseph E. Gonzalez, Raluca Ada Popa, Ion Stoica, David A. Patterson  
 *arXiv* (2019)
 
+#### lenat1982aaai
+
+["Heuretics: Theoretical and Experimental Study of Heuristic Rules"](https://www.aaai.org/Library/AAAI/1982/aaai82-038.php)  
+Douglas B. Lenat  
+AAAI (1982)
+
+#### lenat1984ai
+
+["Why AM and Eurisko appear to work"](https://doi.org/10.1016/0004-3702(84)90016-X)  
+Douglas B. Lenat, John Seely Brown  
+*Artificial Intelligence* 23:3 (1984)
+
 #### lorica2020nlp
 
 ["2020 NLP Survey Report"](https://gradientflow.com/2020nlpsurvey/)  
