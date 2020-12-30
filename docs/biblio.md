@@ -6,6 +6,12 @@
 Panos Alexopoulos  
 O'Reilly Media (2020)
 
+#### anderson2020dt
+
+[*Data Teams: A Unified Management Model for Successful Data-Focused Teams*](https://www.apress.com/us/book/9781484262276)  
+Jesse Anderson  
+Apress (2020)
+
 #### bell2019
 
 [*Get Programming: Learn to code with Python*](https://www.manning.com/books/get-programming)  
@@ -53,6 +59,18 @@ Aidan Hogan, Eva Blomqvist, Michael Cochez, Claudia d'Amato, Gerard de Melo, Cla
 ["Cloud Programming Simplified: A Berkeley View on Serverless Computing"](https://arxiv.org/abs/1902.03383)  
 Eric Jonas, Johann Schleier-Smith, Vikram Sreekanti, Chia-Che Tsai, Anurag Khandelwal, Qifan Pu, Vaishaal Shankar, Joao Carreira, Karl Krauth, Neeraja Yadwadkar, Joseph E. Gonzalez, Raluca Ada Popa, Ion Stoica, David A. Patterson  
 *arXiv* (2019)
+
+#### lorica2020nlp
+
+["2020 NLP Survey Report"](https://gradientflow.com/2020nlpsurvey/)  
+Ben Lorica, Paco Nathan  
+Gradient Flow (2020)
+
+#### lorica2020rai
+
+["Responsible AI in Practice"](https://gradientflow.com/ResponsibleAI2020)
+Ben Lorica, Paco Nathan, Gina Blaber, Andrew Burt, Rumman Chowdhury, Yishay Carmiel  
+Gradient Flow (2020)
 
 #### negro2021
 
