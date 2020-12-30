@@ -1,5 +1,35 @@
 # Use Cases
 
+## Data Context
+
+["data context"]( http://cidrdb.org/cidr2017/papers/p111-hellerstein-cidr17.pdf) – 
+
+In a world where organizations must be resilient in the face of abrupt
+changes, we must adapt more resilient means for reconciling data from
+a wide variety of sources: vendors, customers, partners, government
+agencies, standards bodies, and so on.
+
+KGs provide means for a kind of *abstraction layer* to make the data
+cohere.
+
+
+However, it's not clear when Gartner will acknowledge the breadth of
+industry adoption for KG approaches in enterprise data management.
+
+To paraphrase [Natasha Noy](https://research.google/people/NatalyaNoy/), 
+a research scientist at Google Research and highly-regarded practitioner 
+in this field:
+
+> An "enterprise knowledge graph" provides *ground truth* through which we can reconcile our queries and other usage of many disparate data stores.
+
+For example, having *persistent identifiers* with other metadata
+attached is a great start.
+
+
+
+---
+
+
 For several KG projects, we kept reusing a similar working set of libraries:
 
   * [`rdflib`](https://rdflib.readthedocs.io/)

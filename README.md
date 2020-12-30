@@ -75,6 +75,11 @@ integrating `kglab` with other popular related libraries in Python:
 
 ## Build Instructions
 
+Note: most use cases won't need to build this package locally, 
+and instead will simply install directly from
+[PyPi](https://pypi.python.org/pypi/kglab)
+or [Conda](https://docs.conda.io/).
+
 To set up the build environment locally:
 ```
 pip install -r requirements_build.txt
@@ -133,6 +138,11 @@ To preview the generated microsite locally:
 Then browse to <http://localhost:8000> to review the generated
 documentation.
 
+To package the generated microsite for deployment on a
+Flask/WSGI server:
+```
+tar cvzf kgl.tgz site/
+```
 
 To update the [release on PyPi](https://pypi.org/project/kglab/):
 ```

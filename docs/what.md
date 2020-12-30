@@ -1,43 +1,44 @@
 # What is a Knowledge Graph?
 
-Gartner Research began to acknowledge the term 
-[*knowledge graph*](https://derwen.ai/d/knowledge_graph) 
-in 2018, and in mid-2020
-described the importance of KGs for developing [AI
-applications](https://www.gartner.com/en/documents/3985680/how-to-build-knowledge-graphs-that-enable-ai-driven-ente).
+  * RDF graph, [*semantic technologies*](../glossary/#semantic-technologies)
+  * KG compare/contrast with [*property graph*](../glossary/#property-graph)
+  * the ubiquity of graph-based work in data science
+  * graph algorithms vs. visualization vs. graph AI vs. probabilistic graphs vs. graph queries
+  * *separation of concerns* between graph-based data science and data engineering
+  * lessons of 2010 all over again: MPPs, BI, EDW, etc.
 
-However, it's not clear when Gartner will acknowledge the breadth of
-industry adoption for KG approaches in enterprise data management.
+narrative arc: 
+[linden2006early](../biblio/#linden2006early)
+ => 
+[kreps2014](../biblio/#kreps2014)
+ =>
+[anderson2020dt](../biblio/#anderson2020dt)
+with
+[breiman2001](../biblio/#breiman2001) in-between
 
-To paraphrase [Natasha Noy](https://research.google/people/NatalyaNoy/), 
-a research scientist at Google Research and highly-regarded practitioner 
-in this field:
 
-> An "enterprise knowledge graph" provides *ground truth* through which we can reconcile our queries and other usage of many disparate data stores.
+In 2018, Gartner began to acknowledge the term 
+[*knowledge graph*](../glossary/#knowledge-graph)
+and in mid-2020 described the importance of KGs for developing 
+AI applications[^1].
 
-For example, having *persistent identifiers* with other metadata
-attached is a great start.
+---
 
 KGs allow for multiple teams to be working concurrently, i.e., with
 less centralized control.
 
 This is in contrast to legacy notion about 
-[*one size fits all*](https://en.wikipedia.org/wiki/One_size_fits_all) 
+[*one size fits all*](../glossary/#osfa)
 (OSFA) for data management.
 
-To wit, the best way to make data consistent is not to import *all* of
-the data sources into a single data management framework, where one
-individual determines the schema and other data management rules.
+To wit, the best way to make data *consistent* and *available*[^2]
+is not to import **all** of the data sources into a single 
+[data management](../glossary/#data-management)
+framework, where a limited of set of individuals proscribe the
+schema and access rules.
+Those days are long gone.
 
 
-## Data Context
+[^1]: ["How to Build Knowledge Graphs That Enable AI-Driven Enterprise Applications"](https://www.gartner.com/en/documents/3985680/how-to-build-knowledge-graphs-that-enable-ai-driven-ente), Afraz Jaffri, *Gartner Research* (2020-05-27)
 
-["data context"]( http://cidrdb.org/cidr2017/papers/p111-hellerstein-cidr17.pdf) – 
-
-In a world where organizations must be resilient in the face of abrupt
-changes, we must adapt more resilient means for reconciling data from
-a wide variety of sources: vendors, customers, partners, government
-agencies, standards bodies, and so on.
-
-KGs provide means for a kind of *abstraction layer* to make the data
-cohere.
+[^2]: see [brewer2012cap](../biblio/#brewer2012cap) for discussion of the *CAP Theorem*
