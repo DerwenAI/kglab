@@ -7,12 +7,12 @@ nav:
     - Home: index.md
     - User Guide:
         - Getting Started: start.md
-        - What Is A Knowledge Graph?: what.md
-        - Concepts: concepts.md
+        - What is a Knowledge Graph?: what.md
         - Use Cases: use_case.md
+        - Concepts: concepts.md
         - Package Reference: ref.md
         - Dependencies: depend.md
-        - About The Author: author.md
+        - About The Author(s): author.md
     - Tutorial:
         - Setup:
             - Installation: tutorial.md
@@ -54,6 +54,7 @@ plugins:
 markdown_extensions:
   - admonition
   - codehilite
+  - footnotes
   - pymdownx.snippets
   - pymdownx.highlight:
       linenums: true

@@ -18,9 +18,21 @@ Apress (2020)
 Ana Bell  
 Manning (2018)
 
+#### breiman2001
+
+["Statistical Modeling: The Two Cultures"](https://doi.org/10.1214/ss/1009213726)  
+Leo Breiman  
+*Statist. Sci.* 16:3 (2001)
+
+#### brewer2012cap
+
+["CAP Twelve years later: How the 'Rules' have Changed"](https://doi.org/10.1109/MC.2012.37)  
+Eric Brewer  
+*Computer* 45:2 (2012)
+
 #### ceder2018
 
-[*The Quick Python Book, Third Edition*](https://www.manning.com/books/the-quick-python-book-third-edition?query=python)  
+[*The Quick Python Book, Third Edition*](https://www.manning.com/books/the-quick-python-book-third-edition)  
 Naomi Ceder  
 Manning (2018)
 
@@ -29,6 +41,17 @@ Manning (2018)
 [*Deep Learning with Python*](https://www.manning.com/books/deep-learning-with-python)  
 François Chollet  
 Manning (2017)
+
+#### das2020meta
+
+["Metadata Day 2020"](https://metadataday2020.splashthat.com/)  
+Shirshanka Das, Paco Nathan, Nadiya Hayes, Joe M. Hellerstein,
+Kapil Surlaker, Chris Williams, Natasha F. Noy,
+Daniella Lowenberg, Ian Mulvany, Mark Grover, Alejandro Saucedo,
+Deborah L. McGuinness, Ted Habermann, Charles Smith, Julien Le Dem,
+Deepak Chandramouli, Igor Perisic, Sunheng Taing, Satyen Sangani,
+Aaron Kalb, Daniel Rincon Silva  
+LinkedIn (2020)
 
 #### gosnell2020
 
@@ -60,6 +83,12 @@ Aidan Hogan, Eva Blomqvist, Michael Cochez, Claudia d'Amato, Gerard de Melo, Cla
 Eric Jonas, Johann Schleier-Smith, Vikram Sreekanti, Chia-Che Tsai, Anurag Khandelwal, Qifan Pu, Vaishaal Shankar, Joao Carreira, Karl Krauth, Neeraja Yadwadkar, Joseph E. Gonzalez, Raluca Ada Popa, Ion Stoica, David A. Patterson  
 *arXiv* (2019)
 
+#### kreps2014
+
+[*I Heart Logs: Event Data, Stream Processing, and Data Integration*](https://www.goodreads.com/en/book/show/23237460)  
+Jay Kreps  
+O'Reilly Media (2014)
+
 #### lenat1982aaai
 
 ["Heuretics: Theoretical and Experimental Study of Heuristic Rules"](https://www.aaai.org/Library/AAAI/1982/aaai82-038.php)  
@@ -72,6 +101,12 @@ AAAI (1982)
 Douglas B. Lenat, John Seely Brown  
 *Artificial Intelligence* 23:3 (1984)
 
+#### linden2006early
+
+["Early Amazon: Splitting the website"](http://glinden.blogspot.com/2006/02/early-amazon-splitting-website.html)  
+Greg Linden  
+*Geeking with Greg* (2006)
+
 #### lorica2020nlp
 
 ["2020 NLP Survey Report"](https://gradientflow.com/2020nlpsurvey/)  
@@ -83,6 +118,12 @@ Gradient Flow (2020)
 ["Responsible AI in Practice"](https://gradientflow.com/ResponsibleAI2020)
 Ben Lorica, Paco Nathan, Gina Blaber, Andrew Burt, Rumman Chowdhury, Yishay Carmiel  
 Gradient Flow (2020)
+
+#### nathan2014jem
+
+[*Just Enough Math*](https://derwen.ai/jem)  
+Paco Nathan  
+O'Reilly Media (2014)
 
 #### negro2021
 
