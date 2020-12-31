@@ -3,12 +3,16 @@
 The **kglab** library provides a simple abstraction layer in Python
 for building knowledge graphs.
 Welcome to *graph-based data science*.
+<https://derwen.ai/docs/kgl/>
 
 > **SPECIAL REQUEST:**
 > Which features would you like to see the most in an open source Python library for building and using knowledge graphs? Please add suggestions to this online survey: https://forms.gle/FMHgtmxHYWocprMn6  This will help us prioritize the roadmap for **kglab**.
 
 
 ## Getting Started
+
+See the ["Getting Started"](https://derwen.ai/docs/kgl/start/)
+section of the online documentation.
 
 To install from [PyPi](https://pypi.python.org/pypi/kglab):
 ```
@@ -45,9 +49,11 @@ print(ttl[:999])
 print("```")
 ```
 
-See the **tutorial notebooks** for sample code and patterns to use in
-integrating `kglab` with other popular related libraries in Python:
-<https://github.com/DerwenAI/kglab/blob/main/docs/tutorial.md>
+See the **tutorial notebooks** in the `examples` subdirectory for
+sample code and patterns to use in integrating **kglab** with other
+graph libraries in Python:
+<https://derwen.ai/docs/kgl/tutorial/>
+
 
 
 ### Dependencies
