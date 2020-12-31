@@ -1,5 +1,10 @@
 # Use Cases
 
+## DRAFT: Work in progress
+
+This material is a work in progress, at "rough draft" stage.
+
+
 ## Data Context
 
 ["data context"]( http://cidrdb.org/cidr2017/papers/p111-hellerstein-cidr17.pdf) – 

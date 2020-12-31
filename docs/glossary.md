@@ -1,6 +1,11 @@
 # Glossary
 
-## A
+## DRAFT: Work in progress
+
+This material is a work in progress, at "rough draft" stage.
+
+
+## – A –
 
 ### abstraction layer
 
@@ -10,7 +15,7 @@ A technology implementing a [*separation of concerns*](#separation-of-concerns)
 
 see: <https://en.wikipedia.org/wiki/Abstraction_layer>
 
-## C
+## – C –
 
 ### cloud computing
 
@@ -18,7 +23,7 @@ see: <https://derwen.ai/d/cloud_computing>
 
 ### computable content
 
-## D
+## – D –
 
 ### data context
 
@@ -34,7 +39,7 @@ see: <https://derwen.ai/d/data_science>
 
 ### data strategy
 
-## G
+## – G –
 
 ### graph algorithms
 
@@ -42,7 +47,7 @@ see: <https://derwen.ai/d/data_science>
 
 ### graph-based data science
 
-## K
+## – K –
 
 ### KG
 
@@ -64,19 +69,19 @@ and its community
 
 ### knowledge graph embedding
 
-## M
+## – M –
 
 ### machine learning
 
 see: <https://derwen.ai/d/machine_learning>
 
-## N
+## – N –
 
 ### natural language
 
 see: <https://derwen.ai/d/natural_language>
 
-## O
+## – O –
 
 ### OSFA
 
@@ -85,13 +90,13 @@ abbr. "One size fits all", a common antipattern in technology
 
 see: <https://en.wikipedia.org/wiki/One_size_fits_all>
 
-## P
+## – P –
 
 ### probabilistic graph inference
 
 ### property graph
 
-## R
+## – R –
 
 ### RDF
 
@@ -103,13 +108,13 @@ abbr. *Resource Description Framework*
 
 see: <https://derwen.ai/d/reinforcement_learning>
 
-## S
+## – S –
 
 ### semantic technologies
 
 ### separation of concerns
 
-## W
+## – W –
 
 ### W3C
 
