@@ -1,6 +1,6 @@
 # Acknowledgements
 
-## Kudos
+## Contributors and Supporters
 
 Many thanks to contributors:
 [@jake-aft](https://github.com/jake-aft),

@@ -52,20 +52,29 @@ theme:
   name: material
   icon:
     repo: fontawesome/brands/github
-  logo: assets/logo.png
   favicon: assets/favicon.png
-
-extra_css:
-  - stylesheets/extra.css
+  logo: assets/logo.png
+  features:
+    - navigation.instant
 
 plugins:
   - mknotebooks
   - git-revision-date
 
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 markdown_extensions:
   - admonition
   - codehilite
   - footnotes
+  - pymdownx.arithmatex:
+      generic: true
   - toc:
       toc_depth: 3
       permalink: true

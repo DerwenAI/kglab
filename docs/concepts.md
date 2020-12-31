@@ -1,5 +1,10 @@
 # Graph Concepts
 
+## DRAFT: Work in progress
+
+This material is a work in progress, at "rough draft" stage.
+
+
 The primary abstractions used in **kglab** are based on a small set of
 Python classes.
 These class definitions can be subclassed and extended to handle

@@ -81,8 +81,8 @@ graph libraries in Python:
 
 ## Build Instructions
 
-Note: most use cases won't need to build this package locally, 
-and instead will simply install directly from
+**Note: most use cases won't need to build this package locally.**
+Instead, simply install from
 [PyPi](https://pypi.python.org/pypi/kglab)
 or [Conda](https://docs.conda.io/).
 
@@ -122,6 +122,8 @@ To generate documentation pages, this project uses:
 
   * [`MkDocs`](https://www.mkdocs.org/)
   * [`makedocs-material`](https://squidfunk.github.io/mkdocs-material/)
+  * [`MathJax`](https://www.mathjax.org/)
+  * [`pymdown-extensions`](https://facelessuser.github.io/pymdown-extensions/)
   * [`Jupyter`](https://jupyter.org/install)
   * [`nbconvert`](https://nbconvert.readthedocs.io/)
   * [`Selenium`](https://selenium-python.readthedocs.io/)

@@ -1,45 +1,52 @@
 # What is a Knowledge Graph?
 
-## Just Enough Graph Theory
+## DRAFT: Work in progress
 
-Math:
-  G = { V, E }
+This material is a work in progress, at "rough draft" stage.
+
+
+## Just Enough Graph Theory
 
 In a pure mathematical form, where a *node* (or *vertex*) can connect
 through an *edge* (or *arc* or *link*) to another node.
 
+$$
+G=\{V, E\}
+$$
+
 In that case an *adjacency matrix* can represent the entire graph.
 Each node has a row and a column in the matrix.
 
-https://en.wikipedia.org/wiki/Adjacency_matrix
-https://mathworld.wolfram.com/AdjacencyMatrix.html
+  * https://en.wikipedia.org/wiki/Adjacency_matrix
+  * https://mathworld.wolfram.com/AdjacencyMatrix.html
 
-In the simplest form, there's a `1` value to represent an edge between nodes or a `0` otherwise.
+In the simplest form, a `1` value in the matrix element represents an
+edge between nodes or a `0` otherwise.
 
-symmetric for undirected graphs
-asymmetric for directed graphs
+  * symmetric for undirected graphs
+  * asymmetric for directed graphs
 
 If a directed graph has *weights* on its edges (i.e., to represent the
 probability of an event between two nodes) then replace the `1` value
 with the weight or probability.
 This is called a *stochastic matrix*
 
-https://en.wikipedia.org/wiki/Stochastic_matrix
-transitions of Markov chain (state)
+  * https://en.wikipedia.org/wiki/Stochastic_matrix
+  * transitions of Markov chain (state)
 
 There's an entire field of *algebraic graph theory* that translates
 between *graph theory* and *linear algebra*.
 
 eigenvalues, eigenvectors, spectrum
 
-This leads to *factorization* (or *decomposition*):
-https://en.wikipedia.org/wiki/Matrix_decomposition
-https://sparse.tamu.edu/about
-https://www.cs.purdue.edu/homes/dgleich/
+non-negative, symmetric properties allow for *factorization* (or *decomposition*):
+
+  * https://en.wikipedia.org/wiki/Matrix_decomposition
+  * https://sparse.tamu.edu/about
+  * https://www.cs.purdue.edu/homes/dgleich/
 
 
 ## RDF Graph
-
 
   * RDF graph, [*semantic technologies*](../glossary/#semantic-technologies)
   * KG compare/contrast with [*property graph*](../glossary/#property-graph)
@@ -55,8 +62,9 @@ narrative arc:
  =>
 [anderson2020dt](../biblio/#anderson2020dt)
 with
-[breiman2001](../biblio/#breiman2001) in-between
-
+[breiman2001](../biblio/#breiman2001)
+[brewer2012cap](../biblio/#brewer2012cap)
+in-between
 
 In 2018, Gartner began to acknowledge the term 
 [*knowledge graph*](../glossary/#knowledge-graph)
