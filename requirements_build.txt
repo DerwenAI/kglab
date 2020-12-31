@@ -1,5 +1,6 @@
 coverage
 flask
+mkdocs-git-revision-date-plugin
 mkdocs-material
 mypy
 nbconvert

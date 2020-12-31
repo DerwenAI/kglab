@@ -1,6 +1,8 @@
 # Glossary
 
-#### abstraction layer
+## A
+
+### abstraction layer
 
 A technology implementing a [*separation of concerns*](#separation-of-concerns)
 
@@ -8,82 +10,108 @@ A technology implementing a [*separation of concerns*](#separation-of-concerns)
 
 see: <https://en.wikipedia.org/wiki/Abstraction_layer>
 
-#### cloud computing
+## C
+
+### cloud computing
 
 see: <https://derwen.ai/d/cloud_computing>
 
-#### computable content
+### computable content
 
-#### data context
+## D
 
-#### data engineering
+### data context
 
-#### data governance
+### data engineering
+
+### data governance
 
 see: <https://derwen.ai/d/data_governance>
 
-#### data science
+### data science
 
 see: <https://derwen.ai/d/data_science>
 
-#### data strategy
+### data strategy
 
-#### graph-based data science
+## G
 
-#### KG
+### graph algorithms
+
+### graph database
+
+### graph-based data science
+
+## K
+
+### KG
 
 abbr. [knowledge graph](#knowledge-graph)
 
-#### KGC
+### KGC
 
 abbr. [Knowledge Graph Conference](#knowledge-graph-conference)
 
-#### knowledge graph
+### knowledge graph
 
 see: <https://derwen.ai/d/knowledge_graph>
 
-#### Knowledge Graph Conference
+### Knowledge Graph Conference
 
 The annual *Knowledge Graph Conference*
 and its community
 <https://www.knowledgegraph.tech/>
 
-#### knowledge graph embedding
+### knowledge graph embedding
 
-#### machine learning
+## M
+
+### machine learning
 
 see: <https://derwen.ai/d/machine_learning>
 
-#### natural language
+## N
+
+### natural language
 
 see: <https://derwen.ai/d/natural_language>
 
-#### OSFA
+## O
+
+### OSFA
 
 abbr. "One size fits all", a common antipattern in technology
 > a description for a product that would fit in all instances
 
 see: <https://en.wikipedia.org/wiki/One_size_fits_all>
 
-#### probabilistic graph inference
+## P
 
-#### property graph
+### probabilistic graph inference
 
-#### RDF
+### property graph
+
+## R
+
+### RDF
 
 abbr. *Resource Description Framework*
 <https://www.w3.org/RDF/>
 > a standard model for data interchange on the Web
 
-#### reinforcement learning
+### reinforcement learning
 
 see: <https://derwen.ai/d/reinforcement_learning>
 
-#### semantic technologies
+## S
 
-#### separation of concerns
+### semantic technologies
 
-#### W3C
+### separation of concerns
+
+## W
+
+### W3C
 
 abbr. *World Wide Web Consortium* <https://www.w3.org/>
 > an international community where Member organizations, a full-time staff, and the public work together to develop Web standards

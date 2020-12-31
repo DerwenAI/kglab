@@ -1,5 +1,46 @@
 # What is a Knowledge Graph?
 
+## Just Enough Graph Theory
+
+Math:
+  G = { V, E }
+
+In a pure mathematical form, where a *node* (or *vertex*) can connect
+through an *edge* (or *arc* or *link*) to another node.
+
+In that case an *adjacency matrix* can represent the entire graph.
+Each node has a row and a column in the matrix.
+
+https://en.wikipedia.org/wiki/Adjacency_matrix
+https://mathworld.wolfram.com/AdjacencyMatrix.html
+
+In the simplest form, there's a `1` value to represent an edge between nodes or a `0` otherwise.
+
+symmetric for undirected graphs
+asymmetric for directed graphs
+
+If a directed graph has *weights* on its edges (i.e., to represent the
+probability of an event between two nodes) then replace the `1` value
+with the weight or probability.
+This is called a *stochastic matrix*
+
+https://en.wikipedia.org/wiki/Stochastic_matrix
+transitions of Markov chain (state)
+
+There's an entire field of *algebraic graph theory* that translates
+between *graph theory* and *linear algebra*.
+
+eigenvalues, eigenvectors, spectrum
+
+This leads to *factorization* (or *decomposition*):
+https://en.wikipedia.org/wiki/Matrix_decomposition
+https://sparse.tamu.edu/about
+https://www.cs.purdue.edu/homes/dgleich/
+
+
+## RDF Graph
+
+
   * RDF graph, [*semantic technologies*](../glossary/#semantic-technologies)
   * KG compare/contrast with [*property graph*](../glossary/#property-graph)
   * the ubiquity of graph-based work in data science
