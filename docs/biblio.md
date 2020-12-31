@@ -151,7 +151,7 @@ Gradient Flow (2020)
 
 ### lorica2020rai
 
-["Responsible AI in Practice"](https://gradientflow.com/ResponsibleAI2020)
+["Responsible AI in Practice"](https://gradientflow.com/ResponsibleAI2020)  
 **Ben Lorica**, **Paco Nathan**, **Gina Blaber**, **Andrew Burt**,
 **Rumman Chowdhury**, **Yishay Carmiel**  
 Gradient Flow (2020)

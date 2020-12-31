@@ -18,26 +18,27 @@ specific use cases as needed.
 construction of *RDF graphs*
 also handle *property graph*
 
-*representation*
-*semantic technologies*
-*serialization*
-*querying*
-*validation*
+  * *representation*
+  * *semantic technologies*
+  * *serialization*
+  * *querying*
+  * *validation*
 
 
 ## Measure
 
   * [`kglab.Measure`](../ref/#Measure)
 
-*topology*
-*statistics*
+  * *topology*
+  * *statistics*
 
 
 ## Subgraph
 
   * [`kglab.Subgraph`](../ref/#Subgraph)
 
-*visualization*
-*graph algorithms*
-*probabilistic graph inference*
-*embedding*
+  * *label encoding*
+  * *visualization*
+  * *graph algorithms*
+  * *probabilistic graph inference*
+  * *embedding*
