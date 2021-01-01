@@ -2,10 +2,10 @@
 
 The **kglab** library provides a simple abstraction layer in Python
 for building knowledge graphs.
-Welcome to *graph-based data science*.
+Welcome to *graph-based data science*:
 <https://derwen.ai/docs/kgl/>
 
-> **SPECIAL REQUEST:**
+> **SPECIAL REQUEST**
 > Which features would you like to see the most in an open source Python library for building and using knowledge graphs? Please add suggestions to this online survey: https://forms.gle/FMHgtmxHYWocprMn6  This will help us prioritize the roadmap for **kglab**.
 
 
@@ -55,30 +55,6 @@ graph libraries in Python:
 <https://derwen.ai/docs/kgl/tutorial/>
 
 
-
-### Dependencies
-
-- [Python 3.6+](https://www.python.org/downloads/)
-- [cairocffi](https://github.com/Kozea/cairocffi)
-- [gensim](https://radimrehurek.com/gensim/)
-- [GPUtil](https://github.com/anderskm/gputil)
-- [leidenalg](https://github.com/vtraag/leidenalg)
-- [matplotlib](https://matplotlib.org/)
-- [NetworkX](https://networkx.org/)
-- [NumPy](https://numpy.org/)
-- [OWL-RL](https://github.com/RDFLib/OWL-RL)
-- [pandas](https://pandas.pydata.org/)
-- [pslpython](https://psl.linqs.org/)
-- [pySHACL](https://github.com/RDFLib/pySHACL)
-- [pyarrow](https://arrow.apache.org/)
-- [pylev](https://github.com/toastdriven/pylev)
-- [python-dateutil](https://pypi.org/project/python-dateutil/)
-- [python-igraph](https://igraph.org/python/)
-- [pyvis](https://pyvis.readthedocs.io/)
-- [RDFlib](https://rdflib.readthedocs.io/)
-- [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
-
-
 ## Build Instructions
 
 **Note: most use cases won't need to build this package locally.**
@@ -86,106 +62,23 @@ Instead, simply install from
 [PyPi](https://pypi.python.org/pypi/kglab)
 or [Conda](https://docs.conda.io/).
 
-To set up the build environment locally:
-```
-pip install -r requirements_build.txt
-```
-
-You will also need to download
-[`ChromeDriver`](https://chromedriver.chromium.org/downloads) 
-for your version of the `Chrome` brower, saved as `chromedriver` in this directory.
-
-This project uses `typing` and [`mypy`](https://mypy.readthedocs.io/) for *type checking*.
-To run type checking:
-```
-mypy kglab/*.py
-```
-
-This project uses `unittest` and [`coverage`](https://coverage.readthedocs.io/) for *unit test* coverage. 
-Source for unit tests is in the `test.py` module.
-To run unit tests:
-```
-coverage run -m unittest discover
-```
-
-To generate a coverage report and upload it to the `codecov.io`
-reporting site (if you have the token):
-```
-coverage report
-bash <(curl -s https://codecov.io/bash) -t @.cc_token
-```
-
-Test coverage reports can be viewed at
-<https://codecov.io/gh/DerwenAI/kglab>
-
-To generate documentation pages, this project uses:
-
-  * [`MkDocs`](https://www.mkdocs.org/)
-  * [`makedocs-material`](https://squidfunk.github.io/mkdocs-material/)
-  * [`MathJax`](https://www.mathjax.org/)
-  * [`pymdown-extensions`](https://facelessuser.github.io/pymdown-extensions/)
-  * [`Jupyter`](https://jupyter.org/install)
-  * [`nbconvert`](https://nbconvert.readthedocs.io/)
-  * [`Selenium`](https://selenium-python.readthedocs.io/)
-  * [`Chrome`](https://www.google.com/chrome/)
-  * [`Flask`](https://flask.palletsprojects.com/)
-
-Source for documentation is in the `docs` subdirectory.
-To build the documentation:
-```
-./nb_md.sh
-./pkg_doc.py docs/ref.md
-mkdocs build
-```
-
-To preview the generated microsite locally:
-```
-./preview.py
-```
-
-Then browse to <http://localhost:8000> to review the generated
-documentation.
-
-To package the generated microsite for deployment on a
-Flask/WSGI server:
-```
-tar cvzf kgl.tgz site/
-```
-
-To update the [release on PyPi](https://pypi.org/project/kglab/):
-```
-./push_pypi.sh
-```
-
-
----
+To set up the build environment locally, see the 
+["Build Instructions"](https://derwen.ai/docs/kgl/build/)
+section of the online documentation.
 
 ![illustration of a knowledge graph, plus laboratory glassware](https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/assets/logo.png)
 
-## Production Use Cases
 
-  * [Derwen](https://derwen.ai/) and its client projects
-
-
-## Similar Projects
-
-See also:
-
-  * [zincbase](https://github.com/complexdb/zincbase)
-    * *pro:* probabilistic graph measures, complex simulation suite, leverages GPUs
-    * *con:* lacks interchange with RDF or other standard formats
-  * [KGTK](https://github.com/usc-isi-i2/kgtk)
-    * *pro:* many excellent examples, well-documented in Jupyter notebooks
-    * *con:* mostly a CLI tool, primarily based on TSV data
-
-
-## Attribution
+## License and Copyright
 
 Source code for **kglab** plus its logo, documentation, and examples
 have an [MIT license](https://spdx.org/licenses/MIT.html) which is
 succinct and simplifies use in commercial applications.
 
 All materials herein are Copyright (c) 2020-2021 Derwen, Inc.
+
+
+## Attribution
 
 Please use the following BibTeX entry for citing **kglab** if you use it in your research or software.
 Citations are helpful for the continued development and maintenance of this library.
@@ -204,7 +97,8 @@ Citations are helpful for the continued development and maintenance of this libr
 ## Kudos
 
 Many thanks to our contributors:
+[@ceteri]((https://github.com/ceteri),
 [@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247),
-plus general support from [Derwen, Inc.](https://derwen.ai/)
-and [The Knowledge Graph Conference](https://www.knowledgegraph.tech/).
+plus general support from [Derwen, Inc.](https://github.com/DerwenAI)
+and [The Knowledge Graph Conference](https://github.com/KGConf).

@@ -56,14 +56,14 @@ non-negative, symmetric properties allow for *factorization* (or *decomposition*
   * lessons of 2010 all over again: MPPs, BI, EDW, etc.
 
 narrative arc: 
-[linden2006early](../biblio/#linden2006early)
+[[linden2006early]](../biblio/#linden2006early)
  => 
-[kreps2014](../biblio/#kreps2014)
+[[kreps2014]](../biblio/#kreps2014)
  =>
-[anderson2020dt](../biblio/#anderson2020dt)
+[[anderson2020dt]](../biblio/#anderson2020dt)
 with
-[breiman2001](../biblio/#breiman2001)
-[brewer2012cap](../biblio/#brewer2012cap)
+[[breiman2001]](../biblio/#breiman2001)
+[[brewer2012cap]](../biblio/#brewer2012cap)
 in-between
 
 In 2018, Gartner began to acknowledge the term 
@@ -90,4 +90,4 @@ Those days are long gone.
 
 [^1]: ["How to Build Knowledge Graphs That Enable AI-Driven Enterprise Applications"](https://www.gartner.com/en/documents/3985680/how-to-build-knowledge-graphs-that-enable-ai-driven-ente), Afraz Jaffri, *Gartner Research* (2020-05-27)
 
-[^2]: see [brewer2012cap](../biblio/#brewer2012cap) for discussion of the *CAP Theorem*
+[^2]: see [[brewer2012cap]](../biblio/#brewer2012cap) for discussion of the *CAP Theorem*

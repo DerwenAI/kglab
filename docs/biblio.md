@@ -14,6 +14,7 @@ O'Reilly Media (2020)
 **Jesse Anderson**  
 Apress (2020)
 
+
 ## – B –
 
 ### bell2019
@@ -34,6 +35,7 @@ Manning (2018)
 **Eric Brewer**  
 *Computer* 45:2 (2012)
 
+
 ## – C –
 
 ### ceder2018
@@ -48,6 +50,13 @@ Manning (2018)
 **François Chollet**  
 Manning (2017)
 
+### chong2021ds
+
+[*Become a Leader in Data Science*](https://www.manning.com/books/become-a-leader-in-data-science)  
+**Jike Chong**, **Yue Cathy Chang**  
+Manning (2021)
+
+
 ## – D –
 
 ### das2020meta
@@ -60,6 +69,7 @@ Manning (2017)
 **Deepak Chandramouli**, **Igor Perisic**, **Sunheng Taing**, **Satyen Sangani**,
 **Aaron Kalb**, **Daniel Rincon Silva**  
 LinkedIn (2020)
+
 
 ## – G –
 
@@ -74,6 +84,7 @@ O'Reilly Media (2020)
 ["A translation approach to portable ontology specifications"](https://doi.org/10.1006/KNAC.1993.1008)  
 **Thomas R. Gruber**  
 *Knowledge Acquisition* 5 (1993)
+
 
 ## – H –
 
@@ -98,6 +109,7 @@ O'Reilly Media (2020)
 **Antoine Zimmermann**  
 *arXiv* (2020)
 
+
 ## – J –
 
 ### jonas2019cloud
@@ -109,6 +121,7 @@ O'Reilly Media (2020)
 **Raluca Ada Popa**, **Ion Stoica**, **David A. Patterson**  
 *arXiv* (2019)
 
+
 ## – K –
 
 ### kreps2014
@@ -116,6 +129,7 @@ O'Reilly Media (2020)
 [*I Heart Logs: Event Data, Stream Processing, and Data Integration*](https://www.confluent.io/ebook/i-heart-logs-event-data-stream-processing-and-data-integration/)  
 **Jay Kreps**  
 O'Reilly Media (2014)
+
 
 ## – L –
 
@@ -156,6 +170,7 @@ Gradient Flow (2020)
 **Rumman Chowdhury**, **Yishay Carmiel**  
 Gradient Flow (2020)
 
+
 ## – N –
 
 ### nathan2014jem
@@ -175,6 +190,7 @@ Manning (2021)
 ["Ontology Development 101: A Guide to Creating Your First Ontology"](http://www-ksl.stanford.edu/people/dlm/papers/ontology-tutorial-noy-mcguinness-abstract.html)  
 **Natalya F. Noy**, **Deborah L. McGuinness**  
 *Stanford Knowledge Systems Laboratory Technical Report KSL-01-05* (2001)
+
 
 ## – P –
 

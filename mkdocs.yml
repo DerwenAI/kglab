@@ -15,6 +15,7 @@ nav:
         - Concepts: concepts.md
         - Package Reference: ref.md
         - Dependencies: depend.md
+        - Build Instructions: build.md
         - About The Author(s): author.md
     - Tutorial:
         - Setup:

@@ -16,7 +16,7 @@ work that require graph data, presenting
 as an emerging practice.
 
 
-## Cut to the chase
+## Cut to the Chase
 
   1. To get started right away, jump to [*Getting Started*](start/)
   1. For an extensive, hands-on coding tour through **kglab**, follow the [*Tutorial*](tutorial/) notebooks
@@ -30,6 +30,7 @@ as an emerging practice.
 
 A short list of primary motivations have been identified for
 **kglab**, its design criteria, and engineering trade-offs:
+
 
 ### Popular Graph Libraries
 
@@ -47,6 +48,7 @@ integrate with popular graph libraries, including
 and so on –
 several of which would otherwise not have much common ground.
 
+
 ### Data Science Workflows
 
 **Point 2:**
@@ -61,6 +63,7 @@ etc.,
 as well as
 [PyTorch](https://pytorch.org/),
 and other quintessential data science tools.
+
 
 ### Distributed Systems Infrastructure
 
@@ -77,6 +80,7 @@ infrastructure, including:
 [Apache Parquet](https://parquet.apache.org/),
 [Apache Spark](https://spark.apache.org/),
 etc.
+
 
 ### Natural Language Understanding
 
@@ -132,7 +136,7 @@ also hosts
 for [Paco Nathan](author/) and others involved in this open source project.
 
 
-## Feedback and Priorities
+## Feedback and Roadmap
 
 !!! note
     **SPECIAL REQUEST:** Which features would you like to see the most 
@@ -140,3 +144,9 @@ for [Paco Nathan](author/) and others involved in this open source project.
 
 Your feedback through this online survey helps us prioritize the roadmap for **kglab**:
 <https://forms.gle/FMHgtmxHYWocprMn6>
+
+Links for other open source community resources:
+
+  * [Milestones](https://github.com/DerwenAI/kglab/milestones)
+  * [GH Issues](https://github.com/DerwenAI/kglab/issues)
+  * [Project Board](https://github.com/DerwenAI/kglab/projects/1)

@@ -5,6 +5,10 @@
 This material is a work in progress, at "rough draft" stage.
 
 
+## Organization of learning materials
+
+<img src="../assets/learning.png" width="600" />
+
 The primary abstractions used in **kglab** are based on a small set of
 Python classes.
 These class definitions can be subclassed and extended to handle
@@ -13,7 +17,7 @@ specific use cases as needed.
 
 ## Knowledge Graph
 
-  * [`kglab.KnowledgeGraph`](../ref/#KnowledgeGraph)
+[`kglab.KnowledgeGraph`](../ref/#knowledgegraph-class)
 
 construction of *RDF graphs*
 also handle *property graph*
@@ -27,7 +31,7 @@ also handle *property graph*
 
 ## Measure
 
-  * [`kglab.Measure`](../ref/#Measure)
+[`kglab.Measure`](../ref/#measure-class)
 
   * *topology*
   * *statistics*
@@ -35,7 +39,7 @@ also handle *property graph*
 
 ## Subgraph
 
-  * [`kglab.Subgraph`](../ref/#Subgraph)
+[`kglab.Subgraph`](../ref/#subgraph-class)
 
   * *label encoding*
   * *visualization*
