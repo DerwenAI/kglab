@@ -160,7 +160,7 @@ To update the [release on PyPi](https://pypi.org/project/kglab/):
 
 ---
 
-[![kg+lab](https://github.com/DerwenAI/kglab/blob/main/docs/illo/kglab.png)](https://github.com/DerwenAI/kglab/blob/main/docs/illo/kglab.png)
+![illustration of a knowledge graph, plus laboratory glassware](https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/assets/logo.png)
 
 ## Production Use Cases
 

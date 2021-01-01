@@ -1,6 +1,6 @@
 # Graph-Based Data Science
 
-[![illustration of a knowledge graph, plus laboratory glassware](https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/illo/kglab.png)](https://github.com/DerwenAI/kglab/blob/main/docs/illo/kglab.png)
+<img src="assets/logo.png" width="113" alt="illustration of a knowledge graph, plus laboratory glassware"/>
 
 The **kglab** package provides a simple
 [abstraction layer](glossary/#abstraction-layer)
