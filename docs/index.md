@@ -132,7 +132,7 @@ also hosts
 for [Paco Nathan](author/) and others involved in this open source project.
 
 
-## Feedback
+## Feedback and Priorities
 
 !!! note
     **SPECIAL REQUEST:** Which features would you like to see the most 
@@ -140,16 +140,3 @@ for [Paco Nathan](author/) and others involved in this open source project.
 
 Your feedback through this online survey helps us prioritize the roadmap for **kglab**:
 <https://forms.gle/FMHgtmxHYWocprMn6>
-
-
-## Just Enough Math, Edition 2
-
-Originally, **kglab** aimed at being a follow-up edition of 
-[*Just Enough Math*](biblio/#nathan2014jem).
-Seven years later the field of 
-[data science](glossary/#data-science)
-has changed dramatically, and as we'll explore in the section
-["What is a Knowledge Graph?"](what/)
-In short, the time for
-[*graph-based data science*](glossary/#graph-based-data-science)
-has arrived.
