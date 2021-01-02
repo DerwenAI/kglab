@@ -5,9 +5,7 @@
 This material is a work in progress, at "rough draft" stage.
 
 
-## Organization of learning materials
-
-<img src="../assets/learning.png" width="600" />
+## Class Abstractions
 
 The primary abstractions used in **kglab** are based on a small set of
 Python classes.
@@ -15,7 +13,7 @@ These class definitions can be subclassed and extended to handle
 specific use cases as needed.
 
 
-## Knowledge Graph
+### Knowledge Graph
 
 [`kglab.KnowledgeGraph`](../ref/#knowledgegraph-class)
 
@@ -29,7 +27,7 @@ also handle *property graph*
   * *validation*
 
 
-## Measure
+### Measure
 
 [`kglab.Measure`](../ref/#measure-class)
 
@@ -37,7 +35,7 @@ also handle *property graph*
   * *statistics*
 
 
-## Subgraph
+### Subgraph
 
 [`kglab.Subgraph`](../ref/#subgraph-class)
 
@@ -46,3 +44,13 @@ also handle *property graph*
   * *graph algorithms*
   * *probabilistic graph inference*
   * *embedding*
+
+
+## Open Source Integration
+
+<a href="../assets/landscape.png" target="_blank"><img src="../assets/landscape.png" width="650" /></a>
+
+
+## Learning Materials
+
+<a href="../assets/learning.png" target="_blank"><img src="../assets/learning.png" width="650" /></a>
