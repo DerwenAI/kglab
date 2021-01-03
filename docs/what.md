@@ -5,6 +5,13 @@
 This material is a work in progress, at "rough draft" stage.
 
 
+First, read:
+[[hogan2020knowledge]](../biblio/#hogan2020knowledge)
+
+Some good elements for KG definition:
+<https://towardsdatascience.com/how-to-create-representations-of-entities-in-a-knowledge-graph-using-pyrdf2vec-82e44dad1a0#1f07>
+
+
 ## Just Enough Graph Theory
 
 In a pure mathematical form, where a *node* (or *vertex*) can connect

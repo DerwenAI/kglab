@@ -176,7 +176,7 @@ Gradient Flow (2020)
 ### monarch2021hitl
 
 [*Human-in-the-Loop Machine Learning*](https://www.manning.com/books/human-in-the-loop-machine-learning)  
-*Robert (Munro) Monarch*  
+**Robert (Munro) Monarch**  
 Manning (2021)
 
 
@@ -208,6 +208,15 @@ Manning (2021)
 ["Network visualizations with Pyvis and VisJS"](https://arxiv.org/abs/2006.04951)  
 **Giancarlo Perrone**, **Jose Unpingco**, **Haw-minn Lu**  
 *arXiv* (2020)
+
+
+## – S –
+
+### singhal2012kg
+
+["Introducing the Knowledge Graph: things, not strings"](https://blog.google/products/search/introducing-knowledge-graph-things-not/)  
+**Amit Singhal**  
+Google (2012)
 
 
 ---
