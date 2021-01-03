@@ -1,5 +1,7 @@
 # kglab
 
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DerwenAI/kglab?style=plastic)
+
 The **kglab** library provides a simple abstraction layer in Python
 for building knowledge graphs.
 

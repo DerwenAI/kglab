@@ -171,6 +171,15 @@ Gradient Flow (2020)
 Gradient Flow (2020)
 
 
+## – M –
+
+### monarch2021hitl
+
+[*Human-in-the-Loop Machine Learning*](https://www.manning.com/books/human-in-the-loop-machine-learning)  
+*Robert (Munro) Monarch*  
+Manning (2021)
+
+
 ## – N –
 
 ### nathan2014jem
