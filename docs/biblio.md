@@ -188,6 +188,12 @@ Manning (2021)
 **Paco Nathan**  
 O'Reilly Media (2014)
 
+### nathan2019fifty
+
+[*Fifty Years of Data Management and Beyond*](https://www.oreilly.com/library/view/fifty-years-of/9781492057512/)  
+**Paco Nathan**  
+O'Reilly Media (2019)
+
 ### negro2021
 
 [*Graph-Powered Machine Learning*](https://www.manning.com/books/graph-powered-machine-learning)  
@@ -212,7 +218,7 @@ Manning (2021)
 
 ## – S –
 
-### singhal2012kg
+### singhal2012things
 
 ["Introducing the Knowledge Graph: things, not strings"](https://blog.google/products/search/introducing-knowledge-graph-things-not/)  
 **Amit Singhal**  
