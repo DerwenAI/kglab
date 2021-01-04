@@ -7,6 +7,7 @@ Package dependencies as defined in
 include:
 
 - [cairocffi](https://cairocffi.readthedocs.io/)
+- [chocolate](https://github.com/seungjaeryanlee/chocolate)
 - [gensim](https://radimrehurek.com/gensim/)
 - [GPUtil](https://github.com/anderskm/gputil)
 - [leidenalg](https://leidenalg.readthedocs.io/)

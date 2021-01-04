@@ -19,6 +19,7 @@ register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
 from kglab.types import PathLike, GraphLike, RDF_Node
 
+import chocolate  # type: ignore
 import dateutil.parser as dup
 import datetime as dt
 import GPUtil  # type: ignore
@@ -376,7 +377,7 @@ class KnowledgeGraph (object):
             abort_on_error=abort_on_error,
             debug=debug,
             serialize_report_graph=serialize_report_graph,
-            *kwargs,
+            **chocolate.filter_args(kwargs, pyshacl.validate),
             )
        
         namespaces = {

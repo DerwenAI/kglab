@@ -5,6 +5,17 @@
 This material is a work in progress, at "rough draft" stage.
 
 
+First, read:
+[[hogan2020knowledge]](../biblio/#hogan2020knowledge)
+
+Some good elements for KG definition:
+<https://towardsdatascience.com/how-to-create-representations-of-entities-in-a-knowledge-graph-using-pyrdf2vec-82e44dad1a0#1f07>
+>Graphs are data structures that are useful to represent ubiquitous phenomena, such as social networks, chemical molecules and recommendation systems. One of their strengths lies in the fact that they explicitly model relations (i.e. edges) between individual units (i.e. nodes), which adds an extra dimension to the data.
+
+compare:
+[[nathan2019fifty]](../biblio/#nathan2019fifty)
+
+
 ## Just Enough Graph Theory
 
 In a pure mathematical form, where a *node* (or *vertex*) can connect

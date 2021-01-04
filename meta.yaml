@@ -1,0 +1,64 @@
+{% set name = "kglab" %}
+{% set version = "0.1.5" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: "a2a77046cc794ccbe7f84f4dcf8231cc7bb57d7539b3827e5249be3bb1c5e5ca"
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - gensim
+    - matplotlib
+    - networkx
+    - numpy
+    - pandas
+    - pip
+    - pslpython
+    - pyarrow
+    - pylev
+    - pyshacl
+    - python
+    - python-dateutil
+    - pyvis
+    - rdflib
+    - rdflib-jsonld
+  run:
+    - gensim
+    - matplotlib
+    - networkx
+    - numpy
+    - pandas
+    - pslpython
+    - pyarrow
+    - pylev
+    - pyshacl
+    - python
+    - python-dateutil
+    - pyvis
+    - rdflib
+    - rdflib-jsonld
+
+test:
+  imports:
+    - kglab
+
+about:
+  home: http://github.com/DerwenAI/kglab
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: "A simple abstraction layer in Python for building knowledge graphs"
+  doc_url: https://derwen.ai/docs/kgl/
+  dev_url: http://github.com/DerwenAI/kglab
+
+extra:
+  recipe-maintainers:
+    - ceteri
