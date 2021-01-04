@@ -2,7 +2,7 @@
 
 ## 0.1.5
 
-2021-01-??
+2021-01-04
 
   * renamed serialization methods, e.g., `save_ttl()` -- **WILL BREAK THINGS**
   * impl `load_rdf_text()` and `save_rdf_text()` to De/Ser as text
