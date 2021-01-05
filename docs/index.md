@@ -117,7 +117,9 @@ work in Python,
 provided as a *library* not as a *framework*.
 
 
-## Getting Help
+## Community Resources
+
+### Getting Help
 
 The [Knowledge Graph Conference](glossary/#knowledge-graph-conference)
 hosts several community resources where you can post questions and 
@@ -132,11 +134,12 @@ topics.
 
 [KGC](glossary/#knowledge-graph-conference)
 also hosts 
-[monthly office hours](https://www.notion.so/KG-Community-Events-Calendar-8aacbe22efa94d9b8b39b7288e22c2d3)
-for [Paco Nathan](author/) and others involved in this open source project.
+["knowledge espresso"](https://www.notion.so/KG-Community-Events-Calendar-8aacbe22efa94d9b8b39b7288e22c2d3)
+(monthly office hours) with [Paco Nathan](ack/#project-lead) 
+and others involved in this open source project.
 
 
-## Feedback and Roadmap
+### Feedback and Roadmap
 
 !!! note
     **SPECIAL REQUEST:** Which features would you like to see the most 

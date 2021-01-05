@@ -49,8 +49,3 @@ also handle *property graph*
 ## Open Source Integration
 
 <a href="../assets/landscape.png" target="_blank"><img src="../assets/landscape.png" width="650" /></a>
-
-
-## Learning Materials
-
-<a href="../assets/learning.png" target="_blank"><img src="../assets/learning.png" width="650" /></a>

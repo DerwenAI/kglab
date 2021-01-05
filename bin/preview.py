@@ -4,9 +4,10 @@
 from flask import Flask, redirect, send_from_directory, url_for
 from pathlib import PurePosixPath
 import os
+import sys
 
 DOCS_ROUTE = "/docs/"
-DOCS_FILES = "site"
+DOCS_FILES = "../site"
 DOCS_PORT = 8000
 
 APP = Flask(__name__, static_folder=DOCS_FILES, template_folder=DOCS_FILES)
