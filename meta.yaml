@@ -1,5 +1,6 @@
+{% set data = load_setup_py_data() %}
+{% set version = data.get('version')  %}
 {% set name = "kglab" %}
-{% set version = "0.1.5" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +8,7 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: "a2a77046cc794ccbe7f84f4dcf8231cc7bb57d7539b3827e5249be3bb1c5e5ca"
+  sha256: "0f651eb79b6da45324dc2a2f38f132e032e1e6c38380b29e36842632bfa6f87a"
 
 build:
   number: 0
@@ -15,10 +16,15 @@ build:
 
 requirements:
   host:
+    - cairocffi
+    - chocolate
     - gensim
+    - gputil
+    - leidenalg
     - matplotlib
     - networkx
     - numpy
+    - owlrl
     - pandas
     - pip
     - pslpython
@@ -31,10 +37,15 @@ requirements:
     - rdflib
     - rdflib-jsonld
   run:
+    - cairocffi
+    - chocolate
     - gensim
+    - gputil
+    - leidenalg
     - matplotlib
     - networkx
     - numpy
+    - owlrl
     - pandas
     - pslpython
     - pyarrow
