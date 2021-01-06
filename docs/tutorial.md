@@ -33,15 +33,16 @@ come in handy.
 ## Installation
 
 You can run the notebooks locally on a recent laptop.
-First clone the Git repository and also make sure to install
-JupyterLab:
+First clone the Git repository and install the dependencies:
 ```
 git clone https://github.com/DerwenAI/kglab.git
 cd kglab
 pip install -r requirements.txt
 ```
 
-To install JupyterLab using `conda`:
+Also make sure to install
+[JupyterLab](https://jupyterlab.readthedocs.io/en/stable/).
+To install using `conda`:
 ```
 conda install -c conda-forge jupyterlab
 ```

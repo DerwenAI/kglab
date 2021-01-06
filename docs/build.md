@@ -76,14 +76,14 @@ subdirectory.
 
 To build the documentation:
 ```
-./nb_md.sh
+./bin/nb_md.sh
 ./pkg_doc.py docs/ref.md
 mkdocs build
 ```
 
 To preview the generated microsite locally:
 ```
-./preview.py
+./bin/preview.py
 ```
 
 Then browse to <http://localhost:8000> to review the generated
@@ -100,5 +100,5 @@ tar cvzf kgl.tgz site/
 
 To update the [release on PyPi](https://pypi.org/project/kglab/):
 ```
-./push_pypi.sh
+./bin/push_pypi.sh
 ```

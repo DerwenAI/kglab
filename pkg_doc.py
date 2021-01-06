@@ -9,7 +9,7 @@ import os
 import sys
 
 """
-This PEP proposes adding `frungible doodads`_ to the core.  
+The PEP proposes adding `frungible doodads`_ to the core.  
 It extends PEP 9876 [#pep9876]_ via the BCA [#]_ mechanism.
 
 See also: 
@@ -136,7 +136,12 @@ if __name__ == "__main__":
     ref_md_file = sys.argv[1]
     class_list = [ "KnowledgeGraph", "Measure", "Simplex0", "Simplex1", "Subgraph" ]
 
+    ## NB: `inspect` is picky about paths and current working directory.
+    ## This only works if run from the top-level directory for the repo.
+
+    sys.path.insert(0, "../")
     import kglab
+
     module_name = "kglab"
     module_obj = sys.modules[module_name]
     gh_src_url = "https://github.com/DerwenAI/kglab/blob/main"

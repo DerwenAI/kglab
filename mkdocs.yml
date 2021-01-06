@@ -9,6 +9,7 @@ repo_name: DerwenAI/kglab
 nav:
     - Home: index.md
     - User Guide:
+        - Overview: overview.md
         - Getting Started: start.md
         - What is a Knowledge Graph?: what.md
         - Use Cases: use_case.md
@@ -16,7 +17,6 @@ nav:
         - Package Reference: ref.md
         - Dependencies: depend.md
         - Build Instructions: build.md
-        - About The Author(s): author.md
     - Tutorial:
         - Setup:
             - Installation: tutorial.md
