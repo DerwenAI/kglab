@@ -5,7 +5,7 @@
 ## Evolunationary Shape Prediction
 
 from kglab import KnowledgeGraph, Measure, Subgraph
-from kglab.types import RDF_Node, SPARQL_Bindings
+from kglab.pkg_types import RDF_Node, SPARQL_Bindings
 import kglab.util
 
 from collections import deque

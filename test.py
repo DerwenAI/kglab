@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import kglab
+import urlpath
 import unittest
 
 
@@ -9,7 +10,9 @@ class TestKG (unittest.TestCase):
     def setUp (self):
         """load an example KG"""
         self.kg = kglab.KnowledgeGraph()
-        self.kg.load_rdf("http://bigasterisk.com/foaf.rdf", format="xml")
+
+        path = urlpath.URL("http://bigasterisk.com/foaf.rdf")
+        self.kg.load_rdf(path, format="xml")
 
 
     def test_measure (self):

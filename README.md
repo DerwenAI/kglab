@@ -61,6 +61,15 @@ graph libraries in Python:
 <https://derwen.ai/docs/kgl/tutorial/>
 
 
+## Semantic Versioning
+
+Before **kglab** reaches release `v1.0.0` the types and classes may
+undergo substantial changes and the project is not guaranteed to have
+a consistent API.
+Even so, we will try to minimize breaking changes and make careful
+notes in the `changelog.txt` file.
+
+
 ## Build Instructions
 
 **Note: most use cases won't need to build this package locally.**

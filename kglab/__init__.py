@@ -7,7 +7,7 @@ from .subg import Subgraph
 from .esp import ShapeFactory, EvoShape, EvoShapeNode, EvoShapeEdge, \
     Leaderboard, SerializedEvoShape, EvoShapeBoard, EvoShapeDistance
 
-from .types import RDF_Triple, RDF_Node, SPARQL_Bindings, \
+from .pkg_types import RDF_Triple, RDF_Node, SPARQL_Bindings, \
     PathLike, NodeLike, GraphLike, \
     Census_Item, Census_Dyad_Tally
 
