@@ -34,7 +34,6 @@ class TestKG (unittest.TestCase):
         """
 
         for row in kg.query(sparql):
-            print(row.name)
             self.assertTrue(str(row.name) == "Fantasy Fame Game")
 
 
