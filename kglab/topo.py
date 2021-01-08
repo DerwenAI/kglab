@@ -5,7 +5,7 @@
 ## graph topology
 
 from kglab import KnowledgeGraph
-from kglab.types import Census_Item, Census_Dyad_Tally, RDF_Node
+from kglab.pkg_types import Census_Item, Census_Dyad_Tally, RDF_Node
 
 from collections import defaultdict
 import pandas as pd  # type: ignore

@@ -17,7 +17,7 @@ import rdflib  # type: ignore
 register("json-ld", Parser, "rdflib_jsonld.parser", "JsonLDParser")
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
-from kglab.types import PathLike, GraphLike, RDF_Node
+from kglab.pkg_types import PathLike, GraphLike, RDF_Node
 
 import chocolate  # type: ignore
 import dateutil.parser as dup
@@ -31,6 +31,7 @@ import pyarrow as pa  # type: ignore
 import pyarrow.parquet as pq  # type: ignore
 import pyshacl  # type: ignore
 import typing
+import urlpath  # type: ignore
 
 
 class KnowledgeGraph (object):
@@ -170,7 +171,24 @@ class KnowledgeGraph (object):
     ## non-proprietary, universal formats the results can be easily
     ## integrated into several of the existing tools for creating 
     ## network graphs.
+    
+    @classmethod
+    def _get_filename (
+        cls,
+        path: PathLike
+        ) -> typing.Optional[str]:
+        if not path:
+            filename = None
+        elif isinstance(path, urlpath.URL):
+            filename = str(path)
+        elif isinstance(path, pathlib.Path):
+            filename = path.as_posix()
+        else:
+            filename = path
 
+        return filename
+
+    
     def load_rdf (
         self,
         path: PathLike,
@@ -180,12 +198,7 @@ class KnowledgeGraph (object):
         ) -> None:
         """
         """
-        if isinstance(path, pathlib.Path):
-            filename = path.as_posix()
-        else:
-            filename = path
-
-        self._g.parse(filename, format=format, encoding=encoding)
+        self._g.parse(self._get_filename(path), format=format, encoding=encoding)
 
 
     def load_rdf_text (
@@ -209,12 +222,7 @@ class KnowledgeGraph (object):
         ) -> None:
         """
         """
-        if isinstance(path, pathlib.Path):
-            filename = path.as_posix()
-        else:
-            filename = path
-
-        self._g.serialize(destination=filename, format=format, encoding=encoding)
+        self._g.serialize(destination=self._get_filename(path), format=format, encoding=encoding)
 
 
     def save_rdf_text (

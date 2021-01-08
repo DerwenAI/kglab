@@ -17,3 +17,4 @@ python-igraph >= 0.8.3
 pyvis >= 0.1.7.0
 rdflib >= 5.0.0
 rdflib-jsonld >= 0.5.0
+urlpath >= 1.1.7

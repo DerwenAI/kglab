@@ -5,7 +5,7 @@
 ## subgraph transforms for visualization, graph algorithms, etc.
 
 from kglab import KnowledgeGraph
-from kglab.types import NodeLike, RDF_Node, RDF_Triple
+from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
 
 import matplotlib.pyplot as plt  # type: ignore
 import networkx as nx  # type: ignore
