@@ -17,7 +17,7 @@ import rdflib  # type: ignore
 register("json-ld", Parser, "rdflib_jsonld.parser", "JsonLDParser")
 register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
-from kglab.pkg_types import PathLike, GraphLike, RDF_Node
+from kglab.pkg_types import PathLike, IOPathLike, GraphLike, RDF_Node
 
 import chocolate  # type: ignore
 import dateutil.parser as dup
@@ -169,6 +169,10 @@ class KnowledgeGraph (object):
     ## non-proprietary, universal formats the results can be easily
     ## integrated into several of the existing tools for creating 
     ## network graphs.
+
+    # PEP 586, although not until Py 3.8 
+    # RDF_FORMAT = typing.Literal[ "n3", "ttl", "turtle", "nt", "xml", "pretty-xml", "trix", "trig", "nquads" ]
+    
     
     @classmethod
     def _get_filename (
@@ -189,14 +193,17 @@ class KnowledgeGraph (object):
     
     def load_rdf (
         self,
-        path: PathLike,
+        path: IOPathLike,
         *,
         format: str = "n3",
         encoding: str = "utf-8"
         ) -> None:
         """
         """
-        self._g.parse(self._get_filename(path), format=format, encoding=encoding)
+        if hasattr(path, "read"):
+            self._g.parse(path, format=format, encoding=encoding)
+        else:
+            self._g.parse(self._get_filename(path), format=format, encoding=encoding)
 
 
     def load_rdf_text (
@@ -213,14 +220,17 @@ class KnowledgeGraph (object):
 
     def save_rdf (
         self,
-        path: PathLike,
+        path: IOPathLike,
         *,
         format: str = "n3",
         encoding: str = "utf-8"
         ) -> None:
         """
         """
-        self._g.serialize(destination=self._get_filename(path), format=format, encoding=encoding)
+        if hasattr(path, "write"):
+            self._g.serialize(destination=path, format=format, encoding=encoding)
+        else:
+            self._g.serialize(destination=self._get_filename(path), format=format, encoding=encoding)
 
 
     def save_rdf_text (
@@ -268,7 +278,7 @@ class KnowledgeGraph (object):
 
     def load_parquet (
         self,
-        path: PathLike,
+        path: IOPathLike,
         **kwargs: typing.Any
         ) -> None:
         """
@@ -285,7 +295,7 @@ class KnowledgeGraph (object):
 
     def save_parquet (
         self,
-        path: PathLike,
+        path: IOPathLike,
         *,
         compression: str = "snappy",
         **kwargs: typing.Any
