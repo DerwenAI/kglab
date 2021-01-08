@@ -298,7 +298,7 @@ class KnowledgeGraph (object):
         df.to_parquet(
             path,
             compression=compression,
-            **chocolate.filter_args(kwargs, pd.to_parquet)
+            **chocolate.filter_args(kwargs, df.to_parquet)
         )
 
 
