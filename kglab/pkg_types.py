@@ -8,8 +8,9 @@ import pandas as pd  # type: ignore
 import pathlib
 import rdflib  # type: ignore
 import typing
+import urlpath  # type: ignore
 
-PathLike = typing.Union[str, pathlib.Path]
+PathLike = typing.Union[str, pathlib.Path, urlpath.URL]
 
 RDF_Node = typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]
 RDF_Triple = typing.Tuple[RDF_Node, RDF_Node, RDF_Node]

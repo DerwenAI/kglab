@@ -21,7 +21,7 @@ To use **kglab** in its simplest form:
 import kglab
 
 kg = kglab.KnowledgeGraph()
-kg.load_rdf("http://bigasterisk.com/foaf.rdf", format="xml")
+kg.load_rdf("https://storage.googleapis.com/kglab-tutorial/foaf.rdf", format="xml")
 
 measure = kglab.Measure()
 measure.measure_graph(kg)

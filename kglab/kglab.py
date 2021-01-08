@@ -27,8 +27,6 @@ import json
 import owlrl  # type: ignore
 import pandas as pd  # type: ignore
 import pathlib
-import pyarrow as pa  # type: ignore
-import pyarrow.parquet as pq  # type: ignore
 import pyshacl  # type: ignore
 import typing
 import urlpath  # type: ignore
@@ -270,11 +268,15 @@ class KnowledgeGraph (object):
 
     def load_parquet (
         self,
-        path: PathLike
+        path: PathLike,
+        **kwargs: typing.Any
         ) -> None:
         """
         """
-        df = pq.read_pandas(path).to_pandas()
+        df = pd.read_parquet(
+            path,
+            **chocolate.filter_args(kwargs, pd.read_parquet)
+        )
 
         for index, row in df.iterrows():
             triple = "{} {} {} .".format(row[0], row[1], row[2])
@@ -285,14 +287,19 @@ class KnowledgeGraph (object):
         self,
         path: PathLike,
         *,
-        compression: str = "gzip"
+        compression: str = "snappy",
+        **kwargs: typing.Any
         ) -> None:
         """
         """
         rows_list = [ {"s": s.n3(), "p": p.n3(), "o": o.n3()} for s, p, o in self._g ]
         df = pd.DataFrame(rows_list, columns=("s", "p", "o"))
-        table = pa.Table.from_pandas(df)
-        pq.write_table(table, path, use_dictionary=True, compression=compression)
+        
+        df.to_parquet(
+            path,
+            compression=compression,
+            **chocolate.filter_args(kwargs, pd.to_parquet)
+        )
 
 
     ######################################################################
