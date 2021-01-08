@@ -8,6 +8,8 @@ include:
 
 - [cairocffi](https://cairocffi.readthedocs.io/)
 - [chocolate](https://github.com/seungjaeryanlee/chocolate)
+- [fsspec](https://filesystem-spec.readthedocs.io/)[^1]
+- [gcsfs](https://gcsfs.readthedocs.io/)
 - [gensim](https://radimrehurek.com/gensim/)
 - [GPUtil](https://github.com/anderskm/gputil)
 - [leidenalg](https://leidenalg.readthedocs.io/)
@@ -26,3 +28,6 @@ include:
 - [RDFlib](https://rdflib.readthedocs.io/)
 - [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
 - [urlpath](https://github.com/chrono-meter/urlpath)
+
+
+[^1]: You may need to [install extra dependencies](https://filesystem-spec.readthedocs.io/en/latest/index.html?highlight=extra#installation) for `fsspec` since not all included filesystems are usable by default. Support for Amazon S3 and Google GCS are installed by default. See the `extras_require` dict in <https://github.com/intake/filesystem_spec/blob/master/setup.py>

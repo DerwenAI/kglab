@@ -7,7 +7,7 @@ import kglab
 kg = kglab.KnowledgeGraph()
 
 # load RDF from a URL
-kg.load_rdf("http://bigasterisk.com/foaf.rdf", format="xml")
+kg.load_rdf("https://storage.googleapis.com/kglab-tutorial/foaf.rdf", format="xml")
 
 # measure the graph
 measure = kglab.Measure()

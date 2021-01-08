@@ -6,6 +6,7 @@
 
   * extend RDFlib serialization with `urlpath` support
   * added `code_of_conduct.md`
+  * including `gcsfs` and `fsspec` to leverage cloud bucket access in `pandas`
 
 
 ## 0.1.5
