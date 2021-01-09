@@ -250,7 +250,7 @@ This traps some edge cases for the `destination` parameter in RDFlib which had b
 must be a file name (str) or a path object (not a URL) to a local file reference; or a [*writable, bytes-like object*](https://docs.python.org/3/glossary.html#term-bytes-like-object); otherwise this throws a `TypeError` exception
 
     format:
-serialization format, defaults to N3 triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins – excluding the `"json-ld"` format; otherwise this generates a `RuntimeWarning` warning
+serialization format, defaults to N3 triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins – excluding the `"json-ld"` format; otherwise this throws a `TypeError` exception
 
     base:
 optional base set for the graph
@@ -265,7 +265,10 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         if format == "json-ld":
             raise TypeError("Use the save_jsonld() method instead")
         elif format not in self._RDF_FORMAT:
-            warnings.warn("unknown format: {}".format(format), RuntimeWarning)
+            try:
+                s = rdflib.plugin.get(format, rdflib.serializer.Serializer)
+            except Exception as e:
+                raise TypeError("unknown format: {}".format(format))
 
         # error checking for the `encoding` parameter
         try:
