@@ -243,15 +243,28 @@ class KnowledgeGraph (object):
         ) -> None:
         """
 A wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to the `path` destination.
-This traps some edge cases for the `destination` parameter in RDFlib which had been so heavily overloaded.
+This traps some edge cases for the `destination` parameter in RDFlib which had been so grotesquely overloaded.
 
-    path: must be a file name (str) or a path object (not a URL) to a local file reference; or a [*writable, bytes-like object*](https://docs.python.org/3/glossary.html#term-bytes-like-object), otherwise this throws a `TypeError` exception
-    format: serialization format, defaults to N3 triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins
-    base: base set for the graph
-    encoding: text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo), otherwise this throws a `LookupError` exception
+    path:
+must be a file name (str) or a path object (not a URL) to a local file reference; or a [*writable, bytes-like object*](https://docs.python.org/3/glossary.html#term-bytes-like-object); otherwise this throws a `TypeError` exception
+
+    format:
+serialization format, defaults to N3 triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins – excluding the `"json-ld"` format; otherwise this throws a `TypeError` exception
+
+    base:
+optional base set for the graph
+
+    encoding:
+text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
         """
         error_path = "The `path` file object must be a writable, bytes-like object"
         error_encode = "The text `encoding` value does not match anything in the Python codec registry"
+
+        # error checking the `format` paramter
+        if format == "json-ld":
+            raise TypeError("Use the save_jsonld() method instead")
+        elif format not in self._RDF_FORMAT:
+            raise TypeError("unknown format: {}".format(format))
 
         # error checking for the `encoding` parameter
         try:
@@ -331,7 +344,11 @@ This traps some edge cases for the `destination` parameter in RDFlib which had b
         """
         with open(path, "r", encoding=encoding) as f:
             data = json.load(f)
-            self._g.parse(data=json.dumps(data), format="json-ld", encoding=encoding)
+            self._g.parse(
+                data=json.dumps(data),
+                format="json-ld",
+                encoding=encoding
+            )
 
 
     def save_jsonld (
@@ -343,10 +360,10 @@ This traps some edge cases for the `destination` parameter in RDFlib which had b
         """
         """
         data = self._g.serialize(
-            format = "json-ld",
-            context = self.get_context(),
-            indent = 2,
-            encoding = encoding
+            format="json-ld",
+            context=self.get_context(),
+            indent=2,
+            encoding=encoding
             )
 
         with open(path, "wb") as f:
