@@ -20,9 +20,11 @@ register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 from kglab.pkg_types import PathLike, IOPathLike, GraphLike, RDF_Node
 
 import chocolate  # type: ignore
+import codecs
 import dateutil.parser as dup
 import datetime as dt
 import GPUtil  # type: ignore
+import io
 import json
 import owlrl  # type: ignore
 import pandas as pd  # type: ignore
@@ -172,6 +174,18 @@ class KnowledgeGraph (object):
 
     # PEP 586, although not until Py 3.8 
     # RDF_FORMAT = typing.Literal[ "n3", "ttl", "turtle", "nt", "xml", "pretty-xml", "trix", "trig", "nquads" ]
+
+    _RDF_FORMAT: list = [
+        "n3", 
+        "ttl", 
+        "turtle", 
+        "nt", 
+        "xml", 
+        "pretty-xml", 
+        "trix", 
+        "trig", 
+        "nquads"
+    ]
     
     
     @classmethod
@@ -223,25 +237,88 @@ class KnowledgeGraph (object):
         path: IOPathLike,
         *,
         format: str = "n3",
-        encoding: str = "utf-8"
+        base: str = None,
+        encoding: str = "utf-8",
+        **args: typing.Any
         ) -> None:
         """
+A wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to the `path` destination.
+This traps some edge cases for the `destination` parameter in RDFlib which had been so heavily overloaded.
+
+    path: must be a file name (str) or a path object (not a URL) to a local file reference; or a [*writable, bytes-like object*](https://docs.python.org/3/glossary.html#term-bytes-like-object), otherwise this throws a `TypeError` exception
+    format: serialization format, defaults to N3 triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins
+    base: base set for the graph
+    encoding: text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo), otherwise this throws a `LookupError` exception
         """
+        error_path = "The `path` file object must be a writable, bytes-like object"
+        error_encode = "The text `encoding` value does not match anything in the Python codec registry"
+
+        # error checking for the `encoding` parameter
+        try:
+            codecs.lookup(encoding)
+        except LookupError as e:
+            raise LookupError(error_encode)
+
+        # substitute the `KnowledgeGraph.base_uri` base set for the graph, if used
+        if not base and self.base_uri:
+            base = self.base_uri
+      
+        # error checking for a file-like object `path` paramter
         if hasattr(path, "write"):
-            self._g.serialize(destination=path, format=format, encoding=encoding)
+            if hasattr(path, "encoding"):
+                raise TypeError(error_path)
+            else:
+                try:
+                    self._g.serialize(
+                        destination=path,
+                        format=format,
+                        base=base,
+                        encoding=encoding,
+                        **args
+                    )
+                except io.UnsupportedOperation as e:
+                    raise TypeError(error_path)
+
+        # otherwise write to a local file reference
         else:
-            self._g.serialize(destination=self._get_filename(path), format=format, encoding=encoding)
+            self._g.serialize(
+                destination=self._get_filename(path),
+                format=format,
+                base=base,
+                encoding=encoding,
+                **args
+            )
 
 
     def save_rdf_text (
         self,
         *,
         format: str = "n3",
-        encoding: str = "utf-8"
-        ) -> str:
+        base: str = None,
+        encoding: str = "utf-8",
+        **args: typing.Any
+        ) -> typing.AnyStr:
         """
         """
-        return self._g.serialize(destination=None, format=format, encoding=encoding).decode(encoding) 
+        error_encode = "The text `encoding` value does not match anything in the Python codec registry"
+
+        # error checking for the `encoding` parameter
+        try:
+            codecs.lookup(encoding)
+        except LookupError as e:
+            raise LookupError(error_encode)
+
+        # substitute the `KnowledgeGraph.base_uri` base set for the graph, if used
+        if not base and self.base_uri:
+            base = self.base_uri
+
+        return self._g.serialize(
+            destination=None,
+            format=format,
+            base=base,
+            encoding=encoding,
+            **args
+        ).decode(encoding) 
 
 
     def load_jsonld (
