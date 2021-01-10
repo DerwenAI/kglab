@@ -149,15 +149,25 @@ class KnowledgeGraph (object):
 
 
     @classmethod
-    def type_date (
+    def encode_date (
         cls,
-        date: str,
-        tz: dict
+        datetime: str,
+        tzinfos: dict
         ) -> rdflib.Literal:
         """
-        input `date` should be interpretable as having a local timezone
+Helper method to ensure that an input `datetime` value has a timezone that can be interpreted by [`rdflib.XSD.dateTime`](https://www.w3.org/TR/xmlschema-2/#dateTime).
+
+    datetime:
+input datetime as a string
+
+    tzinfos:
+timezones as a dict, used by
+[`dateutil.parser.parse()`](https://dateutil.readthedocs.io/en/stable/parser.html#dateutil.parser.parse) as additional time zone names or aliases which may be present in the input `datetime` string
+
+    returns:
+[`rdflib.Literal`](https://rdflib.readthedocs.io/en/stable/rdf_terms.html#literals) formatted as an XML Schema 2 `dateTime` value.
         """
-        date_tz = dup.parse(date, tzinfos=tz)
+        date_tz = dup.parse(datetime, tzinfos=tzinfos)
         return rdflib.Literal(date_tz, datatype=rdflib.XSD.dateTime)
 
 
@@ -190,13 +200,32 @@ class KnowledgeGraph (object):
         "trig", 
         "nquads"
     ]
-    
-    
+
+    @classmethod
+    def _check_encoding (
+        cls,
+        encoding: str
+        ) -> None:
+        """
+Semiprivate method to error-check that an `encoding` parameter is within the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
+        """
+        try:
+            codecs.lookup(encoding)
+        except LookupError as e:
+            raise LookupError(cls._ERROR_ENCODE)
+
+
     @classmethod
     def _get_filename (
         cls,
         path: PathLike
         ) -> typing.Optional[str]:
+        """
+Semiprivate method to extract a file name (str) for a file reference from a [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html) or its subclasses
+
+    returns:
+a string as a file name or URL to a file reference
+        """
         if not path:
             filename = None
         elif isinstance(path, urlpath.URL):
@@ -271,10 +300,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
                 raise TypeError("unknown format: {}".format(format))
 
         # error checking for the `encoding` parameter
-        try:
-            codecs.lookup(encoding)
-        except LookupError as e:
-            raise LookupError(self._ERROR_ENCODE)
+        self._check_encoding(encoding)
 
         # substitute the `KnowledgeGraph.base_uri` base set for the graph, if used
         if not base and self.base_uri:
@@ -328,7 +354,7 @@ optional base set for the graph
 text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
 
     returns:
-A string representing the RDF graph
+text representing the RDF graph
         """
         # error checking the `format` paramter
         if format not in self._RDF_FORMAT:
@@ -338,10 +364,7 @@ A string representing the RDF graph
                 raise TypeError("unknown format: {}".format(format))
 
         # error checking for the `encoding` parameter
-        try:
-            codecs.lookup(encoding)
-        except LookupError as e:
-            raise LookupError(self._ERROR_ENCODE)
+        self._check_encoding(encoding)
 
         # substitute the `KnowledgeGraph.base_uri` base set for the graph, if used
         if not base and self.base_uri:
@@ -399,10 +422,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
             f = open(self._get_filename(path), "wb") # type: ignore
 
         # error checking for the `encoding` parameter
-        try:
-            codecs.lookup(encoding)
-        except LookupError as e:
-            raise LookupError(self._ERROR_ENCODE)
+        self._check_encoding(encoding)
 
         f.write( # type: ignore
             self._g.serialize(
@@ -454,18 +474,6 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
     ######################################################################
     ## SPARQL queries
 
-    def query (
-        self,
-        sparql: str,
-        *,
-        bindings: dict = {}
-        ) -> typing.Iterable:
-        """
-        """
-        for row in self._g.query(sparql, initBindings=bindings):
-            yield row
-
-
     @classmethod
     def n3fy (
         cls,
@@ -488,6 +496,18 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
                     items.append([ k, v.n3(nm) ])
 
             return dict(items)
+
+
+    def query (
+        self,
+        sparql: str,
+        *,
+        bindings: dict = {}
+        ) -> typing.Iterable:
+        """
+        """
+        for row in self._g.query(sparql, initBindings=bindings):
+            yield row
 
 
     def query_as_df (
