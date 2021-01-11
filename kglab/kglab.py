@@ -49,11 +49,11 @@ class KnowledgeGraph (object):
     def __init__ (
         self,
         *,
-        name: str = "kg+lab",
+        name: str = "generic",
         base_uri: str = None,
         language: str = "en",
         namespaces: dict = {},
-        graph: typing.Optional[GraphLike] = None
+        graph: typing.Optional[GraphLike] = None,
         ) -> None:
         """
         """
@@ -67,8 +67,10 @@ class KnowledgeGraph (object):
         else:
             self._g = rdflib.Graph()
 
-        self._ns: dict = {}
-        self.merge_ns({ **self._DEFAULT_NAMESPACES, **namespaces })
+        self._ns: dict = self._DEFAULT_NAMESPACES
+            
+        for prefix, uri in namespaces.items():
+            self.add_ns(prefix, uri)
 
 
     ######################################################################
@@ -84,20 +86,10 @@ class KnowledgeGraph (object):
     ## entity-resolution probabilistically rather than by strict
     ## rulesets.
 
-    def merge_ns (
-        self,
-        ns_set: dict
-        ) -> None:
-        """
-        """
-        for prefix, uri in ns_set.items():
-            self.add_ns(prefix, uri)
-
-
     def add_ns (
         self,
         prefix: str,
-        uri: str
+        uri: str,
         ) -> None:
         """
         Since rdflib converts Namespace bindings to URIRef, we'll keep references to them
@@ -108,7 +100,7 @@ class KnowledgeGraph (object):
 
     def get_ns (
         self,
-        prefix: str
+        prefix: str,
         ) -> rdflib.Namespace:
         """
         prefix: the TTL-format prefix used to reference the namespace
@@ -141,7 +133,7 @@ class KnowledgeGraph (object):
         self,
         s: RDF_Node,
         p: RDF_Node,
-        o: RDF_Node
+        o: RDF_Node,
         ) -> None:
         """
         """
@@ -152,7 +144,7 @@ class KnowledgeGraph (object):
     def encode_date (
         cls,
         datetime: str,
-        tzinfos: dict
+        tzinfos: dict,
         ) -> rdflib.Literal:
         """
 Helper method to ensure that an input `datetime` value has a timezone that can be interpreted by [`rdflib.XSD.dateTime`](https://www.w3.org/TR/xmlschema-2/#dateTime).
@@ -183,12 +175,6 @@ timezones as a dict, used by
     ## integrated into several of the existing tools for creating 
     ## network graphs.
 
-    _ERROR_PATH: str = "The `path` file object must be a writable, bytes-like object"
-    _ERROR_ENCODE: str = "The text `encoding` value does not match anything in the Python codec registry"
-
-    # PEP 586, although not until Py 3.8 
-    # RDF_FORMAT = typing.Literal[ "n3", "ttl", "turtle", "nt", "xml", "pretty-xml", "trix", "trig", "nquads" ]
-
     _RDF_FORMAT: list = [
         "n3", 
         "ttl", 
@@ -198,13 +184,33 @@ timezones as a dict, used by
         "pretty-xml", 
         "trix", 
         "trig", 
-        "nquads"
+        "nquads",
+        "json-ld",
     ]
+
+    _ERROR_ENCODE: str = "The text `encoding` value does not match anything in the Python codec registry"
+    _ERROR_PATH: str = "The `path` file object must be a writable, bytes-like object"
+
+
+    @classmethod
+    def _check_format (
+        cls,
+        format: str,
+        ) -> None:
+        """
+Semiprivate method to error-check that a `format` parameter corresponds to a known RDFlib serialization plugin; otherwise this throws a `TypeError` exception
+        """
+        if format not in cls._RDF_FORMAT:
+            try:
+                s = rdflib.plugin.get(format, rdflib.serializer.Serializer)
+            except Exception as e:
+                raise TypeError("unknown format: {}".format(format))
+
 
     @classmethod
     def _check_encoding (
         cls,
-        encoding: str
+        encoding: str,
         ) -> None:
         """
 Semiprivate method to error-check that an `encoding` parameter is within the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
@@ -218,7 +224,7 @@ Semiprivate method to error-check that an `encoding` parameter is within the [Py
     @classmethod
     def _get_filename (
         cls,
-        path: PathLike
+        path: PathLike,
         ) -> typing.Optional[str]:
         """
 Semiprivate method to extract a file name (str) for a file reference from a [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html) or its subclasses
@@ -243,14 +249,48 @@ a string as a file name or URL to a file reference
         path: IOPathLike,
         *,
         format: str = "n3",
-        encoding: str = "utf-8"
+        base: str = None,
+        **args: typing.Any,
         ) -> None:
         """
+A wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from the `path` source.
+This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
+
+Note: this adds triples/quads to an RDF graph, it does not overwrite the existing RDF graph.
+
+    path:
+must be a file name (str) or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object)
+
+    format:
+serialization format, defaults to N3 triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins – excluding the `"json-ld"` format; otherwise this throws a `TypeError` exception
+
+    base:
+logical URI to use as the document base; if not specified the document location is used
         """
-        if hasattr(path, "read"):
-            self._g.parse(path, format=format, encoding=encoding)
+        # error checking for the `format` parameter
+        if format == "json-ld":
+            raise TypeError("Use the load_jsonld() method instead")
         else:
-            self._g.parse(self._get_filename(path), format=format, encoding=encoding)
+            self._check_format(format)
+
+        # substitute the `KnowledgeGraph.base_uri` as the document base, if used
+        if not base and self.base_uri:
+            base = self.base_uri
+
+        if hasattr(path, "read"):
+            self._g.parse(
+                path,
+                format=format,
+                publicID=base,
+                **args,
+            )
+        else:
+            self._g.parse(
+                self._get_filename(path),
+                format=format,
+                publicID=base,
+                **args,
+            )
 
 
     def load_rdf_text (
@@ -258,11 +298,18 @@ a string as a file name or URL to a file reference
         data: typing.AnyStr,
         *,
         format: str = "n3",
-        encoding: str = "utf-8"
+        **args: typing.Any,
         ) -> None:
         """
         """
-        self._g.parse(data=data, format=format, encoding=encoding);
+        # error checking for the `format` parameter
+        self._check_format(format)
+
+        self._g.parse(
+            data=data,
+            format=format,
+            **args,
+        )
 
 
     def save_rdf (
@@ -272,7 +319,7 @@ a string as a file name or URL to a file reference
         format: str = "n3",
         base: str = None,
         encoding: str = "utf-8",
-        **args: typing.Any
+        **args: typing.Any,
         ) -> None:
         """
 A wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to the `path` destination.
@@ -290,14 +337,11 @@ optional base set for the graph
     encoding:
 text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
         """
-        # error checking the `format` paramter
+        # error checking for the `format` paramter
         if format == "json-ld":
             raise TypeError("Use the save_jsonld() method instead")
-        elif format not in self._RDF_FORMAT:
-            try:
-                s = rdflib.plugin.get(format, rdflib.serializer.Serializer)
-            except Exception as e:
-                raise TypeError("unknown format: {}".format(format))
+        else:
+            self._check_format(format)
 
         # error checking for the `encoding` parameter
         self._check_encoding(encoding)
@@ -317,7 +361,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
                         format=format,
                         base=base,
                         encoding=encoding,
-                        **args
+                        **args,
                     )
                 except io.UnsupportedOperation as e:
                     raise TypeError(self._ERROR_PATH)
@@ -329,7 +373,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
                 format=format,
                 base=base,
                 encoding=encoding,
-                **args
+                **args,
             )
 
 
@@ -339,7 +383,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         format: str = "n3",
         base: str = None,
         encoding: str = "utf-8",
-        **args: typing.Any
+        **args: typing.Any,
         ) -> typing.AnyStr:
         """
 A wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to a string.
@@ -356,12 +400,8 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
     returns:
 text representing the RDF graph
         """
-        # error checking the `format` paramter
-        if format not in self._RDF_FORMAT:
-            try:
-                s = rdflib.plugin.get(format, rdflib.serializer.Serializer)
-            except Exception as e:
-                raise TypeError("unknown format: {}".format(format))
+        # error checking for the `format` parameter
+        self._check_format(format)
 
         # error checking for the `encoding` parameter
         self._check_encoding(encoding)
@@ -375,7 +415,7 @@ text representing the RDF graph
             format=format,
             base=base,
             encoding=encoding,
-            **args
+            **args,
         ).decode(encoding) 
 
 
@@ -383,7 +423,8 @@ text representing the RDF graph
         self,
         path: PathLike,
         *,
-        encoding: str = "utf-8"
+        encoding: str = "utf-8",
+        **args: typing.Any,
         ) -> None:
         """
         """
@@ -392,7 +433,8 @@ text representing the RDF graph
             self._g.parse(
                 data=json.dumps(data),
                 format="json-ld",
-                encoding=encoding
+                encoding=encoding,
+                **args,
             )
 
 
@@ -401,7 +443,7 @@ text representing the RDF graph
         path: IOPathLike,
         *,
         encoding: str = "utf-8",
-        **args: typing.Any
+        **args: typing.Any,
         ) -> None:
         """
 A wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to the `path` destination as [JSON-LD](https://json-ld.org/).
@@ -430,7 +472,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
                 context=self.get_context(),
                 indent=2,
                 encoding=encoding,
-                **args
+                **args,
             )
         )
 
@@ -438,7 +480,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
     def load_parquet (
         self,
         path: IOPathLike,
-        **kwargs: typing.Any
+        **kwargs: typing.Any,
         ) -> None:
         """
         """
@@ -457,7 +499,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         path: IOPathLike,
         *,
         compression: str = "snappy",
-        **kwargs: typing.Any
+        **kwargs: typing.Any,
         ) -> None:
         """
         """
@@ -467,7 +509,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         df.to_parquet(
             path,
             compression=compression,
-            **chocolate.filter_args(kwargs, df.to_parquet)
+            **chocolate.filter_args(kwargs, df.to_parquet),
         )
 
 
@@ -480,7 +522,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         d: dict,
         nm: rdflib.namespace.NamespaceManager,
         *,
-        pythonify: bool = True
+        pythonify: bool = True,
         ) -> dict:
         """
         """
@@ -502,7 +544,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         self,
         sparql: str,
         *,
-        bindings: dict = {}
+        bindings: dict = {},
         ) -> typing.Iterable:
         """
         """
@@ -516,7 +558,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         *,
         bindings: dict = {},
         simplify: bool = True,
-        pythonify: bool = True
+        pythonify: bool = True,
         ) -> pd.DataFrame:
         """
         """
@@ -546,7 +588,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         abort_on_error: typing.Optional[bool] = None,
         serialize_report_graph: typing.Optional[str] = "n3",
         debug: bool = False,
-        **kwargs: typing.Any
+        **kwargs: typing.Any,
         ) -> typing.Tuple[bool, "KnowledgeGraph", str]:
         """
         """
@@ -617,7 +659,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
     def infer_skos_hierarchical (
         self,
         *,
-        narrower: bool = True
+        narrower: bool = True,
         ) -> None:
         """
         Infer skos:broader/skos:narrower (S25) but only keep skos:narrower on request.
@@ -640,7 +682,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
     def infer_skos_transitive (
         self,
         *,
-        narrower: bool = True
+        narrower: bool = True,
         ) -> None:
         """
         Perform transitive closure inference (S22, S24).
@@ -661,7 +703,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
     def infer_skos_symmetric_mappings (
         self,
         *,
-        related: bool = True
+        related: bool = True,
         ) -> None:
         """
         Ensure that the symmetric mapping properties (skos:relatedMatch,
@@ -688,7 +730,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
     def infer_skos_hierarchical_mappings (
         self,
         *,
-        narrower: bool = True
+        narrower: bool = True,
         ) -> None:
         """
         Infer skos:broadMatch/skos:narrowMatch (S43) and add the super-properties
