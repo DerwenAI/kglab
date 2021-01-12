@@ -22,12 +22,22 @@ for your version of the `Chrome` brower, saved as `chromedriver` in this directo
 
 ## Type Checking
 
-This project uses `typing` and [`mypy`](https://mypy.readthedocs.io/)
-for *type checking*.
+This project uses [`typing`](https://docs.python.org/3/library/typing.html)
+and [`mypy`](https://mypy.readthedocs.io/) for *type checking*.
 
 To run type checking:
 ```
 mypy kglab/*.py
+```
+
+
+## Code Checking
+
+This project uses [`pylint`](https://www.pylint.org/) for *code checking*.
+
+To run code checking:
+```
+pylint kglab/kglab.py
 ```
 
 

@@ -26,6 +26,15 @@ PAT_PARAM = re.compile(r"(    \S+.*\:\n(?:\S.*\n)+)", re.MULTILINE)
 PAT_NAME = re.compile(r"^\s+(.*)\:\n(.*)")
 
 
+def show_all_elements (module_name):
+    module_obj = sys.modules[module_name]
+
+    for name, obj in inspect.getmembers(module_obj):
+        for n, o in inspect.getmembers(obj):
+            print("\n", name, n, o)
+            print(type(o))
+
+
 def parse_method_docstring (docstring, arg_dict):
     md = []
 
@@ -41,7 +50,7 @@ def parse_method_docstring (docstring, arg_dict):
                 anno = arg_dict[name]
                 descrip = m_name.group(2).strip()
 
-                if name == "returns":
+                if name in [ "returns", "yields" ]:
                     md.append("\n  * *{}* : `{}`  \n{}".format(name, anno, descrip))
                 else:
                     md.append("\n  * `{}` : `{}`  \n{}".format(name, anno, descrip))
@@ -52,15 +61,6 @@ def parse_method_docstring (docstring, arg_dict):
                 md.append(chunk)
 
     return "\n".join(md)
-
-
-def show_all_elements (module_name):
-    module_obj = sys.modules[module_name]
-
-    for name, obj in inspect.getmembers(module_obj):
-        for n, o in inspect.getmembers(obj):
-            print("\n", name, n, o)
-            print(type(o))
 
 
 def extract_type_annotation (sig):
@@ -186,8 +186,8 @@ if __name__ == "__main__":
     ref_md_file = sys.argv[1]
     class_list = [ "KnowledgeGraph", "Measure", "Simplex0", "Simplex1", "Subgraph" ]
 
-    ## NB: `inspect` is picky about paths and current working directory.
-    ## This only works if run from the top-level directory for the repo.
+    ## NB: `inspect` is picky about paths and current working directory
+    ## this only works if run from the top-level directory for the repo
 
     sys.path.insert(0, "../")
     import kglab
@@ -196,6 +196,7 @@ if __name__ == "__main__":
     module_obj = sys.modules[module_name]
     gh_src_url = "https://github.com/DerwenAI/kglab/blob/main"
 
+    ## NB: uncomment to analyze/troubleshoot the results of `inspect` 
     #show_all_elements(module_name)
     #sys.exit(0)
 
@@ -214,8 +215,13 @@ if __name__ == "__main__":
     ## format each specified class definition
     for class_name in class_list:
         class_obj = todo_list[class_name]
-
         md.append("## [`{}` class](#{})".format(class_name, class_name))
+
+        doc = class_obj.__doc__
+
+        if doc:
+            md.append(doc)
+
         obj_md_pos = {}
 
         for member_name, member_obj in inspect.getmembers(class_obj):
