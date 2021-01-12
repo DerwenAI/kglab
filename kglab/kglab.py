@@ -8,22 +8,16 @@ import sys
 if sys.version_info < (3, 6, ):
     raise RuntimeError("This version of kglab cannot be used in Python < 3.6")
 
-from rdflib import plugin  # type: ignore
-from rdflib.serializer import Serializer  # type: ignore
-from rdflib.plugin import register, Parser, Serializer  # type: ignore
 import rdflib  # type: ignore
-# NB: while `plugin` and `Serializer` aren't used directly, loading
-# them explicitly here causes them to become registered in `rdflib`
-register("json-ld", Parser, "rdflib_jsonld.parser", "JsonLDParser")
-register("json-ld", Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
+import rdflib.plugin  # type: ignore
+rdflib.plugin.register("json-ld", rdflib.plugin.Parser, "rdflib_jsonld.parser", "JsonLDParser")
+rdflib.plugin.register("json-ld", rdflib.plugin.Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
 from kglab.pkg_types import PathLike, IOPathLike, GraphLike, RDF_Node
 
 import chocolate  # type: ignore
 import codecs
-import copy
 import dateutil.parser as dup
-import datetime as dt
 import GPUtil  # type: ignore
 import io
 import json
@@ -35,7 +29,11 @@ import typing
 import urlpath  # type: ignore
 
 
-class KnowledgeGraph (object):
+class KnowledgeGraph:
+    """
+Main class used to represent an RDF graph
+    """
+
     _DEFAULT_NAMESPACES: dict = {
         "dct":    "http://purl.org/dc/terms/",
         "owl":    "http://www.w3.org/2002/07/owl#",
@@ -54,10 +52,11 @@ class KnowledgeGraph (object):
         name: str = "generic",
         base_uri: str = None,
         language: str = "en",
-        namespaces: dict = {},
+        namespaces: dict = None,
         graph: typing.Optional[GraphLike] = None,
         ) -> None:
         """
+Constructor for a KnowledgeGraph object
         """
         self.name = name
         self.base_uri = base_uri
@@ -70,12 +69,13 @@ class KnowledgeGraph (object):
             self._g = rdflib.Graph()
 
         self._ns: dict = {}
-            
-        for prefix, uri in self._DEFAULT_NAMESPACES.items():
-            self.add_ns(prefix, uri)
 
-        for prefix, uri in namespaces.items():
-            self.add_ns(prefix, uri)
+        for prefix, iri in self._DEFAULT_NAMESPACES.items():
+            self.add_ns(prefix, iri)
+
+        if namespaces:
+            for prefix, iri in namespaces.items():
+                self.add_ns(prefix, iri)
 
 
     ######################################################################
@@ -94,13 +94,41 @@ class KnowledgeGraph (object):
     def add_ns (
         self,
         prefix: str,
-        uri: str,
+        iri: str,
+        override: bool = True,
+        replace: bool = False,
         ) -> None:
         """
-Since rdflib converts Namespace bindings to URIRef, we'll keep references to them
+Adds another [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.Namespace) among the *controlled vocabularies* available to use in the RDF graph, binding the `prefix` to the given namespace.
+
+Since the RDFlib [`NamespaceManager`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.namespace.NamespaceManager) automagically converts all input bindings into [`URIRef`](https://www.w3.org/TR/rdf-concepts/#section-Graph-URIref) instead, we'll keep references to the namespaces – for later use.
+
+    prefix:
+a [namespace prefix](https://www.w3.org/TR/rdf11-concepts/#dfn-namespace-prefix)
+
+    iri:
+URL to use for constructing the [namespace IRI](https://www.w3.org/TR/rdf11-concepts/#dfn-namespace-iri)
+
+    override:
+rebind, even if the given namespace is already bound to another prefix
+
+    replace:
+replace any existing prefix with the new namespace
         """
-        self._ns[prefix] = rdflib.Namespace(uri)
-        self._g.namespace_manager.bind(prefix, self._ns[prefix])
+        if override and iri in self._ns.values():
+            rev_ns = { str(v):k for k, v in self._ns.items() }
+            bogus_prefix = rev_ns[iri]
+            del self._ns[bogus_prefix]
+
+        if replace or prefix not in self._ns:
+            self._ns[prefix] = rdflib.Namespace(iri)
+
+        self._g.namespace_manager.bind(
+            prefix,
+            self._ns[prefix],
+            override=override,
+            replace=replace,
+        )
 
 
     def get_ns (
@@ -108,11 +136,13 @@ Since rdflib converts Namespace bindings to URIRef, we'll keep references to the
         prefix: str,
         ) -> rdflib.Namespace:
         """
+Lookup a [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.Namespace) among the *controlled vocabularies* available to use in the RDF graph.
+
     prefix:
-N3-format prefix used to reference a namespace
+a [namespace prefix](https://www.w3.org/TR/rdf11-concepts/#dfn-namespace-prefix)
 
     returns:
-rdflib.Namespace
+the RDFlib [`Namespace`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.Namespace) for the *controlled vocabulary* referenced by `prefix`
         """
         return self._ns[prefix]
 
@@ -121,6 +151,9 @@ rdflib.Namespace
         self
         ) -> dict:
         """
+Generates a [*JSON-LD context*](https://www.w3.org/TR/json-ld11/#the-context) used for
+serializing the RDF graph as [JSON-LD](https://json-ld.org/).
+
     returns:
 context needed for JSON-LD serialization
         """
@@ -131,16 +164,15 @@ context needed for JSON-LD serialization
         if self.base_uri:
             context["@vocab"] = self.base_uri
 
-        for prefix, uri in self._ns.items():
-            if uri != self.base_uri:
-                context[prefix] = uri
+        for prefix, ns in self._ns.items():
+            if str(ns) != self.base_uri:
+                context[prefix] = str(ns)
 
         return context
 
 
-    @classmethod
     def encode_date (
-        cls,
+        self,
         datetime: str,
         tzinfos: dict,
         ) -> rdflib.Literal:
@@ -158,7 +190,7 @@ timezones as a dict, used by
 [`rdflib.Literal`](https://rdflib.readthedocs.io/en/stable/rdf_terms.html#literals) formatted as an XML Schema 2 `dateTime` value.
         """
         date_tz = dup.parse(datetime, tzinfos=tzinfos)
-        return rdflib.Literal(date_tz, datatype=rdflib.XSD.dateTime)
+        return rdflib.Literal(date_tz, datatype=self.get_ns("xsd").dateTime)
 
 
     def add (
@@ -192,12 +224,12 @@ timezones as a dict, used by
     ## the most basic level as a CSV, so that an analyst can load the
     ## results into their system of choice. By prioritizing
     ## non-proprietary, universal formats the results can be easily
-    ## integrated into several of the existing tools for creating 
+    ## integrated into several of the existing tools for creating
     ## network graphs.
 
-    _RDF_FORMAT: list = [
+    _RDF_FORMAT: typing.Tuple = (
         # RDFXMLParser
-        "application/rdf+xml", 
+        "application/rdf+xml",
         "xml",
         # N3Parser
         "text/n3",
@@ -221,7 +253,7 @@ timezones as a dict, used by
         "trig",
         # JsonLDParser
         "json-ld",
-    ]
+    )
 
     _ERROR_ENCODE: str = "The text `encoding` value does not match anything in the Python codec registry"
     _ERROR_PATH: str = "The `path` file object must be a writable, bytes-like object"
@@ -237,8 +269,8 @@ Semiprivate method to error-check that a `format` parameter corresponds to a kno
         """
         if format not in cls._RDF_FORMAT:
             try:
-                s = rdflib.plugin.get(format, rdflib.serializer.Serializer)
-            except Exception as e:
+                rdflib.plugin.get(format, rdflib.serializer.Serializer)
+            except Exception:
                 raise TypeError("unknown format: {}".format(format))
 
 
@@ -252,7 +284,7 @@ Semiprivate method to error-check that an `encoding` parameter is within the [Py
         """
         try:
             codecs.lookup(encoding)
-        except LookupError as e:
+        except LookupError:
             raise LookupError(cls._ERROR_ENCODE)
 
 
@@ -278,7 +310,7 @@ a string as a file name or URL to a file reference
 
         return filename
 
-    
+
     def load_rdf (
         self,
         path: IOPathLike,
@@ -305,8 +337,8 @@ logical URI to use as the document base; if not specified the document location 
         # error checking for the `format` parameter
         if format == "json-ld":
             raise TypeError("Use the load_jsonld() method instead")
-        else:
-            self._check_format(format)
+
+        self._check_format(format)
 
         # substitute the `KnowledgeGraph.base_uri` as the document base, if used
         if not base and self.base_uri:
@@ -394,8 +426,8 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         # error checking for the `format` paramter
         if format == "json-ld":
             raise TypeError("Use the save_jsonld() method instead")
-        else:
-            self._check_format(format)
+
+        self._check_format(format)
 
         # error checking for the `encoding` parameter
         self._check_encoding(encoding)
@@ -403,22 +435,22 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         # substitute the `KnowledgeGraph.base_uri` base set for the graph, if used
         if not base and self.base_uri:
             base = self.base_uri
-      
+
         # error checking for a file-like object `path` paramter
         if hasattr(path, "write"):
             if hasattr(path, "encoding"):
                 raise TypeError(self._ERROR_PATH)
-            else:
-                try:
-                    self._g.serialize(
-                        destination=path,
-                        format=format,
-                        base=base,
-                        encoding=encoding,
-                        **args,
+
+            try:
+                self._g.serialize(
+                    destination=path,
+                    format=format,
+                    base=base,
+                    encoding=encoding,
+                    **args,
                     )
-                except io.UnsupportedOperation as e:
-                    raise TypeError(self._ERROR_PATH)
+            except io.UnsupportedOperation:
+                raise TypeError(self._ERROR_PATH)
 
         # otherwise write to a local file reference
         else:
@@ -470,7 +502,7 @@ text representing the RDF graph
             base=base,
             encoding=encoding,
             **args,
-        ).decode(encoding) 
+        ).decode(encoding)
 
 
     def load_jsonld (
@@ -481,7 +513,7 @@ text representing the RDF graph
         **args: typing.Any,
         ) -> None:
         """
-A wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from a [JSON-LD](https://json-ld.org/) source.
+A wrapper for [`rdflib-jsonld.parser.JsonLDParser.parse()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/parser.py) which parses an RDF graph from a [JSON-LD](https://json-ld.org/) source.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
 
 Note: this adds triples/quads to an RDF graph, it does not overwrite the existing RDF graph.
@@ -502,7 +534,6 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         self._check_encoding(encoding)
 
         self._g.parse(
-            # TODO
             data=json.dumps(json.load(f)),  # type: ignore
             format="json-ld",
             encoding=encoding,
@@ -518,7 +549,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         **args: typing.Any,
         ) -> None:
         """
-A wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to the `path` destination as [JSON-LD](https://json-ld.org/).
+A wrapper for [`rdflib-jsonld.serializer.JsonLDSerializer.serialize()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/serializer.py) which serializes the RDF graph to the `path` destination as [JSON-LD](https://json-ld.org/).
 This traps some edge cases for the `destination` parameter in RDFlib which had been overloaded.
 
     path:
@@ -531,15 +562,14 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         if hasattr(path, "write"):
             if hasattr(path, "encoding"):
                 raise TypeError(self._ERROR_PATH)
-            else:
-                f = path
+
+            f = path
         else:
             f = open(self._get_filename(path), "wb") # type: ignore
 
         # error checking for the `encoding` parameter
         self._check_encoding(encoding)
 
-        # TODO
         f.write( # type: ignore
             self._g.serialize(
                 format="json-ld",
@@ -579,7 +609,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         """
         rows_list = [ {"s": s.n3(), "p": p.n3(), "o": o.n3()} for s, p, o in self._g ]
         df = pd.DataFrame(rows_list, columns=("s", "p", "o"))
-        
+
         df.to_parquet(
             path,
             compression=compression,
@@ -600,9 +630,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         ) -> dict:
         """
         """
-        if not pythonify:
-            return dict([ (k, v.n3(nm),) for k, v in d.items() ])
-        else:
+        if pythonify:
             items: list = []
 
             for k, v in d.items():
@@ -612,16 +640,21 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
                     items.append([ k, v.n3(nm) ])
 
             return dict(items)
+        else:
+            return { k: v.n3(nm) for k, v in d.items() }
 
 
     def query (
         self,
         sparql: str,
         *,
-        bindings: dict = {},
+        bindings: dict = None,
         ) -> typing.Iterable:
         """
         """
+        if not bindings:
+            bindings = {}
+
         for row in self._g.query(sparql, initBindings=bindings):
             yield row
 
@@ -630,20 +663,23 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         self,
         sparql: str,
         *,
-        bindings: dict = {},
+        bindings: dict = None,
         simplify: bool = True,
         pythonify: bool = True,
         ) -> pd.DataFrame:
         """
         """
-        iter = self._g.query(sparql, initBindings=bindings)
+        if not bindings:
+            bindings = {}
+
+        row_iter = self._g.query(sparql, initBindings=bindings)
 
         if simplify:
             nm = self._g.namespace_manager
-            df = pd.DataFrame([ self.n3fy(row.asdict(), nm, pythonify=pythonify) for row in iter ])
+            df = pd.DataFrame([ self.n3fy(r.asdict(), nm, pythonify=pythonify) for r in row_iter ])
         else:
-            df = df = pd.DataFrame([ row.asdict() for row in iter ])
-        
+            df = df = pd.DataFrame([ r.asdict() for r in row_iter ])
+
         return df
 
 
@@ -681,13 +717,13 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
             )
 
         g = rdflib.Graph()
-        
+
         g.parse(
             data=report_graph_data,
             format="ttl",
             encoding="utf-8"
         )
-        
+
         report_graph = KnowledgeGraph(
             graph=g,
             name="report graph",
@@ -753,13 +789,13 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
                 for sup_prop in sup_prop_list:
                     self.add(s, sup_prop, o)
 
-    
+
     def infer_rdfs_classes (
         self
         ) -> None:
         """
 Perform RDFS subclass inference, marking all resources having a subclass type with their superclass.
-        
+
 Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being updated regularly.
         """
         _rdfs = self.get_ns("rdfs")
@@ -768,7 +804,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
         # key: class val: set([superclass1, superclass2..])
         super_classes: typing.Dict[typing.Any, typing.Any] = {}
 
-        for s, o in self._g.subject_objects(_rdfs.subClassOf):
+        for s, _ in self._g.subject_objects(_rdfs.subClassOf):
             super_classes.setdefault(s, set())
 
             for sup_class in self._g.transitive_objects(s, _rdfs.subClassOf):

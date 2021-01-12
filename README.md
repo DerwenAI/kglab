@@ -1,6 +1,7 @@
 # kglab
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DerwenAI/kglab?style=plastic)
+[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 
 The **kglab** library provides a simple abstraction layer in Python
 for building knowledge graphs.
@@ -8,11 +9,12 @@ for building knowledge graphs.
 Welcome to *graph-based data science*:
 <https://derwen.ai/docs/kgl/>
 
-> **SPECIAL REQUEST**: Which features would you like in an
-> open source Python library for building knowledge graphs?  
+> **SPECIAL REQUEST**: 
+> Which features would you like in an open source 
+> Python library for building knowledge graphs?  
 > Please add your suggestions through this survey:  
 > https://forms.gle/FMHgtmxHYWocprMn6  
-> This will help us prioritize the roadmap for **kglab**.
+> This will help us prioritize the **kglab** roadmap.
 
 
 ## Getting Started

@@ -5,6 +5,7 @@ mkdocs-material
 mypy
 nbconvert
 notebook
+pylint
 pymdown-extensions
 selenium
 twine

@@ -8,6 +8,7 @@
   * extend all serialization to support file-like objects
   * including `gcsfs` and `fsspec` to leverage cloud bucket access in `pandas`
   * added `code_of_conduct.md`
+  * code checking based on `pylint`
 
 
 ## 0.1.5
