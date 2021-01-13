@@ -124,6 +124,12 @@ O'Reilly Media (2020)
 
 ## – K –
 
+### knublauch2017shacl
+
+["Shapes Constraint Language (SHACL)"](https://www.w3.org/TR/shacl/)  
+**Holger Knublauch**, **Dimitris Kontokostas**  
+W3C (2017)
+
 ### kreps2014
 
 [*I Heart Logs: Event Data, Stream Processing, and Data Integration*](https://www.confluent.io/ebook/i-heart-logs-event-data-stream-processing-and-data-integration/)  

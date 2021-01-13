@@ -230,7 +230,7 @@ timezones as a dict, used by
 Wrapper for [`rdflib.Graph.add()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=add#rdflib.Graph.add) to add a relation *(subject, predicate, object)* to the RDF graph, if it doesn't already exist.
 Uses the RDF Graph as its context.
 
-To prepare for upcoming features in **kglab**, this is the preferred method for adding relations to an RDF graph.
+To prepare for upcoming **kglab** features, **this is the preferred method for adding relations to an RDF graph.**
 
     s:
 *subject* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
@@ -254,7 +254,7 @@ To prepare for upcoming features in **kglab**, this is the preferred method for 
 Wrapper for [`rdflib.Graph.remove()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=add#rdflib.Graph.remove) to remove a relation *(subject, predicate, object)* from the RDF graph, if it exist.
 Uses the RDF Graph as its context.
 
-To prepare for upcoming features in **kglab**, this is the preferred method for removing relations from an RDF graph.
+To prepare for upcoming **kglab** features, **this is the preferred method for removing relations from an RDF graph.**
 
     s:
 *subject* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
@@ -373,10 +373,10 @@ a string as a file name or URL to a file reference
         **args: typing.Any,
         ) -> None:
         """
-A wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from the `path` source.
+Wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from the `path` source.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
 
-Note: this adds triples/quads to an RDF graph, it does not overwrite the existing RDF graph.
+Note: this adds relations to an RDF graph, it does not overwrite the existing RDF graph.
 
     path:
 must be a file name (str) or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object)
@@ -422,10 +422,10 @@ logical URI to use as the document base; if not specified the document location 
         **args: typing.Any,
         ) -> None:
         """
-A wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from a text.
+Wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from a text.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
 
-Note: this adds triples/quads to an RDF graph, it does not overwrite the existing RDF graph.
+Note: this adds relations to an RDF graph, it does not overwrite the existing RDF graph.
 
     data:
 text representation of RDF graph data
@@ -461,7 +461,7 @@ logical URI to use as the document base; if not specified the document location 
         **args: typing.Any,
         ) -> None:
         """
-A wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to the `path` destination.
+Wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to the `path` destination.
 This traps some edge cases for the `destination` parameter in RDFlib which had been overloaded.
 
     path:
@@ -525,7 +525,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         **args: typing.Any,
         ) -> typing.AnyStr:
         """
-A wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to a string.
+Wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to a string.
 
     format:
 serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins; otherwise this throws a `TypeError` exception
@@ -566,10 +566,10 @@ text representing the RDF graph
         **args: typing.Any,
         ) -> None:
         """
-A wrapper for [`rdflib-jsonld.parser.JsonLDParser.parse()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/parser.py) which parses an RDF graph from a [JSON-LD](https://json-ld.org/) source.
+Wrapper for [`rdflib-jsonld.parser.JsonLDParser.parse()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/parser.py) which parses an RDF graph from a [JSON-LD](https://json-ld.org/) source.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
 
-Note: this adds triples/quads to an RDF graph, it does not overwrite the existing RDF graph.
+Note: this adds relations to an RDF graph, it does not overwrite the existing RDF graph.
 
     path:
 must be a file name (str) or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object); otherwise this throws a `TypeError` exception
@@ -602,7 +602,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         **args: typing.Any,
         ) -> None:
         """
-A wrapper for [`rdflib-jsonld.serializer.JsonLDSerializer.serialize()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/serializer.py) which serializes the RDF graph to the `path` destination as [JSON-LD](https://json-ld.org/).
+Wrapper for [`rdflib-jsonld.serializer.JsonLDSerializer.serialize()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/serializer.py) which serializes the RDF graph to the `path` destination as [JSON-LD](https://json-ld.org/).
 This traps some edge cases for the `destination` parameter in RDFlib which had been overloaded.
 
     path:
@@ -640,6 +640,14 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         **kwargs: typing.Any,
         ) -> None:
         """
+Wrapper for [`pandas.read_parquet()`](https://pandas.pydata.org/docs/reference/api/pandas.read_parquet.html?highlight=read_parquet#pandas.read_parquet) which parses an RDF graph represented as a [Parquet](https://parquet.apache.org/) file, using the [`pyarrow`](https://arrow.apache.org/) engine.
+
+To prepare for upcoming **kglab** features, **this is the preferred method for deserializing an RDF graph.**
+
+Note: this adds relations to an RDF graph, it does not overwrite the existing RDF graph.
+
+    path:
+must be a file name (str), path object to a local file reference, or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object); a string could be a URL; valid URL schemes include `https`, `http`, `ftp`, `s3`, `gs`, `file`; a file URL can also be a path to a directory that contains multiple partitioned files, including a bucket in cloud storage – based on [`fsspec`](https://github.com/intake/filesystem_spec)
         """
         df = pd.read_parquet(
             path,
@@ -656,9 +664,22 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         path: IOPathLike,
         *,
         compression: str = "snappy",
+        storage_options: dict = None,
         **kwargs: typing.Any,
         ) -> None:
         """
+Wrapper for [`pandas.to_parquet()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_parquet.html?highlight=to_parquet) which serializes an RDF graph to a [Parquet](https://parquet.apache.org/) file, using the [`pyarrow`](https://arrow.apache.org/) engine.
+
+To prepare for upcoming **kglab** features, **this is the preferred method for serializing an RDF graph.**
+
+    path:
+must be a file name (str), path object to a local file reference, or a [*writable, bytes-like object*](https://docs.python.org/3/glossary.html#term-bytes-like-object); a string could be a URL; valid URL schemes include `https`, `http`, `ftp`, `s3`, `gs`, `file`; accessing cloud storage is based on [`fsspec`](https://github.com/intake/filesystem_spec)
+
+    compression:
+name of the compression algorithm to use; defaults to `"snappy"`; can also be `"gzip"`, `"brotli"`, or `None` for no compression
+
+    storage_options:
+extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) for cloud storage access
         """
         rows_list = [ {"s": s.n3(), "p": p.n3(), "o": o.n3()} for s, p, o in self._g ]
         df = pd.DataFrame(rows_list, columns=("s", "p", "o"))
@@ -666,6 +687,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         df.to_parquet(
             path,
             compression=compression,
+            storage_options=storage_options,
             **chocolate.filter_args(kwargs, df.to_parquet),
         )
 
@@ -673,15 +695,23 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
     ######################################################################
     ## SPARQL queries
 
-    @classmethod
     def n3fy (
-        cls,
+        self,
         d: dict,
-        nm: rdflib.namespace.NamespaceManager,
         *,
         pythonify: bool = True,
         ) -> dict:
         """
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to convert one row of a result set of a SPARQL query into a readable representation for each term, using N3 format.
+
+    d:
+one row of a SPARQL query results, as a dict
+
+    pythonify:
+flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
+
+    returns:
+a dictionary of converted terms
         """
         if pythonify:
             items: list = []
@@ -690,11 +720,11 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
                 if isinstance(v, rdflib.term.Literal):
                     items.append([ k, v.toPython() ])
                 else:
-                    items.append([ k, v.n3(nm) ])
+                    items.append([ k, v.n3(self._g.namespace_manager) ])
 
             return dict(items)
         else:
-            return { k: v.n3(nm) for k, v in d.items() }
+            return { k: v.n3(self._g.namespace_manager) for k, v in d.items() }
 
 
     def query (
@@ -704,11 +734,24 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         bindings: dict = None,
         ) -> typing.Iterable:
         """
+Wrapper for [`rdflib.Graph.query()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=query#rdflib.Graph.query) to perform a SPARQL query on the RDF graph.
+
+    sparql:
+text for the SPARQL query
+
+    bindings:
+initial variable bindings
+
+    yields:
+[`rdflib.query.ResultRow`](https://rdflib.readthedocs.io/en/stable/_modules/rdflib/query.html?highlight=ResultRow#) named tuples, to iterate through the query result set
         """
         if not bindings:
             bindings = {}
 
-        for row in self._g.query(sparql, initBindings=bindings):
+        for row in self._g.query(
+                sparql,
+                initBindings=bindings,
+            ):
             yield row
 
 
@@ -721,6 +764,22 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         pythonify: bool = True,
         ) -> pd.DataFrame:
         """
+Wrapper for [`rdflib.Graph.query()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=query#rdflib.Graph.query) to perform a SPARQL query on the RDF graph.
+
+    sparql:
+text for the SPARQL query
+
+    bindings:
+initial variable bindings
+
+    simplify:
+convert terms in each row of the result set into a readable representation for each term, using N3 format
+
+    pythonify:
+convert instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
+
+    returns:
+the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
         """
         if not bindings:
             bindings = {}
@@ -728,8 +787,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         row_iter = self._g.query(sparql, initBindings=bindings)
 
         if simplify:
-            nm = self._g.namespace_manager
-            df = pd.DataFrame([ self.n3fy(r.asdict(), nm, pythonify=pythonify) for r in row_iter ])
+            df = pd.DataFrame([ self.n3fy(r.asdict(), pythonify=pythonify) for r in row_iter ])
         else:
             df = df = pd.DataFrame([ r.asdict() for r in row_iter ])
 
@@ -748,12 +806,39 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         ont_graph_format: typing.Optional[str] = None,
         advanced: typing.Optional[bool] = False,
         inference: typing.Optional[str] = None,
+        inplace:typing.Optional[bool] = False,
         abort_on_error: typing.Optional[bool] = None,
-        serialize_report_graph: typing.Optional[str] = "ttl",
-        debug: bool = False,
         **kwargs: typing.Any,
         ) -> typing.Tuple[bool, "KnowledgeGraph", str]:
         """
+Wrapper for [`pyshacl.validate()`](https://github.com/RDFLib/pySHACL) for validating the RDF graph using rules expressed in the [SHACL](https://www.w3.org/TR/shacl/) (Shapes Constraint Language).
+
+    shacl_graph:
+text representation, file path, or URL of the SHACL *shapes graph* to use in validation
+
+    shacl_graph_format:
+RDF format, if the `shacl_graph` parameter is a text representation of the *shapes graph*
+
+    ont_graph:
+text representation, file path, or URL of an optional, extra ontology to mix into the RDF graph
+
+    ont_graph_format
+RDF format, if the `ont_graph` parameter is a text representation of the extra ontology
+
+    advanced:
+enable advanced SHACL features
+
+    inference:
+prior to validation, run OWL2 RL profile-based expansion of the RDF graph based on [OWL-RL](https://github.com/RDFLib/OWL-RL); `"rdfs"`, `"owlrl"`, `"both"`, `None`
+
+    inplace:
+when enabled, do not clone the RDF graph prior to inference/expansion, just manipulate it in-place
+
+    abort_on_error:
+abort validation on the first error
+
+    returns:
+a tuple of `conforms` (RDF graph passes the validation rules); `report_graph` (report as a `KnowledgeGraph` object); `report_text` (report formatted as text)
         """
         conforms, report_graph_data, report_text = pyshacl.validate(
             self._g,
@@ -763,9 +848,9 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
             ont_graph_format=ont_graph_format,
             advanced=advanced,
             inference=inference,
+            inplace=inplace,
             abort_on_error=abort_on_error,
-            debug=debug,
-            serialize_report_graph=serialize_report_graph,
+            serialize_report_graph="ttl",
             **chocolate.filter_args(kwargs, pyshacl.validate),
             )
 

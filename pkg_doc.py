@@ -24,6 +24,7 @@ docstring support in Python.
 
 PAT_PARAM = re.compile(r"(    \S+.*\:\n(?:\S.*\n)+)", re.MULTILINE)
 PAT_NAME = re.compile(r"^\s+(.*)\:\n(.*)")
+PAT_FWD_REF = re.compile(r"ForwardRef\('(.*)'\)")
 
 
 def show_all_elements (module_name):
@@ -33,6 +34,21 @@ def show_all_elements (module_name):
         for n, o in inspect.getmembers(obj):
             print("\n", name, n, o)
             print(type(o))
+
+
+def fix_fwd_refs (anno):
+    """substitute the quoted forward references of module classes"""
+    results = []
+
+    if not anno:
+        return None
+    else:
+        for term in anno.split(", "):
+            for chunk in PAT_FWD_REF.split(term):
+                if len(chunk) > 0:
+                    results.append(chunk)
+
+        return ", ".join(results)
 
 
 def parse_method_docstring (docstring, arg_dict):
@@ -47,11 +63,13 @@ def parse_method_docstring (docstring, arg_dict):
 
             if m_name:
                 name = m_name.group(1).strip()
-                anno = arg_dict[name]
+                anno = fix_fwd_refs(arg_dict[name])
                 descrip = m_name.group(2).strip()
 
-                if name in [ "returns", "yields" ]:
+                if name == "returns":
                     md.append("\n  * *{}* : `{}`  \n{}".format(name, anno, descrip))
+                elif name == "yields":
+                    md.append("\n  * *{}* :  \n{}".format(name, descrip))
                 else:
                     md.append("\n  * `{}` : `{}`  \n{}".format(name, anno, descrip))
         else:
@@ -147,6 +165,8 @@ def document_method (path_list, name, obj, func_kind, gh_src_url):
 
     # include the docstring, with return annotation
     arg_dict = dict([ (name.split("=")[0], anno,) for name, anno in arg_list ])
+    arg_dict["yields"] = None
+
     ret = sig.return_annotation
 
     if ret:
