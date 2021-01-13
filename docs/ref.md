@@ -124,7 +124,7 @@ add(s, p, o)
 Wrapper for [`rdflib.Graph.add()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=add#rdflib.Graph.add) to add a relation *(subject, predicate, object)* to the RDF graph, if it doesn't already exist.
 Uses the RDF Graph as its context.
 
-To prepare for upcoming features in **kglab**, this is the preferred method for adding relations to an RDF graph.
+To prepare for upcoming **kglab** features, **this is the preferred method for adding relations to an RDF graph.**
 
   * `s` : `typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
 *subject* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
@@ -146,7 +146,7 @@ remove(s, p, o)
 Wrapper for [`rdflib.Graph.remove()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=add#rdflib.Graph.remove) to remove a relation *(subject, predicate, object)* from the RDF graph, if it exist.
 Uses the RDF Graph as its context.
 
-To prepare for upcoming features in **kglab**, this is the preferred method for removing relations from an RDF graph.
+To prepare for upcoming **kglab** features, **this is the preferred method for removing relations from an RDF graph.**
 
   * `s` : `typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
 *subject* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
@@ -165,10 +165,10 @@ To prepare for upcoming features in **kglab**, this is the preferred method for 
 ```python
 load_rdf(path, format="ttl", base=None, **args)
 ```
-A wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from the `path` source.
+Wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from the `path` source.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
 
-Note: this adds triples/quads to an RDF graph, it does not overwrite the existing RDF graph.
+Note: this adds relations to an RDF graph, it does not overwrite the existing RDF graph.
 
   * `path` : `typing.Union[str, pathlib.Path, urlpath.URL, typing.IO]`  
 must be a file name (str) or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object)
@@ -187,10 +187,10 @@ logical URI to use as the document base; if not specified the document location 
 ```python
 load_rdf_text(data, format="ttl", base=None, **args)
 ```
-A wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from a text.
+Wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from a text.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
 
-Note: this adds triples/quads to an RDF graph, it does not overwrite the existing RDF graph.
+Note: this adds relations to an RDF graph, it does not overwrite the existing RDF graph.
 
   * `data` : `typing.AnyStr`  
 text representation of RDF graph data
@@ -209,7 +209,7 @@ logical URI to use as the document base; if not specified the document location 
 ```python
 save_rdf(path, format="ttl", base=None, encoding="utf-8", **args)
 ```
-A wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to the `path` destination.
+Wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to the `path` destination.
 This traps some edge cases for the `destination` parameter in RDFlib which had been overloaded.
 
   * `path` : `typing.Union[str, pathlib.Path, urlpath.URL, typing.IO]`  
@@ -232,7 +232,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
 ```python
 save_rdf_text(format="ttl", base=None, encoding="utf-8", **args)
 ```
-A wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to a string.
+Wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to a string.
 
   * `format` : `str`  
 serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins; otherwise this throws a `TypeError` exception
@@ -254,10 +254,10 @@ text representing the RDF graph
 ```python
 load_jsonld(path, encoding="utf-8", **args)
 ```
-A wrapper for [`rdflib-jsonld.parser.JsonLDParser.parse()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/parser.py) which parses an RDF graph from a [JSON-LD](https://json-ld.org/) source.
+Wrapper for [`rdflib-jsonld.parser.JsonLDParser.parse()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/parser.py) which parses an RDF graph from a [JSON-LD](https://json-ld.org/) source.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
 
-Note: this adds triples/quads to an RDF graph, it does not overwrite the existing RDF graph.
+Note: this adds relations to an RDF graph, it does not overwrite the existing RDF graph.
 
   * `path` : `typing.Union[str, pathlib.Path, urlpath.URL, typing.IO]`  
 must be a file name (str) or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object); otherwise this throws a `TypeError` exception
@@ -273,7 +273,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
 ```python
 save_jsonld(path, encoding="utf-8", **args)
 ```
-A wrapper for [`rdflib-jsonld.serializer.JsonLDSerializer.serialize()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/serializer.py) which serializes the RDF graph to the `path` destination as [JSON-LD](https://json-ld.org/).
+Wrapper for [`rdflib-jsonld.serializer.JsonLDSerializer.serialize()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/serializer.py) which serializes the RDF graph to the `path` destination as [JSON-LD](https://json-ld.org/).
 This traps some edge cases for the `destination` parameter in RDFlib which had been overloaded.
 
   * `path` : `typing.Union[str, pathlib.Path, urlpath.URL, typing.IO]`  
@@ -290,62 +290,139 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
 ```python
 load_parquet(path, **kwargs)
 ```
+Wrapper for [`pandas.read_parquet()`](https://pandas.pydata.org/docs/reference/api/pandas.read_parquet.html?highlight=read_parquet#pandas.read_parquet) which parses an RDF graph represented as a [Parquet](https://parquet.apache.org/) file, using the [`pyarrow`](https://arrow.apache.org/) engine.
 
+To prepare for upcoming **kglab** features, **this is the preferred method for deserializing an RDF graph.**
+
+Note: this adds relations to an RDF graph, it does not overwrite the existing RDF graph.
+
+  * `path` : `typing.Union[str, pathlib.Path, urlpath.URL, typing.IO]`  
+must be a file name (str), path object to a local file reference, or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object); a string could be a URL; valid URL schemes include `https`, `http`, `ftp`, `s3`, `gs`, `file`; a file URL can also be a path to a directory that contains multiple partitioned files, including a bucket in cloud storage – based on [`fsspec`](https://github.com/intake/filesystem_spec)
 
 
 
 #### [`save_parquet` method](#kglab.KnowledgeGraph.save_parquet)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L654)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L662)
 
 ```python
-save_parquet(path, compression="snappy", **kwargs)
+save_parquet(path, compression="snappy", storage_options=None, **kwargs)
 ```
+Wrapper for [`pandas.to_parquet()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_parquet.html?highlight=to_parquet) which serializes an RDF graph to a [Parquet](https://parquet.apache.org/) file, using the [`pyarrow`](https://arrow.apache.org/) engine.
+
+To prepare for upcoming **kglab** features, **this is the preferred method for serializing an RDF graph.**
+
+  * `path` : `typing.Union[str, pathlib.Path, urlpath.URL, typing.IO]`  
+must be a file name (str), path object to a local file reference, or a [*writable, bytes-like object*](https://docs.python.org/3/glossary.html#term-bytes-like-object); a string could be a URL; valid URL schemes include `https`, `http`, `ftp`, `s3`, `gs`, `file`; accessing cloud storage is based on [`fsspec`](https://github.com/intake/filesystem_spec)
+
+  * `compression` : `str`  
+name of the compression algorithm to use; defaults to `"snappy"`; can also be `"gzip"`, `"brotli"`, or `None` for no compression
+
+  * `storage_options` : `dict`  
+extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) for cloud storage access
 
 
 
-
-#### [`n3fy` classmethod](#kglab.KnowledgeGraph.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L676)
+#### [`n3fy` method](#kglab.KnowledgeGraph.n3fy)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L698)
 
 ```python
-n3fy(d, nm, pythonify=True)
+n3fy(d, pythonify=True)
 ```
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to convert one row of a result set of a SPARQL query into a readable representation for each term, using N3 format.
 
+  * `d` : `dict`  
+one row of a SPARQL query results, as a dict
+
+  * `pythonify` : `bool`  
+flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
+
+  * *returns* : `dict`  
+a dictionary of converted terms
 
 
 
 #### [`query` method](#kglab.KnowledgeGraph.query)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L700)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L730)
 
 ```python
 query(sparql, bindings=None)
 ```
+Wrapper for [`rdflib.Graph.query()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=query#rdflib.Graph.query) to perform a SPARQL query on the RDF graph.
 
+  * `sparql` : `str`  
+text for the SPARQL query
+
+  * `bindings` : `dict`  
+initial variable bindings
+
+  * *yields* :  
+[`rdflib.query.ResultRow`](https://rdflib.readthedocs.io/en/stable/_modules/rdflib/query.html?highlight=ResultRow#) named tuples, to iterate through the query result set
 
 
 
 #### [`query_as_df` method](#kglab.KnowledgeGraph.query_as_df)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L715)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L758)
 
 ```python
 query_as_df(sparql, bindings=None, simplify=True, pythonify=True)
 ```
+Wrapper for [`rdflib.Graph.query()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=query#rdflib.Graph.query) to perform a SPARQL query on the RDF graph.
 
+  * `sparql` : `str`  
+text for the SPARQL query
+
+  * `bindings` : `dict`  
+initial variable bindings
+
+  * `simplify` : `bool`  
+convert terms in each row of the result set into a readable representation for each term, using N3 format
+
+  * `pythonify` : `bool`  
+convert instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
+
+  * *returns* : `pandas.core.frame.DataFrame`  
+the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
 
 
 
 #### [`validate` method](#kglab.KnowledgeGraph.validate)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L742)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L800)
 
 ```python
-validate(shacl_graph=None, shacl_graph_format=None, ont_graph=None, ont_graph_format=None, advanced=False, inference=None, abort_on_error=None, serialize_report_graph="ttl", debug=False, **kwargs)
+validate(shacl_graph=None, shacl_graph_format=None, ont_graph=None, ont_graph_format=None, advanced=False, inference=None, inplace=False, abort_on_error=None, **kwargs)
 ```
+Wrapper for [`pyshacl.validate()`](https://github.com/RDFLib/pySHACL) for validating the RDF graph using rules expressed in the [SHACL](https://www.w3.org/TR/shacl/) (Shapes Constraint Language).
 
+  * `shacl_graph` : `typing.Union[rdflib.graph.ConjunctiveGraph, rdflib.graph.Dataset, rdflib.graph.Graph, ~AnyStr, NoneType]`  
+text representation, file path, or URL of the SHACL *shapes graph* to use in validation
+
+  * `shacl_graph_format` : `typing.Union[str, NoneType]`  
+RDF format, if the `shacl_graph` parameter is a text representation of the *shapes graph*
+
+  * `ont_graph` : `typing.Union[rdflib.graph.ConjunctiveGraph, rdflib.graph.Dataset, rdflib.graph.Graph, ~AnyStr, NoneType]`  
+text representation, file path, or URL of an optional, extra ontology to mix into the RDF graph
+ont_graph_format
+RDF format, if the `ont_graph` parameter is a text representation of the extra ontology
+
+  * `advanced` : `typing.Union[bool, NoneType]`  
+enable advanced SHACL features
+
+  * `inference` : `typing.Union[str, NoneType]`  
+prior to validation, run OWL2 RL profile-based expansion of the RDF graph based on [OWL-RL](https://github.com/RDFLib/OWL-RL); `"rdfs"`, `"owlrl"`, `"both"`, `None`
+
+  * `inplace` : `typing.Union[bool, NoneType]`  
+when enabled, do not clone the RDF graph prior to inference/expansion, just manipulate it in-place
+
+  * `abort_on_error` : `typing.Union[bool, NoneType]`  
+abort validation on the first error
+
+  * *returns* : `typing.Tuple[bool, KnowledgeGraph, str]`  
+a tuple of `conforms` (RDF graph passes the validation rules); `report_graph` (report as a `KnowledgeGraph` object); `report_text` (report formatted as text)
 
 
 
 #### [`infer_owlrl_closure` method](#kglab.KnowledgeGraph.infer_owlrl_closure)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L792)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L877)
 
 ```python
 infer_owlrl_closure()
@@ -357,7 +434,7 @@ See <https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_R
 
 
 #### [`infer_rdfs_closure` method](#kglab.KnowledgeGraph.infer_rdfs_closure)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L805)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L890)
 
 ```python
 infer_rdfs_closure()
@@ -369,7 +446,7 @@ See <https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_R
 
 
 #### [`infer_rdfs_properties` method](#kglab.KnowledgeGraph.infer_rdfs_properties)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L818)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L903)
 
 ```python
 infer_rdfs_properties()
@@ -381,7 +458,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 
 #### [`infer_rdfs_classes` method](#kglab.KnowledgeGraph.infer_rdfs_classes)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L846)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L931)
 
 ```python
 infer_rdfs_classes()
@@ -393,7 +470,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 
 #### [`infer_skos_related` method](#kglab.KnowledgeGraph.infer_skos_related)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L879)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L964)
 
 ```python
 infer_skos_related()
@@ -406,7 +483,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 
 #### [`infer_skos_concept` method](#kglab.KnowledgeGraph.infer_skos_concept)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L894)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L979)
 
 ```python
 infer_skos_concept()
@@ -422,7 +499,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 
 #### [`infer_skos_hierarchical` method](#kglab.KnowledgeGraph.infer_skos_hierarchical)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L918)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1003)
 
 ```python
 infer_skos_hierarchical(narrower=True)
@@ -438,7 +515,7 @@ if false, `skos:narrower` will be removed instead of added
 
 
 #### [`infer_skos_transitive` method](#kglab.KnowledgeGraph.infer_skos_transitive)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L945)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1030)
 
 ```python
 infer_skos_transitive(narrower=True)
@@ -458,7 +535,7 @@ also infer transitive closure for `skos:narrowerTransitive`
 
 
 #### [`infer_skos_symmetric_mappings` method](#kglab.KnowledgeGraph.infer_skos_symmetric_mappings)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L974)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1059)
 
 ```python
 infer_skos_symmetric_mappings(related=True)
@@ -474,7 +551,7 @@ infer the `skos:related` super-property for all `skos:relatedMatch` relations
 
 
 #### [`infer_skos_hierarchical_mappings` method](#kglab.KnowledgeGraph.infer_skos_hierarchical_mappings)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1005)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1090)
 
 ```python
 infer_skos_hierarchical_mappings(narrower=True)
