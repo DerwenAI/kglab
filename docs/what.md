@@ -1,4 +1,4 @@
-# What is a Knowledge Graph?
+# What's a Knowledge Graph?
 
 ## DRAFT: Work in progress
 

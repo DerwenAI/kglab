@@ -246,8 +246,9 @@ if __name__ == "__main__":
     md.append("## [module functions](#{})".format(module_name, "functions"))
 
     for func_name, func_obj in inspect.getmembers(module_obj, inspect.isfunction):
-        line_num, obj_md = document_method([module_name], func_name, func_obj, "function", gh_src_url)
-        md.extend(obj_md)
+        if not func_name.startswith("_"):
+            line_num, obj_md = document_method([module_name], func_name, func_obj, "function", gh_src_url)
+            md.extend(obj_md)
 
     # walk the list of types in the module
     md.append("---")

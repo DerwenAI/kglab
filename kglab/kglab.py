@@ -4,16 +4,14 @@
 ######################################################################
 ## kglab - core classes
 
-import sys
-if sys.version_info < (3, 6, ):
-    raise RuntimeError("This version of kglab cannot be used in Python < 3.6")
+from kglab.pkg_types import PathLike, IOPathLike, GraphLike, RDF_Node
+from kglab.version import _check_version
+_check_version()
 
 import rdflib  # type: ignore
 import rdflib.plugin  # type: ignore
 rdflib.plugin.register("json-ld", rdflib.plugin.Parser, "rdflib_jsonld.parser", "JsonLDParser")
 rdflib.plugin.register("json-ld", rdflib.plugin.Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
-
-from kglab.pkg_types import PathLike, IOPathLike, GraphLike, RDF_Node
 
 import chocolate  # type: ignore
 import codecs
@@ -31,7 +29,8 @@ import urlpath  # type: ignore
 
 class KnowledgeGraph:
     """
-Main class used to represent an RDF graph
+This is the primary class used to represent an RDF graph, on which the other classes are dependent.
+See <https://derwen.ai/docs/kgl/concepts/#knowledge-graph>
     """
 
     _DEFAULT_NAMESPACES: dict = {
@@ -56,7 +55,22 @@ Main class used to represent an RDF graph
         graph: typing.Optional[GraphLike] = None,
         ) -> None:
         """
-Constructor for a KnowledgeGraph object
+Constructor for a `KnowledgeGraph` object.
+
+    name:
+optional, internal name for this graph
+
+    base_uri:
+the default [*base URI*](https://tools.ietf.org/html/rfc3986#section-5.1) for this RDF graph
+
+    language:
+the default [*language tag*](https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag), e.g., used for [*language indexing*](https://www.w3.org/TR/json-ld11/#language-indexing)
+
+    namespaces:
+a dictionary of [*namespace*s](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.Namespace) (dict values) and their corresponding *prefix* strings (dict keys) to add as *controlled vocabularies* available to use in the RDF graph, binding each prefix to the given namespace.
+
+    graph:
+optionally, another existing RDF graph to be used as a starting point
         """
         self.name = name
         self.base_uri = base_uri
@@ -110,7 +124,7 @@ a [namespace prefix](https://www.w3.org/TR/rdf11-concepts/#dfn-namespace-prefix)
 URL to use for constructing the [namespace IRI](https://www.w3.org/TR/rdf11-concepts/#dfn-namespace-iri)
 
     override:
-rebind, even if the given namespace is already bound to another prefix
+rebind, even if the given namespace is already bound with another prefix
 
     replace:
 replace any existing prefix with the new namespace
@@ -145,6 +159,19 @@ a [namespace prefix](https://www.w3.org/TR/rdf11-concepts/#dfn-namespace-prefix)
 the RDFlib [`Namespace`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.Namespace) for the *controlled vocabulary* referenced by `prefix`
         """
         return self._ns[prefix]
+
+
+    def describe_ns (
+        self
+        ) -> pd.DataFrame:
+        """
+Describe the *namespaces* used in this RDF graph
+
+    returns:
+a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) describing the namespaces in this RDF graph
+        """
+        ns_list = [ { "prefix": prefix, "namespace": str(ns) } for prefix, ns in self._ns.items() ]
+        return pd.DataFrame(ns_list, columns=("prefix", "namespace"))
 
 
     def get_context (
@@ -200,6 +227,19 @@ timezones as a dict, used by
         o: RDF_Node,
         ) -> None:
         """
+Wrapper for [`rdflib.Graph.add()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=add#rdflib.Graph.add) to add a relation *(subject, predicate, object)* to the RDF graph, if it doesn't already exist.
+Uses the RDF Graph as its context.
+
+To prepare for upcoming features in **kglab**, this is the preferred method for adding relations to an RDF graph.
+
+    s:
+*subject* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+
+    p:
+*predicate* relation; ; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+
+    o:
+*object* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal)
         """
         self._g.add((s, p, o,))
 
@@ -211,6 +251,19 @@ timezones as a dict, used by
         o: RDF_Node,
         ) -> None:
         """
+Wrapper for [`rdflib.Graph.remove()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=add#rdflib.Graph.remove) to remove a relation *(subject, predicate, object)* from the RDF graph, if it exist.
+Uses the RDF Graph as its context.
+
+To prepare for upcoming features in **kglab**, this is the preferred method for removing relations from an RDF graph.
+
+    s:
+*subject* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+
+    p:
+*predicate* relation; ; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+
+    o:
+*object* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal)
         """
         self._g.remove((s, p, o,))
 

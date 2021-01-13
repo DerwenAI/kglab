@@ -9,8 +9,8 @@ for building knowledge graphs.
 Welcome to *graph-based data science*:
 <https://derwen.ai/docs/kgl/>
 
-> **SPECIAL REQUEST**: 
-> Which features would you like in an open source 
+> **SPECIAL REQUEST**:   
+> Which features would you like in an open source  
 > Python library for building knowledge graphs?  
 > Please add your suggestions through this survey:  
 > https://forms.gle/FMHgtmxHYWocprMn6  
