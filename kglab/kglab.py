@@ -161,11 +161,23 @@ the RDFlib [`Namespace`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.
         return self._ns[prefix]
 
 
+    def get_ns_dict (
+        self
+        ) -> dict:
+        """
+Generate a dictionary of the *namespaces* used in this RDF graph.
+
+    returns:
+a `dict` describing the namespaces in this RDF graph
+        """
+        return { prefix: str(ns) for prefix, ns in self._ns.items() }
+
+
     def describe_ns (
         self
         ) -> pd.DataFrame:
         """
-Describe the *namespaces* used in this RDF graph
+Describe the *namespaces* used in this RDF graph.
 
     returns:
 a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) describing the namespaces in this RDF graph
@@ -806,7 +818,7 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
         ont_graph_format: typing.Optional[str] = None,
         advanced: typing.Optional[bool] = False,
         inference: typing.Optional[str] = None,
-        inplace:typing.Optional[bool] = False,
+        inplace:typing.Optional[bool] = True,
         abort_on_error: typing.Optional[bool] = None,
         **kwargs: typing.Any,
         ) -> typing.Tuple[bool, "KnowledgeGraph", str]:
@@ -865,6 +877,7 @@ a tuple of `conforms` (RDF graph passes the validation rules); `report_graph` (r
         report_graph = KnowledgeGraph(
             graph=g,
             name="report graph",
+            namespaces=self.get_ns_dict(),
         )
 
         return conforms, report_graph, report_text

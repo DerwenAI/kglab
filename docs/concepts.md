@@ -17,21 +17,22 @@ specific use cases as needed.
 
 [`kglab.KnowledgeGraph`](../ref/#knowledgegraph-class)
 
-construction of *RDF graphs*
+construction of *RDF graphs* ;
+use of *semantic technologies* / *ontology* / *controlled vocabularies* ;
 also handle *property graph*
 
   * *representation*
-  * *semantic technologies*
   * *serialization*
   * *querying*
   * *validation*
+  * *inference*
 
 
 ### Measure
 
 [`kglab.Measure`](../ref/#measure-class)
 
-  * *topology*
+  * *topology* => constructing *shapes*
   * *statistics*
 
 
