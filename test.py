@@ -48,7 +48,7 @@ class TestKG (unittest.TestCase):
                 measure.measure_graph(kg)
 
                 # verify
-                self.assertTrue(measure.node_count == 35)
+                self.assertTrue(measure.get_node_count() == 35)
         finally:
             os.unlink(tmp.name)
             tmp.close()

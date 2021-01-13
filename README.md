@@ -47,8 +47,8 @@ kg.load_rdf("http://bigasterisk.com/foaf.rdf", format="xml")
 measure = kglab.Measure()
 measure.measure_graph(kg)
 
-print("edges: {}\n".format(measure.edge_count))
-print("nodes: {}\n".format(measure.node_count))
+print("edges: {}\n".format(measure.get_edge_count()))
+print("nodes: {}\n".format(measure.get_node_count()))
 
 # serialize as a string in "Turtle" TTL format
 ttl = kg.save_rdf_text()
