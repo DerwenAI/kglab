@@ -1,5 +1,9 @@
+import importlib.util
+import pathlib
 import setuptools
 import sys
+import typing
+
 
 KEYWORDS = [
     "knowledge graph",
@@ -27,38 +31,43 @@ KEYWORDS = [
     ]
 
 
-def parse_requirements_file (filename):
-    with open(filename) as f:
-        requires = [l.strip().split(" ")[0] for l in f.readlines() if l]
-
-    return requires
+def parse_requirements_file (filename: str) -> typing.List:
+    """read and parse a Python `requirements.txt` file, returning as a list of str"""
+    with pathlib.Path(filename).open() as f:
+        return [ l.strip().replace(" ", "") for l in f.readlines() ]
 
 
 if __name__ == "__main__":
-    if sys.version_info[:2] < (3, 6):
-        error = "kglab requires Python 3.6 or later (%d.%d detected). \n"
-        sys.stderr.write(error.format(sys.version_info[:2]))
-        sys.exit(1)
+    spec = importlib.util.spec_from_file_location("kglab.version", "kglab/version.py")
+    kglab_version = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(kglab_version)
+    kglab_version._check_version()
 
-    with open("README.md", "r") as fh:
-        long_description = fh.read()
+    base_packages = parse_requirements_file("requirements.txt")
+    docs_packages = parse_requirements_file("requirements_build.txt")
 
     setuptools.setup(
-        name="kglab",
-        version="0.1.5",
-        author="Paco Nathan",
-        author_email="paco@derwen.ai",
-        description="A simple abstraction layer in Python for building and using knowledge graphs",
-        long_description=long_description,
-        long_description_content_type="text/markdown",
-        url="https://github.com/DerwenAI/kglab",
-        project_urls={
-            "Bug Tracker": "https://github.com/DerwenAI/kglab/issues",
-            "Documentation": "https://derwen.ai/docs/kgl/",
-            "Source Code": "https://github.com/DerwenAI/kglab",
+        name = "kglab",
+        version = "0.1.6",
+
+        python_requires = ">=" + kglab_version._versify(kglab_version.MIN_PY_VERSION),
+        packages = setuptools.find_packages(exclude=[ "docs", "examples" ]),
+        install_requires = base_packages,
+        extras_require = {
+            "base": base_packages,
+            "docs": docs_packages,
             },
-        packages=setuptools.find_packages(),
-        classifiers=[
+
+        author = "Paco Nathan",
+        author_email = "paco@derwen.ai",
+        license = "MIT",
+
+        description = "A simple abstraction layer in Python for building knowledge graphs",
+        long_description = pathlib.Path("README.md").read_text(),
+        long_description_content_type = "text/markdown",
+
+        keywords = ", ".join(KEYWORDS),
+        classifiers = [
             "Programming Language :: Python :: 3",
             "License :: OSI Approved :: MIT License",
             "Operating System :: OS Independent",
@@ -72,9 +81,13 @@ if __name__ == "__main__":
             "Topic :: Scientific/Engineering :: Information Analysis",
             "Topic :: Text Processing :: Indexing",
             ],
-        python_requires=">=3.6",
-        install_requires=parse_requirements_file("requirements.txt"),
-        keywords=", ".join(KEYWORDS),
-        license="MIT",
-        zip_safe=False,
+
+        url = "https://github.com/DerwenAI/kglab",
+        project_urls = {
+            "Bug Tracker": "https://github.com/DerwenAI/kglab/issues",
+            "Documentation": "https://derwen.ai/docs/kgl/",
+            "Source Code": "https://github.com/DerwenAI/kglab",
+            },
+
+        zip_safe = False,
         )

@@ -142,7 +142,7 @@ and others involved in this open source project.
 ### Feedback and Roadmap
 
 !!! note
-    **SPECIAL REQUEST:** Which features would you like to see the most 
+    **SPECIAL REQUEST:** Which features would you like to see the most
     in an open source Python library for building knowledge graphs?
 
 Your feedback through this online survey helps us prioritize the roadmap for **kglab**:

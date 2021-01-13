@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-######################################################################
-## shared type definitions
-
 import pandas as pd  # type: ignore
 import pathlib
 import rdflib  # type: ignore
 import typing
 import urlpath  # type: ignore
+
+
+######################################################################
+## shared type definitions
 
 PathLike = typing.Union[ str, pathlib.Path, urlpath.URL ]
 IOPathLike = typing.Union[ PathLike, typing.IO ]

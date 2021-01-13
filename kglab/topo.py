@@ -57,7 +57,7 @@ class Simplex0 (object):
 
 class Simplex1 (Simplex0):
     """
-    Measure a dyad census from the graph.
+Measure a dyad census from the RDF graph.
     """
 
     def __init__ (

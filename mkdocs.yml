@@ -1,17 +1,19 @@
 site_name: kglab
-site_url: https://github.com/DerwenAI/kglab
 site_description: Graph-Based Data Science
-site_author: kglab contributors and Derwen, Inc.
+site_url: https://github.com/DerwenAI/kglab
+site_author: kglab contributors, with Derwen, Inc.
+
 repo_url: https://github.com/DerwenAI/kglab
 repo_name: DerwenAI/kglab
 
+copyright: Source code and documentation are <strong><a href="https://github.com/DerwenAI/kglab/blob/main/LICENSE" target="_blank">licensed</a></strong> under an MIT License; Copyright &copy; 2020-2021 <strong><a href="https://derwen.ai/" target="_blank">Derwen, Inc.</a></strong>
 
 nav:
     - Home: index.md
     - User Guide:
         - Overview: overview.md
         - Getting Started: start.md
-        - What is a Knowledge Graph?: what.md
+        - What's a Knowledge Graph?: what.md
         - Use Cases: use_case.md
         - Concepts: concepts.md
         - Package Reference: ref.md
@@ -70,6 +72,8 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
+use_directory_urls: true
+
 markdown_extensions:
   - admonition
   - codehilite
@@ -79,6 +83,3 @@ markdown_extensions:
   - toc:
       toc_depth: 3
       permalink: true
-
-use_directory_urls: true
-copyright: Source code and documentation are <strong><a href="https://github.com/DerwenAI/kglab/blob/main/LICENSE" target="_blank">licensed</a></strong> under an MIT License; Copyright (c) 2020-2021 <strong><a href="https://derwen.ai/" target="_blank">Derwen, Inc.</a></strong>
