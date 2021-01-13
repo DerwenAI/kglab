@@ -13,8 +13,8 @@ kg.load_rdf("https://storage.googleapis.com/kglab-tutorial/foaf.rdf", format="xm
 measure = kglab.Measure()
 measure.measure_graph(kg)
 
-print("edges: {}\n".format(measure.edge_count))
-print("nodes: {}\n".format(measure.node_count))
+print("edges: {}\n".format(measure.get_edge_count()))
+print("nodes: {}\n".format(measure.get_node_count()))
 
 # serialize as a string in "Turtle" TTL format
 ttl = kg.save_rdf_text()

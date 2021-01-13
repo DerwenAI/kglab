@@ -9,6 +9,9 @@
   * including `gcsfs` and `fsspec` to leverage cloud bucket access in `pandas`
   * added `code_of_conduct.md`
   * code checking based on `pylint`
+  * added accessor methods, e.g., `KnowledgeGraph.rdf_graph()`
+  * updated `pandas` usage to >= 1.2.0 with direct support for Parquet/Arrow
+  * updated `pyshacl` usage to >= 0.14.1 to support `inplace` graph manipulation (inference)
 
 
 ## 0.1.5

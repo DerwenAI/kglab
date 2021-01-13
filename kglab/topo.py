@@ -107,6 +107,30 @@ class Measure (object):
         self.reset()
 
 
+    def get_node_count (
+        self
+        ) -> int:
+        """
+Accessor for the node count.
+
+    returns:
+value of `node_count`
+        """
+        return self.node_count
+
+
+    def get_edge_count (
+        self
+        ) -> int:
+        """
+Accessor for the edge count.
+
+    returns:
+value of `edge_count`
+        """
+        return self.edge_count
+
+
     def reset (
         self
         ) -> None:

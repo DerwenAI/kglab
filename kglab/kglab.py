@@ -52,7 +52,7 @@ See <https://derwen.ai/docs/kgl/concepts/#knowledge-graph>
         base_uri: str = None,
         language: str = "en",
         namespaces: dict = None,
-        graph: typing.Optional[GraphLike] = None,
+        import_graph: typing.Optional[GraphLike] = None,
         ) -> None:
         """
 Constructor for a `KnowledgeGraph` object.
@@ -69,7 +69,7 @@ the default [*language tag*](https://www.w3.org/TR/rdf11-concepts/#dfn-language-
     namespaces:
 a dictionary of [*namespace*s](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.Namespace) (dict values) and their corresponding *prefix* strings (dict keys) to add as *controlled vocabularies* available to use in the RDF graph, binding each prefix to the given namespace.
 
-    graph:
+    import_graph:
 optionally, another existing RDF graph to be used as a starting point
         """
         self.name = name
@@ -77,11 +77,13 @@ optionally, another existing RDF graph to be used as a starting point
         self.language = language
         self.gpus = GPUtil.getGPUs()
 
-        if graph:
-            self._g = graph
+        # import relations from another existing RDF graph, or start from blank
+        if import_graph:
+            self._g = import_graph
         else:
             self._g = rdflib.Graph()
 
+        # initialize the namespaces
         self._ns: dict = {}
 
         for prefix, iri in self._DEFAULT_NAMESPACES.items():
@@ -90,6 +92,18 @@ optionally, another existing RDF graph to be used as a starting point
         if namespaces:
             for prefix, iri in namespaces.items():
                 self.add_ns(prefix, iri)
+
+
+    def rdf_graph (
+        self
+        ) -> rdflib.Graph:
+        """
+Accessor for the RDF graph.
+
+    returns:
+the [`rdflib.Graph`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=graph#graph) object
+        """
+        return self._g
 
 
     ######################################################################
@@ -161,11 +175,23 @@ the RDFlib [`Namespace`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.
         return self._ns[prefix]
 
 
+    def get_ns_dict (
+        self
+        ) -> dict:
+        """
+Generate a dictionary of the *namespaces* used in this RDF graph.
+
+    returns:
+a `dict` describing the namespaces in this RDF graph
+        """
+        return { prefix: str(ns) for prefix, ns in self._ns.items() }
+
+
     def describe_ns (
         self
         ) -> pd.DataFrame:
         """
-Describe the *namespaces* used in this RDF graph
+Describe the *namespaces* used in this RDF graph.
 
     returns:
 a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) describing the namespaces in this RDF graph
@@ -184,16 +210,11 @@ serializing the RDF graph as [JSON-LD](https://json-ld.org/).
     returns:
 context needed for JSON-LD serialization
         """
-        context: dict = {
-            "@language": self.language,
-            }
+        context: dict = self.get_ns_dict()
+        context["@language"] = self.language
 
         if self.base_uri:
             context["@vocab"] = self.base_uri
-
-        for prefix, ns in self._ns.items():
-            if str(ns) != self.base_uri:
-                context[prefix] = str(ns)
 
         return context
 
@@ -806,7 +827,7 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
         ont_graph_format: typing.Optional[str] = None,
         advanced: typing.Optional[bool] = False,
         inference: typing.Optional[str] = None,
-        inplace:typing.Optional[bool] = False,
+        inplace:typing.Optional[bool] = True,
         abort_on_error: typing.Optional[bool] = None,
         **kwargs: typing.Any,
         ) -> typing.Tuple[bool, "KnowledgeGraph", str]:
@@ -863,8 +884,9 @@ a tuple of `conforms` (RDF graph passes the validation rules); `report_graph` (r
         )
 
         report_graph = KnowledgeGraph(
-            graph=g,
-            name="report graph",
+            name="SHACL report graph",
+            namespaces=self.get_ns_dict(),
+            import_graph=g,
         )
 
         return conforms, report_graph, report_text
