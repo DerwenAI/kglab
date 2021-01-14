@@ -5,7 +5,7 @@
 ## graph topology
 
 from kglab import KnowledgeGraph
-from kglab.pkg_types import Census_Item, Census_Dyad_Tally, RDF_Node
+from kglab.pkg_types import Census_Item, Census_Dyad_Tally
 
 from collections import defaultdict
 import pandas as pd  # type: ignore
@@ -13,10 +13,13 @@ import rdflib  # type: ignore
 import typing
 
 
-class Simplex0 (object):
+class Simplex0:
+    """
+    """
+
     def __init__ (
         self,
-        name: str = "generic"
+        name: str = "generic",
         ) -> None:
         """
         """
@@ -27,7 +30,7 @@ class Simplex0 (object):
 
     def increment (
         self,
-        item: Census_Item
+        item: Census_Item,
         ) -> None:
         """
         """
@@ -42,7 +45,7 @@ class Simplex0 (object):
         self.df = pd.DataFrame.from_dict(
             self.count,
             orient="index",
-            columns=["count"]
+            columns=["count"],
             ).sort_values("count", ascending=False)
         return self.df
 
@@ -52,7 +55,7 @@ class Simplex0 (object):
         ) -> set:
         """
         """
-        return set([ key.toPython() for key in self.count.keys() ])
+        return { key.toPython() for key in self.count.keys() }
 
 
 class Simplex1 (Simplex0):
@@ -62,7 +65,7 @@ Measure a dyad census from the RDF graph.
 
     def __init__ (
         self,
-        name: str = "generic"
+        name: str = "generic",
         ) -> None:
         """
         """
@@ -73,7 +76,7 @@ Measure a dyad census from the RDF graph.
     def increment (  # type: ignore
         self,
         item0: Census_Item,
-        item1: Census_Item
+        item1: Census_Item,
         ) -> None:
         """
         """
@@ -89,22 +92,50 @@ Measure a dyad census from the RDF graph.
         super().get_tally()
         self.link_map = defaultdict(set)
 
-        for index, row in self.df.iterrows():  # type: ignore
+        for index, _ in self.df.iterrows():  # type: ignore
             item0, item1 = index
             self.link_map[item0].add(item1)
 
         return self.df, self.link_map
 
 
-class Measure (object):
+class Measure:
+    """
+This class is used to measure an RDF graph, with downstream use cases that include constructing shapes.
+See <https://derwen.ai/docs/kgl/concepts/#measure>
+
+Core feature areas include:
+
+  * graph statistics
+  * topological analysis
+    """
+
     def __init__ (
         self,
         *,
-        name: str = "generic"
+        name: str = "generic",
         ) -> None:
         """
         """
+        self.name = name
+        self.edge_count = 0
+        self.node_count = 0
         self.reset()
+
+
+    def reset (
+        self
+        ) -> None:
+        """
+        """
+        self.edge_count = 0
+        self.node_count = 0
+        self.s_gen = Simplex0("subject")
+        self.p_gen = Simplex0("predicate")
+        self.o_gen = Simplex0("object")
+        self.l_gen = Simplex0("literal")
+        self.n_gen = Simplex1("node")
+        self.e_gen = Simplex1("edge")
 
 
     def get_node_count (
@@ -131,46 +162,31 @@ value of `edge_count`
         return self.edge_count
 
 
-    def reset (
-        self
-        ) -> None:
-        """
-        """
-        self.edge_count = 0
-        self.node_count = 0
-        self.s_gen = Simplex0("subject")
-        self.p_gen = Simplex0("predicate")
-        self.o_gen = Simplex0("object")
-        self.l_gen = Simplex0("literal")
-        self.n_gen = Simplex1("node")
-        self.e_gen = Simplex1("edge")
-
-
     def measure_graph (
         self,
-        kg: KnowledgeGraph
+        kg: KnowledgeGraph,
         ) -> None:
         """
         """
-        for s, p, o in kg._g:
+        for s, p, o in kg.rdf_graph():
             self.edge_count += 1
             self.s_gen.increment(s)
             self.p_gen.increment(p)
             self.n_gen.increment(s, p)
-    
+
             if isinstance(o, rdflib.term.Literal):
                 self.l_gen.increment(o)
             else:
                 self.o_gen.increment(o)
                 self.e_gen.increment(p, o)
-    
+
         self.node_count = len(set(self.s_gen.count.keys()).union(set(self.o_gen.count.keys())))
 
 
     def get_keyset (
         self,
         *,
-        incl_pred: bool = True
+        incl_pred: bool = True,
         ) -> typing.List[str]:
         """
         """
@@ -178,5 +194,5 @@ value of `edge_count`
 
         if incl_pred:
             keys = keys.union(self.p_gen.get_keyset())
-            
+
         return sorted(list(keys))

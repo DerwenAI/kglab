@@ -15,6 +15,9 @@ Some good elements for KG definition:
 compare:
 [[nathan2019fifty]](../biblio/#nathan2019fifty)
 
+going back to:
+[[peirce1882]](../biblio/#peirce1882)
+
 
 ## Just Enough Graph Theory
 

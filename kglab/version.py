@@ -11,7 +11,9 @@ import typing
 MIN_PY_VERSION: typing.Tuple = (3, 6,)
 
 
-def _versify (l: typing.Tuple) -> str:
+def _versify (
+    l: typing.Tuple
+    ) -> str:
     """convert Python version (tuple) to a point release (str)"""
     return ".".join([ str(x) for x in l ])
 
@@ -23,5 +25,3 @@ def _check_version () -> None:
     if py_version_info < MIN_PY_VERSION:
         error_msg = "This version of kglab requires Python {} or later ({} detected)\n"
         raise RuntimeError(error_msg.format(_versify(MIN_PY_VERSION), _versify(py_version_info)))
-
-

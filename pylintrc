@@ -60,7 +60,8 @@ confidence=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
-disable=C0114,
+disable=C0103,
+	C0114,
 	C0301,
 	C0411,
 	C0413,
@@ -354,6 +355,7 @@ good-names=_,
            i,
            j,
 	   k,
+	   kg,
 	   nm,
 	   ns,
 	   o,
@@ -491,7 +493,7 @@ valid-metaclass-classmethod-first-arg=cls
 max-args=5
 
 # Maximum number of attributes for a class (see R0902).
-max-attributes=7
+max-attributes=10
 
 # Maximum number of boolean expressions in an if statement (see R0916).
 max-bool-expr=5

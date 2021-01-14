@@ -215,6 +215,12 @@ Manning (2021)
 
 ## – P –
 
+### peirce1882
+
+[MS 514: "Existential Graphs"](http://www.jfsowa.com/peirce/ms514.htm)  
+**Charles Sanders Peirce**  
+*New Elements of Mathematics* (1882)
+
 ### perrone2020network
 
 ["Network visualizations with Pyvis and VisJS"](https://arxiv.org/abs/2006.04951)  

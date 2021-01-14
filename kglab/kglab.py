@@ -29,8 +29,17 @@ import urlpath  # type: ignore
 
 class KnowledgeGraph:
     """
-This is the primary class used to represent an RDF graph, on which the other classes are dependent.
+This is the primary class used to represent RDF graphs, on which the other classes are dependent.
 See <https://derwen.ai/docs/kgl/concepts/#knowledge-graph>
+
+Core feature areas include:
+
+  * namespace management (ontology, controlled vocabularies)
+  * graph construction
+  * serialization
+  * SPARQL querying
+  * SHACL validation
+  * inference based on OWL-RL, RDFS, SKOS
     """
 
     _DEFAULT_NAMESPACES: dict = {
