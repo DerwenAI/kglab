@@ -6,20 +6,31 @@ import typing
 
 
 ######################################################################
-## Python version management
+## Python version checking
 
 MIN_PY_VERSION: typing.Tuple = (3, 6,)
 
 
 def _versify (
-    l: typing.Tuple
+    py_version_info: typing.Tuple
     ) -> str:
-    """convert Python version (tuple) to a point release (str)"""
-    return ".".join([ str(x) for x in l ])
+    """
+Semiprivate helper function to convert Python version to a point release (a string).
+
+    py_version_info:
+Python version info as a named tuple from the operating system, e.g., from [`sys.version_info[:2]`](https://docs.python.org/3/library/sys.html#sys.version_info)
+
+    returns:
+Python version info in [*semantic versioning*](https://semver.org/) format
+    """
+    return ".".join([ str(x) for x in py_version_info ])
 
 
 def _check_version () -> None:
-    """compare the Python version info vs. the minimum required"""
+    """
+Semiprivate helper function to check the Python version info versus the minimum required for **kglab**.
+Throws a `RuntimeError` if the installed Python interpreter is out of date.
+    """
     py_version_info: typing.Tuple = sys.version_info[:2]
 
     if py_version_info < MIN_PY_VERSION:
