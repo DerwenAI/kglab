@@ -84,7 +84,7 @@ Source code for **kglab** plus its logo, documentation, and examples
 have an [MIT license](https://spdx.org/licenses/MIT.html) which is
 succinct and simplifies use in commercial applications.
 
-All materials herein are Copyright (c) 2020-2021 Derwen, Inc.
+All materials herein are Copyright &copy; 2020-2021 Derwen, Inc.
 
 [![logo for Derwen, Inc.](https://derwen.ai/static/block_logo.png)](https://derwen.ai/)
 
@@ -104,3 +104,6 @@ See also:
   * [KGTK](https://github.com/usc-isi-i2/kgtk)
     * *pro:* many excellent examples, well-documented in Jupyter notebooks
     * *con:* mostly a CLI tool, primarily based on TSV data
+  * [LynxKite](https://lynxkite.com/)
+    * *pro:* loads of features, lots of adoption
+    * *con:* complex tech stack, combines Py/Java/Go; AGPL less-than-business-friendly for production apps

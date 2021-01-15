@@ -10,8 +10,7 @@ Welcome to *graph-based data science*:
 <https://derwen.ai/docs/kgl/>
 
 > **SPECIAL REQUEST**:   
-> Which features would you like in an open source  
-> Python library for building knowledge graphs?  
+> Which features would you like in an open source Python library for building knowledge graphs?  
 > Please add your suggestions through this survey:  
 > https://forms.gle/FMHgtmxHYWocprMn6  
 > This will help us prioritize the **kglab** roadmap.
@@ -92,7 +91,7 @@ Source code for **kglab** plus its logo, documentation, and examples
 have an [MIT license](https://spdx.org/licenses/MIT.html) which is
 succinct and simplifies use in commercial applications.
 
-All materials herein are Copyright (c) 2020-2021 Derwen, Inc.
+All materials herein are Copyright &copy; 2020-2021 Derwen, Inc.
 
 
 ## Attribution
