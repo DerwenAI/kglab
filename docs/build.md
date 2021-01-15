@@ -37,7 +37,7 @@ This project uses [`pylint`](https://www.pylint.org/) for *code checking*.
 
 To run code checking:
 ```
-pylint kglab/kglab.py
+pylint kglab/*.py
 ```
 
 

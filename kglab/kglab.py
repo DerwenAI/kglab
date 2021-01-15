@@ -29,8 +29,17 @@ import urlpath  # type: ignore
 
 class KnowledgeGraph:
     """
-This is the primary class used to represent an RDF graph, on which the other classes are dependent.
+This is the primary class used to represent RDF graphs, on which the other classes are dependent.
 See <https://derwen.ai/docs/kgl/concepts/#knowledge-graph>
+
+Core feature areas include:
+
+  * namespace management (ontology, controlled vocabularies)
+  * graph construction
+  * serialization
+  * SPARQL querying
+  * SHACL validation
+  * inference based on OWL-RL, RDFS, SKOS
     """
 
     _DEFAULT_NAMESPACES: dict = {
@@ -713,40 +722,55 @@ extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) fo
         )
 
 
-    ######################################################################
-    ## SPARQL queries
-
     def n3fy (
         self,
-        d: dict,
+        node: RDF_Node,
         *,
         pythonify: bool = True,
-        ) -> dict:
+        ) -> str:
         """
-Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to convert one row of a result set of a SPARQL query into a readable representation for each term, using N3 format.
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
 
-    d:
-one row of a SPARQL query results, as a dict
+    node:
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
 
     pythonify:
 flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
 
     returns:
-a dictionary of converted terms
+text for the serialized node
         """
-        if pythonify:
-            items: list = []
-
-            for k, v in d.items():
-                if isinstance(v, rdflib.term.Literal):
-                    items.append([ k, v.toPython() ])
-                else:
-                    items.append([ k, v.n3(self._g.namespace_manager) ])
-
-            return dict(items)
+        if pythonify and isinstance(node, rdflib.term.Literal):
+            ser = node.toPython()
         else:
-            return { k: v.n3(self._g.namespace_manager) for k, v in d.items() }
+            ser = node.n3(self._g.namespace_manager)
 
+        return ser
+
+
+    def n3fy_row (
+        self,
+        row_dict: dict,
+        *,
+        pythonify: bool = True,
+        ) -> dict:
+        """
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize one row of a result set from a SPARQL query into a human-readable representation for each term using N3 format.
+
+    row_dict:
+one row of a SPARQL query results, as a `dict`
+
+    pythonify:
+flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
+
+    returns:
+a dictionary of serialized row bindings
+        """
+        return { k: self.n3fy(v, pythonify=pythonify) for k, v in row_dict.items() }
+
+
+    ######################################################################
+    ## SPARQL queries
 
     def query (
         self,
@@ -808,11 +832,11 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
         row_iter = self._g.query(sparql, initBindings=bindings)
 
         if simplify:
-            df = pd.DataFrame([ self.n3fy(r.asdict(), pythonify=pythonify) for r in row_iter ])
+            rows = [ self.n3fy_row(r.asdict(), pythonify=pythonify) for r in row_iter ]
         else:
-            df = df = pd.DataFrame([ r.asdict() for r in row_iter ])
+            rows = [ r.asdict() for r in row_iter ]
 
-        return df
+        return pd.DataFrame(rows)
 
 
     ######################################################################

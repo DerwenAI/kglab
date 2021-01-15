@@ -17,11 +17,12 @@ specific use cases as needed.
 
 [`kglab.KnowledgeGraph`](../ref/#knowledgegraph-class)
 
-construction of *RDF graphs* ;
-use of *semantic technologies* / *ontology* / *controlled vocabularies* ;
-also handle *property graph*
+the representation of *RDF graphs*,
+including use of *semantic technologies* / *ontology* / *controlled vocabularies*,
+and also handling *property graph* features
 
-  * *representation*
+  * *namespace management*
+  * *graph construction*
   * *serialization*
   * *querying*
   * *validation*
@@ -40,6 +41,7 @@ also handle *property graph*
 
 [`kglab.Subgraph`](../ref/#subgraph-class)
 
+  * *transforms to matrix/tensor*
   * *label encoding*
   * *visualization*
   * *graph algorithms*

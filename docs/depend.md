@@ -27,6 +27,7 @@ include:
 - [pyvis](https://pyvis.readthedocs.io/)
 - [RDFlib](https://rdflib.readthedocs.io/)
 - [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)
+- [scikit-learn](https://scikit-learn.org/stable/)
 - [urlpath](https://github.com/chrono-meter/urlpath)
 
 

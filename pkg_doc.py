@@ -140,7 +140,7 @@ def append_doc (md, obj, parse=False, arg_dict={}):
 
 
 def document_method (path_list, name, obj, func_kind, gh_src_url):
-    md = []
+    md = ["---"]
 
     # format a header + anchor
     frag = ".".join(path_list + [ name ])
