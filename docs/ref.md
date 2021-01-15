@@ -377,27 +377,47 @@ extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) fo
 
 ---
 #### [`n3fy` method](#kglab.KnowledgeGraph.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L728)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L725)
 
 ```python
-n3fy(d, pythonify=True)
+n3fy(node, pythonify=True)
 ```
-Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to convert one row of a result set of a SPARQL query into a readable representation for each term, using N3 format.
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
 
-  * `d` : `dict`  
-one row of a SPARQL query results, as a dict
+  * `node` : `typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+
+  * `pythonify` : `bool`  
+flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
+
+  * *returns* : `str`  
+text for the serialized node
+
+
+
+---
+#### [`n3fy_row` method](#kglab.KnowledgeGraph.n3fy_row)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L751)
+
+```python
+n3fy_row(row_dict, pythonify=True)
+```
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize one row of a result set from a SPARQL query into a human-readable representation for each term using N3 format.
+
+  * `row_dict` : `dict`  
+one row of a SPARQL query results, as a `dict`
 
   * `pythonify` : `bool`  
 flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
 
   * *returns* : `dict`  
-a dictionary of converted terms
+a dictionary of serialized row bindings
 
 
 
 ---
 #### [`query` method](#kglab.KnowledgeGraph.query)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L760)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L775)
 
 ```python
 query(sparql, bindings=None)
@@ -417,7 +437,7 @@ initial variable bindings
 
 ---
 #### [`query_as_df` method](#kglab.KnowledgeGraph.query_as_df)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L788)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L803)
 
 ```python
 query_as_df(sparql, bindings=None, simplify=True, pythonify=True)
@@ -443,7 +463,7 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
 
 ---
 #### [`validate` method](#kglab.KnowledgeGraph.validate)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L830)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L845)
 
 ```python
 validate(shacl_graph=None, shacl_graph_format=None, ont_graph=None, ont_graph_format=None, advanced=False, inference=None, inplace=True, abort_on_error=None, **kwargs)
@@ -480,7 +500,7 @@ a tuple of `conforms` (RDF graph passes the validation rules); `report_graph` (r
 
 ---
 #### [`infer_owlrl_closure` method](#kglab.KnowledgeGraph.infer_owlrl_closure)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L908)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L923)
 
 ```python
 infer_owlrl_closure()
@@ -493,7 +513,7 @@ See <https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_R
 
 ---
 #### [`infer_rdfs_closure` method](#kglab.KnowledgeGraph.infer_rdfs_closure)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L921)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L936)
 
 ```python
 infer_rdfs_closure()
@@ -506,7 +526,7 @@ See <https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_R
 
 ---
 #### [`infer_rdfs_properties` method](#kglab.KnowledgeGraph.infer_rdfs_properties)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L934)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L949)
 
 ```python
 infer_rdfs_properties()
@@ -519,7 +539,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 ---
 #### [`infer_rdfs_classes` method](#kglab.KnowledgeGraph.infer_rdfs_classes)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L962)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L977)
 
 ```python
 infer_rdfs_classes()
@@ -532,7 +552,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 ---
 #### [`infer_skos_related` method](#kglab.KnowledgeGraph.infer_skos_related)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L995)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1010)
 
 ```python
 infer_skos_related()
@@ -546,7 +566,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 ---
 #### [`infer_skos_concept` method](#kglab.KnowledgeGraph.infer_skos_concept)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1010)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1025)
 
 ```python
 infer_skos_concept()
@@ -563,7 +583,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 ---
 #### [`infer_skos_hierarchical` method](#kglab.KnowledgeGraph.infer_skos_hierarchical)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1034)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1049)
 
 ```python
 infer_skos_hierarchical(narrower=True)
@@ -580,7 +600,7 @@ if false, `skos:narrower` will be removed instead of added
 
 ---
 #### [`infer_skos_transitive` method](#kglab.KnowledgeGraph.infer_skos_transitive)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1061)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1076)
 
 ```python
 infer_skos_transitive(narrower=True)
@@ -601,7 +621,7 @@ also infer transitive closure for `skos:narrowerTransitive`
 
 ---
 #### [`infer_skos_symmetric_mappings` method](#kglab.KnowledgeGraph.infer_skos_symmetric_mappings)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1090)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1105)
 
 ```python
 infer_skos_symmetric_mappings(related=True)
@@ -618,7 +638,7 @@ infer the `skos:related` super-property for all `skos:relatedMatch` relations
 
 ---
 #### [`infer_skos_hierarchical_mappings` method](#kglab.KnowledgeGraph.infer_skos_hierarchical_mappings)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1121)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1136)
 
 ```python
 infer_skos_hierarchical_mappings(narrower=True)
@@ -839,7 +859,7 @@ Core feature areas include:
     
 ---
 #### [`__init__` method](#kglab.Subgraph.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L29)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L28)
 
 ```python
 __init__(kg, preload=None, excludes=None)
@@ -850,7 +870,7 @@ __init__(kg, preload=None, excludes=None)
 
 ---
 #### [`triples` method](#kglab.Subgraph.triples)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L51)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L50)
 
 ```python
 triples()
@@ -861,7 +881,7 @@ Iterator for the RDF triples to be included in the subgraph.
 
 ---
 #### [`transform` method](#kglab.Subgraph.transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L62)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L61)
 
 ```python
 transform(node)
@@ -872,7 +892,7 @@ Label encoding: return a unique integer ID for the given graph node.
 
 ---
 #### [`inverse_transform` method](#kglab.Subgraph.inverse_transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L79)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L78)
 
 ```python
 inverse_transform(id)
@@ -882,11 +902,11 @@ Label encoding: return the graph node corresponding to a unique integer ID.
 
 
 ---
-#### [`get_name` method](#kglab.Subgraph.get_name)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L92)
+#### [`n3fy` method](#kglab.Subgraph.n3fy)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L91)
 
 ```python
-get_name(node)
+n3fy(node)
 ```
 Produce a human-readable label from an RDF node.
 
@@ -894,7 +914,7 @@ Produce a human-readable label from an RDF node.
 
 ---
 #### [`pyvis_style_node` method](#kglab.Subgraph.pyvis_style_node)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L110)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L109)
 
 ```python
 pyvis_style_node(g, node_id, label, style=None)
@@ -905,7 +925,7 @@ pyvis_style_node(g, node_id, label, style=None)
 
 ---
 #### [`vis_pyvis` method](#kglab.Subgraph.vis_pyvis)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L137)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L136)
 
 ```python
 vis_pyvis(notebook=False, style=None)

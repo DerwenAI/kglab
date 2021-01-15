@@ -750,15 +750,15 @@ text for the serialized node
 
     def n3fy_row (
         self,
-        d: dict,
+        row_dict: dict,
         *,
         pythonify: bool = True,
         ) -> dict:
         """
 Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize one row of a result set from a SPARQL query into a human-readable representation for each term using N3 format.
 
-    d:
-one row of a SPARQL query results, as a dict
+    row_dict:
+one row of a SPARQL query results, as a `dict`
 
     pythonify:
 flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
@@ -766,7 +766,7 @@ flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io
     returns:
 a dictionary of serialized row bindings
         """
-        return { k: self.n3fy(v, pythonify=pythonify) for k, v in d.items() }
+        return { k: self.n3fy(v, pythonify=pythonify) for k, v in row_dict.items() }
 
 
     ######################################################################
