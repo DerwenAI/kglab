@@ -722,17 +722,40 @@ extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) fo
         )
 
 
-    ######################################################################
-    ## SPARQL queries
-
     def n3fy (
+        self,
+        node: RDF_Node,
+        *,
+        pythonify: bool = True,
+        ) -> str:
+        """
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
+
+    node:
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+
+    pythonify:
+flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
+
+    returns:
+text for the serialized node
+        """
+        if pythonify and isinstance(node, rdflib.term.Literal):
+            ser = node.toPython()
+        else:
+            ser = node.n3(self._g.namespace_manager)
+
+        return ser
+
+
+    def n3fy_row (
         self,
         d: dict,
         *,
         pythonify: bool = True,
         ) -> dict:
         """
-Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to convert one row of a result set of a SPARQL query into a readable representation for each term, using N3 format.
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize one row of a result set from a SPARQL query into a human-readable representation for each term using N3 format.
 
     d:
 one row of a SPARQL query results, as a dict
@@ -741,21 +764,13 @@ one row of a SPARQL query results, as a dict
 flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
 
     returns:
-a dictionary of converted terms
+a dictionary of serialized row bindings
         """
-        if pythonify:
-            items: list = []
+        return { k: self.n3fy(v, pythonify=pythonify) for k, v in d.items() }
 
-            for k, v in d.items():
-                if isinstance(v, rdflib.term.Literal):
-                    items.append([ k, v.toPython() ])
-                else:
-                    items.append([ k, v.n3(self._g.namespace_manager) ])
 
-            return dict(items)
-        else:
-            return { k: v.n3(self._g.namespace_manager) for k, v in d.items() }
-
+    ######################################################################
+    ## SPARQL queries
 
     def query (
         self,
@@ -817,11 +832,11 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
         row_iter = self._g.query(sparql, initBindings=bindings)
 
         if simplify:
-            df = pd.DataFrame([ self.n3fy(r.asdict(), pythonify=pythonify) for r in row_iter ])
+            rows = [ self.n3fy_row(r.asdict(), pythonify=pythonify) for r in row_iter ]
         else:
-            df = df = pd.DataFrame([ r.asdict() for r in row_iter ])
+            rows = [ r.asdict() for r in row_iter ]
 
-        return df
+        return pd.DataFrame(rows)
 
 
     ######################################################################

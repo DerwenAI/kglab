@@ -79,6 +79,12 @@ LinkedIn (2020)
 **Denise Gosnell**, **Matthias Broecheler**  
 O'Reilly Media (2020)
 
+### gutierrez2019
+
+["A Brief History of Knowledge Graph's Main Ideas: A tutorial"](http://knowledgegraph.today/paper.html)  
+**Claudio Gutierrez**, **Juan F. Sequeda**  
+*CACM* (2020)
+
 ### gruber1993ata
 
 ["A translation approach to portable ontology specifications"](https://doi.org/10.1006/KNAC.1993.1008)  

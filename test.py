@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from sklearn import datasets
 import kglab
 import os
+import pandas as pd
 import pathlib
 import tempfile
 import urlpath
@@ -12,6 +14,19 @@ import warnings
 
 class TestKG (unittest.TestCase):
     def test_load_save_measure (self):
+        """
+Coverage:
+
+    * KnowledgeGraph() constructor
+    * KnowledgeGraph.load_rdf()
+    * KnowledgeGraph.safe_rdf()
+    * KnowledgeGraph.load_jsonld()
+    * KnowledgeGraph.save_jsonld()
+
+    * Measure() constructor
+    * Measure.measure_graph()
+    * Measure.get_node_count()
+        """
         tmp = tempfile.NamedTemporaryFile(mode="w+b", delete=False)
 
         try:
@@ -49,12 +64,23 @@ class TestKG (unittest.TestCase):
 
                 # verify
                 self.assertTrue(measure.get_node_count() == 35)
+                self.assertTrue(measure.get_edge_count() == 62)
         finally:
             os.unlink(tmp.name)
             tmp.close()
 
 
     def test_load_parquet_gs (self):
+        """
+Coverage:
+
+    * KnowledgeGraph() constructor
+    * KnowledgeGraph.load_parquet()
+    * KnowledgeGraph.query_as_df()
+    * KnowledgeGraph.query()
+    * KnowledgeGraph.n3fy_row()
+    * KnowledgeGraph.n3fy()
+        """
         kg = kglab.KnowledgeGraph(
             namespaces = { "doap": "http://usefulinc.com/ns/doap#" }
             )
@@ -70,8 +96,35 @@ class TestKG (unittest.TestCase):
             }
         """
 
-        for row in kg.query(sparql):
-            self.assertTrue(str(row.name) == "Fantasy Fame Game")
+        df = kg.query_as_df(sparql)
+        row = df.iloc[0]
+        self.assertTrue(df.iloc[0]["name"] == "Fantasy Fame Game")
+
+
+    def test_approx_pareto_front (self):
+        """
+Coverage:
+
+    * stripe_column()
+    * calc_quantile_bins()
+    * root_mean_square()
+        """
+        # load Iris dataset as a pandas.DataFrame
+        iris = datasets.load_iris()
+        df1 = pd.DataFrame(iris.data, columns=iris.feature_names)
+
+        # normalize by column
+        df2 = df1.apply(lambda x: x/x.max(), axis=0)
+        bins = kglab.calc_quantile_bins(len(df2.index))
+
+        # stripe each column to approximate a pareto front
+        stripes = [ kglab.stripe_column(values, bins) for _, values in df2.items() ]
+        df3 = pd.DataFrame(stripes).T
+
+        # rank based on RMS of striped indices per row
+        df1["rank"] = df3.apply(kglab.root_mean_square, axis=1)
+
+        self.assertTrue(round(df1.iloc[0]["rank"], 4) == 8.6747)
 
 
 if __name__ == "__main__":

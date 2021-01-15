@@ -8,7 +8,6 @@ from kglab import KnowledgeGraph
 from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
 
 import pyvis.network  # type: ignore
-import rdflib  # type: ignore
 import typing
 
 
@@ -89,14 +88,14 @@ Label encoding: return the graph node corresponding to a unique integer ID.
         return self.id_list[id]
 
 
-    def get_name (
+    def n3fy (
         self,
         node: RDF_Node,
         ) -> str:
         """
 Produce a human-readable label from an RDF node.
         """
-        return node.n3(self.kg.rdf_graph().namespace_manager)
+        return self.kg.n3fy(node)
 
 
     ######################################################################
@@ -151,21 +150,17 @@ See <https://pyvis.readthedocs.io/>
 
         for s, p, o in self.triples():
             # label the subject
-            s_label = s.n3(self.kg.rdf_graph().namespace_manager)
+            s_label = self.kg.n3fy(s)
             s_id = self.transform(s_label)
             self.pyvis_style_node(g, s_id, s_label, style=style)
 
             # label the object
-            if isinstance(o, rdflib.term.Literal):
-                o_label = str(o.toPython())
-            else:
-                o_label = o.n3(self.kg.rdf_graph().namespace_manager)
-
+            o_label = self.kg.n3fy(o)
             o_id = self.transform(o_label)
             self.pyvis_style_node(g, o_id, o_label, style=style)
 
             # label the predicate
-            p_label = p.n3(self.kg.rdf_graph().namespace_manager)
+            p_label = self.kg.n3fy(p)
             g.add_edge(s_id, o_id, label=p_label)
 
         return g
