@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 ######################################################################
-## Impl apidoc-ish for actual Markdown: you're welcome.
+## Implementation of apidoc-ish for actual Markdown: you're welcome.
 
 import inspect
 import os
@@ -195,20 +195,90 @@ def document_type (path_list, name, obj):
     return md
 
 
+######################################################################
+## top-level methods
+
+def find_classes (module_obj, class_list):
+    """walk the module tree to find class definitions"""
+    todo_list = {}
+
+    for class_name, class_obj in inspect.getmembers(module_obj, inspect.isclass):
+        if class_name in class_list:
+            todo_list[class_name] = class_obj
+
+    return todo_list
+
+
+def format_class (md, module_name, todo_list, class_name):
+    """format markdown to describe the given class"""
+    class_obj = todo_list[class_name]
+    md.append("## [`{}` class](#{})".format(class_name, class_name))
+
+    doc = class_obj.__doc__
+
+    if doc:
+        md.append(doc)
+
+    obj_md_pos = {}
+
+    for member_name, member_obj in inspect.getmembers(class_obj):
+        path_list = [module_name, class_name]
+
+        if member_name.startswith("__") or not member_name.startswith("_"):
+            if inspect.isfunction(member_obj):
+                func_kind = "method"
+            elif inspect.ismethod(member_obj):
+                func_kind = "classmethod"
+            else:
+                continue
+
+            line_num, obj_md = document_method(path_list, member_name, member_obj, func_kind, gh_src_url)
+            obj_md_pos[line_num] = obj_md
+
+    for pos, obj_md in sorted(obj_md_pos.items()):
+        md.extend(obj_md)
+
+
+def format_functions (md, module_name, module_obj, gh_src_url):
+    """walk the module tree for each function definition"""
+    md.append("---")
+    md.append("## [module functions](#{})".format(module_name, "functions"))
+
+    for func_name, func_obj in inspect.getmembers(module_obj, inspect.isfunction):
+        if not func_name.startswith("_"):
+            line_num, obj_md = document_method([module_name], func_name, func_obj, "function", gh_src_url)
+            md.extend(obj_md)
+
+
+def format_types (md, module_name, module_obj):
+    """walk the list of types in the module"""
+    md.append("---")
+    md.append("## [module types](#{})".format(module_name, "types"))
+
+    for name, obj in inspect.getmembers(module_obj):
+        if obj.__class__.__module__ == "typing":
+            if not str(obj).startswith("~"):
+                obj_md = document_type([module_name], name, obj)
+                md.extend(obj_md)
+
+
 def write_markdown (filename):
+    """output the apidocs markdown"""
     with open(filename, "w") as f:
         for line in md:
             f.write(line)
             f.write("\n")
 
 
+######################################################################
+## main entry point
+
 if __name__ == "__main__":
-    ref_md_file = sys.argv[1]
-    class_list = [ "KnowledgeGraph", "Measure", "Simplex0", "Simplex1", "Subgraph" ]
+    ## customize the following lines, per module
+    class_list = [ "KnowledgeGraph", "Subgraph", "Measure", "Simplex0", "Simplex1" ]
 
     ## NB: `inspect` is picky about paths and current working directory
     ## this only works if run from the top-level directory for the repo
-
     sys.path.insert(0, "../")
     import kglab
 
@@ -220,66 +290,22 @@ if __name__ == "__main__":
     #show_all_elements(module_name)
     #sys.exit(0)
 
-    ## format markdown
-    todo_list = {}
-    md = []
 
-    md.append("# Reference: `{}` package".format(module_name))
+    # markdown for top-level module description
+    md = [ "# Reference: `{}` package".format(module_name) ]
     append_doc(md, module_obj)
 
-    ## walk the module tree to find class definitions
-    for class_name, class_obj in inspect.getmembers(module_obj, inspect.isclass):
-        if class_name in class_list:
-            todo_list[class_name] = class_obj
+    # find and format the class definitions
+    todo_list = find_classes(module_obj, class_list)
 
-    ## format each specified class definition
     for class_name in class_list:
-        class_obj = todo_list[class_name]
-        md.append("## [`{}` class](#{})".format(class_name, class_name))
+        format_class(md, module_name, todo_list, class_name)
 
-        doc = class_obj.__doc__
+    ## format the function definitions and types
+    format_functions(md, module_name, module_obj, gh_src_url)
+    format_types(md, module_name, module_obj)
 
-        if doc:
-            md.append(doc)
-
-        obj_md_pos = {}
-
-        for member_name, member_obj in inspect.getmembers(class_obj):
-            path_list = [module_name, class_name]
-
-            if member_name.startswith("__") or not member_name.startswith("_"):
-                if inspect.isfunction(member_obj):
-                    func_kind = "method"
-                elif inspect.ismethod(member_obj):
-                    func_kind = "classmethod"
-                else:
-                    continue
-
-                line_num, obj_md = document_method(path_list, member_name, member_obj, func_kind, gh_src_url)
-                obj_md_pos[line_num] = obj_md
-
-        for pos, obj_md in sorted(obj_md_pos.items()):
-            md.extend(obj_md)
-
-    ## walk the module tree for each function definition
-    md.append("---")
-    md.append("## [module functions](#{})".format(module_name, "functions"))
-
-    for func_name, func_obj in inspect.getmembers(module_obj, inspect.isfunction):
-        if not func_name.startswith("_"):
-            line_num, obj_md = document_method([module_name], func_name, func_obj, "function", gh_src_url)
-            md.extend(obj_md)
-
-    # walk the list of types in the module
-    md.append("---")
-    md.append("## [module types](#{})".format(module_name, "types"))
-
-    for name, obj in inspect.getmembers(module_obj):
-        if obj.__class__.__module__ == "typing":
-            if not str(obj).startswith("~"):
-                obj_md = document_type([module_name], name, obj)
-                md.extend(obj_md)
-
-    ## output markdown
+    ## output the apidocs markdown
+    ref_md_file = sys.argv[1]
     print("writing: ", ref_md_file)
     write_markdown(ref_md_file)

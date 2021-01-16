@@ -656,6 +656,97 @@ if false, `skos:narrowMatch` will be removed instead of added
 
 
 
+## [`Subgraph` class](#Subgraph)
+
+This class transforms RDF graphs to matrix/tensor representation, to integrate with non-RDF graph libraries.
+See <https://derwen.ai/docs/kgl/concepts/#subgraph>
+
+Core feature areas include:
+
+  * label encoding
+  * visualization
+  * graph algorithms
+  * probabilistic graph inference
+  * embedding
+    
+---
+#### [`__init__` method](#kglab.Subgraph.__init__)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L28)
+
+```python
+__init__(kg, preload=None, excludes=None)
+```
+
+
+
+
+---
+#### [`triples` method](#kglab.Subgraph.triples)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L50)
+
+```python
+triples()
+```
+Iterator for the RDF triples to be included in the subgraph.
+
+
+
+---
+#### [`transform` method](#kglab.Subgraph.transform)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L61)
+
+```python
+transform(node)
+```
+Label encoding: return a unique integer ID for the given graph node.
+
+
+
+---
+#### [`inverse_transform` method](#kglab.Subgraph.inverse_transform)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L78)
+
+```python
+inverse_transform(id)
+```
+Label encoding: return the graph node corresponding to a unique integer ID.
+
+
+
+---
+#### [`n3fy` method](#kglab.Subgraph.n3fy)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L91)
+
+```python
+n3fy(node)
+```
+Produce a human-readable label from an RDF node.
+
+
+
+---
+#### [`pyvis_style_node` method](#kglab.Subgraph.pyvis_style_node)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L109)
+
+```python
+pyvis_style_node(g, node_id, label, style=None)
+```
+
+
+
+
+---
+#### [`vis_pyvis` method](#kglab.Subgraph.vis_pyvis)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L136)
+
+```python
+vis_pyvis(notebook=False, style=None)
+```
+This is one example; you may need to copy and replicate to construct the graph design you need.
+See <https://pyvis.readthedocs.io/>
+
+
+
 ## [`Measure` class](#Measure)
 
 This class measures an RDF graph.
@@ -896,97 +987,6 @@ Accessor for the dyads census.
 
   * *returns* : `typing.Tuple[pandas.core.frame.DataFrame, dict]`  
 a tuple of a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) with the count distribution, sorted in ascending order; and a map of the observed links between "source" and "sink" items
-
-
-
-## [`Subgraph` class](#Subgraph)
-
-This class transforms RDF graphs to matrix/tensor representation, to integrate with non-RDF graph libraries.
-See <https://derwen.ai/docs/kgl/concepts/#subgraph>
-
-Core feature areas include:
-
-  * label encoding
-  * visualization
-  * graph algorithms
-  * probabilistic graph inference
-  * embedding
-    
----
-#### [`__init__` method](#kglab.Subgraph.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L28)
-
-```python
-__init__(kg, preload=None, excludes=None)
-```
-
-
-
-
----
-#### [`triples` method](#kglab.Subgraph.triples)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L50)
-
-```python
-triples()
-```
-Iterator for the RDF triples to be included in the subgraph.
-
-
-
----
-#### [`transform` method](#kglab.Subgraph.transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L61)
-
-```python
-transform(node)
-```
-Label encoding: return a unique integer ID for the given graph node.
-
-
-
----
-#### [`inverse_transform` method](#kglab.Subgraph.inverse_transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L78)
-
-```python
-inverse_transform(id)
-```
-Label encoding: return the graph node corresponding to a unique integer ID.
-
-
-
----
-#### [`n3fy` method](#kglab.Subgraph.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L91)
-
-```python
-n3fy(node)
-```
-Produce a human-readable label from an RDF node.
-
-
-
----
-#### [`pyvis_style_node` method](#kglab.Subgraph.pyvis_style_node)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L109)
-
-```python
-pyvis_style_node(g, node_id, label, style=None)
-```
-
-
-
-
----
-#### [`vis_pyvis` method](#kglab.Subgraph.vis_pyvis)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L136)
-
-```python
-vis_pyvis(notebook=False, style=None)
-```
-This is one example; you may need to copy and replicate to construct the graph design you need.
-See <https://pyvis.readthedocs.io/>
 
 
 

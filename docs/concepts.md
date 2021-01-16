@@ -29,14 +29,6 @@ and also handling *property graph* features
   * *inference*
 
 
-### Measure
-
-[`kglab.Measure`](../ref/#measure-class)
-
-  * *topology* => constructing *shapes*
-  * *statistics*
-
-
 ### Subgraph
 
 [`kglab.Subgraph`](../ref/#subgraph-class)
@@ -47,3 +39,14 @@ and also handling *property graph* features
   * *graph algorithms*
   * *probabilistic graph inference*
   * *embedding*
+
+
+### Measure
+
+[`kglab.Measure`](../ref/#measure-class)
+
+  * *descriptive statistics*
+  * *topological analysis*
+  * constructing *shapes*
+  * estimates of graph size and complexity
+  * estimated computation costs
