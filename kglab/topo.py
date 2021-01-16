@@ -15,6 +15,8 @@ import typing
 
 class Simplex0:
     """
+Count the distribution of a class of items in an RDF graph.
+In other words, tally an "item census" – to be consistent with the usage of that term.
     """
 
     def __init__ (
@@ -22,6 +24,10 @@ class Simplex0:
         name: str = "generic",
         ) -> None:
         """
+Constructor for an item census.
+
+    name:
+optional name for this measure
         """
         self.name = name
         self.count: dict = defaultdict(int)
@@ -33,6 +39,10 @@ class Simplex0:
         item: Census_Item,
         ) -> None:
         """
+Increment the count for this item.
+
+    item:
+an item (node, predicate, label, URL, literal, etc.) to be counted
         """
         self.count[item] += 1
 
@@ -41,6 +51,10 @@ class Simplex0:
         self
         ) -> typing.Optional[pd.DataFrame]:
         """
+Accessor for the item counts
+
+    returns:
+a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) with the count distribution, sorted in ascending order
         """
         self.df = pd.DataFrame.from_dict(
             self.count,
@@ -54,13 +68,17 @@ class Simplex0:
         self
         ) -> set:
         """
+Accessor for the set of items counted.
+
+    returns:
+set of keys for the items (nodes, predicates, labels, URLs, literals, etc.) that were counted
         """
         return { key.toPython() for key in self.count.keys() }
 
 
 class Simplex1 (Simplex0):
     """
-Measure a dyad census from the RDF graph.
+Measure a dyad census in an RDF graph, i.e., count the relations (directed edges) which connect two nodes.
     """
 
     def __init__ (
@@ -68,6 +86,10 @@ Measure a dyad census from the RDF graph.
         name: str = "generic",
         ) -> None:
         """
+Constructor for a dyad census.
+
+    name:
+optional name for this measure
         """
         super().__init__(name=name)  # type: ignore
         self.link_map: typing.Optional[dict] = None
@@ -79,6 +101,13 @@ Measure a dyad census from the RDF graph.
         item1: Census_Item,
         ) -> None:
         """
+Increment the count for this dyad.
+
+    item0:
+"source" item (node, label, literal, URL, etc.) to be counted
+
+    item1:
+"sink" item (node, label, literal, URL, etc.) to be counted
         """
         link = (item0, item1,)
         self.count[link] += 1
@@ -88,6 +117,10 @@ Measure a dyad census from the RDF graph.
         self
         ) -> Census_Dyad_Tally:
         """
+Accessor for the dyads census.
+
+    returns:
+a tuple of a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) with the count distribution, sorted in ascending order; and a map of the observed links between "source" and "sink" items
         """
         super().get_tally()
         self.link_map = defaultdict(set)
@@ -101,7 +134,8 @@ Measure a dyad census from the RDF graph.
 
 class Measure:
     """
-This class is used to measure an RDF graph, with downstream use cases that include constructing shapes.
+This class measures an RDF graph.
+Its downstream use cases include: graph size estimates; computation costs; constructed shapes.
 See <https://derwen.ai/docs/kgl/concepts/#measure>
 
 Core feature areas include:
@@ -116,6 +150,10 @@ Core feature areas include:
         name: str = "generic",
         ) -> None:
         """
+Constructor for this graph measure.
+
+    name:
+optional name for this measure
         """
         self.name = name
         self.edge_count = 0
@@ -127,6 +165,16 @@ Core feature areas include:
         self
         ) -> None:
         """
+Reset (reinitialize) all of the counts for different kinds of census, which include:
+
+  * total nodes
+  * total edges
+  * count for each kind of *subject* (`Simplex0`)
+  * count for each kind of *predicate* (`Simplex0`)
+  * count for each kind of *object* (`Simplex0`)
+  * count for each kind of *literal* (`Simplex0`)
+  * item census (`Simplex1`)
+  * dyad census (`Simplex1`)
         """
         self.edge_count = 0
         self.node_count = 0
@@ -167,6 +215,10 @@ value of `edge_count`
         kg: KnowledgeGraph,
         ) -> None:
         """
+Run a full measure of the given RDF graph.
+
+    kg:
+`KnowledgeGraph` object representing the RDF graph to be measured
         """
         for s, p, o in kg.rdf_graph():
             self.edge_count += 1
@@ -189,6 +241,14 @@ value of `edge_count`
         incl_pred: bool = True,
         ) -> typing.List[str]:
         """
+Accessor for the set of items (nodes, predicates, labels, URLs, literals, etc.) that were measured.
+Used for *label encoding* in the transform between an RDF graph and a matrix or tensor representation.
+
+    incl_pred:
+flag to include the predicates in the set of keys to be encoded
+
+    returns:
+sorted list of keys to be used in the encoding
         """
         keys = self.s_gen.get_keyset().union(self.o_gen.get_keyset())
 
