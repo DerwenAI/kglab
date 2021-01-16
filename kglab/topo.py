@@ -42,7 +42,7 @@ optional name for this measure
 Increment the count for this item.
 
     item:
-an item (node, predicate, label, URL, literal, etc.) to be counted
+an item (domain: node, predicate, label, URL, literal, etc.) to be counted
         """
         self.count[item] += 1
 
@@ -51,7 +51,7 @@ an item (node, predicate, label, URL, literal, etc.) to be counted
         self
         ) -> typing.Optional[pd.DataFrame]:
         """
-Accessor for the item counts
+Accessor for the item counts.
 
     returns:
 a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) with the count distribution, sorted in ascending order
@@ -68,10 +68,10 @@ a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/ap
         self
         ) -> set:
         """
-Accessor for the set of items counted.
+Accessor for the set of items (domain) counted.
 
     returns:
-set of keys for the items (nodes, predicates, labels, URLs, literals, etc.) that were counted
+set of keys for the items (domain: nodes, predicates, labels, URLs, literals, etc.) that were counted
         """
         return { key.toPython() for key in self.count.keys() }
 
@@ -101,13 +101,13 @@ optional name for this measure
         item1: Census_Item,
         ) -> None:
         """
-Increment the count for this dyad.
+Increment the count for a dyad represented by the two given items.
 
     item0:
-"source" item (node, label, literal, URL, etc.) to be counted
+"source" item (domain: node, label, URL, etc.) to be counted
 
     item1:
-"sink" item (node, label, literal, URL, etc.) to be counted
+"sink" item (range: node, label, literal, URL, etc.) to be counted
         """
         link = (item0, item1,)
         self.count[link] += 1
@@ -140,7 +140,7 @@ See <https://derwen.ai/docs/kgl/concepts/#measure>
 
 Core feature areas include:
 
-  * graph statistics
+  * descriptive statistics
   * topological analysis
     """
 
@@ -241,7 +241,7 @@ Run a full measure of the given RDF graph.
         incl_pred: bool = True,
         ) -> typing.List[str]:
         """
-Accessor for the set of items (nodes, predicates, labels, URLs, literals, etc.) that were measured.
+Accessor for the set of items (domain: nodes, predicates, labels, URLs, literals, etc.) that were measured.
 Used for *label encoding* in the transform between an RDF graph and a matrix or tensor representation.
 
     incl_pred:

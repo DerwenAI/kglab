@@ -664,7 +664,7 @@ See <https://derwen.ai/docs/kgl/concepts/#measure>
 
 Core feature areas include:
 
-  * graph statistics
+  * descriptive statistics
   * topological analysis
     
 ---
@@ -750,7 +750,7 @@ Run a full measure of the given RDF graph.
 ```python
 get_keyset(incl_pred=True)
 ```
-Accessor for the set of items (nodes, predicates, labels, URLs, literals, etc.) that were measured.
+Accessor for the set of items (domain: nodes, predicates, labels, URLs, literals, etc.) that were measured.
 Used for *label encoding* in the transform between an RDF graph and a matrix or tensor representation.
 
   * `incl_pred` : `bool`  
@@ -790,7 +790,7 @@ increment(item)
 Increment the count for this item.
 
   * `item` : `typing.Union[str, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
-an item (node, predicate, label, URL, literal, etc.) to be counted
+an item (domain: node, predicate, label, URL, literal, etc.) to be counted
 
 
 
@@ -801,7 +801,7 @@ an item (node, predicate, label, URL, literal, etc.) to be counted
 ```python
 get_tally()
 ```
-Accessor for the item counts
+Accessor for the item counts.
 
   * *returns* : `typing.Union[pandas.core.frame.DataFrame, NoneType]`  
 a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) with the count distribution, sorted in ascending order
@@ -815,10 +815,10 @@ a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/ap
 ```python
 get_keyset()
 ```
-Accessor for the set of items counted.
+Accessor for the set of items (domain) counted.
 
   * *returns* : `set`  
-set of keys for the items (nodes, predicates, labels, URLs, literals, etc.) that were counted
+set of keys for the items (domain: nodes, predicates, labels, URLs, literals, etc.) that were counted
 
 
 
@@ -833,7 +833,7 @@ Measure a dyad census in an RDF graph, i.e., count the relations (directed edges
 ```python
 get_tally()
 ```
-Accessor for the item counts
+Accessor for the item counts.
 
   * *returns* : `typing.Union[pandas.core.frame.DataFrame, NoneType]`  
 a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) with the count distribution, sorted in ascending order
@@ -847,10 +847,10 @@ a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/ap
 ```python
 get_keyset()
 ```
-Accessor for the set of items counted.
+Accessor for the set of items (domain) counted.
 
   * *returns* : `set`  
-set of keys for the items (nodes, predicates, labels, URLs, literals, etc.) that were counted
+set of keys for the items (domain: nodes, predicates, labels, URLs, literals, etc.) that were counted
 
 
 
@@ -875,13 +875,13 @@ optional name for this measure
 ```python
 increment(item0, item1)
 ```
-Increment the count for this dyad.
+Increment the count for a dyad represented by the two given items.
 
   * `item0` : `typing.Union[str, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
-"source" item (node, label, literal, URL, etc.) to be counted
+"source" item (domain: node, label, URL, etc.) to be counted
 
   * `item1` : `typing.Union[str, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
-"sink" item (node, label, literal, URL, etc.) to be counted
+"sink" item (range: node, label, literal, URL, etc.) to be counted
 
 
 
