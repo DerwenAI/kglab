@@ -658,39 +658,52 @@ if false, `skos:narrowMatch` will be removed instead of added
 
 ## [`Measure` class](#Measure)
 
-This class is used to measure an RDF graph, with downstream use cases that include constructing shapes.
+This class measures an RDF graph.
+Its downstream use cases include: graph size estimates; computation costs; constructed shapes.
 See <https://derwen.ai/docs/kgl/concepts/#measure>
 
 Core feature areas include:
 
-  * graph statistics
+  * descriptive statistics
   * topological analysis
     
 ---
 #### [`__init__` method](#kglab.Measure.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L113)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L147)
 
 ```python
 __init__(name="generic")
 ```
+Constructor for this graph measure.
 
+  * `name` : `str`  
+optional name for this measure
 
 
 
 ---
 #### [`reset` method](#kglab.Measure.reset)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L126)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L164)
 
 ```python
 reset()
 ```
+Reset (reinitialize) all of the counts for different kinds of census, which include:
 
+  * total nodes
+  * total edges
+  * count for each kind of *subject* (`Simplex0`)
+  * count for each kind of *predicate* (`Simplex0`)
+  * count for each kind of *object* (`Simplex0`)
+  * count for each kind of *literal* (`Simplex0`)
+  * item census (`Simplex1`)
+  * dyad census (`Simplex1`)
 
 
 
 ---
 #### [`get_node_count` method](#kglab.Measure.get_node_count)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L141)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L189)
 
 ```python
 get_node_count()
@@ -704,7 +717,7 @@ value of `node_count`
 
 ---
 #### [`get_edge_count` method](#kglab.Measure.get_edge_count)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L153)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L201)
 
 ```python
 get_edge_count()
@@ -718,129 +731,171 @@ value of `edge_count`
 
 ---
 #### [`measure_graph` method](#kglab.Measure.measure_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L165)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L213)
 
 ```python
 measure_graph(kg)
 ```
+Run a full measure of the given RDF graph.
 
+  * `kg` : `kglab.kglab.KnowledgeGraph`  
+`KnowledgeGraph` object representing the RDF graph to be measured
 
 
 
 ---
 #### [`get_keyset` method](#kglab.Measure.get_keyset)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L186)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L238)
 
 ```python
 get_keyset(incl_pred=True)
 ```
+Accessor for the set of items (domain: nodes, predicates, labels, URLs, literals, etc.) that were measured.
+Used for *label encoding* in the transform between an RDF graph and a matrix or tensor representation.
 
+  * `incl_pred` : `bool`  
+flag to include the predicates in the set of keys to be encoded
+
+  * *returns* : `typing.List[str]`  
+sorted list of keys to be used in the encoding
 
 
 
 ## [`Simplex0` class](#Simplex0)
 
+Count the distribution of a class of items in an RDF graph.
+In other words, tally an "item census" – to be consistent with the usage of that term.
     
 ---
 #### [`__init__` method](#kglab.Simplex0.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L20)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L22)
 
 ```python
 __init__(name="generic")
 ```
+Constructor for an item census.
 
+  * `name` : `str`  
+optional name for this measure
 
 
 
 ---
 #### [`increment` method](#kglab.Simplex0.increment)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L31)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L37)
 
 ```python
 increment(item)
 ```
+Increment the count for this item.
 
+  * `item` : `typing.Union[str, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
+an item (domain: node, predicate, label, URL, literal, etc.) to be counted
 
 
 
 ---
 #### [`get_tally` method](#kglab.Simplex0.get_tally)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L40)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L50)
 
 ```python
 get_tally()
 ```
+Accessor for the item counts.
 
+  * *returns* : `typing.Union[pandas.core.frame.DataFrame, NoneType]`  
+a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) with the count distribution, sorted in ascending order
 
 
 
 ---
 #### [`get_keyset` method](#kglab.Simplex0.get_keyset)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L53)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L67)
 
 ```python
 get_keyset()
 ```
+Accessor for the set of items (domain) counted.
 
+  * *returns* : `set`  
+set of keys for the items (domain: nodes, predicates, labels, URLs, literals, etc.) that were counted
 
 
 
 ## [`Simplex1` class](#Simplex1)
 
-Measure a dyad census from the RDF graph.
+Measure a dyad census in an RDF graph, i.e., count the relations (directed edges) which connect two nodes.
     
 ---
 #### [`get_tally` method](#kglab.Simplex1.get_tally)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L40)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L50)
 
 ```python
 get_tally()
 ```
+Accessor for the item counts.
 
+  * *returns* : `typing.Union[pandas.core.frame.DataFrame, NoneType]`  
+a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) with the count distribution, sorted in ascending order
 
 
 
 ---
 #### [`get_keyset` method](#kglab.Simplex1.get_keyset)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L53)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L67)
 
 ```python
 get_keyset()
 ```
+Accessor for the set of items (domain) counted.
 
+  * *returns* : `set`  
+set of keys for the items (domain: nodes, predicates, labels, URLs, literals, etc.) that were counted
 
 
 
 ---
 #### [`__init__` method](#kglab.Simplex1.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L66)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L84)
 
 ```python
 __init__(name="generic")
 ```
+Constructor for a dyad census.
 
+  * `name` : `str`  
+optional name for this measure
 
 
 
 ---
 #### [`increment` method](#kglab.Simplex1.increment)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L76)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L98)
 
 ```python
 increment(item0, item1)
 ```
+Increment the count for a dyad represented by the two given items.
 
+  * `item0` : `typing.Union[str, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
+"source" item (domain: node, label, URL, etc.) to be counted
+
+  * `item1` : `typing.Union[str, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
+"sink" item (range: node, label, literal, URL, etc.) to be counted
 
 
 
 ---
 #### [`get_tally_map` method](#kglab.Simplex1.get_tally_map)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L87)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L116)
 
 ```python
 get_tally_map()
 ```
+Accessor for the dyads census.
 
+  * *returns* : `typing.Tuple[pandas.core.frame.DataFrame, dict]`  
+a tuple of a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) with the count distribution, sorted in ascending order; and a map of the observed links between "source" and "sink" items
 
 
 
