@@ -33,6 +33,16 @@ Core feature areas include:
         excludes: list = None,
         ) -> None:
         """
+Constructor for creating and manipulating a *subgraph*, as a projection of an RDF graph represented by a `KnowledgeGraph` object.
+
+    kg:
+the RDF graph to project from
+
+    preload:
+an optional, pre-determined list to pre-load for the *label encoding*
+
+    excludes:
+a list of RDF predicates to exclude from projecting into the *subgraph*
         """
         self.kg = kg
 
@@ -47,23 +57,20 @@ Core feature areas include:
             self.excludes = []
 
 
-    def triples (
-        self
-        ) -> typing.Generator[RDF_Triple, None, None]:
-        """
-Iterator for the RDF triples to be included in the subgraph.
-        """
-        for s, p, o in self.kg.rdf_graph():
-            if not p in self.excludes:
-                yield s, p, o
-
-
     def transform (
         self,
         node: NodeLike,
         ) -> int:
         """
-Label encoding: return a unique integer ID for the given graph node.
+Tranform from a node in an RDF graph to a unique identifier, which can then be used in a matrix or tensor.
+Effectvely, similar to the [`sklearn.preprocessing.LabelEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html) –
+by maintaining a node list.
+
+Note that a special value `-1` represents the unique identifier for a null (`None`) node.
+This is useful in data structures which have optional placeholders for links to RDF nodes.
+
+     returns:
+a unique identifier (an integer) for the `node` in the RDF graph
         """
         if not node:
             # null case
@@ -80,7 +87,10 @@ Label encoding: return a unique integer ID for the given graph node.
         id: int,
         ) -> NodeLike:
         """
-Label encoding: return the graph node corresponding to a unique integer ID.
+Inverse tranform from a unique identifier to a node in the RDF graph, using the indentifier as an index into the node list.
+
+    returns:
+node in the RDF graph
         """
         if id < 0:
             return None
@@ -88,12 +98,33 @@ Label encoding: return the graph node corresponding to a unique integer ID.
         return self.id_list[id]
 
 
+    def triples (
+        self
+        ) -> typing.Generator[RDF_Triple, None, None]:
+        """
+Iterator for the RDF triples to included in the subgraph.
+
+    yields:
+the RDF triples within the subgraph
+        """
+        for s, p, o in self.kg.rdf_graph():
+            if not p in self.excludes:
+                yield s, p, o
+
+
     def n3fy (
         self,
         node: RDF_Node,
         ) -> str:
         """
-Produce a human-readable label from an RDF node.
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
+This method provides a convenience, which in turn calls `KnowledgeGraph.n3fy()`
+
+    node;
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+
+    returns:
+text for the serialized node
         """
         return self.kg.n3fy(node)
 
@@ -115,6 +146,19 @@ Produce a human-readable label from an RDF node.
         style: dict = None,
         ) -> None :
         """
+Adds a node into a [PyVis](https://pyvis.readthedocs.io/) network, optionally with styling info.
+
+    g:
+the [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html?highlight=network#pyvis.network.Network) being used for *interactive visualization*
+
+    node_id:
+unique identifier for a node in the RDF graph
+
+    label:
+text label for the node
+
+    style:
+optional style dictionary
         """
         if not style:
             style = {}
@@ -140,8 +184,14 @@ Produce a human-readable label from an RDF node.
         style: dict = None,
         ) -> pyvis.network.Network:
         """
-This is one example; you may need to copy and replicate to construct the graph design you need.
+Wrapper for creating a [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html?highlight=network#pyvis.network.Network) based on the transform in this subgraph.
 See <https://pyvis.readthedocs.io/>
+
+    notebook:
+flag for whether or not the interactive visualization will be generated within a notebook
+
+    style:
+optional style dictionary
         """
         g = pyvis.network.Network(notebook=notebook)
 
@@ -150,17 +200,17 @@ See <https://pyvis.readthedocs.io/>
 
         for s, p, o in self.triples():
             # label the subject
-            s_label = self.kg.n3fy(s)
+            s_label = self.n3fy(s)
             s_id = self.transform(s_label)
             self.pyvis_style_node(g, s_id, s_label, style=style)
 
             # label the object
-            o_label = self.kg.n3fy(o)
+            o_label = self.n3fy(o)
             o_id = self.transform(o_label)
             self.pyvis_style_node(g, o_id, o_label, style=style)
 
             # label the predicate
-            p_label = self.kg.n3fy(p)
+            p_label = self.n3fy(p)
             g.add_edge(s_id, o_id, label=p_label)
 
         return g
