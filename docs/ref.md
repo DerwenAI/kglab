@@ -676,74 +676,122 @@ Core feature areas include:
 ```python
 __init__(kg, preload=None, excludes=None)
 ```
+Constructor for creating and manipulating a *subgraph*, as a projection of an RDF graph represented by a `KnowledgeGraph` object.
 
+  * `kg` : `kglab.kglab.KnowledgeGraph`  
+the RDF graph to project from
 
+  * `preload` : `list`  
+an optional, pre-determined list to pre-load for the *label encoding*
 
-
----
-#### [`triples` method](#kglab.Subgraph.triples)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L50)
-
-```python
-triples()
-```
-Iterator for the RDF triples to be included in the subgraph.
+  * `excludes` : `list`  
+a list of RDF predicates to exclude from projecting into the *subgraph*
 
 
 
 ---
 #### [`transform` method](#kglab.Subgraph.transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L61)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L60)
 
 ```python
 transform(node)
 ```
-Label encoding: return a unique integer ID for the given graph node.
+Tranform from a node in an RDF graph to a unique identifier, which can then be used in a matrix or tensor.
+Effectvely, similar to the [`sklearn.preprocessing.LabelEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html) –
+by maintaining a node list.
+
+Note that a special value `-1` represents the unique identifier for a null (`None`) node.
+This is useful in data structures which have optional placeholders for links to RDF nodes.
+
+  * *returns* : `int`  
+a unique identifier (an integer) for the `node` in the RDF graph
 
 
 
 ---
 #### [`inverse_transform` method](#kglab.Subgraph.inverse_transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L78)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L85)
 
 ```python
 inverse_transform(id)
 ```
-Label encoding: return the graph node corresponding to a unique integer ID.
+Inverse tranform from a unique identifier to a node in the RDF graph, using the indentifier as an index into the node list.
+
+  * *returns* : `typing.Union[str, NoneType, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
+node in the RDF graph
+
+
+
+---
+#### [`triples` method](#kglab.Subgraph.triples)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L101)
+
+```python
+triples()
+```
+Iterator for the RDF triples to included in the subgraph.
+
+  * *yields* :  
+the RDF triples within the subgraph
 
 
 
 ---
 #### [`n3fy` method](#kglab.Subgraph.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L91)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L115)
 
 ```python
 n3fy(node)
 ```
-Produce a human-readable label from an RDF node.
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
+This method provides a convenience, which in turn calls `KnowledgeGraph.n3fy()`
+
+    node;
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+
+  * *returns* : `str`  
+text for the serialized node
 
 
 
 ---
 #### [`pyvis_style_node` method](#kglab.Subgraph.pyvis_style_node)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L109)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L140)
 
 ```python
 pyvis_style_node(g, node_id, label, style=None)
 ```
+Adds a node into a [PyVis](https://pyvis.readthedocs.io/) network, optionally with styling info.
 
+  * `g` : `pyvis.network.Network`  
+the [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html?highlight=network#pyvis.network.Network) being used for *interactive visualization*
+
+  * `node_id` : `int`  
+unique identifier for a node in the RDF graph
+
+  * `label` : `str`  
+text label for the node
+
+  * `style` : `dict`  
+optional style dictionary
 
 
 
 ---
 #### [`vis_pyvis` method](#kglab.Subgraph.vis_pyvis)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L136)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L180)
 
 ```python
 vis_pyvis(notebook=False, style=None)
 ```
-This is one example; you may need to copy and replicate to construct the graph design you need.
+Wrapper for creating a [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html?highlight=network#pyvis.network.Network) based on the transform in this subgraph.
 See <https://pyvis.readthedocs.io/>
+
+  * `notebook` : `bool`  
+flag for whether or not the interactive visualization will be generated within a notebook
+
+  * `style` : `dict`  
+optional style dictionary
 
 
 
