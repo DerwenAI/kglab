@@ -115,7 +115,7 @@ the RDF triples within the subgraph
     def n3fy (
         self,
         node: RDF_Node,
-        ) -> str:
+        ) -> typing.Any:
         """
 Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
 This method provides a convenience, which in turn calls `KnowledgeGraph.n3fy()`
@@ -124,7 +124,7 @@ This method provides a convenience, which in turn calls `KnowledgeGraph.n3fy()`
 must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
 
     returns:
-text for the serialized node
+text (or Python object) for the serialized node
         """
         return self.kg.n3fy(node)
 
@@ -139,7 +139,7 @@ text for the serialized node
 
     def pyvis_style_node (
         self,
-        g: pyvis.network.Network,
+        pyvis_graph: pyvis.network.Network,
         node_id: int,
         label: str,
         *,
@@ -148,7 +148,7 @@ text for the serialized node
         """
 Adds a node into a [PyVis](https://pyvis.readthedocs.io/) network, optionally with styling info.
 
-    g:
+    pyvis_graph:
 the [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html?highlight=network#pyvis.network.Network) being used for *interactive visualization*
 
     node_id:
@@ -166,7 +166,7 @@ optional style dictionary
         prefix = label.split(":")[0]
 
         if prefix in style:
-            g.add_node(
+            pyvis_graph.add_node(
                 node_id,
                 label=label,
                 title=label,
@@ -174,17 +174,21 @@ optional style dictionary
                 size=style[prefix]["size"],
             )
         else:
-            g.add_node(node_id, label=label, title=label)
+            pyvis_graph.add_node(
+                node_id,
+                label=label,
+                title=label,
+            )
 
 
-    def vis_pyvis (
+    def build_pyvis_graph (
         self,
         *,
         notebook: bool = False,
         style: dict = None,
         ) -> pyvis.network.Network:
         """
-Wrapper for creating a [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html?highlight=network#pyvis.network.Network) based on the transform in this subgraph.
+Factory pattern to create a [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html?highlight=network#pyvis.network.Network) object, populated by transforms in this subgraph.
 See <https://pyvis.readthedocs.io/>
 
     notebook:
@@ -193,7 +197,7 @@ flag for whether or not the interactive visualization will be generated within a
     style:
 optional style dictionary
         """
-        g = pyvis.network.Network(notebook=notebook)
+        pyvis_graph = pyvis.network.Network(notebook=notebook)
 
         if not style:
             style = {}
@@ -202,15 +206,15 @@ optional style dictionary
             # label the subject
             s_label = self.n3fy(s)
             s_id = self.transform(s_label)
-            self.pyvis_style_node(g, s_id, s_label, style=style)
+            self.pyvis_style_node(pyvis_graph, s_id, s_label, style=style)
 
             # label the object
-            o_label = self.n3fy(o)
+            o_label = str(self.n3fy(o))
             o_id = self.transform(o_label)
-            self.pyvis_style_node(g, o_id, o_label, style=style)
+            self.pyvis_style_node(pyvis_graph, o_id, o_label, style=style)
 
             # label the predicate
             p_label = self.n3fy(p)
-            g.add_edge(s_id, o_id, label=p_label)
+            pyvis_graph.add_edge(s_id, o_id, label=p_label)
 
-        return g
+        return pyvis_graph
