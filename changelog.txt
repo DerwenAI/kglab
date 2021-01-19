@@ -2,15 +2,17 @@
 
 ## 0.1.6
 
-2021-01-??
+2021-01-19
 
+  * rollback `pandas` to 1.1.5 which is the latest stable on Ubuntu; see #94
+  * revise `pyvis` use as a factory pattern
   * extend RDFlib serialization with `urlpath` support
   * extend all serialization to support file-like objects
   * including `gcsfs` and `fsspec` to leverage cloud bucket access in `pandas`
   * added `code_of_conduct.md`
   * code checking based on `pylint`
   * added accessor methods, e.g., `KnowledgeGraph.rdf_graph()`
-  * updated `pandas` usage to >= 1.2.0 with direct support for Parquet/Arrow
+  * updated `pandas` usage for direct Parquet/Arrow calls, e.g., `read_parquet()` and `to_parquet()`
   * updated `pyshacl` usage to >= 0.14.1 to support `inplace` graph manipulation (inference)
 
 
