@@ -70,6 +70,12 @@ Manning (2021)
 **Aaron Kalb**, **Daniel Rincon Silva**  
 LinkedIn (2020)
 
+### dooley2018npj
+
+["FoodOn: a harmonized food ontology to increase global food traceability, quality control and data integration"](https://doi.org/10.1038/s41538-018-0032-6)  
+**D.M. Dooley**, **E.J. Griffiths**, **G.S. Gosal**, **P.L. Buttigieg**, **R. Hoehndorf**, **M.C. Lange**, **L.M. Schriml**, **F.S.L. Brinkman**, **W.W.L. Hsiao**  
+*npj Sci Food* 2, p. 23 (2018)
+
 
 ## – G –
 
@@ -103,6 +109,13 @@ O'Reilly Media (2020)
 **Mark Donsky**, **Gabriel Fierro**, **Chang She**, **Carl Steinbach**, 
 **Venkat Subramanian**, **Eric Sun**  
 *CIDR* (2017)
+
+### hitzler2018
+
+["A Tutorial on Modular Ontology Modeling with Ontology Design Patterns: The Cooking Recipes Ontology"](https://arxiv.org/abs/1808.08433)  
+**P. Hitzler**, **A. Krisnadhi**  
+*arXiv* (2018)  
+
 
 ### hogan2020knowledge
 
@@ -236,11 +249,26 @@ Manning (2021)
 
 ## – S –
 
+### sam2014odp
+
+["An ontology design pattern for cooking recipes: classroom created"](https://dl.acm.org/doi/10.5555/2878937.2878943)  
+**M. Sam**, **A. Krisnadhi**, **C. Wang**, **J.C. Gallagher**, **P. Hitzler**  
+*Proceedings of the 5th International Conference on Ontology and Semantic Web Patterns* 1302, pp. 49–60 (2014)
+
 ### singhal2012things
 
 ["Introducing the Knowledge Graph: things, not strings"](https://blog.google/products/search/introducing-knowledge-graph-things-not/)  
 **Amit Singhal**  
 Google (2012)
+
+
+## – V –
+
+### vardeman2014ceur
+
+["An Ontology Design Pattern for Material Transformation"](http://dx.doi.org/10.3233/SW-160231)  
+**C. Vardeman**, **A. Krisnadhi**, **M. Cheatham**, **K. Janowicz**, **H. Ferguson**, **P. Hitzler**, **A. Buccellato**, **K. Thirunarayan**, **G. Berg-Cross**, **T. Hahmann**  
+*CEUR Workshop Proceedings* 1302 (2014)
 
 
 ---

@@ -45,6 +45,7 @@ Core feature areas include:
     _DEFAULT_NAMESPACES: dict = {
         "dct":    "http://purl.org/dc/terms/",
         "owl":    "http://www.w3.org/2002/07/owl#",
+        "prov":   "http://www.w3.org/ns/prov#",
         "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
         "schema": "http://schema.org/",
@@ -727,7 +728,7 @@ extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) fo
         node: RDF_Node,
         *,
         pythonify: bool = True,
-        ) -> str:
+        ) -> typing.Any:
         """
 Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
 
@@ -738,7 +739,7 @@ must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/r
 flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
 
     returns:
-text for the serialized node
+text (or Python objects) for the serialized node
         """
         if pythonify and isinstance(node, rdflib.term.Literal):
             ser = node.toPython()
