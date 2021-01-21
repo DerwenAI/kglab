@@ -715,7 +715,7 @@ this `KnowledgeGraph` object – used for method chaining
         path: IOPathLike,
         *,
         compression: str = "snappy",
-        storage_options: dict = None,
+        storage_options: dict = None, # pylint: disable=W0613
         **kwargs: typing.Any,
         ) -> None:
         """

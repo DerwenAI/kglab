@@ -5,8 +5,11 @@
 ## subgraph transforms for visualization, graph algorithms, etc.
 
 from kglab import KnowledgeGraph
+from kglab.topo import Measure
 from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
 
+import igraph as ig  # type: ignore
+import networkx as nx  # type: ignore
 import pyvis.network  # type: ignore
 import typing
 
@@ -123,8 +126,9 @@ Typical use cases include integration with non-RDF graph libraries for *graph al
     def __init__ (
         self,
         kg: KnowledgeGraph,
+        sparql: str,
         *,
-        excludes: list = None,
+        bindings: dict = None,
         ) -> None:
         """
 Constructor for creating and manipulating a *subgraph* as a [*matrix*](https://mathworld.wolfram.com/AdjacencyMatrix.html),
@@ -133,15 +137,71 @@ projecting from an RDF graph represented by a `KnowledgeGraph` object.
     kg:
 the source RDF graph
 
-    excludes:
-a list of RDF predicates to exclude from projection into the *subgraph*
+    sparql:
+text for a SPARQL query that yields pairs to project into the *subgraph*; this expects the query to have bindings for `subject` and `object` nodes in the RDF graph
+
+    bindings:
+initial variable bindings
         """
         super().__init__(kg=kg)
+        self.sparql = sparql
+        self.bindings = bindings
 
-        if excludes:
-            self.excludes = excludes
-        else:
-            self.excludes = []
+
+    def build_nx_graph (
+        self,
+        *,
+        bipartite: bool = False,
+        ) -> nx.DiGraph:
+        """
+Factory pattern to create a [`networkx.DiGraph`](https://networkx.org/documentation/latest/reference/classes/digraph.html) object, populated by transforms in this subgraph.
+See <https://networkx.org/>
+
+    bipartite:
+flag for whether the `(subject, object)` pairs should be partitioned into *bipartite sets*, in other words whether the *adjacency matrix* is symmetric
+        """
+        nx_graph = nx.DiGraph()
+
+        for row in self.kg.query(self.sparql):
+            s_id = self.transform(row.subject)
+            s_label = self.n3fy(row.subject)
+
+            o_id = self.transform(row.object)
+            o_label = self.n3fy(row.object)
+
+            if bipartite:
+                nx_graph.add_node(s_id, label=s_label, bipartite=0)
+                nx_graph.add_node(o_id, label=o_label, bipartite=1)
+            else:
+                nx_graph.add_node(s_id, label=s_label)
+                nx_graph.add_node(o_id, label=o_label)
+
+            nx_graph.add_edge(s_id, o_id)
+
+        return nx_graph
+
+
+    def build_ig_graph (
+        self
+        ) -> ig.Graph:
+        """
+Factory pattern to create an [`igraph.Graph`](https://igraph.org/python/doc/igraph.Graph-class.html) object, populated by transforms in this subgraph.
+See <https://igraph.org/python/doc/>
+        """
+        measure = Measure()
+        measure.measure_graph(self.kg)
+        keyset = measure.get_keyset(incl_pred=False)
+
+        ig_graph = ig.Graph()
+        ig_graph.add_vertices(n=keyset)
+
+        for row in self.kg.query(self.sparql):
+            s_id = self.transform(row.subject)
+            o_id = self.transform(row.object)
+            ig_graph.add_edges([ (s_id, o_id,) ])
+
+        ig_graph.vs["label"] = ig_graph.vs["name"] # pylint: disable=E1136,E1137
+        return ig_graph
 
 
 class SubgraphTensor (Subgraph):
@@ -197,7 +257,7 @@ the RDF triples within the subgraph
     ## to extend or create an analyst's account-specific network
     ## model.
 
-    def pyvis_style_node (
+    def pyvis_style_node ( # pylint: disable=R0201
         self,
         pyvis_graph: pyvis.network.Network,
         node_id: int,

@@ -95,7 +95,7 @@ optional name for this measure
         self.link_map: typing.Optional[dict] = None
 
 
-    def increment (  # type: ignore
+    def increment ( # pylint: disable=W0221
         self,
         item0: Census_Item,
         item1: Census_Item,
