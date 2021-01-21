@@ -1,5 +1,13 @@
 # `kglab` changelog
 
+## 0.1.7
+
+2021-01-??
+
+  * fix for `save_parquet()` since `storage_options` won't be used by `pandas` before 1.2.0
+  * introduced `SubgraphMatrix` and `SubgraphTensor` as subclasses for the base vectorization
+
+
 ## 0.1.6
 
 2021-01-19

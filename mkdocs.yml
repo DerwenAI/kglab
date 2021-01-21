@@ -22,18 +22,17 @@ nav:
     - Tutorial:
         - Setup:
             - Installation: tutorial.md
-            - Data sources: ex0_0.md
-        - Construction:
+            - Data and Ontology sources: ex0_0.md
+        - Construction and Serialization:
             - Build an RDF graph using `RDFlib`: ex1_0.md
             - Leverage the `kglab` abstraction layer: ex1_1.md
-        - Serialization:
             - Build a medium size KG from a CSV dataset: ex2_0.md
-        - Visualization:
-            - Interactive graph visualization with `PyVis`: ex3_0.md
         - Querying:
             - Run SPARQL queries: ex4_0.md
         - Validation:
             - SHACL validation with `pySHACL`: ex5_0.md
+        - Visualization:
+            - Interactive graph visualization with `PyVis`: ex3_0.md
         - Graph Algorithms:
             - Graph algorithms with `NetworkX`: ex6_0.md
             - Discover community structure using `iGraph` and `leidenalg`: ex6_1.md

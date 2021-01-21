@@ -402,7 +402,7 @@ a string as a file name or URL to a file reference
         format: str = "ttl",
         base: str = None,
         **args: typing.Any,
-        ) -> None:
+        ) -> "KnowledgeGraph":
         """
 Wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from the `path` source.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
@@ -417,6 +417,9 @@ serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list o
 
     base:
 logical URI to use as the document base; if not specified the document location is used
+
+    returns:
+this `KnowledgeGraph` object – used for method chaining
         """
         # error checking for the `format` parameter
         if format == "json-ld":
@@ -443,6 +446,8 @@ logical URI to use as the document base; if not specified the document location 
                 **args,
             )
 
+        return self
+
 
     def load_rdf_text (
         self,
@@ -451,7 +456,7 @@ logical URI to use as the document base; if not specified the document location 
         format: str = "ttl",
         base: str = None,
         **args: typing.Any,
-        ) -> None:
+        ) -> "KnowledgeGraph":
         """
 Wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from a text.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
@@ -466,6 +471,9 @@ serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list o
 
     base:
 logical URI to use as the document base; if not specified the document location is used
+
+    returns:
+this `KnowledgeGraph` object – used for method chaining
         """
         # error checking for the `format` parameter
         self._check_format(format)
@@ -480,6 +488,8 @@ logical URI to use as the document base; if not specified the document location 
             publicID=base,
             **args,
         )
+
+        return self
 
 
     def save_rdf (
@@ -595,7 +605,7 @@ text representing the RDF graph
         *,
         encoding: str = "utf-8",
         **args: typing.Any,
-        ) -> None:
+        ) -> "KnowledgeGraph":
         """
 Wrapper for [`rdflib-jsonld.parser.JsonLDParser.parse()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/parser.py) which parses an RDF graph from a [JSON-LD](https://json-ld.org/) source.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
@@ -607,6 +617,9 @@ must be a file name (str) or a path object (not a URL) to a local file reference
 
     encoding:
 text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
+
+    returns:
+this `KnowledgeGraph` object – used for method chaining
         """
         # error checking for a file-like object `path` paramter
         if hasattr(path, "read"):
@@ -623,6 +636,8 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
             encoding=encoding,
             **args,
         )
+
+        return self
 
 
     def save_jsonld (
@@ -669,7 +684,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         self,
         path: IOPathLike,
         **kwargs: typing.Any,
-        ) -> None:
+        ) -> "KnowledgeGraph":
         """
 Wrapper for [`pandas.read_parquet()`](https://pandas.pydata.org/docs/reference/api/pandas.read_parquet.html?highlight=read_parquet#pandas.read_parquet) which parses an RDF graph represented as a [Parquet](https://parquet.apache.org/) file, using the [`pyarrow`](https://arrow.apache.org/) engine.
 
@@ -679,6 +694,9 @@ Note: this adds relations to an RDF graph, it does not overwrite the existing RD
 
     path:
 must be a file name (str), path object to a local file reference, or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object); a string could be a URL; valid URL schemes include `https`, `http`, `ftp`, `s3`, `gs`, `file`; a file URL can also be a path to a directory that contains multiple partitioned files, including a bucket in cloud storage – based on [`fsspec`](https://github.com/intake/filesystem_spec)
+
+    returns:
+this `KnowledgeGraph` object – used for method chaining
         """
         df = pd.read_parquet(
             path,
@@ -688,6 +706,8 @@ must be a file name (str), path object to a local file reference, or a [*readabl
         for _, row in df.iterrows():
             triple = "{} {} {} .".format(row[0], row[1], row[2])
             self._g.parse(data=triple, format="ttl")
+
+        return self
 
 
     def save_parquet (
@@ -710,7 +730,7 @@ must be a file name (str), path object to a local file reference, or a [*writabl
 name of the compression algorithm to use; defaults to `"snappy"`; can also be `"gzip"`, `"brotli"`, or `None` for no compression
 
     storage_options:
-extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) for cloud storage access
+extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) for cloud storage access; **NOT USED UNTIL `pandas` 1.2.x becomes stable
         """
         rows_list = [ {"s": s.n3(), "p": p.n3(), "o": o.n3()} for s, p, o in self._g ]
         df = pd.DataFrame(rows_list, columns=("s", "p", "o"))
@@ -718,7 +738,7 @@ extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) fo
         df.to_parquet(
             path,
             compression=compression,
-            storage_options=storage_options,
+            #storage_options=storage_options,
             **chocolate.filter_args(kwargs, df.to_parquet),
         )
 

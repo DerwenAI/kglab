@@ -15,7 +15,7 @@ Core feature areas include:
     
 ---
 #### [`__init__` method](#kglab.KnowledgeGraph.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L57)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L58)
 
 ```python
 __init__(name="generic", base_uri=None, language="en", namespaces=None, import_graph=None)
@@ -41,7 +41,7 @@ optionally, another existing RDF graph to be used as a starting point
 
 ---
 #### [`rdf_graph` method](#kglab.KnowledgeGraph.rdf_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L106)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L107)
 
 ```python
 rdf_graph()
@@ -55,7 +55,7 @@ the [`rdflib.Graph`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html
 
 ---
 #### [`add_ns` method](#kglab.KnowledgeGraph.add_ns)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L131)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L132)
 
 ```python
 add_ns(prefix, iri, override=True, replace=False)
@@ -80,7 +80,7 @@ replace any existing prefix with the new namespace
 
 ---
 #### [`get_ns` method](#kglab.KnowledgeGraph.get_ns)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L171)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L172)
 
 ```python
 get_ns(prefix)
@@ -97,7 +97,7 @@ the RDFlib [`Namespace`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.
 
 ---
 #### [`get_ns_dict` method](#kglab.KnowledgeGraph.get_ns_dict)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L187)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L188)
 
 ```python
 get_ns_dict()
@@ -111,7 +111,7 @@ a `dict` describing the namespaces in this RDF graph
 
 ---
 #### [`describe_ns` method](#kglab.KnowledgeGraph.describe_ns)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L199)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L200)
 
 ```python
 describe_ns()
@@ -125,7 +125,7 @@ a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/ap
 
 ---
 #### [`get_context` method](#kglab.KnowledgeGraph.get_context)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L212)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L213)
 
 ```python
 get_context()
@@ -140,7 +140,7 @@ context needed for JSON-LD serialization
 
 ---
 #### [`encode_date` method](#kglab.KnowledgeGraph.encode_date)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L231)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L232)
 
 ```python
 encode_date(datetime, tzinfos)
@@ -160,7 +160,7 @@ timezones as a dict, used by
 
 ---
 #### [`add` method](#kglab.KnowledgeGraph.add)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L253)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L254)
 
 ```python
 add(s, p, o)
@@ -183,7 +183,7 @@ To prepare for upcoming **kglab** features, **this is the preferred method for a
 
 ---
 #### [`remove` method](#kglab.KnowledgeGraph.remove)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L277)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L278)
 
 ```python
 remove(s, p, o)
@@ -206,7 +206,7 @@ To prepare for upcoming **kglab** features, **this is the preferred method for r
 
 ---
 #### [`load_rdf` method](#kglab.KnowledgeGraph.load_rdf)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L397)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L398)
 
 ```python
 load_rdf(path, format="ttl", base=None, **args)
@@ -225,11 +225,14 @@ serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list o
   * `base` : `str`  
 logical URI to use as the document base; if not specified the document location is used
 
+  * *returns* : `KnowledgeGraph`  
+this `KnowledgeGraph` object – used for method chaining
+
 
 
 ---
 #### [`load_rdf_text` method](#kglab.KnowledgeGraph.load_rdf_text)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L446)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L452)
 
 ```python
 load_rdf_text(data, format="ttl", base=None, **args)
@@ -248,11 +251,14 @@ serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list o
   * `base` : `str`  
 logical URI to use as the document base; if not specified the document location is used
 
+  * *returns* : `KnowledgeGraph`  
+this `KnowledgeGraph` object – used for method chaining
+
 
 
 ---
 #### [`save_rdf` method](#kglab.KnowledgeGraph.save_rdf)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L484)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L495)
 
 ```python
 save_rdf(path, format="ttl", base=None, encoding="utf-8", **args)
@@ -276,7 +282,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
 
 ---
 #### [`save_rdf_text` method](#kglab.KnowledgeGraph.save_rdf_text)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L549)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L560)
 
 ```python
 save_rdf_text(format="ttl", base=None, encoding="utf-8", **args)
@@ -299,7 +305,7 @@ text representing the RDF graph
 
 ---
 #### [`load_jsonld` method](#kglab.KnowledgeGraph.load_jsonld)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L591)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L602)
 
 ```python
 load_jsonld(path, encoding="utf-8", **args)
@@ -315,11 +321,14 @@ must be a file name (str) or a path object (not a URL) to a local file reference
   * `encoding` : `str`  
 text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
 
+  * *returns* : `KnowledgeGraph`  
+this `KnowledgeGraph` object – used for method chaining
+
 
 
 ---
 #### [`save_jsonld` method](#kglab.KnowledgeGraph.save_jsonld)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L627)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L643)
 
 ```python
 save_jsonld(path, encoding="utf-8", **args)
@@ -337,7 +346,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
 
 ---
 #### [`load_parquet` method](#kglab.KnowledgeGraph.load_parquet)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L667)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L683)
 
 ```python
 load_parquet(path, **kwargs)
@@ -351,11 +360,14 @@ Note: this adds relations to an RDF graph, it does not overwrite the existing RD
   * `path` : `typing.Union[str, pathlib.Path, urlpath.URL, typing.IO]`  
 must be a file name (str), path object to a local file reference, or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object); a string could be a URL; valid URL schemes include `https`, `http`, `ftp`, `s3`, `gs`, `file`; a file URL can also be a path to a directory that contains multiple partitioned files, including a bucket in cloud storage – based on [`fsspec`](https://github.com/intake/filesystem_spec)
 
+  * *returns* : `KnowledgeGraph`  
+this `KnowledgeGraph` object – used for method chaining
+
 
 
 ---
 #### [`save_parquet` method](#kglab.KnowledgeGraph.save_parquet)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L692)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L713)
 
 ```python
 save_parquet(path, compression="snappy", storage_options=None, **kwargs)
@@ -371,13 +383,13 @@ must be a file name (str), path object to a local file reference, or a [*writabl
 name of the compression algorithm to use; defaults to `"snappy"`; can also be `"gzip"`, `"brotli"`, or `None` for no compression
 
   * `storage_options` : `dict`  
-extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) for cloud storage access
+extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) for cloud storage access; **NOT USED UNTIL `pandas` 1.2.x becomes stable
 
 
 
 ---
 #### [`n3fy` method](#kglab.KnowledgeGraph.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L725)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L746)
 
 ```python
 n3fy(node, pythonify=True)
@@ -390,14 +402,14 @@ must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/r
   * `pythonify` : `bool`  
 flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
 
-  * *returns* : `str`  
-text for the serialized node
+  * *returns* : `typing.Any`  
+text (or Python objects) for the serialized node
 
 
 
 ---
 #### [`n3fy_row` method](#kglab.KnowledgeGraph.n3fy_row)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L751)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L772)
 
 ```python
 n3fy_row(row_dict, pythonify=True)
@@ -417,7 +429,7 @@ a dictionary of serialized row bindings
 
 ---
 #### [`query` method](#kglab.KnowledgeGraph.query)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L775)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L796)
 
 ```python
 query(sparql, bindings=None)
@@ -437,7 +449,7 @@ initial variable bindings
 
 ---
 #### [`query_as_df` method](#kglab.KnowledgeGraph.query_as_df)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L803)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L824)
 
 ```python
 query_as_df(sparql, bindings=None, simplify=True, pythonify=True)
@@ -463,7 +475,7 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
 
 ---
 #### [`validate` method](#kglab.KnowledgeGraph.validate)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L845)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L866)
 
 ```python
 validate(shacl_graph=None, shacl_graph_format=None, ont_graph=None, ont_graph_format=None, advanced=False, inference=None, inplace=True, abort_on_error=None, **kwargs)
@@ -500,7 +512,7 @@ a tuple of `conforms` (RDF graph passes the validation rules); `report_graph` (r
 
 ---
 #### [`infer_owlrl_closure` method](#kglab.KnowledgeGraph.infer_owlrl_closure)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L923)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L944)
 
 ```python
 infer_owlrl_closure()
@@ -513,7 +525,7 @@ See <https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_R
 
 ---
 #### [`infer_rdfs_closure` method](#kglab.KnowledgeGraph.infer_rdfs_closure)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L936)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L957)
 
 ```python
 infer_rdfs_closure()
@@ -526,7 +538,7 @@ See <https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_R
 
 ---
 #### [`infer_rdfs_properties` method](#kglab.KnowledgeGraph.infer_rdfs_properties)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L949)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L970)
 
 ```python
 infer_rdfs_properties()
@@ -539,7 +551,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 ---
 #### [`infer_rdfs_classes` method](#kglab.KnowledgeGraph.infer_rdfs_classes)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L977)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L998)
 
 ```python
 infer_rdfs_classes()
@@ -552,7 +564,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 ---
 #### [`infer_skos_related` method](#kglab.KnowledgeGraph.infer_skos_related)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1010)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1031)
 
 ```python
 infer_skos_related()
@@ -566,7 +578,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 ---
 #### [`infer_skos_concept` method](#kglab.KnowledgeGraph.infer_skos_concept)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1025)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1046)
 
 ```python
 infer_skos_concept()
@@ -583,7 +595,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 ---
 #### [`infer_skos_hierarchical` method](#kglab.KnowledgeGraph.infer_skos_hierarchical)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1049)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1070)
 
 ```python
 infer_skos_hierarchical(narrower=True)
@@ -600,7 +612,7 @@ if false, `skos:narrower` will be removed instead of added
 
 ---
 #### [`infer_skos_transitive` method](#kglab.KnowledgeGraph.infer_skos_transitive)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1076)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1097)
 
 ```python
 infer_skos_transitive(narrower=True)
@@ -621,7 +633,7 @@ also infer transitive closure for `skos:narrowerTransitive`
 
 ---
 #### [`infer_skos_symmetric_mappings` method](#kglab.KnowledgeGraph.infer_skos_symmetric_mappings)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1105)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1126)
 
 ```python
 infer_skos_symmetric_mappings(related=True)
@@ -638,7 +650,7 @@ infer the `skos:related` super-property for all `skos:relatedMatch` relations
 
 ---
 #### [`infer_skos_hierarchical_mappings` method](#kglab.KnowledgeGraph.infer_skos_hierarchical_mappings)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1136)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1157)
 
 ```python
 infer_skos_hierarchical_mappings(narrower=True)
@@ -658,64 +670,69 @@ if false, `skos:narrowMatch` will be removed instead of added
 
 ## [`Subgraph` class](#Subgraph)
 
-This class transforms RDF graphs to matrix/tensor representation, to integrate with non-RDF graph libraries.
+Base class for projection of an RDF graph into an *algebraic object* such as a *vector*, *matrix*, or *tensor* representation, to support integration with non-RDF graph libraries.
+In other words, this class provides means to vectorize selected portions of a graph as a [*dimension*](https://mathworld.wolfram.com/Dimension.html).
 See <https://derwen.ai/docs/kgl/concepts/#subgraph>
 
-Core feature areas include:
+Features support several areas of use cases, including:
 
   * label encoding
-  * visualization
+  * vectorization (parallel processing)
   * graph algorithms
-  * probabilistic graph inference
-  * embedding
+  * visualization
+  * embedding (deep learning)
+  * probabilistic graph inference (statistical relational learning)
+
+The base case is where a *subset* of the nodes in the source RDF graph get represented as a *vector*, in the `node_vector` member.
+This provides an efficient *index* on a constructed *dimension*, solely for the context of a specific use case.
     
 ---
 #### [`__init__` method](#kglab.Subgraph.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L28)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L33)
 
 ```python
-__init__(kg, preload=None, excludes=None)
+__init__(kg, preload=None)
 ```
-Constructor for creating and manipulating a *subgraph*, as a projection of an RDF graph represented by a `KnowledgeGraph` object.
+Constructor for creating and manipulating a *subgraph* as a [*vector*](https://mathworld.wolfram.com/Vector.html),
+projecting from an RDF graph represented by a `KnowledgeGraph` object.
 
   * `kg` : `kglab.kglab.KnowledgeGraph`  
-the RDF graph to project from
+the source RDF graph
 
   * `preload` : `list`  
-an optional, pre-determined list to pre-load for the *label encoding*
-
-  * `excludes` : `list`  
-a list of RDF predicates to exclude from projecting into the *subgraph*
+an optional, pre-determined list to pre-load for *label encoding*
 
 
 
 ---
 #### [`transform` method](#kglab.Subgraph.transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L60)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L57)
 
 ```python
 transform(node)
 ```
-Tranform from a node in an RDF graph to a unique identifier, which can then be used in a matrix or tensor.
-Effectvely, similar to the [`sklearn.preprocessing.LabelEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html) –
-by maintaining a node list.
+Tranforms a node in an RDF graph to an integer value, as a unique identifier with the closure of a specific use case.
+The integer value can then be used to index into an *algebraic object* such as a *matrix* or *tensor*.
+Effectvely, this method is similar to a [`sklearn.preprocessing.LabelEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html).
 
-Note that a special value `-1` represents the unique identifier for a null (`None`) node.
-This is useful in data structures which have optional placeholders for links to RDF nodes.
+Notes:
+
+  * the integer value is **not** a [*uuid*](https://tools.ietf.org/html/rfc4122) since it is only defined within the closure of a specific use case.
+  * a special value `-1` represents the unique identifier for a non-existant (`None`) node, which is useful in data structures that have optional placeholders for links to RDF nodes
 
   * *returns* : `int`  
-a unique identifier (an integer) for the `node` in the RDF graph
+a unique identifier (an integer index) for the `node` in the RDF graph
 
 
 
 ---
 #### [`inverse_transform` method](#kglab.Subgraph.inverse_transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L85)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L84)
 
 ```python
 inverse_transform(id)
 ```
-Inverse tranform from a unique identifier to a node in the RDF graph, using the indentifier as an index into the node list.
+Inverse tranform from an intenger to a node in the RDF graph, using the indentifier as an index into the node vector.
 
   * *returns* : `typing.Union[str, NoneType, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
 node in the RDF graph
@@ -723,22 +740,8 @@ node in the RDF graph
 
 
 ---
-#### [`triples` method](#kglab.Subgraph.triples)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L101)
-
-```python
-triples()
-```
-Iterator for the RDF triples to included in the subgraph.
-
-  * *yields* :  
-the RDF triples within the subgraph
-
-
-
----
 #### [`n3fy` method](#kglab.Subgraph.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L115)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L100)
 
 ```python
 n3fy(node)
@@ -746,24 +749,191 @@ n3fy(node)
 Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
 This method provides a convenience, which in turn calls `KnowledgeGraph.n3fy()`
 
-    node;
+  * `node` : `typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
 must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
 
-  * *returns* : `str`  
-text for the serialized node
+  * *returns* : `typing.Any`  
+text (or Python object) for the serialized node
+
+
+
+## [`SubgraphMatrix` class](#SubgraphMatrix)
+
+Projection of a RDF graph to a [*matrix*](https://mathworld.wolfram.com/AdjacencyMatrix.html) representation.
+Typical use cases include integration with non-RDF graph libraries for *graph algorithms*.
+    
+---
+#### [`transform` method](#kglab.SubgraphMatrix.transform)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L57)
+
+```python
+transform(node)
+```
+Tranforms a node in an RDF graph to an integer value, as a unique identifier with the closure of a specific use case.
+The integer value can then be used to index into an *algebraic object* such as a *matrix* or *tensor*.
+Effectvely, this method is similar to a [`sklearn.preprocessing.LabelEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html).
+
+Notes:
+
+  * the integer value is **not** a [*uuid*](https://tools.ietf.org/html/rfc4122) since it is only defined within the closure of a specific use case.
+  * a special value `-1` represents the unique identifier for a non-existant (`None`) node, which is useful in data structures that have optional placeholders for links to RDF nodes
+
+  * *returns* : `int`  
+a unique identifier (an integer index) for the `node` in the RDF graph
 
 
 
 ---
-#### [`pyvis_style_node` method](#kglab.Subgraph.pyvis_style_node)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L140)
+#### [`inverse_transform` method](#kglab.SubgraphMatrix.inverse_transform)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L84)
 
 ```python
-pyvis_style_node(g, node_id, label, style=None)
+inverse_transform(id)
+```
+Inverse tranform from an intenger to a node in the RDF graph, using the indentifier as an index into the node vector.
+
+  * *returns* : `typing.Union[str, NoneType, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
+node in the RDF graph
+
+
+
+---
+#### [`n3fy` method](#kglab.SubgraphMatrix.n3fy)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L100)
+
+```python
+n3fy(node)
+```
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
+This method provides a convenience, which in turn calls `KnowledgeGraph.n3fy()`
+
+  * `node` : `typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+
+  * *returns* : `typing.Any`  
+text (or Python object) for the serialized node
+
+
+
+---
+#### [`__init__` method](#kglab.SubgraphMatrix.__init__)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L123)
+
+```python
+__init__(kg, excludes=None)
+```
+Constructor for creating and manipulating a *subgraph* as a [*matrix*](https://mathworld.wolfram.com/AdjacencyMatrix.html),
+projecting from an RDF graph represented by a `KnowledgeGraph` object.
+
+  * `kg` : `kglab.kglab.KnowledgeGraph`  
+the source RDF graph
+
+  * `excludes` : `list`  
+a list of RDF predicates to exclude from projection into the *subgraph*
+
+
+
+## [`SubgraphTensor` class](#SubgraphTensor)
+
+Projection of a RDF graph to a [*tensor*](https://mathworld.wolfram.com/Tensor.html) representation.
+Typical use cases include integration with non-RDF graph libraries for *visualization* and *embedding*.
+    
+---
+#### [`transform` method](#kglab.SubgraphTensor.transform)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L57)
+
+```python
+transform(node)
+```
+Tranforms a node in an RDF graph to an integer value, as a unique identifier with the closure of a specific use case.
+The integer value can then be used to index into an *algebraic object* such as a *matrix* or *tensor*.
+Effectvely, this method is similar to a [`sklearn.preprocessing.LabelEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html).
+
+Notes:
+
+  * the integer value is **not** a [*uuid*](https://tools.ietf.org/html/rfc4122) since it is only defined within the closure of a specific use case.
+  * a special value `-1` represents the unique identifier for a non-existant (`None`) node, which is useful in data structures that have optional placeholders for links to RDF nodes
+
+  * *returns* : `int`  
+a unique identifier (an integer index) for the `node` in the RDF graph
+
+
+
+---
+#### [`inverse_transform` method](#kglab.SubgraphTensor.inverse_transform)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L84)
+
+```python
+inverse_transform(id)
+```
+Inverse tranform from an intenger to a node in the RDF graph, using the indentifier as an index into the node vector.
+
+  * *returns* : `typing.Union[str, NoneType, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
+node in the RDF graph
+
+
+
+---
+#### [`n3fy` method](#kglab.SubgraphTensor.n3fy)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L100)
+
+```python
+n3fy(node)
+```
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
+This method provides a convenience, which in turn calls `KnowledgeGraph.n3fy()`
+
+  * `node` : `typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+
+  * *returns* : `typing.Any`  
+text (or Python object) for the serialized node
+
+
+
+---
+#### [`__init__` method](#kglab.SubgraphTensor.__init__)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L153)
+
+```python
+__init__(kg, excludes=None)
+```
+Constructor for creating and manipulating a *subgraph* as a [*tensor*](https://mathworld.wolfram.com/Tensor.html),
+projecting from an RDF graph represented by a `KnowledgeGraph` object.
+
+  * `kg` : `kglab.kglab.KnowledgeGraph`  
+the source RDF graph
+
+  * `excludes` : `list`  
+a list of RDF predicates to exclude from projection into the *subgraph*
+
+
+
+---
+#### [`as_tuples` method](#kglab.SubgraphTensor.as_tuples)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L177)
+
+```python
+as_tuples()
+```
+Iterator for enumerating the RDF triples to be included in the subgraph, used in factory patterns for visualizations.
+This allows a kind of *lazy evaluation*.
+
+  * *yields* :  
+the RDF triples within the subgraph
+
+
+
+---
+#### [`pyvis_style_node` method](#kglab.SubgraphTensor.pyvis_style_node)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L200)
+
+```python
+pyvis_style_node(pyvis_graph, node_id, label, style=None)
 ```
 Adds a node into a [PyVis](https://pyvis.readthedocs.io/) network, optionally with styling info.
 
-  * `g` : `pyvis.network.Network`  
+  * `pyvis_graph` : `pyvis.network.Network`  
 the [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html?highlight=network#pyvis.network.Network) being used for *interactive visualization*
 
   * `node_id` : `int`  
@@ -778,13 +948,13 @@ optional style dictionary
 
 
 ---
-#### [`vis_pyvis` method](#kglab.Subgraph.vis_pyvis)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L180)
+#### [`build_pyvis_graph` method](#kglab.SubgraphTensor.build_pyvis_graph)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L244)
 
 ```python
-vis_pyvis(notebook=False, style=None)
+build_pyvis_graph(notebook=False, style=None)
 ```
-Wrapper for creating a [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html?highlight=network#pyvis.network.Network) based on the transform in this subgraph.
+Factory pattern to create a [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html?highlight=network#pyvis.network.Network) object, populated by transforms in this subgraph.
 See <https://pyvis.readthedocs.io/>
 
   * `notebook` : `bool`  
