@@ -95,10 +95,10 @@ optional name for this measure
         self.link_map: typing.Optional[dict] = None
 
 
-    def increment ( # pylint: disable=W0221
+    def increment ( # type: ignore
         self,
         item0: Census_Item,
-        item1: Census_Item,
+        item1: Census_Item, # pylint: disable=W0221
         ) -> None:
         """
 Increment the count for a dyad represented by the two given items.

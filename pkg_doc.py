@@ -233,7 +233,10 @@ def format_class (md, module_name, todo_list, class_name):
         path_list = [module_name, class_name]
 
         if member_name.startswith("__") or not member_name.startswith("_"):
-            if inspect.isfunction(member_obj):
+            if member_name not in class_obj.__dict__:
+                # inherited method
+                continue
+            elif inspect.isfunction(member_obj):
                 func_kind = "method"
             elif inspect.ismethod(member_obj):
                 func_kind = "classmethod"

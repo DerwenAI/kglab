@@ -688,7 +688,7 @@ This provides an efficient *index* on a constructed *dimension*, solely for the 
     
 ---
 #### [`__init__` method](#kglab.Subgraph.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L33)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L36)
 
 ```python
 __init__(kg, preload=None)
@@ -706,7 +706,7 @@ an optional, pre-determined list to pre-load for *label encoding*
 
 ---
 #### [`transform` method](#kglab.Subgraph.transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L57)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L60)
 
 ```python
 transform(node)
@@ -720,6 +720,9 @@ Notes:
   * the integer value is **not** a [*uuid*](https://tools.ietf.org/html/rfc4122) since it is only defined within the closure of a specific use case.
   * a special value `-1` represents the unique identifier for a non-existant (`None`) node, which is useful in data structures that have optional placeholders for links to RDF nodes
 
+  * `node` : `typing.Union[str, NoneType, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
+a node in the RDF graph
+
   * *returns* : `int`  
 a unique identifier (an integer index) for the `node` in the RDF graph
 
@@ -727,12 +730,15 @@ a unique identifier (an integer index) for the `node` in the RDF graph
 
 ---
 #### [`inverse_transform` method](#kglab.Subgraph.inverse_transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L84)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L90)
 
 ```python
 inverse_transform(id)
 ```
 Inverse tranform from an intenger to a node in the RDF graph, using the indentifier as an index into the node vector.
+
+  * `id` : `int`  
+an integer index for the `node` in the RDF graph
 
   * *returns* : `typing.Union[str, NoneType, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
 node in the RDF graph
@@ -741,7 +747,7 @@ node in the RDF graph
 
 ---
 #### [`n3fy` method](#kglab.Subgraph.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L100)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L109)
 
 ```python
 n3fy(node)
@@ -763,64 +769,11 @@ Projection of a RDF graph to a [*matrix*](https://mathworld.wolfram.com/Adjacenc
 Typical use cases include integration with non-RDF graph libraries for *graph algorithms*.
     
 ---
-#### [`transform` method](#kglab.SubgraphMatrix.transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L57)
-
-```python
-transform(node)
-```
-Tranforms a node in an RDF graph to an integer value, as a unique identifier with the closure of a specific use case.
-The integer value can then be used to index into an *algebraic object* such as a *matrix* or *tensor*.
-Effectvely, this method is similar to a [`sklearn.preprocessing.LabelEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html).
-
-Notes:
-
-  * the integer value is **not** a [*uuid*](https://tools.ietf.org/html/rfc4122) since it is only defined within the closure of a specific use case.
-  * a special value `-1` represents the unique identifier for a non-existant (`None`) node, which is useful in data structures that have optional placeholders for links to RDF nodes
-
-  * *returns* : `int`  
-a unique identifier (an integer index) for the `node` in the RDF graph
-
-
-
----
-#### [`inverse_transform` method](#kglab.SubgraphMatrix.inverse_transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L84)
-
-```python
-inverse_transform(id)
-```
-Inverse tranform from an intenger to a node in the RDF graph, using the indentifier as an index into the node vector.
-
-  * *returns* : `typing.Union[str, NoneType, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
-node in the RDF graph
-
-
-
----
-#### [`n3fy` method](#kglab.SubgraphMatrix.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L100)
-
-```python
-n3fy(node)
-```
-Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
-This method provides a convenience, which in turn calls `KnowledgeGraph.n3fy()`
-
-  * `node` : `typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
-must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
-
-  * *returns* : `typing.Any`  
-text (or Python object) for the serialized node
-
-
-
----
 #### [`__init__` method](#kglab.SubgraphMatrix.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L123)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L132)
 
 ```python
-__init__(kg, excludes=None)
+__init__(kg, sparql, bindings=None)
 ```
 Constructor for creating and manipulating a *subgraph* as a [*matrix*](https://mathworld.wolfram.com/AdjacencyMatrix.html),
 projecting from an RDF graph represented by a `KnowledgeGraph` object.
@@ -828,8 +781,44 @@ projecting from an RDF graph represented by a `KnowledgeGraph` object.
   * `kg` : `kglab.kglab.KnowledgeGraph`  
 the source RDF graph
 
-  * `excludes` : `list`  
-a list of RDF predicates to exclude from projection into the *subgraph*
+  * `sparql` : `str`  
+text for a SPARQL query that yields pairs to project into the *subgraph*; this expects the query to have bindings for `subject` and `object` nodes in the RDF graph
+
+  * `bindings` : `dict`  
+initial variable bindings
+
+
+
+---
+#### [`build_nx_graph` method](#kglab.SubgraphMatrix.build_nx_graph)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L157)
+
+```python
+build_nx_graph(bipartite=False)
+```
+Factory pattern to create a [`networkx.DiGraph`](https://networkx.org/documentation/latest/reference/classes/digraph.html) object, populated by transforms in this subgraph.
+See <https://networkx.org/>
+
+  * `bipartite` : `bool`  
+flag for whether the `(subject, object)` pairs should be partitioned into *bipartite sets*, in other words whether the *adjacency matrix* is symmetric
+
+  * *returns* : `networkx.classes.digraph.DiGraph`  
+a `NetworkX` directed graph object
+
+
+
+---
+#### [`build_ig_graph` method](#kglab.SubgraphMatrix.build_ig_graph)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L193)
+
+```python
+build_ig_graph()
+```
+Factory pattern to create an [`igraph.Graph`](https://igraph.org/python/doc/igraph.Graph-class.html) object, populated by transforms in this subgraph.
+See <https://igraph.org/python/doc/>
+
+  * *returns* : `igraph.Graph`  
+an `iGraph` graph object
 
 
 
@@ -839,61 +828,8 @@ Projection of a RDF graph to a [*tensor*](https://mathworld.wolfram.com/Tensor.h
 Typical use cases include integration with non-RDF graph libraries for *visualization* and *embedding*.
     
 ---
-#### [`transform` method](#kglab.SubgraphTensor.transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L57)
-
-```python
-transform(node)
-```
-Tranforms a node in an RDF graph to an integer value, as a unique identifier with the closure of a specific use case.
-The integer value can then be used to index into an *algebraic object* such as a *matrix* or *tensor*.
-Effectvely, this method is similar to a [`sklearn.preprocessing.LabelEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html).
-
-Notes:
-
-  * the integer value is **not** a [*uuid*](https://tools.ietf.org/html/rfc4122) since it is only defined within the closure of a specific use case.
-  * a special value `-1` represents the unique identifier for a non-existant (`None`) node, which is useful in data structures that have optional placeholders for links to RDF nodes
-
-  * *returns* : `int`  
-a unique identifier (an integer index) for the `node` in the RDF graph
-
-
-
----
-#### [`inverse_transform` method](#kglab.SubgraphTensor.inverse_transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L84)
-
-```python
-inverse_transform(id)
-```
-Inverse tranform from an intenger to a node in the RDF graph, using the indentifier as an index into the node vector.
-
-  * *returns* : `typing.Union[str, NoneType, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
-node in the RDF graph
-
-
-
----
-#### [`n3fy` method](#kglab.SubgraphTensor.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L100)
-
-```python
-n3fy(node)
-```
-Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
-This method provides a convenience, which in turn calls `KnowledgeGraph.n3fy()`
-
-  * `node` : `typing.Union[rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
-must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
-
-  * *returns* : `typing.Any`  
-text (or Python object) for the serialized node
-
-
-
----
 #### [`__init__` method](#kglab.SubgraphTensor.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L153)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L225)
 
 ```python
 __init__(kg, excludes=None)
@@ -911,7 +847,7 @@ a list of RDF predicates to exclude from projection into the *subgraph*
 
 ---
 #### [`as_tuples` method](#kglab.SubgraphTensor.as_tuples)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L177)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L249)
 
 ```python
 as_tuples()
@@ -926,7 +862,7 @@ the RDF triples within the subgraph
 
 ---
 #### [`pyvis_style_node` method](#kglab.SubgraphTensor.pyvis_style_node)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L200)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L272)
 
 ```python
 pyvis_style_node(pyvis_graph, node_id, label, style=None)
@@ -949,7 +885,7 @@ optional style dictionary
 
 ---
 #### [`build_pyvis_graph` method](#kglab.SubgraphTensor.build_pyvis_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L244)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L316)
 
 ```python
 build_pyvis_graph(notebook=False, style=None)
@@ -962,6 +898,9 @@ flag for whether or not the interactive visualization will be generated within a
 
   * `style` : `dict`  
 optional style dictionary
+
+  * *returns* : `pyvis.network.Network`  
+a `PyVis` network object
 
 
 
@@ -1135,34 +1074,6 @@ set of keys for the items (domain: nodes, predicates, labels, URLs, literals, et
 
 Measure a dyad census in an RDF graph, i.e., count the relations (directed edges) which connect two nodes.
     
----
-#### [`get_tally` method](#kglab.Simplex1.get_tally)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L50)
-
-```python
-get_tally()
-```
-Accessor for the item counts.
-
-  * *returns* : `typing.Union[pandas.core.frame.DataFrame, NoneType]`  
-a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) with the count distribution, sorted in ascending order
-
-
-
----
-#### [`get_keyset` method](#kglab.Simplex1.get_keyset)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L67)
-
-```python
-get_keyset()
-```
-Accessor for the set of items (domain) counted.
-
-  * *returns* : `set`  
-set of keys for the items (domain: nodes, predicates, labels, URLs, literals, etc.) that were counted
-
-
-
 ---
 #### [`__init__` method](#kglab.Simplex1.__init__)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L84)

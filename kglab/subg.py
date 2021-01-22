@@ -71,7 +71,10 @@ Notes:
   * the integer value is **not** a [*uuid*](https://tools.ietf.org/html/rfc4122) since it is only defined within the closure of a specific use case.
   * a special value `-1` represents the unique identifier for a non-existant (`None`) node, which is useful in data structures that have optional placeholders for links to RDF nodes
 
-     returns:
+    node:
+a node in the RDF graph
+
+    returns:
 a unique identifier (an integer index) for the `node` in the RDF graph
         """
         if not node:
@@ -90,6 +93,9 @@ a unique identifier (an integer index) for the `node` in the RDF graph
         ) -> NodeLike:
         """
 Inverse tranform from an intenger to a node in the RDF graph, using the indentifier as an index into the node vector.
+
+    id:
+an integer index for the `node` in the RDF graph
 
     returns:
 node in the RDF graph
@@ -159,6 +165,9 @@ See <https://networkx.org/>
 
     bipartite:
 flag for whether the `(subject, object)` pairs should be partitioned into *bipartite sets*, in other words whether the *adjacency matrix* is symmetric
+
+    returns:
+a `NetworkX` directed graph object
         """
         nx_graph = nx.DiGraph()
 
@@ -187,6 +196,9 @@ flag for whether the `(subject, object)` pairs should be partitioned into *bipar
         """
 Factory pattern to create an [`igraph.Graph`](https://igraph.org/python/doc/igraph.Graph-class.html) object, populated by transforms in this subgraph.
 See <https://igraph.org/python/doc/>
+
+    returns:
+an `iGraph` graph object
         """
         measure = Measure()
         measure.measure_graph(self.kg)
@@ -316,6 +328,9 @@ flag for whether or not the interactive visualization will be generated within a
 
     style:
 optional style dictionary
+
+    returns:
+a `PyVis` network object
         """
         pyvis_graph = pyvis.network.Network(notebook=notebook)
 
