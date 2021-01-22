@@ -1,8 +1,8 @@
 from .kglab import KnowledgeGraph
 
-from .topo import Measure, Simplex0, Simplex1
+from .subg import Subgraph, SubgraphMatrix, SubgraphTensor
 
-from .subg import Subgraph
+from .topo import Measure, Simplex0, Simplex1
 
 from .esp import ShapeFactory, EvoShape, EvoShapeNode, EvoShapeEdge, \
     Leaderboard, SerializedEvoShape, EvoShapeBoard, EvoShapeDistance

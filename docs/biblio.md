@@ -1,5 +1,14 @@
 # Bibliography
 
+Where possible, the following citations are based on conventions at <https://www.bibsonomy.org/>
+
+Journal abbrevations use ISO 4, available at <https://academic-accelerator.com/Journal-Abbreviation/System>
+
+Links to online versions of cited works use [DOIs](https://www.doi.org/) when available, 
+then separately list [open access](https://peerj.com/preprints/3119v1/) URLs obtained
+through <https://github.com/Coleridge-Initiative/RCApi>
+
+
 ## – A –
 
 ### alexopoulos2020
@@ -16,6 +25,13 @@ Apress (2020)
 
 
 ## – B –
+
+### batageljm01
+
+["A subquadratic triad census algorithm for large sparse networks with small maximum degree"](https://doi.org/10.1016/S0378-8733(01)00035-1)  
+**Vladimir Batagelj**, **Andrej Mrvar**  
+*Soc Networks* 23:3, pp. 237-243 (2001)  
+open: <http://vlado.fmf.uni-lj.si/pub/networks/doc/triads/triads.pdf>
 
 ### bell2019
 
@@ -255,6 +271,13 @@ Manning (2021)
 **M. Sam**, **A. Krisnadhi**, **C. Wang**, **J.C. Gallagher**, **P. Hitzler**  
 *Proceedings of the 5th International Conference on Ontology and Semantic Web Patterns* 1302, pp. 49–60 (2014)
 
+### shadbolt06semantic
+
+["The Semantic Web Revisited"](https://doi.org/10.1109/MIS.2006.62)  
+**Nigel Shadbolt**, **Wendy Hall**, **Tim Berners-Lee**  
+*IEEE Intell Syst* 21:3 (2006)  
+open: <https://eprints.soton.ac.uk/262614/1/Semantic_Web_Revisted.pdf>
+
 ### singhal2012things
 
 ["Introducing the Knowledge Graph: things, not strings"](https://blog.google/products/search/introducing-knowledge-graph-things-not/)  
@@ -271,8 +294,12 @@ Google (2012)
 *CEUR Workshop Proceedings* 1302 (2014)
 
 
----
+## – Z –
 
-## Notes
+### zahariacfss10
 
-  1. Citations are based on conventions at <https://www.bibsonomy.org/>
+["Spark: Cluster Computing with Working Sets"](https://dl.acm.org/doi/10.5555/1863103.1863113)  
+**Matei Zaharia**, **Mosharaf Chowdhury**, **Michael J. Franklin**, **Scott Shenker**, **Ion Stoica**  
+*HotCloud* (2010)  
+open: <https://www.usenix.org/legacy/event/hotcloud10/tech/full_papers/Zaharia.pdf>
+

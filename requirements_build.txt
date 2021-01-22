@@ -1,5 +1,6 @@
 coverage
 flask
+icecream
 mkdocs-git-revision-date-plugin
 mkdocs-material
 mypy

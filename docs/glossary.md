@@ -15,6 +15,18 @@ A technology implementing a [*separation of concerns*](#separation-of-concerns)
 
 see: <https://en.wikipedia.org/wiki/Abstraction_layer>
 
+### Apache Spark
+
+One of the most popular open source projects for "Big Data" infrastructure,
+based on [[zahariacfss10]](../biblio/#zahariacfss10).
+Spark provides a classic example of [*applicative systems*](#applicative-systems)
+used for data analytics.
+
+See: <https://spark.apache.org/>
+
+### applicative systems
+
+
 ## – C –
 
 ### cloud computing
@@ -22,6 +34,7 @@ see: <https://en.wikipedia.org/wiki/Abstraction_layer>
 see: <https://derwen.ai/d/cloud_computing>
 
 ### computable content
+
 
 ## – D –
 
@@ -39,6 +52,9 @@ see: <https://derwen.ai/d/data_science>
 
 ### data strategy
 
+### distributed systems
+
+
 ## – G –
 
 ### graph algorithms
@@ -46,6 +62,7 @@ see: <https://derwen.ai/d/data_science>
 ### graph database
 
 ### graph-based data science
+
 
 ## – K –
 
@@ -74,17 +91,20 @@ and its community
 
 ### knowledge graph embedding
 
+
 ## – M –
 
 ### machine learning
 
 see: <https://derwen.ai/d/machine_learning>
 
+
 ## – N –
 
 ### natural language
 
 see: <https://derwen.ai/d/natural_language>
+
 
 ## – O –
 
@@ -95,11 +115,13 @@ abbr. "One size fits all", a common antipattern in technology
 
 see: <https://en.wikipedia.org/wiki/One_size_fits_all>
 
+
 ## – P –
 
 ### probabilistic graph inference
 
 ### property graph
+
 
 ## – R –
 
@@ -113,11 +135,23 @@ abbr. *Resource Description Framework*
 
 see: <https://derwen.ai/d/reinforcement_learning>
 
+
 ## – S –
 
 ### semantic technologies
 
+### Semantic Web
+
+A proposed evolution of the World Wide Web,
+discussed in retrospect by [[shadbolt06semantic]](../biblio/#shadbolt06semantic),
+and coordinated through the [W3C](#W3C).
+The intent was to move from documents for humans to read,
+to a Web that included data and information for computers to manipulate.
+
+see: <https://en.wikipedia.org/wiki/Semantic_Web> <https://www.w3.org/standards/semanticweb/>
+
 ### separation of concerns
+
 
 ## – W –
 

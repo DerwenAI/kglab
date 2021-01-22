@@ -4,13 +4,15 @@
 ######################################################################
 ## Implementation of apidoc-ish for actual Markdown: you're welcome.
 
+from icecream import ic
 import inspect
 import os
 import re
 import sys
+import traceback
 
 """
-The PEP proposes adding `frungible doodads`_ to the core.  
+This PEP proposes adding `frungible doodads`_ to the core.  
 It extends PEP 9876 [#pep9876]_ via the BCA [#]_ mechanism.
 
 See also: 
@@ -85,15 +87,21 @@ def extract_type_annotation (sig):
     type_name = str(sig)
     type_class = sig.__class__.__module__
 
-    if type_class != "typing":
-        type_name = type_name.split("'")[1]
+    try:
+        if type_class != "typing":
+            if type_name.startswith("<class"):
+                type_name = type_name.split("'")[1]
 
-    if type_name == "~AnyStr":
-        type_name = "typing.AnyStr"
-    elif type_name.startswith("~"):
-        type_name = type_name[1:]
+        if type_name == "~AnyStr":
+            type_name = "typing.AnyStr"
+        elif type_name.startswith("~"):
+            type_name = type_name[1:]
 
-    return type_name
+    except Exception:
+        ic(type_name)
+        traceback.print_exc()
+    finally:
+        return type_name
 
 
 def get_arg_list (sig):
@@ -225,7 +233,10 @@ def format_class (md, module_name, todo_list, class_name):
         path_list = [module_name, class_name]
 
         if member_name.startswith("__") or not member_name.startswith("_"):
-            if inspect.isfunction(member_obj):
+            if member_name not in class_obj.__dict__:
+                # inherited method
+                continue
+            elif inspect.isfunction(member_obj):
                 func_kind = "method"
             elif inspect.ismethod(member_obj):
                 func_kind = "classmethod"
@@ -274,8 +285,16 @@ def write_markdown (filename):
 ## main entry point
 
 if __name__ == "__main__":
-    ## customize the following lines, per module
-    class_list = [ "KnowledgeGraph", "Subgraph", "Measure", "Simplex0", "Simplex1" ]
+    ## customize the following configuration, per module
+    class_list = [
+        "KnowledgeGraph",
+        "Subgraph",
+        "SubgraphMatrix",
+        "SubgraphTensor",
+        "Measure",
+        "Simplex0",
+        "Simplex1",
+        ]
 
     ## NB: `inspect` is picky about paths and current working directory
     ## this only works if run from the top-level directory for the repo
