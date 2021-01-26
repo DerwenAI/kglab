@@ -6,6 +6,8 @@
 
   * fix for `save_parquet()` since `storage_options` won't be used by `pandas` before 1.2.0
   * introduced `SubgraphMatrix` and `SubgraphTensor` as subclasses for the base vectorization
+  * introduced `PSLModel` class for building *probabilistic soft logic* models
+  * using `icecream` in methods that require verbose traces
 
 
 ## 0.1.6
