@@ -120,6 +120,15 @@ see: <https://en.wikipedia.org/wiki/One_size_fits_all>
 
 ### probabilistic graph inference
 
+### probabilistic soft logic
+
+A computationally efficient form of [*statistical relational learning*](#statistical-relational-learning)
+described in [[bachbhg17]](../biblio/#bachbhg17)
+
+> We unite three approaches from the randomized algorithms, probabilistic graphical models, and fuzzy logic communities, showing that all three lead to the same inference objective. 
+
+see: <https://psl.linqs.org/>
+
 ### property graph
 
 
@@ -151,6 +160,10 @@ to a Web that included data and information for computers to manipulate.
 see: <https://en.wikipedia.org/wiki/Semantic_Web> <https://www.w3.org/standards/semanticweb/>
 
 ### separation of concerns
+
+### statistical relational learning
+
+see: <https://www.cs.umd.edu/srl-book/>
 
 
 ## – W –

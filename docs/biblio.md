@@ -26,6 +26,13 @@ Apress (2020)
 
 ## – B –
 
+### bachbhg17
+
+["Hinge-loss Markov random fields and probabilistic soft logic"](https://dl.acm.org/doi/10.5555/3122009.3176853)  
+**Stephen H. Bach**, **Matthias Broecheler**, **Bert Huang**, **Lise Carol Getoor**  
+*J Mach Learn Res* 18:109, pp. 1-67 (2017)  
+open: <https://arxiv.org/abs/1505.04406>
+
 ### batageljm01
 
 ["A subquadratic triad census algorithm for large sparse networks with small maximum degree"](https://doi.org/10.1016/S0378-8733(01)00035-1)  

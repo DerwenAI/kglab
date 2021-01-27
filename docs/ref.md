@@ -1119,6 +1119,170 @@ a tuple of a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/r
 
 
 
+## [`PSLModel` class](#PSLModel)
+
+Class representing a
+[*probabilistic soft logic*](../glossary/#probabilistic-soft-logic)
+(PSL) model.
+
+For PSL-specific terminology used here, see <https://psl.linqs.org/wiki/master/Glossary.html>
+    
+---
+#### [`__init__` method](#kglab.PSLModel.__init__)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L36)
+
+```python
+__init__(name=None)
+```
+Wrapper for constructing a [`pslpython.model.Model`](https://github.com/linqs/psl/blob/master/psl-python/pslpython/model.py).
+
+  * `name` : `str`  
+optional name of the PSL model; if not supplied, PSL generates a random name
+
+
+
+---
+#### [`add_predicate` method](#kglab.PSLModel.add_predicate)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L51)
+
+```python
+add_predicate(raw_name, size=None, closed=False, arg_types=None)
+```
+Add a [`pslpython.predicate.Predicate`](https://github.com/linqs/psl/blob/master/psl-python/pslpython/predicate.py) to this model.
+Enough details must be supplied for PSL to infer the number and types of each predicate's arguments.
+
+  * `raw_name` : `str`  
+name of the predicate; must be unique among all of the predicates
+
+  * `size` : `int`  
+optional, the number of arguments for this predicate
+
+  * `closed` : `bool`  
+indicates that this predicate is fully observed, i.e., all substitutions of this predicate have known values and will behave as evidence for inference; otherwise, if `False` then infer some values of this predicate; defaults to `False`
+
+  * `arg_types` : `typing.List`  
+optional, a list of types for the arguments for this predicate; all arguments will default to string
+
+  * *returns* : `PSLModel`  
+this PSL model – use for method chaining
+
+
+
+---
+#### [`add_rule` method](#kglab.PSLModel.add_rule)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L89)
+
+```python
+add_rule(rule_string, weighted=None, weight=None, squared=None)
+```
+Add a [`pslpython.rule.Rule`](https://github.com/linqs/psl/blob/master/psl-python/pslpython/rule.py) to this model.
+
+  * a weighted rule can change its weight or squared status
+  * a weighted rule cannot convert into an unweighted rule nor visa-versa
+  * unweighted rules are [*constraints*](https://psl.linqs.org/wiki/master/Constraints.html)
+
+For more details, see <https://psl.linqs.org/wiki/master/Rule-Specification.html>
+
+  * `rule_string` : `str`  
+text representation for specifying the rule
+
+  * `weighted` : `bool`  
+indicates that this rule is weighted
+
+  * `weight` : `float`  
+weight of this rule
+
+  * `squared` : `bool`  
+indicates that this rule's potential is squared
+
+  * *returns* : `PSLModel`  
+this PSL model – use for method chaining
+
+
+
+---
+#### [`clear_model` method](#kglab.PSLModel.clear_model)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L135)
+
+```python
+clear_model()
+```
+Clear any pre-existing data from each of the predicates, to initialize the model.
+
+  * *returns* : `PSLModel`  
+this PSL model – use for method chaining
+
+
+
+---
+#### [`add_data_row` method](#kglab.PSLModel.add_data_row)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L150)
+
+```python
+add_data_row(predicate_name, args, partition="observations", truth_value=1.0, verbose=False)
+```
+Add a single record to a specified predicate, within a specified partition.
+
+  * `predicate_name` : `str`  
+name of the specific predicate; name normalization will be handled internally; raises `ModelError` if the predicate name is not found
+
+  * `args` : `list`  
+arguments for the record being added, as a list
+
+  * `partition` : `str`  
+label for the [`pslpython.partition.Partition`](https://github.com/linqs/psl/blob/master/psl-python/pslpython/partition.py) into which the `data` gets added; must be among `[ "observations", "targets", "truth" ]`; defaults to `"observations"`; see <https://psl.linqs.org/wiki/master/Data-Storage-in-PSL.html>
+
+  * `truth_value` : `float`  
+optional truth value of the record being added
+
+  * `verbose` : `bool`  
+flag for verbose trace of each added record
+
+  * *returns* : `PSLModel`  
+this PSL model – use for method chaining
+
+
+
+---
+#### [`infer` method](#kglab.PSLModel.infer)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L205)
+
+```python
+infer(method="", cli_options=None, psl_config=None, jvm_options=None)
+```
+Run inference on this model, storing the inferred results in an internal dataframe.
+
+  * `method` : `str`  
+the inference method to use
+
+  * `cli_options` : `list`  
+additional options to pass to PSL, based on its CLI options; see <https://psl.linqs.org/wiki/master/Configuration.html>
+
+  * `psl_config` : `dict`  
+configuration options passed directly to the PSL core code; see <https://psl.linqs.org/wiki/master/Configuration-Options.html>
+
+  * `jvm_options` : `list`  
+options passed to the JVM running the PSL Java library; most commonly `"-Xmx"` and `"-Xms"`
+
+
+
+---
+#### [`get_results` method](#kglab.PSLModel.get_results)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L245)
+
+```python
+get_results(predicate_name)
+```
+Accessor for the inferred results for a specified predicate.
+
+  * `predicate_name` : `str`  
+name of the specific predicate; name normalization will be handled internally; raises `ModelError` if the predicate name is not found
+
+  * *returns* : `pandas.core.frame.DataFrame`  
+inferred values as a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html), with columns names for each argument plus the `"truth"` value
+
+
+
 ---
 ## [module functions](#kglab)
 ---
