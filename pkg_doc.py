@@ -294,6 +294,7 @@ if __name__ == "__main__":
         "Measure",
         "Simplex0",
         "Simplex1",
+        "PSLModel",
         ]
 
     ## NB: `inspect` is picky about paths and current working directory

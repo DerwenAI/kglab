@@ -4,6 +4,8 @@ from .subg import Subgraph, SubgraphMatrix, SubgraphTensor
 
 from .topo import Measure, Simplex0, Simplex1
 
+from .srl import PSLModel
+
 from .esp import ShapeFactory, EvoShape, EvoShapeNode, EvoShapeEdge, \
     Leaderboard, SerializedEvoShape, EvoShapeBoard, EvoShapeDistance
 
