@@ -178,9 +178,10 @@ get help about **kglab** and related
 topics.
 
   * [community Slack](https://knowledgegraphconf.slack.com/archives/C017LUAML8Z) – specifically on the `#ask` channel
-  * [Knowledge Tech Q&A site](https://answers.knowledgegraph.tech/) for extended discussions
+  * [*Graph-Based Data Science*](https://www.linkedin.com/groups/6725785/) group on LinkedIn – join to receive related updates, news, conference coupons, etc.
+  * ["Graph-Based Data Science"](https://derwen.ai/s/kcgh) talk at PyData SoCal 2021-01-30
   * ["KG 101"](https://knowledge-connexions-conference.heysummit.com/talks/kg-101/) tutorial at *Knowledge Connexions* 2020
-  * [*Just Enough Math*](https://www.linkedin.com/groups/6725785/) group on LinkedIn – join to receive related updates, news, conference coupons, etc.
+  * [Knowledge Tech Q&A site](https://answers.knowledgegraph.tech/) for extended discussions
 
 [KGC](glossary/#knowledge-graph-conference)
 also hosts 

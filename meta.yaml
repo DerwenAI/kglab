@@ -18,29 +18,37 @@ requirements:
   host:
     - cairocffi
     - chocolate
+    - fsspec
+    - gcsfs
     - gensim
     - gputil
+    - icecream
     - leidenalg
     - matplotlib
     - networkx
     - numpy
     - owlrl
     - pandas
-    - pip
     - pslpython
     - pyarrow
     - pylev
     - pyshacl
     - python
     - python-dateutil
+    - python-igraph
     - pyvis
     - rdflib
     - rdflib-jsonld
+    - scikit-learn
+    - urlpath
   run:
     - cairocffi
     - chocolate
+    - fsspec
+    - gcsfs
     - gensim
     - gputil
+    - icecream
     - leidenalg
     - matplotlib
     - networkx
@@ -53,9 +61,12 @@ requirements:
     - pyshacl
     - python
     - python-dateutil
+    - python-igraph
     - pyvis
     - rdflib
     - rdflib-jsonld
+    - scikit-learn
+    - urlpath
 
 test:
   imports:
