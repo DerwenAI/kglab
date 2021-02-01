@@ -688,7 +688,7 @@ This provides an efficient *index* on a constructed *dimension*, solely for the 
     
 ---
 #### [`__init__` method](#kglab.Subgraph.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L36)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L35)
 
 ```python
 __init__(kg, preload=None)
@@ -706,7 +706,7 @@ an optional, pre-determined list to pre-load for *label encoding*
 
 ---
 #### [`transform` method](#kglab.Subgraph.transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L60)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L59)
 
 ```python
 transform(node)
@@ -730,7 +730,7 @@ a unique identifier (an integer index) for the `node` in the RDF graph
 
 ---
 #### [`inverse_transform` method](#kglab.Subgraph.inverse_transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L90)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L89)
 
 ```python
 inverse_transform(id)
@@ -747,7 +747,7 @@ node in the RDF graph
 
 ---
 #### [`n3fy` method](#kglab.Subgraph.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L109)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L108)
 
 ```python
 n3fy(node)
@@ -770,7 +770,7 @@ Typical use cases include integration with non-RDF graph libraries for *graph al
     
 ---
 #### [`__init__` method](#kglab.SubgraphMatrix.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L132)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L131)
 
 ```python
 __init__(kg, sparql, bindings=None)
@@ -791,7 +791,7 @@ initial variable bindings
 
 ---
 #### [`build_nx_graph` method](#kglab.SubgraphMatrix.build_nx_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L157)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L156)
 
 ```python
 build_nx_graph(bipartite=False)
@@ -809,15 +809,21 @@ a `NetworkX` directed graph object
 
 ---
 #### [`build_ig_graph` method](#kglab.SubgraphMatrix.build_ig_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L193)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L192)
 
 ```python
-build_ig_graph()
+build_ig_graph(ig_graph)
 ```
-Factory pattern to create an [`igraph.Graph`](https://igraph.org/python/doc/igraph.Graph-class.html) object, populated by transforms in this subgraph.
+Factory pattern to populate an [`igraph.Graph`](https://igraph.org/python/doc/igraph.Graph-class.html) object, using transforms in this subgraph.
 See <https://igraph.org/python/doc/>
 
-  * *returns* : `igraph.Graph`  
+Note that `iGraph` is somewhat notorious for being quite difficult to install correctly across a wide range of different platforms and environments.
+Consequently this has been removed from being a dependency for `kglab`; to use `iGraph` please install and import it separately.
+
+  * `ig_graph` : `typing.Any`  
+pass in an unpopulated [`igraph.Graph`](https://igraph.org/python/doc/igraph.Graph-class.html) object
+
+  * *returns* : `typing.Any`  
 an `iGraph` graph object
 
 
@@ -829,7 +835,7 @@ Typical use cases include integration with non-RDF graph libraries for *visualiz
     
 ---
 #### [`__init__` method](#kglab.SubgraphTensor.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L225)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L230)
 
 ```python
 __init__(kg, excludes=None)
@@ -847,7 +853,7 @@ a list of RDF predicates to exclude from projection into the *subgraph*
 
 ---
 #### [`as_tuples` method](#kglab.SubgraphTensor.as_tuples)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L249)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L254)
 
 ```python
 as_tuples()
@@ -862,7 +868,7 @@ the RDF triples within the subgraph
 
 ---
 #### [`pyvis_style_node` method](#kglab.SubgraphTensor.pyvis_style_node)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L272)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L277)
 
 ```python
 pyvis_style_node(pyvis_graph, node_id, label, style=None)
@@ -885,7 +891,7 @@ optional style dictionary
 
 ---
 #### [`build_pyvis_graph` method](#kglab.SubgraphTensor.build_pyvis_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L316)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L321)
 
 ```python
 build_pyvis_graph(notebook=False, style=None)
