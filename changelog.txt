@@ -1,5 +1,13 @@
 # `kglab` changelog
 
+## 0.1.8
+
+2021-01-30
+
+  * hotfix: backing out the `igraph` dependency; too many installation issues with it
+  * factory pattern to build an `igraph` object allows caller to create and pass in, instead
+
+
 ## 0.1.7
 
 2021-01-30

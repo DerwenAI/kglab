@@ -8,7 +8,6 @@ from kglab import KnowledgeGraph
 from kglab.topo import Measure
 from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
 
-import igraph as ig  # type: ignore
 import networkx as nx  # type: ignore
 import pyvis.network  # type: ignore
 import typing
@@ -191,11 +190,18 @@ a `NetworkX` directed graph object
 
 
     def build_ig_graph (
-        self
-        ) -> ig.Graph:
+        self,
+        ig_graph: typing.Any,
+        ) -> typing.Any:
         """
-Factory pattern to create an [`igraph.Graph`](https://igraph.org/python/doc/igraph.Graph-class.html) object, populated by transforms in this subgraph.
+Factory pattern to populate an [`igraph.Graph`](https://igraph.org/python/doc/igraph.Graph-class.html) object, using transforms in this subgraph.
 See <https://igraph.org/python/doc/>
+
+Note that `iGraph` is somewhat notorious for being quite difficult to install correctly across a wide range of different platforms and environments.
+Consequently this has been removed from being a dependency for `kglab`; to use `iGraph` please install and import it separately.
+
+    ig_graph:
+pass in an unpopulated [`igraph.Graph`](https://igraph.org/python/doc/igraph.Graph-class.html) object
 
     returns:
 an `iGraph` graph object
@@ -204,7 +210,6 @@ an `iGraph` graph object
         measure.measure_graph(self.kg)
         keyset = measure.get_keyset(incl_pred=False)
 
-        ig_graph = ig.Graph()
         ig_graph.add_vertices(n=keyset)
 
         for row in self.kg.query(self.sparql):
