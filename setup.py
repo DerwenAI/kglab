@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
     setuptools.setup(
         name = "kglab",
-        version = "0.1.7",
+        version = "0.1.8",
 
         python_requires = ">=" + kglab_version._versify(kglab_version.MIN_PY_VERSION),
         packages = setuptools.find_packages(exclude=[ "docs", "examples" ]),

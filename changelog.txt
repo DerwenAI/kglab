@@ -2,7 +2,7 @@
 
 ## 0.1.8
 
-2021-01-30
+2021-01-31
 
   * hotfix: backing out the `igraph` dependency; too many installation issues with it
   * factory pattern to build an `igraph` object allows caller to create and pass in, instead
