@@ -8,6 +8,7 @@ include:
 
 - [cairocffi](https://cairocffi.readthedocs.io/)
 - [chocolate](https://github.com/seungjaeryanlee/chocolate)
+- [csvwlib](https://github.com/Aleksander-Drozd/csvwlib)
 - [fsspec](https://filesystem-spec.readthedocs.io/)[^1]
 - [gcsfs](https://gcsfs.readthedocs.io/)
 - [gensim](https://radimrehurek.com/gensim/)
@@ -24,6 +25,7 @@ include:
 - [pyarrow](https://arrow.apache.org/)
 - [pylev](https://github.com/toastdriven/pylev)
 - [python-dateutil](https://dateutil.readthedocs.io/)
+- [python-igraph](https://igraph.org/python/)
 - [pyvis](https://pyvis.readthedocs.io/)
 - [RDFlib](https://rdflib.readthedocs.io/)
 - [rdflib-json](https://github.com/RDFLib/rdflib-jsonld)

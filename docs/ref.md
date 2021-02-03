@@ -824,7 +824,7 @@ Consequently this has been removed from being a dependency for `kglab`; to use `
 pass in an unpopulated [`igraph.Graph`](https://igraph.org/python/doc/igraph.Graph-class.html) object
 
   * *returns* : `typing.Any`  
-an `iGraph` graph object
+the populated  `iGraph` graph object
 
 
 
