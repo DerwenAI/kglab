@@ -8,7 +8,7 @@ pip install kglab
 ```
 
 If you work directly from this Git repo, be sure to install the 
-dependencies:
+[dependencies](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format):
 ```
 pip install -r requirements.txt
 ```

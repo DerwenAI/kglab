@@ -16,14 +16,12 @@ build:
 
 requirements:
   host:
-    - cairocffi
     - chocolate
     - fsspec
     - gcsfs
     - gensim
     - gputil
     - icecream
-    - leidenalg
     - matplotlib
     - networkx
     - numpy
@@ -35,21 +33,18 @@ requirements:
     - pyshacl
     - python
     - python-dateutil
-    - python-igraph
     - pyvis
     - rdflib
     - rdflib-jsonld
     - scikit-learn
     - urlpath
   run:
-    - cairocffi
     - chocolate
     - fsspec
     - gcsfs
     - gensim
     - gputil
     - icecream
-    - leidenalg
     - matplotlib
     - networkx
     - numpy
@@ -61,7 +56,6 @@ requirements:
     - pyshacl
     - python
     - python-dateutil
-    - python-igraph
     - pyvis
     - rdflib
     - rdflib-jsonld
