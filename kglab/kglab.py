@@ -15,6 +15,7 @@ rdflib.plugin.register("json-ld", rdflib.plugin.Serializer, "rdflib_jsonld.seria
 
 import chocolate  # type: ignore
 import codecs
+import csvwlib  # type: ignore
 import dateutil.parser as dup
 import GPUtil  # type: ignore
 import io
@@ -678,6 +679,27 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
                 **args,
             )
         )
+
+
+    def load_csv (
+        self,
+        url: str,
+        ) -> "KnowledgeGraph":
+        """
+Wrapper for [`csvwlib`](https://github.com/DerwenAI/csvwlib) which parses a CSV file from the `path` source, then converts to RDF and merges into this RDF graph.
+
+    url:
+must be a URL as a str
+
+    returns:
+this `KnowledgeGraph` object – used for method chaining
+        """
+        new_rdf = csvwlib.CSVWConverter.to_rdf(
+            url,
+            mode="minimal",
+            format="ttl",
+        )
+        return self.load_rdf_text(new_rdf)
 
 
     def load_parquet (

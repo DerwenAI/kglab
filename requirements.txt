@@ -1,4 +1,5 @@
 chocolate >= 0.0.2
+csvwlib >= 0.3.2
 fsspec[gs,s3] >= 0.8.5
 gcsfs >= 0.7.1
 gensim >= 3.8.3

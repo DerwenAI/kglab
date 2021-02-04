@@ -17,6 +17,7 @@ build:
 requirements:
   host:
     - chocolate
+    - csvwlib
     - fsspec
     - gcsfs
     - gensim
@@ -40,6 +41,7 @@ requirements:
     - urlpath
   run:
     - chocolate
+    - csvwlib
     - fsspec
     - gcsfs
     - gensim

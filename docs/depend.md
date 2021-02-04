@@ -8,7 +8,7 @@ include:
 
 - [cairocffi](https://cairocffi.readthedocs.io/)
 - [chocolate](https://github.com/seungjaeryanlee/chocolate)
-- [csvwlib](https://github.com/Aleksander-Drozd/csvwlib)
+- [csvwlib](https://github.com/DerwenAI/csvwlib)
 - [fsspec](https://filesystem-spec.readthedocs.io/)[^1]
 - [gcsfs](https://gcsfs.readthedocs.io/)
 - [gensim](https://radimrehurek.com/gensim/)
