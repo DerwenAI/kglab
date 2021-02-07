@@ -201,6 +201,6 @@ Your feedback through this online survey helps us prioritize the roadmap for **k
 
 Links for other open source community resources:
 
-  * [Milestones](https://github.com/DerwenAI/kglab/milestones)
-  * [GH Issues](https://github.com/DerwenAI/kglab/issues)
+  * [Issue Tracker](https://github.com/DerwenAI/kglab/issues)
   * [Project Board](https://github.com/DerwenAI/kglab/projects/1)
+  * [Milestones](https://github.com/DerwenAI/kglab/milestones)

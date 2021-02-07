@@ -1,5 +1,13 @@
 # `kglab` changelog
 
+## 0.2.0
+
+2021-02-07
+
+  * project milestone release
+  * begin integration of `csvwlib`
+
+
 ## 0.1.8
 
 2021-01-31
