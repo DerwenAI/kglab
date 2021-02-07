@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
     setuptools.setup(
         name = "kglab",
-        version = "0.1.8",
+        version = kglab_version.__version__,
 
         python_requires = ">=" + kglab_version._versify(kglab_version.MIN_PY_VERSION),
         packages = setuptools.find_packages(exclude=[ "docs", "examples" ]),
@@ -84,9 +84,12 @@ if __name__ == "__main__":
 
         url = "https://github.com/DerwenAI/kglab",
         project_urls = {
-            "Bug Tracker": "https://github.com/DerwenAI/kglab/issues",
             "Documentation": "https://derwen.ai/docs/kgl/",
             "Source Code": "https://github.com/DerwenAI/kglab",
+            "Issue Tracker": "https://github.com/DerwenAI/kglab/issues",
+            "Community Survey": "https://forms.gle/FMHgtmxHYWocprMn6",
+            "Discussion Forum": "https://www.linkedin.com/groups/6725785/",
+            "Hands-on Tutorial": "https://derwen.ai/docs/kgl/tutorial/",
             },
 
         zip_safe = False,

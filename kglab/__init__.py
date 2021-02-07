@@ -16,4 +16,4 @@ from .pkg_types import RDF_Triple, RDF_Node, SPARQL_Bindings, \
 
 from .util import calc_quantile_bins, stripe_column, root_mean_square
 
-from .version import MIN_PY_VERSION, _versify, _check_version
+from .version import MIN_PY_VERSION, _versify, _check_version, __version__

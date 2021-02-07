@@ -5,6 +5,30 @@
 This material is a work in progress, at "rough draft" stage.
 
 
+## Operationalizing AI
+
+One of the major learnings from a decade-plus of data science is that
+AI adoption in enterprise requires more than one team.
+Instead there must be extensive cross-team coordination with executive
+support.
+Moreover, the projects cannot be merely *proof-of-concept* (POC)
+"one-offs".
+To sustain this kind of work, organizations must pursue more
+efficient, effective approaches often called *Operationalizing AI* to
+produce a steady stream of AI projects.
+One difficulty of course is that enterprise organization must often
+integrate with internal *legacy* systems.
+
+The **kglab** library provides means for an enterprise organization to
+establish and explore a *baseline* implementation for a knowledge graph
+practice internally.
+If an organization can see where it needs to integrate with its legacy
+systems, or where features within **kglab** could be migrated into
+proprietary systems, then use of this libary may dramatically reduce
+*time-to-market* key performance indicators for enterprise KG
+projects.
+
+
 ## Data Context
 
 ["data context"]( http://cidrdb.org/cidr2017/papers/p111-hellerstein-cidr17.pdf) – 
