@@ -6,7 +6,7 @@
 
 gorm:childOf rdfs:domain gorm:Viking ;
   rdfs:range gorm:Viking ;
-  owl:inverseOf gorm:anscestorOf
+  owl:inverseOf gorm:ancestorOf
 .
 
 gorm:spouseOf a owl:SymmetricProperty ;
