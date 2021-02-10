@@ -5,6 +5,7 @@
 Many thanks to the contributors on this **kglab** project:
 [@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247),
+[@louisguitton](https://github.com/louisguitton),
 plus general support from [Derwen, Inc.](https://derwen.ai/)
 and [The Knowledge Graph Conference](https://www.knowledgegraph.tech/),
 plus an even larger scope of [use cases](../use_case/) represented by its community.
@@ -98,12 +99,15 @@ All materials herein are Copyright &copy; 2020-2021 Derwen, Inc.
 
 See also:
 
-  * [zincbase](https://github.com/complexdb/zincbase)
-    * *pro:* probabilistic graph measures, complex simulation suite, leverages GPUs
-    * *con:* lacks interchange with RDF or other standard formats
-  * [KGTK](https://github.com/usc-isi-i2/kgtk)
-    * *pro:* many excellent examples, well-documented in Jupyter notebooks
-    * *con:* mostly a CLI tool, primarily based on TSV data
+  * [PheKnowLator](https://github.com/callahantiff/PheKnowLator)
+    * *pro:* quite similar to **kglab** in intent; well-written code; sophisticated, opinionate build of biomedical KGs
+    * *con:* less integration with data science tools or distributed systems
   * [LynxKite](https://lynxkite.com/)
     * *pro:* loads of features, lots of adoption
     * *con:* complex tech stack, combines Py/Java/Go; AGPL less-than-business-friendly for production apps
+  * [KGTK](https://github.com/usc-isi-i2/kgtk)
+    * *pro:* many excellent examples, well-documented in Jupyter notebooks
+    * *con:* mostly a CLI tool, primarily based on TSV data
+  * [zincbase](https://github.com/complexdb/zincbase)
+    * *pro:* probabilistic graph measures, complex simulation suite, leverages GPUs
+    * *con:* lacks interchange with RDF or other standard formats
