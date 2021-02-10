@@ -116,5 +116,6 @@ Many thanks to our contributors:
 [@ceteri](https://github.com/ceteri),
 [@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247),
+[@louisguitton](https://github.com/louisguitton),
 plus general support from [Derwen, Inc.](https://github.com/DerwenAI)
 and [The Knowledge Graph Conference](https://github.com/KGConf).
