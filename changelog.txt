@@ -1,5 +1,13 @@
 # `kglab` changelog
 
+## 0.2.1
+
+2021-02-??
+
+  * tutorial proofreading and corrections, kudos @louisguitton
+  * better exception handling for RDF construction, parsing, serialization
+
+
 ## 0.2.0
 
 2021-02-07
