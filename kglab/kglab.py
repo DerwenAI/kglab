@@ -10,6 +10,7 @@ _check_version()
 
 import rdflib  # type: ignore
 import rdflib.plugin  # type: ignore
+import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore
 rdflib.plugin.register("json-ld", rdflib.plugin.Parser, "rdflib_jsonld.parser", "JsonLDParser")
 rdflib.plugin.register("json-ld", rdflib.plugin.Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
@@ -423,8 +424,9 @@ a string as a file name or URL to a file reference
         """
 Wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from the `path` source.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
+Throws `TypeError` whenever a format parser plugin encounters a syntax error.
 
-Note: this adds relations to an RDF graph, it does not overwrite the existing RDF graph.
+Note: this adds relations to an RDF graph, although it does not overwrite the existing RDF graph.
 
     path:
 must be a file name (str) or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object)
@@ -448,20 +450,24 @@ this `KnowledgeGraph` object – used for method chaining
         if not base and self.base_uri:
             base = self.base_uri
 
-        if hasattr(path, "read"):
-            self._g.parse(
-                path,
-                format=format,
-                publicID=base,
-                **args,
-            )
-        else:
-            self._g.parse(
-                self._get_filename(path),
-                format=format,
-                publicID=base,
-                **args,
-            )
+        try:
+            if hasattr(path, "read"):
+                self._g.parse(
+                    path,
+                    format=format,
+                    publicID=base,
+                    **args,
+                    )
+            else:
+                self._g.parse(
+                    self._get_filename(path),
+                    format=format,
+                    publicID=base,
+                    **args,
+                    )
+        except rdf_n3.BadSyntax as e:
+            ic(path)
+            raise TypeError(str(e))
 
         return self
 

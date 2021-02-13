@@ -3,9 +3,9 @@
 ## Contributors
 
 Many thanks to the contributors on this **kglab** project:
+[@louisguitton](https://github.com/louisguitton),
 [@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247),
-[@louisguitton](https://github.com/louisguitton),
 plus general support from [Derwen, Inc.](https://derwen.ai/)
 and [The Knowledge Graph Conference](https://www.knowledgegraph.tech/),
 plus an even larger scope of [use cases](../use_case/) represented by its community.
