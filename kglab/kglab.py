@@ -13,6 +13,7 @@ import rdflib.plugin  # type: ignore
 rdflib.plugin.register("json-ld", rdflib.plugin.Parser, "rdflib_jsonld.parser", "JsonLDParser")
 rdflib.plugin.register("json-ld", rdflib.plugin.Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
+from icecream import ic  # type: ignore
 import chocolate  # type: ignore
 import codecs
 import csvwlib  # type: ignore
@@ -24,6 +25,7 @@ import owlrl  # type: ignore
 import pandas as pd  # type: ignore
 import pathlib
 import pyshacl  # type: ignore
+import traceback
 import typing
 import urlpath  # type: ignore
 
@@ -78,7 +80,7 @@ the default [*base URI*](https://tools.ietf.org/html/rfc3986#section-5.1) for th
 the default [*language tag*](https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag), e.g., used for [*language indexing*](https://www.w3.org/TR/json-ld11/#language-indexing)
 
     namespaces:
-a dictionary of [*namespace*s](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.Namespace) (dict values) and their corresponding *prefix* strings (dict keys) to add as *controlled vocabularies* available to use in the RDF graph, binding each prefix to the given namespace.
+a dictionary of [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.Namespace) (dict values) and their corresponding *prefix* strings (dict keys) to add as *controlled vocabularies* available to use in the RDF graph, binding each prefix to the given namespace.
 
     import_graph:
 optionally, another existing RDF graph to be used as a starting point
@@ -143,7 +145,7 @@ Adds another [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rdfli
 Since the RDFlib [`NamespaceManager`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.namespace.NamespaceManager) automagically converts all input bindings into [`URIRef`](https://www.w3.org/TR/rdf-concepts/#section-Graph-URIref) instead, we'll keep references to the namespaces – for later use.
 
     prefix:
-a [namespace prefix](https://www.w3.org/TR/rdf11-concepts/#dfn-namespace-prefix)
+a [namespace prefix](https://www.w3.org/TR/rdf11-concepts/#dfn-namespace-prefix); recommended to confirm usage on <http://prefix.cc/>
 
     iri:
 URL to use for constructing the [namespace IRI](https://www.w3.org/TR/rdf11-concepts/#dfn-namespace-iri)
@@ -265,15 +267,22 @@ Uses the RDF Graph as its context.
 To prepare for upcoming **kglab** features, **this is the preferred method for adding relations to an RDF graph.**
 
     s:
-*subject* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+*subject* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node); otherwise throws a `TypeError` exception
 
     p:
-*predicate* relation; ; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+*predicate* relation; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node); otherwise throws a `TypeError` exception
 
     o:
-*object* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal)
+*object* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal); otherwise throws a `TypeError` exception
         """
-        self._g.add((s, p, o,))
+        try:
+            self._g.add((s, p, o,))
+        except AssertionError as e:
+            traceback.print_exc()
+            ic(s)
+            ic(p)
+            ic(o)
+            raise TypeError(str(e))
 
 
     def remove (
@@ -289,15 +298,22 @@ Uses the RDF Graph as its context.
 To prepare for upcoming **kglab** features, **this is the preferred method for removing relations from an RDF graph.**
 
     s:
-*subject* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+*subject* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node); otherwise throws a `TypeError` exception
 
     p:
-*predicate* relation; ; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+*predicate* relation; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node); otherwise throws a `TypeError` exception
 
     o:
-*object* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal)
+*object* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal); otherwise throws a `TypeError` exception
         """
-        self._g.remove((s, p, o,))
+        try:
+            self._g.remove((s, p, o,))
+        except AssertionError as e:
+            traceback.print_exc()
+            ic(s)
+            ic(p)
+            ic(o)
+            raise TypeError(str(e))
 
 
     ######################################################################
