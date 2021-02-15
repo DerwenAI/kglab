@@ -9,3 +9,4 @@ pylint
 pymdown-extensions
 selenium
 twine
+wheel
