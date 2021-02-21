@@ -19,7 +19,6 @@ import chocolate  # type: ignore
 import codecs
 import csvwlib  # type: ignore
 import dateutil.parser as dup
-import GPUtil  # type: ignore
 import io
 import json
 import owlrl  # type: ignore
@@ -29,6 +28,18 @@ import pyshacl  # type: ignore
 import traceback
 import typing
 import urlpath  # type: ignore
+
+## special handling for detecting GPU availability: an approach
+## recommended by the NVidia RAPIDS engineering team, since `nvml`
+## bindings are difficult for Py libraries to keep updated
+_GPU_COUNT = 0
+
+try:
+    import pynvml
+    pynvml.nvmlInit()
+    _GPU_COUNT = pynvml.nvmlDeviceGetCount()
+except Exception:
+    pass
 
 
 class KnowledgeGraph:
@@ -89,7 +100,7 @@ optionally, another existing RDF graph to be used as a starting point
         self.name = name
         self.base_uri = base_uri
         self.language = language
-        self.gpus = GPUtil.getGPUs()
+        self.gpus = _GPU_COUNT
 
         # import relations from another existing RDF graph, or start from blank
         if import_graph:
