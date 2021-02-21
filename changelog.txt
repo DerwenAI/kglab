@@ -7,6 +7,7 @@
   * tutorial proofreading and corrections, kudos @louisguitton
   * better exception handling for RDF construction, parsing, serialization
   * replace `GPUtil` with `pynvml` as recommended by NVidia
+  * add DOI to README, CITATION, and docs
 
 
 ## 0.2.0
