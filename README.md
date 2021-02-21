@@ -1,5 +1,6 @@
 # kglab
 
+[![DOI](https://zenodo.org/badge/307214458.svg)](https://zenodo.org/badge/latestdoi/307214458)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DerwenAI/kglab?style=plastic)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 
