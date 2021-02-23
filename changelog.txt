@@ -6,8 +6,9 @@
 
   * tutorial proofreading and corrections, kudos @louisguitton
   * better exception handling for RDF construction, parsing, serialization
-  * replace `GPUtil` with `pynvml` as recommended by NVidia
   * add DOI to README, CITATION, and docs
+  * replace `GPUtil` with `pynvml` as recommended by NVidia
+  * `build_nx_graph()` now requires a `networkx.DiGraph` passed in as an argument
 
 
 ## 0.2.0

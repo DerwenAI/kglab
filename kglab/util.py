@@ -19,14 +19,14 @@ bindings are difficult for Python libraries to keep updated.
 count of available GPUs
     """
     try:
-        import pynvml
+        import pynvml  # type: ignore
         pynvml.nvmlInit()
 
         gpu_count = pynvml.nvmlDeviceGetCount()
-    except Exception:
+    except Exception: # pylint: disable=W0703
         gpu_count = 0
-    finally:
-        return gpu_count
+
+    return gpu_count
 
 
 def calc_quantile_bins (

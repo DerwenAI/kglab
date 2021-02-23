@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# mypy: ignore-errors
+# pylint: disable-all
 
 ######################################################################
 ## Evolunationary Shape Prediction
