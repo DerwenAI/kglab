@@ -9,6 +9,26 @@ import numpy as np  # type: ignore
 import pandas as pd  # type: ignore
 
 
+def get_gpu_count () -> int:
+    """
+Special handling for detecting GPU availability: an approach
+recommended by the NVidia RAPIDS engineering team, since `nvml`
+bindings are difficult for Python libraries to keep updated.
+
+    returns:
+count of available GPUs
+    """
+    try:
+        import pynvml
+        pynvml.nvmlInit()
+
+        gpu_count = pynvml.nvmlDeviceGetCount()
+    except Exception:
+        gpu_count = 0
+    finally:
+        return gpu_count
+
+
 def calc_quantile_bins (
     num_rows: int
     ) -> np.ndarray:
