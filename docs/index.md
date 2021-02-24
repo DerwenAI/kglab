@@ -15,7 +15,7 @@ work that require graph data, presenting
 [*graph-based data science*](glossary/#graph-based-data-science)
 as an emerging practice.
 
-*doi:* <https://doi.org/10.5281/zenodo.4516509>
+**DOI:** <https://doi.org/10.5281/zenodo.4516509>
 
 
 ## Cut to the Chase

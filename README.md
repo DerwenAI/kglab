@@ -111,6 +111,8 @@ Citations are helpful for the continued development and maintenance of this libr
 }
 ```
 
+**DOI:** <https://doi.org/10.5281/zenodo.4516509>
+
 
 ## Kudos
 
