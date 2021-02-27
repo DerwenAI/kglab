@@ -33,7 +33,7 @@ dependencies as well:
 pip install -r requirements.txt
 ```
 
-Then to use the library with some simple use cases:
+Then to use the library with a simple use case:
 ```
 import kglab
 
@@ -68,7 +68,7 @@ graph libraries in Python:
 Before **kglab** reaches release `v1.0.0` the types and classes may
 undergo substantial changes and the project is not guaranteed to have
 a consistent API.
-Even so, we will try to minimize breaking changes and make careful
+Even so, we will try to minimize breaking changes and provide careful
 notes in the `changelog.txt` file.
 
 
@@ -97,8 +97,10 @@ All materials herein are Copyright &copy; 2020-2021 Derwen, Inc.
 
 ## Attribution
 
-Please use the following BibTeX entry for citing **kglab** if you use it in your research or software.
-Citations are helpful for the continued development and maintenance of this library.
+Please use the following BibTeX entry for citing **kglab** if you use
+it in your research or software.
+Citations are helpful for the continued development and maintenance of
+this library.
 
 ```
 @software{kglab,
@@ -110,8 +112,6 @@ Citations are helpful for the continued development and maintenance of this libr
   url = {https://github.com/DerwenAI/kglab}
 }
 ```
-
-**DOI:** <https://doi.org/10.5281/zenodo.4516509>
 
 
 ## Kudos

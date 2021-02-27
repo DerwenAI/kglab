@@ -15,8 +15,6 @@ work that require graph data, presenting
 [*graph-based data science*](glossary/#graph-based-data-science)
 as an emerging practice.
 
-**DOI:** <https://doi.org/10.5281/zenodo.4516509>
-
 
 ## Cut to the Chase
 
@@ -173,6 +171,15 @@ of open source project.
 
 ### Getting Help
 
+Links for open source community resources:
+
+  * [Issue Tracker](https://github.com/DerwenAI/kglab/issues)
+  * [Project Board](https://github.com/DerwenAI/kglab/projects/1)
+  * [Milestones](https://github.com/DerwenAI/kglab/milestones)
+  * [*Graph-Based Data Science*](https://www.linkedin.com/groups/6725785/) group on LinkedIn – join to receive related updates, news, conference coupons, etc.
+  * ["Graph-Based Data Science"](https://derwen.ai/s/kcgh) talk at PyData SoCal 2021-01-30
+  * ["KG 101"](https://knowledge-connexions-conference.heysummit.com/talks/kg-101/) tutorial at *Knowledge Connexions* 2020
+
 The [Knowledge Graph Conference](glossary/#knowledge-graph-conference)
 hosts several community resources where you can post questions and 
 get help about **kglab** and related
@@ -180,9 +187,6 @@ get help about **kglab** and related
 topics.
 
   * [community Slack](https://knowledgegraphconf.slack.com/archives/C017LUAML8Z) – specifically on the `#ask` channel
-  * [*Graph-Based Data Science*](https://www.linkedin.com/groups/6725785/) group on LinkedIn – join to receive related updates, news, conference coupons, etc.
-  * ["Graph-Based Data Science"](https://derwen.ai/s/kcgh) talk at PyData SoCal 2021-01-30
-  * ["KG 101"](https://knowledge-connexions-conference.heysummit.com/talks/kg-101/) tutorial at *Knowledge Connexions* 2020
   * [Knowledge Tech Q&A site](https://answers.knowledgegraph.tech/) for extended discussions
 
 [KGC](glossary/#knowledge-graph-conference)
@@ -200,9 +204,3 @@ and others involved in this open source project.
 
 Your feedback through this online survey helps us prioritize the roadmap for **kglab**:
 <https://forms.gle/FMHgtmxHYWocprMn6>
-
-Links for other open source community resources:
-
-  * [Issue Tracker](https://github.com/DerwenAI/kglab/issues)
-  * [Project Board](https://github.com/DerwenAI/kglab/projects/1)
-  * [Milestones](https://github.com/DerwenAI/kglab/milestones)
