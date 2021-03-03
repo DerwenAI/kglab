@@ -110,9 +110,11 @@ O'Reilly Media (2020)
 
 ### gutierrez2019
 
-["A Brief History of Knowledge Graph's Main Ideas: A tutorial"](http://knowledgegraph.today/paper.html)  
+["A Brief History of Knowledge Graph's Main Ideas: A tutorial"](https://dl.acm.org/doi/abs/10.1145/3340531.3412176)  
 **Claudio Gutierrez**, **Juan F. Sequeda**  
-*CACM* (2020)
+*CACM* (2020)  
+open: <http://knowledgegraph.today/paper.html>
+
 
 ### gruber1993ata
 
