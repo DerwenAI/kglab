@@ -5,6 +5,7 @@
 ## kglab - core classes
 
 from kglab.pkg_types import PathLike, IOPathLike, GraphLike, RDF_Node
+from kglab.util import get_gpu_count
 from kglab.version import _check_version
 _check_version()
 
@@ -28,18 +29,6 @@ import pyshacl  # type: ignore
 import traceback
 import typing
 import urlpath  # type: ignore
-
-## special handling for detecting GPU availability: an approach
-## recommended by the NVidia RAPIDS engineering team, since `nvml`
-## bindings are difficult for Py libraries to keep updated
-_GPU_COUNT = 0
-
-try:
-    import pynvml
-    pynvml.nvmlInit()
-    _GPU_COUNT = pynvml.nvmlDeviceGetCount()
-except Exception:
-    pass
 
 
 class KnowledgeGraph:
@@ -100,9 +89,9 @@ optionally, another existing RDF graph to be used as a starting point
         self.name = name
         self.base_uri = base_uri
         self.language = language
-        self.gpus = _GPU_COUNT
+        self.gpus = get_gpu_count()
 
-        # import relations from another existing RDF graph, or start from blank
+        # import relations from another RDF graph, or start from blank
         if import_graph:
             self._g = import_graph
         else:

@@ -155,21 +155,23 @@ initial variable bindings
 
     def build_nx_graph (
         self,
+        nx_graph: nx.DiGraph,
         *,
         bipartite: bool = False,
         ) -> nx.DiGraph:
         """
-Factory pattern to create a [`networkx.DiGraph`](https://networkx.org/documentation/latest/reference/classes/digraph.html) object, populated by transforms in this subgraph.
+Factory pattern to populate a [`networkx.DiGraph`](https://networkx.org/documentation/latest/reference/classes/digraph.html) object, using transforms in this subgraph.
 See <https://networkx.org/>
+
+    nx_graph:
+pass in an unpopulated [`networkx.DiGraph`](https://networkx.org/documentation/latest/reference/classes/digraph.html) object
 
     bipartite:
 flag for whether the `(subject, object)` pairs should be partitioned into *bipartite sets*, in other words whether the *adjacency matrix* is symmetric
 
     returns:
-a `NetworkX` directed graph object
+the populated `NetworkX` graph object
         """
-        nx_graph = nx.DiGraph()
-
         for row in self.kg.query(self.sparql):
             s_id = self.transform(row.subject)
             s_label = self.n3fy(row.subject)

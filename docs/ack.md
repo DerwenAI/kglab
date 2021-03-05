@@ -79,6 +79,8 @@ it in your research or software:
 }
 ```
 
+**DOI:** <https://doi.org/10.5281/zenodo.4516509>
+
 
 ## License and Copyright
 

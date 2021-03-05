@@ -76,6 +76,7 @@ To generate documentation pages, this project uses:
   * [`MathJax`](https://www.mathjax.org/)
   * [`Jupyter`](https://jupyter.org/install)
   * [`nbconvert`](https://nbconvert.readthedocs.io/)
+  * [`mknotebooks`](https://github.com/greenape/mknotebooks)
   * [`Selenium`](https://selenium-python.readthedocs.io/)
   * [`Chrome`](https://www.google.com/chrome/)
   * [`Flask`](https://flask.palletsprojects.com/)

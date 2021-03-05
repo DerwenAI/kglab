@@ -812,22 +812,25 @@ initial variable bindings
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L156)
 
 ```python
-build_nx_graph(bipartite=False)
+build_nx_graph(nx_graph, bipartite=False)
 ```
-Factory pattern to create a [`networkx.DiGraph`](https://networkx.org/documentation/latest/reference/classes/digraph.html) object, populated by transforms in this subgraph.
+Factory pattern to populate a [`networkx.DiGraph`](https://networkx.org/documentation/latest/reference/classes/digraph.html) object, using transforms in this subgraph.
 See <https://networkx.org/>
+
+  * `nx_graph` : `networkx.classes.digraph.DiGraph`  
+pass in an unpopulated [`networkx.DiGraph`](https://networkx.org/documentation/latest/reference/classes/digraph.html) object
 
   * `bipartite` : `bool`  
 flag for whether the `(subject, object)` pairs should be partitioned into *bipartite sets*, in other words whether the *adjacency matrix* is symmetric
 
   * *returns* : `networkx.classes.digraph.DiGraph`  
-a `NetworkX` directed graph object
+the populated `NetworkX` graph object
 
 
 
 ---
 #### [`build_ig_graph` method](#kglab.SubgraphMatrix.build_ig_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L192)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L194)
 
 ```python
 build_ig_graph(ig_graph)
@@ -853,7 +856,7 @@ Typical use cases include integration with non-RDF graph libraries for *visualiz
     
 ---
 #### [`__init__` method](#kglab.SubgraphTensor.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L230)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L232)
 
 ```python
 __init__(kg, excludes=None)
@@ -871,7 +874,7 @@ a list of RDF predicates to exclude from projection into the *subgraph*
 
 ---
 #### [`as_tuples` method](#kglab.SubgraphTensor.as_tuples)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L254)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L256)
 
 ```python
 as_tuples()
@@ -886,7 +889,7 @@ the RDF triples within the subgraph
 
 ---
 #### [`pyvis_style_node` method](#kglab.SubgraphTensor.pyvis_style_node)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L277)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L279)
 
 ```python
 pyvis_style_node(pyvis_graph, node_id, label, style=None)
@@ -909,7 +912,7 @@ optional style dictionary
 
 ---
 #### [`build_pyvis_graph` method](#kglab.SubgraphTensor.build_pyvis_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L321)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L323)
 
 ```python
 build_pyvis_graph(notebook=False, style=None)
@@ -1311,7 +1314,7 @@ inferred values as a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/
 ## [module functions](#kglab)
 ---
 #### [`calc_quantile_bins` function](#kglab.calc_quantile_bins)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L12)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L32)
 
 ```python
 calc_quantile_bins(num_rows)
@@ -1327,8 +1330,24 @@ the calculated bins, as a [`numpy.ndarray`](https://numpy.org/doc/stable/referen
 
 
 ---
+#### [`get_gpu_count` function](#kglab.get_gpu_count)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L12)
+
+```python
+get_gpu_count()
+```
+Special handling for detecting GPU availability: an approach
+recommended by the NVidia RAPIDS engineering team, since `nvml`
+bindings are difficult for Python libraries to keep updated.
+
+  * *returns* : `int`  
+count of available GPUs
+
+
+
+---
 #### [`root_mean_square` function](#kglab.root_mean_square)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L56)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L76)
 
 ```python
 root_mean_square(values)
@@ -1345,7 +1364,7 @@ RMS metric as a float
 
 ---
 #### [`stripe_column` function](#kglab.stripe_column)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L28)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L48)
 
 ```python
 stripe_column(values, bins)

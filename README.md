@@ -33,7 +33,7 @@ dependencies as well:
 pip install -r requirements.txt
 ```
 
-Then to use the library with some simple use cases:
+Then to use the library with a simple use case:
 ```
 import kglab
 
@@ -68,13 +68,24 @@ graph libraries in Python:
 Before **kglab** reaches release `v1.0.0` the types and classes may
 undergo substantial changes and the project is not guaranteed to have
 a consistent API.
-Even so, we will try to minimize breaking changes and make careful
+Even so, we will try to minimize breaking changes and provide careful
 notes in the `changelog.txt` file.
+
+
+## Contributing Code
+
+We welcome people getting involved as contributors to this open source
+project!
+Please see the
+[CONTRIBUTING.md](https://github.com/DerwenAI/kglab/blob/main/CONTRIBUTING.md)
+file for instructions.
 
 
 ## Build Instructions
 
-**Note: most use cases won't need to build this package locally.**
+**Note: unless you are contributing code and updates,
+in most use cases won't need to build this package locally.**
+
 Instead, simply install from
 [PyPi](https://pypi.python.org/pypi/kglab)
 or [Conda](https://docs.conda.io/).
@@ -97,8 +108,10 @@ All materials herein are Copyright &copy; 2020-2021 Derwen, Inc.
 
 ## Attribution
 
-Please use the following BibTeX entry for citing **kglab** if you use it in your research or software.
-Citations are helpful for the continued development and maintenance of this library.
+Please use the following BibTeX entry for citing **kglab** if you use
+it in your research or software.
+Citations are helpful for the continued development and maintenance of
+this library.
 
 ```
 @software{kglab,
