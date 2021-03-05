@@ -186,7 +186,7 @@ get help about **kglab** and related
 [KG](glossary/#kg)
 topics.
 
-  * [community Slack](https://knowledgegraphconf.slack.com/archives/C017LUAML8Z) – specifically on the `#ask` channel
+  * [community Slack](https://knowledgegraphconf.slack.com/ssb/redirect) – specifically on the `#ask` channel
   * [Knowledge Tech Q&A site](https://answers.knowledgegraph.tech/) for extended discussions
 
 [KGC](glossary/#knowledge-graph-conference)
