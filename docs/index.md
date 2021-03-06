@@ -177,8 +177,7 @@ Links for open source community resources:
   * [Project Board](https://github.com/DerwenAI/kglab/projects/1)
   * [Milestones](https://github.com/DerwenAI/kglab/milestones)
   * [*Graph-Based Data Science*](https://www.linkedin.com/groups/6725785/) group on LinkedIn – join to receive related updates, news, conference coupons, etc.
-  * ["Graph-Based Data Science"](https://derwen.ai/s/kcgh) talk at PyData SoCal 2021-01-30
-  * ["KG 101"](https://knowledge-connexions-conference.heysummit.com/talks/kg-101/) tutorial at *Knowledge Connexions* 2020
+  * ["Graph-Based Data Science"](https://derwen.ai/s/kcgh) talk
 
 The [Knowledge Graph Conference](glossary/#knowledge-graph-conference)
 hosts several community resources where you can post questions and 
