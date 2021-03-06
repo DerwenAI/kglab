@@ -9,6 +9,7 @@ from kglab.topo import Measure
 from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
 
 import networkx as nx  # type: ignore
+import pandas as pd  # type: ignore
 import pyvis.network  # type: ignore
 import typing
 
@@ -127,6 +128,7 @@ class SubgraphMatrix (Subgraph):
 Projection of a RDF graph to a [*matrix*](https://mathworld.wolfram.com/AdjacencyMatrix.html) representation.
 Typical use cases include integration with non-RDF graph libraries for *graph algorithms*.
     """
+    _SRC_DST_MAP: typing.List[str] = ["subject", "object"]
 
     def __init__ (
         self,
@@ -134,6 +136,7 @@ Typical use cases include integration with non-RDF graph libraries for *graph al
         sparql: str,
         *,
         bindings: dict = None,
+        src_dst: typing.List[str] = None,
         ) -> None:
         """
 Constructor for creating and manipulating a *subgraph* as a [*matrix*](https://mathworld.wolfram.com/AdjacencyMatrix.html),
@@ -143,14 +146,50 @@ projecting from an RDF graph represented by a `KnowledgeGraph` object.
 the source RDF graph
 
     sparql:
-text for a SPARQL query that yields pairs to project into the *subgraph*; this expects the query to have bindings for `subject` and `object` nodes in the RDF graph
+text for a SPARQL query that yields pairs to project into the *subgraph*;
+by default this expects the query to return bindings for `subject` and `object` nodes in the RDF graph
 
     bindings:
 initial variable bindings
+
+    src_dst:
+an optional map to override the  `subject` and `object` bindings expected in the SPARQL query results;
+defaults to `None`
         """
         super().__init__(kg=kg)
         self.sparql = sparql
-        self.bindings = bindings
+        self.bindings:typing.Optional[dict] = bindings
+
+        if src_dst:
+            self.src_dst: typing.List[str] = src_dst
+        else:
+            self.src_dst = self._SRC_DST_MAP
+
+
+    def build_df (
+        self
+        ) -> pd.DataFrame:
+        """
+Factory pattern to populate a [`pandas.DataFrame`](https://pandas.pydata.org/docs/reference/frame.html) object, using transforms in this subgraph.
+
+Note: this method is primarily intended for [`cuGraph`](https://docs.rapids.ai/api/cugraph/stable/) support. Loading via a `DataFrame` is required – in lieu of using the `nx.add_node()` approach.
+Therefore the support for representing *bipartite* graphs is still pending.
+
+    returns:
+the populated `DataFrame` object
+        """
+        row_list: typing.List[dict] = [
+            {
+                "src": self.n3fy(row[self.src_dst[0]]),
+                "dst": self.n3fy(row[self.src_dst[1]]),
+                "s_id": self.transform(row[self.src_dst[0]]),
+                "d_id": self.transform(row[self.src_dst[1]]),
+            }
+            for row in self.kg.query(self.sparql, bindings=self.bindings)
+            ]
+
+        df = pd.DataFrame(row_list, columns=("src", "dst", "s_id", "d_id"))
+        return df
 
 
     def build_nx_graph (
@@ -172,12 +211,12 @@ flag for whether the `(subject, object)` pairs should be partitioned into *bipar
     returns:
 the populated `NetworkX` graph object
         """
-        for row in self.kg.query(self.sparql):
-            s_id = self.transform(row.subject)
-            s_label = self.n3fy(row.subject)
+        for row in self.kg.query(self.sparql, bindings=self.bindings):
+            s_id = self.transform(row[self.src_dst[0]])
+            s_label = self.n3fy(row[self.src_dst[0]])
 
-            o_id = self.transform(row.object)
-            o_label = self.n3fy(row.object)
+            o_id = self.transform(row[self.src_dst[1]])
+            o_label = self.n3fy(row[self.src_dst[1]])
 
             if bipartite:
                 nx_graph.add_node(s_id, label=s_label, bipartite=0)
@@ -214,9 +253,9 @@ the populated  `iGraph` graph object
 
         ig_graph.add_vertices(n=keyset)
 
-        for row in self.kg.query(self.sparql):
-            s_id = self.transform(row.subject)
-            o_id = self.transform(row.object)
+        for row in self.kg.query(self.sparql, bindings=self.bindings):
+            s_id = self.transform(row[self.src_dst[0]])
+            o_id = self.transform(row[self.src_dst[1]])
             ig_graph.add_edges([ (s_id, o_id,) ])
 
         ig_graph.vs["label"] = ig_graph.vs["name"] # pylint: disable=E1136,E1137
