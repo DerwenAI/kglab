@@ -6,7 +6,6 @@
 
 import math
 import numpy as np  # type: ignore
-import pandas as pd  # type: ignore
 
 
 def get_gpu_count () -> int:
@@ -27,6 +26,12 @@ count of available GPUs
         gpu_count = 0
 
     return gpu_count
+
+
+if get_gpu_count() > 0:
+    import cudf as pd  # type: ignore # pylint: disable=E0401
+else:
+    import pandas as pd  # type: ignore
 
 
 def calc_quantile_bins (

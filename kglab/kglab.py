@@ -23,12 +23,17 @@ import dateutil.parser as dup
 import io
 import json
 import owlrl  # type: ignore
-import pandas as pd  # type: ignore
 import pathlib
 import pyshacl  # type: ignore
 import traceback
 import typing
 import urlpath  # type: ignore
+
+if get_gpu_count() > 0:
+    import cudf as pd  # type: ignore # pylint: disable=E0401
+else:
+    import pandas as pd  # type: ignore
+
 
 
 class KnowledgeGraph:

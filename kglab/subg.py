@@ -7,11 +7,17 @@
 from kglab import KnowledgeGraph
 from kglab.topo import Measure
 from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
+from kglab.util import get_gpu_count
 
-import networkx as nx  # type: ignore
-import pandas as pd  # type: ignore
 import pyvis.network  # type: ignore
 import typing
+
+if get_gpu_count() > 0:
+    import cudf as pd  # type: ignore # pylint: disable=E0401
+    import cugraph as nx # type: ignore # pylint: disable=E0401
+else:
+    import pandas as pd  # type: ignore
+    import networkx as nx  # type: ignore
 
 
 class Subgraph:
