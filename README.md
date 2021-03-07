@@ -132,5 +132,11 @@ Many thanks to our contributors:
 [@louisguitton](https://github.com/louisguitton),
 [@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247),
-plus general support from [Derwen, Inc.](https://github.com/DerwenAI)
-and [The Knowledge Graph Conference](https://github.com/KGConf).
+plus general support from [Derwen, Inc.](https://github.com/DerwenAI),
+[KFocus](https://kfocus.org/),
+the [NVidia RAPIDS team](https://rapids.ai/),
+[Gradient Flow](https://gradientflow.com/),
+the [KGC Community](https://github.com/KGConf),
+[Connected Data London](https://connected-data.london/),
+and
+[Manning Publications](https://www.manning.com/).

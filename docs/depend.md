@@ -22,7 +22,6 @@ include:
 - [pslpython](https://psl.linqs.org/)
 - [pyarrow](https://arrow.apache.org/)
 - [pylev](https://github.com/toastdriven/pylev)
-- [pynvml](https://github.com/gpuopenanalytics/pynvml)
 - [pySHACL](https://github.com/RDFLib/pySHACL)
 - [python-dateutil](https://dateutil.readthedocs.io/)
 - [python-igraph](https://igraph.org/python/)
@@ -32,6 +31,16 @@ include:
 - [scikit-learn](https://scikit-learn.org/stable/)
 - [statsmodels](https://www.statsmodels.org/)
 - [urlpath](https://github.com/chrono-meter/urlpath)
+
+
+## NVidia GPU support
+
+Additional package dependencies required for GPU support, which must
+be installed separately:
+
+- [cuDF](https://docs.rapids.ai/api/cudf/stable/api.html)
+- [cuGraph](https://docs.rapids.ai/api/cugraph/stable/api.html)
+- [pynvml](https://github.com/gpuopenanalytics/pynvml)
 
 
 [^1]: You may need to [install extra dependencies](https://filesystem-spec.readthedocs.io/en/latest/index.html?highlight=extra#installation) for `fsspec` since not all included filesystems are usable by default. Support for Amazon S3 and Google GCS are installed by default. See the `extras_require` dict in <https://github.com/intake/filesystem_spec/blob/master/setup.py>

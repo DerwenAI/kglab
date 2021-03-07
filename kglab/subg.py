@@ -9,15 +9,14 @@ from kglab.topo import Measure
 from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
 from kglab.util import get_gpu_count
 
+import pandas as pd  # type: ignore
 import pyvis.network  # type: ignore
+import networkx as nx  # type: ignore
 import typing
 
 if get_gpu_count() > 0:
-    import cudf as pd  # type: ignore # pylint: disable=E0401
-    import cugraph as nx # type: ignore # pylint: disable=E0401
-else:
-    import pandas as pd  # type: ignore
-    import networkx as nx  # type: ignore
+    import cudf  # type: ignore # pylint: disable=E0401
+    import cugraph # type: ignore # pylint: disable=E0401,W0611
 
 
 class Subgraph:
@@ -152,15 +151,13 @@ projecting from an RDF graph represented by a `KnowledgeGraph` object.
 the source RDF graph
 
     sparql:
-text for a SPARQL query that yields pairs to project into the *subgraph*;
-by default this expects the query to return bindings for `subject` and `object` nodes in the RDF graph
+text for a SPARQL query that yields pairs to project into the *subgraph*; by default this expects the query to return bindings for `subject` and `object` nodes in the RDF graph
 
     bindings:
 initial variable bindings
 
     src_dst:
-an optional map to override the  `subject` and `object` bindings expected in the SPARQL query results;
-defaults to `None`
+an optional map to override the  `subject` and `object` bindings expected in the SPARQL query results; defaults to `None`
         """
         super().__init__(kg=kg)
         self.sparql = sparql
@@ -182,9 +179,9 @@ Note: this method is primarily intended for [`cuGraph`](https://docs.rapids.ai/a
 Therefore the support for representing *bipartite* graphs is still pending.
 
     returns:
-the populated `DataFrame` object
+the populated `DataFrame` object; uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled
         """
-        row_list: typing.List[dict] = [
+        rows_list: typing.List[dict] = [
             {
                 "src": self.n3fy(row[self.src_dst[0]]),
                 "dst": self.n3fy(row[self.src_dst[1]]),
@@ -194,7 +191,13 @@ the populated `DataFrame` object
             for row in self.kg.query(self.sparql, bindings=self.bindings)
             ]
 
-        df = pd.DataFrame(row_list, columns=("src", "dst", "s_id", "d_id"))
+        col_names: typing.List[str] = [ "src", "dst", "s_id", "d_id" ]
+
+        if self.kg.use_gpus:
+            df = cudf.DataFrame(rows_list, columns=col_names)
+        else:
+            df = pd.DataFrame(rows_list, columns=col_names)
+
         return df
 
 
@@ -209,29 +212,33 @@ Factory pattern to populate a [`networkx.DiGraph`](https://networkx.org/document
 See <https://networkx.org/>
 
     nx_graph:
-pass in an unpopulated [`networkx.DiGraph`](https://networkx.org/documentation/latest/reference/classes/digraph.html) object
+pass in an unpopulated [`networkx.DiGraph`](https://networkx.org/documentation/latest/reference/classes/digraph.html) object; must be a [`cugraph.DiGrap`](https://docs.rapids.ai/api/cugraph/stable/api.html#digraph) if GPUs are enabled
 
     bipartite:
-flag for whether the `(subject, object)` pairs should be partitioned into *bipartite sets*, in other words whether the *adjacency matrix* is symmetric
+flag for whether the `(subject, object)` pairs should be partitioned into *bipartite sets*, in other words whether the *adjacency matrix* is symmetric; ignored if GPUs are enabled
 
     returns:
-the populated `NetworkX` graph object
+the populated `NetworkX` graph object; uses the [RAPIDS `cuGraph` library](https://docs.rapids.ai/api/cugraph/stable/) if GPUs are enabled
         """
-        for row in self.kg.query(self.sparql, bindings=self.bindings):
-            s_id = self.transform(row[self.src_dst[0]])
-            s_label = self.n3fy(row[self.src_dst[0]])
+        if self.kg.use_gpus:
+            df = self.build_df()
+            nx_graph.from_cudf_edgelist(df, source="src", destination="dst")
+        else:
+            for row in self.kg.query(self.sparql, bindings=self.bindings):
+                s_id = self.transform(row[self.src_dst[0]])
+                s_label = self.n3fy(row[self.src_dst[0]])
 
-            o_id = self.transform(row[self.src_dst[1]])
-            o_label = self.n3fy(row[self.src_dst[1]])
+                o_id = self.transform(row[self.src_dst[1]])
+                o_label = self.n3fy(row[self.src_dst[1]])
 
-            if bipartite:
-                nx_graph.add_node(s_id, label=s_label, bipartite=0)
-                nx_graph.add_node(o_id, label=o_label, bipartite=1)
-            else:
-                nx_graph.add_node(s_id, label=s_label)
-                nx_graph.add_node(o_id, label=o_label)
+                if bipartite:
+                    nx_graph.add_node(s_id, label=s_label, bipartite=0)
+                    nx_graph.add_node(o_id, label=o_label, bipartite=1)
+                else:
+                    nx_graph.add_node(s_id, label=s_label)
+                    nx_graph.add_node(o_id, label=o_label)
 
-            nx_graph.add_edge(s_id, o_id)
+                nx_graph.add_edge(s_id, o_id)
 
         return nx_graph
 

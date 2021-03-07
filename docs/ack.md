@@ -5,10 +5,16 @@
 Many thanks to the contributors on this **kglab** project:
 [@louisguitton](https://github.com/louisguitton),
 [@jake-aft](https://github.com/jake-aft),
-[@dmoore247](https://github.com/dmoore247),
-plus general support from [Derwen, Inc.](https://derwen.ai/)
-and [The Knowledge Graph Conference](https://www.knowledgegraph.tech/),
-plus an even larger scope of [use cases](../use_case/) represented by its community.
+[@dmoore247](https://github.com/dmoore247);
+plus general support from [Derwen, Inc.](https://derwen.ai/);
+the [Knowledge Graph Conference](https://www.knowledgegraph.tech/)
+and [Connected Data London](https://connected-data.london/)
+plus an even larger scope of [use cases](../use_case/) represented by their communities;
+[KFocus](https://kfocus.org/),
+the [NVidia RAPIDS team](https://rapids.ai/),
+[Gradient Flow](https://gradientflow.com/),
+and
+[Manning Publications](https://www.manning.com/).
 
 
 ## Project Lead
@@ -60,7 +66,7 @@ Stanford, CMU, UC&nbsp;Berkeley,
 U&nbsp;da&nbsp;Coruña, U&nbsp;Manchester,
 KTH, NYU, GWU,
 U&nbsp;Maryland, Cal&nbsp;Poly, UT/Austin,
-U&nbsp;Virginia, CU&nbsp;Boulder.
+Northeastern, U&nbsp;Virginia, CU&nbsp;Boulder.
 
 
 ## Attribution
