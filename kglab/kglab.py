@@ -768,6 +768,12 @@ this `KnowledgeGraph` object – used for method chaining
         return self.load_rdf_text(new_rdf)
 
 
+    _PARQUET_COL_NAMES: typing.List[str] = [
+        "subject",
+        "predicate",
+        "object"
+    ]
+
     def load_parquet (
         self,
         path: IOPathLike,
@@ -791,7 +797,8 @@ this `KnowledgeGraph` object – used for method chaining
             df = cudf.read_parquet(
                 path,
                 **chocolate.filter_args(kwargs, pd.read_parquet)
-            )
+            ).to_pandas()
+
         else:
             df = pd.read_parquet(
                 path,
@@ -831,19 +838,17 @@ extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) fo
         """
         rows_list: typing.List[dict] = [
             {
-                "subject": s.n3(),
-                "predicate": p.n3(),
-                "object": o.n3(),
+                self._PARQUET_COL_NAMES[0]: s.n3(),
+                self._PARQUET_COL_NAMES[1]: p.n3(),
+                self._PARQUET_COL_NAMES[2]: o.n3(),
             }
             for s, p, o in self._g
         ]
 
-        col_names: typing.List[str] = [ "subject", "predicate", "object" ]
-
         if self.use_gpus:
-            df = cudf.DataFrame(rows_list, columns=col_names)
+            df = cudf.DataFrame(rows_list, columns=self._PARQUET_COL_NAMES)
         else:
-            df = pd.DataFrame(rows_list, columns=col_names)
+            df = pd.DataFrame(rows_list, columns=self._PARQUET_COL_NAMES)
 
         df.to_parquet(
             path,

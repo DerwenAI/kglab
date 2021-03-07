@@ -97,8 +97,15 @@ Coverage:
         """
 
         df = kg.query_as_df(sparql)
+
+        # handle `cuDF` dataframes (GPUs enabled)
+        if not isinstance(df, pd.DataFrame):
+            df = df.to_pandas()
+
         row = df.iloc[0]
-        self.assertTrue(df.iloc[0]["name"] == "Fantasy Fame Game")
+        val = row["name"]
+
+        self.assertTrue(val == "Fantasy Fame Game")
 
 
     def test_approx_pareto_front (self):
