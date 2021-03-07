@@ -30,6 +30,9 @@ import traceback
 import typing
 import urlpath  # type: ignore
 
+if get_gpu_count() > 0:
+    import cudf  # type: ignore # pylint: disable=E0401
+
 
 class KnowledgeGraph:
     """
@@ -65,8 +68,9 @@ Core feature areas include:
         name: str = "generic",
         base_uri: str = None,
         language: str = "en",
-        namespaces: dict = None,
+        use_gpus: bool = True,
         import_graph: typing.Optional[GraphLike] = None,
+        namespaces: dict = None,
         ) -> None:
         """
 Constructor for a `KnowledgeGraph` object.
@@ -80,16 +84,25 @@ the default [*base URI*](https://tools.ietf.org/html/rfc3986#section-5.1) for th
     language:
 the default [*language tag*](https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag), e.g., used for [*language indexing*](https://www.w3.org/TR/json-ld11/#language-indexing)
 
-    namespaces:
-a dictionary of [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.Namespace) (dict values) and their corresponding *prefix* strings (dict keys) to add as *controlled vocabularies* available to use in the RDF graph, binding each prefix to the given namespace.
+    use_gpus:
+optionally, use the NVidia GPU devices with [RAPIDS](https://rapids.ai/) if these libraries have been installed and the devices are available; defaults to `True`
 
     import_graph:
 optionally, another existing RDF graph to be used as a starting point
+
+    namespaces:
+a dictionary of [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.Namespace) (dict values) and their corresponding *prefix* strings (dict keys) to add as *controlled vocabularies* which are available for use in the RDF graph, binding each prefix to the given namespace
         """
         self.name = name
         self.base_uri = base_uri
         self.language = language
-        self.gpus = get_gpu_count()
+
+        # use NVidia GPU devices if available and the libraries
+        # have been installed and the flag is not disabled
+        if use_gpus and get_gpu_count() > 0:
+            self.use_gpus = True
+        else:
+            self.use_gpus = False
 
         # import relations from another RDF graph, or start from blank
         if import_graph:
@@ -146,7 +159,7 @@ Adds another [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rdfli
 Since the RDFlib [`NamespaceManager`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=namespace#rdflib.namespace.NamespaceManager) automagically converts all input bindings into [`URIRef`](https://www.w3.org/TR/rdf-concepts/#section-Graph-URIref) instead, we'll keep references to the namespaces – for later use.
 
     prefix:
-a [namespace prefix](https://www.w3.org/TR/rdf11-concepts/#dfn-namespace-prefix); recommended to confirm usage on <http://prefix.cc/>
+a [namespace prefix](https://www.w3.org/TR/rdf11-concepts/#dfn-namespace-prefix); it's recommended to confirm prefix usage (based on convention) by searching on <http://prefix.cc/>
 
     iri:
 URL to use for constructing the [namespace IRI](https://www.w3.org/TR/rdf11-concepts/#dfn-namespace-iri)
@@ -158,7 +171,11 @@ rebind, even if the given namespace is already bound with another prefix
 replace any existing prefix with the new namespace
         """
         if override and iri in self._ns.values():
-            rev_ns = { str(v):k for k, v in self._ns.items() }
+            rev_ns = {
+                str(v): k
+                for k, v in self._ns.items()
+            }
+
             bogus_prefix = rev_ns[iri]
             del self._ns[bogus_prefix]
 
@@ -198,7 +215,12 @@ Generate a dictionary of the *namespaces* used in this RDF graph.
     returns:
 a `dict` describing the namespaces in this RDF graph
         """
-        return { prefix: str(ns) for prefix, ns in self._ns.items() }
+        ns_dict = {
+            prefix: str(ns)
+            for prefix, ns in self._ns.items()
+        }
+
+        return ns_dict
 
 
     def describe_ns (
@@ -208,10 +230,24 @@ a `dict` describing the namespaces in this RDF graph
 Describe the *namespaces* used in this RDF graph.
 
     returns:
-a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) describing the namespaces in this RDF graph
+a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) describing the namespaces in this RDF graph; uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled
         """
-        ns_list = [ { "prefix": prefix, "namespace": str(ns) } for prefix, ns in self._ns.items() ]
-        return pd.DataFrame(ns_list, columns=("prefix", "namespace"))
+        rows_list: typing.List[dict] = [
+            {
+                "prefix": prefix,
+                "namespace": str(ns),
+            }
+            for prefix, ns in self._ns.items()
+        ]
+
+        col_names: typing.List[str] = [ "prefix", "namespace" ]
+
+        if self.use_gpus:
+            df = cudf.DataFrame(rows_list, columns=col_names)
+        else:
+            df = pd.DataFrame(rows_list, columns=col_names)
+
+        return df
 
 
     def get_context (
@@ -249,7 +285,7 @@ timezones as a dict, used by
 [`dateutil.parser.parse()`](https://dateutil.readthedocs.io/en/stable/parser.html#dateutil.parser.parse) as additional time zone names or aliases which may be present in the input `datetime` string
 
     returns:
-[`rdflib.Literal`](https://rdflib.readthedocs.io/en/stable/rdf_terms.html#literals) formatted as an XML Schema 2 `dateTime` value.
+[`rdflib.Literal`](https://rdflib.readthedocs.io/en/stable/rdf_terms.html#literals) formatted as an XML Schema 2 `dateTime` value
         """
         date_tz = dup.parse(datetime, tzinfos=tzinfos)
         return rdflib.Literal(date_tz, datatype=self.get_ns("xsd").dateTime)
@@ -268,13 +304,16 @@ Uses the RDF Graph as its context.
 To prepare for upcoming **kglab** features, **this is the preferred method for adding relations to an RDF graph.**
 
     s:
-*subject* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node); otherwise throws a `TypeError` exception
+*subject* node;
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node); otherwise throws a `TypeError` exception
 
     p:
-*predicate* relation; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node); otherwise throws a `TypeError` exception
+*predicate* relation;
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node); otherwise throws a `TypeError` exception
 
     o:
-*object* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal); otherwise throws a `TypeError` exception
+*object* node;
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal); otherwise throws a `TypeError` exception
         """
         try:
             self._g.add((s, p, o,))
@@ -299,13 +338,16 @@ Uses the RDF Graph as its context.
 To prepare for upcoming **kglab** features, **this is the preferred method for removing relations from an RDF graph.**
 
     s:
-*subject* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node); otherwise throws a `TypeError` exception
+*subject* node;
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node); otherwise throws a `TypeError` exception
 
     p:
-*predicate* relation; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node); otherwise throws a `TypeError` exception
+*predicate* relation;
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node); otherwise throws a `TypeError` exception
 
     o:
-*object* node; must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal); otherwise throws a `TypeError` exception
+*object* node;
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal); otherwise throws a `TypeError` exception
         """
         try:
             self._g.remove((s, p, o,))
@@ -367,7 +409,8 @@ To prepare for upcoming **kglab** features, **this is the preferred method for r
         format: str,
         ) -> None:
         """
-Semiprivate method to error-check that a `format` parameter corresponds to a known RDFlib serialization plugin; otherwise this throws a `TypeError` exception
+Semiprivate method to error-check that a `format` parameter corresponds to a known RDFlib serialization plugin;
+otherwise this throws a `TypeError` exception
         """
         if format not in cls._RDF_FORMAT:
             try:
@@ -382,7 +425,8 @@ Semiprivate method to error-check that a `format` parameter corresponds to a kno
         encoding: str,
         ) -> None:
         """
-Semiprivate method to error-check that an `encoding` parameter is within the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
+Semiprivate method to error-check that an `encoding` parameter is within the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo);
+otherwise this throws a `LookupError` exception
         """
         try:
             codecs.lookup(encoding)
@@ -435,7 +479,7 @@ must be a file name (str) or a path object (not a URL) to a local file reference
 serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins – excluding the `"json-ld"` format; otherwise this throws a `TypeError` exception
 
     base:
-logical URI to use as the document base; if not specified the document location is used
+logical URI to use as the document base; if not specified, the document location gets used
 
     returns:
 this `KnowledgeGraph` object – used for method chaining
@@ -493,7 +537,7 @@ text representation of RDF graph data
 serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins – excluding the `"json-ld"` format; otherwise this throws a `TypeError` exception
 
     base:
-logical URI to use as the document base; if not specified the document location is used
+logical URI to use as the document base; if not specified, the document location gets used
 
     returns:
 this `KnowledgeGraph` object – used for method chaining
@@ -532,7 +576,7 @@ This traps some edge cases for the `destination` parameter in RDFlib which had b
 must be a file name (str) or a path object (not a URL) to a local file reference; or a [*writable, bytes-like object*](https://docs.python.org/3/glossary.html#term-bytes-like-object); otherwise this throws a `TypeError` exception
 
     format:
-serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins – excluding the `"json-ld"` format; otherwise this throws a `TypeError` exception
+serialization format, which defaults to Turtle triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins – excluding the `"json-ld"` format; otherwise this throws a `TypeError` exception
 
     base:
 optional base set for the graph
@@ -592,7 +636,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
 Wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to a string.
 
     format:
-serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins; otherwise this throws a `TypeError` exception
+serialization format, which defaults to Turtle triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins; otherwise this throws a `TypeError` exception
 
     base:
 optional base set for the graph
@@ -639,7 +683,7 @@ Note: this adds relations to an RDF graph, it does not overwrite the existing RD
 must be a file name (str) or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object); otherwise this throws a `TypeError` exception
 
     encoding:
-text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
+text encoding value, which defaults to `"utf-8"`; must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
 
     returns:
 this `KnowledgeGraph` object – used for method chaining
@@ -678,7 +722,7 @@ This traps some edge cases for the `destination` parameter in RDFlib which had b
 must be a file name (str) or a path object (not a URL) to a local file reference; or a [*writable, bytes-like object*](https://docs.python.org/3/glossary.html#term-bytes-like-object); otherwise this throws a `TypeError` exception
 
     encoding:
-text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
+text encoding value, which defaults to `"utf-8"`; must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
         """
         # error checking for a file-like object `path` paramter
         if hasattr(path, "write"):
@@ -711,7 +755,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
 Wrapper for [`csvwlib`](https://github.com/DerwenAI/csvwlib) which parses a CSV file from the `path` source, then converts to RDF and merges into this RDF graph.
 
     url:
-must be a URL as a str
+must be a URL represented as a string
 
     returns:
 this `KnowledgeGraph` object – used for method chaining
@@ -724,6 +768,12 @@ this `KnowledgeGraph` object – used for method chaining
         return self.load_rdf_text(new_rdf)
 
 
+    _PARQUET_COL_NAMES: typing.List[str] = [
+        "subject",
+        "predicate",
+        "object"
+    ]
+
     def load_parquet (
         self,
         path: IOPathLike,
@@ -731,6 +781,7 @@ this `KnowledgeGraph` object – used for method chaining
         ) -> "KnowledgeGraph":
         """
 Wrapper for [`pandas.read_parquet()`](https://pandas.pydata.org/docs/reference/api/pandas.read_parquet.html?highlight=read_parquet#pandas.read_parquet) which parses an RDF graph represented as a [Parquet](https://parquet.apache.org/) file, using the [`pyarrow`](https://arrow.apache.org/) engine.
+Uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled.
 
 To prepare for upcoming **kglab** features, **this is the preferred method for deserializing an RDF graph.**
 
@@ -742,14 +793,22 @@ must be a file name (str), path object to a local file reference, or a [*readabl
     returns:
 this `KnowledgeGraph` object – used for method chaining
         """
-        df = pd.read_parquet(
-            path,
-            **chocolate.filter_args(kwargs, pd.read_parquet)
-        )
+        if self.use_gpus:
+            df = cudf.read_parquet(
+                path,
+                **chocolate.filter_args(kwargs, pd.read_parquet)
+            ).to_pandas()
 
-        for _, row in df.iterrows():
-            triple = "{} {} {} .".format(row[0], row[1], row[2])
-            self._g.parse(data=triple, format="ttl")
+        else:
+            df = pd.read_parquet(
+                path,
+                **chocolate.filter_args(kwargs, pd.read_parquet)
+            )
+
+        df.apply(
+            lambda row: self._g.parse(data="{} {} {} .".format(row[0], row[1], row[2]), format="ttl"),
+            axis=1,
+        )
 
         return self
 
@@ -764,6 +823,7 @@ this `KnowledgeGraph` object – used for method chaining
         ) -> None:
         """
 Wrapper for [`pandas.to_parquet()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_parquet.html?highlight=to_parquet) which serializes an RDF graph to a [Parquet](https://parquet.apache.org/) file, using the [`pyarrow`](https://arrow.apache.org/) engine.
+Uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled.
 
 To prepare for upcoming **kglab** features, **this is the preferred method for serializing an RDF graph.**
 
@@ -774,10 +834,21 @@ must be a file name (str), path object to a local file reference, or a [*writabl
 name of the compression algorithm to use; defaults to `"snappy"`; can also be `"gzip"`, `"brotli"`, or `None` for no compression
 
     storage_options:
-extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) for cloud storage access; **NOT USED UNTIL `pandas` 1.2.x becomes stable
+extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) for cloud storage access; **NOT USED** until `pandas` 1.2.x becomes stable across platforms and also RAPIDS provides support
         """
-        rows_list = [ {"s": s.n3(), "p": p.n3(), "o": o.n3()} for s, p, o in self._g ]
-        df = pd.DataFrame(rows_list, columns=("s", "p", "o"))
+        rows_list: typing.List[dict] = [
+            {
+                self._PARQUET_COL_NAMES[0]: s.n3(),
+                self._PARQUET_COL_NAMES[1]: p.n3(),
+                self._PARQUET_COL_NAMES[2]: o.n3(),
+            }
+            for s, p, o in self._g
+        ]
+
+        if self.use_gpus:
+            df = cudf.DataFrame(rows_list, columns=self._PARQUET_COL_NAMES)
+        else:
+            df = pd.DataFrame(rows_list, columns=self._PARQUET_COL_NAMES)
 
         df.to_parquet(
             path,
@@ -831,7 +902,12 @@ flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io
     returns:
 a dictionary of serialized row bindings
         """
-        return { k: self.n3fy(v, pythonify=pythonify) for k, v in row_dict.items() }
+        bindings = {
+            k: self.n3fy(v, pythonify=pythonify)
+            for k, v in row_dict.items()
+        }
+
+        return bindings
 
 
     ######################################################################
@@ -889,7 +965,7 @@ convert terms in each row of the result set into a readable representation for e
 convert instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
 
     returns:
-the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
+the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html); uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled
         """
         if not bindings:
             bindings = {}
@@ -897,11 +973,16 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
         row_iter = self._g.query(sparql, initBindings=bindings)
 
         if simplify:
-            rows = [ self.n3fy_row(r.asdict(), pythonify=pythonify) for r in row_iter ]
+            rows_list = [ self.n3fy_row(r.asdict(), pythonify=pythonify) for r in row_iter ]
         else:
-            rows = [ r.asdict() for r in row_iter ]
+            rows_list = [ r.asdict() for r in row_iter ]
 
-        return pd.DataFrame(rows)
+        if self.use_gpus:
+            df = cudf.DataFrame(rows_list)
+        else:
+            df = pd.DataFrame(rows_list)
+
+        return df
 
 
     ######################################################################
@@ -939,7 +1020,7 @@ RDF format, if the `ont_graph` parameter is a text representation of the extra o
 enable advanced SHACL features
 
     inference:
-prior to validation, run OWL2 RL profile-based expansion of the RDF graph based on [OWL-RL](https://github.com/RDFLib/OWL-RL); `"rdfs"`, `"owlrl"`, `"both"`, `None`
+prior to validation, run OWL2 RL profile-based expansion of the RDF graph based on [OWL-RL](https://github.com/RDFLib/OWL-RL); values: `"rdfs"`, `"owlrl"`, `"both"`, `None`
 
     inplace:
 when enabled, do not clone the RDF graph prior to inference/expansion, just manipulate it in-place
@@ -948,7 +1029,7 @@ when enabled, do not clone the RDF graph prior to inference/expansion, just mani
 abort validation on the first error
 
     returns:
-a tuple of `conforms` (RDF graph passes the validation rules); `report_graph` (report as a `KnowledgeGraph` object); `report_text` (report formatted as text)
+a tuple of `conforms` (RDF graph passes the validation rules) + `report_graph` (report as a `KnowledgeGraph` object) + `report_text` (report formatted as text)
         """
         conforms, report_graph_data, report_text = pyshacl.validate(
             self._g,

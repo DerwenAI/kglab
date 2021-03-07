@@ -29,6 +29,11 @@ count of available GPUs
     return gpu_count
 
 
+if get_gpu_count() > 0:
+    import cudf  # type: ignore # pylint: disable=E0401
+
+
+
 def calc_quantile_bins (
     num_rows: int
     ) -> np.ndarray:
@@ -48,6 +53,8 @@ the calculated bins, as a [`numpy.ndarray`](https://numpy.org/doc/stable/referen
 def stripe_column (
     values: list,
     bins: int,
+    *,
+    use_gpus: bool = False,
     ) -> np.ndarray:
     """
 Stripe a column in a dataframe, by interpolating quantiles into a set of discrete indexes.
@@ -58,10 +65,17 @@ list of values to stripe
     bins:
 quantile bins; see [`calc_quantile_bins()`](#calc_quantile_bins-function)
 
+    use_gpus:
+optionally, use the NVidia GPU devices with the [RAPIDS libraries](https://rapids.ai/) if these libraries have been installed and the devices are available; defaults to `False`
+
     returns:
-the striped column values, as a [`numpy.ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html)
+the striped column values, as a [`numpy.ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html); uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled
     """
-    s = pd.Series(values)
+    if use_gpus:
+        s = cudf.Series(values)
+    else:
+        s = pd.Series(values)
+
     q = s.quantile(bins, interpolation="nearest")
 
     try:
