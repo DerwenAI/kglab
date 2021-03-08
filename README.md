@@ -129,6 +129,7 @@ this library.
 
 Many thanks to our contributors:
 [@ceteri](https://github.com/ceteri),
+[@gauravjaglan](https://github.com/gauravjaglan),
 [@louisguitton](https://github.com/louisguitton),
 [@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247),

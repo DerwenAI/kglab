@@ -9,6 +9,7 @@
   * `build_nx_graph()` now requires a `networkx.DiGraph` directed graph as an argument
   * add DOI to README, CITATION, and docs
   * add contributor instructions
+  * neo4j integration via `neosemantics`; kudos @gauravjaglan
   * replace `GPUtil` with `pynvml` as recommended by NVidia; kudos @kingmesal
   * option to enable NVidia GPU use, if devices are available and libaries are installed
   * using `cuDF`/`cuGraph` in lieu of `pandas`/`networkx` where possible; kudos @BradReesWork
