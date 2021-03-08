@@ -60,7 +60,7 @@ an [`rdflib.Graph`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?
     u = urllib.parse.urlparse(host)
     netloc = "{}:{}".format(u.netloc, port)
     path = "/rdf/{}/cypher".format(dbname)
-    url = urllib.parse.urlunparse(u.scheme, netloc, path, "", "", "")
+    url = urllib.parse.urlunparse((u.scheme, netloc, path, "", "", "",))
 
     try:
         response = requests.post(
@@ -86,6 +86,6 @@ if __name__ == "__main__":
         username = "user",
         password = "pswd",
         dbname = "rdfdb",
-        ip = "localhost",
+        host = "localhost",
         port = "7474",
         )
