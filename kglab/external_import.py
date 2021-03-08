@@ -1,22 +1,91 @@
-"""Provide support for importing rdf data from multiple existing graph databases preferable triplestores: Neo4J(neosemantics), Ontotext-GraphDB, Blazegraph, Dstastax"""
-import requests
-import json
-import rdflib
+"""
+Provide support for importing RDF data from multiple existing graph
+databases, preferrably triplestores:
 
-#NEO4J support - tested with ~10GB of stored triples
-def import_from_neo4j(user, pswd,dbname,ip = "localhost", port = "7474"  ):
-    #url = 'http://localhost:7474/rdf/dbname/cypher'
-    url = "http://"+ip+":"+port+"/rdf/"+dbname+"/cypher"
-    cypher = 'Match (n)-[r]->(m) Return n,r,m;'#Get all entities and properties in neosemantics(RDF triples)
-    payload = { 'cypher' : cypher , 'format' : 'RDF/XML' }
+  * neo4j
+  * Ontotext-GraphDB
+  * Blazegraph
+  * DataStax
+"""
+
+import json
+import requests
+import rdflib  # type: ignore
+import urllib.parse
+
+
+def import_from_neo4j (
+    username: str,
+    password: str,
+    dbname: str,
+    host: str = "localhost",
+    port: str = "7474"
+    ) -> rdflib.Graph:
+    """
+Wrapper for a
+[`Cypher`](https://neo4j.com/labs/neosemantics/tutorial/#_using_the_cypher_n10s_rdf_export_procedure)
+export request, to provide neo4j integration through the
+[`neosemantics`](https://neo4j.com/labs/neosemantics/) library.
+
+Tested with ~10GB of stored triples.
+
+    username:
+the user name, as a string
+
+    password:
+the password, as a string
+
+    dbname:
+the database name, as a string
+
+    host:
+optionally, the neo4j server domain name or IP address, as a string – including the protocol scheme; defaults to `"http://localhost"`
+
+    port:
+optionally, the neo4j server port; defaults to `"7474"`
+
+    returns:
+an [`rdflib.Graph`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=graph#graph) object parsed from the exported RDF
+    """
+    # get all of the entities and properties via `neosemantics`
+    # exported as RDF triples
+    cypher = "Match (n)-[r]->(m) Return n,r,m;"
+
+    payload = {
+        "cypher": cypher,
+        "format": "RDF/XML",
+        }
+
+    # construct the export URL
+    u = urllib.parse.urlparse(host)
+    netloc = "{}:{}".format(u.netloc, port)
+    path = "/rdf/{}/cypher".format(dbname)
+    url = urllib.parse.urlunparse(u.scheme, netloc, path, "", "", "")
 
     try:
-        response = requests.post(url, auth=(user, pswd), data = json.dumps(payload))
-        response.raise_for_status()  # raise an error on unsuccessful status codes
-    except Exception as e:
-        print("Exception Found: ",e )
+        response = requests.post(
+            url,
+            auth = (username, password),
+            data = json.dumps(payload),
+            )
 
-    g=rdflib.Graph()
-    return g.parse(data=response.text)
-  
-# graph = import_from_neo4j("user", "pswd", "rdfdb",ip = "localhost", port = "7474" )
+        # raise an error on unsuccessful status codes
+        response.raise_for_status()
+    except Exception as e:  # pylint: disable=W0703
+        print("neo4j import: ", e)
+
+    g = rdflib.Graph().parse(data=response.text)
+    return g
+
+
+######################################################################
+## main entry point
+
+if __name__ == "__main__":
+    graph = import_from_neo4j(
+        username = "user",
+        password = "pswd",
+        dbname = "rdfdb",
+        ip = "localhost",
+        port = "7474",
+        )

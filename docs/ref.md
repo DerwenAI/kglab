@@ -1371,6 +1371,40 @@ count of available GPUs
 
 
 ---
+#### [`import_from_neo4j` function](#kglab.import_from_neo4j)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/external_import.py#L17)
+
+```python
+import_from_neo4j(username, password, dbname, host="localhost", port="7474")
+```
+Wrapper for a
+[`Cypher`](https://neo4j.com/labs/neosemantics/tutorial/#_using_the_cypher_n10s_rdf_export_procedure)
+export request, to provide neo4j integration through the
+[`neosemantics`](https://neo4j.com/labs/neosemantics/) library.
+
+Tested with ~10GB of stored triples.
+
+  * `username` : `str`  
+the user name, as a string
+
+  * `password` : `str`  
+the password, as a string
+
+  * `dbname` : `str`  
+the database name, as a string
+
+  * `host` : `str`  
+optionally, the neo4j server domain name or IP address, as a string – including the protocol scheme; defaults to `"http://localhost"`
+
+  * `port` : `str`  
+optionally, the neo4j server port; defaults to `"7474"`
+
+  * *returns* : `rdflib.graph.Graph`  
+an [`rdflib.Graph`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=graph#graph) object parsed from the exported RDF
+
+
+
+---
 #### [`root_mean_square` function](#kglab.root_mean_square)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L90)
 
