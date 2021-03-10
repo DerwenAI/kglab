@@ -170,7 +170,9 @@ an optional map to override the  `subject` and `object` bindings expected in the
 
 
     def build_df (
-        self
+        self,
+        *,
+        show_symbols: bool = False,
         ) -> pd.DataFrame:
         """
 Factory pattern to populate a [`pandas.DataFrame`](https://pandas.pydata.org/docs/reference/frame.html) object, using transforms in this subgraph.
@@ -178,20 +180,35 @@ Factory pattern to populate a [`pandas.DataFrame`](https://pandas.pydata.org/doc
 Note: this method is primarily intended for [`cuGraph`](https://docs.rapids.ai/api/cugraph/stable/) support. Loading via a `DataFrame` is required – in lieu of using the `nx.add_node()` approach.
 Therefore the support for representing *bipartite* graphs is still pending.
 
+    show_symbols:
+optionally, include the symbolic representation for each node; defaults to `False`
+
     returns:
 the populated `DataFrame` object; uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled
         """
-        rows_list: typing.List[dict] = [
-            {
-                "src": self.n3fy(row[self.src_dst[0]]),
-                "dst": self.n3fy(row[self.src_dst[1]]),
-                "s_id": self.transform(row[self.src_dst[0]]),
-                "d_id": self.transform(row[self.src_dst[1]]),
-            }
-            for row in self.kg.query(self.sparql, bindings=self.bindings)
-            ]
+        col_names: typing.List[str] = [ "src", "dst", "src_sym", "dst_sym" ]
+        row_iter = self.kg.query(self.sparql, bindings=self.bindings)
 
-        col_names: typing.List[str] = [ "src", "dst", "s_id", "d_id" ]
+        if not show_symbols:
+            col_names = col_names[:2]
+
+            rows_list: typing.List[dict] = [
+                {
+                    col_names[0]: self.transform(row[self.src_dst[0]]),
+                    col_names[1]: self.transform(row[self.src_dst[1]]),
+                }
+                for row in row_iter
+                ]
+        else:
+            rows_list = [
+                {
+                    col_names[0]: self.transform(row[self.src_dst[0]]),
+                    col_names[1]: self.transform(row[self.src_dst[1]]),
+                    col_names[2]: self.n3fy(row[self.src_dst[0]]),
+                    col_names[3]: self.n3fy(row[self.src_dst[1]]),
+                }
+                for row in row_iter
+                ]
 
         if self.kg.use_gpus:
             df = cudf.DataFrame(rows_list, columns=col_names)
