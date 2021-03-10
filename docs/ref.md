@@ -820,12 +820,15 @@ an optional map to override the  `subject` and `object` bindings expected in the
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L172)
 
 ```python
-build_df()
+build_df(show_symbols=False)
 ```
 Factory pattern to populate a [`pandas.DataFrame`](https://pandas.pydata.org/docs/reference/frame.html) object, using transforms in this subgraph.
 
 Note: this method is primarily intended for [`cuGraph`](https://docs.rapids.ai/api/cugraph/stable/) support. Loading via a `DataFrame` is required – in lieu of using the `nx.add_node()` approach.
 Therefore the support for representing *bipartite* graphs is still pending.
+
+  * `show_symbols` : `bool`  
+optionally, include the symbolic representation for each node; defaults to `False`
 
   * *returns* : `pandas.core.frame.DataFrame`  
 the populated `DataFrame` object; uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled
@@ -834,7 +837,7 @@ the populated `DataFrame` object; uses the [RAPIDS `cuDF` library](https://docs.
 
 ---
 #### [`build_nx_graph` method](#kglab.SubgraphMatrix.build_nx_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L204)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L221)
 
 ```python
 build_nx_graph(nx_graph, bipartite=False)
@@ -855,7 +858,7 @@ the populated `NetworkX` graph object; uses the [RAPIDS `cuGraph` library](https
 
 ---
 #### [`build_ig_graph` method](#kglab.SubgraphMatrix.build_ig_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L246)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L263)
 
 ```python
 build_ig_graph(ig_graph)
@@ -881,7 +884,7 @@ Typical use cases include integration with non-RDF graph libraries for *visualiz
     
 ---
 #### [`__init__` method](#kglab.SubgraphTensor.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L284)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L301)
 
 ```python
 __init__(kg, excludes=None)
@@ -899,7 +902,7 @@ a list of RDF predicates to exclude from projection into the *subgraph*
 
 ---
 #### [`as_tuples` method](#kglab.SubgraphTensor.as_tuples)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L308)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L325)
 
 ```python
 as_tuples()
@@ -914,7 +917,7 @@ the RDF triples within the subgraph
 
 ---
 #### [`pyvis_style_node` method](#kglab.SubgraphTensor.pyvis_style_node)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L331)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L348)
 
 ```python
 pyvis_style_node(pyvis_graph, node_id, label, style=None)
@@ -937,7 +940,7 @@ optional style dictionary
 
 ---
 #### [`build_pyvis_graph` method](#kglab.SubgraphTensor.build_pyvis_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L375)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L392)
 
 ```python
 build_pyvis_graph(notebook=False, style=None)

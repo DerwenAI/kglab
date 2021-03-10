@@ -232,15 +232,15 @@ Describe the *namespaces* used in this RDF graph.
     returns:
 a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) describing the namespaces in this RDF graph; uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled
         """
+        col_names: typing.List[str] = [ "prefix", "namespace" ]
+
         rows_list: typing.List[dict] = [
             {
-                "prefix": prefix,
-                "namespace": str(ns),
+                col_names[0]: prefix,
+                col_names[1]: str(ns),
             }
             for prefix, ns in self._ns.items()
         ]
-
-        col_names: typing.List[str] = [ "prefix", "namespace" ]
 
         if self.use_gpus:
             df = cudf.DataFrame(rows_list, columns=col_names)
