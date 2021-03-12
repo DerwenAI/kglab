@@ -82,9 +82,8 @@ if __name__ == "__main__":
             "Topic :: Text Processing :: Indexing",
             ],
 
-        url = "https://github.com/DerwenAI/kglab",
+        url = "https://derwen.ai/docs/kgl/",
         project_urls = {
-            "Documentation": "https://derwen.ai/docs/kgl/",
             "Source Code": "https://github.com/DerwenAI/kglab",
             "Issue Tracker": "https://github.com/DerwenAI/kglab/issues",
             "Community Survey": "https://forms.gle/FMHgtmxHYWocprMn6",
