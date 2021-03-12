@@ -2,7 +2,7 @@
 
 ## 0.2.1
 
-2021-03-??
+2021-03-12
 
   * tutorial proofreading and corrections; kudos @louisguitton
   * better exception handling for RDF construction, parsing, serialization
