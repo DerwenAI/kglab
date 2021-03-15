@@ -54,9 +54,7 @@ print("nodes: {}\n".format(measure.get_node_count()))
 
 # serialize as a string in "Turtle" TTL format
 ttl = kg.save_rdf_text()
-print("```")
 print(ttl[:999])
-print("```")
 ```
 
 See the **tutorial notebooks** in the `examples` subdirectory for
@@ -66,27 +64,18 @@ graph libraries in Python:
 
 
 <details>
-  <summary>Semantic Versioning</summary>
-Before **kglab** reaches release `v1.0.0` the types and classes may
-undergo substantial changes and the project is not guaranteed to have
-a consistent API.
-Even so, we'll try to minimize breaking changes and also be sure
-to provide careful notes in the
-[`changelog.txt`](https://github.com/DerwenAI/kglab/blob/main/changelog.txt)
-file.
-</details>
-
-<details>
   <summary>Contributing Code</summary>
+
 We welcome people getting involved as contributors to this open source
 project!
-Please see the
-[`CONTRIBUTING.md`](https://github.com/DerwenAI/kglab/blob/main/CONTRIBUTING.md)
-file for instructions.
+
+For detailed instructions please see:
+[CONTRIBUTING.md](https://github.com/DerwenAI/kglab/blob/main/CONTRIBUTING.md)
 </details>
 
 <details>
   <summary>Build Instructions</summary>
+
 <strong>
 Note: unless you are contributing code and updates,
 in most use cases won't need to build this package locally.
@@ -101,10 +90,24 @@ To set up the build environment locally, see the
 section of the online documentation.
 </details>
 
+<details>
+  <summary>Semantic Versioning</summary>
+
+Before <strong>kglab</strong> reaches release <code>v1.0.0</code> the 
+types and classes may undergo substantial changes and the project is 
+not guaranteed to have a consistent API.
+
+Even so, we'll try to minimize breaking changes.
+We'll also be sure to provide careful notes.
+
+See:
+[changelog.txt](https://github.com/DerwenAI/kglab/blob/main/changelog.txt)
+</details>
+
 <img
  alt="illustration of a knowledge graph, plus laboratory glassware"
  src="https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/assets/logo.png"
- width="300"
+ width="231"
  />
 
 
@@ -124,7 +127,7 @@ it in your research or software.
 Citations are helpful for the continued development and maintenance of
 this library.
 
-```
+```bibtex
 @software{kglab,
   author = {Paco Nathan},
   title = {{kglab: a simple abstraction layer in Python for building knowledge graphs}},
