@@ -1,5 +1,12 @@
 # `kglab` changelog
 
+## 0.2.2
+
+2021-03-??
+
+  * add conda `environment.yml` plus instructions
+
+
 ## 0.2.1
 
 2021-03-12

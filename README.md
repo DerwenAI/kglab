@@ -10,7 +10,7 @@ Welcome to *graph-based data science*:
 <https://derwen.ai/docs/kgl/>
 
 The **kglab** library provides a simple abstraction layer in Python
-for building knowledge graphs.
+3.6+ for building knowledge graphs.
 
 > **SPECIAL REQUEST**:   
 > Which features would you like in an open source Python library for building knowledge graphs?  
@@ -35,7 +35,13 @@ dependencies as well:
 pip install -r requirements.txt
 ```
 
-Then to use the library with a simple use case:
+Alternatively, to install dependencies using `conda`:
+```
+conda env create -f environment.yml
+conda activate kglab
+```
+
+Then to run some simple uses of this library:
 ```python
 import kglab
 
@@ -83,7 +89,7 @@ in most use cases won't need to build this package locally.
 
 Instead, simply install from
 [PyPi](https://pypi.python.org/pypi/kglab)
-or [Conda](https://docs.conda.io/).
+or use [Conda](https://docs.conda.io/).
 
 To set up the build environment locally, see the 
 ["Build Instructions"](https://derwen.ai/docs/kgl/build/)

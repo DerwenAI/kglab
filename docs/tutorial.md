@@ -33,30 +33,41 @@ come in handy.
 ## Installation
 
 You can run the notebooks locally on a recent laptop.
-First clone the Git repository and install the dependencies:
+First clone the Git repository:
 ```
 git clone https://github.com/DerwenAI/kglab.git
 cd kglab
+```
+
+To install the dependencies using `pip`:
+```
 pip install -r requirements.txt
+```
+
+Alternatively, to install the dependencies using `conda`:
+```
+conda env create -f environment.yml
+conda activate kglab
 ```
 
 Also make sure to install
 [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/).
-To install using `conda`:
-```
-conda install -c conda-forge jupyterlab
-```
-
-Or if you use `pip` you can install it with:
+To install using `pip`:
 ```
 pip install jupyterlab
 ```
 
-For installing via `pip install --user` you must add the user-level
-bin directory to your `PATH` environment variable in order to launch
-JupyterLab.
-If you're using a Unix derivative (FreeBSD, GNU/Linux, OS X), you can 
-achieve this by using the `export PATH="$HOME/.local/bin:$PATH"` command.
+Or if you use `conda` you can install it with:
+```
+conda install -c conda-forge jupyterlab
+```
+
+Note: for installing via `pip install --user` you must add the
+user-level `bin` directory to your `PATH` environment variable in
+order to launch JupyterLab.
+If you're using a Unix derivative (FreeBSD, GNU/Linux, OS X), you can
+achieve this by using the `export PATH="$HOME/.local/bin:$PATH"`
+command.
 
 Once installed, launch JupyterLab with:
 ```
