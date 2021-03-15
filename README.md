@@ -6,11 +6,11 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DerwenAI/kglab?style=plastic)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 
-The **kglab** library provides a simple abstraction layer in Python
-for building knowledge graphs.
-
 Welcome to *graph-based data science*:
 <https://derwen.ai/docs/kgl/>
+
+The **kglab** library provides a simple abstraction layer in Python
+for building knowledge graphs.
 
 > **SPECIAL REQUEST**:   
 > Which features would you like in an open source Python library for building knowledge graphs?  
@@ -25,13 +25,13 @@ See the ["Getting Started"](https://derwen.ai/docs/kgl/start/)
 section of the online documentation.
 
 To install from [PyPi](https://pypi.python.org/pypi/kglab):
-```bash
+```
 pip install kglab
 ```
 
 If you work directly from this Git repo, be sure to install the 
 dependencies as well:
-```bash
+```
 pip install -r requirements.txt
 ```
 
@@ -65,27 +65,32 @@ graph libraries in Python:
 <https://derwen.ai/docs/kgl/tutorial/>
 
 
-## Semantic Versioning
-
+<details>
+  <summary>Semantic Versioning</summary>
 Before **kglab** reaches release `v1.0.0` the types and classes may
 undergo substantial changes and the project is not guaranteed to have
 a consistent API.
-Even so, we will try to minimize breaking changes and provide careful
-notes in the `changelog.txt` file.
+Even so, we'll try to minimize breaking changes and also be sure
+to provide careful notes in the
+[`changelog.txt`](https://github.com/DerwenAI/kglab/blob/main/changelog.txt)
+file.
+</details>
 
-
-## Contributing Code
-
+<details>
+  <summary>Contributing Code</summary>
 We welcome people getting involved as contributors to this open source
 project!
 Please see the
-[CONTRIBUTING.md](https://github.com/DerwenAI/kglab/blob/main/CONTRIBUTING.md)
+[`CONTRIBUTING.md`](https://github.com/DerwenAI/kglab/blob/main/CONTRIBUTING.md)
 file for instructions.
+</details>
 
 <details>
-<summary>Need instructions for builing this code locally?</summary>
-**Note: unless you are contributing code and updates,
-in most use cases won't need to build this package locally.**
+  <summary>Build Instructions</summary>
+<strong>
+Note: unless you are contributing code and updates,
+in most use cases won't need to build this package locally.
+</strong>
 
 Instead, simply install from
 [PyPi](https://pypi.python.org/pypi/kglab)
@@ -94,9 +99,13 @@ or [Conda](https://docs.conda.io/).
 To set up the build environment locally, see the 
 ["Build Instructions"](https://derwen.ai/docs/kgl/build/)
 section of the online documentation.
-</summary>
+</details>
 
-![illustration of a knowledge graph, plus laboratory glassware](https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/assets/logo.png)
+<img
+ alt="illustration of a knowledge graph, plus laboratory glassware"
+ src="https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/assets/logo.png"
+ width="300"
+ />
 
 
 ## License and Copyright
