@@ -1,14 +1,16 @@
 # kglab
 
 [![DOI](https://zenodo.org/badge/307214458.svg)](https://zenodo.org/badge/latestdoi/307214458)
+![Licence](https://img.shields.io/github/license/DerwenAI/kglab)
+![Repo size](https://img.shields.io/github/repo-size/DerwenAI/kglab)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DerwenAI/kglab?style=plastic)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 
-The **kglab** library provides a simple abstraction layer in Python
-for building knowledge graphs.
-
 Welcome to *graph-based data science*:
 <https://derwen.ai/docs/kgl/>
+
+The **kglab** library provides a simple abstraction layer in Python
+for building knowledge graphs.
 
 > **SPECIAL REQUEST**:   
 > Which features would you like in an open source Python library for building knowledge graphs?  
@@ -34,7 +36,7 @@ pip install -r requirements.txt
 ```
 
 Then to use the library with a simple use case:
-```
+```python
 import kglab
 
 # create a KnowledgeGraph object
@@ -52,9 +54,7 @@ print("nodes: {}\n".format(measure.get_node_count()))
 
 # serialize as a string in "Turtle" TTL format
 ttl = kg.save_rdf_text()
-print("```")
-print(ttl[:999])
-print("```")
+print(ttl)
 ```
 
 See the **tutorial notebooks** in the `examples` subdirectory for
@@ -63,28 +63,23 @@ graph libraries in Python:
 <https://derwen.ai/docs/kgl/tutorial/>
 
 
-## Semantic Versioning
-
-Before **kglab** reaches release `v1.0.0` the types and classes may
-undergo substantial changes and the project is not guaranteed to have
-a consistent API.
-Even so, we will try to minimize breaking changes and provide careful
-notes in the `changelog.txt` file.
-
-
-## Contributing Code
+<details>
+  <summary>Contributing Code</summary>
 
 We welcome people getting involved as contributors to this open source
 project!
-Please see the
+
+For detailed instructions please see:
 [CONTRIBUTING.md](https://github.com/DerwenAI/kglab/blob/main/CONTRIBUTING.md)
-file for instructions.
+</details>
 
+<details>
+  <summary>Build Instructions</summary>
 
-## Build Instructions
-
-**Note: unless you are contributing code and updates,
-in most use cases won't need to build this package locally.**
+<strong>
+Note: unless you are contributing code and updates,
+in most use cases won't need to build this package locally.
+</strong>
 
 Instead, simply install from
 [PyPi](https://pypi.python.org/pypi/kglab)
@@ -93,8 +88,27 @@ or [Conda](https://docs.conda.io/).
 To set up the build environment locally, see the 
 ["Build Instructions"](https://derwen.ai/docs/kgl/build/)
 section of the online documentation.
+</details>
 
-![illustration of a knowledge graph, plus laboratory glassware](https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/assets/logo.png)
+<details>
+  <summary>Semantic Versioning</summary>
+
+Before <strong>kglab</strong> reaches release <code>v1.0.0</code> the 
+types and classes may undergo substantial changes and the project is 
+not guaranteed to have a consistent API.
+
+Even so, we'll try to minimize breaking changes.
+We'll also be sure to provide careful notes.
+
+See:
+[changelog.txt](https://github.com/DerwenAI/kglab/blob/main/changelog.txt)
+</details>
+
+<img
+ alt="illustration of a knowledge graph, plus laboratory glassware"
+ src="https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/assets/logo.png"
+ width="231"
+ />
 
 
 ## License and Copyright
@@ -113,7 +127,7 @@ it in your research or software.
 Citations are helpful for the continued development and maintenance of
 this library.
 
-```
+```bibtex
 @software{kglab,
   author = {Paco Nathan},
   title = {{kglab: a simple abstraction layer in Python for building knowledge graphs}},
