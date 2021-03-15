@@ -54,7 +54,7 @@ print("nodes: {}\n".format(measure.get_node_count()))
 
 # serialize as a string in "Turtle" TTL format
 ttl = kg.save_rdf_text()
-print(ttl[:999])
+print(ttl)
 ```
 
 See the **tutorial notebooks** in the `examples` subdirectory for
