@@ -13,11 +13,17 @@ If you work directly from this Git repo, be sure to install the
 pip install -r requirements.txt
 ```
 
+Alternatively, to install dependencies using `conda`:
+```
+conda env create -f environment.yml
+conda activate kglab
+```
+
 
 ## Sample Usage
 
 To use **kglab** in its simplest form:
-```
+```python
 import kglab
 
 kg = kglab.KnowledgeGraph()
@@ -30,9 +36,7 @@ print("edges: {}\n".format(measure.get_edge_count()))
 print("nodes: {}\n".format(measure.get_node_count()))
 
 ttl = kg.save_rdf_text()
-print("```")
-print(ttl[:999])
-print("```")
+print(ttl)
 ```
 
 
