@@ -1,6 +1,8 @@
 # kglab
 
 [![DOI](https://zenodo.org/badge/307214458.svg)](https://zenodo.org/badge/latestdoi/307214458)
+![Licence](https://img.shields.io/github/license/DerwenAI/kglab)
+![Repo size](https://img.shields.io/github/repo-size/DerwenAI/kglab)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DerwenAI/kglab?style=plastic)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 
@@ -23,18 +25,18 @@ See the ["Getting Started"](https://derwen.ai/docs/kgl/start/)
 section of the online documentation.
 
 To install from [PyPi](https://pypi.python.org/pypi/kglab):
-```
+```bash
 pip install kglab
 ```
 
 If you work directly from this Git repo, be sure to install the 
 dependencies as well:
-```
+```bash
 pip install -r requirements.txt
 ```
 
 Then to use the library with a simple use case:
-```
+```python
 import kglab
 
 # create a KnowledgeGraph object
@@ -80,9 +82,8 @@ Please see the
 [CONTRIBUTING.md](https://github.com/DerwenAI/kglab/blob/main/CONTRIBUTING.md)
 file for instructions.
 
-
-## Build Instructions
-
+<details>
+<summary>Need instructions for builing this code locally?</summary>
 **Note: unless you are contributing code and updates,
 in most use cases won't need to build this package locally.**
 
@@ -93,6 +94,7 @@ or [Conda](https://docs.conda.io/).
 To set up the build environment locally, see the 
 ["Build Instructions"](https://derwen.ai/docs/kgl/build/)
 section of the online documentation.
+</summary>
 
 ![illustration of a knowledge graph, plus laboratory glassware](https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/assets/logo.png)
 
