@@ -147,6 +147,25 @@ this PSL model – use for method chaining
         return self
 
 
+    @classmethod
+    def _raise_model_error (
+        cls,
+        obj: str,
+        msg: str,
+        ) -> None:
+        """
+Semiprivate helper function to format and raise a `ModelError` exception.
+
+    obj:
+name of the object to be reported
+
+    msg:
+the exception message to use
+        """
+        error = "{}: {}".format(msg, obj)
+        raise pslpython.model.ModelError(error)
+
+
     def add_data_row (
         self,
         predicate_name: str,
@@ -179,16 +198,19 @@ this PSL model – use for method chaining
         """
         try:
             predicate = self.model.get_predicate(predicate_name)
-            assert predicate
+
+            if not predicate:
+                self._raise_model_error(predicate_name, "Unknown predicate")
         except:
-            error = "Unknown predicate: {}".format(predicate_name)
-            raise pslpython.model.ModelError(error)
+            self._raise_model_error(predicate_name, "Unknown predicate")
 
         try:
             partition_obj = self._PARTITIONS[partition.lower()]
+
+            if not partition_obj:
+                self._raise_model_error(partition, "Unknown partition")
         except:
-            error = "Unknown partition: {}".format(partition)
-            raise pslpython.model.ModelError(error)
+            self._raise_model_error(partition, "Unknown partition")
 
         if verbose:
             ic(predicate_name, partition, args)
@@ -257,10 +279,11 @@ inferred values as a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/
         """
         try:
             predicate = self.model.get_predicate(predicate_name)
-            assert predicate
+
+            if not predicate:
+                self._raise_model_error(predicate_name, "Unknown predicate")
         except:
-            error = "Unknown predicate: {}".format(predicate_name)
-            raise pslpython.model.ModelError(error)
+            self._raise_model_error(predicate_name, "Unknown predicate")
 
         df = self.results[predicate].copy(deep=True)
         df.insert(0, "predicate", predicate.name())

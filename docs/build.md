@@ -48,7 +48,7 @@ for *security issues*.
 
 To run these tests:
 ```
-bandit -r kglab
+bandit kglab/*.py
 ```
 
 

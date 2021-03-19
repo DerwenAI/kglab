@@ -82,7 +82,7 @@ an [`rdflib.Graph`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?
 ## main entry point
 
 if __name__ == "__main__":
-    graph = import_from_neo4j(
+    graph = import_from_neo4j(  # nosec
         username = "user",
         password = "pswd",
         dbname = "rdfdb",
