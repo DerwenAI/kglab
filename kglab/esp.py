@@ -290,7 +290,7 @@ class ShapeFactory:
         if not type_uri:
             ## RANDOM CHOICE => RL observation?
             ## TODO: generate from gamma dist -- or specify
-            type_uri = random.choice(self.type_list)
+            type_uri = random.choice(self.type_list)  # nosec
 
         type_node = EvoShapeNode(uri=type_uri, terminal=True)
         es.add_link(es.root, rdflib.RDF.type, type_node)

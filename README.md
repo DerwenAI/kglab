@@ -5,6 +5,7 @@
 ![Repo size](https://img.shields.io/github/repo-size/DerwenAI/kglab)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DerwenAI/kglab?style=plastic)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
+[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 
 Welcome to *graph-based data science*:
 <https://derwen.ai/docs/kgl/>
@@ -156,7 +157,6 @@ Many thanks to our contributors:
 plus general support from [Derwen, Inc.](https://github.com/DerwenAI),
 [KFocus](https://kfocus.org/),
 the [NVidia RAPIDS team](https://rapids.ai/),
-[Gradient Flow](https://gradientflow.com/),
 the [KGC Community](https://github.com/KGConf),
 [Connected Data London](https://connected-data.london/),
 and

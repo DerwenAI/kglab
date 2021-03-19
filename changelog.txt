@@ -5,6 +5,7 @@
 2021-03-??
 
   * add conda `environment.yml` plus instructions
+  * use `bandit` to check for security issues
 
 
 ## 0.2.1
