@@ -41,6 +41,17 @@ pylint kglab/*.py
 ```
 
 
+## Security Issues
+
+This project uses [`bandit`](https://bandit.readthedocs.io/) to check
+for *security issues*.
+
+To run these tests:
+```
+bandit -r kglab
+```
+
+
 ## Test Coverage
 
 This project uses `unittest` and 

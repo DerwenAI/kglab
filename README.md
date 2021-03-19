@@ -156,7 +156,6 @@ Many thanks to our contributors:
 plus general support from [Derwen, Inc.](https://github.com/DerwenAI),
 [KFocus](https://kfocus.org/),
 the [NVidia RAPIDS team](https://rapids.ai/),
-[Gradient Flow](https://gradientflow.com/),
 the [KGC Community](https://github.com/KGConf),
 [Connected Data London](https://connected-data.london/),
 and
