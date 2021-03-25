@@ -1,7 +1,8 @@
+# type: ignore
+
 import importlib.util
 import pathlib
 import setuptools
-import sys
 import typing
 
 
@@ -41,16 +42,16 @@ if __name__ == "__main__":
     spec = importlib.util.spec_from_file_location("kglab.version", "kglab/version.py")
     kglab_version = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(kglab_version)
-    kglab_version._check_version()
+    kglab_version._check_version()  # pylint: disable=W0212
 
     base_packages = parse_requirements_file("requirements.txt")
-    docs_packages = parse_requirements_file("requirements_build.txt")
+    docs_packages = parse_requirements_file("requirements-dev.txt")
 
     setuptools.setup(
         name = "kglab",
         version = kglab_version.__version__,
 
-        python_requires = ">=" + kglab_version._versify(kglab_version.MIN_PY_VERSION),
+        python_requires = ">=" + kglab_version._versify(kglab_version.MIN_PY_VERSION),  # pylint: disable=W0212
         packages = setuptools.find_packages(exclude=[ "docs", "examples" ]),
         install_requires = base_packages,
         extras_require = {

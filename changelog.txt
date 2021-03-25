@@ -6,6 +6,7 @@
 
   * add conda `environment.yml` plus instructions
   * use `bandit` to check for security issues
+  * add `pre-commit` hooks
 
 
 ## 0.2.1
@@ -19,7 +20,7 @@
   * add contributor instructions
   * neo4j integration via `neosemantics`; kudos @gauravjaglan
   * replace `GPUtil` with `pynvml` as recommended by NVidia; kudos @kingmesal
-  * option to enable NVidia GPU use, if devices are available and libaries are installed
+  * option to enable NVidia GPU use, if devices are available and libraries are installed
   * using `cuDF`/`cuGraph` in lieu of `pandas`/`networkx` where possible; kudos @BradReesWork
 
 
@@ -70,7 +71,7 @@
 2021-01-04
 
   * renamed serialization methods, e.g., `save_ttl()` -- **WILL BREAK THINGS**
-  * impl `load_rdf_text()` and `save_rdf_text()` to De/Ser as text
+  * impl `load_rdf_text()` and `save_rdf_text()` to deserialize/serialize as text
   * type checking based on `typing` and `mypy`
   * corrected the `networkx` examples to use `DiGraph` for directed graphs
   * generated `meta.yml` for conda support
