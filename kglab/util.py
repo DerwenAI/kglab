@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# see license https://github.com/DerwenAI/kglab#license-and-copyright
 
 ######################################################################
 ## utilities
 
 import math
-import numpy as np  # type: ignore
-import pandas as pd  # type: ignore
+import numpy as np  # type: ignore  # pylint: disable=E0401
+import pandas as pd  # type: ignore  # pylint: disable=E0401
 
 
 def get_gpu_count () -> int:
@@ -19,7 +20,7 @@ bindings are difficult for Python libraries to keep updated.
 count of available GPUs
     """
     try:
-        import pynvml  # type: ignore
+        import pynvml  # type: ignore  # pylint: disable=E0401
         pynvml.nvmlInit()
 
         gpu_count = pynvml.nvmlDeviceGetCount()
@@ -99,6 +100,6 @@ list of values to use in the RMS calculation
     returns:
 RMS metric as a float
     """
-    numer = sum(map(lambda x: float(x)**2.0, values))
-    denom = float(len(values))
-    return math.sqrt(numer / denom)
+    s = sum(map(lambda x: float(x)**2.0, values))
+    n = float(len(values))
+    return math.sqrt(s / n)

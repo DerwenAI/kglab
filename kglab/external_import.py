@@ -1,6 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# see license https://github.com/DerwenAI/kglab#license-and-copyright
+
 """
 Provide support for importing RDF data from multiple existing graph
-databases, preferrably triplestores:
+databases, preferably triplestores:
 
   * neo4j
   * Ontotext-GraphDB
@@ -9,8 +13,8 @@ databases, preferrably triplestores:
 """
 
 import json
-import requests
-import rdflib  # type: ignore
+import requests  # pylint: disable=E0401
+import rdflib  # type: ignore  # pylint: disable=E0401
 import urllib.parse
 
 

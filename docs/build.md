@@ -12,20 +12,25 @@ simply install based on the instructions in
 
 To set up the build environment locally:
 ```
-pip install -r requirements_build.txt
+python3 -m pip install -r requirements-dev.txt
 ```
 
-You will also need to download
-[`ChromeDriver`](https://chromedriver.chromium.org/downloads) 
-for your version of the `Chrome` brower, saved as `chromedriver` in this directory.
+We use *pre-commit hooks* based on [`pre-commit`](https://pre-commit.com/)
+and to configure that locally:
+```
+pre-commit install
+git config --local core.hooksPath .git/hooks/
+```
 
 
 ## Type Checking
 
-This project uses [`typing`](https://docs.python.org/3/library/typing.html)
-and [`mypy`](https://mypy.readthedocs.io/) for *type checking*.
-
-To run type checking:
+The pre-commit hooks use
+[`typing`](https://docs.python.org/3/library/typing.html)
+and
+[`mypy`](https://mypy.readthedocs.io/)
+for *type checking*.
+To run these tests specifically:
 ```
 mypy kglab/*.py
 ```
@@ -33,20 +38,32 @@ mypy kglab/*.py
 
 ## Code Checking
 
-This project uses [`pylint`](https://www.pylint.org/) for *code checking*.
-
-To run code checking:
+The pre-commit hooks use
+[`pylint`](https://www.pylint.org/)
+for *code checking*.
+To run these tests specifically:
 ```
 pylint kglab/*.py
 ```
 
 
+## Spelling Errors
+
+The pre-commit hooks use
+[`codespell`](https://github.com/codespell-project/codespell)
+to check for *spelling errors*.
+To run these tests specifically:
+```
+codespell kglab/*.py *.md docs/*.md
+```
+
+
 ## Security Issues
 
-This project uses [`bandit`](https://bandit.readthedocs.io/) to check
-for *security issues*.
-
-To run these tests:
+The pre-commit hooks use
+[`bandit`](https://bandit.readthedocs.io/)
+to check for *security issues*.
+To run these tests specifically:
 ```
 bandit kglab/*.py
 ```

@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# see license https://github.com/DerwenAI/kglab#license-and-copyright
 
-import pandas as pd  # type: ignore
+import pandas as pd  # type: ignore  # pylint: disable=E0401
 import pathlib
-import rdflib  # type: ignore
+import rdflib  # type: ignore  # pylint: disable=E0401
 import typing
-import urlpath  # type: ignore
+import urlpath  # type: ignore  # pylint: disable=E0401
 
 
 ######################################################################
