@@ -1,4 +1,5 @@
 bandit
+codespell
 coverage
 flask
 mkdocs-git-revision-date-plugin
@@ -7,7 +8,9 @@ mknotebooks
 mypy
 nbconvert
 notebook
+pre-commit
 pylint
+pytest
 pymdown-extensions
 selenium
 twine
