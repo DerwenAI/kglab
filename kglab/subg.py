@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# see license https://github.com/DerwenAI/kglab#license-and-copyright
 
 ######################################################################
 ## subgraph transforms for visualization, graph algorithms, etc.
@@ -9,14 +10,14 @@ from kglab.topo import Measure
 from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
 from kglab.util import get_gpu_count
 
-import pandas as pd  # type: ignore
-import pyvis.network  # type: ignore
-import networkx as nx  # type: ignore
+import pandas as pd  # type: ignore  # pylint: disable=E0401
+import pyvis.network  # type: ignore  # pylint: disable=E0401
+import networkx as nx  # type: ignore  # pylint: disable=E0401
 import typing
 
 if get_gpu_count() > 0:
-    import cudf  # type: ignore # pylint: disable=E0401
-    import cugraph # type: ignore # pylint: disable=E0401,W0611
+    import cudf  # type: ignore  # pylint: disable=E0401
+    import cugraph # type: ignore  # pylint: disable=E0401,W0611
 
 
 class Subgraph:
@@ -67,14 +68,14 @@ an optional, pre-determined list to pre-load for *label encoding*
         node: NodeLike,
         ) -> int:
         """
-Tranforms a node in an RDF graph to an integer value, as a unique identifier with the closure of a specific use case.
+Transforms a node in an RDF graph to an integer value, as a unique identifier with the closure of a specific use case.
 The integer value can then be used to index into an *algebraic object* such as a *matrix* or *tensor*.
 Effectvely, this method is similar to a [`sklearn.preprocessing.LabelEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html).
 
 Notes:
 
   * the integer value is **not** a [*uuid*](https://tools.ietf.org/html/rfc4122) since it is only defined within the closure of a specific use case.
-  * a special value `-1` represents the unique identifier for a non-existant (`None`) node, which is useful in data structures that have optional placeholders for links to RDF nodes
+  * a special value `-1` represents the unique identifier for a non-existent (`None`) node, which is useful in data structures that have optional placeholders for links to RDF nodes
 
     node:
 a node in the RDF graph
@@ -97,7 +98,7 @@ a unique identifier (an integer index) for the `node` in the RDF graph
         id: int,
         ) -> NodeLike:
         """
-Inverse tranform from an intenger to a node in the RDF graph, using the indentifier as an index into the node vector.
+Inverse transform from an intenger to a node in the RDF graph, using the identifier as an index into the node vector.
 
     id:
 an integer index for the `node` in the RDF graph

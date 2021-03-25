@@ -15,7 +15,7 @@ Core feature areas include:
     
 ---
 #### [`__init__` method](#kglab.KnowledgeGraph.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L65)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L66)
 
 ```python
 __init__(name="generic", base_uri=None, language="en", use_gpus=True, import_graph=None, namespaces=None)
@@ -44,7 +44,7 @@ a dictionary of [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rd
 
 ---
 #### [`rdf_graph` method](#kglab.KnowledgeGraph.rdf_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L124)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L125)
 
 ```python
 rdf_graph()
@@ -58,7 +58,7 @@ the [`rdflib.Graph`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html
 
 ---
 #### [`add_ns` method](#kglab.KnowledgeGraph.add_ns)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L149)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L150)
 
 ```python
 add_ns(prefix, iri, override=True, replace=False)
@@ -83,7 +83,7 @@ replace any existing prefix with the new namespace
 
 ---
 #### [`get_ns` method](#kglab.KnowledgeGraph.get_ns)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L193)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L194)
 
 ```python
 get_ns(prefix)
@@ -100,7 +100,7 @@ the RDFlib [`Namespace`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.
 
 ---
 #### [`get_ns_dict` method](#kglab.KnowledgeGraph.get_ns_dict)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L209)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L210)
 
 ```python
 get_ns_dict()
@@ -114,7 +114,7 @@ a `dict` describing the namespaces in this RDF graph
 
 ---
 #### [`describe_ns` method](#kglab.KnowledgeGraph.describe_ns)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L226)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L227)
 
 ```python
 describe_ns()
@@ -128,7 +128,7 @@ a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/ap
 
 ---
 #### [`get_context` method](#kglab.KnowledgeGraph.get_context)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L253)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L254)
 
 ```python
 get_context()
@@ -143,7 +143,7 @@ context needed for JSON-LD serialization
 
 ---
 #### [`encode_date` method](#kglab.KnowledgeGraph.encode_date)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L272)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L273)
 
 ```python
 encode_date(datetime, tzinfos)
@@ -163,7 +163,7 @@ timezones as a dict, used by
 
 ---
 #### [`add` method](#kglab.KnowledgeGraph.add)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L294)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L295)
 
 ```python
 add(s, p, o)
@@ -186,7 +186,7 @@ To prepare for upcoming **kglab** features, **this is the preferred method for a
 
 ---
 #### [`remove` method](#kglab.KnowledgeGraph.remove)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L328)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L329)
 
 ```python
 remove(s, p, o)
@@ -209,7 +209,7 @@ To prepare for upcoming **kglab** features, **this is the preferred method for r
 
 ---
 #### [`load_rdf` method](#kglab.KnowledgeGraph.load_rdf)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L460)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L461)
 
 ```python
 load_rdf(path, format="ttl", base=None, **args)
@@ -236,7 +236,7 @@ this `KnowledgeGraph` object – used for method chaining
 
 ---
 #### [`load_rdf_text` method](#kglab.KnowledgeGraph.load_rdf_text)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L519)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L520)
 
 ```python
 load_rdf_text(data, format="ttl", base=None, **args)
@@ -262,7 +262,7 @@ this `KnowledgeGraph` object – used for method chaining
 
 ---
 #### [`save_rdf` method](#kglab.KnowledgeGraph.save_rdf)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L562)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L563)
 
 ```python
 save_rdf(path, format="ttl", base=None, encoding="utf-8", **args)
@@ -286,7 +286,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
 
 ---
 #### [`save_rdf_text` method](#kglab.KnowledgeGraph.save_rdf_text)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L627)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L628)
 
 ```python
 save_rdf_text(format="ttl", base=None, encoding="utf-8", **args)
@@ -309,7 +309,7 @@ text representing the RDF graph
 
 ---
 #### [`load_jsonld` method](#kglab.KnowledgeGraph.load_jsonld)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L669)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L670)
 
 ```python
 load_jsonld(path, encoding="utf-8", **args)
@@ -332,7 +332,7 @@ this `KnowledgeGraph` object – used for method chaining
 
 ---
 #### [`save_jsonld` method](#kglab.KnowledgeGraph.save_jsonld)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L710)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L711)
 
 ```python
 save_jsonld(path, encoding="utf-8", **args)
@@ -350,7 +350,7 @@ text encoding value, which defaults to `"utf-8"`; must be in the [Python codec r
 
 ---
 #### [`load_csv` method](#kglab.KnowledgeGraph.load_csv)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L750)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L751)
 
 ```python
 load_csv(url)
@@ -367,7 +367,7 @@ this `KnowledgeGraph` object – used for method chaining
 
 ---
 #### [`load_parquet` method](#kglab.KnowledgeGraph.load_parquet)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L777)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L778)
 
 ```python
 load_parquet(path, **kwargs)
@@ -389,7 +389,7 @@ this `KnowledgeGraph` object – used for method chaining
 
 ---
 #### [`save_parquet` method](#kglab.KnowledgeGraph.save_parquet)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L816)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L817)
 
 ```python
 save_parquet(path, compression="snappy", storage_options=None, **kwargs)
@@ -412,7 +412,7 @@ extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) fo
 
 ---
 #### [`n3fy` method](#kglab.KnowledgeGraph.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L861)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L862)
 
 ```python
 n3fy(node, pythonify=True)
@@ -432,7 +432,7 @@ text (or Python objects) for the serialized node
 
 ---
 #### [`n3fy_row` method](#kglab.KnowledgeGraph.n3fy_row)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L887)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L888)
 
 ```python
 n3fy_row(row_dict, pythonify=True)
@@ -452,7 +452,7 @@ a dictionary of serialized row bindings
 
 ---
 #### [`query` method](#kglab.KnowledgeGraph.query)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L916)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L917)
 
 ```python
 query(sparql, bindings=None)
@@ -472,7 +472,7 @@ initial variable bindings
 
 ---
 #### [`query_as_df` method](#kglab.KnowledgeGraph.query_as_df)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L944)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L945)
 
 ```python
 query_as_df(sparql, bindings=None, simplify=True, pythonify=True)
@@ -498,7 +498,7 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
 
 ---
 #### [`validate` method](#kglab.KnowledgeGraph.validate)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L991)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L992)
 
 ```python
 validate(shacl_graph=None, shacl_graph_format=None, ont_graph=None, ont_graph_format=None, advanced=False, inference=None, inplace=True, abort_on_error=None, **kwargs)
@@ -535,7 +535,7 @@ a tuple of `conforms` (RDF graph passes the validation rules) + `report_graph` (
 
 ---
 #### [`infer_owlrl_closure` method](#kglab.KnowledgeGraph.infer_owlrl_closure)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1069)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1070)
 
 ```python
 infer_owlrl_closure()
@@ -548,7 +548,7 @@ See <https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_R
 
 ---
 #### [`infer_rdfs_closure` method](#kglab.KnowledgeGraph.infer_rdfs_closure)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1082)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1083)
 
 ```python
 infer_rdfs_closure()
@@ -561,7 +561,7 @@ See <https://wiki.uib.no/info216/index.php/Python_Examples#RDFS_inference_with_R
 
 ---
 #### [`infer_rdfs_properties` method](#kglab.KnowledgeGraph.infer_rdfs_properties)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1095)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1096)
 
 ```python
 infer_rdfs_properties()
@@ -574,7 +574,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 ---
 #### [`infer_rdfs_classes` method](#kglab.KnowledgeGraph.infer_rdfs_classes)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1123)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1124)
 
 ```python
 infer_rdfs_classes()
@@ -587,7 +587,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 ---
 #### [`infer_skos_related` method](#kglab.KnowledgeGraph.infer_skos_related)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1156)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1157)
 
 ```python
 infer_skos_related()
@@ -601,7 +601,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 ---
 #### [`infer_skos_concept` method](#kglab.KnowledgeGraph.infer_skos_concept)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1171)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1172)
 
 ```python
 infer_skos_concept()
@@ -618,7 +618,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
 
 ---
 #### [`infer_skos_hierarchical` method](#kglab.KnowledgeGraph.infer_skos_hierarchical)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1195)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1196)
 
 ```python
 infer_skos_hierarchical(narrower=True)
@@ -635,7 +635,7 @@ if false, `skos:narrower` will be removed instead of added
 
 ---
 #### [`infer_skos_transitive` method](#kglab.KnowledgeGraph.infer_skos_transitive)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1222)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1223)
 
 ```python
 infer_skos_transitive(narrower=True)
@@ -656,7 +656,7 @@ also infer transitive closure for `skos:narrowerTransitive`
 
 ---
 #### [`infer_skos_symmetric_mappings` method](#kglab.KnowledgeGraph.infer_skos_symmetric_mappings)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1251)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1252)
 
 ```python
 infer_skos_symmetric_mappings(related=True)
@@ -673,7 +673,7 @@ infer the `skos:related` super-property for all `skos:relatedMatch` relations
 
 ---
 #### [`infer_skos_hierarchical_mappings` method](#kglab.KnowledgeGraph.infer_skos_hierarchical_mappings)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1282)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1283)
 
 ```python
 infer_skos_hierarchical_mappings(narrower=True)
@@ -711,7 +711,7 @@ This provides an efficient *index* on a constructed *dimension*, solely for the 
     
 ---
 #### [`__init__` method](#kglab.Subgraph.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L41)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L42)
 
 ```python
 __init__(kg, preload=None)
@@ -729,19 +729,19 @@ an optional, pre-determined list to pre-load for *label encoding*
 
 ---
 #### [`transform` method](#kglab.Subgraph.transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L65)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L66)
 
 ```python
 transform(node)
 ```
-Tranforms a node in an RDF graph to an integer value, as a unique identifier with the closure of a specific use case.
+Transforms a node in an RDF graph to an integer value, as a unique identifier with the closure of a specific use case.
 The integer value can then be used to index into an *algebraic object* such as a *matrix* or *tensor*.
 Effectvely, this method is similar to a [`sklearn.preprocessing.LabelEncoder`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html).
 
 Notes:
 
   * the integer value is **not** a [*uuid*](https://tools.ietf.org/html/rfc4122) since it is only defined within the closure of a specific use case.
-  * a special value `-1` represents the unique identifier for a non-existant (`None`) node, which is useful in data structures that have optional placeholders for links to RDF nodes
+  * a special value `-1` represents the unique identifier for a non-existent (`None`) node, which is useful in data structures that have optional placeholders for links to RDF nodes
 
   * `node` : `typing.Union[str, NoneType, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
 a node in the RDF graph
@@ -753,12 +753,12 @@ a unique identifier (an integer index) for the `node` in the RDF graph
 
 ---
 #### [`inverse_transform` method](#kglab.Subgraph.inverse_transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L95)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L96)
 
 ```python
 inverse_transform(id)
 ```
-Inverse tranform from an intenger to a node in the RDF graph, using the indentifier as an index into the node vector.
+Inverse transform from an intenger to a node in the RDF graph, using the identifier as an index into the node vector.
 
   * `id` : `int`  
 an integer index for the `node` in the RDF graph
@@ -770,7 +770,7 @@ node in the RDF graph
 
 ---
 #### [`n3fy` method](#kglab.Subgraph.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L114)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L115)
 
 ```python
 n3fy(node)
@@ -793,7 +793,7 @@ Typical use cases include integration with non-RDF graph libraries for *graph al
     
 ---
 #### [`__init__` method](#kglab.SubgraphMatrix.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L138)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L139)
 
 ```python
 __init__(kg, sparql, bindings=None, src_dst=None)
@@ -817,7 +817,7 @@ an optional map to override the  `subject` and `object` bindings expected in the
 
 ---
 #### [`build_df` method](#kglab.SubgraphMatrix.build_df)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L172)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L173)
 
 ```python
 build_df(show_symbols=False)
@@ -837,7 +837,7 @@ the populated `DataFrame` object; uses the [RAPIDS `cuDF` library](https://docs.
 
 ---
 #### [`build_nx_graph` method](#kglab.SubgraphMatrix.build_nx_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L221)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L222)
 
 ```python
 build_nx_graph(nx_graph, bipartite=False)
@@ -858,7 +858,7 @@ the populated `NetworkX` graph object; uses the [RAPIDS `cuGraph` library](https
 
 ---
 #### [`build_ig_graph` method](#kglab.SubgraphMatrix.build_ig_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L263)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L264)
 
 ```python
 build_ig_graph(ig_graph)
@@ -884,7 +884,7 @@ Typical use cases include integration with non-RDF graph libraries for *visualiz
     
 ---
 #### [`__init__` method](#kglab.SubgraphTensor.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L301)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L302)
 
 ```python
 __init__(kg, excludes=None)
@@ -902,7 +902,7 @@ a list of RDF predicates to exclude from projection into the *subgraph*
 
 ---
 #### [`as_tuples` method](#kglab.SubgraphTensor.as_tuples)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L325)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L326)
 
 ```python
 as_tuples()
@@ -917,7 +917,7 @@ the RDF triples within the subgraph
 
 ---
 #### [`pyvis_style_node` method](#kglab.SubgraphTensor.pyvis_style_node)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L348)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L349)
 
 ```python
 pyvis_style_node(pyvis_graph, node_id, label, style=None)
@@ -940,7 +940,7 @@ optional style dictionary
 
 ---
 #### [`build_pyvis_graph` method](#kglab.SubgraphTensor.build_pyvis_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L392)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L393)
 
 ```python
 build_pyvis_graph(notebook=False, style=None)
@@ -972,7 +972,7 @@ Core feature areas include:
     
 ---
 #### [`__init__` method](#kglab.Measure.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L147)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L148)
 
 ```python
 __init__(name="generic")
@@ -986,7 +986,7 @@ optional name for this measure
 
 ---
 #### [`reset` method](#kglab.Measure.reset)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L164)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L165)
 
 ```python
 reset()
@@ -1006,7 +1006,7 @@ Reset (reinitialize) all of the counts for different kinds of census, which incl
 
 ---
 #### [`get_node_count` method](#kglab.Measure.get_node_count)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L189)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L190)
 
 ```python
 get_node_count()
@@ -1020,7 +1020,7 @@ value of `node_count`
 
 ---
 #### [`get_edge_count` method](#kglab.Measure.get_edge_count)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L201)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L202)
 
 ```python
 get_edge_count()
@@ -1034,7 +1034,7 @@ value of `edge_count`
 
 ---
 #### [`measure_graph` method](#kglab.Measure.measure_graph)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L213)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L214)
 
 ```python
 measure_graph(kg)
@@ -1048,7 +1048,7 @@ Run a full measure of the given RDF graph.
 
 ---
 #### [`get_keyset` method](#kglab.Measure.get_keyset)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L238)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L239)
 
 ```python
 get_keyset(incl_pred=True)
@@ -1071,7 +1071,7 @@ In other words, tally an "item census" – to be consistent with the usage of th
     
 ---
 #### [`__init__` method](#kglab.Simplex0.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L22)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L23)
 
 ```python
 __init__(name="generic")
@@ -1085,7 +1085,7 @@ optional name for this measure
 
 ---
 #### [`increment` method](#kglab.Simplex0.increment)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L37)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L38)
 
 ```python
 increment(item)
@@ -1099,7 +1099,7 @@ an item (domain: node, predicate, label, URL, literal, etc.) to be counted
 
 ---
 #### [`get_tally` method](#kglab.Simplex0.get_tally)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L50)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L51)
 
 ```python
 get_tally()
@@ -1113,7 +1113,7 @@ a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/ap
 
 ---
 #### [`get_keyset` method](#kglab.Simplex0.get_keyset)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L67)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L68)
 
 ```python
 get_keyset()
@@ -1131,7 +1131,7 @@ Measure a dyad census in an RDF graph, i.e., count the relations (directed edges
     
 ---
 #### [`__init__` method](#kglab.Simplex1.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L84)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L85)
 
 ```python
 __init__(name="generic")
@@ -1145,7 +1145,7 @@ optional name for this measure
 
 ---
 #### [`increment` method](#kglab.Simplex1.increment)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L98)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L99)
 
 ```python
 increment(item0, item1)
@@ -1162,7 +1162,7 @@ Increment the count for a dyad represented by the two given items.
 
 ---
 #### [`get_tally_map` method](#kglab.Simplex1.get_tally_map)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L116)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L117)
 
 ```python
 get_tally_map()
@@ -1184,7 +1184,7 @@ For PSL-specific terminology used here, see <https://psl.linqs.org/wiki/master/G
     
 ---
 #### [`__init__` method](#kglab.PSLModel.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L36)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L37)
 
 ```python
 __init__(name=None)
@@ -1198,7 +1198,7 @@ optional name of the PSL model; if not supplied, PSL generates a random name
 
 ---
 #### [`add_predicate` method](#kglab.PSLModel.add_predicate)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L51)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L52)
 
 ```python
 add_predicate(raw_name, size=None, closed=False, arg_types=None)
@@ -1225,7 +1225,7 @@ this PSL model – use for method chaining
 
 ---
 #### [`add_rule` method](#kglab.PSLModel.add_rule)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L89)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L90)
 
 ```python
 add_rule(rule_string, weighted=None, weight=None, squared=None)
@@ -1257,7 +1257,7 @@ this PSL model – use for method chaining
 
 ---
 #### [`clear_model` method](#kglab.PSLModel.clear_model)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L135)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L136)
 
 ```python
 clear_model()
@@ -1271,7 +1271,7 @@ this PSL model – use for method chaining
 
 ---
 #### [`add_data_row` method](#kglab.PSLModel.add_data_row)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L150)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L170)
 
 ```python
 add_data_row(predicate_name, args, partition="observations", truth_value=1.0, verbose=False)
@@ -1300,7 +1300,7 @@ this PSL model – use for method chaining
 
 ---
 #### [`infer` method](#kglab.PSLModel.infer)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L205)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L228)
 
 ```python
 infer(method="", cli_options=None, psl_config=None, jvm_options=None)
@@ -1323,7 +1323,7 @@ options passed to the JVM running the PSL Java library; most commonly `"-Xmx"` a
 
 ---
 #### [`get_results` method](#kglab.PSLModel.get_results)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L245)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L268)
 
 ```python
 get_results(predicate_name)
@@ -1342,7 +1342,7 @@ inferred values as a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/
 ## [module functions](#kglab)
 ---
 #### [`calc_quantile_bins` function](#kglab.calc_quantile_bins)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L37)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L38)
 
 ```python
 calc_quantile_bins(num_rows)
@@ -1359,7 +1359,7 @@ the calculated bins, as a [`numpy.ndarray`](https://numpy.org/doc/stable/referen
 
 ---
 #### [`get_gpu_count` function](#kglab.get_gpu_count)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L12)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L13)
 
 ```python
 get_gpu_count()
@@ -1375,7 +1375,7 @@ count of available GPUs
 
 ---
 #### [`import_from_neo4j` function](#kglab.import_from_neo4j)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/external_import.py#L17)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/external_import.py#L21)
 
 ```python
 import_from_neo4j(username, password, dbname, host="localhost", port="7474")
@@ -1409,7 +1409,7 @@ an [`rdflib.Graph`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?
 
 ---
 #### [`root_mean_square` function](#kglab.root_mean_square)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L90)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L91)
 
 ```python
 root_mean_square(values)
@@ -1426,7 +1426,7 @@ RMS metric as a float
 
 ---
 #### [`stripe_column` function](#kglab.stripe_column)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L53)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/util.py#L54)
 
 ```python
 stripe_column(values, bins, use_gpus=False)

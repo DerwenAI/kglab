@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# see license https://github.com/DerwenAI/kglab#license-and-copyright
 
 ######################################################################
 ## kglab - core classes
@@ -9,29 +10,29 @@ from kglab.util import get_gpu_count
 from kglab.version import _check_version
 _check_version()
 
-import rdflib  # type: ignore
-import rdflib.plugin  # type: ignore
-import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore
+import rdflib  # type: ignore  # pylint: disable=E0401
+import rdflib.plugin  # type: ignore  # pylint: disable=E0401
+import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore  # pylint: disable=E0401
 rdflib.plugin.register("json-ld", rdflib.plugin.Parser, "rdflib_jsonld.parser", "JsonLDParser")
 rdflib.plugin.register("json-ld", rdflib.plugin.Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
-from icecream import ic  # type: ignore
-import chocolate  # type: ignore
+from icecream import ic  # type: ignore  # pylint: disable=E0401
+import chocolate  # type: ignore  # pylint: disable=E0401
 import codecs
-import csvwlib  # type: ignore
-import dateutil.parser as dup
+import csvwlib  # type: ignore  # pylint: disable=E0401
+import dateutil.parser as dup  # pylint: disable=E0401
 import io
 import json
-import owlrl  # type: ignore
-import pandas as pd  # type: ignore
+import owlrl  # type: ignore  # pylint: disable=E0401
+import pandas as pd  # type: ignore  # pylint: disable=E0401
 import pathlib
-import pyshacl  # type: ignore
+import pyshacl  # type: ignore  # pylint: disable=E0401
 import traceback
 import typing
-import urlpath  # type: ignore
+import urlpath  # type: ignore  # pylint: disable=E0401
 
 if get_gpu_count() > 0:
-    import cudf  # type: ignore # pylint: disable=E0401
+    import cudf  # type: ignore  # pylint: disable=E0401
 
 
 class KnowledgeGraph:
@@ -584,7 +585,7 @@ optional base set for the graph
     encoding:
 text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
         """
-        # error checking for the `format` paramter
+        # error checking for the `format` parameter
         if format == "json-ld":
             raise TypeError("Use the save_jsonld() method instead")
 
@@ -597,7 +598,7 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
         if not base and self.base_uri:
             base = self.base_uri
 
-        # error checking for a file-like object `path` paramter
+        # error checking for a file-like object `path` parameter
         if hasattr(path, "write"):
             if hasattr(path, "encoding"):
                 raise TypeError(self._ERROR_PATH)
@@ -688,7 +689,7 @@ text encoding value, which defaults to `"utf-8"`; must be in the [Python codec r
     returns:
 this `KnowledgeGraph` object – used for method chaining
         """
-        # error checking for a file-like object `path` paramter
+        # error checking for a file-like object `path` parameter
         if hasattr(path, "read"):
             f = path
         else:
@@ -724,7 +725,7 @@ must be a file name (str) or a path object (not a URL) to a local file reference
     encoding:
 text encoding value, which defaults to `"utf-8"`; must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
         """
-        # error checking for a file-like object `path` paramter
+        # error checking for a file-like object `path` parameter
         if hasattr(path, "write"):
             if hasattr(path, "encoding"):
                 raise TypeError(self._ERROR_PATH)
@@ -877,11 +878,11 @@ flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io
 text (or Python objects) for the serialized node
         """
         if pythonify and isinstance(node, rdflib.term.Literal):
-            ser = node.toPython()
+            serialized = node.toPython()
         else:
-            ser = node.n3(self._g.namespace_manager)
+            serialized = node.n3(self._g.namespace_manager)
 
-        return ser
+        return serialized
 
 
     def n3fy_row (

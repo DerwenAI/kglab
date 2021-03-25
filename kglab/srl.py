@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# see license https://github.com/DerwenAI/kglab#license-and-copyright
 
 ######################################################################
 ## classes to support models for statistical relational learning
 
-from icecream import ic  # type: ignore
-import pandas as pd  # type: ignore
-import pslpython.model  # type: ignore
-import pslpython.partition  # type: ignore
-import pslpython.predicate  # type: ignore
-import pslpython.rule  # type: ignore
+from icecream import ic  # type: ignore  # pylint: disable=E0401
+import pandas as pd  # type: ignore  # pylint: disable=E0401
+import pslpython.model  # type: ignore  # pylint: disable=E0401
+import pslpython.partition  # type: ignore  # pylint: disable=E0401
+import pslpython.predicate  # type: ignore  # pylint: disable=E0401
+import pslpython.rule  # type: ignore  # pylint: disable=E0401
 import typing
 
 
@@ -201,7 +202,7 @@ this PSL model – use for method chaining
 
             if not predicate:
                 self._raise_model_error(predicate_name, "Unknown predicate")
-        except:
+        except:  # pylint: disable=W0702
             self._raise_model_error(predicate_name, "Unknown predicate")
 
         try:
@@ -209,7 +210,7 @@ this PSL model – use for method chaining
 
             if not partition_obj:
                 self._raise_model_error(partition, "Unknown partition")
-        except:
+        except:  # pylint: disable=W0702
             self._raise_model_error(partition, "Unknown partition")
 
         if verbose:
@@ -282,7 +283,7 @@ inferred values as a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/
 
             if not predicate:
                 self._raise_model_error(predicate_name, "Unknown predicate")
-        except:
+        except:  # pylint: disable=W0702
             self._raise_model_error(predicate_name, "Unknown predicate")
 
         df = self.results[predicate].copy(deep=True)
