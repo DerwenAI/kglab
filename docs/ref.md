@@ -1088,11 +1088,11 @@ optional name for this measure
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/topo.py#L38)
 
 ```python
-increment(item)
+increment(item0)
 ```
 Increment the count for this item.
 
-  * `item` : `typing.Union[str, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
+  * `item0` : `typing.Union[str, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode]`  
 an item (domain: node, predicate, label, URL, literal, etc.) to be counted
 
 
