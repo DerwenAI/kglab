@@ -202,7 +202,7 @@ this PSL model – use for method chaining
 
             if not predicate:
                 self._raise_model_error(predicate_name, "Unknown predicate")
-        except:  # pylint: disable=W0702
+        except:  # pylint: disable=W0702 # lgtm[py/catch-base-exception]
             self._raise_model_error(predicate_name, "Unknown predicate")
 
         try:
@@ -210,7 +210,7 @@ this PSL model – use for method chaining
 
             if not partition_obj:
                 self._raise_model_error(partition, "Unknown partition")
-        except:  # pylint: disable=W0702
+        except:  # pylint: disable=W0702 # lgtm[py/catch-base-exception]
             self._raise_model_error(partition, "Unknown partition")
 
         if verbose:
@@ -283,7 +283,7 @@ inferred values as a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/
 
             if not predicate:
                 self._raise_model_error(predicate_name, "Unknown predicate")
-        except:  # pylint: disable=W0702
+        except:  # pylint: disable=W0702 # lgtm[py/catch-base-exception]
             self._raise_model_error(predicate_name, "Unknown predicate")
 
         df = self.results[predicate].copy(deep=True)

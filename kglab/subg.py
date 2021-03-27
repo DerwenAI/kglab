@@ -10,14 +10,14 @@ from kglab.topo import Measure
 from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
 from kglab.util import get_gpu_count
 
-import pandas as pd  # type: ignore  # pylint: disable=E0401
-import pyvis.network  # type: ignore  # pylint: disable=E0401
-import networkx as nx  # type: ignore  # pylint: disable=E0401
+import pandas as pd  # type: ignore # pylint: disable=E0401
+import pyvis.network  # type: ignore # pylint: disable=E0401
+import networkx as nx  # type: ignore # pylint: disable=E0401
 import typing
 
 if get_gpu_count() > 0:
-    import cudf  # type: ignore  # pylint: disable=E0401
-    import cugraph # type: ignore  # pylint: disable=E0401,W0611
+    import cudf  # type: ignore # pylint: disable=E0401
+    import cugraph # type: ignore # pylint: disable=E0401,W0611 # lgtm[py/unused-import]
 
 
 class Subgraph:

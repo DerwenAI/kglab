@@ -37,15 +37,15 @@ optional name for this measure
 
     def increment (
         self,
-        item: Census_Item,
+        item0: Census_Item,
         ) -> None:
         """
 Increment the count for this item.
 
-    item:
+    item0:
 an item (domain: node, predicate, label, URL, literal, etc.) to be counted
         """
-        self.count[item] += 1
+        self.count[item0] += 1
 
 
     def get_tally (
@@ -96,7 +96,7 @@ optional name for this measure
         self.link_map: typing.Optional[dict] = None
 
 
-    def increment ( # type: ignore # pylint: disable=W0221
+    def increment (  # type: ignore # pylint: disable=W0221 # lgtm[py/inheritance/signature-mismatch]
         self,
         item0: Census_Item,
         item1: Census_Item,
