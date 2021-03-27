@@ -69,6 +69,8 @@ KTH, NYU, GWU,
 U&nbsp;Maryland, Cal&nbsp;Poly, UT/Austin,
 Northeastern, U&nbsp;Virginia, CU&nbsp;Boulder.
 
+<a href="https://stackoverflow.com/users/1698443/paco"><img src="https://stackoverflow.com/users/flair/1698443.png" width="208" height="58" alt="profile for Paco at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Paco at Stack Overflow, Q&amp;A for professional and enthusiast programmers"/></a>
+
 
 ## Attribution
 
