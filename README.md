@@ -149,7 +149,8 @@ this library.
 
 ## Kudos
 
-Many thanks to our contributors:
+Many thanks to our open source [sponsors](https://github.com/sponsors/ceteri);
+and to our contributors:
 [@ceteri](https://github.com/ceteri),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@louisguitton](https://github.com/louisguitton),
