@@ -1,4 +1,4 @@
-# Tutorial
+# Syllabus
 
 ## Abstract
 
