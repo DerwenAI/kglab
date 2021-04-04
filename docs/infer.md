@@ -11,7 +11,7 @@ For the W3C perspective, see
 
   * improve the quality of data integration
   * discover new relationships
-  * indentify potential inconsistencies in the (integrated) data
+  * identify potential inconsistencies in the (integrated) data
 
 The integrations within **kglab** to support inference capabilities
 may be combined to leverage each other's relative strengths, along
@@ -49,7 +49,7 @@ One way to visualize some of these trade-offs is in the following diagram:
 Note in the top/right corner of the diagram that a relatively formal category of graph-based approaches is called [*statistical relational learning*](../glossary/#statistical-relational-learning).
 The gist is that so much of the *network analysis* that we want to perform can be describe mathematically as [*markov networks*](https://en.wikipedia.org/wiki/Markov_random_field), in terms of probabilistic models.
 Sometimes these can be quite computationally expensive; for example, hedge funds on Wall Street tend to burn lots of cloud computing on markov models.
-They are *robust* in terms of being able to work well even with lots of missing or conflicting data, and the *formalism* implies that we can infer mathematical guarantees from the analyis.
+They are *robust* in terms of being able to work well even with lots of missing or conflicting data, and the *formalism* implies that we can infer mathematical guarantees from the analysis.
 That's quite the opposite of deep learning models, which are great at predicting sequences of things, but terrible at providing guarantees.
 
 Clearly, there's been much emphasis in industry recently that equates "artificial intelligence" with "deep learning", although we are also recognizing [*diminishing returns*](https://derwen.ai/s/zf43#33) for methods that rely purely on ever-larger data rates and ever-larger ML models.

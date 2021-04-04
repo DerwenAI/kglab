@@ -24,7 +24,7 @@ establish and explore a *baseline* implementation for a knowledge graph
 practice internally.
 If an organization can see where it needs to integrate with its legacy
 systems, or where features within **kglab** could be migrated into
-proprietary systems, then use of this libary may dramatically reduce
+proprietary systems, then use of this library may dramatically reduce
 *time-to-market* key performance indicators for enterprise KG
 projects.
 
