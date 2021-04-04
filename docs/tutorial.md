@@ -1,4 +1,6 @@
-# Tutorial Setup
+# Syllabus
+
+## Abstract
 
 Python has excellent libraries for working with graphs which provide:
 semantic technologies, graph queries, interactive visualizations,

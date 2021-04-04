@@ -9,6 +9,7 @@
   * add `pre-commit` hooks
   * add `lgtm` code reviews (slow, not integrating into GitHub PRs directly)
   * add use of `pipdeptree` to analyze dependencies
+  * refactor docs to use Divio design patterns; kudos @louisguitton
 
 
 ## 0.2.1
