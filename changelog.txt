@@ -2,12 +2,13 @@
 
 ## 0.2.2
 
-2021-03-??
+2021-04-??
 
   * add conda `environment.yml` plus instructions
   * use `bandit` to check for security issues
   * add `pre-commit` hooks
   * add `lgtm` code reviews (slow, not integrating into GitHub PRs directly)
+  * add use of `pipdeptree` to analyze dependencies
 
 
 ## 0.2.1

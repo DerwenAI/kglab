@@ -2,7 +2,8 @@
 
 ## Contributors
 
-Many thanks to the contributors on this **kglab** project:
+Many thanks to our open source [sponsors](https://github.com/sponsors/ceteri);
+and to our contributors:
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@louisguitton](https://github.com/louisguitton),
 [@jake-aft](https://github.com/jake-aft),

@@ -2,7 +2,7 @@
 
 Where possible, the following citations are based on conventions at <https://www.bibsonomy.org/>
 
-Journal abbrevations use ISO 4, available at <https://academic-accelerator.com/Journal-Abbreviation/System>
+Journal abbreviations use ISO 4, available at <https://academic-accelerator.com/Journal-Abbreviation/System>
 
 Links to online versions of cited works use [DOIs](https://www.doi.org/) when available, 
 then separately list [open access](https://peerj.com/preprints/3119v1/) URLs obtained
@@ -271,6 +271,12 @@ Manning (2021)
 **Giancarlo Perrone**, **Jose Unpingco**, **Haw-minn Lu**  
 *arXiv* (2020)
 
+### procida2020
+
+["Divio: The documentation system"](https://documentation.divio.com/)  
+**Daniele Procida**  
+Divio (2020)
+
 
 ## – S –
 
@@ -293,6 +299,12 @@ open: <https://eprints.soton.ac.uk/262614/1/Semantic_Web_Revisted.pdf>
 **Amit Singhal**  
 Google (2012)
 
+### song2020
+
+["New and improved Workers Docs"](https://blog.cloudflare.com/new-and-improved-workers-docs/)  
+**David Song**  
+CloudFlare (2020-08-19)
+
 
 ## – V –
 
@@ -301,6 +313,28 @@ Google (2012)
 ["An Ontology Design Pattern for Material Transformation"](http://dx.doi.org/10.3233/SW-160231)  
 **C. Vardeman**, **A. Krisnadhi**, **M. Cheatham**, **K. Janowicz**, **H. Ferguson**, **P. Hitzler**, **A. Buccellato**, **K. Thirunarayan**, **G. Berg-Cross**, **T. Hahmann**  
 *CEUR Workshop Proceedings* 1302 (2014)
+
+### victorino2020
+
+["How Stripe Built a Writing Culture"](https://slab.com/blog/stripe-writing-culture/)  
+**RC Victorino**  
+*Slab* (2020-09-02)
+
+
+## – W –
+
+### wilkinson1999
+
+[*The Grammar of Graphics*](https://www.goodreads.com/book/show/20182493-the-grammar-of-graphics)  
+**Leland Wilkinson**, et al.  
+Springer (1999-08-19)
+
+### wickham2010layered
+
+["A layered grammar of graphics"](http://dx.doi.org/10.1198/jcgs.2009.07098)  
+**Hadley Wickham**  
+*J Comput Graph Stat*, vol. 19, no. 1, pp. 3–28 (2010)  
+open: <http://vita.had.co.nz/papers/layered-grammar.pdf>
 
 
 ## – Z –
@@ -311,4 +345,3 @@ Google (2012)
 **Matei Zaharia**, **Mosharaf Chowdhury**, **Michael J. Franklin**, **Scott Shenker**, **Ion Stoica**  
 *HotCloud* (2010)  
 open: <https://www.usenix.org/legacy/event/hotcloud10/tech/full_papers/Zaharia.pdf>
-
