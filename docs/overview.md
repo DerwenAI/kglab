@@ -47,44 +47,59 @@ The scope now is about
 and perhaps someday this may spin-out a book or other learning materials.
 
 
-## How to use these materials
+## Abstraction Layer
 
-Following the *JEM* approach, throughout the tutorial you'll find a
-mix of topics:
-data science, business context, AI applications, data management, 
-design, distributed systems – plus explorations of how to leverage
-relatively advanced math, where appropriate.
+The overall intent of **kglab** is to build an
+[abstraction layer](glossary/#abstraction-layer)
+for [KG](glossary/#kg) work in Python.
+This is provided as a *library*, not as a *framework*.
+It's difficult to imagine how to implement this kind of abstraction
+layer outside of a *functional programming* language.
 
-To addresses these topics, this documentation uses a particular
-structure, shown in the following figure:
+Consider the fact that many dependencies have their origins in the
+[Semantic Web](glossary/#semantic-web).
+The ongoing work of [W3C](glossary/#w3c)
+provides ontologies, standards, and other initiatives that are incredibly
+valuable for graph-based.
+That overall effort began in the 1990s, and arguably its momentum
+imploded circa 2005 – despite best intentions by brilliant individuals
+and quite capable organizations.
 
-<a href="../assets/learning.png" target="_blank"><img src="../assets/learning.png" width="500" /></a>
+In retrospect, it was a classic case of a technology being "too early"
+since those efforts generally lacked the necessary compute resources
+and language constructs.
+The "Big Data" efforts did not really take off until a few years 
+following 2005.
+For example, [Apache Spark](glossary/#apache-spark) would never have 
+been possible prior to the mid-2000s introduction of:
+the Scala language (2004),
+commodity multi-core processors (2005),
+cloud computing (2006),
+actor model (2006),
+and so on.
 
-To make these materials useful to a wide audience, we've provided
-multiple entry points, depending on what you need:
+Arguably, many challenges faced by the Semantic Web developer
+community can be traced to their nearly-exclusive focus on using Java,
+C, or C++ for reference implementions of their proposed standards.
+They did not benefit from so many of the learnings about
+[*distributed systems*](glossary/#distributed-systems) which
+arrived a decade later.
 
-  * Introduce [concepts](../concepts), exploring the math behind the concepts
-  * Point toward histories, [primary sources](../biblio), and other materials for context
-  * Show [use cases](../use_case) and linking to related case studies for grounding
-  * Practice through [hands-on coding](../tutorial/), based on a progressive example
-  * Clarify terminology with a [glossary](../glossary) for shared definitions
+In particular, [*applicative systems*](glossary/#applicative-systems)
+leverage functional programming constructs to implement valuable uses
+of advanced math when working with data at scale.
+This allows for cost-effective parallel processing that is relatively 
+simple to use.
+As a "thought exercise" consider how the semantic technologies may
+have differed if they'd been launched *after* Spark became popular?
+Stated differently, **kglab** is a direct exploration of how semantic 
+technologies and other graph-based techniques can be improved by
+using contemporary distributed systems as a foundation.
 
-Ideally, there should also be two other parts – stay tuned for both:
-
-  * *self-assessments* for personal feedback
-  * the coding examples show lead into a *capstone project*
-
-In any case, the objective for these materials is to help people learn
-how leverage **kglab** effectively, gain confidence working with
-graph-based data science, plus have examples to repurpose for your own
-use cases.
-
-Start at any point, whatever is most immediately useful for you.
-The material is hyper-linked together; it may be helpful to run
-JupyterLab for the coding examples in one browser tab, while reading
-this documentation in another browser tab.
-
-Again, we're focused on a [community](../#community-resources)
-and pay special attention to their business use cases.
-We're also eager to hear your feedback and suggestions for this 
-open source project.
+Python 3.x provides just enough of a foundation as a functional
+programming language – e.g., classes, type annotations, closures, and
+so on – to make **kglab** feasible.
+While perhaps this might be simpler to write in Clojure, Scala,
+Haskell, etc., those languages lack enough "critical mass" in
+terms of graph libraries or user communities to sustain this kind 
+of open source project.

@@ -28,13 +28,13 @@ section of the online documentation.
 
 To install from [PyPi](https://pypi.python.org/pypi/kglab):
 ```
-pip install kglab
+python3 -m pip install kglab
 ```
 
 If you work directly from this Git repo, be sure to install the 
 dependencies as well:
 ```
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 Alternatively, to install dependencies using `conda`:
