@@ -273,9 +273,9 @@ Manning (2021)
 
 ### procida2020
 
-["Divio: The documentation system"](https://documentation.divio.com/)  
+["Diátaxis Framework: A Systematic Framework for Technical Documentation Authoring"](https://diataxis.fr/)  
 **Daniele Procida**  
-Divio (2020)
+Diátaxis (2021)
 
 
 ## – S –
