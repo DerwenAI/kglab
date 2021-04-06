@@ -15,9 +15,9 @@ Much the same goes for tutorials, which are often written from the
 perspective of someone who's already familiar with the material – thus
 defeating its purpose for those who aren't.
 
-Divio, Cloudflare, Stripe, and other firms have fostered *writing
-cultures* internally, while applying more structured approaches to
-presenting their learning materials externally.
+Diátaxis, Cloudflare, Stripe, and other organizations have fostered
+*writing cultures* internally, while applying more structured
+approaches to presenting their learning materials externally.
 That shouldn't be surprising: software developers tend to write in
 volume – generally much more text than they produce as source code –
 since the processing of planning projects and maintaining them over
@@ -43,11 +43,13 @@ data science, business context, AI applications, data management,
 data strategy, design patterns, distributed systems 
 – plus explorations of how to leverage the math, where appropriate.
 
-This work builds on the ["Graph-Based Data
-Science"](https://derwen.ai/s/kcgh) talks at conferences and meetups,
-which experiment with the content – collecting feedback, critiques,
-suggestions, etc.
-The results eventually land here.
+This work builds on the ["Graph-Based Data Science"](https://derwen.ai/s/kcgh)
+talks at conferences and meetups, which experiment with the content –
+collecting feedback, critiques, suggestions, etc.
+
+Feedback from those interactions and experiments get integrated into
+these materials and eventually land here.
+To illustrate:
 
 <img src="https://derwen.ai/docs/kgl/assets/learning.png" width="500" />
 
@@ -90,14 +92,18 @@ More of that is getting integrated directly into this documentation.
   * [*Getting Started*](../start/) with enough code to start.
   * Specific "howto" articles, generated from notebooks.
 
+See also <https://diataxis.fr/how-to-guides/>
+
 
 ### Tutorial
 
 > Learning-oriented practice through hands-on coding exercises.
  
   * [*Tutorial*](../tutorial/) generated from notebooks, which provide reusable sample code plus supplemental exercises.
-  * using a *progressive example*.
-  * including a *learning promise* styled syllabus.
+    * using a *progressive example*.
+    * including a *learning promise* styled syllabus.
+
+See also <https://diataxis.fr/tutorials/>
 
 
 ### Explanation
@@ -106,6 +112,8 @@ More of that is getting integrated directly into this documentation.
 
   * [*What's a Knowledge Graph?*](../what/), attempting to get shared definitions in place – for a subject that has been somewhat difficult to define.
   * [*Concepts*](../concepts/) – exploring the abstractions used in this library, leading to best practices for how to leverage it.
+
+See also <https://diataxis.fr/explanation/>
 
 
 ### Evidence
@@ -123,6 +131,8 @@ More of that is getting integrated directly into this documentation.
   * [*Package Reference*](../ref/) generated from *apidocs* customized for improved readability, corrected type annotations, etc.
   * [*Dependencies*](../depend/) links to all required libraries, with caveats.
   * [*Build Instructions*](..build/) for building from source (not necessary in most cases).
+
+See also <https://diataxis.fr/reference/>
 
 
 ### Community
@@ -169,7 +179,7 @@ description of Stripe:
 3. Communication. Clear writing requires clear thinking, meaning employees invest more time shaping their ideas before sharing them.
 
 The majority of the guidance comes from
-[[procida2020]](../biblio/#procida2020) at Divio:
+[[procida2020]](../biblio/#procida2020) at Diátaxis:
  
  > There is a secret that needs to be understood in order to write good software documentation: there isn’t one thing called documentation, there are *four*.
  > They are: *tutorials*, *how-to guides*, *technical reference* and *explanation*. They represent four different purposes or functions, and require four different approaches to their creation. Understanding the implications of this will help improve most documentation – often immensely.

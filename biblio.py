@@ -25,7 +25,7 @@ Load a Jinja2 template.
     return env.get_template(template_file)
 
 
-def is_kind (  # pylint: disable=W0621
+def is_kind (
     item: dict,
     kind_list: typing.List[str],
     ) -> bool:
@@ -39,35 +39,32 @@ specified list.
     return any(map(lambda k: item["@type"].endswith(k), kind_list))  # pylint: disable=W0108
 
 
-######################################################################
-## main entry point
-
-if __name__ == "__main__":
-    # create a KnowledgeGraph object
-    kg = kglab.KnowledgeGraph()
-
-    # load RDF from a file
-    ttl_path = pathlib.Path("../pytextrank/docs/biblio.ttl")
-    kg.load_rdf(ttl_path, format="ttl")
-
+def transform_to_groups (
+    kg: kglab.KnowledgeGraph,  # pylint: disable=W0621
+    ) -> typing.Dict[str, list]:
+    """
+Transform a KG into groups of entries that can be rendered
+    """
     # serialize as JSON-LD
     json_path = pathlib.Path(tempfile.NamedTemporaryFile().name)
     kg.save_jsonld(json_path)
 
+    # extract content as JSON
     bib_g = []
 
-    # transform for use by templates
-    with open(json_path, "r") as f:
+    with open(json_path, "r") as f:  # pylint: disable=W0621
         bib_j = json.load(f)
         bib_g = bib_j["@graph"]
 
-    types = {
+    # what are the types of content?
+    types = {  # pylint: disable=W0612
         item["@type"]
         for item in bib_g
         if "@type" in item
         }
     #ic(types)
 
+    # who are the authors?
     authors = {
         item["@id"]: item
         for item in bib_g
@@ -75,6 +72,7 @@ if __name__ == "__main__":
         }
     #ic(authors)
 
+    # which are the publishers?
     pubs = {
         item["@id"]: item
         for item in bib_g
@@ -82,6 +80,7 @@ if __name__ == "__main__":
         }
     #ic(pubs)
 
+    # enumerate and sort the content entries
     content = sorted(
         [
             item
@@ -92,16 +91,19 @@ if __name__ == "__main__":
         )
     #ic(content)
 
+    # initialize the `groups` grouping of entries
     letters = sorted(list({
                 item["https://derwen.ai/ns/v1#citeKey"][0].upper()
                 for item in content
                 }))
 
-    groups: typing.Dict[str, list] = {
+    groups: typing.Dict[str, list] = {  # pylint: disable=W0621
         l: []
         for l in letters
         }
 
+    # build the grouping of content entries, with the authors and
+    # publishers denormalized
     for item in content:
         #ic(item)
 
@@ -152,9 +154,27 @@ if __name__ == "__main__":
         letter = item["https://derwen.ai/ns/v1#citeKey"][0].upper()
         groups[letter].append(trans)
 
-    # render markdown using templates
-    template = get_jinja2_template("biblio.template")
-    md_path = pathlib.Path("out.md")
+    return groups
 
-    with open(md_path, "w") as f:
+
+######################################################################
+## main entry point
+
+if __name__ == "__main__":
+    # create a KnowledgeGraph object
+    kg = kglab.KnowledgeGraph()
+
+    # load RDF from a file
+    ttl_path = pathlib.Path("../pytextrank/docs/biblio.ttl")
+    kg.load_rdf(ttl_path, format="ttl")
+
+    # transform for use by templates
+    groups = transform_to_groups(kg)
+
+    # render as Markdown using templates
+    with open(pathlib.Path("out.md"), "w") as f:
+        template = get_jinja2_template("biblio.template")
         f.write(template.render(groups=groups))
+
+    # writing bibtex:
+    # https://github.com/aclements/biblib
