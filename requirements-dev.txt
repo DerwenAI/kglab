@@ -12,6 +12,7 @@ nbconvert
 notebook >= 6.1.5 # not directly required, pinned by Snyk to avoid a vulnerability
 pipdeptree
 pre-commit
+Pygments >= 2.7.4  # Snyx seems to think this library is different?
 pygments >= 2.7.4 # not directly required, pinned by Snyk to avoid a vulnerability
 pylint >= 2.7.0  # based on Snyx vulnerability analysis
 pymdown-extensions
