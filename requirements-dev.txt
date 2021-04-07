@@ -1,19 +1,21 @@
+Pygments >= 2.7.4  # based on Snyx vulnerability analysis
 bandit
 codespell
 coverage
 flask
 grayskull
+jupyterlab
 mkdocs-git-revision-date-plugin
 mkdocs-material
 mknotebooks
 mypy
 nbconvert
-notebook
+notebook >= 6.1.5  # based on Snyx vulnerability analysis
 pipdeptree
 pre-commit
-pylint
-pytest
+pylint >= 2.7.0  # based on Snyx vulnerability analysis
 pymdown-extensions
+pytest
 selenium
 twine
 wheel
