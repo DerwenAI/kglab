@@ -1,4 +1,3 @@
-Pygments >= 2.7.4  # based on Snyx vulnerability analysis
 bandit
 codespell
 coverage
@@ -10,14 +9,13 @@ mkdocs-material
 mknotebooks
 mypy
 nbconvert
-notebook >= 6.1.5  # based on Snyx vulnerability analysis
+notebook >= 6.1.5 # not directly required, pinned by Snyk to avoid a vulnerability
 pipdeptree
 pre-commit
+pygments >= 2.7.4 # not directly required, pinned by Snyk to avoid a vulnerability
 pylint >= 2.7.0  # based on Snyx vulnerability analysis
 pymdown-extensions
 pytest
 selenium
 twine
 wheel
-notebook>=6.1.5 # not directly required, pinned by Snyk to avoid a vulnerability
-pygments>=2.7.4 # not directly required, pinned by Snyk to avoid a vulnerability
