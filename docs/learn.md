@@ -1,47 +1,4 @@
-# A Grammar of Learning
-
-Let's talk briefly about how to design and present learning materials.
-What are we doing here?
-In another sense, consider the following as a very brief exercise in
-*design thinking*, focused on how to improve software documentation
-and tutorials.
-
-As described in the [guidance](#guidance) below, there's a growing
-movement toward more structured approaches to how documentation gets
-presented.
-Arguably, a lack of quality or effectivenes in documentation creates
-major impediments for open source libraries.
-Much the same goes for tutorials, which are often written from the
-perspective of someone who's already familiar with the material – thus
-defeating its purpose for those who aren't.
-
-Diátaxis, Cloudflare, Stripe, and other organizations have fostered
-*writing cultures* internally, while applying more structured
-approaches to presenting their learning materials externally.
-That shouldn't be surprising: software developers tend to write in
-volume – generally much more text than they produce as source code –
-since the processing of planning projects and maintaining them over
-time usually involves lots of written communications.
-That said, good editing for developers' text is much less common.
-That's why the examples set by Stripe and others are important.
-
-Our team has iterated on these approaches, blending key insights and
-practices from prior roles, to create design patterns for
-documentation and tutorials.
-The outline of this documentation follows these patterns.
-
-
-## How to use these materials
-
-The objective for these learning materials is to help people learn how
-to leverage **kglab** effectively, gain confidence working with
-graph-based data science, plus have examples to repurpose for their
-own use cases.
-
-You'll find a mix of topics throughout:
-data science, business context, AI applications, data management, 
-data strategy, design patterns, distributed systems 
-– plus explorations of how to leverage the math, where appropriate.
+# Learning
 
 This work builds on the ["Graph-Based Data Science"](https://derwen.ai/s/kcgh)
 talks at conferences and meetups, which experiment with the content –
@@ -53,8 +10,41 @@ To illustrate:
 
 <img src="../assets/learning.png" width="500" />
 
+The objective for these learning materials is to help people learn how
+to leverage **kglab** effectively, gain confidence working with
+graph-based data science, plus have examples to repurpose for their
+own use cases.
+
+You'll find a mix of topics throughout:
+data science, business context, AI applications, data management, 
+data strategy, design patterns, distributed systems 
+– plus explorations of how to leverage the math, where appropriate.
+
 The intention is to make these materials useful to a wide audience.
 So we provide multiple entry points, depending on what you need...
+
+
+## A Grammar of Learning
+
+Let's talk briefly about how to design and present learning materials.
+What are we doing here?
+In another sense, consider the following as a very brief exercise in
+*design thinking*, focused on how to improve software documentation
+and tutorials.
+
+As described in the [background](#background) below, there's a growing
+movement toward more structured approaches to how documentation gets
+presented.
+Arguably, a lack of quality or effectivenes in documentation creates
+major impediments for open source libraries.
+Much the same goes for tutorials, which are often written from the
+perspective of someone who's already familiar with the material – thus
+defeating its purpose for those who aren't.
+
+Our team has iterated on these approaches, blending key insights and
+practices from prior roles, to create design patterns for
+documentation and tutorials.
+The outline of this documentation follows these patterns.
 
 
 ### Discovery
@@ -93,8 +83,8 @@ More of that is getting integrated directly into this documentation.
 
 <img src="../assets/nouns/howto.png" alt="FAQ by ProSymbols from the Noun Project" />
 
-  * [*Getting Started*](../start/) with enough code to start.
-  * Specific "howto" articles, generated from notebooks.
+  * [*Getting Started*](../start/) with enough code to begin using the library in use cases.
+  * Specific "HowTo" articles, generated from notebooks.
 
 See also <https://diataxis.fr/how-to-guides/>
 
@@ -119,7 +109,7 @@ See also <https://diataxis.fr/tutorials/>
 <img src="../assets/nouns/concepts.png" alt="concept by Nithinan Tatah from the Noun Project" />
 
   * [*What's a Knowledge Graph?*](../what/), attempting to get shared definitions in place – for a subject that has been somewhat difficult to define.
-  * [*Concepts*](../concepts/) – exploring the abstractions used in this library, leading to best practices for how to leverage it.
+  * [*Graph Concepts*](../concepts/) – exploring the abstractions used in this library, leading to best practices for how to leverage it.
 
 See also <https://diataxis.fr/explanation/>
 
@@ -180,12 +170,22 @@ See also <https://diataxis.fr/reference/>
   * instructor's personal recommendation on social media, following successful completion of the above
 
 
-## Guidance
+## Background
 
 The strategy for structuring documentation which is used here has been
 guided by some highly recommended resources.
 Kudos to [@louisguitton](https://github.com/louisguitton) for pointing
 out these practices and initiating this dialogue for **kglab**.
+
+Diátaxis, Cloudflare, Stripe, and other organizations have fostered
+*writing cultures* internally, while applying more structured
+approaches to presenting their learning materials externally.
+That shouldn't be surprising: software developers tend to write in
+volume – generally much more text than they produce as source code –
+since the processing of planning projects and maintaining them over
+time usually involves lots of written communications.
+That said, good editing for developers' text is much less common.
+That's why the examples set by Stripe and others are important.
 
 First, check out [[victorino2020]](../biblio/#victorino2020) for a
 description of Stripe:

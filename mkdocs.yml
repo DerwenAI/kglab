@@ -40,12 +40,10 @@ nav:
             - Vector embedding with `gensim`: ex8_0.md
         - Topology:
             - (TBD) Evolved Shape Prediction: stub.ipynb
-        - Distributed Systems:
-            - (TBD) Distributed processing with `RAPIDS` and `Ray`: stub.ipynb
 
-    - Explanation:
+    - Concepts:
         - What's a Knowledge Graph?: what.md
-        - Concepts: concepts.md
+        - Graph Concepts: concepts.md
 
     - Evidence:
         - Use Cases: use_case.md
