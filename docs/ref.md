@@ -1184,7 +1184,7 @@ For PSL-specific terminology used here, see <https://psl.linqs.org/wiki/master/G
     
 ---
 #### [`__init__` method](#kglab.PSLModel.__init__)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L37)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L38)
 
 ```python
 __init__(name=None)
@@ -1197,8 +1197,22 @@ optional name of the PSL model; if not supplied, PSL generates a random name
 
 
 ---
+#### [`clear_model` method](#kglab.PSLModel.clear_model)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L53)
+
+```python
+clear_model()
+```
+Clear any pre-existing data from each of the predicates, to initialize the model.
+
+  * *returns* : `PSLModel`  
+this PSL model – use for method chaining
+
+
+
+---
 #### [`add_predicate` method](#kglab.PSLModel.add_predicate)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L52)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L68)
 
 ```python
 add_predicate(raw_name, size=None, closed=False, arg_types=None)
@@ -1225,7 +1239,7 @@ this PSL model – use for method chaining
 
 ---
 #### [`add_rule` method](#kglab.PSLModel.add_rule)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L90)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L106)
 
 ```python
 add_rule(rule_string, weighted=None, weight=None, squared=None)
@@ -1256,22 +1270,8 @@ this PSL model – use for method chaining
 
 
 ---
-#### [`clear_model` method](#kglab.PSLModel.clear_model)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L136)
-
-```python
-clear_model()
-```
-Clear any pre-existing data from each of the predicates, to initialize the model.
-
-  * *returns* : `PSLModel`  
-this PSL model – use for method chaining
-
-
-
----
 #### [`add_data_row` method](#kglab.PSLModel.add_data_row)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L170)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L219)
 
 ```python
 add_data_row(predicate_name, args, partition="observations", truth_value=1.0, verbose=False)
@@ -1299,8 +1299,54 @@ this PSL model – use for method chaining
 
 
 ---
+#### [`trace_predicate` method](#kglab.PSLModel.trace_predicate)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L263)
+
+```python
+trace_predicate(predicate_name, partition="observations", path=None)
+```
+Construct a trace of the data in a specified predicate, within a specified partition, formatted as a dataframe.
+Use a consistent column naming and sort order, so that these values can be used later in testing.
+Optionally write out this out to a TSV file.
+
+  * `predicate_name` : `str`  
+name of the specific predicate; name normalization will be handled internally; raises `ModelError` if the predicate name is not found
+
+  * `partition` : `str`  
+label for the [`pslpython.partition.Partition`](https://github.com/linqs/psl/blob/master/psl-python/pslpython/partition.py) into which the `data` gets added; must be among `[ "observations", "targets", "truth" ]`; defaults to `"observations"`; see <https://psl.linqs.org/wiki/master/Data-Storage-in-PSL.html>
+
+  * `path` : `pathlib.Path`  
+optional output path for the TSV file; defaults to `None`
+
+  * *returns* : `pandas.core.frame.DataFrame`  
+dataframe representing the traced partition data
+
+
+
+---
+#### [`compare_predicate` classmethod](#kglab.PSLModel.compare_predicate)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L300)
+
+```python
+compare_predicate(df, trace_path)
+```
+Compare the values of a predict with its expected values which get loaded from a file.
+This will print any expected (missing) or error (mismatched) rows.
+
+  * `df` : `pandas.core.frame.DataFrame`  
+dataframe from `trace_predicate`
+
+  * `trace_path` : `pathlib.Path`  
+path to a TSV file of expected values, saved from the trace of a baseline run
+
+  * *returns* : `pandas.core.frame.DataFrame`  
+dataframe loaded from the expected values
+
+
+
+---
 #### [`infer` method](#kglab.PSLModel.infer)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L228)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L338)
 
 ```python
 infer(method="", cli_options=None, psl_config=None, jvm_options=None)
@@ -1323,7 +1369,7 @@ options passed to the JVM running the PSL Java library; most commonly `"-Xmx"` a
 
 ---
 #### [`get_results` method](#kglab.PSLModel.get_results)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L268)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/srl.py#L378)
 
 ```python
 get_results(predicate_name)

@@ -51,7 +51,7 @@ Feedback from those interactions and experiments get integrated into
 these materials and eventually land here.
 To illustrate:
 
-<img src="https://derwen.ai/docs/kgl/assets/learning.png" width="500" />
+<img src="../assets/learning.png" width="500" />
 
 The intention is to make these materials useful to a wide audience.
 So we provide multiple entry points, depending on what you need...
@@ -59,7 +59,9 @@ So we provide multiple entry points, depending on what you need...
 
 ### Discovery
 
- > Design affordances for navigation, indexing, search, and recommendations.
+> Design affordances for navigation, indexing, search, and recommendations.
+
+<img src="../assets/nouns/discovery.png" alt="https://www.nicepng.com/maxp/u2w7r5i1a9y3a9w7/" />
 
 Much effort has gone into making sure this material is thoroughly
 hyper-linked together, to help with both navigation and indexing.
@@ -89,6 +91,8 @@ More of that is getting integrated directly into this documentation.
 
 > Present problem-oriented directions for getting things done.
 
+<img src="../assets/nouns/howto.png" alt="FAQ by ProSymbols from the Noun Project" />
+
   * [*Getting Started*](../start/) with enough code to start.
   * Specific "howto" articles, generated from notebooks.
 
@@ -99,6 +103,8 @@ See also <https://diataxis.fr/how-to-guides/>
 
 > Learning-oriented practice through hands-on coding exercises.
  
+<img src="../assets/nouns/tutorial.png" alt="Video Tutorial by artworkbean from the Noun Project" />
+
   * [*Tutorial*](../tutorial/) generated from notebooks, which provide reusable sample code plus supplemental exercises.
     * using a *progressive example*.
     * including a *learning promise* styled syllabus.
@@ -106,9 +112,11 @@ See also <https://diataxis.fr/how-to-guides/>
 See also <https://diataxis.fr/tutorials/>
 
 
-### Explanation
+### Concepts
 
 > Provide explanations that introduce concepts, exploring the theory and processes behind their usage.
+
+<img src="../assets/nouns/concepts.png" alt="concept by Nithinan Tatah from the Noun Project" />
 
   * [*What's a Knowledge Graph?*](../what/), attempting to get shared definitions in place – for a subject that has been somewhat difficult to define.
   * [*Concepts*](../concepts/) – exploring the abstractions used in this library, leading to best practices for how to leverage it.
@@ -120,6 +128,8 @@ See also <https://diataxis.fr/explanation/>
 
 > Where does this kind of technology meet business needs?
 
+<img src="../assets/nouns/evidence.png" alt="Usage by Adrien Coquet from the Noun Project" />
+
   * [*Use Cases*](../use_case/) exploring case studies for KG use in industry applications.
   * Other industry analysis, articles.
 
@@ -127,6 +137,8 @@ See also <https://diataxis.fr/explanation/>
 ### Technical Reference
 
 >  Each type, class, and parameter in the library which is intended for public use gets listed and explained, with plenty of whitespace for readability.
+
+<img src="../assets/nouns/api.png" alt="API by Adnen Kadri from the Noun Project" />
 
   * [*Package Reference*](../ref/) generated from *apidocs* customized for improved readability, corrected type annotations, etc.
   * [*Dependencies*](../depend/) links to all required libraries, with caveats.
@@ -139,6 +151,8 @@ See also <https://diataxis.fr/reference/>
 
 > Directing people toward how to engage with the developer community and related support.
 
+<img src="../assets/nouns/community.png" alt="Community by Aneeque Ahmed from the Noun Project" />
+
   * [*Community Resources*](../community/) for more information about using this library, troubleshooting issues, and getting involved as a contributor.
   * [*Acknowledgements*](../ack/) to the developers, sponsors, and organizations which help to support this project.
 
@@ -147,6 +161,8 @@ See also <https://diataxis.fr/reference/>
 
 > Clarify terminology with shared definitions and their supporting links, and identify original papers, histories, notable authors, and other materials for context
 
+<img src="../assets/nouns/biblio.png" alt="books by b a r z i n from the Noun Project" />
+
   * [*Glossary*](../glossary/), which define terms and also provides a basis for indexing.
   * [*Bibliography*](../biblio/) of primary sources cited within this work.
 
@@ -154,6 +170,8 @@ See also <https://diataxis.fr/reference/>
 ### Feedback
 
 > Helpful feedback, both from the community to the developers, and also for learners who are new to working in this field.
+
+<img src="../assets/nouns/feedback.png" alt="feedback by Gregor Cresnar from the Noun Project" />
 
   * *surveys* for feedback about improving the learning material
   * *self-assessments* for personal feedback (WIP)
