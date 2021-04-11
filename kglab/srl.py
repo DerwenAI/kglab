@@ -7,6 +7,7 @@
 
 from icecream import ic  # type: ignore  # pylint: disable=E0401
 import pandas as pd  # type: ignore  # pylint: disable=E0401
+import pathlib
 import pslpython.model  # type: ignore  # pylint: disable=E0401
 import pslpython.partition  # type: ignore  # pylint: disable=E0401
 import pslpython.predicate  # type: ignore  # pylint: disable=E0401
@@ -47,6 +48,21 @@ optional name of the PSL model; if not supplied, PSL generates a random name
         """
         self.model = pslpython.model.Model(name)
         self.results: dict = {}
+
+
+    def clear_model (
+        self
+        ) -> "PSLModel":
+        """
+Clear any pre-existing data from each of the predicates, to initialize the model.
+
+    returns:
+this PSL model – use for method chaining
+        """
+        for predicate in self.model.get_predicates().values():
+            predicate.clear_data()
+
+        return self
 
 
     def add_predicate (
@@ -133,21 +149,6 @@ this PSL model – use for method chaining
         return self
 
 
-    def clear_model (
-        self
-        ) -> "PSLModel":
-        """
-Clear any pre-existing data from each of the predicates, to initialize the model.
-
-    returns:
-this PSL model – use for method chaining
-        """
-        for predicate in self.model.get_predicates().values():
-            predicate.clear_data()
-
-        return self
-
-
     @classmethod
     def _raise_model_error (
         cls,
@@ -165,6 +166,54 @@ the exception message to use
         """
         error = "{}: {}".format(msg, obj)
         raise pslpython.model.ModelError(error)
+
+
+    def _get_predicate (
+        self,
+        predicate_name: str,
+        ) -> pslpython.predicate.Predicate:
+        """
+Semiprivate accessor method to lookup a predicate, with error checking.
+
+    predicate_name:
+name of the specific predicate; name normalization will be handled internally; raises `ModelError` if the predicate name is not found
+
+    returns:
+predicate object
+        """
+        try:
+            predicate = self.model.get_predicate(predicate_name)
+
+            if not predicate:
+                self._raise_model_error(predicate_name, "Unknown predicate")
+        except:  # pylint: disable=W0702 # lgtm[py/catch-base-exception]
+            self._raise_model_error(predicate_name, "Unknown predicate")
+
+        return predicate
+
+
+    def _get_partition (
+        self,
+        partition: str,
+        ) -> pslpython.partition.Partition:
+        """
+Semiprivate accessor method to lookup a partition, with error checking.
+
+    partition:
+label for the [`pslpython.partition.Partition`](https://github.com/linqs/psl/blob/master/psl-python/pslpython/partition.py) into which the `data` gets added; must be among `[ "observations", "targets", "truth" ]`; see <https://psl.linqs.org/wiki/master/Data-Storage-in-PSL.html>
+
+    returns:
+partition object
+        """
+        try:
+            partition_obj = self._PARTITIONS[partition.lower()]
+
+            if not partition_obj:
+                self._raise_model_error(partition, "Unknown partition")
+        except:  # pylint: disable=W0702 # lgtm[py/catch-base-exception]
+            self._raise_model_error(partition, "Unknown partition")
+
+        return partition_obj
 
 
     def add_data_row (
@@ -197,32 +246,93 @@ flag for verbose trace of each added record
     returns:
 this PSL model – use for method chaining
         """
-        try:
-            predicate = self.model.get_predicate(predicate_name)
-
-            if not predicate:
-                self._raise_model_error(predicate_name, "Unknown predicate")
-        except:  # pylint: disable=W0702 # lgtm[py/catch-base-exception]
-            self._raise_model_error(predicate_name, "Unknown predicate")
-
-        try:
-            partition_obj = self._PARTITIONS[partition.lower()]
-
-            if not partition_obj:
-                self._raise_model_error(partition, "Unknown partition")
-        except:  # pylint: disable=W0702 # lgtm[py/catch-base-exception]
-            self._raise_model_error(partition, "Unknown partition")
-
         if verbose:
             ic(predicate_name, partition, args)
 
+        predicate = self._get_predicate(predicate_name)
+
         predicate.add_data_row(
-            partition_obj,
+            self._get_partition(partition),
             args=args,
             truth_value=truth_value,
         )
 
         return self
+
+
+    def trace_predicate (
+        self,
+        predicate_name: str,
+        *,
+        partition: str = "observations",
+        path: pathlib.Path = None,
+        ) -> pd.DataFrame:
+        """
+Construct a trace of the data in a specified predicate, within a specified partition, formatted as a dataframe.
+Use a consistent column naming and sort order, so that these values can be used later in testing.
+Optionally write out this out to a TSV file.
+
+    predicate_name:
+name of the specific predicate; name normalization will be handled internally; raises `ModelError` if the predicate name is not found
+
+    partition:
+label for the [`pslpython.partition.Partition`](https://github.com/linqs/psl/blob/master/psl-python/pslpython/partition.py) into which the `data` gets added; must be among `[ "observations", "targets", "truth" ]`; defaults to `"observations"`; see <https://psl.linqs.org/wiki/master/Data-Storage-in-PSL.html>
+
+    path:
+optional output path for the TSV file; defaults to `None`
+
+    returns:
+dataframe representing the traced partition data
+        """
+        predicate = self._get_predicate(predicate_name)
+        partition_obj = self._get_partition(partition)
+
+        df = predicate._data[partition_obj].copy(deep=True)  # pylint: disable=W0212
+        df.columns = [ "P1", "P2", "value" ]
+        df = df.sort_values(by=[ "P1", "P2" ]).reset_index(drop=True)
+
+        if path:
+            df.to_csv(path, sep="\t", index=False)
+
+        return df
+
+
+    @classmethod
+    def compare_predicate (
+        cls,
+        df: pd.DataFrame,
+        trace_path: pathlib.Path,
+        ) -> pd.DataFrame:
+        """
+Compare the values of a predict with its expected values which get loaded from a file.
+This will print any expected (missing) or error (mismatched) rows.
+
+    df:
+dataframe from `trace_predicate`
+
+    trace_path:
+path to a TSV file of expected values, saved from the trace of a baseline run
+
+    returns:
+dataframe loaded from the expected values
+        """
+        df_known = pd.read_csv(trace_path, sep="\t")
+        df_known[[ "P1", "P2" ]] = df_known[[ "P1", "P2" ]].astype(int)
+        df_known = df_known.sort_values(by=[ "P1", "P2" ]).reset_index(drop=True)
+
+        for _, row in df_known.iterrows():
+            p1, p2, value = row
+            loc = df.loc[(df["P1"] == p1) & (df["P2"] == p2)]
+
+            if len(loc) > 0:
+                loc_val = float(loc["value"])
+
+                if value != loc_val:
+                    print(" expected", loc)
+            else:
+                print(" error", int(p1), int(p2), value)
+
+        return df_known
 
 
     def infer (
@@ -278,14 +388,8 @@ name of the specific predicate; name normalization will be handled internally; r
     returns:
 inferred values as a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html), with columns names for each argument plus the `"truth"` value
         """
-        try:
-            predicate = self.model.get_predicate(predicate_name)
-
-            if not predicate:
-                self._raise_model_error(predicate_name, "Unknown predicate")
-        except:  # pylint: disable=W0702 # lgtm[py/catch-base-exception]
-            self._raise_model_error(predicate_name, "Unknown predicate")
-
+        predicate = self._get_predicate(predicate_name)
         df = self.results[predicate].copy(deep=True)
         df.insert(0, "predicate", predicate.name())
+
         return df
