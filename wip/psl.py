@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 
-import os
+from icecream import ic
 from pslpython.model import Model
 from pslpython.partition import Partition
 from pslpython.predicate import Predicate
 from pslpython.rule import Rule
+import os
+import pandas as pd
+import pathlib
+import sys
 
 # from:
 # <https://github.com/linqs/psl-examples/blob/master/simple-acquaintances/python/simple-acquaintances.py>
@@ -12,11 +16,11 @@ from pslpython.rule import Rule
 
 DATA_DIR = os.path.join("..", "dat", "psl")
 
-ADDITIONAL_PSL_OPTIONS = {
+ADDITIONAL_PSL_OPTIONS: dict = {
     "log4j.threshold": "INFO"
 }
 
-ADDITIONAL_CLI_OPTIONS = [
+ADDITIONAL_CLI_OPTIONS: list = [
     # "--postgres"
 ]
 
@@ -61,6 +65,26 @@ def add_data (model):
     model.get_predicate("Knows").add_data_file(Partition.TRUTH, path)
 
 
+def trace_predicate (predicate_name, partition, out_path):
+    """
+TODO: migrate this into `kglab` for unit tests
+    """
+    df = model.get_predicate(predicate_name)._data[partition]
+    df.columns = [ "P1", "P2", "value" ]
+    df = df.sort_values(by=[ "P1", "P2" ])
+    df.to_csv(out_path, sep="\t", index=False)
+
+    return df
+
+
+def compare_predicate (trace_path, df):
+    """
+TODO: migrate this into `kglab` for unit tests
+    """
+    df_known = pd.read_csv(trace_path, sep="\t")
+    return df_known.compare(df)
+
+
 def infer (model):
     add_data(model)
 
@@ -82,14 +106,41 @@ def write_results (results, model):
             results[predicate].to_csv(out_path, sep = "\t", header = False, index = False)
 
 
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     model = Model("simple-acquaintances")
 
     add_predicates(model)
     add_rules(model)
 
+    # inference
+
     results = infer(model)
     write_results(results, model)
 
-    print(model.get_predicate("Likes")._data[Partition.OBSERVATIONS])
+    # save intermediate results
 
+    out_path = pathlib.Path("knows_obs.tsv")
+    ic(out_path)
+    df = trace_predicate("Knows", Partition.OBSERVATIONS, out_path)
+    ic(df)
+    ic(compare_predicate(out_path, df))
+
+    out_path = pathlib.Path("lived_obs.tsv")
+    ic(out_path)
+    df = trace_predicate("Lived", Partition.OBSERVATIONS, out_path)
+    ic(df)
+
+    out_path = pathlib.Path("likes_obs.tsv")
+    ic(out_path)
+    df = trace_predicate("Likes", Partition.OBSERVATIONS, out_path)
+    ic(df)
+
+    out_path = pathlib.Path("knows_tar.tsv")
+    ic(out_path)
+    df = trace_predicate("Knows", Partition.TARGETS, out_path)
+    ic(df)
+
+    out_path = pathlib.Path("knows_tru.tsv")
+    ic(out_path)
+    df = trace_predicate("Knows", Partition.TRUTH, out_path)
+    ic(df)

@@ -12,6 +12,7 @@
   * refactor docs to use Divio design patterns; kudos @louisguitton
   * created `SECURITY.md` security policy
   * using Snyk for security audits of dependencies
+  * testing/correcting the PSL examples; kudos @louisguitton
 
 
 ## 0.2.1
