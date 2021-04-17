@@ -11,7 +11,7 @@ copyright: Source code and documentation are <strong><a href="https://github.com
 nav:
     - Home: index.md
 
-    - How To:
+    - Begin:
         - Overview: overview.md
         - A Grammar of Learning: learn.md
         - Getting Started: start.md
@@ -33,7 +33,6 @@ nav:
             - Graph algorithms with `NetworkX`: ex6_0.md
             - Discover community structure using `iGraph` and `leidenalg`: ex6_1.md
         - Inference:
-            - Inference capabilities: infer.md
             - Measurement and inference: ex7_0.md
             - Statistical relational learning with `pslpython`: ex7_1.md
         - Embedding:
@@ -44,6 +43,7 @@ nav:
     - Concepts:
         - What's a Knowledge Graph?: what.md
         - Graph Concepts: concepts.md
+        - Inference capabilities: infer.md
 
     - Evidence:
         - Use Cases: use_case.md

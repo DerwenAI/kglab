@@ -1,5 +1,7 @@
 # Build Instructions
 
+<img src="../assets/nouns/api.png" alt="API by Adnen Kadri from the Noun Project" />
+
 !!! note
     In most cases you won't need to build this package locally.
 

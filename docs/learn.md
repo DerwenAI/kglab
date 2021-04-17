@@ -79,11 +79,10 @@ More of that is getting integrated directly into this documentation.
 
 ### HowTo
 
-> Present problem-oriented directions for getting things done.
+> Present problem-oriented directions for getting things done, as an answer to a question that only a user with some experience could even formulate.
 
 <img src="../assets/nouns/howto.png" alt="FAQ by ProSymbols from the Noun Project" />
 
-  * [*Getting Started*](../start/) with enough code to begin using the library in use cases.
   * Specific "HowTo" articles, generated from notebooks.
 
 See also <https://diataxis.fr/how-to-guides/>
@@ -91,10 +90,11 @@ See also <https://diataxis.fr/how-to-guides/>
 
 ### Tutorial
 
-> Learning-oriented practice through hands-on coding exercises.
+> Learning-oriented practice through hands-on coding examples, oriented towards showing **how** rather than explaining **that**.
  
 <img src="../assets/nouns/tutorial.png" alt="Video Tutorial by artworkbean from the Noun Project" />
 
+  * [*Getting Started*](../start/) with enough code to begin using the library in use cases.
   * [*Tutorial*](../tutorial/) generated from notebooks, which provide reusable sample code plus supplemental exercises.
     * using a *progressive example*.
     * including a *learning promise* styled syllabus.
@@ -104,7 +104,7 @@ See also <https://diataxis.fr/tutorials/>
 
 ### Concepts
 
-> Provide explanations that introduce concepts, exploring the theory and processes behind their usage.
+> Provide explanations that introduce concepts, exploring the theory and processes behind their usage, to broaden the documentation’s coverage of important topics.
 
 <img src="../assets/nouns/concepts.png" alt="concept by Nithinan Tatah from the Noun Project" />
 
@@ -126,13 +126,13 @@ See also <https://diataxis.fr/explanation/>
 
 ### Technical Reference
 
->  Each type, class, and parameter in the library which is intended for public use gets listed and explained, with plenty of whitespace for readability.
+>  Each type, class, and parameter in the library which is intended for public use gets listed and explained, with plenty of whitespace for readability, which should be austere and to the point with one objective: **describe**.
 
 <img src="../assets/nouns/api.png" alt="API by Adnen Kadri from the Noun Project" />
 
   * [*Package Reference*](../ref/) generated from *apidocs* customized for improved readability, corrected type annotations, etc.
   * [*Dependencies*](../depend/) links to all required libraries, with caveats.
-  * [*Build Instructions*](..build/) for building from source (not necessary in most cases).
+  * [*Build Instructions*](../build/) for building from source (not necessary in most cases).
 
 See also <https://diataxis.fr/reference/>
 

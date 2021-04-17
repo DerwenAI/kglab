@@ -1,5 +1,7 @@
 # Dependencies
 
+<img src="../assets/nouns/api.png" alt="API by Adnen Kadri from the Noun Project" />
+
 The **kglab** package requires [Python 3.6+](https://www.python.org/downloads/).
 
 Package dependencies as defined in

@@ -17,7 +17,7 @@ Markdown that can be used with MkDocs.
 You're welcome.
 """
 
-from icecream import ic  # type: ignore
+from icecream import ic  # type: ignore # pylint: disable=E0401
 import inspect
 import os
 import re
@@ -31,7 +31,7 @@ class PackageDoc:
 Because there doesn't appear to be any other Markdown-friendly
 docstring support in Python.
 
-See also: 
+See also:
 
   * [PEP 256](https://www.python.org/dev/peps/pep-0256/)
   * [`inspect`](https://docs.python.org/3/library/inspect.html)
@@ -65,7 +65,10 @@ list of the classes to include in the apidocs
         self.class_list = class_list
 
         self.module_obj = sys.modules[self.module_name]
-        self.md: typing.List[str] = [ "# Reference: `{}` package".format(self.module_name) ]
+        self.md: typing.List[str] = [
+            "# Reference: `{}` package".format(self.module_name),
+            "<img src='../assets/nouns/api.png' alt='API by Adnen Kadri from the Noun Project' />",
+            ]
 
 
     def show_all_elements (
@@ -137,7 +140,7 @@ a dictionary of class objects which need apidocs generated
         return todo_list
 
 
-    def get_docstring (
+    def get_docstring (  # pylint: disable=W0102
         self,
         obj,
         parse=False,
@@ -237,13 +240,13 @@ fixed forward reference, as markdown; or `None` if no annotation is supplied
 
         if not anno:
             return None
-        else:
-            for term in anno.split(", "):
-                for chunk in self.PAT_FWD_REF.split(term):
-                    if len(chunk) > 0:
-                        results.append(chunk)
 
-            return ", ".join(results)
+        for term in anno.split(", "):
+            for chunk in self.PAT_FWD_REF.split(term):
+                if len(chunk) > 0:
+                    results.append(chunk)
+
+        return ", ".join(results)
 
 
     def document_method (
@@ -283,7 +286,7 @@ line number, plus apidocs for the method as a list of markdown lines
         line_num = code.co_firstlineno
         file = code.co_filename.replace(os.getcwd(), "")
 
-        src_url = "[*\[source\]*]({}{}#L{})\n".format(self.git_url, file, line_num)
+        src_url = "[*\[source\]*]({}{}#L{})\n".format(self.git_url, file, line_num)  # pylint: disable=W1401
         local_md.append(src_url)
 
         # format the callable signature
@@ -355,8 +358,9 @@ argument list of `(arg_name, type_annotation)` pairs
         return arg_list
 
 
+    @classmethod
     def extract_type_annotation (
-        self,
+        cls,
         sig: inspect.Signature,
         ):
         """
@@ -382,15 +386,16 @@ corrected type annotation
             elif type_name.startswith("~"):
                 type_name = type_name[1:]
 
-        except Exception:
+        except Exception:  # pylint: disable=W0703
             ic(type_name)
             traceback.print_exc()
-        finally:
-            return type_name
+
+        return type_name
 
 
+    @classmethod
     def document_type (
-        self,
+        cls,
         path_list: list,
         name: str,
         obj: typing.Any,
@@ -440,7 +445,7 @@ list of classes to be documented
     class_name:
 name of the class to document
         """
-        self.md.append("## [`{}` class](#{})".format(class_name, class_name))
+        self.md.append("## [`{}` class](#{})".format(class_name, class_name))  # pylint: disable=W1308
 
         class_obj = todo_list[class_name]
         docstring = class_obj.__doc__
@@ -458,7 +463,8 @@ name of the class to document
                 if member_name not in class_obj.__dict__:
                     # inherited method
                     continue
-                elif inspect.isfunction(member_obj):
+
+                if inspect.isfunction(member_obj):
                     func_kind = "method"
                 elif inspect.ismethod(member_obj):
                     func_kind = "classmethod"
@@ -468,7 +474,7 @@ name of the class to document
                 line_num, obj_md = self.document_method(path_list, member_name, member_obj, func_kind)
                 obj_md_pos[line_num] = obj_md
 
-        for pos, obj_md in sorted(obj_md_pos.items()):
+        for _, obj_md in sorted(obj_md_pos.items()):
             self.md.extend(obj_md)
 
 
@@ -484,7 +490,7 @@ apidocs as markdown.
 
         for func_name, func_obj in inspect.getmembers(self.module_obj, inspect.isfunction):
             if not func_name.startswith("_"):
-                line_num, obj_md = self.document_method([self.module_name], func_name, func_obj, "function")
+                _, obj_md = self.document_method([self.module_name], func_name, func_obj, "function")
                 self.md.extend(obj_md)
 
 

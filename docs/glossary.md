@@ -1,5 +1,7 @@
 # Glossary
 
+<img src="../assets/nouns/biblio.png" alt="books by b a r z i n from the Noun Project" />
+
 ## DRAFT: Work in progress
 
 This material is a work in progress, at "rough draft" stage.

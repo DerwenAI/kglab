@@ -1,5 +1,7 @@
 # Use Cases
 
+<img src="../assets/nouns/evidence.png" alt="Usage by Adrien Coquet from the Noun Project" />
+
 ## DRAFT: Work in progress
 
 This material is a work in progress, at "rough draft" stage.

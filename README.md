@@ -21,6 +21,12 @@ The **kglab** library provides a simple abstraction layer in Python
 > This will help us prioritize the **kglab** roadmap.
 
 
+## Reviews
+
+[@kaaloo](https://github.com/kaaloo): 
+> "Feels like it's a Hugging Face for graphs! 🤯"
+
+
 ## Getting Started
 
 See the ["Getting Started"](https://derwen.ai/docs/kgl/start/)
