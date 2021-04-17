@@ -1,5 +1,7 @@
 # Getting Started
 
+<img src="../assets/nouns/tutorial.png" alt="Video Tutorial by artworkbean from the Noun Project" />
+
 ## Installation
 
 To install from [PyPi](https://pypi.python.org/pypi/kglab):

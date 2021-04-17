@@ -1,5 +1,7 @@
 # Acknowledgements
 
+<img src="../assets/nouns/community.png" alt="Community by Aneeque Ahmed from the Noun Project" />
+
 ## Contributors
 
 Many thanks to our open source [sponsors](https://github.com/sponsors/ceteri);

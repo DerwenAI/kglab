@@ -1,5 +1,7 @@
 # Overview
 
+<img src="../assets/nouns/concepts.png" alt="concept by Nithinan Tatah from the Noun Project" />
+
 ## Open Source Integration
 
 The **kglab** package is mostly about integration.

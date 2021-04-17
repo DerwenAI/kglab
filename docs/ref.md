@@ -1,4 +1,5 @@
 # Reference: `kglab` package
+<img src='../assets/nouns/api.png' alt='API by Adnen Kadri from the Noun Project' />
 ## [`KnowledgeGraph` class](#KnowledgeGraph)
 
 This is the primary class used to represent RDF graphs, on which the other classes are dependent.

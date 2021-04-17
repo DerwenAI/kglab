@@ -1,5 +1,7 @@
 # Syllabus
 
+<img src="../assets/nouns/tutorial.png" alt="Video Tutorial by artworkbean from the Noun Project" />
+
 ## Abstract
 
 Python has excellent libraries for working with graphs which provide:
@@ -85,7 +87,7 @@ cd kglab
 
 To install the dependencies using `pip`:
 ```
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 Alternatively, to install the dependencies using `conda`:
@@ -98,7 +100,7 @@ Also make sure to install
 [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/).
 To install using `pip`:
 ```
-pip install jupyterlab
+python3 -m pip install jupyterlab
 ```
 
 Or if you use `conda` you can install it with:

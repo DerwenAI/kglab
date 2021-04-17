@@ -1,5 +1,7 @@
 # Graph Concepts
 
+<img src="../assets/nouns/concepts.png" alt="concept by Nithinan Tatah from the Noun Project" />
+
 ## DRAFT: Work in progress
 
 This material is a work in progress, at "rough draft" stage.

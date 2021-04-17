@@ -1,5 +1,7 @@
 # Inference capabilities
 
+<img src="../assets/nouns/concepts.png" alt="concept by Nithinan Tatah from the Noun Project" />
+
 Once you have data organized as a graph, there are several ways to
 perform *inference*, which is a core capability of AI systems.
 

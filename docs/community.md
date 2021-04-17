@@ -1,5 +1,7 @@
 # Community Resources
 
+<img src="../assets/nouns/community.png" alt="Community by Aneeque Ahmed from the Noun Project" />
+
 We're focused on our community and pay special attention to the
 business use cases they represent.
 We're also eager to hear your feedback and suggestions for this open

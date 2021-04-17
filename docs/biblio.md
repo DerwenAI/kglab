@@ -1,5 +1,7 @@
 # Bibliography
 
+<img src="../assets/nouns/biblio.png" alt="books by b a r z i n from the Noun Project" />
+
 Where possible, the following citations are based on conventions at <https://www.bibsonomy.org/>
 
 Journal abbreviations use ISO 4, available at <https://academic-accelerator.com/Journal-Abbreviation/System>
