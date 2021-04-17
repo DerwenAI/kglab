@@ -11,7 +11,7 @@ copyright: Source code and documentation are <strong><a href="https://github.com
 nav:
     - Home: index.md
 
-    - Begin:
+    - Start:
         - Overview: overview.md
         - A Grammar of Learning: learn.md
         - Getting Started: start.md
