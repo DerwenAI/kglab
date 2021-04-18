@@ -3,16 +3,20 @@
 
 """
 Implementation of apidoc-ish documentation which generates actual
-Markdown that can be used with MkDocs.
+Markdown that can be used with MkDocs, and fits with Diátaxis design
+principles for effective documentation. Because the others really
+don't.
 
-  * aware of type annotations
-  * non-bassackwards parameter descriptions (eyes on *you*, GOOG)
+In particular, this library...
+
+  * is aware of type annotations (PEP 484, etc.)
+  * provides non-bassackwards parameter descriptions (eyes on *you*, GOOG)
   * handles forward references (prior to Python 3.8)
   * links to source lines in a Git repo
   * fixes bugs in `typing` and `inspect`
   * does not require use of a plugin
   * uses `icecream` for debugging
-  * b/c Sphinx sucks
+  * exists b/c Sphinx sucks
 
 You're welcome.
 """

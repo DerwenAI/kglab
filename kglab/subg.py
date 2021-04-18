@@ -230,7 +230,7 @@ Factory pattern to populate a [`networkx.DiGraph`](https://networkx.org/document
 See <https://networkx.org/>
 
     nx_graph:
-pass in an unpopulated [`networkx.DiGraph`](https://networkx.org/documentation/latest/reference/classes/digraph.html) object; must be a [`cugraph.DiGrap`](https://docs.rapids.ai/api/cugraph/stable/api.html#digraph) if GPUs are enabled
+pass in an unpopulated [`networkx.DiGraph`](https://networkx.org/documentation/latest/reference/classes/digraph.html) object; must be a [`cugraph.DiGraph`](https://docs.rapids.ai/api/cugraph/stable/api.html#digraph) if GPUs are enabled
 
     bipartite:
 flag for whether the `(subject, object)` pairs should be partitioned into *bipartite sets*, in other words whether the *adjacency matrix* is symmetric; ignored if GPUs are enabled
