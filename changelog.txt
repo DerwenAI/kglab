@@ -14,6 +14,7 @@
   * using Snyk for security audits of dependencies
   * testing/correcting the PSL examples; kudos @louisguitton
   * include first quote; kudos @kaaloo !
+  * multifile decorator (supports globs) for `load_rdf()`; kudos @Ankush-Chander
 
 
 ## 0.2.1

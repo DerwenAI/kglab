@@ -8,10 +8,11 @@ from copy import deepcopy
 #from functools import reduce
 from functools import wraps
 from glob import glob
+from icecream import ic  #  type: ignore # pylint: disable=W0611,E0401
 import inspect
 import pathlib
 import typing
-import urlpath  # type: ignore
+import urlpath  # type: ignore # pylint: disable=E0401
 
 
 def _test_path (
@@ -74,16 +75,12 @@ constructed decorator
                 # initialize the path list with a parsed glob
                 path_list = glob(path)
 
-            # also handle single Path objects by the default function
+            # handle single Path objects by the default function
             elif _test_path(path):
                 return f(*args, **kwargs)
 
-            # no files were found in the given pattern so raise error
-            if len(path_list) == 0:
-                raise ValueError(f"No files found in given path list: {path}")
-
             # handle a list of Path objects
-            if isinstance(path, (list)):
+            elif isinstance(path, (list)):
                 for p in path:
                     if _test_path(path):
                         path_list.append(p)
@@ -93,6 +90,10 @@ constructed decorator
                 raise ValueError(
                     f"{path} is not a valid string, Path, or list of Paths"
                 )
+
+            # no files were found in the given pattern so raise error
+            if len(path_list) == 0:
+                raise ValueError(f"No files found in given path list: {path}")
 
             # store the parsed clumpers here
             # collected_clumpers = []

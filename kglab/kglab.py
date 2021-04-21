@@ -36,7 +36,6 @@ if get_gpu_count() > 0:
     import cudf  # type: ignore  # pylint: disable=E0401
 
 
-
 class KnowledgeGraph:
     """
 This is the primary class used to represent RDF graphs, on which the other classes are dependent.
@@ -477,7 +476,7 @@ Throws `TypeError` whenever a format parser plugin encounters a syntax error.
 Note: this adds relations to an RDF graph, although it does not overwrite the existing RDF graph.
 
     path:
-must be a file name (str) or a path object (not a URL) to a local file reference (which may be a glob with a wildcard); or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object)
+must be a file name (str) to a local file reference – possibly a glob with a wildcard; or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object)
 
     format:
 serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins – excluding the `"json-ld"` format; otherwise this throws a `TypeError` exception

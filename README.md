@@ -160,12 +160,16 @@ and to our contributors:
 [@ceteri](https://github.com/ceteri),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@louisguitton](https://github.com/louisguitton),
+[@Ankush-Chander](https://github.com/Ankush-Chander),
 [@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247),
-plus general support from [Derwen, Inc.](https://github.com/DerwenAI),
+plus general support from [Derwen, Inc.](https://derwen.ai/);
+the [Knowledge Graph Conference](https://www.knowledgegraph.tech/)
+and [Connected Data London](https://connected-data.london/);
+plus an even larger scope of [use cases](https://derwen.ai/docs/kgl/use_case/)
+represented by their communities;
 [KFocus](https://kfocus.org/),
 the [NVidia RAPIDS team](https://rapids.ai/),
-the [KGC Community](https://github.com/KGConf),
-[Connected Data London](https://connected-data.london/),
+[Gradient Flow](https://gradientflow.com/),
 and
 [Manning Publications](https://www.manning.com/).
