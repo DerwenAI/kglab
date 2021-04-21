@@ -31,4 +31,4 @@ repos:
     hooks:
     -   id: pylint
         exclude: ^wip/,^test.py
-        files: kglab/*.py
+        files: ^kglab/
