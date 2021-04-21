@@ -20,14 +20,15 @@ repos:
     rev: 1.7.0
     hooks:
     -   id: bandit # security vulnerabilities
-        args: [ "--exclude", "setup.py,tests" ]
+        args: [ "--exclude", "setup.py,test.py" ]
 -   repo: https://github.com/pre-commit/mirrors-mypy
     rev: v0.812
     hooks:
     -   id: mypy # type annotations
-        exclude: ^examples/,^tests/,^wip/
+        exclude: ^examples/,^wip/,^test.py
 -   repo: https://github.com/PyCQA/pylint
     rev: pylint-2.7.2
     hooks:
     -   id: pylint
-        exclude: ^wip/
+        exclude: ^wip/,^test.py
+        files: ^kglab/

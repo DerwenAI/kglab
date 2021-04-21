@@ -18,7 +18,7 @@ class TestKG (unittest.TestCase):
 Coverage:
 
     * KnowledgeGraph() constructor
-    * KnowledgeGraph.load_rdf()
+    * KnowledgeGraph.load_rdf() from pathlib.Path, urlpath.URL
     * KnowledgeGraph.safe_rdf()
     * KnowledgeGraph.load_jsonld()
     * KnowledgeGraph.save_jsonld()
@@ -132,6 +132,63 @@ Coverage:
         df1["rank"] = df3.apply(kglab.root_mean_square, axis=1)
 
         self.assertTrue(round(df1.iloc[0]["rank"], 4) == 8.6747)
+
+
+    def test_single_file_load_rdf (self):
+        """
+Coverage:
+
+    * KnowledgeGraph.load_rdf() load RDF from a single local file (str)
+        """
+        # create a KnowledgeGraph object
+        kg = kglab.KnowledgeGraph()
+
+        # load RDF from a file
+        kg.load_rdf("dat/gorm.ttl", format="ttl")
+        measure = kglab.Measure()
+
+        measure.measure_graph(kg)
+        edge_count = measure.get_edge_count()
+        node_count = measure.get_node_count()
+
+        assert edge_count == 25
+        assert node_count == 15
+
+
+    def test_multiple_file_load_rdf(self):
+        """
+Coverage:
+
+    * KnowledgeGraph.load_rdf() load RDF from multiple files using a wildcard expression
+        """
+        # create a KnowledgeGraph object
+        kg = kglab.KnowledgeGraph()
+
+        # load RDF from a file1 into KG
+        kg.load_rdf("dat/gorm.ttl", format="ttl")
+
+        # load RDF from a file2 into KG
+        kg.load_rdf("dat/nom.ttl", format="ttl")
+
+        measure = kglab.Measure()
+        measure.measure_graph(kg)
+        sequential_edge_count = measure.get_edge_count()
+        sequential_node_count = measure.get_node_count()
+
+        # load RDF from all files (file1 and file2) matching the
+        # expression into KG
+        kg_multifile = kglab.KnowledgeGraph()
+        kg_multifile.load_rdf("dat/*m.ttl", format="ttl")
+
+        measure.reset()
+        measure.measure_graph(kg_multifile)
+        multifile_edge_count = measure.get_edge_count()
+        multifile_node_count = measure.get_node_count()
+
+        # ic(multifile_edge_count)
+        # ic(multifile_node_count)
+        assert multifile_edge_count == sequential_edge_count
+        assert multifile_node_count == sequential_node_count
 
 
 if __name__ == "__main__":
