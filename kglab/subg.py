@@ -10,6 +10,7 @@ from kglab.topo import Measure
 from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
 from kglab.util import get_gpu_count
 
+from icecream import ic  #  type: ignore # pylint: disable=W0611,E0401
 import pandas as pd  # type: ignore # pylint: disable=E0401
 import pyvis.network  # type: ignore # pylint: disable=E0401
 import networkx as nx  # type: ignore # pylint: disable=E0401
@@ -83,7 +84,14 @@ a node in the RDF graph
     returns:
 a unique identifier (an integer index) for the `node` in the RDF graph
         """
-        if not node:
+        # NB: workaround to avoid Python calling `node.__nonzero__()`
+        # https://amir.rachum.com/blog/2012/08/25/you-cant-handle-the-truth/
+
+        # otherwise, if `node` is a literal (e.g., an int, float, string,
+        # duration, etc.) that evals to any zero value then this function
+        # would behave incorrectly
+
+        if node is None:
             # null case
             return -1
 
