@@ -1,6 +1,6 @@
 # `kglab` changelog
 
-## 0.2.2
+## 0.3.0
 
 2021-04-??
 
@@ -15,6 +15,7 @@
   * testing/correcting the PSL examples; kudos @louisguitton
   * include first quote; kudos @kaaloo !
   * multifile decorator (supports globs) for `load_rdf()`; kudos @Ankush-Chander
+  * fixed bug in SubgraphTensor null check; kudos @dvsrepo
 
 
 ## 0.2.1

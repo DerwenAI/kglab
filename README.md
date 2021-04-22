@@ -158,9 +158,10 @@ this library.
 Many thanks to our open source [sponsors](https://github.com/sponsors/ceteri);
 and to our contributors:
 [@ceteri](https://github.com/ceteri),
+[@dvsrepo](https://github.com/dvsrepo),
+[@Ankush-Chander](https://github.com/Ankush-Chander),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@louisguitton](https://github.com/louisguitton),
-[@Ankush-Chander](https://github.com/Ankush-Chander),
 [@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247),
 plus general support from [Derwen, Inc.](https://derwen.ai/);
