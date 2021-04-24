@@ -1,0 +1,106 @@
+{
+  "@context": {
+    "@language": "en",
+    "dct": "http://purl.org/dc/terms/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "http://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "http://example.org/sagas#Astrid",
+      "@type": "http://example.org/sagas#Viking",
+      "http://example.org/sagas#childOf": [
+        {
+          "@id": "http://example.org/sagas#Leif"
+        },
+        {
+          "@id": "http://example.org/sagas#Bodil"
+        }
+      ],
+      "http://xmlns.com/foaf/0.1/topic_interest": {
+        "@id": "http://example.org/sagas#Fighting"
+      }
+    },
+    {
+      "@id": "http://example.org/sagas#Bodil",
+      "@type": "http://example.org/sagas#Viking",
+      "http://example.org/sagas#spouseOf": {
+        "@id": "http://example.org/sagas#Leif"
+      }
+    },
+    {
+      "@id": "http://example.org/sagas#Leif",
+      "@type": "http://example.org/sagas#Viking",
+      "http://example.org/sagas#childOf": {
+        "@id": "http://example.org/sagas#Bjorn"
+      }
+    },
+    {
+      "@id": "http://example.org/sagas#Viking",
+      "@type": "http://xmlns.com/foaf/0.1/Person"
+    },
+    {
+      "@id": "http://example.org/sagas#Fighting",
+      "@type": "http://xmlns.com/foaf/0.1/Thing"
+    },
+    {
+      "@id": "http://example.org/sagas#childOf",
+      "owl:inverseOf": {
+        "@id": "http://example.org/sagas#ancestorOf"
+      },
+      "rdfs:domain": {
+        "@id": "http://example.org/sagas#Viking"
+      },
+      "rdfs:range": {
+        "@id": "http://example.org/sagas#Viking"
+      }
+    },
+    {
+      "@id": "http://example.org/sagas#Bjorn",
+      "@type": "http://example.org/sagas#Viking",
+      "http://example.org/sagas#childOf": {
+        "@id": "http://example.org/sagas#Gorm"
+      },
+      "http://xmlns.com/foaf/0.1/topic_interest": {
+        "@id": "http://example.org/sagas#Pilaging"
+      }
+    },
+    {
+      "@id": "http://example.org/sagas#spouseOf",
+      "@type": "owl:SymmetricProperty",
+      "rdfs:domain": {
+        "@id": "http://example.org/sagas#Viking"
+      },
+      "rdfs:range": {
+        "@id": "http://example.org/sagas#Viking"
+      }
+    },
+    {
+      "@id": "http://example.org/sagas#Gorm",
+      "@type": "http://example.org/sagas#Viking",
+      "http://xmlns.com/foaf/0.1/topic_interest": {
+        "@id": "http://example.org/sagas#Berserkr"
+      }
+    },
+    {
+      "@id": "http://example.org/sagas#Pilaging",
+      "@type": "http://xmlns.com/foaf/0.1/Thing",
+      "skos:broader": {
+        "@id": "http://example.org/sagas#Fighting"
+      }
+    },
+    {
+      "@id": "http://example.org/sagas#Berserkr",
+      "@type": "http://xmlns.com/foaf/0.1/Thing",
+      "skos:broader": {
+        "@id": "http://example.org/sagas#Fighting"
+      }
+    }
+  ]
+}
