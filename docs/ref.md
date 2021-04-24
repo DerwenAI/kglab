@@ -15,33 +15,6 @@ Core feature areas include:
   * inference based on OWL-RL, RDFS, SKOS
     
 ---
-#### [`load_rdf` method](#kglab.KnowledgeGraph.load_rdf)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/decorators.py#L58)
-
-```python
-load_rdf(path, format="ttl", base=None, **args)
-```
-Wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from the `path` source.
-This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
-Throws `TypeError` whenever a format parser plugin encounters a syntax error.
-
-Note: this adds relations to an RDF graph, although it does not overwrite the existing RDF graph.
-
-  * `path` : `typing.Union[str, pathlib.Path, urlpath.URL, typing.IO]`  
-must be a file name (str) to a local file reference – possibly a glob with a wildcard; or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object); otherwise this throws a `TypeError` exception
-
-  * `format` : `str`  
-serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins – excluding the `"json-ld"` format; otherwise this throws a `TypeError` exception
-
-  * `base` : `str`  
-logical URI to use as the document base; if not specified, the document location gets used
-
-  * *returns* : `KnowledgeGraph`  
-this `KnowledgeGraph` object – used for method chaining
-
-
-
----
 #### [`__init__` method](#kglab.KnowledgeGraph.__init__)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L67)
 
@@ -236,6 +209,33 @@ To prepare for upcoming **kglab** features, **this is the preferred method for r
 
 
 ---
+#### [`load_rdf` method](#kglab.KnowledgeGraph.load_rdf)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/decorators.py#L58)
+
+```python
+load_rdf(path, format="ttl", base=None, **args)
+```
+Wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from the `path` source.
+This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
+Throws `TypeError` whenever a format parser plugin encounters a syntax error.
+
+Note: this adds relations to an RDF graph, although it does not overwrite the existing RDF graph.
+
+  * `path` : `typing.Union[str, pathlib.Path, urlpath.URL, typing.IO]`  
+must be a file name (str) to a local file reference – possibly a glob with a wildcard; or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object); otherwise this throws a `TypeError` exception
+
+  * `format` : `str`  
+serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins – excluding the `"json-ld"` format; otherwise this throws a `TypeError` exception
+
+  * `base` : `str`  
+logical URI to use as the document base; if not specified, the document location gets used
+
+  * *returns* : `KnowledgeGraph`  
+this `KnowledgeGraph` object – used for method chaining
+
+
+
+---
 #### [`load_rdf_text` method](#kglab.KnowledgeGraph.load_rdf_text)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L522)
 
@@ -305,6 +305,29 @@ text encoding value, defaults to `"utf-8"`, must be in the [Python codec registr
 
   * *returns* : `typing.AnyStr`  
 text representing the RDF graph
+
+
+
+---
+#### [`load_jsonld` method](#kglab.KnowledgeGraph.load_jsonld)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/decorators.py#L58)
+
+```python
+load_jsonld(path, encoding="utf-8", **args)
+```
+Wrapper for [`rdflib-jsonld.parser.JsonLDParser.parse()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/parser.py) which parses an RDF graph from a [JSON-LD](https://json-ld.org/) source.
+This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
+
+Note: this adds relations to an RDF graph, it does not overwrite the existing RDF graph.
+
+  * `path` : `typing.Union[str, pathlib.Path, urlpath.URL, typing.IO]`  
+must be a file name (str) to a local file reference – possibly a glob with a wildcard; or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object)
+
+  * `encoding` : `str`  
+text encoding value, which defaults to `"utf-8"`; must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
+
+  * *returns* : `KnowledgeGraph`  
+this `KnowledgeGraph` object – used for method chaining
 
 
 

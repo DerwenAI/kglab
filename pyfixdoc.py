@@ -435,6 +435,36 @@ apidocs for the type, as a list of lines of markdown
         return local_md
 
 
+    @classmethod
+    def find_line_num (
+        cls,
+        src: typing.Tuple[typing.List[str], int],
+        member_name: str,
+        ) -> int:
+        """
+Corrects for the error in parsing source line numbers of class methods that have decorators:
+<https://stackoverflow.com/questions/8339331/how-to-get-line-number-of-function-with-without-a-decorator-in-a-python-module>
+
+    src:
+list of source lines for the class being inspected
+
+    member_name:
+name of the class member to locate
+
+    returns:
+corrected line number of the method definition
+        """
+        correct_line_num = -1
+
+        for line_num, line in enumerate(src[0]):
+            tokens = line.strip().split(" ")
+
+            if tokens[0] == "def" and tokens[1] == member_name:
+                correct_line_num = line_num
+
+        return correct_line_num
+
+
     def format_class (
         self,
         todo_list: typing.Dict[ str, typing.Any],
@@ -453,6 +483,7 @@ name of the class to document
 
         class_obj = todo_list[class_name]
         docstring = class_obj.__doc__
+        src = inspect.getsourcelines(class_obj)
 
         if docstring:
             # add the raw docstring for a class
@@ -475,7 +506,8 @@ name of the class to document
                 else:
                     continue
 
-                line_num, obj_md = self.document_method(path_list, member_name, member_obj, func_kind)
+                _, obj_md = self.document_method(path_list, member_name, member_obj, func_kind)
+                line_num = self.find_line_num(src, member_name)
                 obj_md_pos[line_num] = obj_md
 
         for _, obj_md in sorted(obj_md_pos.items()):
