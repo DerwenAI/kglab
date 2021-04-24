@@ -14,7 +14,7 @@ Welcome to *graph-based data science*:
 The **kglab** library provides a simple abstraction layer in Python
 3.6+ for building knowledge graphs.
 
-> **SPECIAL REQUEST**:   
+> **SPECIAL REQUEST:**  
 > Which features would you like in an open source Python library for building knowledge graphs?  
 > Please add your suggestions through this survey:  
 > https://forms.gle/FMHgtmxHYWocprMn6  
@@ -75,6 +75,13 @@ See the **tutorial notebooks** in the `examples` subdirectory for
 sample code and patterns to use in integrating **kglab** with other
 graph libraries in Python:
 <https://derwen.ai/docs/kgl/tutorial/>
+
+
+> **WARNING when installing in an existing environment:**  
+> Installing a new package in an existing environment may reveal  
+> or create version conflicts. See the **kglab** requirements  
+> in `requirements.txt` before you do. For example, there are  
+> [known version conflicts](https://github.com/DerwenAI/kglab/issues/160) regarding NumPy (>= 1.19.4) and [TensorFlow 2+](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/pip_package/setup.py) (~-1.19.2)
 
 
 <details>
@@ -160,8 +167,9 @@ and to our contributors:
 [@ceteri](https://github.com/ceteri),
 [@dvsrepo](https://github.com/dvsrepo),
 [@Ankush-Chander](https://github.com/Ankush-Chander),
-[@gauravjaglan](https://github.com/gauravjaglan),
 [@louisguitton](https://github.com/louisguitton),
+[@gauravjaglan](https://github.com/gauravjaglan),
+[@CatChenal](https://github.com/CatChenal),
 [@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247),
 plus general support from [Derwen, Inc.](https://derwen.ai/);
@@ -169,7 +177,7 @@ the [Knowledge Graph Conference](https://www.knowledgegraph.tech/)
 and [Connected Data London](https://connected-data.london/);
 plus an even larger scope of [use cases](https://derwen.ai/docs/kgl/use_case/)
 represented by their communities;
-[KFocus](https://kfocus.org/),
+[Kubuntu Focus](https://kfocus.org/),
 the [NVidia RAPIDS team](https://rapids.ai/),
 [Gradient Flow](https://gradientflow.com/),
 and

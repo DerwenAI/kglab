@@ -21,6 +21,9 @@ conda env create -f environment.yml
 conda activate kglab
 ```
 
+See the [*Dependencies*](../depend/#troubleshooting) section for more
+information about troubleshooting installation issues.
+
 
 ## Sample Usage
 
