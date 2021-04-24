@@ -668,7 +668,7 @@ text representing the RDF graph
             **args,
         ).decode(encoding)
 
-
+    @multifile()
     def load_jsonld (
         self,
         path: IOPathLike,

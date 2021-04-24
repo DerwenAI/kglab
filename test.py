@@ -191,5 +191,46 @@ Coverage:
         assert multifile_node_count == sequential_node_count
 
 
+    def test_multiple_file_load_jsonld(self):
+        """
+Coverage:
+
+    * KnowledgeGraph.load_jsonld() load jsonld from multiple files using a wildcard expression
+        """
+        # create a KnowledgeGraph object
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message="unclosed file*")
+            kg = kglab.KnowledgeGraph()
+
+            # load json-ld from a file1 into KG
+            kg.load_jsonld("dat/gorm.jsonld")
+
+            # load json-ld from a file2 into KG
+            kg.load_jsonld("dat/nom.jsonld")
+
+            measure = kglab.Measure()
+            measure.measure_graph(kg)
+            sequential_edge_count = measure.get_edge_count()
+            sequential_node_count = measure.get_node_count()
+            # ic(sequential_edge_count)
+            # ic(sequential_node_count)
+
+            # load RDF from all files (file1 and file2) matching the
+            # expression into KG
+            kg_multifile = kglab.KnowledgeGraph()
+            kg_multifile.load_jsonld("dat/*m.jsonld")
+
+            measure.reset()
+            measure.measure_graph(kg_multifile)
+            multifile_edge_count = measure.get_edge_count()
+            multifile_node_count = measure.get_node_count()
+
+            # ic(multifile_edge_count)
+            # ic(multifile_node_count)
+            assert multifile_edge_count == sequential_edge_count
+            assert multifile_node_count == sequential_node_count
+
+
+
 if __name__ == "__main__":
     unittest.main()

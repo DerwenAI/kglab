@@ -1,0 +1,162 @@
+{
+  "@context": {
+    "@language": "en",
+    "dct": "http://purl.org/dc/terms/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "http://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "http://example.org/#Pancake",
+      "@type": "http://example.org/#Component",
+      "dct:identifier": {
+        "@id": "http://www.wikidata.org/entity/Q44541"
+      },
+      "http://example.org/#madeFrom": {
+        "@id": "http://example.org/#Batter"
+      },
+      "skos:altLabel": {
+        "@language": "fr",
+        "@value": "Crêpe"
+      },
+      "skos:closeMatch": {
+        "@id": "http://www.wikidata.org/entity/Q12200"
+      },
+      "skos:definition": "A thin, round cake made from a batter of eggs, milk, and flour.",
+      "skos:narrower": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q815898"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q899392"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q1025010"
+        }
+      ],
+      "skos:prefLabel": "Pancake"
+    },
+    {
+      "@id": "http://example.org/#NOM_Vocab",
+      "@type": "skos:ConceptScheme",
+      "dct:publisher": {
+        "@id": "https://derwen.ai/"
+      },
+      "skos:definition": "A mid-level SKOS/OWL ontology used in the `kglab` examples",
+      "skos:prefLabel": "NOM Example Vocabulary"
+    },
+    {
+      "@id": "http://example.org/#Component",
+      "@type": "skos:Concept",
+      "dct:identifier": {
+        "@id": "http://www.wikidata.org/entity/Q746549"
+      },
+      "skos:altLabel": "Dish",
+      "skos:definition": "A specific prepared food which is ready to eat or used in building another dish.",
+      "skos:prefLabel": "Component"
+    },
+    {
+      "@id": "http://example.org/#Mixing",
+      "@type": "http://example.org/#Component",
+      "skos:closeMatch": {
+        "@id": "https://www.foodonline.com/solution/mixing-and-blending"
+      },
+      "skos:definition": "A process of combining two or more separate components to produce a certain level of homogeneity.",
+      "skos:prefLabel": "Mixing"
+    },
+    {
+      "@id": "http://example.org/#Dough",
+      "@type": "http://example.org/#Component",
+      "dct:identifier": {
+        "@id": "http://www.wikidata.org/entity/Q178024"
+      },
+      "http://example.org/#usesProcess": {
+        "@id": "http://example.org/#Kneading"
+      },
+      "skos:definition": "A flour-based paste used to prepare food.",
+      "skos:prefLabel": "Dough"
+    },
+    {
+      "@id": "http://example.org/#usesProcess",
+      "rdfs:domain": {
+        "@id": "http://example.org/#Component"
+      },
+      "rdfs:range": {
+        "@id": "http://example.org/#Process"
+      }
+    },
+    {
+      "@id": "http://example.org/#madeFrom",
+      "rdfs:domain": {
+        "@id": "http://example.org/#Component"
+      },
+      "rdfs:range": {
+        "@id": "http://example.org/#Component"
+      }
+    },
+    {
+      "@id": "http://example.org/#Noodle",
+      "@type": "http://example.org/#Component",
+      "dct:identifier": {
+        "@id": "http://www.wikidata.org/entity/Q192874"
+      },
+      "http://example.org/#madeFrom": {
+        "@id": "http://example.org/#Dough"
+      },
+      "skos:altLabel": "Dumpling",
+      "skos:closeMatch": {
+        "@id": "http://www.wikidata.org/entity/Q1854639"
+      },
+      "skos:definition": "A type of staple food made from some type of unleavened dough.",
+      "skos:narrower": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q20065"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q178"
+        }
+      ],
+      "skos:prefLabel": "Noodle"
+    },
+    {
+      "@id": "http://example.org/#Batter",
+      "@type": "http://example.org/#Component",
+      "dct:identifier": {
+        "@id": "http://www.wikidata.org/entity/Q29493"
+      },
+      "http://example.org/#usesProcess": {
+        "@id": "http://example.org/#Mixing"
+      },
+      "skos:definition": "A flour-based mixture used to prepare food.",
+      "skos:prefLabel": "Batter"
+    },
+    {
+      "@id": "http://example.org/#Process",
+      "@type": "skos:Concept",
+      "dct:identifier": {
+        "@id": "http://www.wikidata.org/entity/Q627371"
+      },
+      "skos:altLabel": [
+        "Food Processing",
+        "Cooking"
+      ],
+      "skos:definition": "The transformation of raw ingredients into food, or of food into other forms.",
+      "skos:prefLabel": "Process"
+    },
+    {
+      "@id": "http://example.org/#Kneading",
+      "@type": "http://example.org/#Component",
+      "dct:identifier": {
+        "@id": "http://www.wikidata.org/entity/Q3089784"
+      },
+      "skos:definition": "A process in the making of bread or dough, used to mix the ingredients and add strength to the final product.",
+      "skos:prefLabel": "Kneading"
+    }
+  ]
+}
