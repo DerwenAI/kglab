@@ -16,6 +16,7 @@
   * include first quote; kudos @kaaloo !
   * multifile decorator (supports globs) for `load_rdf()`; kudos @Ankush-Chander
   * fixed bug in SubgraphTensor null check; kudos @dvsrepo
+  * prep for pytorch_geometric integration; kudos @dvsrepo
 
 
 ## 0.2.1
