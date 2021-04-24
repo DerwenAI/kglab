@@ -8,8 +8,9 @@ Many thanks to our open source [sponsors](https://github.com/sponsors/ceteri);
 and to our contributors:
 [@dvsrepo](https://github.com/dvsrepo),
 [@Ankush-Chander](https://github.com/Ankush-Chander),
-[@gauravjaglan](https://github.com/gauravjaglan),
 [@louisguitton](https://github.com/louisguitton),
+[@gauravjaglan](https://github.com/gauravjaglan),
+[@CatChenal](https://github.com/CatChenal),
 [@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247);
 plus general support from [Derwen, Inc.](https://derwen.ai/);
@@ -119,6 +120,9 @@ See also:
   * [PheKnowLator](https://github.com/callahantiff/PheKnowLator)
     * *pro:* quite similar to **kglab** in intent; well-written code; sophisticated, opinionate build of biomedical KGs
     * *con:* less integration with data science tools or distributed systems
+  * [GraphScope](https://github.com/alibaba/GraphScope)
+    * *pro:* loads of features, excellent support, broad adoption
+    * *con:* less of a *library* more of a *client/server* architecture; aims to reinvent instead of integrating
   * [LynxKite](https://lynxkite.com/)
     * *pro:* loads of features, lots of adoption
     * *con:* complex tech stack, combines Py/Java/Go; AGPL less-than-business-friendly for production apps
