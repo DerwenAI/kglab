@@ -9,11 +9,11 @@ mkdocs-material
 mknotebooks
 mypy
 nbconvert
-notebook >= 6.1.5 # not directly required, pinned by Snyk to avoid a vulnerability
+notebook >= 6.1.5
 pipdeptree
 pre-commit
-pygments >= 2.7.4 # not directly required, pinned by Snyk to avoid a vulnerability
-pylint >= 2.7.0 # not directly required, pinned by Snyk to avoid a vulnerability
+pygments >= 2.7.4
+pylint >= 2.7.0
 pymdown-extensions
 pytest
 selenium
