@@ -2,7 +2,7 @@
 
 ## 0.3.0
 
-2021-04-??
+2021-04-23
 
   * add conda `environment.yml` plus instructions
   * use `bandit` to check for security issues
@@ -11,12 +11,13 @@
   * add use of `pipdeptree` to analyze dependencies
   * refactor docs to use Divio design patterns; kudos @louisguitton
   * created `SECURITY.md` security policy
-  * using Snyk for security audits of dependencies
+  * using Snyk for security audits of dependencies (it has some troubles)
   * testing/correcting the PSL examples; kudos @louisguitton
-  * include first quote; kudos @kaaloo !
+  * include first user quote; kudos @kaaloo !!
   * multifile decorator (supports globs) for `load_rdf()`; kudos @Ankush-Chander
   * fixed bug in SubgraphTensor null check; kudos @dvsrepo
   * prep for pytorch_geometric integration; kudos @dvsrepo
+  * add `as_tensor()` support for PyTorch
 
 
 ## 0.2.1

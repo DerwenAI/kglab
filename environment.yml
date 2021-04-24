@@ -30,4 +30,5 @@ dependencies:
     - csvwlib >= 0.3.2
     - icecream >= 2.0
     - pslpython >= 2.2.2
+    - torch >= 1.8
     - urlpath >= 1.1.7

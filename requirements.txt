@@ -23,5 +23,6 @@ rdflib >= 5.0.0
 requests >= 2.25.1
 scikit-learn >= 0.20.2
 statsmodels >= 0.12
+torch >= 1.8
 tqdm >= 4.56
 urlpath >= 1.1.7
