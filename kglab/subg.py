@@ -11,9 +11,11 @@ from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
 from kglab.util import get_gpu_count
 
 from icecream import ic  #  type: ignore # pylint: disable=W0611,E0401
+from tqdm import tqdm  # type: ignore # pylint: disable=E0401
 import pandas as pd  # type: ignore # pylint: disable=E0401
 import pyvis.network  # type: ignore # pylint: disable=E0401
 import networkx as nx  # type: ignore # pylint: disable=E0401
+import torch  # type: ignore # pylint: disable=E0401
 import typing
 
 if get_gpu_count() > 0:
@@ -344,6 +346,55 @@ the RDF triples within the subgraph
         for s, p, o in self.kg.rdf_graph():
             if not p in self.excludes:
                 yield s, p, o
+
+
+    def as_tensor_edges (
+        self
+        ) -> typing.Generator[typing.List[int], None, None]:
+        """
+Iterator for enumerating the edges connecting to each predicate in the
+subgraph, to be used to represent the KG in `PyTorch`.
+
+    yields:
+a subject and object edge for each predicate, in tensor representation
+        """
+        for s, p, o in self.as_tuples():
+            s_label = self.n3fy(s)
+            s_id = self.transform(s_label)
+
+            p_label = self.n3fy(p)
+            p_id = self.transform(p_label)
+
+            o_label = self.n3fy(o)
+            o_id = self.transform(o_label)
+
+            yield [s_id, o_id, 2 * p_id]
+            yield [o_id, s_id, 2 * p_id + 1]
+
+
+    def as_tensor (
+        self,
+        *,
+        quiet: bool = True,
+        ) -> torch.Tensor:
+        """
+Represents the KG as a PyTorch [`Tensor`](https://pytorch.org/docs/stable/tensors.html),
+loaded from an edge list where each predicate has edges connecting to
+its subject and object.
+
+    quiet:
+boolean flag to disable `tqdm` progress bar calculation and output
+
+    returns:
+the loaded tensor object
+        """
+        edge_list: list = [
+            edge_tuple
+            for edge_tuple in tqdm(self.as_tensor_edges(), disable=quiet)  # pylint: disable=R1721
+            ]
+
+        tensor = torch.tensor(edge_list, dtype=torch.long).t().contiguous()  # pylint: disable=E1101,E1102
+        return tensor
 
 
     ######################################################################
