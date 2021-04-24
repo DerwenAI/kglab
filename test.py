@@ -215,7 +215,7 @@ Coverage:
             # ic(sequential_edge_count)
             # ic(sequential_node_count)
 
-            # load RDF from all files (file1 and file2) matching the
+            # load jsonld from all files (file1 and file2) matching the
             # expression into KG
             kg_multifile = kglab.KnowledgeGraph()
             kg_multifile.load_jsonld("dat/*m.jsonld")
