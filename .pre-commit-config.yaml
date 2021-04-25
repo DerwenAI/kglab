@@ -11,7 +11,6 @@ repos:
     -   id: check-builtin-literals
     -   id: check-executables-have-shebangs
     -   id: check-merge-conflict
-    -   id: check-yaml
     -   id: debug-statements
     -   id: detect-private-key
     -   id: no-commit-to-branch

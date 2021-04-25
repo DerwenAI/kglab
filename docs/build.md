@@ -14,6 +14,7 @@ simply install based on the instructions in
 
 To set up the build environment locally:
 ```
+python3 -m pip install -U pip setuptools wheel
 python3 -m pip install -r requirements-dev.txt
 ```
 
@@ -139,7 +140,16 @@ tar cvzf kgl.tgz site/
 
 ## Package Release
 
-To update the [release on PyPi](https://pypi.org/project/kglab/):
+First, verify that `setup.py` will run correctly for the package
+release process:
+
+```
+python3 -m pip install -e .
+python3 ./test.py
+python3 -m pip uninstall kglab
+```
+
+Then update the [release on PyPi](https://pypi.org/project/kglab/):
 ```
 ./bin/push_pypi.sh
 ```

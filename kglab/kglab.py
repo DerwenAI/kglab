@@ -476,7 +476,7 @@ Throws `TypeError` whenever a format parser plugin encounters a syntax error.
 Note: this adds relations to an RDF graph, although it does not overwrite the existing RDF graph.
 
     path:
-must be a file name (str) to a local file reference – possibly a glob with a wildcard; or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object)
+must be a file name (str) to a local file reference – possibly a glob with a wildcard; or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object); otherwise this throws a `TypeError` exception
 
     format:
 serialization format, defaults to Turtle triples; see `_RDF_FORMAT` for a list of default formats, which can be extended with plugins – excluding the `"json-ld"` format; otherwise this throws a `TypeError` exception
@@ -668,6 +668,7 @@ text representing the RDF graph
             **args,
         ).decode(encoding)
 
+
     @multifile()
     def load_jsonld (
         self,
@@ -683,7 +684,7 @@ This traps some edge cases for the several source-ish parameters in RDFlib which
 Note: this adds relations to an RDF graph, it does not overwrite the existing RDF graph.
 
     path:
-must be a file name (str) or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object); otherwise this throws a `TypeError` exception
+must be a file name (str) to a local file reference – possibly a glob with a wildcard; or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object)
 
     encoding:
 text encoding value, which defaults to `"utf-8"`; must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
@@ -695,7 +696,7 @@ this `KnowledgeGraph` object – used for method chaining
         if hasattr(path, "read"):
             f = path
         else:
-            f = open(path, "r", encoding=encoding) # type: ignore
+            f = open(path, "r", encoding=encoding)  # type: ignore
 
         # error checking for the `encoding` parameter
         self._check_encoding(encoding)
