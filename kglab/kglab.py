@@ -21,6 +21,7 @@ from icecream import ic  # type: ignore  # pylint: disable=E0401
 import chocolate  # type: ignore  # pylint: disable=E0401
 import codecs
 import csvwlib  # type: ignore  # pylint: disable=E0401
+import datetime
 import dateutil.parser as dup  # pylint: disable=E0401
 import io
 import json
@@ -273,13 +274,13 @@ context needed for JSON-LD serialization
 
     def encode_date (
         self,
-        datetime: str,
+        dt: str,
         tzinfos: dict,
         ) -> rdflib.Literal:
         """
 Helper method to ensure that an input `datetime` value has a timezone that can be interpreted by [`rdflib.XSD.dateTime`](https://www.w3.org/TR/xmlschema-2/#dateTime).
 
-    datetime:
+    dt:
 input datetime as a string
 
     tzinfos:
@@ -289,7 +290,7 @@ timezones as a dict, used by
     returns:
 [`rdflib.Literal`](https://rdflib.readthedocs.io/en/stable/rdf_terms.html#literals) formatted as an XML Schema 2 `dateTime` value
         """
-        date_tz = dup.parse(datetime, tzinfos=tzinfos)
+        date_tz = dup.parse(dt, tzinfos=tzinfos)
         return rdflib.Literal(date_tz, datatype=self.get_ns("xsd").dateTime)
 
 
@@ -585,7 +586,7 @@ serialization format, which defaults to Turtle triples; see `_RDF_FORMAT` for a 
 optional base set for the graph
 
     encoding:
-text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
+optional text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
         """
         # error checking for the `format` parameter
         if format == "json-ld":
@@ -645,7 +646,7 @@ serialization format, which defaults to Turtle triples; see `_RDF_FORMAT` for a 
 optional base set for the graph
 
     encoding:
-text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
+optional text encoding value, defaults to `"utf-8"`, must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
 
     returns:
 text representing the RDF graph
@@ -687,20 +688,23 @@ Note: this adds relations to an RDF graph, it does not overwrite the existing RD
 must be a file name (str) to a local file reference – possibly a glob with a wildcard; or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object)
 
     encoding:
-text encoding value, which defaults to `"utf-8"`; must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
+optional text encoding value, which defaults to `"utf-8"`; must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
 
     returns:
 this `KnowledgeGraph` object – used for method chaining
         """
+        # error checking for the `encoding` parameter
+        self._check_encoding(encoding)
+
         # error checking for a file-like object `path` parameter
         if hasattr(path, "read"):
             f = path
         else:
             f = open(path, "r", encoding=encoding)  # type: ignore
 
-        # error checking for the `encoding` parameter
-        self._check_encoding(encoding)
-
+        # load JSON from file (to verify format and trap exceptions at
+        # this level) then dump to string – which is expected by the
+        # JSON-LD plugin for RDFlib
         self._g.parse(
             data=json.dumps(json.load(f)),  # type: ignore
             format="json-ld",
@@ -726,7 +730,7 @@ This traps some edge cases for the `destination` parameter in RDFlib which had b
 must be a file name (str) or a path object (not a URL) to a local file reference; or a [*writable, bytes-like object*](https://docs.python.org/3/glossary.html#term-bytes-like-object); otherwise this throws a `TypeError` exception
 
     encoding:
-text encoding value, which defaults to `"utf-8"`; must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
+optional text encoding value, which defaults to `"utf-8"`; must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
         """
         # error checking for a file-like object `path` parameter
         if hasattr(path, "write"):
@@ -749,27 +753,6 @@ text encoding value, which defaults to `"utf-8"`; must be in the [Python codec r
                 **args,
             )
         )
-
-
-    def load_csv (
-        self,
-        url: str,
-        ) -> "KnowledgeGraph":
-        """
-Wrapper for [`csvwlib`](https://github.com/DerwenAI/csvwlib) which parses a CSV file from the `path` source, then converts to RDF and merges into this RDF graph.
-
-    url:
-must be a URL represented as a string
-
-    returns:
-this `KnowledgeGraph` object – used for method chaining
-        """
-        new_rdf = csvwlib.CSVWConverter.to_rdf(
-            url,
-            mode="minimal",
-            format="ttl",
-        )
-        return self.load_rdf_text(new_rdf)
 
 
     _PARQUET_COL_NAMES: typing.List[str] = [
@@ -861,6 +844,126 @@ extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) fo
             #storage_options=storage_options,
             **chocolate.filter_args(kwargs, df.to_parquet),
         )
+
+
+    def load_csv (
+        self,
+        url: str,
+        ) -> "KnowledgeGraph":
+        """
+Wrapper for [`csvwlib`](https://github.com/DerwenAI/csvwlib) which parses a CSV file from the `path` source, then converts to RDF and merges into this RDF graph.
+
+    url:
+must be a URL represented as a string
+
+    returns:
+this `KnowledgeGraph` object – used for method chaining
+        """
+        new_rdf = csvwlib.CSVWConverter.to_rdf(
+            url,
+            mode="minimal",
+            format="ttl",
+        )
+        return self.load_rdf_text(new_rdf)
+
+
+    def _walk_roam_graph (
+        self,
+        obj: dict,
+        seen_uid: typing.Set[str] = None,
+        ) -> str:
+        """
+Semiprivate method to traverse the Roam Research exported graph recursively, converting its objects into RDF representation.
+
+    obj:
+object to parse
+
+    returns:
+The `uid` identifier for the parsed object
+        """
+        if not seen_uid:
+            seen_uid = set()
+
+        roam_ns = str(self.get_ns("roam"))
+        uid = obj["uid"]
+
+        if uid not in seen_uid:
+            seen_uid.add(uid)
+
+            # create a node for this object
+            node = rdflib.URIRef(roam_ns + uid)
+            self.add(node, self.get_ns("rdf").type, self.get_ns("dct").Text)
+
+            # represent title (complex object) or string description (simple object)
+            if "title" in obj:
+                descrip = obj["title"]
+            elif "string" in obj:
+                descrip = obj["string"]
+
+            self.add(node, self.get_ns("skos").definition, rdflib.Literal(descrip))
+
+            # represent the user who created/edited this object
+            user_uid = obj[":edit/user"][":user/uid"]
+            self.add(node, self.get_ns("dct").Creator, rdflib.URIRef(roam_ns + user_uid))
+
+            # convert millisec timestamp to Unix epoch times (UTC) to datetime
+            dt = datetime.datetime.utcfromtimestamp(round(obj["edit-time"] / 1000.0))
+            self.add(node, self.get_ns("dct").Date, rdflib.Literal(dt.isoformat(), datatype=rdflib.XSD.dateTime))
+
+            if "children" in obj:
+                for child_obj in obj["children"]:
+                    child_uid = self._walk_roam_graph(child_obj, seen_uid)
+                    self.add(node, self.get_ns("dct").references, rdflib.URIRef(roam_ns + child_uid))
+
+        return uid
+
+
+    @multifile()
+    def import_roam (
+        self,
+        path: IOPathLike,
+        *,
+        encoding: str = "utf-8",
+        ) -> typing.List[str]:
+        """
+Import a graph in JSON that has been exported from the [Roam Research](https://roamresearch.com/) note-taking tool, then convert its objects and attributes into RDF representation.
+
+For more details about the exported data from Roam Research, see:
+
+  * <https://roamstack.com/roam-data-outside-roam/>
+  * <https://nesslabs.com/roam-research-input-output>
+  * <https://davidbieber.com/snippets/2020-04-25-roam-json-export/>
+
+Note: this adds relations to an RDF graph, it does not overwrite the existing RDF graph.
+
+    path:
+must be a file name (str) to a local file reference – possibly a glob with a wildcard; or a path object (not a URL) to a local file reference; or a [*readable, file-like object*](https://docs.python.org/3/glossary.html#term-file-object)
+
+    encoding:
+optional text encoding value, which defaults to `"utf-8"`; must be in the [Python codec registry](https://docs.python.org/3/library/codecs.html#codecs.CodecInfo); otherwise this throws a `LookupError` exception
+
+    returns:
+a list of identifiers for the top-level nodes added from the Roam Research graph
+        """
+        # error checking for the `encoding` parameter
+        self._check_encoding(encoding)
+
+        # error checking for a file-like object `path` parameter
+        if hasattr(path, "read"):
+            f = path
+        else:
+            f = open(path, "r", encoding=encoding)  # type: ignore
+
+        # add a `roam:` prefix for a pseudo-namespace to use here,
+        # which applications may need to parameterize later?
+        self.add_ns("roam", "https://roamresearch.com/ns/")
+
+        uid_list: typing.List[str] = [
+            self._walk_roam_graph(obj)
+            for obj in json.load(f)  # type: ignore
+            ]
+
+        return uid_list
 
 
     def n3fy (

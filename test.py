@@ -134,7 +134,7 @@ Coverage:
         self.assertTrue(round(df1.iloc[0]["rank"], 4) == 8.6747)
 
 
-    def test_single_file_load_rdf(self):
+    def test_single_file_load_rdf (self):
         """
 Coverage:
 
@@ -155,7 +155,7 @@ Coverage:
         assert node_count == 15
 
 
-    def test_multiple_file_load_rdf(self):
+    def test_multiple_file_load_rdf (self):
         """
 Coverage:
 
@@ -191,7 +191,7 @@ Coverage:
         assert multifile_node_count == sequential_node_count
 
 
-    def test_multiple_file_load_jsonld(self):
+    def test_multiple_file_load_jsonld (self):
         """
 Coverage:
 
@@ -231,7 +231,7 @@ Coverage:
             assert multifile_node_count == sequential_node_count
 
 
-    def test_multiple_file_load_parquet(self):
+    def test_multiple_file_load_parquet (self):
         """
 Coverage:
 
@@ -269,6 +269,33 @@ Coverage:
             # ic(multifile_node_count)
             assert multifile_edge_count == sequential_edge_count
             assert multifile_node_count == sequential_node_count
+
+
+    def test_import_roam (self):
+        """
+Coverage:
+
+    * KnowledgeGraph.import_roam() import JSON from Roam Research export
+        """
+        # create a KnowledgeGraph object
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message="unclosed file*")
+            kg = kglab.KnowledgeGraph()
+
+            # load JSON export into KG
+            path = pathlib.Path("dat/roam.json")
+            kg.import_roam(path)
+
+            measure = kglab.Measure()
+            measure.measure_graph(kg)
+
+            node_count =  measure.get_node_count()
+            edge_count =  measure.get_edge_count()
+
+            # ic(node_count)
+            # ic(edge_count)
+            assert node_count == 44
+            assert edge_count == 208
 
 
 if __name__ == "__main__":

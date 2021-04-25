@@ -8,8 +8,8 @@
   * warning about NumPy/TensorFlow version conflicts; kudos @CatChenal
   * roll back NumPy requirement to >= 1.19.2
   * documenting notes about how to handle "PEP 517" errors
-  * working toward import from Roam Research
   * add multifile support for `load_parquet()`; kudos @Ankush-Chander
+  * import JSON from Roam Research export
 
 
 ## 0.3.0
