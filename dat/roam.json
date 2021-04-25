@@ -1,0 +1,528 @@
+[
+    {
+        "title": "February 22nd, 2020",
+        "children": [
+            {
+                "string": "meeting with Colin Megill",
+                "create-time": 1582419370758,
+                "uid": "niGhaYzJ_",
+                "edit-time": 1589668951949,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            },
+            {
+                "string": "talking about ScatterText in https://github.com/DerwenAI/spaCy_tuTorial/blob/master/spaCy_tuTorial.ipynb",
+                "create-time": 1582419381621,
+                "uid": "lwkD2TB5O",
+                "edit-time": 1589668965973,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            },
+            {
+                "string": "",
+                "create-time": 1582419415330,
+                "uid": "htaJn0Z-J",
+                "edit-time": 1582419415330,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            }
+        ],
+        "uid": "02-22-2020",
+        "edit-time": 1582419369132,
+        ":edit/user": {
+            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+        }
+    },
+    {
+        "title": "Resilience Measures",
+        "children": [
+            {
+                "string": "**Autopoiesis** can be defined as the ratio between the complexity of a system and the complexity of its environment. [Fernandez 2013](https://en.wikipedia.org/wiki/Autopoiesis#cite_note-Fern%C3%A1ndez-12)",
+                "create-time": 1589398086620,
+                "uid": "kVJcHkwgt",
+                "edit-time": 1589398153834,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            },
+            {
+                "string": "**Complexity** measures in [different domains](https://en.wikipedia.org/wiki/Complexity):",
+                "create-time": 1589398192767,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                "children": [
+                    {
+                        "string": "__algorithmic information theory / Kolmogorov complexity:__ the length of the shortest binary\u00a0program\u00a0that outputs that string",
+                        "create-time": 1589398209081,
+                        "uid": "aY-DBGnUl",
+                        "edit-time": 1589398876908,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "__information processing:__ a measure of the total number of\u00a0properties (often referred to as a\u00a0state)\u00a0transmitted by an object and detected by an\u00a0observer",
+                        "create-time": 1589398654100,
+                        "uid": "n1WdLyjdh",
+                        "edit-time": 1589398882508,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "__physical systems:__ a measure of the\u00a0probability\u00a0of the\u00a0state vector\u00a0of the system",
+                        "create-time": 1589398780754,
+                        "uid": "tQ6KsGcv4",
+                        "edit-time": 1589398894128,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "__network theory:__ a very unequal distribution of certain measures, with some elements being highly connected and some having very few connections",
+                        "create-time": 1589398846776,
+                        "uid": "ISFFoYV-d",
+                        "edit-time": 1589399170590,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    }
+                ],
+                "uid": "DPI6bxLX5",
+                "edit-time": 1589398226104,
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            },
+            {
+                "string": "**Modularity** in graphs:",
+                "create-time": 1589398339901,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                "children": [
+                    {
+                        "string": "definition: https://en.wikipedia.org/wiki/Modularity_(networks)",
+                        "create-time": 1589398353964,
+                        "uid": "CBr3RInwM",
+                        "edit-time": 1589398401081,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "networkx: https://networkx.github.io/documentation/stable/reference/algorithms/community.html#module-networkx.algorithms.community.modularity_max",
+                        "create-time": 1589398365588,
+                        "uid": "_OghXJQlt",
+                        "edit-time": 1589398558362,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    }
+                ],
+                "uid": "axhd8ENvR",
+                "edit-time": 1589398353648,
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            },
+            {
+                "string": "[\"Modularity in Mathematics\"](https://www.andrew.cmu.edu/user/avigad/Talks/toulouse5.pdf); **Jeremy Avigad** (2016)",
+                "create-time": 1589398560361,
+                "uid": "Sv5m7xeOT",
+                "edit-time": 1589492386760,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            },
+            {
+                "string": "[\"The Architecture of Complexity\"](http://www2.econ.iastate.edu/tesfatsi/ArchitectureOfComplexity.HSimon1962.pdf); **Herbert Simon** (1962)",
+                "create-time": 1589399305350,
+                "uid": "yYxWDlaNz",
+                "edit-time": 1589492391450,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            },
+            {
+                "string": "**Resilience** quantitative measures:",
+                "create-time": 1589399423072,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                "children": [
+                    {
+                        "string": "[\"Resilience analysis: a mathematical formulation to model resilience of engineering systems\"](https://www.researchgate.net/publication/320595148_Resilience_analysis_a_mathematical_formulation_to_model_resilience_of_engineering_systems); Sharma, Tabandeh, Garboni (2017) ",
+                        "create-time": 1589488718792,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        "children": [
+                            {
+                                "string": "quantify the resilience associated with a given **recovery curve**",
+                                "uid": "phNpnCZZ5",
+                                "edit-time": 1589489059624,
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "develop a rigorous mathematical model of the **recovery process**",
+                                "uid": "PgzcmeLsa",
+                                "edit-time": 1589489080380,
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fpaconathan%2F7p9ax4R7Qg.png?alt=media&token=87a187bc-ff69-4f48-ad3c-dbb9761b3633)",
+                                "props": {
+                                    "image-size": {
+                                        "https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fpaconathan%2F7p9ax4R7Qg.png?alt=media&token=87a187bc-ff69-4f48-ad3c-dbb9761b3633": {
+                                            "width": 317,
+                                            "height": null
+                                        }
+                                    }
+                                },
+                                "uid": "EXA_kEAym",
+                                "edit-time": 1589489115909,
+                                ":block/props": {
+                                    ":image-size": {
+                                        "https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fpaconathan%2F7p9ax4R7Qg.png?alt=media&token=87a187bc-ff69-4f48-ad3c-dbb9761b3633": {
+                                            ":width": 317,
+                                            ":height": null
+                                        }
+                                    }
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "depends on `Q(t)` **system state indicators** to provide a measure of system functionality over a period of time",
+                                "uid": "724a_5wmB",
+                                "edit-time": 1589489447857,
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "used for examining **shocks** to a system",
+                                "uid": "ebb-ApwBc",
+                                "edit-time": 1589489587122,
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            }
+                        ],
+                        "uid": "oomnmPknK",
+                        "edit-time": 1589492400234,
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[\"A Mathematical Review of Resilience in Ecology\"](https://doi.org/10.1111/nrm.12097); Katherine Meyer (2016)",
+                        "create-time": 1589489694151,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        "children": [
+                            {
+                                "string": "use the language of **dynamical systems** to organize and scrutinize existing resilience definitions within a unified framework",
+                                "create-time": 1589490318288,
+                                "uid": "HwEnnRAD8",
+                                "edit-time": 1589490318279,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "provide an introduction for mathematicians to the **ecological** concept of resilience, a potential area for expanded quantitative research",
+                                "create-time": 1589489588539,
+                                "uid": "IVHpafAYo",
+                                "edit-time": 1589490332606,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "resilience to parameter changes (state\u2010space perturbations) has been quantified by viewing parameters as **state variables** but has also considered the **reversibility** of parameter shifts",
+                                "create-time": 1589490333156,
+                                "uid": "mpdnd9luk",
+                                "edit-time": 1589490411771,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            }
+                        ],
+                        "uid": "GzLM_oxwm",
+                        "edit-time": 1589492407245,
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[Mathematical Modeling of System Resilience](https://www.riverpublishers.com/book_details.php?book_id=704); Kanchan Das, Mangey Ram (2019)",
+                        "create-time": 1589490456173,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        "children": [
+                            {
+                                "string": "__resilience creation for various system aspects including a functional system of the supply chain, overall supply chain systems; various methodologies for modeling system resilience; satellite-based approach for addressing climate related risks, repair-based approach for sustainable performance of an engineering system, and modeling measures of the reliability for a vertical take-off and landing system__",
+                                "create-time": 1589490539401,
+                                "uid": "UsTLWqt0D",
+                                "edit-time": 1589490637698,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            }
+                        ],
+                        "uid": "EqSUI7W9r",
+                        "edit-time": 1589492412644,
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[\"Defining Resilience Mathematically: From Attractors to Viability\"](http://www.patres-project.eu/images/5/57/Chap3V7.pdf); Martin, Deffuant, Calabrese (2009)",
+                        "create-time": 1589490779910,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        "children": [
+                            {
+                                "string": "a chapter within [PATRES](http://patres-project.eu/index.php?title=Main_Page)",
+                                "create-time": 1589490858511,
+                                "uid": "ZhCQPQIyP",
+                                "edit-time": 1589491305194,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "perhaps the closest definition of resilience in terms of RL practices",
+                                "create-time": 1589493631433,
+                                "uid": "Y8KGMygZZ",
+                                "edit-time": 1589493648071,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "consider definitions derived from dynamical systems theory (stable\nequilibria, attraction domains)",
+                                "create-time": 1589491315004,
+                                "uid": "N75WifoAr",
+                                "edit-time": 1589491314995,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "socio-ecological problems often require the identification of efficient policies of action that can favour the resilience of the system",
+                                "create-time": 1589491347007,
+                                "uid": "3UmQq12d3",
+                                "edit-time": 1589491426576,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "a definition of resilience based on the mathematical theory of **viability**  overcomes these limitations: the desired property is an a priori defined subset of the state space, and need not contain attractors",
+                                "create-time": 1589491445323,
+                                "uid": "Vd8xRFF-Y",
+                                "edit-time": 1589491448954,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "the set of resilient states is defined as the capture basin of the viability kernel of this desired set",
+                                "create-time": 1589491452356,
+                                "uid": "cSjy3lcWu",
+                                "edit-time": 1589491473065,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fpaconathan%2FnSyHgGy9UA.png?alt=media&token=820d1a97-754b-4d1d-99e7-c1dda641e92f)",
+                                "props": {
+                                    "image-size": {
+                                        "https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fpaconathan%2FnSyHgGy9UA.png?alt=media&token=820d1a97-754b-4d1d-99e7-c1dda641e92f": {
+                                            "width": 274,
+                                            "height": null
+                                        }
+                                    }
+                                },
+                                "create-time": 1589492242152,
+                                ":block/props": {
+                                    ":image-size": {
+                                        "https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fpaconathan%2FnSyHgGy9UA.png?alt=media&token=820d1a97-754b-4d1d-99e7-c1dda641e92f": {
+                                            ":width": 274,
+                                            ":height": null
+                                        }
+                                    }
+                                },
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                "uid": "S4Md8lu63",
+                                "edit-time": 1589492336371,
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "the desired property of a system can be defined as a **subset of the state space** without any specific conditions, and not as a set of attractors",
+                                "create-time": 1589492366381,
+                                "uid": "0K7FWZAaa",
+                                "edit-time": 1589492456453,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "good stable equilibria are replaced by the **viability kernel** of the constraint set representing the desired property",
+                                "create-time": 1589492366381,
+                                "uid": "zZ0aL6TRq",
+                                "edit-time": 1589492462360,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "resilience is defined by the **capture basin** of the viability kernel: the points for which the exists a policy of action leading to the viability kernel",
+                                "create-time": 1589492366381,
+                                "uid": "W5BgL7oug",
+                                "edit-time": 1589492366390,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "resilience value: **the inverse of time**, or more generally the cost, for driving back the system into the viability kernel",
+                                "create-time": 1589492366381,
+                                "uid": "yuAoXI38R",
+                                "edit-time": 1589492469064,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "therefore it is possible to derive action policies to keep or restore the desired property",
+                                "create-time": 1589492366381,
+                                "uid": "TS1yCiHTT",
+                                "edit-time": 1589492366390,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            }
+                        ],
+                        "uid": "62mNerH-Z",
+                        "edit-time": 1589492416653,
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    }
+                ],
+                "uid": "FMIsF2bro",
+                "edit-time": 1589488721649,
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            }
+        ],
+        "uid": "N4ouilfeF",
+        "edit-time": 1589398086623,
+        ":edit/user": {
+            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+        }
+    }
+]

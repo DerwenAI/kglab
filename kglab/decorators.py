@@ -5,7 +5,6 @@
 # Decorator to handle multiple paths
 
 from copy import deepcopy
-#from functools import reduce
 from functools import wraps
 from glob import glob
 from icecream import ic  #  type: ignore # pylint: disable=W0611,E0401
@@ -58,8 +57,8 @@ constructed decorator
         @wraps(f)
         def wrapper (  # pylint: disable=R1710
             *args: typing.Any,
-             **kwargs: typing.Any,
-             ) -> typing.Any:
+            **kwargs: typing.Any,
+            ) -> typing.Any:
             bound_arguments = sig.bind(*args, **kwargs)
             bound_arguments.apply_defaults()
 
