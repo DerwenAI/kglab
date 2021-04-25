@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 ######################################################################
-## Decorator to handle multiple paths
+# Decorator to handle multiple paths
 
 from copy import deepcopy
 #from functools import reduce
@@ -80,7 +80,7 @@ constructed decorator
                 return f(*args, **kwargs)
 
             # handle a list of Path objects
-            elif isinstance(path, (list)):
+            elif isinstance(path, list):
                 for p in path:
                     if _test_path(path):
                         path_list.append(p)
@@ -95,31 +95,13 @@ constructed decorator
             if len(path_list) == 0:
                 raise ValueError(f"No files found in given path list: {path}")
 
-            # store the parsed clumpers here
-            # collected_clumpers = []
-
             # iterate through each path in the glob
             for p in path_list:
                 # set the path variable
                 bound_arguments.arguments[param_name] = str(p)
 
                 # call the underlying reader function
-                clumper = f(*bound_arguments.args, **deepcopy(bound_arguments.kwargs))  # pylint: disable=W0612
-
-                # collect the clumper
-                # collected_clumpers.append(clumper)
-
-            # TODO: Not required since load function adds to existing  # pylint: disable=W0511
-            # knowledge graph. Delete commented code on confirmation
-
-            # # Only one object found
-            # if len(collected_clumpers) == 1:
-            #     return collected_clumpers[0]
-            # # More than one object found
-            # elif len(collected_clumpers) > 1:
-            #     # Combine them by concatenating their dict
-            #     ic(collected_clumpers)
-            #     # return reduce(lambda a, b: a.concat(b), collected_clumpers)
+                p_result = f(*bound_arguments.args, **deepcopy(bound_arguments.kwargs))  # pylint: disable=W0612
 
         return wrapper
 

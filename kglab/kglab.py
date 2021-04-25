@@ -778,6 +778,7 @@ this `KnowledgeGraph` object – used for method chaining
         "object"
     ]
 
+    @multifile()
     def load_parquet (
         self,
         path: IOPathLike,

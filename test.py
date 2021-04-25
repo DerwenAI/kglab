@@ -10,7 +10,7 @@ import tempfile
 import urlpath
 import unittest
 import warnings
-
+# from icecream import ic
 
 class TestKG (unittest.TestCase):
     def test_load_save_measure (self):
@@ -134,7 +134,7 @@ Coverage:
         self.assertTrue(round(df1.iloc[0]["rank"], 4) == 8.6747)
 
 
-    def test_single_file_load_rdf (self):
+    def test_single_file_load_rdf(self):
         """
 Coverage:
 
@@ -230,6 +230,45 @@ Coverage:
             assert multifile_edge_count == sequential_edge_count
             assert multifile_node_count == sequential_node_count
 
+
+    def test_multiple_file_load_parquet(self):
+        """
+Coverage:
+
+    * KnowledgeGraph.load_parquet() load jsonld from multiple files using a wildcard expression
+        """
+        # create a KnowledgeGraph object
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message="unclosed file*")
+            kg = kglab.KnowledgeGraph()
+
+            # load parquet from a file1 into KG
+            kg.load_parquet("dat/gorm.parquet")
+
+            # load parquet from a file2 into KG
+            kg.load_parquet("dat/nom.parquet")
+
+            measure = kglab.Measure()
+            measure.measure_graph(kg)
+            sequential_edge_count = measure.get_edge_count()
+            sequential_node_count = measure.get_node_count()
+            # ic(sequential_edge_count)
+            # ic(sequential_node_count)
+
+            # load parquet from all files (file1 and file2) matching the
+            # expression into KG
+            kg_multifile = kglab.KnowledgeGraph()
+            kg_multifile.load_parquet("dat/*m.parquet")
+
+            measure.reset()
+            measure.measure_graph(kg_multifile)
+            multifile_edge_count = measure.get_edge_count()
+            multifile_node_count = measure.get_node_count()
+
+            # ic(multifile_edge_count)
+            # ic(multifile_node_count)
+            assert multifile_edge_count == sequential_edge_count
+            assert multifile_node_count == sequential_node_count
 
 
 if __name__ == "__main__":
