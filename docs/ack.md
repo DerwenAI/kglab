@@ -89,12 +89,12 @@ it in your research or software:
   title = {{kglab: a simple abstraction layer in Python for building knowledge graphs}},
   year = 2020,
   publisher = {Derwen},
-  doi = {10.5281/zenodo.4602403},
+  doi = {10.5281/zenodo.4717287},
   url = {https://github.com/DerwenAI/kglab}
 }
 ```
 
-**DOI:** <https://doi.org/10.5281/zenodo.4602403>
+**DOI:** <https://doi.org/10.5281/zenodo.4717287>
 
 
 ## License and Copyright
