@@ -1,0 +1,10 @@
+version: "3.6"
+
+services:
+  jupyter:
+    container_name: kglab-notebooks
+    build: .
+    ports:
+      - 8888:8888
+    volumes:
+      - ./examples:/app/examples
