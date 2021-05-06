@@ -7,4 +7,10 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - ./examples:/app/examples
+      - ./examples:/home/jovyan/work/examples
+      - ./dat:/home/jovyan/work/dat
+      - ./kglab:/home/jovyan/work/kglab
+    environment:
+      # Ref: https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html#docker-options
+      JUPYTER_ENABLE_LAB: "yes"
+    command: start-notebook.sh --NotebookApp.notebook_dir='/home/jovyan/work/examples'
