@@ -13,4 +13,6 @@ services:
     environment:
       # Ref: https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html#docker-options
       JUPYTER_ENABLE_LAB: "yes"
+      GRANT_SUDO: "yes"
+    user: root
     command: start-notebook.sh --NotebookApp.notebook_dir='/home/jovyan/work/examples'
