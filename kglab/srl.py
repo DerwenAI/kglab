@@ -22,6 +22,8 @@ Class representing a
 (PSL) model.
 
 For PSL-specific terminology used here, see <https://psl.linqs.org/wiki/master/Glossary.html>
+
+Note: You need to have a Java JDK installed to run PSL.
     """
 
     _PSL_OPTIONS: dict = {

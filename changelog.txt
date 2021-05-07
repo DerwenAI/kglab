@@ -2,7 +2,7 @@
 
 ## 0.3.1
 
-2021-04-??
+2021-05-??
 
   * add multifile support for `load_jsonld()`; kudos @Ankush-Chander
   * warning about NumPy/TensorFlow version conflicts; kudos @CatChenal
@@ -10,6 +10,8 @@
   * documenting notes about how to handle "PEP 517" errors
   * add multifile support for `load_parquet()`; kudos @Ankush-Chander
   * import JSON from Roam Research export
+  * add docker-compose support for tutorial; kudos @louisguitton
+  * note the PSL dependency on Java JDK
 
 
 ## 0.3.0

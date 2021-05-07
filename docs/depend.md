@@ -21,7 +21,7 @@ include:
 - [NumPy](https://numpy.org/)[^2]
 - [OWL-RL](https://owl-rl.readthedocs.io/)
 - [pandas](https://pandas.pydata.org/)
-- [pslpython](https://psl.linqs.org/)
+- [pslpython](https://psl.linqs.org/)[^3]
 - [pyarrow](https://arrow.apache.org/)
 - [pylev](https://github.com/toastdriven/pylev)
 - [pynvml](https://github.com/gpuopenanalytics/pynvml)
@@ -116,3 +116,5 @@ packages, the following discussions are highly recommended:
 [^1]: You may need to [install extra dependencies](https://filesystem-spec.readthedocs.io/en/latest/index.html?highlight=extra#installation) for `fsspec` since not all included filesystems are usable by default. Support for Amazon S3 and Google GCS are installed by default. See the `extras_require` dict in <https://github.com/intake/filesystem_spec/blob/master/setup.py>
 
 [^2]: There are [known version conflicts](https://github.com/DerwenAI/kglab/issues/160) regarding NumPy (>= 1.19.4) and [TensorFlow 2+](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/pip_package/setup.py) (~-1.19.2)
+
+[^3]: You need to have a Java JDK installed to run PSL.
