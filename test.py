@@ -294,8 +294,8 @@ Coverage:
 
             # ic(node_count)
             # ic(edge_count)
-            assert node_count == 44
-            assert edge_count == 208
+            assert node_count == 46
+            assert edge_count == 217
 
 
 if __name__ == "__main__":
