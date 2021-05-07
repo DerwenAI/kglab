@@ -1,0 +1,18 @@
+version: "3.6"
+
+services:
+  jupyter:
+    container_name: kglab-notebooks
+    build: .
+    ports:
+      - 8888:8888
+    volumes:
+      - ./examples:/home/jovyan/work/examples
+      - ./dat:/home/jovyan/work/dat
+      - ./kglab:/home/jovyan/work/kglab
+    environment:
+      # Ref: https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html#docker-options
+      JUPYTER_ENABLE_LAB: "yes"
+      GRANT_SUDO: "yes"
+    user: root
+    command: start-notebook.sh --NotebookApp.notebook_dir='/home/jovyan/work/examples'

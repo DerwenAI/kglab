@@ -85,6 +85,10 @@ git clone https://github.com/DerwenAI/kglab.git
 cd kglab
 ```
 
+From there you have two possibilities
+
+### Install dependencies locally
+
 To install the dependencies using `pip`:
 ```
 python3 -m pip install -r requirements.txt
@@ -122,3 +126,17 @@ jupyter-lab
 
 Then open the `examples` subdirectory to launch the notebooks featured
 in the following sections of this tutorial.
+
+### Use docker-compose
+
+Leveraging `docker` and `docker-compose` will free you
+from having to install dependencies locally.
+
+First make sure that you have docker and docker-compose installed
+by following the [docker-compose documentation](https://docs.docker.com/compose/install/#install-compose)
+
+Then, in your kglab folder, run:
+
+```sh
+docker-compose up
+```

@@ -1,0 +1,21 @@
+name: docker-demo
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the stack
+        run: docker-compose up -d
+      - name: Check running containers
+        run: docker ps -a
+      - name: Check logs
+        run: docker logs kglab-notebooks
+      - name: Test all notebooks in the examples/ folder can run
+        run: |
+          docker exec -it kglab-notebooks bash -c 'pip install treon && treon work/examples/'
