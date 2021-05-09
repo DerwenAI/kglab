@@ -29,10 +29,8 @@ count of available GPUs
 
     return gpu_count
 
-
 if get_gpu_count() > 0:
     import cudf  # type: ignore # pylint: disable=E0401
-
 
 
 def calc_quantile_bins (

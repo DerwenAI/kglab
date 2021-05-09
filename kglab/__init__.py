@@ -20,6 +20,8 @@ from .pkg_types import RDF_Triple, RDF_Node, SPARQL_Bindings, \
 
 from .external_import import import_from_neo4j
 
+from .gpviz import GPViz
+
 from .util import get_gpu_count, calc_quantile_bins, stripe_column, root_mean_square
 
 from .version import MIN_PY_VERSION, _versify, _check_version, __version__
