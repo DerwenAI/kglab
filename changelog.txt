@@ -12,6 +12,7 @@
   * import JSON from Roam Research export
   * add docker-compose support for tutorial; kudos @louisguitton
   * note the PSL dependency on Java JDK
+  * Visualize a SPARQL query using PyVis; kudos @pebbie
 
 
 ## 0.3.0
