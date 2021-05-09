@@ -7,6 +7,7 @@
 
 from kglab.decorators import multifile
 from kglab.pkg_types import PathLike, IOPathLike, GraphLike, RDF_Node
+from kglab.gpviz import GPViz
 from kglab.util import get_gpu_count
 from kglab.version import _check_version
 _check_version()
@@ -29,6 +30,7 @@ import owlrl  # type: ignore  # pylint: disable=E0401
 import pandas as pd  # type: ignore  # pylint: disable=E0401
 import pathlib
 import pyshacl  # type: ignore  # pylint: disable=E0401
+import pyvis  # type: ignore  # pylint: disable=E0401
 import traceback
 import typing
 import urlpath  # type: ignore  # pylint: disable=E0401
@@ -1091,6 +1093,27 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
             df = pd.DataFrame(rows_list)
 
         return df
+
+
+    def visualize_query (
+        self,
+        sparql: str,
+        *,
+        notebook: bool = False,
+        ) -> pyvis.network.Network:
+        """
+Visualize the given SPARQL query as a [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html#pyvis.network.Network)
+
+    sparql:
+input SPARQL query to be visualized
+
+    notebook:
+optional boolean flag, whether to initialize the PyVis graph to render within a notebook; defaults to `False`
+
+    returns:
+PyVis network object, to be rendered
+        """
+        return GPViz(sparql, self._ns).visualize_query(notebook=notebook)
 
 
     ######################################################################

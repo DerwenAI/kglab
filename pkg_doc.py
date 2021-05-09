@@ -25,6 +25,7 @@ if __name__ == "__main__":
         "Simplex0",
         "Simplex1",
         "PSLModel",
+        "GPViz",
         ]
 
     pkg_doc = pyfixdoc.PackageDoc(
