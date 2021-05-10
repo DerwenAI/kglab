@@ -12,11 +12,11 @@ import typing
 
 class GPViz:
     """
-Visualize the basic graph pattern of a SPARQL query.
-Modified to limit dependencies to RDFlib and PyVis.
+Class used to Visualize the graph pattern of a SPARQL query.
+This source comes from <https://github.com/pebbie/sparqlgpviz>
+modified to limit its dependencies to RDFlib and PyVis.
 
-Peb Ruswono Aryan <https://github.com/pebbie>
-source from <https://github.com/pebbie/sparqlgpviz>
+by Peb Ruswono Aryan <https://github.com/pebbie>
     """
     _IGNORE_KEYS = [
         "PV",
@@ -59,7 +59,7 @@ source from <https://github.com/pebbie/sparqlgpviz>
         namespaces: typing.Dict[str, str],
         ) -> None:
         """
-Constructor for GPViz, built from a SPARQL query and a set of namespaces.
+Constructor for GPViz, to visualize the given SPARQL query as a [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html#pyvis.network.Network)
 
     sparql:
 input SPARQL query to be visualized
@@ -81,11 +81,15 @@ the namespaces for the corresponding RDF graph
 
     def _set_values (
         self,
-        alg,
+        algebra,
         ) -> None:
         """
+Semiprivate helper function to set the labels for literal values in the SPARQL query.
+
+    algebra:
+the parsed [SPARQL Algebra Expression](https://rdflib.readthedocs.io/en/stable/_modules/rdflib/plugins/sparql/algebra.html#translateQuery)
         """
-        for obj in alg:
+        for obj in algebra:
             k = list(obj.keys())[0]
             v = obj[k]
             lname = str(k)
@@ -94,51 +98,67 @@ the namespaces for the corresponding RDF graph
 
     def _find_triples_node (
         self,
-        al: typing.Any,
+        algebra: typing.Any,
         key: str,
         result: list,
         ) -> None:
         """
+Semiprivate helper function to expand one node in the given SPARQL Algebra Expression (at the specified key) to accumulate more triples to visualize.
+
+    algebra:
+the parsed [SPARQL Algebra Expression](https://rdflib.readthedocs.io/en/stable/_modules/rdflib/plugins/sparql/algebra.html#translateQuery)
+
+    key:
+expression key to expand
+
+    result:
+list into which the triples get accumulated
         """
         if key not in self._IGNORE_KEYS:
-            if key == "res" and isinstance(al[key], list):
-                self._set_values(al[key])
+            if key == "res" and isinstance(algebra[key], list):
+                self._set_values(algebra[key])
             elif key == "value":
-                for var_item in al:
+                for var_item in algebra:
                     var = var_item["var"]
                     self.values[str(var)] = []
 
                     value = var_item["value"]
 
                     if isinstance(value, list):
-                        for var in al["var"]:
+                        for var in algebra["var"]:
                             tmpval = value.pop(0)
                             self.values[str(var)].append(tmpval)
                     else:
                         self.values[str(var)].append(value)
             elif key == "triples":
-                result.extend([ al.triples ])
+                result.extend([ algebra.triples ])
             else:
-                result.extend(self._find_triples(al[key]))
+                result.extend(self._find_triples(algebra[key]))
 
 
     def _find_triples (
         self,
-        alg: typing.Any,
+        algebra: typing.Any,
         ) -> list:
         """
-    Parse based on name attribute of the current parse tree node (alg)
+Semiprivate helper function to expand the SPARQL Algebra Expression to accumulate more triples to visualize.
+
+    algebra:
+the parsed [SPARQL Algebra Expression](https://rdflib.readthedocs.io/en/stable/_modules/rdflib/plugins/sparql/algebra.html#translateQuery)
+
+    returns:
+a list of triples to visualize
         """
         result: list = []
 
-        if isinstance(alg, list):
-            akg = alg
+        if isinstance(algebra, list):
+            akg = algebra
         else:
-            akg = [alg]
+            akg = [algebra]
 
-        for al in akg:
-            for key in dict(al).keys():
-                self._find_triples_node(al, key, result)
+        for algebra_node in akg:
+            for key in dict(algebra_node).keys():
+                self._find_triples_node(algebra_node, key, result)
 
         return result
 
@@ -148,6 +168,13 @@ the namespaces for the corresponding RDF graph
         uri: rdflib.term.URIRef,
         ) -> typing.Optional[str]:
         """
+Semiprivate helper function to determine the _prefix_ for the given namespace URI.
+
+    uri:
+namespace URI
+
+    returns:
+the prefix bound to this namespace URI
         """
         for k, v in sorted(self.namespaces.items(), key=lambda x: len(x[1]), reverse=True):
             if uri.startswith(str(v)):
@@ -161,6 +188,13 @@ the namespaces for the corresponding RDF graph
         uri: rdflib.term.URIRef,
         ) -> str:
         """
+Semiprivate helper function to localize the full URI for a node, if possible using its prefix.
+
+    uri:
+namespace URI
+
+    returns:
+localized name
         """
         prefix = self._get_prefix(uri)
 
@@ -175,6 +209,13 @@ the namespaces for the corresponding RDF graph
         term: rdflib.term.Identifier,
         ) -> str:
         """
+Semiprivate helper function to generate a localized label for the given RDF term.
+
+    term:
+the RDF term to be labeled
+
+    returns:
+generated label for the term
         """
         tname = str(term)
 
@@ -209,6 +250,13 @@ the namespaces for the corresponding RDF graph
         term: rdflib.term.Identifier,
         ) -> typing.Dict[str, typing.Any]:
         """
+Semiprivate helper function to configure the PyVis node attributes for the given RDF term.
+
+    term:
+RDF term
+
+    returns:
+PyVis node attributes
         """
         node_attr: typing.Dict[str, typing.Any] = {
             "shape": "ellipse",
@@ -235,6 +283,10 @@ the namespaces for the corresponding RDF graph
         pyvis_graph: pyvis.network.Network,
         ) -> None:
         """
+Semiprivate helper function to render the list of triples extracted from the SPARQL query into PyVis nodes and edges in the given PyVis graph.
+
+    pyvis_graph:
+PyVis graph into which the triples get rendered
         """
         for graph_id, triples in enumerate(self.triples):
             for s, p, o in triples:
@@ -272,11 +324,15 @@ the namespaces for the corresponding RDF graph
                 pyvis_graph.add_edge(sname, oname, **edge_args)
 
 
-    def _render_value_labels (
+    def _render_literals (
         self,
         pyvis_graph: pyvis.network.Network,
         ) -> None:
         """
+Semiprivate helper function to render the list of literal values (if any) extracted from the SPARQL query.
+
+    pyvis_graph:
+PyVis graph into which the triples get rendered
         """
         for var in self.values:
             lname = str(var)
@@ -302,7 +358,7 @@ the namespaces for the corresponding RDF graph
         notebook: bool = False,
         ) -> pyvis.network.Network:
         """
-Visualize the query as a PyVis network.
+Visualize the SPARQL query as a PyVis network.
 
         returns:
 PyVis graph to be rendered
@@ -310,6 +366,6 @@ PyVis graph to be rendered
         pyvis_graph = pyvis.network.Network(notebook=notebook)
 
         self._render_triples(pyvis_graph)
-        self._render_value_labels(pyvis_graph)
+        self._render_literals(pyvis_graph)
 
         return pyvis_graph
