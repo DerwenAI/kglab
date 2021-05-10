@@ -1471,11 +1471,11 @@ inferred values as a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/
 
 ## [`GPViz` class](#GPViz)
 
-Visualize the basic graph pattern of a SPARQL query.
-Modified to limit dependencies to RDFlib and PyVis.
+Class used to Visualize the graph pattern of a SPARQL query.
+This source comes from <https://github.com/pebbie/sparqlgpviz>
+modified to limit its dependencies to RDFlib and PyVis.
 
-Peb Ruswono Aryan <https://github.com/pebbie>
-source from <https://github.com/pebbie/sparqlgpviz>
+by Peb Ruswono Aryan <https://github.com/pebbie>
     
 ---
 #### [`__init__` method](#kglab.GPViz.__init__)
@@ -1484,7 +1484,7 @@ source from <https://github.com/pebbie/sparqlgpviz>
 ```python
 __init__(sparql, namespaces)
 ```
-Constructor for GPViz, built from a SPARQL query and a set of namespaces.
+Constructor for GPViz, to visualize the given SPARQL query as a [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html#pyvis.network.Network)
 
   * `sparql` : `str`  
 input SPARQL query to be visualized
@@ -1496,12 +1496,12 @@ the namespaces for the corresponding RDF graph
 
 ---
 #### [`visualize_query` method](#kglab.GPViz.visualize_query)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/gpviz.py#L299)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/gpviz.py#L355)
 
 ```python
 visualize_query(notebook=False)
 ```
-Visualize the query as a PyVis network.
+Visualize the SPARQL query as a PyVis network.
 
   * *returns* : `pyvis.network.Network`  
 PyVis graph to be rendered
