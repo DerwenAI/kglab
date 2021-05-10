@@ -27,6 +27,7 @@ KEYWORDS = [
     "psl",
     "probabilistic soft logic",
     "pandas",
+    "roam research",
     "networkx",
     "igraph",
     "pytorch",

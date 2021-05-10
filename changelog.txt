@@ -1,8 +1,8 @@
 # `kglab` changelog
 
-## 0.3.1
+## 0.4.0
 
-2021-05-??
+2021-05-10
 
   * add multifile support for `load_jsonld()`; kudos @Ankush-Chander
   * warning about NumPy/TensorFlow version conflicts; kudos @CatChenal
@@ -13,6 +13,7 @@
   * add docker-compose support for tutorial; kudos @louisguitton
   * note the PSL dependency on Java JDK
   * Visualize a SPARQL query using PyVis; kudos @pebbie
+  * CI based on GitHub Actions; kudos @louisguitton
 
 
 ## 0.3.0
