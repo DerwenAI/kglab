@@ -30,3 +30,10 @@ repos:
     -   id: pylint
         exclude: ^wip/,^test.py
         files: ^kglab/
+-   repo: https://github.com/codespell-project/codespell
+    rev: v2.0.0
+    hooks:
+    -   id: codespell # spell-check source code
+        exclude: ^examples/
+        language: python
+        types: [text]
