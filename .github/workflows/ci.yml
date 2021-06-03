@@ -1,23 +1,29 @@
-name: docker-demo
+name: CI
 
 on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - uses: satackey/action-docker-layer-caching@v0.0.11
         continue-on-error: true
       - name: Build the stack
         run: docker-compose up -d
+
       - name: Check running containers
         run: docker ps -a
+
       - name: Check logs
         run: docker logs kglab-notebooks
+
+      - uses: pre-commit/action@v2.0.2
       - name: Test all notebooks in the examples/ folder can run
         run: |
           docker exec -i kglab-notebooks bash -c 'pip install pytest nbmake && pytest --nbmake work/examples/*.ipynb'
