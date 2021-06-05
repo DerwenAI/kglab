@@ -9,6 +9,7 @@ and to our contributors:
 [@dvsrepo](https://github.com/dvsrepo),
 [@Ankush-Chander](https://github.com/Ankush-Chander),
 [@louisguitton](https://github.com/louisguitton),
+[@tomaarsen](https://github.com/tomaarsen),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@pebbie](https://github.com/pebbie),
 [@CatChenal](https://github.com/CatChenal),
@@ -16,10 +17,10 @@ and to our contributors:
 [@dmoore247](https://github.com/dmoore247);
 plus general support from [Derwen, Inc.](https://derwen.ai/);
 the [Knowledge Graph Conference](https://www.knowledgegraph.tech/)
-and [Connected Data London](https://connected-data.london/)
+and [Connected Data World](https://connected-data.world/)
 plus an even larger scope of [use cases](../use_case/) represented by their communities;
-[KFocus](https://kfocus.org/),
-the [NVidia RAPIDS team](https://rapids.ai/),
+[Kubuntu Focus](https://kfocus.org/),
+the [RAPIDS team @ NVIDIA](https://rapids.ai/),
 [Gradient Flow](https://gradientflow.com/),
 and
 [Manning Publications](https://www.manning.com/).
