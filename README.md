@@ -7,6 +7,7 @@
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/DerwenAI/kglab.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/DerwenAI/kglab/context:python)
+![CI](https://github.com/DerwenAI/kglab/workflows/CI/badge.svg)
 
 Welcome to *graph-based data science*:
 <https://derwen.ai/docs/kgl/>
@@ -168,6 +169,7 @@ and to our contributors:
 [@dvsrepo](https://github.com/dvsrepo),
 [@Ankush-Chander](https://github.com/Ankush-Chander),
 [@louisguitton](https://github.com/louisguitton),
+[@tomaarsen](https://github.com/tomaarsen),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@pebbie](https://github.com/pebbie),
 [@CatChenal](https://github.com/CatChenal),
@@ -175,11 +177,11 @@ and to our contributors:
 [@dmoore247](https://github.com/dmoore247),
 plus general support from [Derwen, Inc.](https://derwen.ai/);
 the [Knowledge Graph Conference](https://www.knowledgegraph.tech/)
-and [Connected Data London](https://connected-data.london/);
+and [Connected Data World](https://connected-data.world/);
 plus an even larger scope of [use cases](https://derwen.ai/docs/kgl/use_case/)
 represented by their communities;
 [Kubuntu Focus](https://kfocus.org/),
-the [NVidia RAPIDS team](https://rapids.ai/),
+the [RAPIDS team @ NVIDIA](https://rapids.ai/),
 [Gradient Flow](https://gradientflow.com/),
 and
 [Manning Publications](https://www.manning.com/).
