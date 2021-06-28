@@ -29,13 +29,19 @@ count of available GPUs
         gpu_count = pynvml.nvmlDeviceGetCount()
 
         if gpu_count > 0:
-            import cudf  # type: ignore # pylint: disable=E0401
+            import cudf  # type: ignore # pylint: disable=E0401,W0611,W0621
             # print(f"using {gpu_count} GPUs")
 
     except Exception: # pylint: disable=W0703
         gpu_count = 0
 
     return gpu_count
+
+
+## NB: workaround for GitHub CI
+
+if get_gpu_count() > 0:
+    import cudf  # type: ignore # pylint: disable=E0401
 
 
 def calc_quantile_bins (
