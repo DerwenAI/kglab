@@ -2,6 +2,13 @@
 
 ## 0.4.0
 
+2021-07-??
+
+  * further testing/config for NVIDIA GPUs
+
+
+## 0.4.0
+
 2021-05-10
 
   * add multifile support for `load_jsonld()`; kudos @Ankush-Chander
