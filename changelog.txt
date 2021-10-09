@@ -12,6 +12,7 @@
 2021-11-26
 
   * further testing/config for NVIDIA GPUs
+  * fixes for Snyk security advisories
   * update to `RDFlib` 6.x, removing use of `json-ld` plugin
   * use `nbmake` to add test coverage of example notebooks into the CI pipeline; kudos @Mec-iS
 
