@@ -3,7 +3,7 @@ codespell
 coverage
 flask
 grayskull
-jupyterlab
+jupyterlab >= 3.1.4
 mkdocs-git-revision-date-plugin
 mkdocs-material
 mknotebooks
