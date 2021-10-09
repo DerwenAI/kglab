@@ -15,8 +15,8 @@ _check_version()
 import rdflib  # type: ignore  # pylint: disable=E0401
 import rdflib.plugin  # type: ignore  # pylint: disable=E0401
 import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore  # pylint: disable=E0401
-rdflib.plugin.register("json-ld", rdflib.plugin.Parser, "rdflib_jsonld.parser", "JsonLDParser")
-rdflib.plugin.register("json-ld", rdflib.plugin.Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
+#rdflib.plugin.register("json-ld", rdflib.plugin.Parser, "rdflib_jsonld.parser", "JsonLDParser")
+#rdflib.plugin.register("json-ld", rdflib.plugin.Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
 from icecream import ic  # type: ignore  # pylint: disable=E0401
 import chocolate  # type: ignore  # pylint: disable=E0401
