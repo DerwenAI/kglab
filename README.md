@@ -170,6 +170,7 @@ and to our contributors:
 [@Ankush-Chander](https://github.com/Ankush-Chander),
 [@louisguitton](https://github.com/louisguitton),
 [@tomaarsen](https://github.com/tomaarsen),
+[@Mec-iS](https://github.com/Mec-iS),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@pebbie](https://github.com/pebbie),
 [@CatChenal](https://github.com/CatChenal),

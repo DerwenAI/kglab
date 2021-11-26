@@ -1,10 +1,19 @@
 # `kglab` changelog
 
-## 0.4.0
+## 0.4.2
 
-2021-07-??
+2021-12-??
+
+  * ??
+
+
+## 0.4.1
+
+2021-11-26
 
   * further testing/config for NVIDIA GPUs
+  * update to `RDFlib` 6.x, removing use of `json-ld` plugin
+  * use `nbmake` to add test coverage of example notebooks into the CI pipeline; kudos @Mec-iS
 
 
 ## 0.4.0

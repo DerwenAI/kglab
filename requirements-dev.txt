@@ -9,6 +9,7 @@ mkdocs-material
 mknotebooks
 mypy
 nbconvert
+nbmake >= 1.0
 notebook >= 6.1.5
 pipdeptree
 pre-commit
