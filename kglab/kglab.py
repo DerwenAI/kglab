@@ -225,6 +225,11 @@ a `dict` describing the namespaces in this RDF graph
             for prefix, ns in self._ns.items()
         }
 
+        nm = self._g.namespace_manager
+
+        for prefix, uri in nm.namespaces():
+            ns_dict[prefix] = str(uri)
+
         return ns_dict
 
 
@@ -244,7 +249,7 @@ a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/ap
                 col_names[0]: prefix,
                 col_names[1]: str(ns),
             }
-            for prefix, ns in self._ns.items()
+            for prefix, ns in self.get_ns_dict().items()
         ]
 
         if self.use_gpus:
