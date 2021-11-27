@@ -1,4 +1,4 @@
-# Graph-Based Data Science
+# Graph Data Science
 
 <img src="assets/logo.png" width="113" alt="illustration of a knowledge graph, plus laboratory glassware"/>
 
@@ -12,7 +12,7 @@ The main goal is to leverage idiomatic Python for common use cases in
 and 
 [data engineering](glossary/#data-engineering)
 work that require graph data, presenting 
-[*graph-based data science*](glossary/#graph-based-data-science)
+[*graph data science*](glossary/#graph-data-science)
 as an emerging practice.
 
 
@@ -86,7 +86,7 @@ etc.
 ### Natural Language Understanding
 
 **Point 4:**
-incorporate graph-based methods and
+incorporate graph data science practices and
 [semantic technologies](glossary/#semantic-technologies)
 into
 [`spaCy`](https://spacy.io/) pipelines, e.g., through 

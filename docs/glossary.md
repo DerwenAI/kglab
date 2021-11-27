@@ -63,7 +63,7 @@ see: <https://derwen.ai/d/data_science>
 
 ### graph database
 
-### graph-based data science
+### graph data science
 
 
 ## – K –

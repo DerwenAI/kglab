@@ -1,6 +1,6 @@
 # Learning
 
-This work builds on the ["Graph-Based Data Science"](https://derwen.ai/s/kcgh)
+This work builds on the ["Graph Thinking"](https://derwen.ai/s/kcgh)
 talks at conferences and meetups, which experiment with the content –
 collecting feedback, critiques, suggestions, etc.
 
@@ -11,9 +11,8 @@ To illustrate:
 <img src="../assets/learning.png" width="500" />
 
 The objective for these learning materials is to help people learn how
-to leverage **kglab** effectively, gain confidence working with
-graph-based data science, plus have examples to repurpose for their
-own use cases.
+to leverage **kglab** effectively, gain confidence working with graph
+data science, plus have examples to repurpose for their own use cases.
 
 You'll find a mix of topics throughout:
 data science, business context, AI applications, data management, 

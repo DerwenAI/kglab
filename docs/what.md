@@ -68,7 +68,7 @@ non-negative, symmetric properties allow for *factorization* (or *decomposition*
   * KG compare/contrast with [*property graph*](../glossary/#property-graph)
   * the ubiquity of graph-based work in data science
   * graph algorithms vs. visualization vs. graph AI vs. probabilistic graphs vs. graph queries
-  * *separation of concerns* between graph-based data science and data engineering
+  * *separation of concerns* between graph data science and data engineering
   * lessons of 2010 all over again: MPPs, BI, EDW, etc.
 
 narrative arc: 

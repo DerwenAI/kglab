@@ -45,7 +45,7 @@ with a notebook-based tutorial at its core,
 focused on a community and their business use cases.
 
 The scope now is about
-[*graph-based data science*](../glossary/#graph-based-data-science),
+[*graph data science*](../glossary/#graph-data-science),
 and perhaps someday this may spin-out a book or other learning materials.
 
 
@@ -62,7 +62,7 @@ Consider the fact that many dependencies have their origins in the
 [Semantic Web](glossary/#semantic-web).
 The ongoing work of [W3C](glossary/#w3c)
 provides ontologies, standards, and other initiatives that are incredibly
-valuable for graph-based.
+valuable for graph data science.
 That overall effort began in the 1990s, and arguably its momentum
 imploded circa 2005 – despite best intentions by brilliant individuals
 and quite capable organizations.

@@ -18,20 +18,19 @@ RAPIDS, Apache Parquet, fsspec, etc.) on cloud computing.
 
 This tutorial introduces **kglab** – an open source project that
 integrates RDFlib, OWL-RL, pySHACL, NetworkX, iGraph, pslpython,
-node2vec, PyVis, and more – to show how to use a wide range of
-graph-based approaches, blending smoothly into data science workflows,
-and working efficiently with popular data engineering practices.
-The material emphasizes hands-on coding examples which you can reuse;
-best practices for integrating and leveraging other useful libraries;
+PyVis, and more – to show how to use a wide range of graph-based
+approaches, blending smoothly into data science workflows, and working
+efficiently with popular data engineering practices.  The material
+emphasizes hands-on coding examples which you can reuse; best
+practices for integrating and leveraging other useful libraries;
 history and bibliography (e.g., links to primary sources); accessible,
 detailed API documentation; a detailed glossary of terminology; plus
 links to many helpful resources, such as online 'playgrounds" –
 meanwhile, keeping a practical focus on use cases.
 
-The coding exercises in the following tutorial are based on
-progressive examples based on cooking recipes, which illustrate the
-use of **kglab** and related libraries in Python for *graph-based data
-science*.
+The coding exercises in the following tutorial are based on progressive
+examples based on cooking recipes, which illustrate the use of **kglab**
+and related libraries in Python for *graph data science*.
 
 
 ## Prerequisites
@@ -59,7 +58,7 @@ come in handy.
   * Coding examples that can be used as starting points for your own KG projects
   * How to blend different graph-based approaches within a data science workflow to complement each other’s strengths: for data quality checks, inference, human-in-the-loop, etc.
   * Integrating with popular data science tools, such as pandas, scikit-learn, matplotlib, etc.
-  * Graph-based practices that fit well with Big Data tools such as Spark, Parquet, Ray, RAPIDS, and so on
+  * Graph data science practices that fit well with Big Data tools such as Spark, Parquet, Ray, RAPIDS, and so on
 
 
 ## Outline
