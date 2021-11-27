@@ -96,6 +96,13 @@ bash <(curl -s https://codecov.io/bash) -t @.cc_token
 Test coverage reports can be viewed at
 <https://codecov.io/gh/DerwenAI/kglab>
 
+The CI pipeline will test automatically for each pull request,
+although to run these tests manually:
+```
+python3 ./test.py
+python3 -m pytest --nbmake examples/
+```
+
 
 ## Online Documentation
 
