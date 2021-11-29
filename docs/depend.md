@@ -63,7 +63,7 @@ Instead you'll need to install the following packages separately:
 
 - [cairocffi](https://cairocffi.readthedocs.io/)
 - [leidenalg](https://leidenalg.readthedocs.io/)
-- [python-igraph](https://igraph.org/python/)
+- [igraph](https://igraph.org/python/)
 
 
 ## Troubleshooting
