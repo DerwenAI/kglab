@@ -14,8 +14,8 @@
 Welcome to *graph data science*:
 <https://derwen.ai/docs/kgl/>
 
-The **kglab** library provides a simple abstraction layer in Python
-3.6+ for building knowledge graphs.
+The **kglab** library provides a simple abstraction layer in Python 3.7+
+for building knowledge graphs.
 
 > **SPECIAL REQUEST:**  
 > Which features would you like in an open source Python library for building knowledge graphs?  
