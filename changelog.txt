@@ -2,9 +2,10 @@
 
 ## 0.4.2
 
-2021-12-??
+2021-12-13
 
-  * ??
+  * update `pySHACL` and `OWL-RL` to track updates in `RDFlib`
+  * fixed `abort_on_error` flag for `pySHACL` integration; kudos @fils
 
 
 ## 0.4.1

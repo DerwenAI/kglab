@@ -11,6 +11,7 @@ and to our contributors:
 [@louisguitton](https://github.com/louisguitton),
 [@tomaarsen](https://github.com/tomaarsen),
 [@Mec-iS](https://github.com/Mec-iS),
+[@fils](https://github.com/fils),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@pebbie](https://github.com/pebbie),
 [@CatChenal](https://github.com/CatChenal),
@@ -60,15 +61,13 @@ by Innovation Enterprise.
   * consultant to enterprise organizations for [data strategy](../glossary/#data-strategy);
     advisor to several AI start-ups, including
     [Recognai](https://derwen.ai/s/hk4g),
-    [KUNGFU.AI](https://derwen.ai/s/rwg8prbgqp36),
-    [Primer](https://derwen.ai/s/tm9jxzcm67hc)
+    [KUNGFU.AI](https://derwen.ai/s/rwg8prbgqp36)
 
 As an author/speaker/instructor, Paco has taught many people (+9000) 
 in industry across a range of topics –
 [*data science*](../glossary/#data-science),
 [*natural language*](../glossary/#natural-language),
 [*cloud computing*](../glossary/#cloud-computing),
-[*reinforcement learning*](../glossary/#reinforcement-learning),
 [*computable content*](../glossary/#computable-content),
 etc. –
 and through guest lectures at 
