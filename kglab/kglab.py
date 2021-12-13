@@ -1134,7 +1134,7 @@ PyVis network object, to be rendered
         advanced: typing.Optional[bool] = False,
         inference: typing.Optional[str] = None,
         inplace:typing.Optional[bool] = True,
-        abort_on_error: typing.Optional[bool] = None,
+        abort_on_first: typing.Optional[bool] = None,
         **kwargs: typing.Any,
         ) -> typing.Tuple[bool, "KnowledgeGraph", str]:
         """
@@ -1161,7 +1161,7 @@ prior to validation, run OWL2 RL profile-based expansion of the RDF graph based 
     inplace:
 when enabled, do not clone the RDF graph prior to inference/expansion, just manipulate it in-place
 
-    abort_on_error:
+    abort_on_first:
 abort validation on the first error
 
     returns:
@@ -1176,7 +1176,7 @@ a tuple of `conforms` (RDF graph passes the validation rules) + `report_graph` (
             advanced=advanced,
             inference=inference,
             inplace=inplace,
-            abort_on_error=abort_on_error,
+            abort_on_first=abort_on_first,
             serialize_report_graph="ttl",
             **chocolate.filter_args(kwargs, pyshacl.validate),
             )

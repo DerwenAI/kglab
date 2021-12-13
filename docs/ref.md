@@ -550,7 +550,7 @@ PyVis network object, to be rendered
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/kglab.py#L1127)
 
 ```python
-validate(shacl_graph=None, shacl_graph_format=None, ont_graph=None, ont_graph_format=None, advanced=False, inference=None, inplace=True, abort_on_error=None, **kwargs)
+validate(shacl_graph=None, shacl_graph_format=None, ont_graph=None, ont_graph_format=None, advanced=False, inference=None, inplace=True, abort_on_first=None, **kwargs)
 ```
 Wrapper for [`pyshacl.validate()`](https://github.com/RDFLib/pySHACL) for validating the RDF graph using rules expressed in the [SHACL](https://www.w3.org/TR/shacl/) (Shapes Constraint Language).
 
@@ -574,7 +574,7 @@ prior to validation, run OWL2 RL profile-based expansion of the RDF graph based 
   * `inplace` : `typing.Union[bool, NoneType]`  
 when enabled, do not clone the RDF graph prior to inference/expansion, just manipulate it in-place
 
-  * `abort_on_error` : `typing.Union[bool, NoneType]`  
+  * `abort_on_first` : `typing.Union[bool, NoneType]`  
 abort validation on the first error
 
   * *returns* : `typing.Tuple[bool, KnowledgeGraph, str]`  
