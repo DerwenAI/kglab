@@ -1,5 +1,12 @@
 # `kglab` changelog
 
+## 0.4.3
+
+2022-02-10
+
+  * improved GPU detection when RAPIDS is not installed
+
+
 ## 0.4.2
 
 2021-12-13

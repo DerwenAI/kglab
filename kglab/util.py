@@ -9,39 +9,41 @@ import math
 import numpy as np  # type: ignore  # pylint: disable=E0401
 import pandas as pd  # type: ignore  # pylint: disable=E0401
 
+GPU_COUNT: int = 0
+
 
 def get_gpu_count () -> int:
     """
 Special handling for detecting GPU availability: an approach
-recommended by the NVIDIA RAPIDS engineering team, since `nvml`
+recommended by the NVidia RAPIDS engineering team, since `nvml`
 bindings are difficult for Python libraries to keep updated.
 
-This has the side-effect of importing the `cuDF` library, when
-GPUs are available.
-
     returns:
-count of available GPUs
+count of available GPUs, where `0` means none or disabled.
     """
+    global GPU_COUNT
+
+    if GPU_COUNT < 0:
+        return 0
+
     try:
         import pynvml  # type: ignore  # pylint: disable=E0401
         pynvml.nvmlInit()
 
-        gpu_count = pynvml.nvmlDeviceGetCount()
-
-        if gpu_count > 0:
-            import cudf  # type: ignore # pylint: disable=E0401,W0611,W0621
-            # print(f"using {gpu_count} GPUs")
-
+        GPU_COUNT = pynvml.nvmlDeviceGetCount()
     except Exception: # pylint: disable=W0703
-        gpu_count = 0
+        GPU_COUNT = -1
 
-    return gpu_count
+    return GPU_COUNT
 
-
-## NB: workaround for GitHub CI
 
 if get_gpu_count() > 0:
-    import cudf  # type: ignore # pylint: disable=E0401
+    try:
+        import cudf  # type: ignore # pylint: disable=E0401
+    except Exception as e: # pylint: disable=W0703
+        # turn off GPU usage
+        #print(e)
+        GPU_COUNT = -1
 
 
 def calc_quantile_bins (
