@@ -134,6 +134,9 @@ See:
  width="231"
  />
 
+ ## Test
+ It is possible to test against IPython Notebooks with: `pytest --nbmake examples/*ipynb`
+
 
 ## License and Copyright
 
