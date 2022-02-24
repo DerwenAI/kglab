@@ -2,15 +2,16 @@
 # -*- coding: utf-8 -*-
 # see license https://github.com/DerwenAI/kglab#license-and-copyright
 
+"""
+Version checking for a Python module.
+"""
+
 import sys
 import typing
 
 
-######################################################################
-## Python version checking
-
 MIN_PY_VERSION: typing.Tuple = (3, 7,)
-__version__: str = "0.4.3"
+__version__: str = "0.4.4"
 
 
 def _versify (

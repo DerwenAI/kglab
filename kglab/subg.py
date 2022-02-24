@@ -2,13 +2,11 @@
 # -*- coding: utf-8 -*-
 # see license https://github.com/DerwenAI/kglab#license-and-copyright
 
-######################################################################
-## subgraph transforms for visualization, graph algorithms, etc.
+"""
+Subgraph transforms for visualization, graph algorithms, etc.
+"""
 
-from kglab import KnowledgeGraph
-from kglab.topo import Measure
-from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
-from kglab.util import get_gpu_count
+import typing
 
 from icecream import ic  #  type: ignore # pylint: disable=W0611,E0401
 from tqdm import tqdm  # type: ignore # pylint: disable=E0401
@@ -16,7 +14,12 @@ import pandas as pd  # type: ignore # pylint: disable=E0401
 import pyvis.network  # type: ignore # pylint: disable=E0401
 import networkx as nx  # type: ignore # pylint: disable=E0401
 import torch  # type: ignore # pylint: disable=E0401
-import typing
+
+from kglab import KnowledgeGraph
+from kglab.topo import Measure
+from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
+from kglab.util import get_gpu_count
+
 
 if get_gpu_count() > 0:
     import cudf  # type: ignore # pylint: disable=E0401

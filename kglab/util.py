@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 # see license https://github.com/DerwenAI/kglab#license-and-copyright
 
-######################################################################
-## utilities
+"""
+Utility functions used within `kglab` and related applications.
+"""
 
 import math
+
 import numpy as np  # type: ignore  # pylint: disable=E0401
 import pandas as pd  # type: ignore  # pylint: disable=E0401
 
@@ -21,7 +23,7 @@ bindings are difficult for Python libraries to keep updated.
     returns:
 count of available GPUs, where `0` means none or disabled.
     """
-    global GPU_COUNT
+    global GPU_COUNT  # pylint: disable=W0603
 
     if GPU_COUNT < 0:
         return 0
@@ -40,9 +42,9 @@ count of available GPUs, where `0` means none or disabled.
 if get_gpu_count() > 0:
     try:
         import cudf  # type: ignore # pylint: disable=E0401
-    except Exception as e: # pylint: disable=W0703
+    except Exception as gpu_e: # pylint: disable=W0703
         # turn off GPU usage
-        #print(e)
+        #print(gpu_e)
         GPU_COUNT = -1
 
 

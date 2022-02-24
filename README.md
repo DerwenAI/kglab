@@ -134,8 +134,13 @@ See:
  width="231"
  />
 
- ## Test
- It is possible to test against IPython Notebooks with: `pytest --nbmake examples/*ipynb`
+
+## Testing
+
+It's possible to run tests with any of the Jupyter notebooks using:
+```python
+python3 -m pytest --nbmake examples/*ipynb
+```
 
 
 ## License and Copyright

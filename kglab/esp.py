@@ -4,18 +4,21 @@
 # mypy: ignore-errors
 # pylint: disable-all
 
-######################################################################
-## Evolunationary Shape Prediction
+"""
+WIP: Evolunationary Shape Prediction
+"""
+
+from collections import deque
+import random
+import typing
+
+import pandas as pd  # type: ignore
+import rdflib  # type: ignore
 
 from kglab import KnowledgeGraph, Measure, Subgraph
 from kglab.pkg_types import RDF_Node, SPARQL_Bindings
 import kglab.util
 
-from collections import deque
-import pandas as pd  # type: ignore
-import random
-import rdflib  # type: ignore
-import typing
 
 SerializedEvoEdge = typing.Tuple[int, int]
 SerializedEvoNode = typing.Tuple[int, typing.List[SerializedEvoEdge]]

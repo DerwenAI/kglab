@@ -1,16 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from sklearn import datasets
-import kglab
 import os
-import pandas as pd
 import pathlib
 import tempfile
-import urlpath
-import unittest
 import warnings
-# from icecream import ic
+import unittest
+
+from icecream import ic
+from sklearn import datasets
+import pandas as pd
+import urlpath
+
+import kglab
+
 
 class TestKG (unittest.TestCase):
     def test_load_save_measure (self):

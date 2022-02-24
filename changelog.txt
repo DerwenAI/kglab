@@ -1,5 +1,12 @@
 # `kglab` changelog
 
+## 0.4.4
+
+2022-02-24
+
+  * integration of `morph-kgc`; kudos @Mec-iS and many thanks to @ArenasGuerreroJulian
+
+
 ## 0.4.3
 
 2022-02-10

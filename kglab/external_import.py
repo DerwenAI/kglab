@@ -4,24 +4,22 @@
 
 """
 Provide support for importing RDF data from multiple existing graph
-databases, preferably triplestores:
+databases, including:
 
   * neo4j
-  * Ontotext-GraphDB
-  * Blazegraph
-  * DataStax
 """
 
 import json
+import urllib.parse
+
 import requests  # pylint: disable=E0401
 import rdflib  # type: ignore  # pylint: disable=E0401
-import urllib.parse
 
 
 def import_from_neo4j (
     username: str,
     password: str,
-    dbname: str,
+    dbname: str,  # pylint: disable=W0613
     host: str = "localhost",
     port: str = "7474"
     ) -> rdflib.Graph:
@@ -62,8 +60,8 @@ an [`rdflib.Graph`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?
 
     # construct the export URL
     u = urllib.parse.urlparse(host)
-    netloc = "{}:{}".format(u.netloc, port)
-    path = "/rdf/{}/cypher".format(dbname)
+    netloc = f"{u.netloc}:{port}"
+    path = "/rdf/{dbname}/cypher"
     url = urllib.parse.urlunparse((u.scheme, netloc, path, "", "", "",))
 
     try:

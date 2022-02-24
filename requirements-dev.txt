@@ -20,5 +20,6 @@ pymdown-extensions
 pytest
 selenium
 twine
+types-python-dateutil
 wheel
 

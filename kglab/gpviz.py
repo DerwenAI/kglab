@@ -1,13 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+Visualization of SPARQL queries.
+"""
+
 import collections
 import copy
+import typing
+
 import pyvis  # type: ignore # pylint: disable=E0401
 import rdflib.paths  # type: ignore # pylint: disable=E0401
 import rdflib.plugins.sparql  # type: ignore # pylint: disable=E0401
 import rdflib.term  # type: ignore # pylint: disable=E0401
-import typing
 
 
 class GPViz:
