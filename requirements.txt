@@ -6,7 +6,6 @@ gcsfs >= 0.7.1
 gensim >= 3.8.3
 icecream >= 2.1
 matplotlib >= 3.3.4
-morph-kgc >= 1.5
 networkx >= 2.6
 numpy >= 1.19.2
 owlrl >= 6.0.2
