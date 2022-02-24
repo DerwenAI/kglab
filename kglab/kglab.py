@@ -1453,14 +1453,14 @@ if false, `skos:narrowMatch` will be removed instead of added
             else:
                 self.remove(s, _skos.narrowMatch, o)
 
-    def materialize(self, path: pathlib.Path) -> rdflib.Graph:
+    def materialize(self, config: str) -> rdflib.Graph:
         """ Binding to morph-kgc `materialize()` """
 
         if len(self._g) == 0:
             # generate the triples and load them to an RDFlib graph      
-            self._g = morph_kgc.materialize(str(path))
+            self._g = morph_kgc.materialize(config)
         else:
             # merge
             # for caveats about merging this way:
             # <https://rdflib.readthedocs.io/en/stable/merging.html>
-            self._g.parse(morph_kgc.materialize(str(path)))
+            self._g.parse(morph_kgc.materialize(config))
