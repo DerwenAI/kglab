@@ -1,7 +1,7 @@
-""" KG Lab main class
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# see license https://github.com/DerwenAI/kglab#license-and-copyright
 
-see license https://github.com/DerwenAI/kglab#license-and-copyright
-"""
 ######################################################################
 ## kglab - core classes
 
@@ -34,9 +34,6 @@ import pyvis  # type: ignore  # pylint: disable=E0401
 import traceback
 import typing
 import urlpath  # type: ignore  # pylint: disable=E0401
-
-### third-parties bindings
-import morph_kgc
 
 if get_gpu_count() > 0:
     import cudf  # type: ignore  # pylint: disable=E0401
@@ -1452,15 +1449,3 @@ if false, `skos:narrowMatch` will be removed instead of added
                 self.add(s, _skos.narrower, o)
             else:
                 self.remove(s, _skos.narrowMatch, o)
-
-    def materialize(self, config: str) -> rdflib.Graph:
-        """ Binding to morph-kgc `materialize()` """
-
-        if len(self._g) == 0:
-            # generate the triples and load them to an RDFlib graph      
-            self._g = morph_kgc.materialize(config)
-        else:
-            # merge
-            # for caveats about merging this way:
-            # <https://rdflib.readthedocs.io/en/stable/merging.html>
-            self._g.parse(morph_kgc.materialize(config))
