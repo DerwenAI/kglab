@@ -1,10 +1,10 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# see license https://github.com/DerwenAI/kglab#license-and-copyright
-
 """
 kglab main class definition.
+
+ see license https://github.com/DerwenAI/kglab#license-and-copyright
 """
+######################################################################
+## kglab - core classes
 
 import codecs
 import datetime

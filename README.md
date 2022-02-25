@@ -134,14 +134,12 @@ See:
  width="231"
  />
 
-
 ## Testing
 
 It's possible to run tests with any of the Jupyter notebooks using:
 ```python
 python3 -m pytest --nbmake examples/*ipynb
 ```
-
 
 ## License and Copyright
 
