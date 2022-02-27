@@ -26,4 +26,4 @@ jobs:
       - uses: pre-commit/action@v2.0.2
       - name: Test all notebooks in the examples/ folder can run
         run: |
-          docker exec -i kglab-notebooks bash -c 'pip install pytest nbmake && pytest --nbmake work/examples/*.ipynb'
+          docker exec -i kglab-notebooks bash -c 'python3 test.py'
