@@ -2,17 +2,19 @@
 # -*- coding: utf-8 -*-
 # see license https://github.com/DerwenAI/kglab#license-and-copyright
 
-######################################################################
-## classes to support models for statistical relational learning
+"""
+Support for use of statistical relational learning.
+"""
+
+import pathlib
+import typing
 
 from icecream import ic  # type: ignore  # pylint: disable=E0401
 import pandas as pd  # type: ignore  # pylint: disable=E0401
-import pathlib
 import pslpython.model  # type: ignore  # pylint: disable=E0401
 import pslpython.partition  # type: ignore  # pylint: disable=E0401
 import pslpython.predicate  # type: ignore  # pylint: disable=E0401
 import pslpython.rule  # type: ignore  # pylint: disable=E0401
-import typing
 
 
 class PSLModel:
@@ -154,8 +156,8 @@ this PSL model – use for method chaining
     @classmethod
     def _raise_model_error (
         cls,
-        obj: str,
-        msg: str,
+        obj: str,  # pylint: disable=W0613
+        msg: str,  # pylint: disable=W0613
         ) -> None:
         """
 Semiprivate helper function to format and raise a `ModelError` exception.
@@ -166,7 +168,7 @@ name of the object to be reported
     msg:
 the exception message to use
         """
-        error = "{}: {}".format(msg, obj)
+        error = "{msg}: {obj}"
         raise pslpython.model.ModelError(error)
 
 

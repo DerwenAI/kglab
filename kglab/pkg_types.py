@@ -2,20 +2,22 @@
 # -*- coding: utf-8 -*-
 # see license https://github.com/DerwenAI/kglab#license-and-copyright
 
-import pandas as pd  # type: ignore  # pylint: disable=E0401
+"""
+Shared type definitions.
+"""
+
 import pathlib
-import rdflib  # type: ignore  # pylint: disable=E0401
 import typing
+
+import pandas as pd  # type: ignore  # pylint: disable=E0401
+import rdflib  # type: ignore  # pylint: disable=E0401
 import urlpath  # type: ignore  # pylint: disable=E0401
 
-
-######################################################################
-## shared type definitions
 
 PathLike = typing.Union[ str, pathlib.Path, urlpath.URL ]
 IOPathLike = typing.Union[ PathLike, typing.IO ]
 
-RDF_Node = typing.Union[ rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode ]
+RDF_Node = typing.Union[ rdflib.term.Node, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode ]
 RDF_Triple = typing.Tuple[ RDF_Node, RDF_Node, RDF_Node ]
 NodeLike = typing.Union[ typing.Optional[str], RDF_Node ]
 

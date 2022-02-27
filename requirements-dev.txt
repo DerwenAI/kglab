@@ -9,7 +9,7 @@ mkdocs-git-revision-date-plugin
 mkdocs-material
 mknotebooks
 mypy
-nbconvert
+nbconvert >= 6.4
 nbmake >= 1.0
 notebook >= 6.1.5
 pipdeptree
@@ -20,5 +20,6 @@ pymdown-extensions
 pytest
 selenium
 twine
+types-python-dateutil
 wheel
 

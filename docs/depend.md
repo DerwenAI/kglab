@@ -2,7 +2,7 @@
 
 <img src="../assets/nouns/api.png" alt="API by Adnen Kadri from the Noun Project" />
 
-The **kglab** package requires [Python 3.6+](https://www.python.org/downloads/).
+The **kglab** package requires [Python 3.7+](https://www.python.org/downloads/).
 
 ## Base Support
 
@@ -17,6 +17,7 @@ include:
 - [gensim](https://radimrehurek.com/gensim/)
 - [icecream](https://github.com/gruns/icecream)
 - [matplotlib](https://matplotlib.org/)
+- [Morph-KGC](https://github.com/oeg-upm/morph-kgc)
 - [NetworkX](https://networkx.org/)
 - [NumPy](https://numpy.org/)[^2]
 - [OWL-RL](https://owl-rl.readthedocs.io/)

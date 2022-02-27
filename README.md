@@ -134,6 +134,12 @@ See:
  width="231"
  />
 
+## Testing
+
+It's possible to run tests with any of the Jupyter notebooks using:
+```python
+python3 -m pytest --nbmake examples/*ipynb
+```
 
 ## License and Copyright
 
@@ -173,6 +179,7 @@ and to our contributors:
 [@louisguitton](https://github.com/louisguitton),
 [@tomaarsen](https://github.com/tomaarsen),
 [@Mec-iS](https://github.com/Mec-iS),
+[@ArenasGuerreroJulian](https://github.com/ArenasGuerreroJulian),
 [@fils](https://github.com/fils),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@pebbie](https://github.com/pebbie),

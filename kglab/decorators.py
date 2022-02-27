@@ -1,16 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-######################################################################
-# Decorator to handle multiple paths
+"""
+Decorators:
+
+  * `@multifile` handles specifying multiple paths in serialization methods.
+"""
 
 from copy import deepcopy
 from functools import wraps
 from glob import glob
-from icecream import ic  #  type: ignore # pylint: disable=W0611,E0401
 import inspect
 import pathlib
 import typing
+
+from icecream import ic  #  type: ignore # pylint: disable=W0611,E0401
 import urlpath  # type: ignore # pylint: disable=E0401
 
 

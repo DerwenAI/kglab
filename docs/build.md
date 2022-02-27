@@ -35,6 +35,7 @@ and
 for *type checking*.
 To run these tests specifically:
 ```
+mypy --install-types
 mypy kglab/*.py
 ```
 

@@ -1,6 +1,38 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# see license https://github.com/DerwenAI/kglab#license-and-copyright
+"""
+kglab main class definition.
+
+ see license https://github.com/DerwenAI/kglab#license-and-copyright
+"""
+######################################################################
+## kglab - core classes
+
+import codecs
+import datetime
+import io
+import json
+import pathlib
+import traceback
+import typing
+
+### third-parties bindings
+
+from icecream import ic  # type: ignore  # pylint: disable=E0401
+import chocolate  # type: ignore  # pylint: disable=E0401
+import csvwlib  # type: ignore  # pylint: disable=E0401
+import dateutil.parser as dup  # pylint: disable=E0401
+import morph_kgc  # type: ignore  # pylint: disable=E0401
+import owlrl  # type: ignore  # pylint: disable=E0401
+import pandas as pd  # type: ignore  # pylint: disable=E0401
+import pyshacl  # type: ignore  # pylint: disable=E0401
+import pyvis  # type: ignore  # pylint: disable=E0401
+import urlpath  # type: ignore  # pylint: disable=E0401
+
+import rdflib  # type: ignore  # pylint: disable=E0401
+import rdflib.plugin  # type: ignore  # pylint: disable=E0401
+import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore  # pylint: disable=E0401
+#rdflib.plugin.register("json-ld", rdflib.plugin.Parser, "rdflib_jsonld.parser", "JsonLDParser")
+#rdflib.plugin.register("json-ld", rdflib.plugin.Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
+
 
 ######################################################################
 ## kglab - core classes
@@ -10,30 +42,9 @@ from kglab.pkg_types import PathLike, IOPathLike, GraphLike, RDF_Node
 from kglab.gpviz import GPViz
 from kglab.util import get_gpu_count
 from kglab.version import _check_version
+
+
 _check_version()
-
-import rdflib  # type: ignore  # pylint: disable=E0401
-import rdflib.plugin  # type: ignore  # pylint: disable=E0401
-import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore  # pylint: disable=E0401
-#rdflib.plugin.register("json-ld", rdflib.plugin.Parser, "rdflib_jsonld.parser", "JsonLDParser")
-#rdflib.plugin.register("json-ld", rdflib.plugin.Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
-
-from icecream import ic  # type: ignore  # pylint: disable=E0401
-import chocolate  # type: ignore  # pylint: disable=E0401
-import codecs
-import csvwlib  # type: ignore  # pylint: disable=E0401
-import datetime
-import dateutil.parser as dup  # pylint: disable=E0401
-import io
-import json
-import owlrl  # type: ignore  # pylint: disable=E0401
-import pandas as pd  # type: ignore  # pylint: disable=E0401
-import pathlib
-import pyshacl  # type: ignore  # pylint: disable=E0401
-import pyvis  # type: ignore  # pylint: disable=E0401
-import traceback
-import typing
-import urlpath  # type: ignore  # pylint: disable=E0401
 
 if get_gpu_count() > 0:
     import cudf  # type: ignore  # pylint: disable=E0401
@@ -426,7 +437,7 @@ otherwise this throws a `TypeError` exception
             try:
                 rdflib.plugin.get(format, rdflib.serializer.Serializer)
             except Exception:
-                raise TypeError("unknown format: {}".format(format))
+                raise TypeError("unknown format: {format}")
 
 
     @classmethod
@@ -668,7 +679,7 @@ text representing the RDF graph
         if not base and self.base_uri:
             base = self.base_uri
 
-        return self._g.serialize(
+        return self._g.serialize(  # type: ignore
             destination=None,
             format=format,
             base=base,
@@ -801,7 +812,10 @@ this `KnowledgeGraph` object – used for method chaining
             )
 
         df.apply(
-            lambda row: self._g.parse(data="{} {} {} .".format(row[0], row[1], row[2]), format="ttl"),
+            lambda row: self._g.parse(
+                data="{} {} {} .".format(row[0], row[1], row[2]),
+                format="ttl",
+            ),
             axis=1,
         )
 
@@ -873,6 +887,34 @@ this `KnowledgeGraph` object – used for method chaining
         )
         return self.load_rdf_text(new_rdf)
 
+
+    def materialize (
+        self,
+        config: str,
+        ) -> "KnowledgeGraph":
+        """
+Binding to the morph-kgc `materialize()` method.
+
+    config:
+morph-kgc configuration, it can be the path to the config file, or a string with the config; see <https://github.com/oeg-upm/Morph-KGC/wiki/Usage#library>
+
+    returns:
+this `KnowledgeGraph` object – used for method chaining
+        """
+        if len(self._g) == 0:
+            # generate the triples and load them to an RDFlib graph
+            self._g = morph_kgc.materialize(config)
+        else:
+            # merge
+            # for caveats about merging this way:
+            # <https://rdflib.readthedocs.io/en/stable/merging.html>
+            self._g.parse(morph_kgc.materialize(config))
+
+        return self
+
+
+    ######################################################################
+    ## Roam Research integration
 
     def _walk_roam_graph (
         self,
@@ -973,58 +1015,6 @@ a list of identifiers for the top-level nodes added from the Roam Research graph
         return uid_list
 
 
-    def n3fy (
-        self,
-        node: RDF_Node,
-        *,
-        pythonify: bool = True,
-        ) -> typing.Any:
-        """
-Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
-
-    node:
-must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
-
-    pythonify:
-flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
-
-    returns:
-text (or Python objects) for the serialized node
-        """
-        if pythonify and isinstance(node, rdflib.term.Literal):
-            serialized = node.toPython()
-        else:
-            serialized = node.n3(self._g.namespace_manager)
-
-        return serialized
-
-
-    def n3fy_row (
-        self,
-        row_dict: dict,
-        *,
-        pythonify: bool = True,
-        ) -> dict:
-        """
-Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize one row of a result set from a SPARQL query into a human-readable representation for each term using N3 format.
-
-    row_dict:
-one row of a SPARQL query results, as a `dict`
-
-    pythonify:
-flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
-
-    returns:
-a dictionary of serialized row bindings
-        """
-        bindings = {
-            k: self.n3fy(v, pythonify=pythonify)
-            for k, v in row_dict.items()
-        }
-
-        return bindings
-
-
     ######################################################################
     ## SPARQL queries
 
@@ -1119,6 +1109,58 @@ optional boolean flag, whether to initialize the PyVis graph to render within a 
 PyVis network object, to be rendered
         """
         return GPViz(sparql, self._ns).visualize_query(notebook=notebook)
+
+
+    def n3fy (
+        self,
+        node: RDF_Node,
+        *,
+        pythonify: bool = True,
+        ) -> typing.Any:
+        """
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
+
+    node:
+must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
+
+    pythonify:
+flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
+
+    returns:
+text (or Python objects) for the serialized node
+        """
+        if pythonify and isinstance(node, rdflib.term.Literal):
+            serialized = node.toPython()
+        else:
+            serialized = node.n3(self._g.namespace_manager)  # type: ignore
+
+        return serialized
+
+
+    def n3fy_row (
+        self,
+        row_dict: dict,
+        *,
+        pythonify: bool = True,
+        ) -> dict:
+        """
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize one row of a result set from a SPARQL query into a human-readable representation for each term using N3 format.
+
+    row_dict:
+one row of a SPARQL query results, as a `dict`
+
+    pythonify:
+flag to force instances of [`rdflib.term.Literal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Literal#rdflib.term.Identifier) to their Python literal representation
+
+    returns:
+a dictionary of serialized row bindings
+        """
+        bindings = {
+            k: self.n3fy(v, pythonify=pythonify)
+            for k, v in row_dict.items()
+        }
+
+        return bindings
 
 
     ######################################################################

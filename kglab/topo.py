@@ -2,16 +2,18 @@
 # -*- coding: utf-8 -*-
 # see license https://github.com/DerwenAI/kglab#license-and-copyright
 
-######################################################################
-## graph topology
+"""
+Graph topology.
+"""
+
+from collections import defaultdict
+import typing
+
+import pandas as pd  # type: ignore  # pylint: disable=E0401
+import rdflib  # type: ignore  # pylint: disable=E0401
 
 from kglab import KnowledgeGraph
 from kglab.pkg_types import Census_Item, Census_Dyad_Tally
-
-from collections import defaultdict
-import pandas as pd  # type: ignore  # pylint: disable=E0401
-import rdflib  # type: ignore  # pylint: disable=E0401
-import typing
 
 
 class Simplex0:

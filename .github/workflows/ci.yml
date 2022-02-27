@@ -24,6 +24,4 @@ jobs:
         run: docker logs kglab-notebooks
 
       - uses: pre-commit/action@v2.0.2
-      - name: Test all notebooks in the examples/ folder can run
-        run: |
-          docker exec -i kglab-notebooks bash -c 'pip install pytest nbmake && pytest --nbmake work/examples/*.ipynb'
+      - name: TODO we no longer want to test notebooks, run unit test suite instead

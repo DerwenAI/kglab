@@ -11,6 +11,7 @@ and to our contributors:
 [@louisguitton](https://github.com/louisguitton),
 [@tomaarsen](https://github.com/tomaarsen),
 [@Mec-iS](https://github.com/Mec-iS),
+[@ArenasGuerreroJulian](https://github.com/ArenasGuerreroJulian),
 [@fils](https://github.com/fils),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@pebbie](https://github.com/pebbie),
@@ -105,7 +106,7 @@ Source code for **kglab** plus its logo, documentation, and examples
 have an [MIT license](https://spdx.org/licenses/MIT.html) which is
 succinct and simplifies use in commercial applications.
 
-All materials herein are Copyright &copy; 2020-2021 Derwen, Inc.
+All materials herein are Copyright &copy; 2020-2022 Derwen, Inc.
 
 [![logo for Derwen, Inc.](https://derwen.ai/static/block_logo.png)](https://derwen.ai/)
 
@@ -134,3 +135,7 @@ See also:
   * [zincbase](https://github.com/complexdb/zincbase)
     * *pro:* probabilistic graph measures, complex simulation suite, leverages GPUs
     * *con:* lacks interchange with RDF or other standard formats
+
+In general, check
+<https://github.com/pysemtec/semantic-python-overview> for excellent
+curated listings of open source semantic technologies in Python.
