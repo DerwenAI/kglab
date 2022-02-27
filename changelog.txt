@@ -2,9 +2,9 @@
 
 ## 0.4.4
 
-2022-02-24
+2022-02-27
 
-  * integration of `morph-kgc`; kudos @Mec-iS and many thanks to @ArenasGuerreroJulian
+  * integration of `morph-kgc`; kudos @Mec-iS and @ArenasGuerreroJulian
 
 
 ## 0.4.3

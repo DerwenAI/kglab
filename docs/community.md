@@ -13,8 +13,9 @@ source project.
 Links for open source community resources:
 
   * [Issue Tracker](https://github.com/DerwenAI/kglab/issues) for discussions and open source governance
-  * ["Graph-Based Data Science"](https://derwen.ai/s/kcgh) talk which gets updated along with the code
-  * [*Graph-Based Data Science*](https://www.linkedin.com/groups/6725785/) group on LinkedIn – join to receive related updates, news, conference coupons, etc.
+  * ["Graph Data Science"](https://derwen.ai/s/kcgh) talk which gets updated along with the code
+  * [*Graph Data Science*](https://www.linkedin.com/groups/6725785/) group on LinkedIn – join to receive related updates, news, conference coupons, etc.
+  * ["Graph Thinking"](https://medium.com/knowledge-technologies/graph-thinking-5e9c85134ab0) with Jürgen Müller
 
 The [Knowledge Graph Conference](glossary/#knowledge-graph-conference)
 hosts several community resources where you can post questions and 
@@ -24,12 +25,6 @@ topics.
 
   * [community Slack](https://knowledgegraphconf.slack.com/ssb/redirect) – specifically on the `#ask` channel
   * [Knowledge Tech Q&A site](https://answers.knowledgegraph.tech/) for extended discussions
-
-[KGC](glossary/#knowledge-graph-conference)
-also hosts 
-[monthly office hours](https://www.notion.so/KG-Community-Events-Calendar-8aacbe22efa94d9b8b39b7288e22c2d3)
-with [Paco Nathan](ack/#project-lead) 
-and others involved in this open source project.
 
 
 ## Project Feedback and Roadmap
