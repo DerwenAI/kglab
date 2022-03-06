@@ -6,7 +6,7 @@ site_author: kglab contributors, with Derwen, Inc.
 repo_url: https://github.com/DerwenAI/kglab
 repo_name: DerwenAI/kglab
 
-copyright: Source code and documentation are <strong><a href="https://github.com/DerwenAI/kglab/blob/main/LICENSE" target="_blank">licensed</a></strong> under an MIT License; Copyright &copy; 2020-2021 <strong><a href="https://derwen.ai/" target="_blank">Derwen, Inc.</a></strong>
+copyright: Source code and documentation are <strong><a href="https://github.com/DerwenAI/kglab/blob/main/LICENSE" target="_blank">licensed</a></strong> under an MIT License; Copyright &copy; 2020-2022 <strong><a href="https://derwen.ai/" target="_blank">Derwen, Inc.</a></strong>
 
 nav:
     - Home: index.md
