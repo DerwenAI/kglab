@@ -1,5 +1,12 @@
 # `kglab` changelog
 
+## 0.5.?
+
+2022-03-??
+
+  * remove dependency on PyTorch
+
+
 ## 0.4.4
 
 2022-02-27

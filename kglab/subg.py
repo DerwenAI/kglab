@@ -13,7 +13,6 @@ from tqdm import tqdm  # type: ignore # pylint: disable=E0401
 import pandas as pd  # type: ignore # pylint: disable=E0401
 import pyvis.network  # type: ignore # pylint: disable=E0401
 import networkx as nx  # type: ignore # pylint: disable=E0401
-import torch  # type: ignore # pylint: disable=E0401
 
 from kglab import KnowledgeGraph
 from kglab.topo import Measure
@@ -379,25 +378,31 @@ a subject and object edge for each predicate, in tensor representation
         self,
         *,
         quiet: bool = True,
-        ) -> torch.Tensor:
+        ) -> typing.List[typing.Tuple[int, int, int]]:
         """
-Represents the KG as a PyTorch [`Tensor`](https://pytorch.org/docs/stable/tensors.html),
-loaded from an edge list where each predicate has edges connecting to
-its subject and object.
+Represents the KG as an edge list where each predicate has edges
+connecting to its subject and object.
+
+This can be used to load a [`Tensor`](https://pytorch.org/docs/stable/tensors.html)
+in PyTorch, for example:
+
+```
+edge_list = kg.as_tensor()
+tensor = torch.tensor(edge_list, dtype=torch.long).t().contiguous()
+```
 
     quiet:
 boolean flag to disable `tqdm` progress bar calculation and output
 
     returns:
-the loaded tensor object
+an edge list for the loaded tensor object
         """
         edge_list: list = [
             edge_tuple
             for edge_tuple in tqdm(self.as_tensor_edges(), disable=quiet)  # pylint: disable=R1721
             ]
 
-        tensor = torch.tensor(edge_list, dtype=torch.long).t().contiguous()  # pylint: disable=E1101,E1102
-        return tensor
+        return edge_list
 
 
     ######################################################################
