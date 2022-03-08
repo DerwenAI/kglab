@@ -22,12 +22,12 @@ repos:
     rev: v0.812
     hooks:
     -   id: mypy # type annotations
-        exclude: ^examples/,^wip/,^tests/*
+        exclude: ^examples/,^wip/,^tests/
 -   repo: https://github.com/PyCQA/pylint
     rev: pylint-2.7.2
     hooks:
     -   id: pylint
-        exclude: ^wip/,^tests/*
+        exclude: ^wip/,^tests/
         files: ^kglab/
 -   repo: https://github.com/codespell-project/codespell
     rev: v2.0.0
