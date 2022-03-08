@@ -37,7 +37,7 @@ COPY ./kglab /opt/kglab/kglab
 COPY ./dat /opt/kglab/dat
 COPY ./examples /opt/kglab/examples
 COPY ./requirements*.txt /opt/kglab/
-COPY ./test.py /opt/kglab/
+COPY ./tests/ /opt/kglab/tests/
 COPY ./sample.py /opt/kglab/
 
 ## create a known user ID
@@ -70,4 +70,4 @@ RUN set -eux; \
 	source /opt/kglab/venv/bin/activate ; \
 	/opt/kglab/venv/bin/python3.8 -m pip install -r /opt/kglab/requirements-dev.txt
 
-CMD /opt/kglab/venv/bin/python3.8 /opt/kglab/test.py
+CMD /opt/kglab/venv/bin/python3.8 -m pytest tests/

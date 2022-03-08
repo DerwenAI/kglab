@@ -37,7 +37,6 @@ COPY ./kglab /opt/kglab/kglab
 COPY ./dat /opt/kglab/dat
 COPY ./examples /opt/kglab/examples
 COPY ./requirements*.txt /opt/kglab/
-COPY ./test.py /opt/kglab/
 COPY ./sample.py /opt/kglab/
 
 ## create a known user ID
