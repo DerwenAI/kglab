@@ -1,4 +1,5 @@
 [bandit]
 exclude_dirs:
   - examples
-exclude: setup.py,test.py
+  - tests
+exclude: setup.py

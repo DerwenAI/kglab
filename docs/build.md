@@ -79,7 +79,7 @@ This project uses `unittest` and
 [`coverage`](https://coverage.readthedocs.io/)
 for *unit test* coverage. 
 Source for unit tests is in the 
-[`test.py`](https://github.com/DerwenAI/kglab/blob/main/test.py)
+[`tests/`](https://github.com/DerwenAI/kglab/blob/main/tests/)
 module.
 
 To run unit tests:
@@ -100,7 +100,7 @@ Test coverage reports can be viewed at
 The CI pipeline will test automatically for each pull request,
 although to run these tests manually:
 ```
-python3 ./test.py
+python3 -m pytest tests/
 python3 -m pytest --nbmake examples/
 ```
 
@@ -153,7 +153,7 @@ release process:
 
 ```
 python3 -m pip install -e .
-python3 ./test.py
+python3 -m pytest tests/
 python3 -m pip uninstall kglab
 ```
 

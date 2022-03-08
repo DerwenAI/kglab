@@ -6,8 +6,10 @@ FROM kglab as testsuite
 WORKDIR /opt/kglab
 USER appuser
 
+COPY ./tests/* /opt/kglab/tests/
+
 RUN set -eux; \
 	source /opt/kglab/venv/bin/activate ; \
 	/opt/kglab/venv/bin/python3.8 -m pip install -r /opt/kglab/requirements-dev.txt
 
-CMD /opt/kglab/venv/bin/python3.8 /opt/kglab/test.py
+CMD /opt/kglab/venv/bin/python3.8 -m pytest tests/
