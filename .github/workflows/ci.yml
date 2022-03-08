@@ -9,19 +9,15 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      EVENT: ${{ github.event.number }}
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: satackey/action-docker-layer-caching@v0.0.11
-        continue-on-error: true
-      - name: Build the stack
-        run: docker-compose up -d
+    - name: checkout code
+      uses: actions/checkout@v2
+    
+    - name: build for testing
+      run: docker build --pull --rm -f "docker/testsuite.Dockerfile" -t testsuite:PR_${{env.EVENT}} .
 
-      - name: Check running containers
-        run: docker ps -a
-
-      - name: Check logs
-        run: docker logs kglab-notebooks
-
-      - uses: pre-commit/action@v2.0.2
-      - name: TODO we no longer want to test notebooks, run unit test suite instead
+    - name: run unit tests
+      run: docker run --rm -t testsuite:PR_${{env.EVENT}}

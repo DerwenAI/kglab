@@ -1,0 +1,16 @@
+######################################################################
+## specific to running Jupyter notebooks:
+
+FROM kglab as worker
+
+WORKDIR /opt/kglab
+USER appuser
+
+RUN set -eux; \
+	source /opt/kglab/venv/bin/activate ; \
+	/opt/kglab/venv/bin/python3.8 -m pip install -r /opt/kglab/requirements-tut.txt
+
+EXPOSE 8888/tcp
+ENV XDG_RUNTIME_DIR="" 
+
+CMD /opt/kglab/venv/bin/jupyter-lab --notebook-dir=. --no-browser --port=8888 --ip=0.0.0.0
