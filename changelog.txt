@@ -1,9 +1,11 @@
 # `kglab` changelog
 
-## 0.5.?
+## 0.5.0
 
 2022-03-??
 
+  * improve Dockerfile (e.g., for use in regulated environments)
+  * refactor tutorial dependencies out of library
   * remove dependency on PyTorch
 
 

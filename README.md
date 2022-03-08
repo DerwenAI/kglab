@@ -11,11 +11,12 @@
 ![downloads](https://img.shields.io/pypi/dm/kglab)
 ![sponsor](https://img.shields.io/github/sponsors/ceteri)
 
-Welcome to *graph data science*:
+Welcome to *Graph Data Science*:
 <https://derwen.ai/docs/kgl/>
 
 The **kglab** library provides a simple abstraction layer in Python 3.7+
-for building knowledge graphs.
+for building knowledge graphs, leveraging Pandas, NetworkX, RAPIDS, RDFLib,
+Morph-KGC, pythonPSL, and many more.
 
 > **SPECIAL REQUEST:**  
 > Which features would you like in an open source Python library for building knowledge graphs?  
@@ -35,20 +36,20 @@ for building knowledge graphs.
 See the ["Getting Started"](https://derwen.ai/docs/kgl/start/)
 section of the online documentation.
 
-To install from [PyPi](https://pypi.python.org/pypi/kglab):
-```
+We recommend installing from [PyPi](https://pypi.python.org/pypi/kglab):
+```bash
 python3 -m pip install kglab
 ```
 
 If you work directly from this Git repo, be sure to install the 
-dependencies as well:
-```
+dependencies:
+```bash
 python3 -m pip install -r requirements.txt
 ```
 
 Alternatively, to install dependencies using `conda`:
-```
-conda env create -f environment.yml
+```bash
+conda env create -f environment.yml --force
 conda activate kglab
 ```
 
@@ -97,6 +98,7 @@ For detailed instructions please see:
 [CONTRIBUTING.md](https://github.com/DerwenAI/kglab/blob/main/CONTRIBUTING.md)
 </details>
 
+
 <details>
   <summary>Build Instructions</summary>
 
@@ -114,6 +116,24 @@ To set up the build environment locally, see the
 section of the online documentation.
 </details>
 
+
+<details>
+  <summary>Using Docker</summary>
+
+To build a container image and run it for the tutorials:
+```bash
+docker build --pull --rm -f "docker/Dockerfile" -t kglab:latest .
+docker run -p 8888:8888 -it kglab
+```
+
+To build and run a container image for testing:
+```bash
+docker build --pull --rm -f "docker/testsuite.Dockerfile" -t kglabtest:latest .
+docker run --rm -it kglabtest
+```
+</details>
+
+
 <details>
   <summary>Semantic Versioning</summary>
 
@@ -128,18 +148,13 @@ See:
 [changelog.txt](https://github.com/DerwenAI/kglab/blob/main/changelog.txt)
 </details>
 
+
 <img
  alt="illustration of a knowledge graph, plus laboratory glassware"
  src="https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/assets/logo.png"
  width="231"
  />
 
-## Testing
-
-It's possible to run tests with any of the Jupyter notebooks using:
-```python
-python3 -m pytest --nbmake examples/*ipynb
-```
 
 ## License and Copyright
 
