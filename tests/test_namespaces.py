@@ -31,8 +31,13 @@ def kg_test_data():
     return kg
 
 
-# kglab.add_ns
 def test_add_ns(kg_test):
+    """
+Coverage:
+
+* KnowledgeGraph.get_ns_dict()
+* KnowledgeGraph.get_ns
+    """
     assert len(kg_test.get_ns_dict()) == 30
     
     iri2  = "http://schema.org/"
@@ -52,6 +57,11 @@ def test_add_ns(kg_test):
 
 
 def get_ns_dict(kg_test):
+    """
+Coverage:
+
+* KnowledgeGraph.get_ns_dict()
+    """
     assert len(kg_test.get_ns_dict()) == 30
 
     assert "test1" in kg_test.get_ns_dict().keys()
@@ -61,9 +71,13 @@ def get_ns_dict(kg_test):
     
 
 def test_describe_ns(kg_test_data):
+    """
+Coverage:
+
+* KnowledgeGraph.describe_ns()
+    """
     df = kg_test_data.describe_ns()
 
     assert len(df) == 29
     for prfx in kg_test_data._DEFAULT_NAMESPACES:
         assert prfx in list(df["prefix"])
-        
