@@ -8,17 +8,10 @@ from sklearn import datasets
 import pandas as pd
 import urlpath
 
-
-from os.path import abspath, dirname
-import sys
-from pathlib import Path
-
-sys.path.insert(0, str(Path(dirname(dirname(abspath(__file__))))))
-
 import kglab
 
 
-def test_load_save_measure ():
+def test_load_save_measure():
     """
 Coverage:
 
@@ -75,7 +68,7 @@ Coverage:
         tmp.close()
 
 
-def test_load_parquet_gs ():
+def test_load_parquet_gs():
     """
 Coverage:
 
@@ -113,7 +106,7 @@ Coverage:
     assert val == "Fantasy Fame Game"
 
 
-def test_approx_pareto_front ():
+def test_approx_pareto_front():
     """
 Coverage:
 
@@ -139,7 +132,7 @@ Coverage:
     assert round(df1.iloc[0]["rank"], 4) == 8.6747
 
 
-def test_single_file_load_rdf ():
+def test_single_file_load_rdf():
     """
 Coverage:
 
@@ -160,7 +153,7 @@ Coverage:
     assert node_count == 15
 
 
-def test_multiple_file_load_rdf ():
+def test_multiple_file_load_rdf():
     """
 Coverage:
 
@@ -196,7 +189,7 @@ Coverage:
     assert multifile_node_count == sequential_node_count
 
 
-def test_multiple_file_load_jsonld ():
+def test_multiple_file_load_jsonld():
     """
 Coverage:
 
@@ -236,7 +229,7 @@ Coverage:
         assert multifile_node_count == sequential_node_count
 
 
-def test_multiple_file_load_parquet ():
+def test_multiple_file_load_parquet():
     """
 Coverage:
 
@@ -276,7 +269,7 @@ Coverage:
         assert multifile_node_count == sequential_node_count
 
 
-def test_import_roam ():
+def test_import_roam():
     """
 Coverage:
 
