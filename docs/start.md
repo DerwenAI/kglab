@@ -44,6 +44,18 @@ ttl = kg.save_rdf_text()
 print(ttl)
 ```
 
+## Using Docker
+
+1. For a simple approach to running our tutorials, see use of [_docker compose_](tutorial/#use-docker-compose).
+
+2. Alternatively, container images for each release are available on DockerHub: <https://hub.docker.com/repository/docker/derwenai/kglab>
+
+3. To build a container image and run it for the tutorials:
+```bash
+docker build --pull --rm -f "docker/Dockerfile" -t kglab:latest .
+docker run -p 8888:8888 -it kglab
+```
+
 
 ## Hands-on Coding Tutorial
 

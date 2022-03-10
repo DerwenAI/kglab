@@ -75,7 +75,14 @@ bandit kglab/*.py
 
 ## Test Coverage
 
-This project uses `unittest` and 
+
+To build and run a container image for testing:
+```bash
+docker build --pull --rm -f "docker/testsuite.Dockerfile" -t kglabtest:latest .
+docker run --rm -it kglabtest
+```
+
+This project uses `pytest` and 
 [`coverage`](https://coverage.readthedocs.io/)
 for *unit test* coverage. 
 Source for unit tests is in the 
@@ -84,7 +91,7 @@ module.
 
 To run unit tests:
 ```
-coverage run -m unittest discover
+coverage run -m pytest tests
 ```
 
 To generate a coverage report and (providing you have the access
@@ -101,8 +108,16 @@ The CI pipeline will test automatically for each pull request,
 although to run these tests manually:
 ```
 python3 -m pytest tests/
+```
+
+In addition, the tutorial notebooks can be tested using:
+```
 python3 -m pytest --nbmake examples/
 ```
+
+...although these notebooks have intended usage other than testing,
+and their pedagogical components may not give a clear indication of
+the library's state.
 
 
 ## Online Documentation
