@@ -8,8 +8,11 @@
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/DerwenAI/kglab.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/DerwenAI/kglab/context:python)
 ![CI](https://github.com/DerwenAI/kglab/workflows/CI/badge.svg)
+[![Docker Pulls](https://img.shields.io/docker/pulls/derwenai/kglab.svg?maxAge=604800)](https://hub.docker.com/r/derwenai/kglab/)
+![example workflow](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/<WORKFLOW_FILE>/badge.svg)
 ![downloads](https://img.shields.io/pypi/dm/kglab)
 ![sponsor](https://img.shields.io/github/sponsors/ceteri)
+
 
 Welcome to *Graph Data Science*:
 <https://derwen.ai/docs/kgl/>
