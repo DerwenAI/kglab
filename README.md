@@ -44,6 +44,7 @@ python3 -m pip install kglab
 If you work directly from this Git repo, be sure to install the 
 dependencies:
 ```bash
+python3 -m pip install -U pip
 python3 -m pip install -r requirements.txt
 ```
 
@@ -89,13 +90,25 @@ graph libraries in Python:
 
 
 <details>
-  <summary>Contributing Code</summary>
+  <summary>Using Docker</summary>
 
-We welcome people getting involved as contributors to this open source
-project!
+For a simple approach to running the tutorials, see use of _docker compose_:
+<https://derwen.ai/docs/kgl/tutorial/#use-docker-compose>
 
-For detailed instructions please see:
-[CONTRIBUTING.md](https://github.com/DerwenAI/kglab/blob/main/CONTRIBUTING.md)
+Also, container images for each release are available on DockerHub:
+<https://hub.docker.com/repository/docker/derwenai/kglab>
+
+To build a container image and run it for the tutorials:
+```bash
+docker build --pull --rm -f "docker/Dockerfile" -t kglab:latest .
+docker run -p 8888:8888 -it kglab
+```
+
+To build and run a container image for testing:
+```bash
+docker build --pull --rm -f "docker/testsuite.Dockerfile" -t kglabtest:latest .
+docker run --rm -it kglabtest
+```
 </details>
 
 
@@ -118,23 +131,6 @@ section of the online documentation.
 
 
 <details>
-  <summary>Using Docker</summary>
-
-To build a container image and run it for the tutorials:
-```bash
-docker build --pull --rm -f "docker/Dockerfile" -t kglab:latest .
-docker run -p 8888:8888 -it kglab
-```
-
-To build and run a container image for testing:
-```bash
-docker build --pull --rm -f "docker/testsuite.Dockerfile" -t kglabtest:latest .
-docker run --rm -it kglabtest
-```
-</details>
-
-
-<details>
   <summary>Semantic Versioning</summary>
 
 Before <strong>kglab</strong> reaches release <code>v1.0.0</code> the 
@@ -146,6 +142,17 @@ We'll also be sure to provide careful notes.
 
 See:
 [changelog.txt](https://github.com/DerwenAI/kglab/blob/main/changelog.txt)
+</details>
+
+
+<details>
+  <summary>Contributing Code</summary>
+
+We welcome people getting involved as contributors to this open source
+project!
+
+For detailed instructions please see:
+[CONTRIBUTING.md](https://github.com/DerwenAI/kglab/blob/main/CONTRIBUTING.md)
 </details>
 
 
@@ -194,6 +201,7 @@ and to our contributors:
 [@louisguitton](https://github.com/louisguitton),
 [@tomaarsen](https://github.com/tomaarsen),
 [@Mec-iS](https://github.com/Mec-iS),
+[@RishiKumarRay](https://github.com/RishiKumarRay),
 [@ArenasGuerreroJulian](https://github.com/ArenasGuerreroJulian),
 [@fils](https://github.com/fils),
 [@gauravjaglan](https://github.com/gauravjaglan),
