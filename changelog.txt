@@ -1,8 +1,22 @@
 # `kglab` changelog
 
-## 0.5.0
+## 0.5.?
 
 2022-03-??
+
+  * ???
+
+
+## 0.5.1
+
+2022-03-10
+
+  * CI action to build/push container image to DockerHub on release; kudos @RishiKumarRay
+
+
+## 0.5.0
+
+2022-03-08
 
   * improve Dockerfile (e.g., for use in regulated environments)
   * refactor tutorial dependencies out of library
