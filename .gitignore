@@ -6,6 +6,7 @@ docs/ex[0-9]*_files
 examples/foo.ttl
 examples/tmp.*
 kgl.tgz
+dask-worker-space/
 
 # codecov.io
 .cc_token

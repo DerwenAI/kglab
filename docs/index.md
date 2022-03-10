@@ -92,7 +92,7 @@ into
 [`spaCy`](https://spacy.io/) pipelines, e.g., through 
 [`pytextrank`](https://github.com/DerwenAI/pytextrank/), 
 plus
-[`biome.text`](https://www.recogn.ai/biome-text/)
+[`Rubrix.ml`](https://rubrix.ml/)
 and other customized
 [natural language](glossary/#natural-language)
 pipelines.
