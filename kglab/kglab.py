@@ -472,8 +472,10 @@ a string as a file name or URL to a file reference
             filename = str(path)
         elif isinstance(path, pathlib.Path):
             filename = path.as_posix()
-        else:
+        elif type(path) == str:
             filename = path
+        else:
+            raise TypeError(f"path variable not recognised {type(path)}")
 
         return filename
 
