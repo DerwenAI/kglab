@@ -68,7 +68,7 @@ which is a private member of rdflib.Graph.
     def add (  # type: ignore # pylint: disable=R0201,W0221
         self,
         triple: typing.Tuple,
-        context:str,  # pylint: disable=W0613
+        context: str,  # pylint: disable=W0613
         *,
         quoted: bool = False,  # pylint: disable=W0613
         ) -> None:
@@ -85,6 +85,10 @@ It should also be an error for the quoted argument to be `True` when
 the store is not formula-aware.
         """
         s, p, o = triple  # pylint: disable=W0612
+        ic("add", s, p, o, context)
+
+        # TODO  # pylint: disable=W0511
+        # handle context
         self._tuples.append(( str(s), str(p), str(o), ))
 
         # update digest
@@ -103,11 +107,19 @@ the store is not formula-aware.
         """
 Remove the set of triples matching the pattern from the store.
         """
-        ic("remove", triple_pattern)
-        s, p, o = triple_pattern  # pylint: disable=W0612
+        ic("remove", triple_pattern, context)
 
         # TODO  # pylint: disable=W0511
-        # update digest
+        # handle context
+        try:
+            idx = self._tuples.index(triple_pattern)
+            del self._tuples[idx]
+
+            # TODO  # pylint: disable=W0511
+            # update digest
+        except ValueError as ex:  # pylint: disable=W0612
+            # triple does not exist
+            idx = -1
 
 
     def triples (  # type: ignore # pylint: disable=R0201,W0221
@@ -125,14 +137,15 @@ Can include any objects for used for comparing against nodes in the store, for e
     context:
 A conjunctive query can be indicated by either providing a value of None, or a specific context can be queries by passing a Graph instance (if store is context aware).  (currently IGNORED)
         """
+        # TODO  # pylint: disable=W0511
+        # handle context
         s, p, o = triple_pattern  # pylint: disable=W0612
+        ic("triples", triple_pattern, context)
 
         # three cases to implement:
         #   - s is None => pin src node
         #   - p is None => pin rel edge
         #   - o is None => pin dst node
-
-        ic("triples", triple_pattern)
 
         for src, rel, dst in self._tuples:
             ic(src, rel, dst)
@@ -158,6 +171,9 @@ context given.
     context:
 a graph instance to query or None
         """
+        ic("len", context, type(context), str(context.identifier))  # type: ignore
+        # TODO  # pylint: disable=W0511
+        # handle context
         return len(self._tuples)
 
 
@@ -167,7 +183,10 @@ a graph instance to query or None
         """
 A no-op.
         """
-        # best way to return an empty generator
+        # TODO  # pylint: disable=W0511
+        # handle context
+
+        # for now: best way to return an empty generator
         l: list = []
         return (c for c in l)
 

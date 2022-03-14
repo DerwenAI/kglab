@@ -84,6 +84,15 @@ if __name__ == "__main__":
         ic(row.asdict())
 
 
+    ## remove
+
+    for s, p, o in graph:
+        ic("foo", s, p, o)
+
+    graph.remove((s, p, o,))
+    ic(len(graph))
+    graph.remove((s, p, o,))
+
     sys.exit(0)
     ## misc. CRUD operations
 
