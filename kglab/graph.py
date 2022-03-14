@@ -46,8 +46,8 @@ Instance constructor.
         self.__namespace: dict = {}
         self.__prefix: dict = {}
 
+        self._tuples: list = []
         self.digest: typing.Optional[ hashes.Hash ] = None
-        self.counter: int = 0
 
 
 ######################################################################
@@ -84,16 +84,14 @@ argument be `True`.
 It should also be an error for the quoted argument to be `True` when
 the store is not formula-aware.
         """
-        ic("add", triple)
-
         s, p, o = triple  # pylint: disable=W0612
+        self._tuples.append(( str(s), str(p), str(o), ))
 
         # update digest
         if self.digest:
             self.digest.update(str(s).encode("utf-8"))
             self.digest.update(str(p).encode("utf-8"))
             self.digest.update(str(o).encode("utf-8"))
-            self.counter += 1
 
 
     def remove (  # type: ignore # pylint: disable=R0201,W0221
@@ -107,6 +105,9 @@ Remove the set of triples matching the pattern from the store.
         """
         ic("remove", triple_pattern)
         s, p, o = triple_pattern  # pylint: disable=W0612
+
+        # TODO  # pylint: disable=W0511
+        # update digest
 
 
     def triples (  # type: ignore # pylint: disable=R0201,W0221
@@ -124,15 +125,23 @@ Can include any objects for used for comparing against nodes in the store, for e
     context:
 A conjunctive query can be indicated by either providing a value of None, or a specific context can be queries by passing a Graph instance (if store is context aware).  (currently IGNORED)
         """
+        s, p, o = triple_pattern  # pylint: disable=W0612
+
+        # three cases to implement:
+        #   - s is None => pin src node
+        #   - p is None => pin rel edge
+        #   - o is None => pin dst node
+
         ic("triples", triple_pattern)
-        yield (None, None, None,), []
 
-        #for part_act in self._ring.values():
-        #    ds = ray.get(part_act.triples.remote(triple_pattern, context=context))  # pylint: disable=E1101
+        for src, rel, dst in self._tuples:
+            ic(src, rel, dst)
 
-        #    for s, p, o in ds.iter_rows():
-        #        triple = (rdflib.URIRef(s), rdflib.URIRef(p), rdflib.URIRef(o),)
-        #        yield triple, self.__contexts()
+            if (not s) or (s == src):
+                if (not p) or (p == rel):
+                    if (not o) or (o == dst):
+                        triple_result = (src, rel, dst,)
+                        yield triple_result, self.__contexts()
 
 
     def __len__ (  # type: ignore # pylint: disable=W0221,W0222
@@ -149,13 +158,7 @@ context given.
     context:
 a graph instance to query or None
         """
-        ic("len", context)
-        count = 0
-
-        #for part_act in self._ring.values():
-        #    count += ray.get(part_act.count_edges.remote())  # pylint: disable=E1101
-
-        return count
+        return len(self._tuples)
 
 
     def __contexts (  # pylint: disable=R0201
