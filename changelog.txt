@@ -4,7 +4,7 @@
 
 2022-03-??
 
-  * ???
+  * bumping up versions of dependencies to fit Py 3.7+
 
 
 ## 0.5.1

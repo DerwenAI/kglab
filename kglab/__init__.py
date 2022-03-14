@@ -4,6 +4,8 @@
 
 from .kglab import KnowledgeGraph
 
+from .graph import NodeRef, PropertyStore
+
 from .subg import Subgraph, SubgraphMatrix, SubgraphTensor
 
 from .topo import Measure, Simplex0, Simplex1
