@@ -11,7 +11,7 @@ import typing
 
 
 MIN_PY_VERSION: typing.Tuple = (3, 7,)
-__version__: str = "0.5.0"
+__version__: str = "0.5.1"
 
 
 def _versify (
