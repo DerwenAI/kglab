@@ -1,0 +1,6374 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://www.food.com/recipe/",
+    "dct": "http://purl.org/dc/terms/",
+    "ind": "http://purl.org/heals/ingredient/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "http://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "wtm": "http://purl.org/heals/food/",
+    "xml": "http://www.w3.org/XML/1998/namespace",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://www.food.com/recipe/61108",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "german pancakes  from the mennonite treasury of recipes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/261361",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "german dumplings  spaetzle or kniffles  for soup or saute"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/49904",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "leche asada"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/171106",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "jamie oliver s huge yorkshire puddings"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:OliveOil"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/161962",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "browned flour"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/470634",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "oeufs au plat"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/124106",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "hungarian noodles homemade"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT2H"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/419998",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "grandma s butter cookies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT18M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/19104",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "all purpose dinner crepes batter"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/74250",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "ziplock vanilla ice cream"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/38959",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "basic white sauce"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/440451",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "whole wheat pasta noodles"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT4M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WholeWheatFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/145953",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "brown sugar butter cookies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT48M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:BrownSugar"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/424328",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "wonton wrappers made at home"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/159039",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "choux pastry  for cream puffs  eclairs  etc"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/80546",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "the humble fried egg"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:OliveOil"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/220361",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "spaetzle dumplings"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/35345",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "portuguese queijadas"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT55M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/320182",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "simple scrambled eggs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/103964",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "spatzle  little german noodle dumplings"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT24M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/400",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "spaetzle   german"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/186504",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "sardi s french pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/299759",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "homemade matzah for passover"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:OliveOil"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/356829",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "chapatis  indian or kenyan wholewheat flatbread"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WholeWheatFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/384137",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "anya s dutch pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT18M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/164636",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "1 1 1 tempura batter"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/23496",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "kentucky cream candy"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/508734",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "slovak egg dumplings"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT13M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/371915",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "crepes    alton brown"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/437729",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "super easy shortbread  3 ingredients"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT55M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/12055",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "crepes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/124176",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "crazy   pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/430777",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "copy cat hoito finnish pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/120884",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "heavenly scrambled eggs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/58476",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "microwave creme caramel"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/274637",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "beaten biscuits"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/117827",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "cookie stamp shortbread"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/280663",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "yorkhire pudding aka popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/77354",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "wonton wrappers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/284518",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "another perfect poached egg"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT13M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:AppleCiderVinegar"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/238849",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "sandcookies   basic recipe"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/45057",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "grandpa higginbottom s popcorn balls"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AppleCiderVinegar"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/175652",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "swedish pancakes  plattar"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/157638",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "hootenanny pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/146591",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "caramel pancake syrup"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT8M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:BrownSugar"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/216474",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "giant sized popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/188921",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "scottish shortbread cookies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:BrownSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/373964",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "simple vanilla ice milk"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT6H6M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/272746",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "simple and basic crepe batter"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/459",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "basic crepes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/359793",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "eggs shaken  not stirred"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/235671",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "perfect hard boiled eggs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/499338",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "magic cake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/320154",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "plain dumplings  spatzen"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/73828",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "belgian waffle cookies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/139989",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "ruhrei     mennonite scrambled eggs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT6M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/264735",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "patty shells"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/458",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "basic crepes ii"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/72402",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "slow roasted garlic"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Garlic"
+        },
+        {
+          "@id": "ind:OliveOil"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/382101",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "hard boiled eggs  easy to peel"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT22M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/273987",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "whipped cream like frosting"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/262538",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "fried eggs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/201097",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "basic omelet"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT8M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/14862",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "smul paj  crumb pie"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/91311",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "no fail homemade noodles"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/173544",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "whole wheat popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WholeWheatFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/50402",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "good ol  aussie damper"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT11M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/141995",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "numbers toffee"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AppleCiderVinegar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/64793",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "amish friendship starter"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "P10DT5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/183115",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "scottish crumpets"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/34614",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "easy caramel sorbet"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/362055",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "miss ellen s pound cake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/311010",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "mama s finnish wafers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/165947",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "simple shortbread"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT38M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/62799",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "old fashioned sponge cake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AppleCiderVinegar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/335865",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "fast cookies for grandkids"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT17M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/324639",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "flan  japanese or asian style"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT31M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/324267",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "simple pie crust"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/328388",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "spaetzel dumplings"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/268209",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "honey wheat popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WholeWheatFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Honey"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/315525",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "white trash cookbook dumplings"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/72759",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "round teething biscuits for baby"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/426449",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "super easy 4 ingredient lace cookies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:BrownSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Honey"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/197303",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "the best scrambled eggs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT7M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/117025",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "finnish kropser  baked pancake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/471598",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "pie pastry"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT55M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/118047",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "fluffy oven scrambled eggs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/111008",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "flop proof crepes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/535853",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "granny jones  secret salty sweet biscuit recipe"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT2H30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/189437",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "40 second omelet"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/350593",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "super puffy german pancake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/40772",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "puffy oven pancake or  hootin  annies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT23M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/441475",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "swiss spaetzle  very easy homemade noodle"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/194304",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "crumb crust"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT50M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/137046",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "swedish country style scrambled eggs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/136571",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "uncle don s swedish pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/175450",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "my favorite caramel frosting"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/7536",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "pastry cheesecake crust"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/272433",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "fannie farmer s pound cake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/31540",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "basic white sauce bechamel sauce"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/60149",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "kielke"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/31041",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "marti s homemade noodles"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT2H40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/124131",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "basic crepes mix in blender"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/284530",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "rooster cookies  sugar cookies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT4H10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/471396",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "homemade spring roll wrappers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H24M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/78459",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "ukrainian lokshyna  egg noodles"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT28M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/75949",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "quick and easy popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/140570",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "rivilchas"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/382707",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "cottage cheese"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT55M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AppleCiderVinegar"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/45260",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "hong kong fortune cookies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/511497",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "simple hardtack"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/127989",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "puffy pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/273527",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "common crackers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/447296",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "dessert puff pastry"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/64564",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "classic cooked eggnog"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "P1DT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/483334",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "wallis  crepes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/160167",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "boiled eggs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/186892",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "pate a choux"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT45M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/1079",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "salty milk biscuits"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "P0D"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/20191",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "perfect boiled custard"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/255748",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "german pancake shreds  for clear soups"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT13M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/357947",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "pancake souffle"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/221279",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "paula deen s popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/399",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "spaetzle   hungarian"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT17M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/112374",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "bestemor s norwegian pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/93428",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "simple batter for fish or veggies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/137357",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "dane dumplings"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/229516",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "filipino lumpia wrappers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT45M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/162011",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "short nin  bread"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:BrownSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/16051",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "plain popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/58590",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "egg cheese"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/262949",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "caramel frosting i"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT50M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/371414",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "blondies with variations"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:BrownSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/353290",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "baby dutchman"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/94616",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "milk frosting"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/438738",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "german pancake  puff pancake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/351327",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "tennessee mountaintop bacon"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:BrownSugar"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        },
+        {
+          "@id": "ind:Bacon"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/144841",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "2 step pound cake  for a kitchen aide mixer"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H50M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/67535",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "brown sugar syrup"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:BrownSugar"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/71214",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "homemade phyllo pastry"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:OliveOil"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/76907",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "crustless baked custard pie"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT55M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/349278",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "scottish brown sugar shortbread"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT45M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:BrownSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/284620",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "swedish pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/440398",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "dutch baby  aka  german pancake or puff pancake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/183808",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "peach kuchen"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/103073",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "simple popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/93990",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "egg roll wrappers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/202806",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "pan gravy"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT6M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/368491",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "unleavened bread"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:OliveOil"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/109179",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "easy yorkshire puddings"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/331765",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "homemade spaetzle"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/23715",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "silky vanilla butter frosting"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT33M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/113757",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "salt dough"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT2H"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/150765",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "baked eggs in bacon wraps"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Bacon"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/139338",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "butter crust"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT22M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/100230",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "astoria frosting"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/186307",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "suzi s pop over puffs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT45M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/148900",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "homemade pasta  fettuccine"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:OliveOil"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/136111",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "small batch popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/48178",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "oven pancake puff"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT22M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/35828",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "soft custard"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/235292",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "norwegian pancakes   pannekaken"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/126223",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "thin pancakes  palacsinta"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/497918",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "easy homemade noodles"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/97832",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "english shortbread"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/175046",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "oven baked sugar cones for ice cream"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/82226",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "vanilla milk"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/86356",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "simple scotch shortbread"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/109196",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "galuska for stew  dumplings"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/151617",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "sugar cookies for ceramic cookie molds"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/123656",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "french vanilla crepes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/152895",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "white sauce base"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/200871",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "scandinavian christmas crispy krumkake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT17M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/327593",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "anytime crepes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT8M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:WholeWheatFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/144415",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "spritz cookies with four variations"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT51M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/154001",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "basic pastry crust"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/467335",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "vanilla coke syrup  non alcoholic"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/359334",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "baked finnish pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT25M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/208673",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "egg filling for sushi"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/446011",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "danescook cookie mold classic shortbread"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT50M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/423015",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "honey wheat tortillas"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT32M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Honey"
+        },
+        {
+          "@id": "ind:WholeWheatFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/95116",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "the easiest  shortcrust pastry"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT12M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/85817",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "hrudka  easter cheese"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/60413",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "never fail popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/96087",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "fresh made manicotti or cannelloni crepes shells"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/16163",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "safe eggnog"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT12H15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/105830",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "no beat popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/90391",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "linda s perfect popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/180624",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "munavoi  finnish egg butter"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/135405",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "oven baked breakfast custard"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT55M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/72129",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "muffin tin popovers"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/262038",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "crepe batter"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/268242",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "single crepe"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT10M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/255660",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "kitchen princess christmas cookies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/317697",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "swabian noodles  spatzle"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/107499",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "scandinavian pancake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/234763",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "norwegian krumkake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/101876",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "wheat thins"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WholeWheatFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/358908",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "mel boller  danish soup dumplings"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT50M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/482308",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "basted eggs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/125648",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "hillbilly bacon"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:BrownSugar"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        },
+        {
+          "@id": "ind:Bacon"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/503199",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "easy swedish pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/12402",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "ann s shortbread"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT45M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/252783",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "croatian flour noodles"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/5386",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "old fashioned vinegar taffy"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "P0D"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AppleCiderVinegar"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/15984",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "egg gravy   swedish"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/4643",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "tjock pan kaka  swedish thick pancake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/504246",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "finnish kropser  baked pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/308224",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "spaetzel"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/220141",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "froise  rolled pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/437607",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "unleavened communion bread"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WholeWheatFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/160402",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "grandmother kirkwood s white sauce"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:BlackPepper"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/154808",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "basic shortbread cookies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H8M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/41305",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "basic recipe for phyllo dough"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:OliveOil"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/137158",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "pikkuleipienperustaikina  finnish butter cookie dough"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/406738",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "german egg pancakes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/9037",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "apple and banana sauce"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/277824",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "easy basic crepes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT8M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/37825",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "oven scrambled eggs for a crowd"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT45M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/1975",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "grandma hornsby s homemade noodles"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "P0D"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/489",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "butter crepes"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H11M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/440609",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "wicklewood s all too easy all in one white sauce"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT8M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/138985",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "st  patrick s shamrock cookies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:BrownSugar"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/272027",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "stamp  mold butter cookies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/142565",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "greek travelling pie"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT55M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/86710",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "spatzle"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/170296",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "our favourite belgian waffles"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/37971",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "buttery pound cake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/43126",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "mrs  corbins butter cookies"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT6H15M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/21301",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "white sauce  cheesy or not  medium sauce"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT20M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:CowMilk"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/104441",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "julia child method of preparing garlic"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT35M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Garlic"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:OliveOil"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/19097",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "basic dessert crepes batter"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Butter"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/40276",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "crumb topping for coffee cake"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/163724",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "perfect soft boiled eggs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT7M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:Water"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/256577",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "punjabi style homemade roti"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H5M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WholeWheatFlour"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/279314",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "choux pastry  for profiteroles  cream puffs or eclairs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT1H"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:Butter"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/232248",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "hootenanny"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT30M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/15219",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "teething biscuits"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT40M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        },
+        {
+          "@id": "ind:AllPurposeFlour"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/157367",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "microwave baked custard"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT26M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:WhiteSugar"
+        },
+        {
+          "@id": "ind:Salt"
+        },
+        {
+          "@id": "ind:VanillaExtract"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.food.com/recipe/271545",
+      "@type": "wtm:Recipe",
+      "skos:definition": {
+        "@value": "kittencal s perfect poached eggs"
+      },
+      "wtm:hasCookTime": {
+        "@type": "xsd:duration",
+        "@value": "PT7M"
+      },
+      "wtm:hasIngredient": [
+        {
+          "@id": "ind:ChickenEgg"
+        },
+        {
+          "@id": "ind:Water"
+        },
+        {
+          "@id": "ind:CowMilk"
+        },
+        {
+          "@id": "ind:Salt"
+        }
+      ]
+    }
+  ]
+}
