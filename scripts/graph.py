@@ -22,6 +22,7 @@ if __name__ == "__main__":
     )
 
     use_new_store = True # False
+    lpg: typing.Optional[ PropertyStore ] = None  # type: ignore
 
     if use_new_store:
         graph = rdflib.Graph(
@@ -38,24 +39,23 @@ if __name__ == "__main__":
 
 
     ## load RDF triples
-
     ttl_text = """
-@prefix : <http://www.w3.org/2012/12/rdf-val/SOTA-ex#> .
+@prefix sota: <http://www.w3.org/2012/12/rdf-val/SOTA-ex#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-:peep0 a foaf:Person ;
+sota:peep0 a foaf:Person ;
     foaf:givenName "Alice" ;
     foaf:familyName "Nakamoto" ;
     foaf:phone <tel:+1.555.222.2222> ;
     foaf:mbox <mailto:nak@gmail.com> .
 
-:peep1 a foaf:Person ;
+sota:peep1 a foaf:Person ;
     foaf:givenName "Bob" ;
     foaf:familyName "Patel" ;
     foaf:phone <tel:+1.555.666.5150> ;
     foaf:mbox <mailto:bobp@gmail.com> .
 
-:peep2 a foaf:Person ;
+sota:peep2 a foaf:Person ;
     foaf:givenName "Dhanya" ;
     foaf:familyName "O'Neill" ;
     foaf:phone <tel:+1.555.123.9876> ;
@@ -67,9 +67,8 @@ if __name__ == "__main__":
 
 
     ## run a SPARQL query
-
-    bindings: typing.Dict[ str, str ] = {
-        "surname": "Alice",
+    bindings: dict = {
+        "surname": rdflib.term.Literal("Alice"),
     }
 
     sparql = """
@@ -85,19 +84,13 @@ if __name__ == "__main__":
 
 
     ## remove
-
     for s, p, o in graph:
-        ic("foo", s, p, o)
+        pass
 
     graph.remove((s, p, o,))
     ic(len(graph))
+
     graph.remove((s, p, o,))
 
-    sys.exit(0)
-    ## misc. CRUD operations
-
-    s = rdflib.term.URIRef("https://www.food.com/recipe/327593")
-    p = rdflib.term.URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-    o = rdflib.term.URIRef("http://purl.org/heals/food/Recipe")
-
-    graph.add((s, p, o))
+    if lpg is not None:
+        ic(lpg.digest.finalize().hex())  # type: ignore
