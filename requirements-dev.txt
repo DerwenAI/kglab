@@ -18,6 +18,7 @@ pygments >= 2.11
 pylint >= 2.12
 pymdown-extensions >= 9.2
 pytest >= 7.1
+responses >= 0.19
 scikit-learn >= 1.0
 selenium >= 4.1
 twine >= 3.8
