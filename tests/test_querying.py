@@ -97,8 +97,15 @@ def test_n3fy_base(kg_test_data):
 
 
 def test_n3fy_row(kg_test_data):
-    results = list(kg_test_data.query(QUERY1))
-    print(results)
+    first_result = list(kg_test_data.query(QUERY1))[0]
+    results = {}
+    results["recipe"] = first_result[0]
+    results["definition"] = first_result[1]
+    
+    serialized = kg_test_data.n3fy_row(results)
+    
+    assert serialized["recipe"] == "<https://www.food.com/recipe/123656>"
+    assert serialized["definition"] == "french vanilla crepes"
 
 
 def test_validate_shacl():
