@@ -63,16 +63,16 @@ def test_load_jsonld(kg_test_data):
 
 
 def test_load_parquet(kg_test_data):
-    kg_test_data.load_jsonld(DAT_FILES_DIR / "tmp.parquet")
+    kg_test_data.load_parquet(DAT_FILES_DIR / "tmp.parquet")
 
     df = kg_test_data.query_as_df(QUERY)
-    assert df.values[0][0] == 1891
+    assert df.values[0][0] == 1798
 
     measure = kglab.Measure()
     measure.measure_graph(kg_test_data)
 
     assert measure.get_node_count() == 257
-    assert measure.get_edge_count() == 1891
+    assert measure.get_edge_count() == 1798
 
 
 @pytest.mark.skip(reason="the library used for CSV conversion does not use https and requires multiple requests")
