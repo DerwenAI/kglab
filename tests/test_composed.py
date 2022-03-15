@@ -3,7 +3,6 @@ import pathlib
 import tempfile
 import warnings
 
-from icecream import ic
 from sklearn import datasets
 import pandas as pd
 import urlpath
@@ -267,30 +266,3 @@ Coverage:
         # ic(multifile_node_count)
         assert multifile_edge_count == sequential_edge_count
         assert multifile_node_count == sequential_node_count
-
-
-def test_import_roam():
-    """
-Coverage:
-
-* KnowledgeGraph.import_roam() import JSON from Roam Research export
-    """
-    # create a KnowledgeGraph object
-    with warnings.catch_warnings():
-        warnings.filterwarnings("ignore", message="unclosed file*")
-        kg = kglab.KnowledgeGraph()
-
-        # load JSON export into KG
-        path = pathlib.Path("dat/roam.json")
-        kg.import_roam(path)
-
-        measure = kglab.Measure()
-        measure.measure_graph(kg)
-
-        node_count =  measure.get_node_count()
-        edge_count =  measure.get_edge_count()
-
-        # ic(node_count)
-        # ic(edge_count)
-        assert node_count == 46
-        assert edge_count == 217

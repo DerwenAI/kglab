@@ -1,0 +1,2152 @@
+@base <https://www.food.com/recipe/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ind: <http://purl.org/heals/ingredient/> .
+@prefix nom: <http://example.org/#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix wtm: <http://purl.org/heals/food/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+nom:NOM_Vocab a skos:ConceptScheme ;
+    dct:publisher <https://derwen.ai/> ;
+    skos:definition "A mid-level SKOS/OWL ontology used in the `kglab` examples"@en ;
+    skos:prefLabel "NOM Example Vocabulary"@en .
+
+nom:madeFrom rdfs:domain nom:Component ;
+    rdfs:range nom:Component .
+
+nom:usesProcess rdfs:domain nom:Component ;
+    rdfs:range nom:Process .
+
+<100230> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "astoria frosting" .
+
+<101876> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:Water,
+        ind:WhiteSugar,
+        ind:WholeWheatFlour ;
+    skos:definition "wheat thins" .
+
+<103073> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "simple popovers" .
+
+<103964> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT24M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BlackPepper,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "spatzle  little german noodle dumplings" .
+
+<104441> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:Garlic,
+        ind:OliveOil,
+        ind:Salt ;
+    skos:definition "julia child method of preparing garlic" .
+
+<105830> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "no beat popovers" .
+
+<107499> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "scandinavian pancake" .
+
+<1079> a wtm:Recipe ;
+    wtm:hasCookTime "P0D"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "salty milk biscuits" .
+
+<109179> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "easy yorkshire puddings" .
+
+<109196> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "galuska for stew  dumplings" .
+
+<111008> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "flop proof crepes" .
+
+<112374> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk ;
+    skos:definition "bestemor s norwegian pancakes" .
+
+<113757> a wtm:Recipe ;
+    wtm:hasCookTime "PT2H"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "salt dough" .
+
+<117025> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "finnish kropser  baked pancake" .
+
+<117827> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:WhiteSugar ;
+    skos:definition "cookie stamp shortbread" .
+
+<118047> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "fluffy oven scrambled eggs" .
+
+<12055> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "crepes" .
+
+<120884> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BlackPepper,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "heavenly scrambled eggs" .
+
+<123656> a wtm:Recipe ;
+    wtm:hasCookTime "PT5M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "french vanilla crepes" .
+
+<12402> a wtm:Recipe ;
+    wtm:hasCookTime "PT45M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:WhiteSugar ;
+    skos:definition "ann s shortbread" .
+
+<124106> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT2H"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "hungarian noodles homemade" .
+
+<124131> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT5M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "basic crepes mix in blender" .
+
+<124176> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "crazy   pancakes" .
+
+<125648> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Bacon,
+        ind:BlackPepper,
+        ind:BrownSugar ;
+    skos:definition "hillbilly bacon" .
+
+<126223> a wtm:Recipe ;
+    wtm:hasCookTime "PT15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "thin pancakes  palacsinta" .
+
+<127989> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk ;
+    skos:definition "puffy pancakes" .
+
+<135405> a wtm:Recipe ;
+    wtm:hasCookTime "PT55M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "oven baked breakfast custard" .
+
+<136111> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "small batch popovers" .
+
+<136571> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "uncle don s swedish pancakes" .
+
+<137046> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BlackPepper,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "swedish country style scrambled eggs" .
+
+<137158> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "pikkuleipienperustaikina  finnish butter cookie dough" .
+
+<137357> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT1H15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "dane dumplings" .
+
+<138985> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BrownSugar,
+        ind:Butter,
+        ind:Salt,
+        ind:VanillaExtract ;
+    skos:definition "st  patrick s shamrock cookies" .
+
+<139338> a wtm:Recipe ;
+    wtm:hasCookTime "PT22M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:WhiteSugar ;
+    skos:definition "butter crust" .
+
+<139989> a wtm:Recipe ;
+    wtm:hasCookTime "PT6M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "ruhrei     mennonite scrambled eggs" .
+
+<140570> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt ;
+    skos:definition "rivilchas" .
+
+<141995> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AppleCiderVinegar,
+        ind:Butter,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "numbers toffee" .
+
+<142565> a wtm:Recipe ;
+    wtm:hasCookTime "PT55M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:WhiteSugar ;
+    skos:definition "greek travelling pie" .
+
+<144415> a wtm:Recipe ;
+    wtm:hasCookTime "PT51M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "spritz cookies with four variations" .
+
+<144841> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H50M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "2 step pound cake  for a kitchen aide mixer" .
+
+<145953> a wtm:Recipe ;
+    wtm:hasCookTime "PT48M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BrownSugar,
+        ind:Butter,
+        ind:WhiteSugar ;
+    skos:definition "brown sugar butter cookies" .
+
+<146591> a wtm:Recipe ;
+    wtm:hasCookTime "PT8M"^^xsd:duration ;
+    wtm:hasIngredient ind:BrownSugar,
+        ind:Butter,
+        ind:Water ;
+    skos:definition "caramel pancake syrup" .
+
+<14862> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:WhiteSugar ;
+    skos:definition "smul paj  crumb pie" .
+
+<148900> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:OliveOil,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "homemade pasta  fettuccine" .
+
+<150765> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:Bacon,
+        ind:BlackPepper,
+        ind:ChickenEgg,
+        ind:Salt ;
+    skos:definition "baked eggs in bacon wraps" .
+
+<151617> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "sugar cookies for ceramic cookie molds" .
+
+<15219> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "teething biscuits" .
+
+<152895> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "white sauce base" .
+
+<154001> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "basic pastry crust" .
+
+<154808> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H8M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "basic shortbread cookies" .
+
+<157367> a wtm:Recipe ;
+    wtm:hasCookTime "PT26M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "microwave baked custard" .
+
+<157638> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "hootenanny pancakes" .
+
+<159039> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "choux pastry  for cream puffs  eclairs  etc" .
+
+<15984> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "egg gravy   swedish" .
+
+<160167> a wtm:Recipe ;
+    wtm:hasCookTime "PT15M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "boiled eggs" .
+
+<160402> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BlackPepper,
+        ind:Butter,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "grandmother kirkwood s white sauce" .
+
+<16051> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "plain popovers" .
+
+<16163> a wtm:Recipe ;
+    wtm:hasCookTime "PT12H15M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "safe eggnog" .
+
+<161962> a wtm:Recipe ;
+    wtm:hasCookTime "PT10M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BlackPepper,
+        ind:Salt ;
+    skos:definition "browned flour" .
+
+<162011> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BrownSugar,
+        ind:Butter ;
+    skos:definition "short nin  bread" .
+
+<163724> a wtm:Recipe ;
+    wtm:hasCookTime "PT7M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "perfect soft boiled eggs" .
+
+<164636> a wtm:Recipe ;
+    wtm:hasCookTime "PT5M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Water ;
+    skos:definition "1 1 1 tempura batter" .
+
+<165947> a wtm:Recipe ;
+    wtm:hasCookTime "PT38M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:WhiteSugar ;
+    skos:definition "simple shortbread" .
+
+<170296> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "our favourite belgian waffles" .
+
+<171106> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:OliveOil,
+        ind:Salt ;
+    skos:definition "jamie oliver s huge yorkshire puddings" .
+
+<173544> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WholeWheatFlour ;
+    skos:definition "whole wheat popovers" .
+
+<175046> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "oven baked sugar cones for ice cream" .
+
+<175450> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "my favorite caramel frosting" .
+
+<175652> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "swedish pancakes  plattar" .
+
+<180624> a wtm:Recipe ;
+    wtm:hasCookTime "PT5M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt ;
+    skos:definition "munavoi  finnish egg butter" .
+
+<183115> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "scottish crumpets" .
+
+<183808> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H10M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "peach kuchen" .
+
+<186307> a wtm:Recipe ;
+    wtm:hasCookTime "PT45M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "suzi s pop over puffs" .
+
+<186504> a wtm:Recipe ;
+    wtm:hasCookTime "PT10M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "sardi s french pancakes" .
+
+<186892> a wtm:Recipe ;
+    wtm:hasCookTime "PT45M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "pate a choux" .
+
+<188921> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BrownSugar,
+        ind:Butter ;
+    skos:definition "scottish shortbread cookies" .
+
+<189437> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:ChickenEgg,
+        ind:Water ;
+    skos:definition "40 second omelet" .
+
+<19097> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "basic dessert crepes batter" .
+
+<19104> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "all purpose dinner crepes batter" .
+
+<194304> a wtm:Recipe ;
+    wtm:hasCookTime "PT50M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:WhiteSugar ;
+    skos:definition "crumb crust" .
+
+<197303> a wtm:Recipe ;
+    wtm:hasCookTime "PT7M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk ;
+    skos:definition "the best scrambled eggs" .
+
+<1975> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "P0D"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt ;
+    skos:definition "grandma hornsby s homemade noodles" .
+
+<200871> a wtm:Recipe ;
+    wtm:hasCookTime "PT17M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "scandinavian christmas crispy krumkake" .
+
+<201097> a wtm:Recipe ;
+    wtm:hasCookTime "PT8M"^^xsd:duration ;
+    wtm:hasIngredient ind:BlackPepper,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "basic omelet" .
+
+<20191> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "perfect boiled custard" .
+
+<202806> a wtm:Recipe ;
+    wtm:hasCookTime "PT6M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BlackPepper,
+        ind:Butter,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "pan gravy" .
+
+<208673> a wtm:Recipe ;
+    wtm:hasCookTime "PT10M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "egg filling for sushi" .
+
+<21301> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "white sauce  cheesy or not  medium sauce" .
+
+<216474> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H10M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "giant sized popovers" .
+
+<220141> a wtm:Recipe ;
+    wtm:hasCookTime "PT15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk ;
+    skos:definition "froise  rolled pancakes" .
+
+<220361> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "spaetzle dumplings" .
+
+<221279> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "paula deen s popovers" .
+
+<229516> a wtm:Recipe ;
+    wtm:hasCookTime "PT45M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Water ;
+    skos:definition "filipino lumpia wrappers" .
+
+<232248> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "hootenanny" .
+
+<234763> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:WhiteSugar ;
+    skos:definition "norwegian krumkake" .
+
+<23496> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "kentucky cream candy" .
+
+<235292> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "norwegian pancakes   pannekaken" .
+
+<235671> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "perfect hard boiled eggs" .
+
+<23715> a wtm:Recipe ;
+    wtm:hasCookTime "PT33M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "silky vanilla butter frosting" .
+
+<238849> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:WhiteSugar ;
+    skos:definition "sandcookies   basic recipe" .
+
+<252783> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "croatian flour noodles" .
+
+<255660> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:WhiteSugar ;
+    skos:definition "kitchen princess christmas cookies" .
+
+<255748> a wtm:Recipe ;
+    wtm:hasCookTime "PT13M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "german pancake shreds  for clear soups" .
+
+<256577> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H5M"^^xsd:duration ;
+    wtm:hasIngredient ind:Salt,
+        ind:Water,
+        ind:WholeWheatFlour ;
+    skos:definition "punjabi style homemade roti" .
+
+<261361> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "german dumplings  spaetzle or kniffles  for soup or saute" .
+
+<262038> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "crepe batter" .
+
+<262538> a wtm:Recipe ;
+    wtm:hasCookTime "PT5M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt ;
+    skos:definition "fried eggs" .
+
+<262949> a wtm:Recipe ;
+    wtm:hasCookTime "PT50M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "caramel frosting i" .
+
+<264735> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "patty shells" .
+
+<268209> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Honey,
+        ind:Salt,
+        ind:WholeWheatFlour ;
+    skos:definition "honey wheat popovers" .
+
+<268242> a wtm:Recipe ;
+    wtm:hasCookTime "PT10M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "single crepe" .
+
+<271545> a wtm:Recipe ;
+    wtm:hasCookTime "PT7M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "kittencal s perfect poached eggs" .
+
+<272027> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "stamp  mold butter cookies" .
+
+<272433> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "fannie farmer s pound cake" .
+
+<272746> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "simple and basic crepe batter" .
+
+<273527> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "common crackers" .
+
+<273987> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "whipped cream like frosting" .
+
+<274637> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "beaten biscuits" .
+
+<277824> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT8M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "easy basic crepes" .
+
+<279314> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Water ;
+    skos:definition "choux pastry  for profiteroles  cream puffs or eclairs" .
+
+<280663> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "yorkhire pudding aka popovers" .
+
+<284518> a wtm:Recipe ;
+    wtm:hasCookTime "PT13M"^^xsd:duration ;
+    wtm:hasIngredient ind:AppleCiderVinegar,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "another perfect poached egg" .
+
+<284530> a wtm:Recipe ;
+    wtm:hasCookTime "PT4H10M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "rooster cookies  sugar cookies" .
+
+<284620> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:WhiteSugar ;
+    skos:definition "swedish pancakes" .
+
+<299759> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:OliveOil,
+        ind:Water ;
+    skos:definition "homemade matzah for passover" .
+
+<308224> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Water ;
+    skos:definition "spaetzel" .
+
+<31041> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT2H40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "marti s homemade noodles" .
+
+<311010> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "mama s finnish wafers" .
+
+<31540> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BlackPepper,
+        ind:Butter,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "basic white sauce bechamel sauce" .
+
+<315525> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "white trash cookbook dumplings" .
+
+<317697> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT1H"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "swabian noodles  spatzle" .
+
+<320154> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "plain dumplings  spatzen" .
+
+<320182> a wtm:Recipe ;
+    wtm:hasCookTime "PT15M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "simple scrambled eggs" .
+
+<324267> a wtm:Recipe ;
+    wtm:hasCookTime "PT15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "simple pie crust" .
+
+<324639> a wtm:Recipe ;
+    wtm:hasCookTime "PT31M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:CowMilk,
+        ind:VanillaExtract,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "flan  japanese or asian style" .
+
+<327593> a wtm:Recipe ;
+    wtm:hasCookTime "PT8M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:CowMilk,
+        ind:WholeWheatFlour ;
+    skos:definition "anytime crepes" .
+
+<328388> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT10M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "spaetzel dumplings" .
+
+<331765> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "homemade spaetzle" .
+
+<335865> a wtm:Recipe ;
+    wtm:hasCookTime "PT17M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "fast cookies for grandkids" .
+
+<34614> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:Salt,
+        ind:VanillaExtract,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "easy caramel sorbet" .
+
+<349278> a wtm:Recipe ;
+    wtm:hasCookTime "PT45M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BrownSugar,
+        ind:Butter,
+        ind:VanillaExtract ;
+    skos:definition "scottish brown sugar shortbread" .
+
+<350593> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:VanillaExtract ;
+    skos:definition "super puffy german pancake" .
+
+<351327> a wtm:Recipe ;
+    wtm:hasCookTime "PT10M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Bacon,
+        ind:BlackPepper,
+        ind:BrownSugar ;
+    skos:definition "tennessee mountaintop bacon" .
+
+<353290> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:VanillaExtract ;
+    skos:definition "baby dutchman" .
+
+<35345> a wtm:Recipe ;
+    wtm:hasCookTime "PT55M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:WhiteSugar ;
+    skos:definition "portuguese queijadas" .
+
+<356829> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:Salt,
+        ind:Water,
+        ind:WholeWheatFlour ;
+    skos:definition "chapatis  indian or kenyan wholewheat flatbread" .
+
+<357947> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:VanillaExtract ;
+    skos:definition "pancake souffle" .
+
+<35828> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "soft custard" .
+
+<358908> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT50M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "mel boller  danish soup dumplings" .
+
+<359334> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "baked finnish pancakes" .
+
+<359793> a wtm:Recipe ;
+    wtm:hasCookTime "PT15M"^^xsd:duration ;
+    wtm:hasIngredient ind:BlackPepper,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "eggs shaken  not stirred" .
+
+<362055> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "miss ellen s pound cake" .
+
+<368491> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:OliveOil,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "unleavened bread" .
+
+<371414> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BrownSugar,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:VanillaExtract ;
+    skos:definition "blondies with variations" .
+
+<371915> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Water ;
+    skos:definition "crepes    alton brown" .
+
+<373964> a wtm:Recipe ;
+    wtm:hasCookTime "PT6H6M"^^xsd:duration ;
+    wtm:hasIngredient ind:CowMilk,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "simple vanilla ice milk" .
+
+<37825> a wtm:Recipe ;
+    wtm:hasCookTime "PT45M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "oven scrambled eggs for a crowd" .
+
+<37971> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:WhiteSugar ;
+    skos:definition "buttery pound cake" .
+
+<382101> a wtm:Recipe ;
+    wtm:hasCookTime "PT22M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "hard boiled eggs  easy to peel" .
+
+<382707> a wtm:Recipe ;
+    wtm:hasCookTime "PT55M"^^xsd:duration ;
+    wtm:hasIngredient ind:AppleCiderVinegar,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "cottage cheese" .
+
+<384137> a wtm:Recipe ;
+    wtm:hasCookTime "PT18M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "anya s dutch pancakes" .
+
+<38959> a wtm:Recipe ;
+    wtm:hasCookTime "PT15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk ;
+    skos:definition "basic white sauce" .
+
+<399> a wtm:Recipe ;
+    wtm:hasCookTime "PT17M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "spaetzle   hungarian" .
+
+<400> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "spaetzle   german" .
+
+<40276> a wtm:Recipe ;
+    wtm:hasCookTime "PT5M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:WhiteSugar ;
+    skos:definition "crumb topping for coffee cake" .
+
+<406738> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk ;
+    skos:definition "german egg pancakes" .
+
+<40772> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT23M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "puffy oven pancake or  hootin  annies" .
+
+<41305> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:OliveOil,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "basic recipe for phyllo dough" .
+
+<419998> a wtm:Recipe ;
+    wtm:hasCookTime "PT18M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "grandma s butter cookies" .
+
+<423015> a wtm:Recipe ;
+    wtm:hasCookTime "PT32M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:Honey,
+        ind:Water,
+        ind:WholeWheatFlour ;
+    skos:definition "honey wheat tortillas" .
+
+<424328> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "wonton wrappers made at home" .
+
+<426449> a wtm:Recipe ;
+    wtm:hasCookTime "PT10M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:BrownSugar,
+        ind:Butter,
+        ind:Honey ;
+    skos:definition "super easy 4 ingredient lace cookies" .
+
+<430777> a wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "copy cat hoito finnish pancakes" .
+
+<43126> a wtm:Recipe ;
+    wtm:hasCookTime "PT6H15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:WhiteSugar ;
+    skos:definition "mrs  corbins butter cookies" .
+
+<437607> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar,
+        ind:WholeWheatFlour ;
+    skos:definition "unleavened communion bread" .
+
+<437729> a wtm:Recipe ;
+    wtm:hasCookTime "PT55M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:WhiteSugar ;
+    skos:definition "super easy shortbread  3 ingredients" .
+
+<438738> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk ;
+    skos:definition "german pancake  puff pancake" .
+
+<440398> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "dutch baby  aka  german pancake or puff pancake" .
+
+<440451> a wtm:Recipe ;
+    wtm:hasCookTime "PT4M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:Salt,
+        ind:Water,
+        ind:WholeWheatFlour ;
+    skos:definition "whole wheat pasta noodles" .
+
+<440609> a wtm:Recipe ;
+    wtm:hasCookTime "PT8M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:CowMilk ;
+    skos:definition "wicklewood s all too easy all in one white sauce" .
+
+<441475> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "swiss spaetzle  very easy homemade noodle" .
+
+<446011> a wtm:Recipe ;
+    wtm:hasCookTime "PT50M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "danescook cookie mold classic shortbread" .
+
+<447296> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:VanillaExtract,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "dessert puff pastry" .
+
+<45057> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AppleCiderVinegar,
+        ind:Butter,
+        ind:VanillaExtract,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "grandpa higginbottom s popcorn balls" .
+
+<45260> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "hong kong fortune cookies" .
+
+<458> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT1H5M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "basic crepes ii" .
+
+<459> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT1H5M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "basic crepes" .
+
+<4643> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "tjock pan kaka  swedish thick pancake" .
+
+<467335> a wtm:Recipe ;
+    wtm:hasCookTime "PT10M"^^xsd:duration ;
+    wtm:hasIngredient ind:Salt,
+        ind:VanillaExtract,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "vanilla coke syrup  non alcoholic" .
+
+<470634> a wtm:Recipe ;
+    wtm:hasCookTime "PT10M"^^xsd:duration ;
+    wtm:hasIngredient ind:BlackPepper,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt ;
+    skos:definition "oeufs au plat" .
+
+<471396> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H24M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "homemade spring roll wrappers" .
+
+<471598> a wtm:Recipe ;
+    wtm:hasCookTime "PT55M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "pie pastry" .
+
+<48178> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT22M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "oven pancake puff" .
+
+<482308> a wtm:Recipe ;
+    wtm:hasCookTime "PT5M"^^xsd:duration ;
+    wtm:hasIngredient ind:BlackPepper,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "basted eggs" .
+
+<483334> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:VanillaExtract ;
+    skos:definition "wallis  crepes" .
+
+<489> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT1H11M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "butter crepes" .
+
+<497918> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT1H30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "easy homemade noodles" .
+
+<49904> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H5M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:CowMilk,
+        ind:WhiteSugar ;
+    skos:definition "leche asada" .
+
+<499338> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "magic cake" .
+
+<503199> a wtm:Recipe ;
+    wtm:hasCookTime "PT20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "easy swedish pancakes" .
+
+<50402> a wtm:Recipe ;
+    wtm:hasCookTime "PT11M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "good ol  aussie damper" .
+
+<504246> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "finnish kropser  baked pancakes" .
+
+<508734> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT13M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "slovak egg dumplings" .
+
+<511497> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "simple hardtack" .
+
+<535853> a wtm:Recipe ;
+    wtm:hasCookTime "PT2H30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:Salt,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "granny jones  secret salty sweet biscuit recipe" .
+
+<5386> a wtm:Recipe ;
+    wtm:hasCookTime "P0D"^^xsd:duration ;
+    wtm:hasIngredient ind:AppleCiderVinegar,
+        ind:Butter,
+        ind:VanillaExtract,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "old fashioned vinegar taffy" .
+
+<58476> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "microwave creme caramel" .
+
+<58590> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "egg cheese" .
+
+<60149> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "kielke" .
+
+<60413> a wtm:Recipe ;
+    wtm:hasCookTime "PT40M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "never fail popovers" .
+
+<61108> a nom:Pancake,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT25M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "german pancakes  from the mennonite treasury of recipes" .
+
+<62799> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:AppleCiderVinegar,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "old fashioned sponge cake" .
+
+<64564> a wtm:Recipe ;
+    wtm:hasCookTime "P1DT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "classic cooked eggnog" .
+
+<64793> a wtm:Recipe ;
+    wtm:hasCookTime "P10DT5M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:CowMilk,
+        ind:WhiteSugar ;
+    skos:definition "amish friendship starter" .
+
+<67535> a wtm:Recipe ;
+    wtm:hasCookTime "PT10M"^^xsd:duration ;
+    wtm:hasIngredient ind:BrownSugar,
+        ind:VanillaExtract,
+        ind:Water ;
+    skos:definition "brown sugar syrup" .
+
+<71214> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:OliveOil,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "homemade phyllo pastry" .
+
+<72129> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "muffin tin popovers" .
+
+<72402> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H20M"^^xsd:duration ;
+    wtm:hasIngredient ind:Garlic,
+        ind:OliveOil,
+        ind:Water ;
+    skos:definition "slow roasted garlic" .
+
+<72759> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:WhiteSugar ;
+    skos:definition "round teething biscuits for baby" .
+
+<73828> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "belgian waffle cookies" .
+
+<74250> a wtm:Recipe ;
+    wtm:hasCookTime "PT10M"^^xsd:duration ;
+    wtm:hasIngredient ind:CowMilk,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "ziplock vanilla ice cream" .
+
+<7536> a wtm:Recipe ;
+    wtm:hasCookTime "PT15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:WhiteSugar ;
+    skos:definition "pastry cheesecake crust" .
+
+<75949> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H10M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "quick and easy popovers" .
+
+<76907> a wtm:Recipe ;
+    wtm:hasCookTime "PT55M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "crustless baked custard pie" .
+
+<77354> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "wonton wrappers" .
+
+<78459> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT28M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "ukrainian lokshyna  egg noodles" .
+
+<80546> a wtm:Recipe ;
+    wtm:hasCookTime "PT5M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:ChickenEgg,
+        ind:OliveOil ;
+    skos:definition "the humble fried egg" .
+
+<82226> a wtm:Recipe ;
+    wtm:hasCookTime "PT1M"^^xsd:duration ;
+    wtm:hasIngredient ind:CowMilk,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "vanilla milk" .
+
+<85817> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:BlackPepper,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt,
+        ind:VanillaExtract ;
+    skos:definition "hrudka  easter cheese" .
+
+<86356> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:WhiteSugar ;
+    skos:definition "simple scotch shortbread" .
+
+<86710> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "spatzle" .
+
+<9037> a wtm:Recipe ;
+    wtm:hasCookTime "PT15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:VanillaExtract,
+        ind:Water,
+        ind:WhiteSugar ;
+    skos:definition "apple and banana sauce" .
+
+<90391> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H20M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "linda s perfect popovers" .
+
+<91311> a nom:Noodle,
+        wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "no fail homemade noodles" .
+
+<93428> a wtm:Recipe ;
+    wtm:hasCookTime "PT10M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk ;
+    skos:definition "simple batter for fish or veggies" .
+
+<93990> a wtm:Recipe ;
+    wtm:hasCookTime "PT1H"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:Salt,
+        ind:Water ;
+    skos:definition "egg roll wrappers" .
+
+<94616> a wtm:Recipe ;
+    wtm:hasCookTime "PT35M"^^xsd:duration ;
+    wtm:hasIngredient ind:Butter,
+        ind:CowMilk,
+        ind:VanillaExtract,
+        ind:WhiteSugar ;
+    skos:definition "milk frosting" .
+
+<95116> a wtm:Recipe ;
+    wtm:hasCookTime "PT12M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:WhiteSugar ;
+    skos:definition "the easiest  shortcrust pastry" .
+
+<96087> a wtm:Recipe ;
+    wtm:hasCookTime "PT15M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:ChickenEgg,
+        ind:CowMilk,
+        ind:Salt ;
+    skos:definition "fresh made manicotti or cannelloni crepes shells" .
+
+<97832> a wtm:Recipe ;
+    wtm:hasCookTime "PT30M"^^xsd:duration ;
+    wtm:hasIngredient ind:AllPurposeFlour,
+        ind:Butter,
+        ind:WhiteSugar ;
+    skos:definition "english shortbread" .
+
+nom:Batter a nom:Component ;
+    nom:usesProcess nom:Mixing ;
+    dct:identifier wd:Q29493 ;
+    skos:definition "A flour-based mixture used to prepare food."@en ;
+    skos:prefLabel "Batter"@en .
+
+nom:Dough a nom:Component ;
+    nom:usesProcess nom:Kneading ;
+    dct:identifier wd:Q178024 ;
+    skos:definition "A flour-based paste used to prepare food."@en ;
+    skos:prefLabel "Dough"@en .
+
+nom:Kneading a nom:Component ;
+    dct:identifier wd:Q3089784 ;
+    skos:definition "A process in the making of bread or dough, used to mix the ingredients and add strength to the final product."@en ;
+    skos:prefLabel "Kneading"@en .
+
+nom:Mixing a nom:Component ;
+    skos:closeMatch <https://www.foodonline.com/solution/mixing-and-blending> ;
+    skos:definition "A process of combining two or more separate components to produce a certain level of homogeneity."@en ;
+    skos:prefLabel "Mixing"@en .
+
+nom:Process a skos:Concept ;
+    dct:identifier wd:Q627371 ;
+    skos:altLabel "Cooking"@en,
+        "Food Processing"@en ;
+    skos:definition "The transformation of raw ingredients into food, or of food into other forms."@en ;
+    skos:prefLabel "Process"@en .
+
+nom:Component a skos:Concept ;
+    dct:identifier wd:Q746549 ;
+    skos:altLabel "Dish"@en ;
+    skos:definition "A specific prepared food which is ready to eat or used in building another dish."@en ;
+    skos:prefLabel "Component"@en .
+
+nom:Pancake a nom:Component ;
+    nom:madeFrom nom:Batter ;
+    dct:identifier wd:Q44541 ;
+    skos:altLabel "Crêpe"@fr ;
+    skos:closeMatch wd:Q12200 ;
+    skos:definition "A thin, round cake made from a batter of eggs, milk, and flour."@en ;
+    skos:narrower wd:Q1025010,
+        wd:Q815898,
+        wd:Q899392 ;
+    skos:prefLabel "Pancake"@en .
+
+nom:Noodle a nom:Component ;
+    nom:madeFrom nom:Dough ;
+    dct:identifier wd:Q192874 ;
+    skos:altLabel "Dumpling"@en ;
+    skos:closeMatch wd:Q1854639 ;
+    skos:definition "A type of staple food made from some type of unleavened dough."@en ;
+    skos:narrower wd:Q178,
+        wd:Q20065 ;
+    skos:prefLabel "Noodle"@en .
+

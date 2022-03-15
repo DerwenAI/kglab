@@ -18,6 +18,7 @@ pygments >= 2.7.4
 pylint >= 2.7.0
 pymdown-extensions
 pytest
+responses
 scikit-learn >= 0.20.2
 selenium
 twine

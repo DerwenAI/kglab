@@ -1,0 +1,570 @@
+[
+    {
+        "title": "West Sonoma",
+        "children": [
+            {
+                "string": "[Slow Food Russian River](http://www.slowfoodrr.org/)",
+                "create-time": 1620354407665,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                "children": [
+                    {
+                        "string": "Our local chapter of [Slow Food](https://www.slowfood.com/) covering Santa Rosa, Rohnert Park and Cotati, and further toward the Pacific Ocean, so-called \"West County\" portion of Sonoma County.",
+                        "create-time": 1620354514884,
+                        "uid": "176xsiPqK",
+                        "edit-time": 1620354525479,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "Runs the [Gravenstein Apple Presidium](http://www.slowfoodrr.org/projects/sebastopol-gravenstein-apple-presidium/)",
+                        "create-time": 1620354515028,
+                        "uid": "2RHCXy-Ey",
+                        "edit-time": 1620354604326,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "Operations the *Sebastopol Community Apple Press* at [Luther Burbank Experiment Farm](https://wschs.org/farm/) in Sebastopol, CA",
+                        "create-time": 1620354617706,
+                        "uid": "CYlJ7r2f4",
+                        "edit-time": 1620355044952,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    }
+                ],
+                "uid": "kYSwYpMp6",
+                "edit-time": 1620354437581,
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            },
+            {
+                "string": "Indigenous People",
+                "create-time": 1620357041646,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                "children": [
+                    {
+                        "string": "[Coast Miwok](https://en.wikipedia.org/wiki/Coast_Miwok)",
+                        "create-time": 1620357048049,
+                        "uid": "V-D2NyrZf",
+                        "edit-time": 1620357054925,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[Pomo](https://en.wikipedia.org/wiki/Pomo)",
+                        "create-time": 1620357055260,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        "children": [
+                            {
+                                "string": "[\"Pomo People: Brief History\"](http://www.kstrom.net/isk/art/basket/pomohist.html)",
+                                "create-time": 1620357236005,
+                                "uid": "JEJWObMA6",
+                                "edit-time": 1620357252488,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            }
+                        ],
+                        "uid": "EgdgNo5wo",
+                        "edit-time": 1620357234411,
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[Graton Rancheria](https://gratonrancheria.com/)",
+                        "create-time": 1620357100511,
+                        "uid": "LazufFQQZ",
+                        "edit-time": 1620357107352,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[California Indian Museum and Cultural Center](https://store.cimcc.org/buy-california-native/) in Santa Rosa, CA",
+                        "create-time": 1620357907465,
+                        "uid": "NPHl6GtYZ",
+                        "edit-time": 1620357928591,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    }
+                ],
+                "uid": "35JnjBL3J",
+                "edit-time": 1620357935926,
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            },
+            {
+                "string": "Native Food Traditions",
+                "create-time": 1620355050218,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                "children": [
+                    {
+                        "string": "[\"Acorn Awareness\"](https://madelocalmagazine.com/2018/11/acorn-awareness/), Michelle Threadgould, __Made Local__ (2018)",
+                        "create-time": 1620354700549,
+                        "uid": "TmyZl8QrS",
+                        "edit-time": 1620358407433,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[Cultural Conservatory](https://www.nativeland.org/), in Graton, CA",
+                        "create-time": 1620355015311,
+                        "uid": "Drr4igoFt",
+                        "edit-time": 1620355034221,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[Wahpepah's Kitchen](https://wahpepahskitchen.com/) in Oakland, CA",
+                        "create-time": 1620355184799,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        "children": [
+                            {
+                                "string": "[@wahpepahskitchen](https://www.instagram.com/p/CMuvjYOLBJi/) on Instagram",
+                                "create-time": 1620355219039,
+                                "uid": "UlICbpKh_",
+                                "edit-time": 1620355248542,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            }
+                        ],
+                        "uid": "GrMvJd5LR",
+                        "edit-time": 1620355214464,
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[Fry Bread Shop](https://www.restaurantji.com/ca/santa-rosa/fry-bread-shop-/) in Santa Rosa, CA",
+                        "create-time": 1620355429817,
+                        "uid": "XTxxfFsc9",
+                        "edit-time": 1620355444161,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[Wero Restaurant](https://ffcp.s3.amazonaws.com/tfc/VirginiaDare/restaurant/menus/WeroREG_ME3.pdf) in Geyserville, CA (closed)",
+                        "create-time": 1620355598632,
+                        "uid": "ZfEldF56u",
+                        "edit-time": 1620355622904,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    }
+                ],
+                "uid": "hqiPGNMJw",
+                "edit-time": 1620355059032,
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            },
+            {
+                "string": "Native Flora",
+                "create-time": 1620356114715,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                "children": [
+                    {
+                        "string": "[Calfora Observation Search](https://www.calflora.org/entry/observ.html#srch=t&cols=b&inma=t&y=38.4784&x=-122.7646&z=10&status=2&cc=SON)",
+                        "create-time": 1620356121333,
+                        "uid": "XjSlZ2Duy",
+                        "edit-time": 1620356132870,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[forageSF](https://www.foragesf.com/)",
+                        "create-time": 1620356741876,
+                        "uid": "HNVbJ93Hf",
+                        "edit-time": 1620356746403,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[SOMA](https://www.somamushrooms.org/forays/) mushroom forays",
+                        "create-time": 1620357630904,
+                        "uid": "8wDKUTOi_",
+                        "edit-time": 1620357642620,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[Strong Arm Farm](https://www.strongarmfarm.com/seaweed)",
+                        "create-time": 1620357407028,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        "children": [
+                            {
+                                "string": "licensed seaweed forage",
+                                "create-time": 1620357419219,
+                                "uid": "QqAYFKQi-",
+                                "edit-time": 1620357429973,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "seaweed forage classes",
+                                "create-time": 1620357429968,
+                                "uid": "98JgG1Scx",
+                                "edit-time": 1620357436860,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            }
+                        ],
+                        "uid": "3UztSOEtF",
+                        "edit-time": 1620357418638,
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "Acorn Flour",
+                        "create-time": 1620358117551,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        "children": [
+                            {
+                                "string": "[Blessingway Herbals](http://blessingwayherbals.com/acorn-flour-bread/)",
+                                "create-time": 1620358121668,
+                                "uid": "BEGZpanb7",
+                                "edit-time": 1620358130247,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "[Cupcake Project](https://www.cupcakeproject.com/how-to-make-acorn-flour-pre-thanksving/)",
+                                "create-time": 1620358130474,
+                                "uid": "FdJmKrqtm",
+                                "edit-time": 1620358183758,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "see also [Gourmet Sleuth](https://www.gourmetsleuth.com/ingredients/detail/acorn)",
+                                "create-time": 1620358687693,
+                                "uid": "cv2WSao6k",
+                                "edit-time": 1620358706003,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            }
+                        ],
+                        "uid": "8gNmLxlJk",
+                        "edit-time": 1620358121625,
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "Wild Forage",
+                        "create-time": 1620355967572,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        "children": [
+                            {
+                                "string": "[Miner's Lettuce](https://www.calflora.org/app/taxon?crn=2244)",
+                                "create-time": 1620356105569,
+                                "uid": "Gxd2375_6",
+                                "edit-time": 1620356137610,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "[Cattails](https://www.calflora.org/app/taxon?crn=8177)",
+                                "create-time": 1620356231827,
+                                "uid": "1-_jNGMYU",
+                                "edit-time": 1620356236676,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "[Prickly Pear](https://www.calflora.org/app/taxon?crn=5940)",
+                                "create-time": 1620356354847,
+                                "uid": "jk9v5Thmj",
+                                "edit-time": 1620356396173,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "[Manzanita](https://www.calflora.org/app/taxon?crn=575) berries",
+                                "create-time": 1620356701353,
+                                "uid": "Opasp2t0Q",
+                                "edit-time": 1620356717180,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "[Black Elderberry](https://www.calflora.org/app/taxon?crn=10347)",
+                                "create-time": 1620359231600,
+                                "uid": "saEEDIdqr",
+                                "edit-time": 1620359397546,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            }
+                        ],
+                        "uid": "9_LMcAvPD",
+                        "edit-time": 1620355972334,
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    }
+                ],
+                "uid": "bPaI0nTkH",
+                "edit-time": 1620356120249,
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            }
+        ],
+        "uid": "N4ouilfeF",
+        "edit-time": 1620354360576,
+        ":edit/user": {
+            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+        }
+    },
+    {
+        "title": "Cr\u00eapes",
+        "children": [
+            {
+                "string": "https://www.food.com/327593",
+                "create-time": 1620358796896,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                "children": [
+                    {
+                        "string": "__Anytime Crepes__ on Food.com",
+                        "create-time": 1620358470677,
+                        "uid": "or6_T76sk",
+                        "edit-time": 1620358799212,
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    }
+                ],
+                "uid": "Np9K_iEWw",
+                "edit-time": 1620358796896,
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            },
+            {
+                "string": "Ideas for using native forage",
+                "create-time": 1620358828498,
+                ":create/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                },
+                "children": [
+                    {
+                        "edit-time": 1620359103938,
+                        "children": [
+                            {
+                                "string": "https://foragerchef.com/acorn-flour-crepes/",
+                                "create-time": 1620358772328,
+                                "uid": "f7P9LxOro",
+                                "edit-time": 1620358773526,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            },
+                            {
+                                "string": "3:1 wheat/acorn ratio",
+                                "create-time": 1620359104966,
+                                "uid": "XHKkbsLpB",
+                                "edit-time": 1620359127339,
+                                ":create/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                },
+                                ":edit/user": {
+                                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                                }
+                            }
+                        ],
+                        "refs": [
+                            {
+                                "uid": "8gNmLxlJk"
+                            }
+                        ],
+                        "uid": "fqfABAFwe",
+                        ":block/refs": [
+                            {
+                                ":block/uid": "8gNmLxlJk"
+                            }
+                        ],
+                        "string": "Substitute [acorn flour](((8gNmLxlJk)))",
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        "create-time": 1620358513966,
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    },
+                    {
+                        "string": "[Elderberry jam](((saEEDIdqr)))",
+                        "create-time": 1620359129285,
+                        ":block/refs": [
+                            {
+                                ":block/uid": "saEEDIdqr"
+                            }
+                        ],
+                        "refs": [
+                            {
+                                "uid": "saEEDIdqr"
+                            }
+                        ],
+                        ":create/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        },
+                        "uid": "bKd7tiN7m",
+                        "edit-time": 1620359431676,
+                        ":edit/user": {
+                            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                        }
+                    }
+                ],
+                "uid": "lF8bVV_A7",
+                "edit-time": 1620358836360,
+                ":edit/user": {
+                    ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+                }
+            }
+        ],
+        "uid": "48_s_8sI3",
+        "edit-time": 1620358470686,
+        ":edit/user": {
+            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+        }
+    },
+    {
+        "create-time": 1620360990187,
+        "title": "May 6th, 2021",
+        "uid": "05-06-2021",
+        "edit-time": 1620360990187,
+        ":create/user": {
+            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+        },
+        ":edit/user": {
+            ":user/uid": "ormQkuNv54YUKrC6FkbpDR7GVNP2"
+        }
+    }
+]
