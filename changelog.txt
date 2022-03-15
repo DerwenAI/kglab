@@ -1,8 +1,15 @@
 # `kglab` changelog
 
+## 0.5.?
+
+2022-03-?
+
+  * ?
+
+
 ## 0.5.2
 
-2022-03-??
+2022-03-15
 
   * bump up versions of dependencies to fit Py 3.7+
   * improve testing based on pytest; kudos @Mec-iS

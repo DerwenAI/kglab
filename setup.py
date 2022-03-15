@@ -113,13 +113,13 @@ if __name__ == "__main__":
 
         url = "https://derwen.ai/docs/kgl/",
         project_urls = {
-            "Source Code": "https://github.com/DerwenAI/kglab",
-            "Issue Tracker": "https://github.com/DerwenAI/kglab/issues",
-            "Hands-on Tutorial": "https://derwen.ai/docs/kgl/tutorial/",
+            "DOI": "https://doi.org/10.5281/zenodo.6360664",
+            "Community Survey": "https://forms.gle/FMHgtmxHYWocprMn6",
             "Discussion Forum": "https://www.linkedin.com/groups/6725785/",
             "DockerHub": "https://hub.docker.com/r/derwenai/kglab",
-            "Community Survey": "https://forms.gle/FMHgtmxHYWocprMn6",
-            "DOI": "https://doi.org/10.5281/zenodo.4717287",
+            "Hands-on Tutorial": "https://derwen.ai/docs/kgl/tutorial/",
+            "Issue Tracker": "https://github.com/DerwenAI/kglab/issues",
+            "Source Code": "https://github.com/DerwenAI/kglab",
         },
 
         entry_points = {
