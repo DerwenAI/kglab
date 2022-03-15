@@ -1,10 +1,12 @@
 # `kglab` changelog
 
-## 0.5.?
+## 0.5.2
 
 2022-03-??
 
-  * bumping up versions of dependencies to fit Py 3.7+
+  * bump up versions of dependencies to fit Py 3.7+
+  * improve testing based on pytest; kudos @Mec-iS
+  * allow configuration for rdflib.Store plugins
 
 
 ## 0.5.1

@@ -1,7 +1,7 @@
 aiohttp >= 3.8
 chocolate >= 0.0.2
-cryptography >= 35.0
 csvwlib >= 0.3.2
+cryptography >= 35.0
 decorator >= 5.1
 fsspec[gs,s3] >= 2022.2
 gcsfs >= 2022.2
@@ -10,6 +10,7 @@ morph-kgc >= 1.6
 networkx >= 2.7
 numpy >= 1.22
 owlrl >= 6.0.2
+oxrdflib >= 0.2
 pandas >= 1.4
 pslpython >= 2.2.2
 pyarrow >= 7.0

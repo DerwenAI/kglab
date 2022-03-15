@@ -12,6 +12,7 @@ include:
 
 - [chocolate](https://github.com/seungjaeryanlee/chocolate)
 - [csvwlib](https://github.com/DerwenAI/csvwlib)
+- [cryptography](https://cryptography.io/)
 - [decorator](https://github.com/micheles/decorator)
 - [fsspec](https://filesystem-spec.readthedocs.io/)[^1]
 - [gcsfs](https://gcsfs.readthedocs.io/)
@@ -20,6 +21,7 @@ include:
 - [NetworkX](https://networkx.org/)
 - [NumPy](https://numpy.org/)[^2]
 - [OWL-RL](https://owl-rl.readthedocs.io/)
+- [Oxrdflib](https://github.com/oxigraph/oxrdflib)
 - [pandas](https://pandas.pydata.org/)
 - [pslpython](https://psl.linqs.org/)[^3]
 - [pyarrow](https://arrow.apache.org/)

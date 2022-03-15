@@ -33,7 +33,7 @@ repos:
     rev: v2.0.0
     hooks:
     -   id: codespell # spell-check source code
-        args: ["-L", "wit,fils"] # comma separated list of words to ignore.
+        args: ["-L", "wit,fils,basf"] # comma separated list of words to ignore.
         exclude: ^examples\/|.*\.ipynb
         language: python
         types: [text]
