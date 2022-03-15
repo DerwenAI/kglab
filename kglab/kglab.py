@@ -1,11 +1,12 @@
-"""
-kglab main class definition.
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# see license https://github.com/DerwenAI/kglab#license-and-copyright
 
- see license https://github.com/DerwenAI/kglab#license-and-copyright
 """
-######################################################################
-## kglab - core classes
+Main class definitions for `kglab`
+"""
 
+## Python standard libraries
 import codecs
 import datetime
 import io
@@ -14,8 +15,7 @@ import pathlib
 import traceback
 import typing
 
-### third-parties bindings
-
+### third-parties libraries
 from icecream import ic  # type: ignore  # pylint: disable=E0401
 import chocolate  # type: ignore  # pylint: disable=E0401
 import csvwlib  # type: ignore  # pylint: disable=E0401
@@ -30,13 +30,8 @@ import urlpath  # type: ignore  # pylint: disable=E0401
 import rdflib  # type: ignore  # pylint: disable=E0401
 import rdflib.plugin  # type: ignore  # pylint: disable=E0401
 import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore  # pylint: disable=E0401
-#rdflib.plugin.register("json-ld", rdflib.plugin.Parser, "rdflib_jsonld.parser", "JsonLDParser")
-#rdflib.plugin.register("json-ld", rdflib.plugin.Serializer, "rdflib_jsonld.serializer", "JsonLDSerializer")
 
-
-######################################################################
 ## kglab - core classes
-
 from kglab.decorators import multifile
 from kglab.pkg_types import PathLike, IOPathLike, GraphLike, RDF_Node
 from kglab.gpviz import GPViz
@@ -44,6 +39,7 @@ from kglab.util import get_gpu_count
 from kglab.version import _check_version
 
 
+## pre-constructor set-up
 _check_version()
 
 if get_gpu_count() > 0:
@@ -75,7 +71,7 @@ Core feature areas include:
         "sh":     "http://www.w3.org/ns/shacl#",
         "skos":   "http://www.w3.org/2004/02/skos/core#",
         "xsd":    "http://www.w3.org/2001/XMLSchema#",
-        }
+    }
 
 
     def __init__ (
@@ -84,6 +80,7 @@ Core feature areas include:
         name: str = "generic",
         base_uri: str = None,
         language: str = "en",
+        store: str = None,
         use_gpus: bool = True,
         import_graph: typing.Optional[GraphLike] = None,
         namespaces: dict = None,
@@ -100,6 +97,9 @@ the default [*base URI*](https://tools.ietf.org/html/rfc3986#section-5.1) for th
     language:
 the default [*language tag*](https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag), e.g., used for [*language indexing*](https://www.w3.org/TR/json-ld11/#language-indexing)
 
+    store:
+optionally, string representing an `rdflib.Store` plugin to use.
+
     use_gpus:
 optionally, use the NVidia GPU devices with [RAPIDS](https://rapids.ai/) if these libraries have been installed and the devices are available; defaults to `True`
 
@@ -112,19 +112,20 @@ a dictionary of [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rd
         self.name = name
         self.base_uri = base_uri
         self.language = language
+        self.store = store
 
         # use NVidia GPU devices if available and the libraries
         # have been installed and the flag is not disabled
-        if use_gpus and get_gpu_count() > 0:
+        if use_gpus is not None and get_gpu_count() > 0:
             self.use_gpus = True
         else:
             self.use_gpus = False
 
         # import relations from another RDF graph, or start from blank
-        if import_graph:
+        if import_graph is not None:
             self._g = import_graph
         else:
-            self._g = rdflib.Graph()
+            self._g = self.build_blank_graph()
 
         # initialize the namespaces
         self._ns: dict = {}
@@ -135,6 +136,20 @@ a dictionary of [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rd
         if namespaces:
             for prefix, iri in namespaces.items():
                 self.add_ns(prefix, iri)
+
+
+    def build_blank_graph (
+        self,
+        ) -> rdflib.Graph:
+        """
+Build a new `rdflib.Graph` object, based on storage plugin configuration.
+        """
+        if self.store is not None:
+            g = rdflib.Graph(store=self.store)
+        else:
+            g = rdflib.Graph()
+
+        return g
 
 
     def rdf_graph (
@@ -472,7 +487,7 @@ a string as a file name or URL to a file reference
             filename = str(path)
         elif isinstance(path, pathlib.Path):
             filename = path.as_posix()
-        elif type(path) == str:
+        elif isinstance(path, str):
             filename = path
         else:
             raise TypeError(f"path variable not recognised {type(path)}")
@@ -1225,7 +1240,7 @@ a tuple of `conforms` (RDF graph passes the validation rules) + `report_graph` (
             **chocolate.filter_args(kwargs, pyshacl.validate),
             )
 
-        g = rdflib.Graph()
+        g = self.build_blank_graph()
 
         g.parse(
             data=report_graph_data,
