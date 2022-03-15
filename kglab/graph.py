@@ -42,13 +42,20 @@ A subclass of `rdflib.Store` to use as a plugin, integrating the W3C stack.
         """
 Instance constructor.
         """
+        if configuration is not None:
+            ic(configuration)
+
         super().__init__(configuration)
+
         self.identifier = identifier
+        self.digest: typing.Optional[ hashes.Hash ] = None
+
         self.__namespace: dict = {}
         self.__prefix: dict = {}
 
         self._tuples: list = []
-        self.digest: typing.Optional[ hashes.Hash ] = None
+        self._node_names: typing.List[ str ] = []
+        self._rel_names: typing.List[ str ] = []
 
 
 ######################################################################
@@ -64,6 +71,81 @@ An accessor method to extract the PropertyGraph from an RDF graph,
 which is a private member of rdflib.Graph.
         """
         return graph._Graph__store  # type: ignore # pylint: disable=W0212
+
+
+    def get_node_id (
+        self,
+        node_name: str,
+        ) -> int:
+        """
+Map from a unique name to a `node_id` index.
+        """
+        try:
+            idx = self._node_names.index(node_name)
+        except ValueError as ex:  # pylint: disable=W0612
+            self._node_names.append(node_name)
+            idx = len(self._node_names) - 1
+
+        return idx
+
+
+    def get_rel_id (
+        self,
+        rel_name: str,
+        ) -> int:
+        """
+Map from a unique name to a `rel_id` index.
+        """
+        try:
+            idx = self._rel_names.index(rel_name)
+        except ValueError as ex:  # pylint: disable=W0612
+            self._rel_names.append(rel_name)
+            idx = len(self._rel_names) - 1
+
+        return idx
+
+
+    def build_tuple (
+        self,
+        s,
+        p,
+        o,
+        context,
+        ) -> typing.Tuple:
+        """
+Compose a tuple from the inputs supplied by `RDFlib`.
+        """
+        if context is None:
+            c = None
+        else:
+            c = str(context.identifier)  # type: ignore
+
+        src_id = self.get_node_id(str(s))
+        rel_id = self.get_rel_id(str(p))
+
+        if isinstance(o, rdflib.term.Literal):
+            _tuple = ( src_id, rel_id, str(o), True, c)
+        else:
+            dst_id = self.get_node_id(str(o))
+            _tuple = ( src_id, rel_id, dst_id, False, c)  # type: ignore
+
+        return _tuple
+
+
+    def _find (
+        self,
+        _tuple: typing.Tuple,
+        ) -> int:
+        """
+Locate the given tuple in the data, returning `-1` if not found.
+        """
+        try:
+            idx = self._tuples.index(_tuple)
+        except ValueError as ex:  # pylint: disable=W0612
+            # triple does not exist
+            idx = -1
+
+        return idx
 
 
     def add (  # type: ignore # pylint: disable=R0201,W0221
@@ -86,24 +168,23 @@ It should also be an error for the quoted argument to be `True` when
 the store is not formula-aware.
         """
         s, p, o = triple  # pylint: disable=W0612
+        _tuple = self.build_tuple(str(s), str(p), o, context)
+        idx = self._find(_tuple)
 
-        if context is None:
-            c = None
-        else:
-            c = str(context.identifier)  # type: ignore
+        if idx < 0:
+            self._tuples.append(_tuple)
 
-        _tuple = ( str(s), str(p), str(o), c, )
-        self._tuples.append(_tuple)
+            # update digest
+            if self.digest is not None:
+                self.digest.update(inspect.currentframe().f_code.co_name.encode("utf-8"))  # type: ignore
+                self.digest.update(str(s).encode("utf-8"))
+                self.digest.update(str(p).encode("utf-8"))
+                self.digest.update(str(o).encode("utf-8"))
 
-        # update digest
-        if self.digest is not None:
-            self.digest.update(inspect.currentframe().f_code.co_name.encode("utf-8"))  # type: ignore
-            self.digest.update(str(s).encode("utf-8"))
-            self.digest.update(str(p).encode("utf-8"))
-            self.digest.update(str(o).encode("utf-8"))
+                c = _tuple[4]
 
-            if c is not None:
-                self.digest.update(c.encode("utf-8"))
+                if c is not None:
+                    self.digest.update(c.encode("utf-8"))
 
 
     def remove (  # type: ignore # pylint: disable=R0201,W0221
@@ -115,16 +196,11 @@ the store is not formula-aware.
         """
 Remove the set of triples matching the pattern from the store.
         """
-        try:
-            s, p, o = triple_pattern  # pylint: disable=W0612
+        s, p, o = triple_pattern  # pylint: disable=W0612
+        _tuple = self.build_tuple(str(s), str(p), o, context)
+        idx = self._find(_tuple)
 
-            if context is None:
-                c = None
-            else:
-                c = str(context.identifier)  # type: ignore
-
-            _tuple = ( s, p, o, c, )
-            idx = self._tuples.index(_tuple)
+        if idx >= 0:
             del self._tuples[idx]
 
             # update digest
@@ -134,11 +210,10 @@ Remove the set of triples matching the pattern from the store.
                 self.digest.update(str(p).encode("utf-8"))
                 self.digest.update(str(o).encode("utf-8"))
 
+                c = _tuple[4]
+
                 if c is not None:
                     self.digest.update(c.encode("utf-8"))
-        except ValueError as ex:  # pylint: disable=W0612
-            # triple does not exist
-            idx = -1
 
 
     def triples (  # type: ignore # pylint: disable=R0201,W0221
@@ -172,14 +247,25 @@ A conjunctive query can be indicated by either providing a value of None, or a s
         else:
             c = str(context.identifier)  # type: ignore
 
-        _tuple = ( s, p, o, c, )
+        #_tuple = ( s, p, o, o_lit, c, )
 
-        for src, rel, dst, ctx in self._tuples:
+        for src, rel, dst, o_lit, ctx in self._tuples:  # pylint: disable=R1702
             if (s is None) or (s == src):
                 if (p is None) or (p == rel):
                     if (o is None) or (o == dst):
                         if (c is None) or (c == ctx):
-                            triple_result = (src, rel, dst,)
+
+                            if o_lit:
+                                dst_ref = rdflib.term.Literal(dst)
+                            else:
+                                dst_ref = self._node_names[dst]
+
+                            triple_result = (
+                                rdflib.term.URIRef(self._node_names[src]),
+                                rdflib.term.URIRef(self._rel_names[rel]),
+                                dst_ref,
+                            )
+
                             yield triple_result, self.__contexts()
 
 
@@ -203,7 +289,7 @@ a graph instance to query or None
         c = str(context.identifier)  # type: ignore
         count = 0
 
-        for _, _, _, ctx in self._tuples:
+        for _, _, _, _, ctx in self._tuples:
             if c == ctx:
                 count += 1
 
@@ -216,7 +302,7 @@ a graph instance to query or None
         """
 Returns the set of contexts
         """
-        return { ctx for _, _, _, ctx in self._tuples }
+        return { ctx for _, _, _, _, ctx in self._tuples }
 
 
     def bind (

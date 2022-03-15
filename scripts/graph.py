@@ -31,8 +31,6 @@ if __name__ == "__main__":
         )
 
         lpg = PropertyStore.get_lpg(graph)
-        ic(type(lpg))
-
         lpg.digest = hashes.Hash(hashes.BLAKE2b(64))  # type: ignore
     else:
         graph = rdflib.Graph()
@@ -80,7 +78,8 @@ sota:peep2 a foaf:Person ;
     """
 
     for row in graph.query(sparql, initBindings=bindings):
-        ic(row.asdict())
+        r = row.asdict()
+        ic(r)
 
 
     ## remove
@@ -94,3 +93,6 @@ sota:peep2 a foaf:Person ;
 
     if lpg is not None:
         ic(lpg.digest.finalize().hex())  # type: ignore
+        ic(lpg._node_names)
+        ic(lpg._rel_names)
+        ic(lpg._tuples)
