@@ -83,7 +83,7 @@ if __name__ == "__main__":
         extras_require = {
             "base": base_packages,
             "docs": docs_packages,
-            "tut": tut_packages,
+            "tutorial": tut_packages,
         },
 
         author = "Paco Nathan",
