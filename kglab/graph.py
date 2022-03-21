@@ -14,6 +14,7 @@ import typing
 from cryptography.hazmat.primitives import hashes  # type: ignore  # pylint: disable=E0401
 from icecream import ic  # type: ignore  # pylint: disable=E0401,W0611
 import chocolate  # type: ignore  # pylint: disable=E0401
+import numpy as np  # type: ignore  # pylint: disable=E0401
 
 from rdflib.store import Store  # type: ignore # pylint: disable=E0401
 import rdflib  # type: ignore  # pylint: disable=E0401
@@ -54,8 +55,8 @@ Instance constructor.
         self.__prefix: dict = {}
 
         self._tuples: list = []
-        self._node_names: typing.List[ str ] = []
-        self._rel_names: typing.List[ str ] = []
+        self._node_names: np.array = np.empty(shape=[0, 1], dtype=object)
+        self._rel_names: np.array = np.empty(shape=[0, 1], dtype=object)
 
 
 ######################################################################
@@ -78,15 +79,29 @@ which is a private member of rdflib.Graph.
         node_name: str,
         ) -> int:
         """
-Map from a unique name to a `node_id` index.
+An accessor method to map from the unique name of a node to its
+`node_id` index.
         """
-        try:
-            idx = self._node_names.index(node_name)
-        except ValueError as ex:  # pylint: disable=W0612
-            self._node_names.append(node_name)
-            idx = len(self._node_names) - 1
+        rows = np.where(self._node_names == node_name)
 
-        return idx
+        if len(rows[0]) < 1:
+            self._node_names = np.append(self._node_names, node_name)
+            node_id = len(self._node_names) - 1
+        else:
+            node_id = rows[0][0]
+
+        return node_id
+
+
+    def get_node_name (
+        self,
+        node_id: int,
+        ) -> str:
+        """
+An accessor method to map from the `node_id` index of a node to its
+unique name.
+        """
+        return self._node_names[node_id]
 
 
     def get_rel_id (
@@ -94,15 +109,29 @@ Map from a unique name to a `node_id` index.
         rel_name: str,
         ) -> int:
         """
-Map from a unique name to a `rel_id` index.
+An accessor method to map from a unique name of a relation to its
+`rel_id` index.
         """
-        try:
-            idx = self._rel_names.index(rel_name)
-        except ValueError as ex:  # pylint: disable=W0612
-            self._rel_names.append(rel_name)
-            idx = len(self._rel_names) - 1
+        rows = np.where(self._rel_names == rel_name)
 
-        return idx
+        if len(rows[0]) < 1:
+            self._rel_names = np.append(self._rel_names, rel_name)
+            rel_id = len(self._rel_names) - 1
+        else:
+            rel_id = rows[0][0]
+
+        return rel_id
+
+
+    def get_rel_name (
+        self,
+        rel_id: int,
+        ) -> str:
+        """
+An accessor method to map from the `rel_id` index of a relation to its
+unique name.
+        """
+        return self._rel_names[rel_id]
 
 
     def build_tuple (
@@ -254,15 +283,14 @@ A conjunctive query can be indicated by either providing a value of None, or a s
                 if (p is None) or (p == rel):
                     if (o is None) or (o == dst):
                         if (c is None) or (c == ctx):
-
                             if o_lit:
-                                dst_ref = rdflib.term.Literal(dst)
+                                dst_ref: typing.Any = rdflib.term.Literal(dst)
                             else:
-                                dst_ref = self._node_names[dst]
+                                dst_ref = self.get_node_name(dst)
 
                             triple_result = (
-                                rdflib.term.URIRef(self._node_names[src]),
-                                rdflib.term.URIRef(self._rel_names[rel]),
+                                rdflib.term.URIRef(self.get_node_name(src)),
+                                rdflib.term.URIRef(self.get_rel_name(rel)),
                                 dst_ref,
                             )
 
