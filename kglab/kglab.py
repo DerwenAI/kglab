@@ -12,6 +12,7 @@ import datetime
 import io
 import json
 import pathlib
+import re
 import traceback
 import typing
 
@@ -1178,6 +1179,39 @@ a dictionary of serialized row bindings
         }
 
         return bindings
+
+
+    @classmethod
+    def unbind_sparql (
+        cls,
+        sparql: str,
+        bindings: dict,
+        *,
+        preamble: str = "",
+        ) -> str:
+        """
+Substitute the _binding variables_ into the text of a SPARQL query,
+to obviate the need for binding variables specified separately.
+This can be helpful for debugging, or for some query engines that
+may not have full SPARQL support yet.
+
+    sparql:
+text for the SPARQL query
+
+    bindings:
+variable bindings
+
+    returns:
+a string of the expanded SPARQL query
+        """
+        sparql_meta, sparql_body = re.split(r"\s*WHERE\s*\{", sparql, maxsplit=1)
+
+        for var in sorted(bindings.keys(), key=lambda x: len(x), reverse=True):  # pylint: disable=W0108
+            pattern = re.compile("(\?" + var + ")(\W)")  # pylint: disable=W1401
+            bind_val = "<" + str(bindings[var]) + ">\\2"
+            sparql_body = re.sub(pattern, bind_val, sparql_body)
+
+        return "".join([preamble, sparql_meta, " WHERE {", sparql_body]).strip()
 
 
     ######################################################################
