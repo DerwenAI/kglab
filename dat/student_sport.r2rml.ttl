@@ -1,63 +1,96 @@
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ex: <http://example.com/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@base <http://example.com/base/> .
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#>.
+@prefix fno: <https://w3id.org/function/ontology#>.
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#>.
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix dc: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix : <http://mapping.example.com/>.
+@prefix ns1: <http://example.com/>.
 
-<TriplesMap1>
-	a rr:TriplesMap;
-
-    rr:logicalTable [ rr:tableName "Student"; ] ;
-
-    rr:subjectMap [
-				rr:template "http://example.com/student/{ID}";
-				rr:class ex:Student;
-		];
-
-    rr:predicateObjectMap
-    [
-		rr:predicate	ex:firstName ;
-		rr:objectMap	[ rr:column "FirstName" ]
-    ];
-
-    rr:predicateObjectMap
-    [
-		rr:predicate	ex:lastName ;
-		rr:objectMap	[ rr:column "LastName" ]
-    ]
-	.
-
-<TriplesMap2>
-	a rr:TriplesMap;
-
-    rr:logicalTable [ rr:tableName "Sport"; ] ;
-
-    rr:subjectMap [
-				rr:template "http://example.com/sport/{ID}";
-				rr:class ex:Sport;
-		];
-
-    rr:predicateObjectMap
-    [
-		rr:predicate	ex:id ;
-		rr:objectMap	[ rr:column "ID"; ]
-    ];
-
-    rr:predicateObjectMap
-    [
-		rr:predicate	ex:description ;
-		rr:objectMap	[ rr:column "Description" ]
-    ]
-	.
-
-<LinkMap_1_2>
-	a rr:TriplesMap;
-
-   rr:logicalTable [ rr:tableName "Student_Sport" ];
-
-   rr:subjectMap [ rr:template "http://example.com/student/{ID_Student}" ];
-
-   rr:predicateObjectMap [
-		rr:predicate	ex:plays ;
-		rr:objectMap	[ rr:template "http://example.com/sport/{ID_Sport}" ];
-   ].
+:rules_000 a void:Dataset.
+:source_000 a rr:LogicalTable;
+    rdfs:label "students";
+    rr:sqlQuery "select * from Student left join Student_Sport on Student.ID = Student_Sport.ID_Student left join Sport on Sport.ID = Student_Sport.ID_Sport;";
+    rr:sqlVersion rr:MySQL.
+:rules_000 void:exampleResource :map_student_000.
+:map_student_000 rr:logicalTable :source_000;
+    a rr:TriplesMap;
+    rdfs:label "student".
+:s_000 a rr:SubjectMap.
+:map_student_000 rr:subjectMap :s_000.
+:s_000 rr:template "http://example.com/{ID_Student}".
+:pom_000 a rr:PredicateObjectMap.
+:map_student_000 rr:predicateObjectMap :pom_000.
+:pm_000 a rr:PredicateMap.
+:pom_000 rr:predicateMap :pm_000.
+:pm_000 rr:constant rdf:type.
+:pom_000 rr:objectMap :om_000.
+:om_000 a rr:ObjectMap;
+    rr:constant "http://example.com/Student";
+    rr:termType rr:IRI.
+:pom_001 a rr:PredicateObjectMap.
+:map_student_000 rr:predicateObjectMap :pom_001.
+:pm_001 a rr:PredicateMap.
+:pom_001 rr:predicateMap :pm_001.
+:pm_001 rr:constant ns1:firstName.
+:pom_001 rr:objectMap :om_001.
+:om_001 a rr:ObjectMap;
+    rr:column "FirstName";
+    rr:termType rr:Literal.
+:pom_002 a rr:PredicateObjectMap.
+:map_student_000 rr:predicateObjectMap :pom_002.
+:pm_002 a rr:PredicateMap.
+:pom_002 rr:predicateMap :pm_002.
+:pm_002 rr:constant ns1:lastName.
+:pom_002 rr:objectMap :om_002.
+:om_002 a rr:ObjectMap;
+    rr:column "LastName";
+    rr:termType rr:Literal.
+:pom_003 a rr:PredicateObjectMap.
+:map_student_000 rr:predicateObjectMap :pom_003.
+:pm_003 a rr:PredicateMap.
+:pom_003 rr:predicateMap :pm_003.
+:pm_003 rr:constant ns1:plays.
+:pom_003 rr:objectMap :om_003.
+:rules_000 void:exampleResource :map_sport_000.
+:map_sport_000 rr:logicalTable :source_000;
+    a rr:TriplesMap;
+    rdfs:label "sport".
+:s_001 a rr:SubjectMap.
+:map_sport_000 rr:subjectMap :s_001.
+:s_001 rr:template "http://example.com/{ID_Sport}".
+:pom_004 a rr:PredicateObjectMap.
+:map_sport_000 rr:predicateObjectMap :pom_004.
+:pm_004 a rr:PredicateMap.
+:pom_004 rr:predicateMap :pm_004.
+:pm_004 rr:constant rdf:type.
+:pom_004 rr:objectMap :om_004.
+:om_004 a rr:ObjectMap;
+    rr:constant "http://example.com/Sport";
+    rr:termType rr:IRI.
+:pom_005 a rr:PredicateObjectMap.
+:map_sport_000 rr:predicateObjectMap :pom_005.
+:pm_005 a rr:PredicateMap.
+:pom_005 rr:predicateMap :pm_005.
+:pm_005 rr:constant ns1:description.
+:pom_005 rr:objectMap :om_005.
+:om_005 a rr:ObjectMap;
+    rr:column "Description";
+    rr:termType rr:Literal.
+:pom_006 a rr:PredicateObjectMap.
+:map_sport_000 rr:predicateObjectMap :pom_006.
+:pm_006 a rr:PredicateMap.
+:pom_006 rr:predicateMap :pm_006.
+:pm_006 rr:constant ns1:id.
+:pom_006 rr:objectMap :om_006.
+:om_006 a rr:ObjectMap;
+    rr:column "ID_Sport";
+    rr:termType rr:Literal.
+:om_003 a rr:ObjectMap;
+    rr:parentTriplesMap :map_sport_000;
+    rr:joinCondition :jc_000.
+:jc_000 rr:child "ID_Sport";
+    rr:parent "ID_Sport".
