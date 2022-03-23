@@ -1,10 +1,11 @@
 # `kglab` changelog
 
-## 0.5.?
+## 0.6.?
 
-2022-03-??
+2022-??-??
 
-  * ???
+  * support for substituting the binding variables into a SPARQL query
+  * add a NumPy-backed `RDFlib.Store` plugin
 
 
 ## 0.5.3
@@ -20,7 +21,7 @@
 
   * bump up versions of dependencies to fit Py 3.7+
   * improve testing based on pytest; kudos @Mec-iS
-  * allow configuration for rdflib.Store plugins
+  * allow configuration for `RDFlib.Store` plugins
 
 
 ## 0.5.1
@@ -190,7 +191,7 @@
 2020-12-06
 
   * added `pySHACL` examples
-  * resolved Google Colab errors registering the `rdflib-jsonld` plugin
+  * resolved Google Colab errors registering the `RDFlib-jsonld` plugin
   * comparing timing info across serialization methods
   * simplified the example notebook naming convention
 
