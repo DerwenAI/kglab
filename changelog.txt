@@ -4,6 +4,14 @@
 
 2022-??-??
 
+  * ???
+
+
+## 0.6.0
+
+2022-03-23
+
+  * include use of YARRRML in the R2RML tutorial in ex2_1; kudos @cutterkom
   * support for substituting the binding variables into a SPARQL query
   * add a NumPy-backed `RDFlib.Store` plugin
 
