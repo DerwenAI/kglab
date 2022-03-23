@@ -1,0 +1,31 @@
+prefixes:
+  ns1: "http://example.com/"
+
+sources:
+  students:
+    queryFormulation: mysql
+    query: select * from Student left join Student_Sport on Student.ID = Student_Sport.ID_Student left join Sport on Sport.ID = Student_Sport.ID_Sport;
+
+mappings:
+  student:
+    sources: students
+    s: http://example.com/$(ID_Student)
+    po:
+      - [a, ns1:Student]
+      - [ns1:firstName, $(FirstName)]
+      - [ns1:lastName, $(LastName)]
+      - p: ns1:plays
+        o: 
+        - mapping: sport
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(ID_Sport)]
+              - [str2, $(ID_Sport)]
+  sport:
+    sources: students
+    s: http://example.com/$(ID_Sport)
+    po:
+      - [a, ns1:Sport]
+      - [ns1:description, $(Description)]
+      - [ns1:id, $(ID_Sport)]
