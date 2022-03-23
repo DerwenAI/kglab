@@ -203,6 +203,7 @@ and to our contributors:
 [@louisguitton](https://github.com/louisguitton),
 [@tomaarsen](https://github.com/tomaarsen),
 [@Mec-iS](https://github.com/Mec-iS),
+[@cutterkom](https://github.com/cutterkom),
 [@RishiKumarRay](https://github.com/RishiKumarRay),
 [@ArenasGuerreroJulian](https://github.com/ArenasGuerreroJulian),
 [@fils](https://github.com/fils),
