@@ -38,6 +38,7 @@ from kglab.pkg_types import PathLike, IOPathLike, GraphLike, RDF_Node
 from kglab.gpviz import GPViz
 from kglab.util import get_gpu_count
 from kglab.version import _check_version
+import kglab.query.sparql
 
 
 ## pre-constructor set-up
@@ -137,6 +138,9 @@ a dictionary of [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rd
         if namespaces:
             for prefix, iri in namespaces.items():
                 self.add_ns(prefix, iri)
+
+        # backwards compatibility for class refactoring
+        self.sparql = kglab.query.sparql.SparqlQueryable(self)
 
 
     def build_blank_graph (
