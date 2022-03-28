@@ -70,7 +70,7 @@ initial variable bindings
             yield row
 
 
-    def query_as_df (
+    def query_as_df (  # pylint: disable=W0221
         self,
         query: str,
         *,
@@ -199,7 +199,7 @@ a string of the expanded SPARQL query
         return "".join([preamble, sparql_meta, " WHERE {", sparql_body]).strip()
 
 
-    def visualize_query (
+    def visualize (
         self,
         query: str,
         *,
