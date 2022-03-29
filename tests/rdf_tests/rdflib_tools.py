@@ -83,26 +83,6 @@ def read_manifest(f, base=None, legacy=False) -> Iterable[Tuple[Node, URIRef, RD
             e: URIRef
             for e in g.items(col):
 
-                approved = (
-                    (e, DAWG.approval, DAWG.Approved) in g
-                    or (e, DAWG.approval, DAWG.NotClassified) in g
-                    or (e, RDFT.approval, RDFT.Approved) in g
-                )
-
-                # run proposed tests
-                # approved |= (e, RDFT.approval, RDFT.Proposed) in g
-
-                # run legacy tests with no approval set
-                if legacy:
-                    approved |= (e, DAWG.approval, None) not in g and (
-                        e,
-                        RDFT.approval,
-                        None,
-                    ) not in g
-
-                if not approved:
-                    continue
-
                 _type = g.value(e, RDF.type)
 
                 # if _type in (MF.ServiceDescriptionTest, MF.ProtocolTest):
