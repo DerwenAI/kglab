@@ -179,3 +179,60 @@ def read_manifest(f, base=None, legacy=False) -> Iterable[Tuple[Node, URIRef, RD
                     res,
                     syntax,
                 )
+
+def bindingsCompatible(a, b):
+    """
+    Are two binding-sets compatible.
+    From the spec: http://www.w3.org/2009/sparql/docs/tests/#queryevaltests
+    A SPARQL implementation passes a query evaluation test if the
+    graph produced by evaluating the query against the RDF dataset
+    (and encoding in the DAWG result set vocabulary, if necessary) is
+    equivalent [RDF-CONCEPTS] to the graph named in the result (after
+    encoding in the DAWG result set vocabulary, if necessary). Note
+    that, solution order only is considered relevant, if the result is
+    expressed in the test suite in the DAWG result set vocabulary,
+    with explicit rs:index triples; otherwise solution order is
+    considered irrelevant for passing. Equivalence can be tested by
+    checking that the graphs are isomorphic and have identical IRI and
+    literal nodes. Note that testing whether two result sets are
+    isomorphic is simpler than full graph isomorphism. Iterating over
+    rows in one set, finding a match with the other set, removing this
+    pair, then making sure all rows are accounted for, achieves the
+    same effect.
+    """
+
+    def rowCompatible(x, y):
+        m = {}
+        y = y.asdict()
+        for v1, b1 in x.asdict().items():
+            if v1 not in y:
+                return False
+            if isinstance(b1, BNode):
+                if b1 in m:
+                    if y[v1] != m[b1]:
+                        return False
+                else:
+                    m[b1] = y[v1]
+            else:
+                # if y[v1]!=b1:
+                #    return False
+                try:
+                    if y[v1].neq(b1):
+                        return False
+                except TypeError:
+                    return False
+        return True
+
+    if not a:
+        if b:
+            return False
+        return True
+
+    x = next(iter(a))
+
+    for y in b:
+        if rowCompatible(x, y):
+            if bindingsCompatible(a - set((x,)), b - set((y,))):
+                return True
+
+    return False

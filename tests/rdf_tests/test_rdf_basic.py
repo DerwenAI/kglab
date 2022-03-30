@@ -1,3 +1,8 @@
+"""
+Run official RDF-tests and Oxigraph tests from text files
+<https://github.com/w3c/rdf-tests>
+"""
+
 from os.path import abspath, dirname
 import sys
 from pathlib import Path
@@ -8,11 +13,12 @@ tests_dir = project_dir / "tests"
 sys.path.insert(0, str(tests_dir))
 DATA_DIR = project_dir / "tests" / "rdf_tests" / "dat"
 
+from rdflib.plugins.sparql.results.rdfresults import RDFResult
 import kglab
 from icecream import ic
 import json
 
-from rdf_tests.rdflib_tools import read_manifest
+from rdf_tests.rdflib_tools import read_manifest, bindingsCompatible
 
 
 def parse_manifest(dir_, file_):
@@ -39,8 +45,9 @@ class Report(dict):
         return json.dumps(self)
     
     def log(self):
-        print("---------------- REPORT ----------------")
+        print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*- REPORT -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
         print(self)
+        print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
 
     def __str__(self):
         dct = {}
@@ -87,8 +94,6 @@ def run_test(t, dir_):
         report[t.name]["input"] = f"{dir_}/{fname}"  
         
     
-    # for s, p, o in kg._g: print(s,p,o)
-
     #
     # load test SPARQL query
     #
@@ -119,10 +124,11 @@ def run_test(t, dir_):
 
     #
     # read the expected results as dictionary
-    #    
+    #
+    results_path = clean_filepath(t.result)
+    
     if t.result is not None:
         report[t.name]["output"] = result_to_string(kg.query(sparql))
-        results_path = clean_filepath(t.result)
         with open(results_path) as f:
             report[t.name]["expected"] = f.read()
 
@@ -148,11 +154,11 @@ def run_test(t, dir_):
             # TODO: add more checks here
             #
         elif t.result.endswith(".ttl"):
-            #
-            # TODO: add check here for ttl serialised files
-            #
-            pass
-            
+            expected = RDFResult(t.result)
+            try:
+                assert bindingsCompatible(expected, kg.query(sparql))
+            except AssertionError:
+                report[t.name]["error"] = "ERROR: bindings do not match"
 
 
 def test_rdf_runner(rdf_basic=True, oxigraph=True):
@@ -172,6 +178,11 @@ def test_rdf_runner(rdf_basic=True, oxigraph=True):
                 print(f"Running {dir_}/{test.name}")
                 run_test(test, dir_)
         
-    report.log()  
-                
-        
+    report.log()
+
+    from datetime import datetime
+    t = datetime.now().strftime("%H:%M:%S")
+    fname = dirname(abspath(__file__)) + f"/report-{t}.json"
+    print(fname)
+    with open(fname, mode="w") as f:
+        f.write(str(report))
