@@ -103,6 +103,14 @@ Then when you're ready to submit code for review, please use a
 [pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)
 on our `main` repo branch.
 
+## Testing
+To start developing and run tests locally, it is needed to install dev requirements: `pip install -r requirements-dev.txt`
+### basic testing
+Testing that runs with CI/CD can be run with: `pytest tests/`
+
+### RDF testing
+For RDF-based tests on [RDF-tests](https://github.com/w3c/rdf-tests) manifests: `pytest tests/rdf_tests/test_rdf_basic.py -k test_rdf_runner -s`
+
 
 ## Project roadmap
 
