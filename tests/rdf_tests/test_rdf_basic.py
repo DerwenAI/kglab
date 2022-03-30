@@ -39,6 +39,7 @@ def result_to_string(iter_):
         
     
 class Report(dict):
+    """ Just some neat print-out """
     __basic = {"input", "query", "error", "length_check_error"}
 
     def full(self):
@@ -103,8 +104,6 @@ def run_test(t, dir_):
         sparql = f.read()
     qname = t.action.split("/")[-1]
     report[t.name]["query"] = f"{dir_}/{qname}"  
-
-    # for row in kg.query(sparql): ic(row)  
 
     #
     # check if the query returned something
