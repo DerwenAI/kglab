@@ -5,6 +5,7 @@
 2022-04-??
 
   * automated RDF tests, coordinated with `Oxigraph`; kudos @Mec-iS, @Tpt
+  * begin refactoring `KnowledgeGraph` as abstract classes, per #237
 
 
 ## 0.6.0
