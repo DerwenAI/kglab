@@ -158,24 +158,8 @@ For detailed instructions please see:
 </details>
 
 
-<img
- alt="illustration of a knowledge graph, plus laboratory glassware"
- src="https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/assets/logo.png"
- width="231"
- />
-
-
-## License and Copyright
-
-Source code for **kglab** plus its logo, documentation, and examples
-have an [MIT license](https://spdx.org/licenses/MIT.html) which is
-succinct and simplifies use in commercial applications.
-
-All materials herein are Copyright &copy; 2020-2022 Derwen, Inc.
-
-
-## Attribution
-
+<details>
+  <summary>Attribution</summary>
 Please use the following BibTeX entry for citing **kglab** if you use
 it in your research or software.
 Citations are helpful for the continued development and maintenance of
@@ -191,6 +175,22 @@ this library.
   url = {https://github.com/DerwenAI/kglab}
 }
 ```
+</details>
+
+<img
+ alt="illustration of a knowledge graph, plus laboratory glassware"
+ src="https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/assets/logo.png"
+ width="231"
+/>
+
+
+## License and Copyright
+
+Source code for **kglab** plus its logo, documentation, and examples
+have an [MIT license](https://spdx.org/licenses/MIT.html) which is
+succinct and simplifies use in commercial applications.
+
+All materials herein are Copyright &copy; 2020-2022 Derwen, Inc.
 
 
 ## Kudos
@@ -205,6 +205,7 @@ and to our contributors:
 [@Mec-iS](https://github.com/Mec-iS),
 [@cutterkom](https://github.com/cutterkom),
 [@RishiKumarRay](https://github.com/RishiKumarRay),
+[@Tpt](https://github.com/Tpt),
 [@ArenasGuerreroJulian](https://github.com/ArenasGuerreroJulian),
 [@fils](https://github.com/fils),
 [@gauravjaglan](https://github.com/gauravjaglan),
@@ -222,3 +223,9 @@ the [RAPIDS team @ NVIDIA](https://rapids.ai/),
 [Gradient Flow](https://gradientflow.com/),
 and
 [Manning Publications](https://www.manning.com/).
+
+<img
+ alt="kglab contributors"
+ src="https://contributors-img.web.app/image?repo=derwenai/kglab"
+/>
+
