@@ -6,7 +6,7 @@ All rights reserved.
 """
 from typing import Iterable, List, NamedTuple, Optional, Tuple, Union, cast
 
-from rdflib import RDF, RDFS, Graph, Namespace
+from rdflib import RDF, RDFS, Graph, Namespace, BNode
 from rdflib.namespace import DefinedNamespace
 from rdflib.term import Identifier, Node, URIRef
 
