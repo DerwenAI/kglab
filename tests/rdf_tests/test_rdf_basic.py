@@ -160,22 +160,18 @@ def run_test(t, dir_):
                 report[t.name]["error"] = "ERROR: bindings do not match"
 
 
-def test_rdf_runner(rdf_basic=True, oxigraph=True):
-    if rdf_basic is True:
-        dir_, file_ = "basic", "manifest.ttl"
-        generator = parse_manifest(dir_, file_)
+def test_rdf_runner():
+    tests_list = ("basic", "oxigraph-tests/sparql", "algebra", )
+    
+    
+    for dir_ in tests_list:
+        generator = parse_manifest(dir_, "manifest.ttl")
         for loop in generator:
             for e, type_, test in loop:
                 print(f"Running {dir_}/{test.name}")
                 run_test(test, dir_)
-
-    if oxigraph is True:
-        dir_, file_ = "oxigraph-tests/sparql", "manifest.ttl"
-        generator = parse_manifest(dir_, file_)
-        for loop in generator:
-            for e, type_, test in loop:
-                print(f"Running {dir_}/{test.name}")
-                run_test(test, dir_)
+    
+    
         
     report.log()
 
