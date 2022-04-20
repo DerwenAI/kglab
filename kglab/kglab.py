@@ -835,7 +835,7 @@ this `KnowledgeGraph` object – used for method chaining
 
         df.apply(
             lambda row: self._g.parse(
-                data="{} {} {} .".format(row[0], row[1], row[2]),
+                data=f"{ row[0] } { row[1] } { row[2] } .",
                 format="ttl",
             ),
             axis=1,
@@ -1211,11 +1211,12 @@ a string of the expanded SPARQL query
         sparql_meta, sparql_body = re.split(r"\s*WHERE\s*\{", sparql, maxsplit=1)
 
         for var in sorted(bindings.keys(), key=lambda x: len(x), reverse=True):  # pylint: disable=W0108
-            pattern = re.compile("(\?" + var + ")(\W)")  # pylint: disable=W1401
+            pattern = re.compile(r"(\?" + var + r")(\W)")  # pylint: disable=W1401
             bind_val = "<" + str(bindings[var]) + ">\\2"
             sparql_body = re.sub(pattern, bind_val, sparql_body)
 
-        return "".join([preamble, sparql_meta, " WHERE {", sparql_body]).strip()
+        result = "".join([preamble, sparql_meta, " WHERE {", sparql_body]).strip()
+        return result
 
 
     ######################################################################

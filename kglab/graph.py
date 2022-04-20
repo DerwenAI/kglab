@@ -55,8 +55,8 @@ Instance constructor.
         self.__prefix: dict = {}
 
         self._tuples: list = []
-        self._node_names: np.array = np.empty(shape=[0, 1], dtype=object)
-        self._rel_names: np.array = np.empty(shape=[0, 1], dtype=object)
+        self._node_names: np.array = np.empty(shape=[0, 1], dtype=object)  # type: ignore
+        self._rel_names: np.array = np.empty(shape=[0, 1], dtype=object)  # type: ignore
 
 
 ######################################################################
@@ -101,7 +101,7 @@ An accessor method to map from the unique name of a node to its
 An accessor method to map from the `node_id` index of a node to its
 unique name.
         """
-        return self._node_names[node_id]
+        return self._node_names[node_id]  # type: ignore
 
 
     def get_rel_id (
@@ -131,7 +131,7 @@ An accessor method to map from a unique name of a relation to its
 An accessor method to map from the `rel_id` index of a relation to its
 unique name.
         """
-        return self._rel_names[rel_id]
+        return self._rel_names[rel_id]  # type: ignore
 
 
     def build_tuple (
