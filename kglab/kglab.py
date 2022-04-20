@@ -915,10 +915,10 @@ this `KnowledgeGraph` object – used for method chaining
         config: str,
         ) -> "KnowledgeGraph":
         """
-Binding to the morph-kgc `materialize()` method.
+Binding to the [Morph-KGC](https://github.com/oeg-upm/morph-kgc) `materialize()` method.
 
     config:
-morph-kgc configuration, it can be the path to the config file, or a string with the config; see <https://github.com/oeg-upm/Morph-KGC/wiki/Usage#library>
+morph-kgc configuration, it can be the path to the config file, or a string with the config; see <https://morph-kgc.readthedocs.io/en/latest/documentation/#library>
 
     returns:
 this `KnowledgeGraph` object – used for method chaining
