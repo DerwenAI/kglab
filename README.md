@@ -159,6 +159,17 @@ For detailed instructions please see:
 
 
 <details>
+  <summary>License and Copyright</summary>
+
+Source code for **kglab** plus its logo, documentation, and examples
+have an [MIT license](https://spdx.org/licenses/MIT.html) which is
+succinct and simplifies use in commercial applications.
+
+All materials herein are Copyright &copy; 2020-2022 Derwen, Inc.
+</details>
+
+
+<details>
   <summary>Attribution</summary>
 Please use the following BibTeX entry for citing **kglab** if you use
 it in your research or software.
@@ -177,20 +188,12 @@ this library.
 ```
 </details>
 
+
 <img
  alt="illustration of a knowledge graph, plus laboratory glassware"
  src="https://raw.githubusercontent.com/DerwenAI/kglab/main/docs/assets/logo.png"
  width="231"
 />
-
-
-## License and Copyright
-
-Source code for **kglab** plus its logo, documentation, and examples
-have an [MIT license](https://spdx.org/licenses/MIT.html) which is
-succinct and simplifies use in commercial applications.
-
-All materials herein are Copyright &copy; 2020-2022 Derwen, Inc.
 
 
 ## Kudos
@@ -228,4 +231,3 @@ and
  alt="kglab contributors"
  src="https://contributors-img.web.app/image?repo=derwenai/kglab"
 />
-

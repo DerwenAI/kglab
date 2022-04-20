@@ -2,10 +2,11 @@
 
 ## 0.6.1
 
-2022-04-??
+2022-04-20
 
   * automated RDF tests, coordinated with `Oxigraph`; kudos @Mec-iS, @Tpt
   * begin refactoring `KnowledgeGraph` as abstract classes, per #237
+  * update to Morph-KGC 2.0.0 and update links to the new documentation; kudos @ArenasGuerreroJulian
 
 
 ## 0.6.0
