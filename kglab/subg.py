@@ -436,6 +436,11 @@ text label for the node
     style:
 optional style dictionary
         """
+        if notebook == False:
+            import pyautogui
+            wid, hei= pyautogui.size()
+            pyvis_graph = pyvis.network.Network(width='{}px'.format(wid), height='{}px'.format(hei), notebook=notebook)
+
         if not style:
             style = {}
 
