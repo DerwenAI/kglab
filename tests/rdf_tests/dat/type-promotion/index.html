@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang='en' prefix='mf: http://www.w3.org/2001/sw/DataAccess/tests/test-manifest# qt:     http://www.w3.org/2001/sw/DataAccess/tests/test-query# dawgt:   http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#'>
+  <head>
+    <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' type='text/css'>
+    <style>
+      body: {bacground-image: none;}
+      dl.editor>dd {
+        margin: 0 0 0 40px;
+      }
+      dl.test-detail {
+        padding: 0.5em;
+      }
+      dl.test-detail>dt {
+        float: left;
+        clear: left;
+        text-align: right;
+        font-weight: bold;
+        color: green;
+      }
+      dl.test-detail>dt:after {content: ": "}
+      dl.test-detail>dd {
+        margin: 0 0 0 110px;
+        padding: 0 0 0.5em 0;
+      }
+      dl.test-description>dt {margin-top: 2em;}
+      dd {margin-left: 0;}
+      dd code {display: inline;}
+      footer {text-align: center;}
+    </style>
+    <title>
+      Type Promotion
+    </title>
+    <style>
+      em.rfc2119 { 
+        text-transform: lowercase;
+        font-variant:   small-caps;
+        font-style:     normal;
+        color:          #900;
+      }
+      a.testlink {
+        color: inherit;
+        text-decoration: none;
+      }
+      a.testlink:hover {
+        text-decoration: underline;
+      }
+      .warning {color: orange;}
+      .error {color: red;}
+    </style>
+  </head>
+  <body resource='' typeof='mf:Manifest'>
+    <p>
+      <a href='http://www.w3.org/'>
+        <img alt='W3C' height='48' src='http://www.w3.org/Icons/w3c_home' width='72'>
+      </a>
+    </p>
+    <h1 property='rdfs:label'>Type Promotion</h1>
+    <p><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2010 <a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a>, and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
+    <hr title='Separator for header'>
+    <div>
+      <h2 id='abstract'>Abstract</h2>
+      <p property='rdfs:comment'>
+        Type Promotion Tests
+      </p>
+      <p>This page describes W3C SPARQL Working Group&#39;s SPARQL1.0 test suite.</p>
+      
+      <h3>Contributing Tests</h3>
+      
+      <p>The test manifests and entries are built automatically from <a href="manifest.ttl">manifest.ttl</a> using a Rake task. Tests may be contributed via pull request to <a href="https://github.com/w3c/rdf-tests">https://github.com/w3c/rdf-tests</a> with suitable changes to the <a href="manifest.ttl">manifest.ttl</a> and referenced files.</p>
+      
+      <h3>Distribution</h3>
+      
+      <p>Distributed under both the <a href="http://www.w3.org/Consortium/Legal/2008/04-testsuite-license">W3C Test Suite License</a> and the <a href="http://www.w3.org/Consortium/Legal/2008/03-bsd-license">W3C 3-clause BSD License</a>. To contribute to a W3C Test Suite, see the <a href="http://www.w3.org/2004/10/27-testcases">policies and contribution forms</a>.</p>
+      
+      <h3>Disclaimer</h3>
+      
+      <p>UNDER BOTH MUTUALLY EXCLUSIVE LICENSES, THIS DOCUMENT AND ALL DOCUMENTS, TESTS AND SOFTWARE THAT LINK THIS STATEMENT ARE PROVIDED &quot;AS IS,&quot; AND COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THE DOCUMENT ARE SUITABLE FOR ANY PURPOSE; NOR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+        COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE DOCUMENT OR THE PERFORMANCE OR IMPLEMENTATION OF THE CONTENTS THEREOF.</p>
+    </div>
+    <div>
+      <h2>
+        Test Descriptions
+      </h2>
+      <dl class='test-description'>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-01' property='mf:name'>tP-double-double</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-01' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-double-double.rq' property='qt:query'>tP-double-double.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-02' property='mf:name'>tP-double-float</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-02' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-double-float.rq' property='qt:query'>tP-double-float.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-03'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-03'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-03:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-03' property='mf:name'>tP-double-decimal</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-03' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-double-decimal.rq' property='qt:query'>tP-double-decimal.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-04'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-04'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-04:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-04' property='mf:name'>tP-float-float</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-04' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-float-float.rq' property='qt:query'>tP-float-float.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-05'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-05'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-05:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-05' property='mf:name'>tP-float-decimal</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-05' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-float-decimal.rq' property='qt:query'>tP-float-decimal.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-06'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-06'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-06:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-06' property='mf:name'>tP-decimal-decimal</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-06' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-decimal-decimal.rq' property='qt:query'>tP-decimal-decimal.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-07'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-07'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-07:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-07' property='mf:name'>tP-integer-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-07' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-integer-short.rq' property='qt:query'>tP-integer-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-08'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-08'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-08:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-08' property='mf:name'>tP-nonPositiveInteger-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-08' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-nonPositiveInteger-short.rq' property='qt:query'>tP-nonPositiveInteger-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-09'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-09'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-09:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-09' property='mf:name'>tP-negativeInteger-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-09' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-negativeInteger-short.rq' property='qt:query'>tP-negativeInteger-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-10'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-10'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-10:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-10' property='mf:name'>tP-long-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-10' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-long-short.rq' property='qt:query'>tP-long-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-11'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-11'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-11:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-11' property='mf:name'>tP-int-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-11' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-int-short.rq' property='qt:query'>tP-int-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-12'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-12'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-12:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-12' property='mf:name'>tP-short-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-12' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-short-short.rq' property='qt:query'>tP-short-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-13'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-13'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-13:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-13' property='mf:name'>tP-byte-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-13' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-byte-short.rq' property='qt:query'>tP-byte-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-14'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-14'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-14:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-14' property='mf:name'>tP-nonNegativeInteger-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-14' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-nonNegativeInteger-short.rq' property='qt:query'>tP-nonNegativeInteger-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-15'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-15'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-15:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-15' property='mf:name'>tP-unsignedLong-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-15' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-unsignedLong-short.rq' property='qt:query'>tP-unsignedLong-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-16'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-16'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-16:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-16' property='mf:name'>tP-unsignedInt-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-16' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-unsignedInt-short.rq' property='qt:query'>tP-unsignedInt-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-17'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-17'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-17:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-17' property='mf:name'>tP-unsignedShort-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-17' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-unsignedShort-short.rq' property='qt:query'>tP-unsignedShort-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-18'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-18'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-18:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-18' property='mf:name'>tP-unsignedByte-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-18' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-unsignedByte-short.rq' property='qt:query'>tP-unsignedByte-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-19'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-19'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-19:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-19' property='mf:name'>tP-positiveInteger-short</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-19' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-positiveInteger-short.rq' property='qt:query'>tP-positiveInteger-short.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-20'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-20'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-20:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-20' property='mf:name'>tP-short-double</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-20' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-short-double.rq' property='qt:query'>tP-short-double.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-21'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-21'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-21:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-21' property='mf:name'>tP-short-float</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-21' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-short-float.rq' property='qt:query'>tP-short-float.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-22'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-22'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-22:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-22' property='mf:name'>tP-short-decimal</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-22' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-short-decimal.rq' property='qt:query'>tP-short-decimal.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='true.ttl' property='mf:result'>true.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-23'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-23'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-23:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-23' property='mf:name'>tP-short-short-fail</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-23' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-short-short-fail.rq' property='qt:query'>tP-short-short-fail.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='false.ttl' property='mf:result'>false.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-24'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-24'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-24:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-24' property='mf:name'>tP-byte-short-fail</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-24' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-byte-short-fail.rq' property='qt:query'>tP-byte-short-fail.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='false.ttl' property='mf:result'>false.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-25'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-25'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-25:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-25' property='mf:name'>tP-short-long-fail</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-25' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-short-long-fail.rq' property='qt:query'>tP-short-long-fail.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='false.ttl' property='mf:result'>false.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-26'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-26'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-26:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-26' property='mf:name'>tP-short-int-fail</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-26' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-short-int-fail.rq' property='qt:query'>tP-short-int-fail.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='false.ttl' property='mf:result'>false.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-27'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-27'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-27:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-27' property='mf:name'>tP-short-byte-fail</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-27' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-short-byte-fail.rq' property='qt:query'>tP-short-byte-fail.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='false.ttl' property='mf:result'>false.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-28'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-28'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-28:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-28' property='mf:name'>tP-double-float-fail</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-28' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-double-float-fail.rq' property='qt:query'>tP-double-float-fail.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='false.ttl' property='mf:result'>false.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-29'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-29'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-29:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-29' property='mf:name'>tP-double-decimal-fail</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-29' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-double-decimal-fail.rq' property='qt:query'>tP-double-decimal-fail.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='false.ttl' property='mf:result'>false.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-30'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-30'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-30:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-30' property='mf:name'>tP-float-decimal-fail</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/type-promotion/manifest#type-promotion-30' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Positive test: product of type promotion within the xsd:decimal type tree.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/07/17-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/07/17-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='tP-float-decimal-fail.rq' property='qt:query'>tP-float-decimal-fail.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='tP.ttl' property='qt:data'>tP.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='false.ttl' property='mf:result'>false.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
+    <footer>
+      <p><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright ©</a> 2015 <a href="http://www.w3.org/">W3C</a>® (<a href="http://www.csail.mit.edu/">MIT</a>, <a href="http://www.ercim.org/">ERCIM</a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C® <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
+    </footer>
+  </body>
+</html>
