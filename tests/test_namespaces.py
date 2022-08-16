@@ -38,6 +38,8 @@ Coverage:
 * KnowledgeGraph.get_ns_dict()
 * KnowledgeGraph.get_ns
     """
+    print(kg_test.get_ns_dict())
+    print(len(kg_test.get_ns_dict()))
     assert len(kg_test.get_ns_dict()) == 30
     
     iri2  = "http://schema.org/"
