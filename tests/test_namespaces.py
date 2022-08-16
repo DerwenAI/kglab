@@ -36,7 +36,7 @@ def test_add_ns(kg_test):
 Coverage:                                                                                                                                    
                                                                                                                                              
 * KnowledgeGraph.get_ns_dict()                                                                                                               
-* KnowledgeGraph.get_ns                                                                                                                      
+* KnowledgeGraph.add_ns                                                                                                                      
     """
     ns_dict = kg_test.get_ns_dict()
     obs_ns_keys = set(ns_dict.keys())
