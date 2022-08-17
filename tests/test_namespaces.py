@@ -88,7 +88,7 @@ Coverage:
                    'brick', 'odrl', 'qb', 'void', 'dct', 'dcmitype', 'prof',
                    'foaf', 'sosa', 'xml', 'dcam', 'schema1', 'dcterms', 'vann',
                    'schema', 'dcat', 'csvw', 'dc', 'sh', 'rdf', 'prov', 'xsd'}
-    assert exp_ns_keys.issubset(s)
+    assert s.issubset(exp_ns_keys)
     
     for prfx in kg_test_data._DEFAULT_NAMESPACES:
         assert prfx in list(df["prefix"])
