@@ -83,6 +83,12 @@ Coverage:
     """
     df = kg_test_data.describe_ns()
 
-    assert len(df) == 29
+    s = set(df["prefix"])
+    exp_ns_keys = {'rdfs', 'skos', 'time', 'ssn', 'org', 'owl', 'doap',
+                   'brick', 'odrl', 'qb', 'void', 'dct', 'dcmitype', 'prof',
+                   'foaf', 'sosa', 'xml', 'dcam', 'schema1', 'dcterms', 'vann',
+                   'schema', 'dcat', 'csvw', 'dc', 'sh', 'rdf', 'prov', 'xsd'}
+    assert exp_ns_keys.issubset(s)
+    
     for prfx in kg_test_data._DEFAULT_NAMESPACES:
         assert prfx in list(df["prefix"])
