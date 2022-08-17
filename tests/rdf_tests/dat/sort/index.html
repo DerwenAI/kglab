@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang='en' prefix='mf: http://www.w3.org/2001/sw/DataAccess/tests/test-manifest# qt:     http://www.w3.org/2001/sw/DataAccess/tests/test-query# dawgt:   http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#'>
+  <head>
+    <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' type='text/css'>
+    <style>
+      body: {bacground-image: none;}
+      dl.editor>dd {
+        margin: 0 0 0 40px;
+      }
+      dl.test-detail {
+        padding: 0.5em;
+      }
+      dl.test-detail>dt {
+        float: left;
+        clear: left;
+        text-align: right;
+        font-weight: bold;
+        color: green;
+      }
+      dl.test-detail>dt:after {content: ": "}
+      dl.test-detail>dd {
+        margin: 0 0 0 110px;
+        padding: 0 0 0.5em 0;
+      }
+      dl.test-description>dt {margin-top: 2em;}
+      dd {margin-left: 0;}
+      dd code {display: inline;}
+      footer {text-align: center;}
+    </style>
+    <title>
+      SORT
+    </title>
+    <style>
+      em.rfc2119 { 
+        text-transform: lowercase;
+        font-variant:   small-caps;
+        font-style:     normal;
+        color:          #900;
+      }
+      a.testlink {
+        color: inherit;
+        text-decoration: none;
+      }
+      a.testlink:hover {
+        text-decoration: underline;
+      }
+      .warning {color: orange;}
+      .error {color: red;}
+    </style>
+  </head>
+  <body resource='' typeof='mf:Manifest'>
+    <p>
+      <a href='http://www.w3.org/'>
+        <img alt='W3C' height='48' src='http://www.w3.org/Icons/w3c_home' width='72'>
+      </a>
+    </p>
+    <h1 property='rdfs:label'>SORT</h1>
+    <p><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2010 <a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a>, and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
+    <hr title='Separator for header'>
+    <div>
+      <h2 id='abstract'>Abstract</h2>
+      <p property='rdfs:comment'>
+        Sorting test cases.
+      </p>
+      <p>This page describes W3C SPARQL Working Group&#39;s SPARQL1.0 test suite.</p>
+      
+      <h3>Contributing Tests</h3>
+      
+      <p>The test manifests and entries are built automatically from <a href="manifest.ttl">manifest.ttl</a> using a Rake task. Tests may be contributed via pull request to <a href="https://github.com/w3c/rdf-tests">https://github.com/w3c/rdf-tests</a> with suitable changes to the <a href="manifest.ttl">manifest.ttl</a> and referenced files.</p>
+      
+      <h3>Distribution</h3>
+      
+      <p>Distributed under both the <a href="http://www.w3.org/Consortium/Legal/2008/04-testsuite-license">W3C Test Suite License</a> and the <a href="http://www.w3.org/Consortium/Legal/2008/03-bsd-license">W3C 3-clause BSD License</a>. To contribute to a W3C Test Suite, see the <a href="http://www.w3.org/2004/10/27-testcases">policies and contribution forms</a>.</p>
+      
+      <h3>Disclaimer</h3>
+      
+      <p>UNDER BOTH MUTUALLY EXCLUSIVE LICENSES, THIS DOCUMENT AND ALL DOCUMENTS, TESTS AND SOFTWARE THAT LINK THIS STATEMENT ARE PROVIDED &quot;AS IS,&quot; AND COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THE DOCUMENT ARE SUITABLE FOR ANY PURPOSE; NOR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+        COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE DOCUMENT OR THE PERFORMANCE OR IMPLEMENTATION OF THE CONTENTS THEREOF.</p>
+    </div>
+    <div>
+      <h2>
+        Test Descriptions
+      </h2>
+      <dl class='test-description'>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-1'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-1'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-1:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-1' property='mf:name'>sort-1</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-1' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Alphabetic sort (ascending) on untyped literals</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/06/26-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/06/26-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-1.rq' property='qt:query'>query-sort-1.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-1.ttl' property='qt:data'>data-sort-1.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-1.rdf' property='mf:result'>result-sort-1.rdf</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-2'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-2'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-2:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-2' property='mf:name'>sort-2</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-2' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Alphabetic sort (descending) on untyped literals</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/06/26-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/06/26-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-2.rq' property='qt:query'>query-sort-2.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-1.ttl' property='qt:data'>data-sort-1.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-2.rdf' property='mf:result'>result-sort-2.rdf</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-3'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-3'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-3:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-3' property='mf:name'>sort-3</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-3' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Sort on (possibly unbound) URIs</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/06/26-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/06/26-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-3.rq' property='qt:query'>query-sort-3.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-3.ttl' property='qt:data'>data-sort-3.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-3.rdf' property='mf:result'>result-sort-3.rdf</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-4'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-4'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-4:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-4' property='mf:name'>sort-4</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-4' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Sort on datatyped (integer) literals</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/06/26-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/06/26-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-4.rq' property='qt:query'>query-sort-4.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-4.ttl' property='qt:data'>data-sort-4.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-4.rdf' property='mf:result'>result-sort-4.rdf</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-5'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-5'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-5:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-5' property='mf:name'>sort-5</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-5' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Sort first on untyped literals (ascending), then on datatyped (integer) literals (descending</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/06/26-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/06/26-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-5.rq' property='qt:query'>query-sort-5.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-4.ttl' property='qt:data'>data-sort-4.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-5.rdf' property='mf:result'>result-sort-5.rdf</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-6'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-6'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-6:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-6' property='mf:name'>sort-6</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-6' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Sort on mixed result of uris and literals.</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/06/26-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/06/26-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-6.rq' property='qt:query'>query-sort-6.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-6.ttl' property='qt:data'>data-sort-6.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-6.rdf' property='mf:result'>result-sort-6.rdf</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-7'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-7'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-7:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-7' property='mf:name'>sort-7</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-7' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Sort on comparable mixed typed literals (integer and float)</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/06/26-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/06/26-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-4.rq' property='qt:query'>query-sort-4.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-7.ttl' property='qt:data'>data-sort-7.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-7.rdf' property='mf:result'>result-sort-7.rdf</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-8'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-8'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-8:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-8' property='mf:name'>sort-8</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-8' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Sort on several mixed values (bnode, uri, literal)</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/06/26-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/06/26-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-4.rq' property='qt:query'>query-sort-4.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-8.ttl' property='qt:data'>data-sort-8.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-8.rdf' property='mf:result'>result-sort-8.rdf</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-9'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-9'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-9:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-9' property='mf:name'>sort-9</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-9' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Alphabetic sort (ascending) on datatyped (string) literals</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/06/26-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/06/26-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-9.rq' property='qt:query'>query-sort-9.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-9.ttl' property='qt:data'>data-sort-9.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-9.rdf' property='mf:result'>result-sort-9.rdf</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-10'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-10'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-10:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-10' property='mf:name'>sort-10</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-10' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Alphabetic sort (descending) on datatyped (string) literals</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://www.w3.org/2007/06/26-dawg-minutes' property='dawgt:approvedBy'>http://www.w3.org/2007/06/26-dawg-minutes</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-10.rq' property='qt:query'>query-sort-10.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-9.ttl' property='qt:data'>data-sort-9.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-10.rdf' property='mf:result'>result-sort-10.rdf</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-numbers'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-numbers'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-numbers:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-numbers' property='mf:name'>Expression sort</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-numbers' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Sort by a bracketted expression</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0096/21-dawg-minutes.html' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0096/21-dawg-minutes.html</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-numbers.rq' property='qt:query'>query-sort-numbers.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-numbers.ttl' property='qt:data'>data-sort-numbers.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-numbers.ttl' property='mf:result'>result-sort-numbers.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-builtin'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-builtin'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-builtin:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-builtin' property='mf:name'>Builtin sort</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-builtin' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Sort by a builtin operator</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0096/21-dawg-minutes.html' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0096/21-dawg-minutes.html</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-builtin.rq' property='qt:query'>query-sort-builtin.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-builtin.ttl' property='qt:data'>data-sort-builtin.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-builtin.ttl' property='mf:result'>result-sort-builtin.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-function'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-function'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-function:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-function' property='mf:name'>Function sort</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/sort/manifest#dawg-sort-function' typeof='mf:QueryEvaluationTest'>
+          <div property='rdfs:comment'>
+            <p>Sort by function invocation</p>
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:QueryEvaluationTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0096/21-dawg-minutes.html' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0096/21-dawg-minutes.html</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <dl class='test-detail'>
+                <dt>query</dt>
+                <dd>
+                  <a href='query-sort-function.rq' property='qt:query'>query-sort-function.rq</a>
+                </dd>
+                <dt>data</dt>
+                <dd>
+                  <a href='data-sort-function.ttl' property='qt:data'>data-sort-function.ttl</a>
+                </dd>
+              </dl>
+            </dd>
+            <dt>result</dt>
+            <dd>
+              <a href='result-sort-function.ttl' property='mf:result'>result-sort-function.ttl</a>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
+    <footer>
+      <p><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright ©</a> 2015 <a href="http://www.w3.org/">W3C</a>® (<a href="http://www.csail.mit.edu/">MIT</a>, <a href="http://www.ercim.org/">ERCIM</a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C® <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
+    </footer>
+  </body>
+</html>

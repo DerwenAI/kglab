@@ -161,7 +161,15 @@ def run_test(t, dir_):
 
 
 def test_rdf_runner():
-    tests_list = ("basic", "oxigraph-tests/sparql", "algebra", )
+    tests_list = (
+        "algebra","basic", "bind", "ask",
+        "oxigraph-tests/sparql",
+        "cast", "exists", "grouping",
+        "distinct", "sort", "expr-ops",
+        "construct", "syntax-sparql1",
+        "syntax-sparql2", "syntax-sparql3",
+        "syntax-sparql4", "syntax-sparql5",
+    )
     
     
     for dir_ in tests_list:

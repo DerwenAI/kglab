@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+<html lang='en' prefix='mf: http://www.w3.org/2001/sw/DataAccess/tests/test-manifest# qt:     http://www.w3.org/2001/sw/DataAccess/tests/test-query# dawgt:   http://www.w3.org/2001/sw/DataAccess/tests/test-dawg#'>
+  <head>
+    <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' type='text/css'>
+    <style>
+      body: {bacground-image: none;}
+      dl.editor>dd {
+        margin: 0 0 0 40px;
+      }
+      dl.test-detail {
+        padding: 0.5em;
+      }
+      dl.test-detail>dt {
+        float: left;
+        clear: left;
+        text-align: right;
+        font-weight: bold;
+        color: green;
+      }
+      dl.test-detail>dt:after {content: ": "}
+      dl.test-detail>dd {
+        margin: 0 0 0 110px;
+        padding: 0 0 0.5em 0;
+      }
+      dl.test-description>dt {margin-top: 2em;}
+      dd {margin-left: 0;}
+      dd code {display: inline;}
+      footer {text-align: center;}
+    </style>
+    <title>
+      Syntax 1
+    </title>
+    <style>
+      em.rfc2119 { 
+        text-transform: lowercase;
+        font-variant:   small-caps;
+        font-style:     normal;
+        color:          #900;
+      }
+      a.testlink {
+        color: inherit;
+        text-decoration: none;
+      }
+      a.testlink:hover {
+        text-decoration: underline;
+      }
+      .warning {color: orange;}
+      .error {color: red;}
+    </style>
+  </head>
+  <body resource='' typeof='mf:Manifest'>
+    <p>
+      <a href='http://www.w3.org/'>
+        <img alt='W3C' height='48' src='http://www.w3.org/Icons/w3c_home' width='72'>
+      </a>
+    </p>
+    <h1 property='rdfs:label'>Syntax 1</h1>
+    <p><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2010 <a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a>, and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
+    <hr title='Separator for header'>
+    <div>
+      <h2 id='abstract'>Abstract</h2>
+      <p property='rdfs:comment'>
+        Syntax tests syntax-sparql1
+      </p>
+      <p>This page describes W3C SPARQL Working Group&#39;s SPARQL1.0 test suite.</p>
+      
+      <h3>Contributing Tests</h3>
+      
+      <p>The test manifests and entries are built automatically from <a href="manifest.ttl">manifest.ttl</a> using a Rake task. Tests may be contributed via pull request to <a href="https://github.com/w3c/rdf-tests">https://github.com/w3c/rdf-tests</a> with suitable changes to the <a href="manifest.ttl">manifest.ttl</a> and referenced files.</p>
+      
+      <h3>Distribution</h3>
+      
+      <p>Distributed under both the <a href="http://www.w3.org/Consortium/Legal/2008/04-testsuite-license">W3C Test Suite License</a> and the <a href="http://www.w3.org/Consortium/Legal/2008/03-bsd-license">W3C 3-clause BSD License</a>. To contribute to a W3C Test Suite, see the <a href="http://www.w3.org/2004/10/27-testcases">policies and contribution forms</a>.</p>
+      
+      <h3>Disclaimer</h3>
+      
+      <p>UNDER BOTH MUTUALLY EXCLUSIVE LICENSES, THIS DOCUMENT AND ALL DOCUMENTS, TESTS AND SOFTWARE THAT LINK THIS STATEMENT ARE PROVIDED &quot;AS IS,&quot; AND COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THE DOCUMENT ARE SUITABLE FOR ANY PURPOSE; NOR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+        COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE DOCUMENT OR THE PERFORMANCE OR IMPLEMENTATION OF THE CONTENTS THEREOF.</p>
+    </div>
+    <div>
+      <h2>
+        Test Descriptions
+      </h2>
+      <dl class='test-description'>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-01' property='mf:name'>syntax-basic-01.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-01' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-basic-01.rq' property='mf:action'>syntax-basic-01.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-02' property='mf:name'>syntax-basic-02.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-02' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-basic-02.rq' property='mf:action'>syntax-basic-02.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-03'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-03'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-03:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-03' property='mf:name'>syntax-basic-03.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-03' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-basic-03.rq' property='mf:action'>syntax-basic-03.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-04'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-04'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-04:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-04' property='mf:name'>syntax-basic-04.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-04' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-basic-04.rq' property='mf:action'>syntax-basic-04.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-05'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-05'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-05:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-05' property='mf:name'>syntax-basic-05.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-05' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-basic-05.rq' property='mf:action'>syntax-basic-05.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-06'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-06'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-06:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-06' property='mf:name'>syntax-basic-06.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-basic-06' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-basic-06.rq' property='mf:action'>syntax-basic-06.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-01' property='mf:name'>syntax-qname-01.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-01' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-qname-01.rq' property='mf:action'>syntax-qname-01.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-02' property='mf:name'>syntax-qname-02.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-02' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-qname-02.rq' property='mf:action'>syntax-qname-02.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-03'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-03'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-03:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-03' property='mf:name'>syntax-qname-03.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-03' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-qname-03.rq' property='mf:action'>syntax-qname-03.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-04'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-04'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-04:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-04' property='mf:name'>syntax-qname-04.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-04' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-qname-04.rq' property='mf:action'>syntax-qname-04.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-05'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-05'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-05:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-05' property='mf:name'>syntax-qname-05.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-05' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-qname-05.rq' property='mf:action'>syntax-qname-05.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-06'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-06'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-06:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-06' property='mf:name'>syntax-qname-06.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-06' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-qname-06.rq' property='mf:action'>syntax-qname-06.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-07'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-07'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-07:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-07' property='mf:name'>syntax-qname-07.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-07' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-qname-07.rq' property='mf:action'>syntax-qname-07.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-08'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-08'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-08:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-08' property='mf:name'>syntax-qname-08.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-qname-08' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-qname-08.rq' property='mf:action'>syntax-qname-08.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-01' property='mf:name'>syntax-lit-01.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-01' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-01.rq' property='mf:action'>syntax-lit-01.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-02' property='mf:name'>syntax-lit-02.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-02' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-02.rq' property='mf:action'>syntax-lit-02.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-03'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-03'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-03:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-03' property='mf:name'>syntax-lit-03.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-03' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-03.rq' property='mf:action'>syntax-lit-03.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-04'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-04'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-04:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-04' property='mf:name'>syntax-lit-04.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-04' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-04.rq' property='mf:action'>syntax-lit-04.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-05'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-05'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-05:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-05' property='mf:name'>syntax-lit-05.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-05' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-05.rq' property='mf:action'>syntax-lit-05.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-06'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-06'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-06:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-06' property='mf:name'>syntax-lit-06.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-06' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-06.rq' property='mf:action'>syntax-lit-06.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-07'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-07'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-07:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-07' property='mf:name'>syntax-lit-07.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-07' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-07.rq' property='mf:action'>syntax-lit-07.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-08'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-08'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-08:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-08' property='mf:name'>syntax-lit-08.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-08' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-08.rq' property='mf:action'>syntax-lit-08.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-09'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-09'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-09:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-09' property='mf:name'>syntax-lit-09.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-09' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-09.rq' property='mf:action'>syntax-lit-09.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-10'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-10'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-10:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-10' property='mf:name'>syntax-lit-10.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-10' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-10.rq' property='mf:action'>syntax-lit-10.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-11'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-11'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-11:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-11' property='mf:name'>syntax-lit-11.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-11' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-11.rq' property='mf:action'>syntax-lit-11.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-12'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-12'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-12:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-12' property='mf:name'>syntax-lit-12.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-12' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-12.rq' property='mf:action'>syntax-lit-12.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-13'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-13'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-13:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-13' property='mf:name'>syntax-lit-13.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-13' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-13.rq' property='mf:action'>syntax-lit-13.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-14'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-14'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-14:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-14' property='mf:name'>syntax-lit-14.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-14' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-14.rq' property='mf:action'>syntax-lit-14.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-15'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-15'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-15:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-15' property='mf:name'>syntax-lit-15.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-15' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-15.rq' property='mf:action'>syntax-lit-15.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-16'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-16'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-16:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-16' property='mf:name'>syntax-lit-16.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-16' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-16.rq' property='mf:action'>syntax-lit-16.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-17'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-17'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-17:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-17' property='mf:name'>syntax-lit-17.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-17' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-17.rq' property='mf:action'>syntax-lit-17.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-18'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-18'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-18:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-18' property='mf:name'>syntax-lit-18.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-18' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-18.rq' property='mf:action'>syntax-lit-18.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-19'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-19'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-19:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-19' property='mf:name'>syntax-lit-19.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-19' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-19.rq' property='mf:action'>syntax-lit-19.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-20'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-20'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-20:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-20' property='mf:name'>syntax-lit-20.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lit-20' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lit-20.rq' property='mf:action'>syntax-lit-20.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-01' property='mf:name'>syntax-struct-01.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-01' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-01.rq' property='mf:action'>syntax-struct-01.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-02' property='mf:name'>syntax-struct-02.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-02' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-02.rq' property='mf:action'>syntax-struct-02.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-03'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-03'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-03:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-03' property='mf:name'>syntax-struct-03.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-03' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-03.rq' property='mf:action'>syntax-struct-03.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-05'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-05'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-05:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-05' property='mf:name'>syntax-struct-05.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-05' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-05.rq' property='mf:action'>syntax-struct-05.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-06'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-06'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-06:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-06' property='mf:name'>syntax-struct-06.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-06' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-06.rq' property='mf:action'>syntax-struct-06.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-07'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-07'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-07:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-07' property='mf:name'>syntax-struct-07.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-07' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-07.rq' property='mf:action'>syntax-struct-07.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-08'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-08'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-08:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-08' property='mf:name'>syntax-struct-08.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-08' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-08.rq' property='mf:action'>syntax-struct-08.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-09'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-09'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-09:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-09' property='mf:name'>syntax-struct-09.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-09' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-09.rq' property='mf:action'>syntax-struct-09.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-10'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-10'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-10:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-10' property='mf:name'>syntax-struct-10.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-10' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-10.rq' property='mf:action'>syntax-struct-10.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-11'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-11'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-11:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-11' property='mf:name'>syntax-struct-11.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-11' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-11.rq' property='mf:action'>syntax-struct-11.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-12'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-12'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-12:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-12' property='mf:name'>syntax-struct-12.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-12' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-12.rq' property='mf:action'>syntax-struct-12.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-13'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-13'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-13:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-13' property='mf:name'>syntax-struct-13.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-13' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-13.rq' property='mf:action'>syntax-struct-13.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-14'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-14'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-14:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-14' property='mf:name'>syntax-struct-14.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-struct-14' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-struct-14.rq' property='mf:action'>syntax-struct-14.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-01' property='mf:name'>syntax-lists-01.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-01' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lists-01.rq' property='mf:action'>syntax-lists-01.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-02' property='mf:name'>syntax-lists-02.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-02' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lists-02.rq' property='mf:action'>syntax-lists-02.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-03'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-03'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-03:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-03' property='mf:name'>syntax-lists-03.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-03' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lists-03.rq' property='mf:action'>syntax-lists-03.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-04'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-04'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-04:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-04' property='mf:name'>syntax-lists-04.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-04' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lists-04.rq' property='mf:action'>syntax-lists-04.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-05'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-05'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-05:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-05' property='mf:name'>syntax-lists-05.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-lists-05' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-lists-05.rq' property='mf:action'>syntax-lists-05.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-01' property='mf:name'>syntax-bnodes-01.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-01' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-bnodes-01.rq' property='mf:action'>syntax-bnodes-01.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-02' property='mf:name'>syntax-bnodes-02.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-02' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-bnodes-02.rq' property='mf:action'>syntax-bnodes-02.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-03'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-03'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-03:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-03' property='mf:name'>syntax-bnodes-03.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-03' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-bnodes-03.rq' property='mf:action'>syntax-bnodes-03.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-04'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-04'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-04:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-04' property='mf:name'>syntax-bnodes-04.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-04' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-bnodes-04.rq' property='mf:action'>syntax-bnodes-04.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-05'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-05'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-05:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-05' property='mf:name'>syntax-bnodes-05.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-bnodes-05' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-bnodes-05.rq' property='mf:action'>syntax-bnodes-05.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-forms-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-forms-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-forms-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-forms-01' property='mf:name'>syntax-forms-01.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-forms-01' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-forms-01.rq' property='mf:action'>syntax-forms-01.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-forms-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-forms-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-forms-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-forms-02' property='mf:name'>syntax-forms-02.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-forms-02' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-forms-02.rq' property='mf:action'>syntax-forms-02.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-union-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-union-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-union-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-union-01' property='mf:name'>syntax-union-01.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-union-01' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-union-01.rq' property='mf:action'>syntax-union-01.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-union-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-union-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-union-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-union-02' property='mf:name'>syntax-union-02.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-union-02' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-union-02.rq' property='mf:action'>syntax-union-02.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-01' property='mf:name'>syntax-expr-01.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-01' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-expr-01.rq' property='mf:action'>syntax-expr-01.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-02' property='mf:name'>syntax-expr-02.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-02' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-expr-02.rq' property='mf:action'>syntax-expr-02.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-03'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-03'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-03:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-03' property='mf:name'>syntax-expr-03.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-03' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-expr-03.rq' property='mf:action'>syntax-expr-03.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-04'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-04'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-04:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-04' property='mf:name'>syntax-expr-04.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-04' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-expr-04.rq' property='mf:action'>syntax-expr-04.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-05'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-05'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-05:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-05' property='mf:name'>syntax-expr-05.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-expr-05' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-expr-05.rq' property='mf:action'>syntax-expr-05.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-01' property='mf:name'>syntax-order-01.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-01' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-order-01.rq' property='mf:action'>syntax-order-01.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-02' property='mf:name'>syntax-order-02.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-02' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-order-02.rq' property='mf:action'>syntax-order-02.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-03'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-03'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-03:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-03' property='mf:name'>syntax-order-03.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-03' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-order-03.rq' property='mf:action'>syntax-order-03.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-04'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-04'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-04:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-04' property='mf:name'>syntax-order-04.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-04' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-order-04.rq' property='mf:action'>syntax-order-04.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-05'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-05'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-05:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-05' property='mf:name'>syntax-order-05.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-05' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-order-05.rq' property='mf:action'>syntax-order-05.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-06'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-06'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-06:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-06' property='mf:name'>syntax-order-06.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-06' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-order-06.rq' property='mf:action'>syntax-order-06.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-07'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-07'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-07:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-07' property='mf:name'>syntax-order-07.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-order-07' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-order-07.rq' property='mf:action'>syntax-order-07.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-01' property='mf:name'>syntax-limit-offset-01.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-01' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-limit-offset-01.rq' property='mf:action'>syntax-limit-offset-01.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-02' property='mf:name'>syntax-limit-offset-02.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-02' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-limit-offset-02.rq' property='mf:action'>syntax-limit-offset-02.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-03'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-03'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-03:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-03' property='mf:name'>syntax-limit-offset-03.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-03' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-limit-offset-03.rq' property='mf:action'>syntax-limit-offset-03.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-04'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-04'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-04:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-04' property='mf:name'>syntax-limit-offset-04.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-limit-offset-04' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JanMar/0047</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-limit-offset-04.rq' property='mf:action'>syntax-limit-offset-04.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-01'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-01'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-01:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-01' property='mf:name'>syntax-pat-01.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-01' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0118/04-dawg-minutes.html' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0118/04-dawg-minutes.html</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-pat-01.rq' property='mf:action'>syntax-pat-01.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-02'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-02'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-02:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-02' property='mf:name'>syntax-pat-02.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-02' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0118/04-dawg-minutes.html' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0118/04-dawg-minutes.html</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-pat-02.rq' property='mf:action'>syntax-pat-02.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-03'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-03'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-03:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-03' property='mf:name'>syntax-pat-03.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-03' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0118/04-dawg-minutes.html' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0118/04-dawg-minutes.html</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-pat-03.rq' property='mf:action'>syntax-pat-03.rq</a>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-04'>
+          <a class='testlink' href='#http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-04'>
+            http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-04:
+          </a>
+          <span about='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-04' property='mf:name'>syntax-pat-04.rq</span>
+        </dt>
+        <dd inlist property='mf:entry' resource='http://www.w3.org/2001/sw/DataAccess/tests/data-r2/syntax-sparql1/manifest#syntax-pat-04' typeof='mf:PositiveSyntaxTest'>
+          <div property='rdfs:comment'>
+            
+          </div>
+          <dl class='test-detail'>
+            <dt>type</dt>
+            <dd>mf:PositiveSyntaxTest</dd>
+            <dt>approval</dt>
+            <dd property='mf:approval' resource='dawgt:Approved'>dawgt:Approved</dd>
+            <dt>approvedBy</dt>
+            <dd>
+              <a href='http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0118/04-dawg-minutes.html' property='dawgt:approvedBy'>http://lists.w3.org/Archives/Public/public-rdf-dawg/2007JulSep/att-0118/04-dawg-minutes.html</a>
+            </dd>
+            <dt>action</dt>
+            <dd>
+              <a href='syntax-pat-04.rq' property='mf:action'>syntax-pat-04.rq</a>
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </div>
+    <footer>
+      <p><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright ©</a> 2015 <a href="http://www.w3.org/">W3C</a>® (<a href="http://www.csail.mit.edu/">MIT</a>, <a href="http://www.ercim.org/">ERCIM</a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C® <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
+    </footer>
+  </body>
+</html>

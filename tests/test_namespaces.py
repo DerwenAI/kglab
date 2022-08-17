@@ -32,14 +32,18 @@ def kg_test_data():
 
 
 def test_add_ns(kg_test):
+    """                                                                                                                                      
+Coverage:                                                                                                                                    
+                                                                                                                                             
+* KnowledgeGraph.get_ns_dict()                                                                                                               
+* KnowledgeGraph.add_ns                                                                                                                      
     """
-Coverage:
+    ns_dict = kg_test.get_ns_dict()
+    obs_ns_keys = set(ns_dict.keys())
 
-* KnowledgeGraph.get_ns_dict()
-* KnowledgeGraph.get_ns
-    """
-    assert len(kg_test.get_ns_dict()) == 30
-    
+    exp_ns_keys = set(["dct", "owl", "prov", "rdf", "rdfs", "schema", "sh", "skos", "xsd", "test1", "xml"])
+    assert exp_ns_keys.issubset(obs_ns_keys)
+
     iri2  = "http://schema.org/"
     prefix2 = "test2"
 
@@ -47,10 +51,11 @@ Coverage:
         prefix = prefix2,
         iri = iri2
     )
-    assert len(kg_test.get_ns_dict()) == 31
-    
+
+    assert prefix2 in set(kg_test.get_ns_dict().keys())
+
     namespace = kg_test.get_ns("test2")
-    # ic(namespace)
+    # ic(namespace)                                                                                                                          
 
     assert type(namespace) == Namespace
     assert namespace == "http://schema.org/"
@@ -78,6 +83,12 @@ Coverage:
     """
     df = kg_test_data.describe_ns()
 
-    assert len(df) == 29
+    s = set(df["prefix"])
+    exp_ns_keys = {'rdfs', 'skos', 'time', 'ssn', 'org', 'owl', 'doap',
+                   'brick', 'odrl', 'qb', 'void', 'dct', 'dcmitype', 'prof',
+                   'foaf', 'sosa', 'xml', 'dcam', 'schema1', 'dcterms', 'vann',
+                   'schema', 'dcat', 'csvw', 'dc', 'sh', 'rdf', 'prov', 'xsd'}
+    assert s.issubset(exp_ns_keys)
+    
     for prfx in kg_test_data._DEFAULT_NAMESPACES:
         assert prfx in list(df["prefix"])
