@@ -1,7 +1,7 @@
 # see license https://github.com/DerwenAI/kglab#license-and-copyright
 
 """
-Mixin definition for `kglab` querying
+Mixin definition for `KnowledgeGraph` querying functionalities
 """
 
 ## Python standard libraries
@@ -9,14 +9,13 @@ import re
 import typing
 
 ### third-parties libraries
-from icecream import ic  # type: ignore  # pylint: disable=E0401
-import dateutil.parser as dup  # pylint: disable=E0401
-import pandas as pd  # type: ignore  # pylint: disable=E0401
-import pyvis  # type: ignore  # pylint: disable=E0401
+from icecream import ic  # type: ignore
+import pandas as pd  # type: ignore
+import pyvis  # type: ignore
 
-import rdflib  # type: ignore  # pylint: disable=E0401
-import rdflib.plugin  # type: ignore  # pylint: disable=E0401
-import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore  # pylint: disable=E0401
+import rdflib  # type: ignore
+import rdflib.plugin  # type: ignore
+import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore
 
 ## kglab - core classes
 from kglab.pkg_types import RDF_Node
