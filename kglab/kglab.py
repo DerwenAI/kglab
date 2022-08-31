@@ -39,6 +39,7 @@ from kglab.gpviz import GPViz
 from kglab.util import get_gpu_count
 from kglab.version import _check_version
 import kglab.query.sparql
+from kglab.algebra import AlgebraMixin
 
 
 ## pre-constructor set-up
@@ -48,7 +49,7 @@ if get_gpu_count() > 0:
     import cudf  # type: ignore  # pylint: disable=E0401
 
 
-class KnowledgeGraph:
+class KnowledgeGraph(AlgebraMixin):
     """
 This is the primary class used to represent RDF graphs, on which the other classes are dependent.
 See <https://derwen.ai/docs/kgl/concepts/#knowledge-graph>
