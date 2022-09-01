@@ -397,10 +397,10 @@ boolean flag to disable `tqdm` progress bar calculation and output
     returns:
 an edge list for the loaded tensor object
         """
-        edge_list: list = [
+        edge_list: list = list(
             edge_tuple
             for edge_tuple in tqdm(self.as_tensor_edges(), disable=quiet)  # pylint: disable=R1721
-            ]
+        )
 
         return edge_list
 
@@ -413,7 +413,7 @@ an edge list for the loaded tensor object
     ## to extend or create an analyst's account-specific network
     ## model.
 
-    def pyvis_style_node ( # pylint: disable=R0201
+    def pyvis_style_node (
         self,
         pyvis_graph: pyvis.network.Network,
         node_id: int,

@@ -177,7 +177,7 @@ Locate the given tuple in the data, returning `-1` if not found.
         return idx
 
 
-    def add (  # type: ignore # pylint: disable=R0201,W0221
+    def add (  # type: ignore # pylint: disable=W0221
         self,
         triple: typing.Tuple,
         context: typing.Optional[ rdflib.term.URIRef ] = None,  # pylint: disable=W0613
@@ -216,7 +216,7 @@ the store is not formula-aware.
                     self.digest.update(c.encode("utf-8"))
 
 
-    def remove (  # type: ignore # pylint: disable=R0201,W0221
+    def remove (  # type: ignore # pylint: disable=W0221
         self,
         triple_pattern: typing.Tuple,
         *,
@@ -245,7 +245,7 @@ Remove the set of triples matching the pattern from the store.
                     self.digest.update(c.encode("utf-8"))
 
 
-    def triples (  # type: ignore # pylint: disable=R0201,W0221
+    def triples (  # type: ignore # pylint: disable=W0221
         self,
         triple_pattern: typing.Tuple,
         *,
@@ -324,7 +324,7 @@ a graph instance to query or None
         return count
 
 
-    def __contexts (  # pylint: disable=R0201
+    def __contexts (
         self
         ) -> typing.Iterable:
         """

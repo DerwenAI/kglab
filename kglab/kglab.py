@@ -20,9 +20,7 @@ import rdflib  # type: ignore
 import rdflib.plugin  # type: ignore
 
 ## kglab - core classes
-from kglab.decorators import multifile
 from kglab.pkg_types import GraphLike, RDF_Node
-from kglab.gpviz import GPViz
 from kglab.util import get_gpu_count
 from kglab.version import _check_version
 import kglab.query.sparql
