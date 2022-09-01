@@ -38,6 +38,8 @@ This class implements querying for `KnowledgeGraph`
 Core feature areas include:
   * SPARQL querying
   * Cypher querying (future)
+
+Authored by: Paco Nathan
     """
     ######################################################################
     ## SPARQL queries
