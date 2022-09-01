@@ -13,15 +13,15 @@ import urlpath
 import pathlib
 
 ### third-parties libraries
-from icecream import ic  # type: ignore  # pylint: disable=E0401
-import chocolate  # type: ignore  # pylint: disable=E0401
-import csvwlib  # type: ignore  # pylint: disable=E0401
-import morph_kgc  # type: ignore  # pylint: disable=E0401
-import pandas as pd  # type: ignore  # pylint: disable=E0401
+from icecream import ic  # type: ignore
+import chocolate  # type: ignore
+import csvwlib  # type: ignore
+import morph_kgc  # type: ignore
+import pandas as pd  # type: ignore
 
-import rdflib  # type: ignore  # pylint: disable=E0401
-import rdflib.plugin  # type: ignore  # pylint: disable=E0401
-import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore  # pylint: disable=E0401
+import rdflib  # type: ignore
+import rdflib.plugin  # type: ignore
+import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore
 
 ## kglab - core classes
 from kglab.decorators import multifile
@@ -46,8 +46,6 @@ Provide serialization and deserialization methods for `KnowledgeGraph`:
 * CSV
 * Morph-KGC
 * ROAM
-
-Authored by: Paco Nathan
     """
 
     ######################################################################
