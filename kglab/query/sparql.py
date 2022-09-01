@@ -192,7 +192,7 @@ a string of the expanded SPARQL query
         sparql_meta, sparql_body = re.split(r"\s*WHERE\s*\{", query, maxsplit=1)
 
         for var in sorted(bindings.keys(), key=lambda x: len(x), reverse=True):  # pylint: disable=W0108
-            pattern = re.compile("(\?" + var + ")(\W)")  # pylint: disable=W1401
+            pattern = re.compile(r"(\?" + var + r")(\W)")
             bind_val = "<" + str(bindings[var]) + ">\\2"
             sparql_body = re.sub(pattern, bind_val, sparql_body)
 
