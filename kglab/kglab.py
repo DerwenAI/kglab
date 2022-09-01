@@ -40,12 +40,12 @@ See <https://derwen.ai/docs/kgl/concepts/#knowledge-graph>
 
 Core feature areas include:
 
-  * namespace management (ontology, controlled vocabularies)
+  * namespace management: ontology, controlled vocabularies 
   * graph construction
-  * serialization-deserilization (see `serde` mixin)
+  * serialization-deserilization (see `serde` module)
   * SPARQL querying (see `query.mixin` module)
-  * SHACL validation (see `shacl` module)
-  * inference based on OWL-RL, RDFS, SKOS
+  * SHACL validation (see `standards` module)
+  * inference based on OWL-RL, RDFS, SKOS (see `standards` module)
     """
 
     _DEFAULT_NAMESPACES: dict = {
