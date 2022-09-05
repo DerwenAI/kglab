@@ -60,7 +60,7 @@ Return incidence (dense) matrix for the KG.
 
     def to_laplacian(self):
         """
-Return laplacian matrix for the KG. Graph is turned into undirected.
+Return Laplacian matrix for the KG. Graph is turned into undirected.
 [docs](https://networkx.org/documentation/stable/reference/generated/networkx.linalg.laplacianmatrix.laplacian_matrix.html)
 
         returns:
