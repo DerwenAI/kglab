@@ -383,3 +383,20 @@ must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/r
             ic(p)
             ic(o)
             raise TypeError(str(e))
+
+
+    def graph_factory(self, name, graph):
+            """
+Utility function to generate graphs from mixins
+
+        name:
+title of the report
+
+        graph:
+graph or subgraph to print the report for
+            """
+            return KnowledgeGraph(
+                name=name,
+                namespaces=self.get_ns_dict(),
+                import_graph=graph,
+            )
