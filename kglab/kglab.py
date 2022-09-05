@@ -390,10 +390,10 @@ must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/r
 Utility function to generate graphs from mixins
 
         name:
-title of the report
+name of the graph
 
         graph:
-graph or subgraph to print the report for
+initial graph
             """
             return KnowledgeGraph(
                 name=name,
