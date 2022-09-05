@@ -13,11 +13,11 @@ from networkx import DiGraph
 class AlgebraMixin:
     """
 Provides methods to work with graph algebra using `SubgraphMatrix` data.
-    
+
 NOTE: provide optional Oxigraph support for fast in-memory computation
     """
     nx_graph: typing.Optional[DiGraph] = None
-    
+
     def check_attributes(self):
         """
 Check if relevant attributes are set.
@@ -33,8 +33,8 @@ None
 
         # create an empy `nx.DiGraph` if none is present
         if self.nx_graph is None:
-            # NOTE: find a way to pass `bipartite` if needed 
-            self.nx_graph = self.build_nx_graph(nx.DiGraph())    
+            # NOTE: find a way to pass `bipartite` if needed
+            self.nx_graph = self.build_nx_graph(nx.DiGraph())
 
     def to_adjacency(self):
         """
@@ -59,5 +59,12 @@ Return incidence (dense) matrix for the KG.
         return nx.incidence_matrix(self.nx_graph).toarray()
 
     def to_laplacian(self):
+        """
+Return laplacian matrix for the KG. Graph is turned into undirected.
+[docs](https://networkx.org/documentation/stable/reference/generated/networkx.linalg.laplacianmatrix.laplacian_matrix.html)
+
+        returns:
+`numpy.array`: the array representation in `numpy` standard
+        """
         self.check_attributes()
         return nx.laplacian_matrix(self.nx_graph.to_undirected()).toarray()
