@@ -81,7 +81,8 @@ initial variable bindings
         pythonify: bool = True,
         ) -> pd.DataFrame:
         """
-Wrapper for [`rdflib.Graph.query()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=query#rdflib.Graph.query) to perform a SPARQL query on the RDF graph.
+Wrapper for [`rdflib.Graph.query()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=query#rdflib.Graph.query)
+to perform a SPARQL query on the RDF graph.
 
     sparql:
 text for the SPARQL query
@@ -123,7 +124,8 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
         notebook: bool = False,
         ) -> pyvis.network.Network:
         """
-Visualize the given SPARQL query as a [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html#pyvis.network.Network)
+Visualize the given SPARQL query as a
+[`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html#pyvis.network.Network)
 
     sparql:
 input SPARQL query to be visualized
@@ -144,7 +146,9 @@ PyVis network object, to be rendered
         pythonify: bool = True,
         ) -> typing.Any:
         """
-Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3) and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython) to serialize a node into a human-readable representation using N3 format.
+Wrapper for RDFlib [`n3()`](https://rdflib.readthedocs.io/en/stable/utilities.html?highlight=n3#serializing-a-single-term-to-n3)
+and [`toPython()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=toPython#rdflib.Variable.toPython)
+to serialize a node into a human-readable representation using N3 format.
 
     node:
 must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node)
