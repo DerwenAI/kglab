@@ -100,10 +100,9 @@ a tuple of `conforms` (RDF graph passes the validation rules) + `report_graph` (
             encoding="utf-8"
         )
 
-        report_graph = KnowledgeGraph(
+        report_graph = self.graph_factory(
             name="SHACL report graph",
-            namespaces=self.get_ns_dict(),
-            import_graph=g,
+            graph=g,
         )
 
         return conforms, report_graph, report_text
