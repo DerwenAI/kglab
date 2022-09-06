@@ -47,6 +47,7 @@ a *vector*, in the `node_vector` member. This provides an efficient *index* on a
 *dimension*, solely for the context of a specific use case.
     """
     kg: typing.Optional[KnowledgeGraph] = None
+    nx_graph: typing.Optional[nx.DiGraph] = None
 
     def __init__ (
         self,
@@ -151,10 +152,10 @@ Check if needed attributes are set.
         returns:
 None
         """
-        if self.kg is None or self.sparql is None:
+        if self.kg is None:
             raise ValueError(
-                """`SubgraphMatrix`'s `kg` and `sparql` should be initialized:
-                `kglab.SubgraphMatrix(kg, sparql)`"""
+                """`Subgraph`'s `kg` should be initialized:
+                `kglab.Subgraph(kg)`"""
             )
 
         # create an empy `nx.DiGraph` if none is present
@@ -228,6 +229,10 @@ optionally, include the symbolic representation for each node; defaults to `Fals
 the populated `DataFrame` object; uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled
         """
         col_names: typing.List[str] = [ "src", "dst", "src_sym", "dst_sym" ]
+
+        if self.sparql is None and self.kg.use_gpus is True:
+            raise ValueError("""To use GPUs is necessary to provide a SPARQL query to define a subgraph: 
+                            `kglab.SubgraphMatrix(kg, sparql)` or `SubgraphTensor`""")
         row_iter = self.kg.query(self.sparql, bindings=self.bindings)
 
         if not show_symbols:
