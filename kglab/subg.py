@@ -144,11 +144,31 @@ text (or Python object) for the serialized node
         """
         return self.kg.n3fy(node)
 
+    def check_attributes(self):
+        """
+Check if needed attributes are set.
+
+        returns:
+None
+        """
+        if self.kg is None or self.sparql is None:
+            raise ValueError(
+                """`SubgraphMatrix`'s `kg` and `sparql` should be initialized:
+                `kglab.SubgraphMatrix(kg, sparql)`"""
+            )
+
+        # create an empy `nx.DiGraph` if none is present
+        if self.nx_graph is None:
+            # NOTE: find a way to pass `bipartite` if needed
+            self.nx_graph = self.build_nx_graph(nx.DiGraph())
+
 
 class SubgraphMatrix (Subgraph):
     """
 Projection of a RDF graph to a [*matrix*](https://mathworld.wolfram.com/AdjacencyMatrix.html) representation.
 Typical use cases include integration with non-RDF graph libraries for *graph algorithms*.
+
+SPARQL query text needs to define a subgraph as: `subject -> object`.
     """
     _SRC_DST_MAP: typing.List[str] = ["subject", "object"]
     sparql: typing.Optional[str] = None
@@ -169,7 +189,8 @@ projecting from an RDF graph represented by a `KnowledgeGraph` object.
 the source RDF graph
 
     sparql:
-text for a SPARQL query that yields pairs to project into the *subgraph*; by default this expects the query to return bindings for `subject` and `object` nodes in the RDF graph
+text for a SPARQL query that yields pairs to project into the *subgraph*; by default this expects the query to return
+ bindings for `subject` and `object` nodes in the RDF graph
 
     bindings:
 initial variable bindings

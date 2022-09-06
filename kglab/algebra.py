@@ -18,24 +18,6 @@ NOTE: provide optional Oxigraph support for fast in-memory computation
     """
     nx_graph: typing.Optional[DiGraph] = None
 
-    def check_attributes(self):
-        """
-Check if relevant attributes are set.
-
-        returns:
-None
-        """
-        if self.kg is None or self.sparql is None:
-            raise ValueError(
-                """`SubgraphMatrix`'s `kg` and `sparql` should be initialized:
-                `kglab.SubgraphMatrix(kg, sparql)`"""
-            )
-
-        # create an empy `nx.DiGraph` if none is present
-        if self.nx_graph is None:
-            # NOTE: find a way to pass `bipartite` if needed
-            self.nx_graph = self.build_nx_graph(nx.DiGraph())
-
     def to_adjacency(self):
         """
 Return adjacency (dense) matrix for the KG.
