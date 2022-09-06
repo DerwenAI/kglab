@@ -1,34 +1,36 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# see license https://github.com/DerwenAI/kglab#license-and-copyright
-
 """
 Subgraph transforms for visualization, graph algorithms, etc.
+
+see license https://github.com/DerwenAI/kglab#license-and-copyright
 """
 
 import typing
 
-from icecream import ic  #  type: ignore # pylint: disable=W0611,E0401
-from tqdm import tqdm  # type: ignore # pylint: disable=E0401
-import pandas as pd  # type: ignore # pylint: disable=E0401
-import pyvis.network  # type: ignore # pylint: disable=E0401
-import networkx as nx  # type: ignore # pylint: disable=E0401
+from icecream import ic  #  type: ignore # pylint: disable=W0611
+from tqdm import tqdm  # type: ignore
+import pandas as pd  # type: ignore
+import pyvis.network  # type: ignore
+import networkx as nx  # type: ignore
 
 from kglab import KnowledgeGraph
 from kglab.topo import Measure
 from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
+from kglab.algebra import AlgebraMixin
+from kglab.networks import NetAnalysisMixin
 from kglab.util import get_gpu_count
 
 
 if get_gpu_count() > 0:
-    import cudf  # type: ignore # pylint: disable=E0401
-    import cugraph # type: ignore # pylint: disable=E0401,W0611 # lgtm[py/unused-import]
+    import cudf  # type: ignore
+    import cugraph # type: ignore # pylint: disable=W0611
 
 
-class Subgraph:
+class Subgraph(AlgebraMixin, NetAnalysisMixin):
     """
-Base class for projection of an RDF graph into an *algebraic object* such as a *vector*, *matrix*, or *tensor* representation, to support integration with non-RDF graph libraries.
-In other words, this class provides means to vectorize selected portions of a graph as a [*dimension*](https://mathworld.wolfram.com/Dimension.html).
+Base class for projection of an RDF graph into an *algebraic object* such as a *vector*, 
+*matrix*, or *tensor* representation, to support integration with non-RDF graph libraries.
+In other words, this class provides means to vectorize selected portions of a graph as a
+[*dimension*](https://mathworld.wolfram.com/Dimension.html).
 See <https://derwen.ai/docs/kgl/concepts/#subgraph>
 
 Features support several areas of use cases, including:
@@ -40,9 +42,12 @@ Features support several areas of use cases, including:
   * embedding (deep learning)
   * probabilistic graph inference (statistical relational learning)
 
-The base case is where a *subset* of the nodes in the source RDF graph get represented as a *vector*, in the `node_vector` member.
-This provides an efficient *index* on a constructed *dimension*, solely for the context of a specific use case.
+The base case is where a *subset* of the nodes in the source RDF graph get represented as
+a *vector*, in the `node_vector` member. This provides an efficient *index* on a constructed
+*dimension*, solely for the context of a specific use case.
     """
+    kg: typing.Optional[KnowledgeGraph] = None
+    nx_graph: typing.Optional[nx.DiGraph] = None
 
     def __init__ (
         self,
@@ -110,7 +115,7 @@ a unique identifier (an integer index) for the `node` in the RDF graph
         id: int,
         ) -> NodeLike:
         """
-Inverse transform from an intenger to a node in the RDF graph, using the identifier as an index into the node vector.
+Inverse transform from an integer to a node in the RDF graph, using the identifier as an index into the node vector.
 
     id:
 an integer index for the `node` in the RDF graph
@@ -140,13 +145,34 @@ text (or Python object) for the serialized node
         """
         return self.kg.n3fy(node)
 
+    def check_attributes(self):
+        """
+Check if needed attributes are set.
+
+        returns:
+None
+        """
+        if self.kg is None:
+            raise ValueError(
+                """`Subgraph`'s `kg` should be initialized:
+                `kglab.Subgraph(kg)`"""
+            )
+
+        # create an empy `nx.DiGraph` if none is present
+        if self.nx_graph is None:
+            # NOTE: find a way to pass `bipartite` if needed
+            self.nx_graph = self.build_nx_graph(nx.DiGraph())
+
 
 class SubgraphMatrix (Subgraph):
     """
 Projection of a RDF graph to a [*matrix*](https://mathworld.wolfram.com/AdjacencyMatrix.html) representation.
 Typical use cases include integration with non-RDF graph libraries for *graph algorithms*.
+
+SPARQL query text needs to define a subgraph as: `subject -> object`.
     """
     _SRC_DST_MAP: typing.List[str] = ["subject", "object"]
+    sparql: typing.Optional[str] = None
 
     def __init__ (
         self,
@@ -164,7 +190,8 @@ projecting from an RDF graph represented by a `KnowledgeGraph` object.
 the source RDF graph
 
     sparql:
-text for a SPARQL query that yields pairs to project into the *subgraph*; by default this expects the query to return bindings for `subject` and `object` nodes in the RDF graph
+text for a SPARQL query that yields pairs to project into the *subgraph*; by default this expects the query to return
+ bindings for `subject` and `object` nodes in the RDF graph
 
     bindings:
 initial variable bindings
@@ -188,9 +215,11 @@ an optional map to override the  `subject` and `object` bindings expected in the
         show_symbols: bool = False,
         ) -> pd.DataFrame:
         """
-Factory pattern to populate a [`pandas.DataFrame`](https://pandas.pydata.org/docs/reference/frame.html) object, using transforms in this subgraph.
+Factory pattern to populate a [`pandas.DataFrame`](https://pandas.pydata.org/docs/reference/frame.html) object,
+using transforms in this subgraph.
 
-Note: this method is primarily intended for [`cuGraph`](https://docs.rapids.ai/api/cugraph/stable/) support. Loading via a `DataFrame` is required – in lieu of using the `nx.add_node()` approach.
+Note: this method is primarily intended for [`cuGraph`](https://docs.rapids.ai/api/cugraph/stable/) support.
+Loading via a `DataFrame` is required in lieu of using the `nx.add_node()` approach.
 Therefore the support for representing *bipartite* graphs is still pending.
 
     show_symbols:
@@ -200,6 +229,10 @@ optionally, include the symbolic representation for each node; defaults to `Fals
 the populated `DataFrame` object; uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled
         """
         col_names: typing.List[str] = [ "src", "dst", "src_sym", "dst_sym" ]
+
+        if self.sparql is None and self.kg.use_gpus is True:
+            raise ValueError("""To use GPUs is necessary to provide a SPARQL query to define a subgraph: 
+                            `kglab.SubgraphMatrix(kg, sparql)` or `SubgraphTensor`""")
         row_iter = self.kg.query(self.sparql, bindings=self.bindings)
 
         if not show_symbols:
