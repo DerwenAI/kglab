@@ -18,6 +18,9 @@ NOTE: provide optional Oxigraph support for fast in-memory computation
     """
     nx_graph: typing.Optional[DiGraph] = None
 
+    def to_undirected(self):
+        return nx.to_numpy_array(self.nx_graph.to_undirected())
+
     def to_adjacency(self):
         """
 Return adjacency (dense) matrix for the KG.
