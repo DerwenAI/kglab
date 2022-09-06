@@ -53,4 +53,16 @@ def test_distances_mtx(kg_test_data):
         [0, 1, 1, 1, 1, 1]
     )
 
+def test_shortest_path(kg_test_data):
+    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+
+    dist = subgraph.get_shortest_path(subgraph.to_scipy_sparse(), 2, 6)
+    assert dist == []
+    
+    dist = subgraph.get_shortest_path(subgraph.to_scipy_sparse(), 0, 2)
+    assert dist == [0, 2]
+
+    dist = subgraph.get_shortest_path(subgraph.to_scipy_sparse(), 0, 7)
+    assert dist == []
+
     
