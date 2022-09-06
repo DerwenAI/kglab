@@ -29,6 +29,11 @@ def kg_test_data():
     del kg
 
 
+def get_items(s):
+    s_coo = s.tocoo()
+    return set(zip(s_coo.row, s_coo.col))
+
+
 QUERY1 = """
 SELECT ?subject ?object
 WHERE {
@@ -52,7 +57,6 @@ def test_adj_mtx(kg_test_data):
 
 
 def test_incidence(kg_test_data):
-    from kglab.subg import SubgraphMatrix
     subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
     n_array = subgraph.to_incidence()
     np.testing.assert_allclose(
@@ -66,7 +70,6 @@ def test_incidence(kg_test_data):
     )
 
 def test_laplacian(kg_test_data):
-    from kglab.subg import SubgraphMatrix
     subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
     n_array = subgraph.to_laplacian()
     np.testing.assert_allclose(
@@ -78,3 +81,14 @@ def test_laplacian(kg_test_data):
         ),
         rtol=1e-5, atol=0
     )
+
+def test_scipy_sparse(kg_test_data):
+    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    n_array = subgraph.to_scipy_sparse()
+    assert n_array.getformat() == "csr"
+
+    set_ = ((0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (12, 1), (12, 2),
+            (12, 3), (12, 4), (12, 8), (12, 11), (12, 13), (14, 2), )
+    not_set_ = ((8, 8), (10, 6), (10, 10), (8, 1), (249, 2))
+    assert all(i in get_items(n_array) for i in set_)
+    assert all(i not in get_items(n_array) for i in not_set_)

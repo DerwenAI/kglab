@@ -68,3 +68,13 @@ Return Laplacian matrix for the KG. Graph is turned into undirected.
         """
         self.check_attributes()
         return nx.laplacian_matrix(self.nx_graph.to_undirected()).toarray()
+
+    def to_scipy_sparse(self):
+        """
+Return graph in CSR format (optimized for matrix-matrix operations).
+
+        returns:
+SciPy sparse matrix: Graph adjacency matrix.        
+        """
+        self.check_attributes()
+        return nx.to_scipy_sparse_array(self.nx_graph)
