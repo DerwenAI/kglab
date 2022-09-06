@@ -21,6 +21,7 @@ pyvis >= 0.1.9
 rdflib >= 6.1
 requests >= 2.27
 scikit-learn == 1.1.2
+scikit-network == 0.27.1
 scipy >= 1.8.0
 statsmodels >= 0.13
 tqdm >= 4.63

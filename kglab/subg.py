@@ -16,6 +16,7 @@ from kglab import KnowledgeGraph
 from kglab.topo import Measure
 from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
 from kglab.algebra import AlgebraMixin
+from kglab.networks import NetAnalysisMixin
 from kglab.util import get_gpu_count
 
 
@@ -24,7 +25,7 @@ if get_gpu_count() > 0:
     import cugraph # type: ignore # pylint: disable=W0611
 
 
-class Subgraph(AlgebraMixin):
+class Subgraph(AlgebraMixin, NetAnalysisMixin):
     """
 Base class for projection of an RDF graph into an *algebraic object* such as a *vector*, 
 *matrix*, or *tensor* representation, to support integration with non-RDF graph libraries.
