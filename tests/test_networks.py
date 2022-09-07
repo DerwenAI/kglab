@@ -58,16 +58,16 @@ def test_shortest_path(kg_test_data):
     subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
 
     try:
-        subgraph.get_shortest_path(subgraph.to_adjacency(), 2, 6)
+        subgraph.get_shortest_path(2, 6)
         assert False
     except NetworkXNoPath:
         pass
     
-    dist = subgraph.get_shortest_path(subgraph.to_adjacency(), 0, 2)
+    dist = subgraph.get_shortest_path(0, 2)
     assert dist == [0, 2]
 
     try:
-        dist = subgraph.get_shortest_path(subgraph.to_adjacency(), 0, 7)
+        dist = subgraph.get_shortest_path(0, 7)
         assert False
     except NetworkXNoPath:
         pass
