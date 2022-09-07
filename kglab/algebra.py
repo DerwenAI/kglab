@@ -46,7 +46,8 @@ Return incidence (dense) matrix for the KG.
     def to_laplacian(self):
         """
 Return Laplacian matrix for the KG. Graph is turned into undirected.
-[docs](https://networkx.org/documentation/stable/reference/generated/networkx.linalg.laplacianmatrix.laplacian_matrix.html)
+[docs](https://networkx.org/documentation/stable/reference/generated/networkx.linalg.laplacianmatrix.laplacian_matrix.html).
+Lapliacian is also known as vertices degrees matrix.
 
         returns:
 `numpy.array`: the array representation in `numpy` standard

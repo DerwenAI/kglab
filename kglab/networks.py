@@ -40,6 +40,10 @@ list of int: a path of indices
 
     def describe(self):
         # number of nodes, number of edges
+        # <https://networkx.org/documentation/stable/reference/algorithms/distance_measures.html>
+        # center
+        # diameter
+        # eccentricity
         # density
         # triangles
         # reciprocity
