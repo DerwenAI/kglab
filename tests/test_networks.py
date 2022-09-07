@@ -1,5 +1,6 @@
 import pytest
 import numpy as np
+from networkx.exception import NetworkXNoPath
 
 import kglab
 from kglab.subg import SubgraphMatrix, Subgraph
@@ -47,22 +48,28 @@ WHERE {
 def test_distances_mtx(kg_test_data):
     subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
 
-    dist = subgraph.get_distances(subgraph.to_scipy_sparse())
+    dist = subgraph.get_distances(subgraph.to_adjacency())
     np.testing.assert_allclose(
         dist[0,:6],
-        [0, 1, 1, 1, 1, 1]
+        [0, 2.44948974, 2.44948974, 2.44948974, 2.44948974, 2.44948974]
     )
 
 def test_shortest_path(kg_test_data):
     subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
 
-    dist = subgraph.get_shortest_path(subgraph.to_scipy_sparse(), 2, 6)
-    assert dist == []
+    try:
+        subgraph.get_shortest_path(subgraph.to_adjacency(), 2, 6)
+        assert False
+    except NetworkXNoPath:
+        pass
     
-    dist = subgraph.get_shortest_path(subgraph.to_scipy_sparse(), 0, 2)
+    dist = subgraph.get_shortest_path(subgraph.to_adjacency(), 0, 2)
     assert dist == [0, 2]
 
-    dist = subgraph.get_shortest_path(subgraph.to_scipy_sparse(), 0, 7)
-    assert dist == []
+    try:
+        dist = subgraph.get_shortest_path(subgraph.to_adjacency(), 0, 7)
+        assert False
+    except NetworkXNoPath:
+        pass
 
     

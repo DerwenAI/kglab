@@ -25,7 +25,7 @@ if get_gpu_count() > 0:
     import cugraph # type: ignore # pylint: disable=W0611
 
 
-class Subgraph(AlgebraMixin, NetAnalysisMixin):
+class Subgraph:
     """
 Base class for projection of an RDF graph into an *algebraic object* such as a *vector*, 
 *matrix*, or *tensor* representation, to support integration with non-RDF graph libraries.
@@ -164,7 +164,7 @@ None
             self.nx_graph = self.build_nx_graph(nx.DiGraph())
 
 
-class SubgraphMatrix (Subgraph):
+class SubgraphMatrix (Subgraph, AlgebraMixin, NetAnalysisMixin):
     """
 Projection of a RDF graph to a [*matrix*](https://mathworld.wolfram.com/AdjacencyMatrix.html) representation.
 Typical use cases include integration with non-RDF graph libraries for *graph algorithms*.

@@ -6,7 +6,8 @@ Integrate `scikit-network` functionalities.
 see license https://github.com/DerwenAI/kglab#license-and-copyright
 """
 
-import sknetwork as skn
+import networkx as nx
+from scipy.spatial.distance import pdist, squareform
 
 class NetAnalysisMixin:
     """
@@ -17,7 +18,7 @@ Provides methods for network analysis tools to work with `KnowledgeGraph`.
 Compute distances according to an adjacency matrix.
         """
         self.check_attributes()
-        return skn.path.get_distances(adj_mtx)
+        return squareform(pdist(adj_mtx, metric='euclidean'))
 
     def get_shortest_path(self, adj_matx, src, dst):
         """
@@ -34,10 +35,11 @@ int or iterable: indices of destination nodes
 list of int: a path of indices
         """
         self.check_attributes()
-        return skn.path.get_shortest_path(adj_matx, src, dst)
+        return nx.shortest_path(self.nx_graph, source=src, target=dst)
 
-
-# number of nodes, number of edges
-# density
-# triangles
-# reciprocity
+    def describe(self):
+        # number of nodes, number of edges
+        # density
+        # triangles
+        # reciprocity
+        raise NotImplementedError()
