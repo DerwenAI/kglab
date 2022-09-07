@@ -72,4 +72,9 @@ def test_shortest_path(kg_test_data):
     except NetworkXNoPath:
         pass
 
+def test_describe(kg_test_data):
+    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    print(subgraph.describe())
+    
+
     

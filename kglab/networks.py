@@ -7,6 +7,7 @@ see license https://github.com/DerwenAI/kglab#license-and-copyright
 """
 
 import networkx as nx
+from networkx.exception import NetworkXError
 from scipy.spatial.distance import pdist, squareform
 
 class NetAnalysisMixin:
@@ -41,19 +42,29 @@ list of int: a path of indices
     def describe(self):
         """
 Return a summary for subgraph statistics.
+NOTE: we may cache these methods calls if we create something like a `GraphFrame` object.
+  see kglab#273, same for adjacency and other matrices.
 
         return:
 dict: a dictionary with stats
         """
+        def wrap(f, g, r):
+            try:
+                return f(g)
+            except NetworkXError as e:
+                r[f"{str(f.__name__)}_msg"] =  str(e)
+                return None
 
-        return {
+        results = {
             "n_nodes": self._get_n_nodes(),
-            "n_edges": self._get_n_edges()
-        # <https://networkx.org/documentation/stable/reference/algorithms/distance_measures.html>
-        # center
-        # diameter
-        # eccentricity
+            "n_edges": self._get_n_edges(),
         }
+
+        return { **results, **{
+            "center": wrap(nx.center, self.nx_graph, results),
+            "diameter": wrap(nx.diameter, self.nx_graph, results),
+            "eccentricity": wrap(nx.eccentricity, self.nx_graph, results)
+        }}
 
     def describe_more(self):
         # density
