@@ -48,7 +48,8 @@ NOTE: we may cache these methods calls if we create something like a `GraphFrame
         return:
 dict: a dictionary with stats
         """
-        def wrap(f, g, r):
+        def msg_if_raise(f, g, r):
+            """Handle error messages by adding a message key in the results"""
             try:
                 return f(g)
             except NetworkXError as e:
@@ -61,9 +62,9 @@ dict: a dictionary with stats
         }
 
         return { **results, **{
-            "center": wrap(nx.center, self.nx_graph, results),
-            "diameter": wrap(nx.diameter, self.nx_graph, results),
-            "eccentricity": wrap(nx.eccentricity, self.nx_graph, results)
+            "center": msg_if_raise(nx.center, self.nx_graph, results),
+            "diameter": msg_if_raise(nx.diameter, self.nx_graph, results),
+            "eccentricity": msg_if_raise(nx.eccentricity, self.nx_graph, results)
         }}
 
     def describe_more(self):
