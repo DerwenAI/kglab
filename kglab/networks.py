@@ -16,16 +16,17 @@ Provides methods for network analysis tools to work with `KnowledgeGraph`.
     def get_distances(self, adj_mtx):
         """
 Compute distances according to an adjacency matrix.
+
+        adj_mtx:
+numpy.array: square matrix of distances.
         """
         self.check_attributes()
         return squareform(pdist(adj_mtx, metric='euclidean'))
 
-    def get_shortest_path(self, adj_matx, src, dst):
+    def get_shortest_path(self, src, dst):
         """
-Return shortest path from sources to destinations according to an djacency matrix.
+Return shortest path from sources to destinations.
 
-        adj_mtx:
-numpy.array: adjacency matrix for the graph.
         src:
 int or iterable: indices of source nodes
         dst:
