@@ -11,6 +11,7 @@ from tqdm import tqdm  # type: ignore
 import pandas as pd  # type: ignore
 import pyvis.network  # type: ignore
 import networkx as nx  # type: ignore
+import numpy as np  # type: ignore
 
 from kglab import KnowledgeGraph
 from kglab.topo import Measure
@@ -336,6 +337,13 @@ the populated  `iGraph` graph object
 
         ig_graph.vs["label"] = ig_graph.vs["name"] # pylint: disable=E1136,E1137
         return ig_graph
+    
+    def _get_n_nodes(self):
+        return self.to_adjacency().shape[0]
+    
+    def _get_n_edges(self):
+        return int(np.sum(self.to_adjacency()))
+        
 
 
 class SubgraphTensor (Subgraph):

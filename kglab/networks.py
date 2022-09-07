@@ -39,11 +39,23 @@ list of int: a path of indices
         return nx.shortest_path(self.nx_graph, source=src, target=dst)
 
     def describe(self):
-        # number of nodes, number of edges
+        """
+Return a summary for subgraph statistics.
+
+        return:
+dict: a dictionary with stats
+        """
+
+        return {
+            "n_nodes": self._get_n_nodes(),
+            "n_edges": self._get_n_edges()
         # <https://networkx.org/documentation/stable/reference/algorithms/distance_measures.html>
         # center
         # diameter
         # eccentricity
+        }
+
+    def describe_more(self):
         # density
         # triangles
         # reciprocity

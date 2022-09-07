@@ -92,3 +92,9 @@ def test_scipy_sparse(kg_test_data):
     not_set_ = ((8, 8), (10, 6), (10, 10), (8, 1), (249, 2))
     assert all(i in get_items(n_array) for i in set_)
     assert all(i not in get_items(n_array) for i in not_set_)
+
+def test_get_numbers(kg_test_data):
+    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    
+    assert subgraph._get_n_nodes() == 256
+    assert subgraph._get_n_edges() == 1078
