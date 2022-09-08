@@ -8,30 +8,21 @@ see license https://github.com/DerwenAI/kglab#license-and-copyright
 import typing
 
 ### third-parties libraries
-from icecream import ic  # type: ignore
 import chocolate  # type: ignore
 import owlrl  # type: ignore
 import pyshacl  # type: ignore
 
-import rdflib.plugin  # type: ignore
-
 ## kglab - core classes
 from kglab.pkg_types import GraphLike
-from kglab.util import get_gpu_count
-from kglab.version import _check_version
+from kglab.util import Mixin
 
 
-## pre-constructor set-up
-_check_version()
-
-if get_gpu_count() > 0:
-    import cudf  # type: ignore
-
-
-class ShaclOwlRdfSkosMixin:
+class ShaclOwlRdfSkosMixin(Mixin):
     """
 Provide methods for SHACL- OWL- and RDF-related operations.
     """
+    _g: typing.Optional[GraphLike]
+
     ######################################################################
     ## SHACL validation
 
@@ -47,7 +38,7 @@ Provide methods for SHACL- OWL- and RDF-related operations.
         inplace:typing.Optional[bool] = True,
         abort_on_first: typing.Optional[bool] = None,
         **kwargs: typing.Any,
-        ) -> typing.Tuple[bool, "KnowledgeGraph", str]:
+        ) -> typing.Tuple[bool, "KnowledgeGraph", str]: # type: ignore
         """
 Wrapper for [`pyshacl.validate()`](https://github.com/RDFLib/pySHACL) for validating the RDF graph using rules expressed in the [SHACL](https://www.w3.org/TR/shacl/) (Shapes Constraint Language).
 
@@ -152,16 +143,16 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
         # key: property val: set([superprop1, superprop2..])
         super_props: typing.Dict[typing.Any, typing.Any] = {}
 
-        for s, o in self._g.subject_objects(_rdfs.subPropertyOf):
+        for s, o in self._g.subject_objects(_rdfs.subPropertyOf): # type: ignore
             super_props.setdefault(s, set())
 
-            for sub_prop in self._g.transitive_objects(s, _rdfs.subPropertyOf):
+            for sub_prop in self._g.transitive_objects(s, _rdfs.subPropertyOf): # type: ignore
                 if sub_prop != s:
                     super_props[s].add(sub_prop)
 
         # add super-property relationships
         for p, sup_prop_list in super_props.items():
-            for s, o in self._g.subject_objects(p):
+            for s, o in self._g.subject_objects(p): # type: ignore
                 for sup_prop in sup_prop_list:
                     self.add(s, sup_prop, o)
 
@@ -180,16 +171,16 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
         # key: class val: set([superclass1, superclass2..])
         super_classes: typing.Dict[typing.Any, typing.Any] = {}
 
-        for s, _ in self._g.subject_objects(_rdfs.subClassOf):
+        for s, _ in self._g.subject_objects(_rdfs.subClassOf): # type: ignore
             super_classes.setdefault(s, set())
 
-            for sup_class in self._g.transitive_objects(s, _rdfs.subClassOf):
+            for sup_class in self._g.transitive_objects(s, _rdfs.subClassOf): # type: ignore
                 if sup_class != s:
                     super_classes[s].add(sup_class)
 
         # set the superclass type information for subclass instances
         for s, sup_class_list in super_classes.items():
-            for sub_inst in self._g.subjects(self.get_ns("rdf").type, s):
+            for sub_inst in self._g.subjects(self.get_ns("rdf").type, s): # type: ignore
                 for sup_class in sup_class_list:
                     self.add(sub_inst, self.get_ns("rdf").type, sup_class)
 
@@ -210,7 +201,7 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
         """
         _skos = self.get_ns("skos")
 
-        for s, o in self._g.subject_objects(_skos.related):
+        for s, o in self._g.subject_objects(_skos.related): # type: ignore
             self.add(o, _skos.related, s)
 
 
@@ -228,13 +219,13 @@ Adapted from [`skosify`](https://github.com/NatLibFi/Skosify) which wasn't being
         """
         _skos = self.get_ns("skos")
 
-        for s, o in self._g.subject_objects(_skos.hasTopConcept):
+        for s, o in self._g.subject_objects(_skos.hasTopConcept): # type: ignore
             self.add(o, _skos.topConceptOf, s)
 
-        for s, o in self._g.subject_objects(_skos.topConceptOf):
+        for s, o in self._g.subject_objects(_skos.topConceptOf): # type: ignore
             self.add(o, _skos.hasTopConcept, s)
 
-        for s, o in self._g.subject_objects(_skos.topConceptOf):
+        for s, o in self._g.subject_objects(_skos.topConceptOf): # type: ignore
             self.add(s, _skos.inScheme, o)
 
 
@@ -255,10 +246,10 @@ if false, `skos:narrower` will be removed instead of added
         _skos = self.get_ns("skos")
 
         if narrower:
-            for s, o in self._g.subject_objects(_skos.broader):
+            for s, o in self._g.subject_objects(_skos.broader): # type: ignore
                 self.add(o, _skos.narrower, s)
 
-        for s, o in self._g.subject_objects(_skos.narrower):
+        for s, o in self._g.subject_objects(_skos.narrower): # type: ignore
             self.add(o, _skos.broader, s)
 
             if not narrower:
@@ -285,8 +276,8 @@ also infer transitive closure for `skos:narrowerTransitive`
         """
         _skos = self.get_ns("skos")
 
-        for concept in self._g.subjects(self.get_ns("rdf").type, _skos.Concept):
-            for broader_concept in self._g.transitive_objects(concept, _skos.broader):
+        for concept in self._g.subjects(self.get_ns("rdf").type, _skos.Concept): # type: ignore
+            for broader_concept in self._g.transitive_objects(concept, _skos.broader): # type: ignore
                 if broader_concept != concept:
                     self.add(concept, _skos.broaderTransitive, broader_concept)
 
@@ -311,17 +302,17 @@ infer the `skos:related` super-property for all `skos:relatedMatch` relations
         """
         _skos = self.get_ns("skos")
 
-        for s, o in self._g.subject_objects(_skos.relatedMatch):
+        for s, o in self._g.subject_objects(_skos.relatedMatch): # type: ignore
             self.add(o, _skos.relatedMatch, s)
 
             if related:
                 self.add(s, _skos.related, o)
                 self.add(o, _skos.related, s)
 
-        for s, o in self._g.subject_objects(_skos.closeMatch):
+        for s, o in self._g.subject_objects(_skos.closeMatch): # type: ignore
             self.add(o, _skos.closeMatch, s)
 
-        for s, o in self._g.subject_objects(_skos.exactMatch):
+        for s, o in self._g.subject_objects(_skos.exactMatch): # type: ignore
             self.add(o, _skos.exactMatch, s)
 
 
@@ -344,14 +335,14 @@ if false, `skos:narrowMatch` will be removed instead of added
         """
         _skos = self.get_ns("skos")
 
-        for s, o in self._g.subject_objects(_skos.broadMatch):
+        for s, o in self._g.subject_objects(_skos.broadMatch): # type: ignore
             self.add(s, _skos.broader, o)
 
             if narrower:
                 self.add(o, _skos.narrowMatch, s)
                 self.add(o, _skos.narrower, s)
 
-        for s, o in self._g.subject_objects(_skos.narrowMatch):
+        for s, o in self._g.subject_objects(_skos.narrowMatch): # type: ignore
             self.add(o, _skos.broadMatch, s)
             self.add(o, _skos.broader, s)
 

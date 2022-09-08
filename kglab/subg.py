@@ -28,11 +28,11 @@ if get_gpu_count() > 0:
 
 class Subgraph:
     """
-Base class for projection of an RDF graph into an *algebraic object* such as a *vector*, 
-*matrix*, or *tensor* representation, to support integration with non-RDF graph libraries.
-In other words, this class provides means to vectorize selected portions of a graph as a
-[*dimension*](https://mathworld.wolfram.com/Dimension.html).
-See <https://derwen.ai/docs/kgl/concepts/#subgraph>
+Base class for projection of an RDF graph into an *algebraic object* such as a *vector*,
+ *matrix*, or *tensor* representation, to support integration with non-RDF graph libraries.
+ In other words, this class provides means to vectorize selected portions of a graph as a
+ [*dimension*](https://mathworld.wolfram.com/Dimension.html).
+ See <https://derwen.ai/docs/kgl/concepts/#subgraph>
 
 Features support several areas of use cases, including:
 
@@ -47,7 +47,7 @@ The base case is where a *subset* of the nodes in the source RDF graph get repre
 a *vector*, in the `node_vector` member. This provides an efficient *index* on a constructed
 *dimension*, solely for the context of a specific use case.
     """
-    kg: typing.Optional[KnowledgeGraph] = None
+    kg: KnowledgeGraph
     nx_graph: typing.Optional[nx.DiGraph] = None
 
     def __init__ (
@@ -159,13 +159,13 @@ None
                 `kglab.Subgraph(kg)`"""
             )
 
-        # create an empy `nx.DiGraph` if none is present
+        # create an empty `nx.DiGraph` if none is present
         if self.nx_graph is None:
             # NOTE: find a way to pass `bipartite` if needed
-            self.nx_graph = self.build_nx_graph(nx.DiGraph())
+            self.nx_graph = self.build_nx_graph(nx.DiGraph())  # pylint: disable=E1101
 
 
-class SubgraphMatrix (Subgraph, AlgebraMixin, NetAnalysisMixin):
+class SubgraphMatrix (Subgraph, AlgebraMixin, NetAnalysisMixin):  # pylint: disable=W0223
     """
 Projection of a RDF graph to a [*matrix*](https://mathworld.wolfram.com/AdjacencyMatrix.html) representation.
 Typical use cases include integration with non-RDF graph libraries for *graph algorithms*.
@@ -173,7 +173,6 @@ Typical use cases include integration with non-RDF graph libraries for *graph al
 SPARQL query text needs to define a subgraph as: `subject -> object`.
     """
     _SRC_DST_MAP: typing.List[str] = ["subject", "object"]
-    sparql: typing.Optional[str] = None
 
     def __init__ (
         self,
@@ -232,7 +231,7 @@ the populated `DataFrame` object; uses the [RAPIDS `cuDF` library](https://docs.
         col_names: typing.List[str] = [ "src", "dst", "src_sym", "dst_sym" ]
 
         if self.sparql is None and self.kg.use_gpus is True:
-            raise ValueError("""To use GPUs is necessary to provide a SPARQL query to define a subgraph: 
+            raise ValueError("""To use GPUs is necessary to provide a SPARQL query to define a subgraph:
                             `kglab.SubgraphMatrix(kg, sparql)` or `SubgraphTensor(...)`""")
         row_iter = self.kg.query(self.sparql, bindings=self.bindings)
 
@@ -337,13 +336,14 @@ the populated  `iGraph` graph object
 
         ig_graph.vs["label"] = ig_graph.vs["name"] # pylint: disable=E1136,E1137
         return ig_graph
-    
+
     def _get_n_nodes(self):
+        """ Return number of nodes counted from the adjancency matrix"""
         return self.to_adjacency().shape[0]
-    
+
     def _get_n_edges(self):
+        """ Return number of edges counted from the adjancency matrix"""
         return int(np.sum(self.to_adjacency()))
-        
 
 
 class SubgraphTensor (Subgraph):
@@ -454,14 +454,14 @@ an edge list for the loaded tensor object
     ## to extend or create an analyst's account-specific network
     ## model.
 
-    def pyvis_style_node (
+    def pyvis_style_node (  # pylint: disable=R0201
         self,
         pyvis_graph: pyvis.network.Network,
         node_id: int,
         label: str,
         *,
         style: dict = None,
-        ) -> None :
+        ) -> None : # pylint: disable=R0201
         """
 Adds a node into a [PyVis](https://pyvis.readthedocs.io/) network, optionally with styling info.
 

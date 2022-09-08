@@ -11,6 +11,9 @@ import math
 import numpy as np  # type: ignore  # pylint: disable=E0401
 import pandas as pd  # type: ignore  # pylint: disable=E0401
 
+import typing
+from kglab.pkg_types import GraphLike
+
 GPU_COUNT: int = 0
 
 
@@ -116,3 +119,19 @@ RMS metric as a float
     s = sum(map(lambda x: float(x)**2.0, values))
     n = float(len(values))
     return math.sqrt(s / n)
+
+class Mixin:
+    """Base mixin, Provide `mypy` stubs for common methods and properties"""
+    _g: typing.Optional[GraphLike]
+    get_ns: typing.Callable
+    add_ns: typing.Callable
+    _ns: typing.Dict
+    add: typing.Callable
+    base_uri: typing.Optional[str]
+    parse: typing.Callable
+    get_context: typing.Callable
+    use_gpus: bool
+    serialize: typing.Callable
+    build_blank_graph: typing.Callable
+    graph_factory: typing.Callable
+    remove: typing.Callable

@@ -10,7 +10,9 @@ import typing
 import networkx as nx
 from networkx import DiGraph
 
-class AlgebraMixin:
+from kglab.util import Mixin
+
+class AlgebraMixin(Mixin):
     """
 Provides methods to work with graph algebra using `SubgraphMatrix` data.
 
@@ -19,6 +21,12 @@ NOTE: provide optional Oxigraph support for fast in-memory computation
     nx_graph: typing.Optional[DiGraph] = None
 
     def to_undirected(self):
+        """
+Return the undirected adjancency matrix of the directed graph.
+
+        returns:
+`numpy.array`: the array representation in `numpy` standard
+        """
         return nx.to_numpy_array(self.nx_graph.to_undirected())
 
     def to_adjacency(self):
@@ -60,7 +68,7 @@ Lapliacian is also known as vertices degrees matrix.
 Return graph in CSR format (optimized for matrix-matrix operations).
 
         returns:
-SciPy sparse matrix: Graph adjacency matrix.        
+SciPy sparse matrix: Graph adjacency matrix.
         """
         self.check_attributes()
         return nx.to_scipy_sparse_array(self.nx_graph)

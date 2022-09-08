@@ -10,7 +10,9 @@ import networkx as nx
 from networkx.exception import NetworkXError
 from scipy.spatial.distance import pdist, squareform
 
-class NetAnalysisMixin:
+from kglab.util import Mixin
+
+class NetAnalysisMixin(Mixin):
     """
 Provides methods for network analysis tools to work with `KnowledgeGraph`.
     """
@@ -68,6 +70,9 @@ dict: a dictionary with stats
         }}
 
     def describe_more(self):
+        """
+Return a summary with more graph statistics.
+        """
         # density
         # triangles
         # reciprocity

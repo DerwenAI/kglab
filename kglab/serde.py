@@ -28,6 +28,7 @@ from kglab.decorators import multifile
 from kglab.pkg_types import IOPathLike, PathLike
 from kglab.util import get_gpu_count
 from kglab.version import _check_version
+from kglab.util import Mixin
 
 
 ## pre-constructor set-up
@@ -37,7 +38,7 @@ if get_gpu_count() > 0:
     import cudf  # type: ignore  # pylint: disable=E0401
 
 
-class SerdeMixin:
+class SerdeMixin(Mixin):
     """
 Provide serialization and deserialization methods for `KnowledgeGraph`:
 * RDF
@@ -47,7 +48,6 @@ Provide serialization and deserialization methods for `KnowledgeGraph`:
 * Morph-KGC
 * ROAM
     """
-
     ######################################################################
     ## serialization
     ##
@@ -156,7 +156,7 @@ a string as a file name or URL to a file reference
         format: str = "ttl",
         base: str = None,
         **args: typing.Any,
-        ) -> "KnowledgeGraph":
+        ) -> "KnowledgeGraph": # type: ignore
         """
 Wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from the `path` source.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
@@ -188,14 +188,14 @@ this `KnowledgeGraph` object – used for method chaining
 
         try:
             if hasattr(path, "read"):
-                self._g.parse(
+                self._g.parse(  # type: ignore
                     path,
                     format=format,
                     publicID=base,
                     **args,
                     )
             else:
-                self._g.parse(
+                self._g.parse(  # type: ignore
                     self._get_filename(path),
                     format=format,
                     publicID=base,
@@ -215,7 +215,7 @@ this `KnowledgeGraph` object – used for method chaining
         format: str = "ttl",
         base: str = None,
         **args: typing.Any,
-        ) -> "KnowledgeGraph":
+        ) -> "KnowledgeGraph": # type: ignore
         """
 Wrapper for [`rdflib.Graph.parse()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html#rdflib.graph.Graph.parse) which parses an RDF graph from a text.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
@@ -241,7 +241,7 @@ this `KnowledgeGraph` object – used for method chaining
         if not base and self.base_uri:
             base = self.base_uri
 
-        self._g.parse(
+        self._g.parse( # type: ignore
             data=data,
             format=format,
             publicID=base,
@@ -295,7 +295,7 @@ optional text encoding value, defaults to `"utf-8"`, must be in the [Python code
                 raise TypeError(self._ERROR_PATH)
 
             try:
-                self._g.serialize(
+                self._g.serialize( # type: ignore
                     destination=path,
                     format=format,
                     base=base,
@@ -307,7 +307,7 @@ optional text encoding value, defaults to `"utf-8"`, must be in the [Python code
 
         # otherwise write to a local file reference
         else:
-            self._g.serialize(
+            self._g.serialize( # type: ignore
                 destination=self._get_filename(path),
                 format=format,
                 base=base,
@@ -365,7 +365,7 @@ text representing the RDF graph
         *,
         encoding: str = "utf-8",
         **args: typing.Any,
-        ) -> "KnowledgeGraph":
+        ) -> "KnowledgeGraph": # type: ignore
         """
 Wrapper for [`rdflib-jsonld.parser.JsonLDParser.parse()`](https://github.com/RDFLib/rdflib-jsonld/blob/master/rdflib_jsonld/parser.py) which parses an RDF graph from a [JSON-LD](https://json-ld.org/) source.
 This traps some edge cases for the several source-ish parameters in RDFlib which had been overloaded.
@@ -393,7 +393,7 @@ this `KnowledgeGraph` object – used for method chaining
         # load JSON from file (to verify format and trap exceptions at
         # this level) then dump to string – which is expected by the
         # JSON-LD plugin for RDFlib
-        self._g.parse(
+        self._g.parse( # type: ignore
             data=json.dumps(json.load(f)),  # type: ignore
             format="json-ld",
             encoding=encoding,
@@ -433,7 +433,7 @@ optional text encoding value, which defaults to `"utf-8"`; must be in the [Pytho
         self._check_encoding(encoding)
 
         f.write( # type: ignore
-            self._g.serialize(
+            self._g.serialize( # type: ignore
                 format="json-ld",
                 context=self.get_context(),
                 indent=2,
@@ -454,7 +454,7 @@ optional text encoding value, which defaults to `"utf-8"`; must be in the [Pytho
         self,
         path: IOPathLike,
         **kwargs: typing.Any,
-        ) -> "KnowledgeGraph":
+        ) -> "KnowledgeGraph": # type: ignore
         """
 Wrapper for [`pandas.read_parquet()`](https://pandas.pydata.org/docs/reference/api/pandas.read_parquet.html?highlight=read_parquet#pandas.read_parquet) which parses an RDF graph represented as a [Parquet](https://parquet.apache.org/) file, using the [`pyarrow`](https://arrow.apache.org/) engine.
 Uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled.
@@ -482,7 +482,7 @@ this `KnowledgeGraph` object – used for method chaining
             )
 
         df.apply(
-            lambda row: self._g.parse(
+            lambda row: self._g.parse( # type: ignore
                 data=f"{ row[0] } { row[1] } { row[2] } .",
                 format="ttl",
             ),
@@ -521,7 +521,7 @@ extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) fo
                 self._PARQUET_COL_NAMES[1]: p.n3(),
                 self._PARQUET_COL_NAMES[2]: o.n3(),
             }
-            for s, p, o in self._g
+            for s, p, o in self._g # type: ignore
         ]
 
         if self.use_gpus:
@@ -540,7 +540,7 @@ extra options parsed by [`fsspec`](https://github.com/intake/filesystem_spec) fo
     def load_csv (
         self,
         url: str,
-        ) -> "KnowledgeGraph":
+        ) -> "KnowledgeGraph": # type: ignore
         """
 Wrapper for [`csvwlib`](https://github.com/DerwenAI/csvwlib) which parses a CSV file from the `path` source, then converts to RDF and merges into this RDF graph.
 
@@ -561,7 +561,7 @@ this `KnowledgeGraph` object – used for method chaining
     def materialize (
         self,
         config: str,
-        ) -> "KnowledgeGraph":
+        ) -> "KnowledgeGraph": # type: ignore
         """
 Binding to the [Morph-KGC](https://github.com/oeg-upm/morph-kgc) `materialize()` method.
 
@@ -571,14 +571,14 @@ morph-kgc configuration, it can be the path to the config file, or a string with
     returns:
 this `KnowledgeGraph` object – used for method chaining
         """
-        if len(self._g) == 0:
+        if len(self._g) == 0: # type: ignore
             # generate the triples and load them to an RDFlib graph
             self._g = morph_kgc.materialize(config)
         else:
             # merge
             # for caveats about merging this way:
             # <https://rdflib.readthedocs.io/en/stable/merging.html>
-            self._g.parse(morph_kgc.materialize(config))
+            self._g.parse(morph_kgc.materialize(config)) # type: ignore
 
         return self
 
