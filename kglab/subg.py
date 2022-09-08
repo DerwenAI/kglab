@@ -233,7 +233,7 @@ the populated `DataFrame` object; uses the [RAPIDS `cuDF` library](https://docs.
 
         if self.sparql is None and self.kg.use_gpus is True:
             raise ValueError("""To use GPUs is necessary to provide a SPARQL query to define a subgraph: 
-                            `kglab.SubgraphMatrix(kg, sparql)` or `SubgraphTensor`""")
+                            `kglab.SubgraphMatrix(kg, sparql)` or `SubgraphTensor(...)`""")
         row_iter = self.kg.query(self.sparql, bindings=self.bindings)
 
         if not show_symbols:
@@ -257,7 +257,7 @@ the populated `DataFrame` object; uses the [RAPIDS `cuDF` library](https://docs.
                 for row in row_iter
                 ]
 
-        if self.kg.use_gpus:
+        if self.kg.use_gpus is True:
             df = cudf.DataFrame(rows_list, columns=col_names)
         else:
             df = pd.DataFrame(rows_list, columns=col_names)
@@ -284,7 +284,7 @@ flag for whether the `(subject, object)` pairs should be partitioned into *bipar
     returns:
 the populated `NetworkX` graph object; uses the [RAPIDS `cuGraph` library](https://docs.rapids.ai/api/cugraph/stable/) if GPUs are enabled
         """
-        if self.kg.use_gpus:
+        if self.kg.use_gpus is True:
             df = self.build_df()
             nx_graph.from_cudf_edgelist(df, source="src", destination="dst")
         else:

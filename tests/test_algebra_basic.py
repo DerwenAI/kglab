@@ -95,6 +95,9 @@ def test_scipy_sparse(kg_test_data):
 
 def test_get_numbers(kg_test_data):
     subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    subgraph.check_attributes()
     
     assert subgraph._get_n_nodes() == 256
     assert subgraph._get_n_edges() == 1078
+    assert subgraph.nx_graph.number_of_nodes() == 256
+    assert subgraph.nx_graph.number_of_edges() == 1078
