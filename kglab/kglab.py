@@ -40,7 +40,7 @@ See <https://derwen.ai/docs/kgl/concepts/#knowledge-graph>
 
 Core feature areas include:
 
-  * namespace management: ontology, controlled vocabularies 
+  * namespace management: ontology, controlled vocabularies
   * graph construction
   * serialization-deserilization (see `serde` module)
   * SPARQL querying (see `query.mixin` module)
@@ -65,12 +65,12 @@ Core feature areas include:
         self,
         *,
         name: str = "generic",
-        base_uri: str = None,
+        base_uri: typing.Optional[str] = None,
         language: str = "en",
-        store: str = None,
+        store: typing.Optional[str] = None,
         use_gpus: bool = True,
         import_graph: typing.Optional[GraphLike] = None,
-        namespaces: dict = None,
+        namespaces: typing.Optional[dict] = None,
         ) -> None:
         """
 Constructor for a `KnowledgeGraph` object.
@@ -112,17 +112,17 @@ a dictionary of [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rd
         if import_graph is not None:
             self._g = import_graph
         else:
-            self._g = self.build_blank_graph()
+            self._g = self.build_blank_graph() # pylint: disable=E1101
 
         # initialize the namespaces
         self._ns: dict = {}
 
         for prefix, iri in self._DEFAULT_NAMESPACES.items():
-            self.add_ns(prefix, iri)
+            self.add_ns(prefix, iri) # pylint: disable=E1101
 
         if namespaces:
             for prefix, iri in namespaces.items():
-                self.add_ns(prefix, iri)
+                self.add_ns(prefix, iri) # pylint: disable=E1101
 
         # backwards compatibility for class refactoring
         self.sparql = kglab.query.sparql.SparqlQueryable(self)
@@ -203,7 +203,7 @@ replace any existing prefix with the new namespace
         if replace or prefix not in self._ns:
             self._ns[prefix] = rdflib.Namespace(iri)
 
-        self._g.namespace_manager.bind(
+        self._g.namespace_manager.bind( # type: ignore
             prefix,
             self._ns[prefix],
             override=override,
@@ -241,7 +241,7 @@ a `dict` describing the namespaces in this RDF graph
             for prefix, ns in self._ns.items()
         }
 
-        nm = self._g.namespace_manager
+        nm = self._g.namespace_manager  # type: ignore
 
         for prefix, uri in nm.namespaces():
             ns_dict[prefix] = str(uri)
@@ -314,7 +314,7 @@ timezones as a dict, used by
 [`rdflib.Literal`](https://rdflib.readthedocs.io/en/stable/rdf_terms.html#literals) formatted as an XML Schema 2 `dateTime` value
         """
         date_tz = dup.parse(dt, tzinfos=tzinfos)
-        return rdflib.Literal(date_tz, datatype=self.get_ns("xsd").dateTime)
+        return rdflib.Literal(date_tz, datatype=self.get_ns("xsd").dateTime) # pylint: disable=E1101
 
 
     def add (
@@ -342,7 +342,7 @@ must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/r
 must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal); otherwise throws a `TypeError` exception
         """
         try:
-            self._g.add((s, p, o,))
+            self._g.add((s, p, o,))  # type: ignore
         except AssertionError as e:
             traceback.print_exc()
             ic(s)
@@ -376,7 +376,7 @@ must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/r
 must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal); otherwise throws a `TypeError` exception
         """
         try:
-            self._g.remove((s, p, o,))
+            self._g.remove((s, p, o,)) # type: ignore
         except AssertionError as e:
             traceback.print_exc()
             ic(s)
@@ -386,7 +386,7 @@ must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/r
 
 
     def graph_factory(self, name, graph):
-            """
+        """
 Utility function to generate graphs from mixins
 
         name:
@@ -394,9 +394,9 @@ name of the graph
 
         graph:
 initial graph
-            """
-            return KnowledgeGraph(
-                name=name,
-                namespaces=self.get_ns_dict(),
-                import_graph=graph,
-            )
+        """
+        return KnowledgeGraph(
+            name=name,
+            namespaces=self.get_ns_dict(),
+            import_graph=graph,
+        )

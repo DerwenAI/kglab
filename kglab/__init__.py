@@ -1,7 +1,6 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# see license https://github.com/DerwenAI/kglab#license-and-copyright
-
+"""
+see license https://github.com/DerwenAI/kglab#license-and-copyright
+"""
 from .kglab import KnowledgeGraph
 
 from .graph import NodeRef, PropertyStore

@@ -9,19 +9,18 @@ import re
 import typing
 
 ### third-parties libraries
-from icecream import ic  # type: ignore
 import pandas as pd  # type: ignore
 import pyvis  # type: ignore
 
 import rdflib  # type: ignore
 import rdflib.plugin  # type: ignore
-import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore
 
 ## kglab - core classes
 from kglab.pkg_types import RDF_Node
 from kglab.gpviz import GPViz
 from kglab.util import get_gpu_count
 from kglab.version import _check_version
+from kglab.util import Mixin
 
 
 ## pre-constructor set-up
@@ -31,7 +30,7 @@ if get_gpu_count() > 0:
     import cudf  # type: ignore  # pylint: disable=E0401
 
 
-class QueryingMixin:
+class QueryingMixin(Mixin):
     """
 This class implements querying for `KnowledgeGraph`
 
@@ -65,7 +64,7 @@ initial variable bindings
         if not bindings:
             bindings = {}
 
-        for row in self._g.query(
+        for row in self._g.query( # type: ignore
                 sparql,
                 initBindings=bindings,
             ):
@@ -102,7 +101,7 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
         if not bindings:
             bindings = {}
 
-        row_iter = self._g.query(sparql, initBindings=bindings)
+        row_iter = self._g.query(sparql, initBindings=bindings) # type: ignore
 
         if simplify:
             rows_list = [ self.n3fy_row(r.asdict(), pythonify=pythonify) for r in row_iter ]
@@ -136,7 +135,7 @@ optional boolean flag, whether to initialize the PyVis graph to render within a 
     returns:
 PyVis network object, to be rendered
         """
-        return GPViz(sparql, self._ns).visualize_query(notebook=notebook)
+        return GPViz(sparql, self._ns).visualize_query(notebook=notebook) # type: ignore
 
 
     def n3fy (
