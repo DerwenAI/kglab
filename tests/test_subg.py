@@ -2,7 +2,7 @@ import pytest
 import networkx as nx
 
 import kglab
-from kglab.subg import SubgraphMatrix
+from kglab.frame import Frame2D
 
 from .__init__ import DAT_FILES_DIR
 
@@ -40,7 +40,7 @@ WHERE {
 """
 
 def test_build_df_no_cuda(kg_test_data):
-    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    subgraph = Frame2D(kg=kg_test_data, sparql=QUERY1)
     subgraph.kg.use_gpus = False
 
     df = subgraph.build_df()
@@ -50,7 +50,7 @@ def test_build_df_no_cuda(kg_test_data):
     assert all(r == e for r in results[-1:-5] for e in expected)
 
 def test_build_nx_graph(kg_test_data):
-    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    subgraph = Frame2D(kg=kg_test_data, sparql=QUERY1)
     subgraph.kg.use_gpus = False
 
     nxg = nx.DiGraph()

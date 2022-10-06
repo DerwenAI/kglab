@@ -373,7 +373,7 @@ options passed to the JVM running the PSL Java library; most commonly `"-Xmx"` a
 
         self.results = self.model.infer(
             method=method,
-            additional_cli_optons=cli_options,
+            additional_cli_options=cli_options,
             psl_config=psl_config,
             jvm_options=jvm_options,
         )

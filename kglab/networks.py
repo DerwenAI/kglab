@@ -1,5 +1,5 @@
 """
-Working with `SubgraphMatrix` as vectorized representation.
+Working with `Frame` as vectorized representation.
 Additions to functionalities present in `subg.py`.
 Integrate `scikit-network` functionalities.
 

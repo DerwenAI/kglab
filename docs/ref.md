@@ -794,11 +794,11 @@ if false, `skos:narrowMatch` will be removed instead of added
 
 
 
-## [`Subgraph` class](#Subgraph)
+## [`Frame` class](#frame)
 
 Base class for projection of an RDF graph into an *algebraic object* such as a *vector*, *matrix*, or *tensor* representation, to support integration with non-RDF graph libraries.
 In other words, this class provides means to vectorize selected portions of a graph as a [*dimension*](https://mathworld.wolfram.com/Dimension.html).
-See <https://derwen.ai/docs/kgl/concepts/#subgraph>
+See <https://derwen.ai/docs/kgl/concepts/#frame>
 
 Features support several areas of use cases, including:
 
@@ -813,7 +813,7 @@ The base case is where a *subset* of the nodes in the source RDF graph get repre
 This provides an efficient *index* on a constructed *dimension*, solely for the context of a specific use case.
     
 ---
-#### [`__init__` method](#kglab.Subgraph.__init__)
+#### [`__init__` method](#kglab.Frame.__init__)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L47)
 
 ```python
@@ -831,7 +831,7 @@ an optional, pre-determined list to pre-load for *label encoding*
 
 
 ---
-#### [`transform` method](#kglab.Subgraph.transform)
+#### [`transform` method](#kglab.Frame.transform)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L71)
 
 ```python
@@ -855,8 +855,8 @@ a unique identifier (an integer index) for the `node` in the RDF graph
 
 
 ---
-#### [`inverse_transform` method](#kglab.Subgraph.inverse_transform)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L108)
+#### [`inverse_transform` method](#kglab.Frame.inverse_transform)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/frame.py#L108)
 
 ```python
 inverse_transform(id)
@@ -872,8 +872,8 @@ node in the RDF graph
 
 
 ---
-#### [`n3fy` method](#kglab.Subgraph.n3fy)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L127)
+#### [`n3fy` method](#kglab.Frame.n3fy)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/frame.py#L127)
 
 ```python
 n3fy(node)
@@ -889,13 +889,13 @@ text (or Python object) for the serialized node
 
 
 
-## [`SubgraphMatrix` class](#SubgraphMatrix)
+## [`Frame2D` class](#Frame2D)
 
 Projection of a RDF graph to a [*matrix*](https://mathworld.wolfram.com/AdjacencyMatrix.html) representation.
 Typical use cases include integration with non-RDF graph libraries for *graph algorithms*.
     
 ---
-#### [`__init__` method](#kglab.SubgraphMatrix.__init__)
+#### [`__init__` method](#kglab.Frame2D.__init__)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L151)
 
 ```python
@@ -919,8 +919,8 @@ an optional map to override the  `subject` and `object` bindings expected in the
 
 
 ---
-#### [`build_df` method](#kglab.SubgraphMatrix.build_df)
-[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L185)
+#### [`build_df` method](#kglab.Frame2D.build_df)
+[*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/frame.py#L185)
 
 ```python
 build_df(show_symbols=False)
@@ -939,7 +939,7 @@ the populated `DataFrame` object; uses the [RAPIDS `cuDF` library](https://docs.
 
 
 ---
-#### [`build_nx_graph` method](#kglab.SubgraphMatrix.build_nx_graph)
+#### [`build_nx_graph` method](#kglab.Frame2D.build_nx_graph)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L234)
 
 ```python
@@ -960,7 +960,7 @@ the populated `NetworkX` graph object; uses the [RAPIDS `cuGraph` library](https
 
 
 ---
-#### [`build_ig_graph` method](#kglab.SubgraphMatrix.build_ig_graph)
+#### [`build_ig_graph` method](#kglab.Frame2D.build_ig_graph)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L276)
 
 ```python
@@ -980,13 +980,13 @@ the populated  `iGraph` graph object
 
 
 
-## [`SubgraphTensor` class](#SubgraphTensor)
+## [`FrameND` class](#FrameND)
 
 Projection of a RDF graph to a [*tensor*](https://mathworld.wolfram.com/Tensor.html) representation.
 Typical use cases include integration with non-RDF graph libraries for *visualization* and *embedding*.
     
 ---
-#### [`__init__` method](#kglab.SubgraphTensor.__init__)
+#### [`__init__` method](#kglab.FrameND.__init__)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L314)
 
 ```python
@@ -1004,7 +1004,7 @@ a list of RDF predicates to exclude from projection into the *subgraph*
 
 
 ---
-#### [`as_tuples` method](#kglab.SubgraphTensor.as_tuples)
+#### [`as_tuples` method](#kglab.FrameND.as_tuples)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L338)
 
 ```python
@@ -1019,7 +1019,7 @@ the RDF triples within the subgraph
 
 
 ---
-#### [`as_tensor_edges` method](#kglab.SubgraphTensor.as_tensor_edges)
+#### [`as_tensor_edges` method](#kglab.FrameND.as_tensor_edges)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L353)
 
 ```python
@@ -1034,7 +1034,7 @@ a subject and object edge for each predicate, in tensor representation
 
 
 ---
-#### [`as_tensor` method](#kglab.SubgraphTensor.as_tensor)
+#### [`as_tensor` method](#kglab.FrameND.as_tensor)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L377)
 
 ```python
@@ -1060,7 +1060,7 @@ an edge list for the loaded tensor object
 
 
 ---
-#### [`pyvis_style_node` method](#kglab.SubgraphTensor.pyvis_style_node)
+#### [`pyvis_style_node` method](#kglab.FrameND.pyvis_style_node)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L416)
 
 ```python
@@ -1083,7 +1083,7 @@ optional style dictionary
 
 
 ---
-#### [`build_pyvis_graph` method](#kglab.SubgraphTensor.build_pyvis_graph)
+#### [`build_pyvis_graph` method](#kglab.FrameND.build_pyvis_graph)
 [*\[source\]*](https://github.com/DerwenAI/kglab/blob/main/kglab/subg.py#L460)
 
 ```python

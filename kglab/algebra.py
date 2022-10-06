@@ -1,5 +1,5 @@
 """
-Working with `SubgraphMatrix` as vectorized representation.
+Working with `Frame` as vectorized representation.
 Additions to functionalities present in `subg.py`.
 Integrate `scipy` and `scikit-learn` functionalities.
 
@@ -14,7 +14,7 @@ from kglab.util import Mixin
 
 class AlgebraMixin(Mixin):
     """
-Provides methods to work with graph algebra using `SubgraphMatrix` data.
+Provides methods to work with graph algebra using `Frame` data.
 
 NOTE: provide optional Oxigraph support for fast in-memory computation
     """

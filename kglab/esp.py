@@ -15,7 +15,7 @@ import typing
 import pandas as pd  # type: ignore
 import rdflib  # type: ignore
 
-from kglab import KnowledgeGraph, Measure, Subgraph
+from kglab import KnowledgeGraph, Measure, Frame
 from kglab.pkg_types import RDF_Node, SPARQL_Bindings
 import kglab.util
 
@@ -50,7 +50,7 @@ class EvoShapeNode:
 
     def serialize (
         self,
-        subgraph: Subgraph,
+        subgraph: Frame,
         ) -> SerializedEvoNode:
         """
         """
@@ -62,7 +62,7 @@ class EvoShapeNode:
     def deserialize (
         cls,
         dat: SerializedEvoNode,
-        subgraph: Subgraph,
+        subgraph: Frame,
         uri_map: dict,
         *,
         root_node: "EvoShapeNode" = None,
@@ -135,10 +135,10 @@ class EvoShape:
 
     def serialize (
         self,
-        subgraph: Subgraph,
+        subgraph: Frame,
         ) -> SerializedEvoShape:
         """
-Transform to ordinal format which can be serialized/deserialized, using a `Subgraph` with a consistent ordering across different distributed processes.
+Transform to ordinal format which can be serialized/deserialized, using a `Frame` with a consistent ordering across different distributed processes.
         """
         d: deque = deque(sorted([ n.serialize(subgraph) for n in self.nodes.difference({self.root}) ]))
         d.appendleft(self.root.serialize(subgraph))
@@ -149,7 +149,7 @@ Transform to ordinal format which can be serialized/deserialized, using a `Subgr
     def deserialize (
         self,
         dat_list: SerializedEvoShape,
-        subgraph: Subgraph,
+        subgraph: Frame,
         ) -> dict:
         """
 Replace shape definition with parsed content.
@@ -275,7 +275,7 @@ class ShapeFactory:
         """
         self.kg = kg
         self.measure = measure
-        self.subgraph = Subgraph(kg, preload=measure.get_keyset())
+        self.subgraph = Frame(kg, preload=measure.get_keyset())
 
         # enum action space of possible RDF types (i.e., "superclasses")
         type_sparql = "SELECT DISTINCT ?n WHERE {[] rdf:type ?n}"
