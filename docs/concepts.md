@@ -31,10 +31,11 @@ and also handling *property graph* features
   * *inference*
 
 
-### Subgraph
+### Frame
 
-[`kglab.Subgraph`](../ref/#subgraph-class)
+[`kglab.Frame`](../ref/#frame-class)
 
+  * manipulate a subgraph
   * *transforms to matrix/tensor*
   * *label encoding*
   * *visualization*

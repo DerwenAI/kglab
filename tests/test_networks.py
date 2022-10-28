@@ -3,7 +3,7 @@ import numpy as np
 from networkx.exception import NetworkXNoPath
 
 import kglab
-from kglab.subg import SubgraphMatrix, Subgraph
+from kglab.frame import Frame2D
 
 from .__init__ import DAT_FILES_DIR
 
@@ -46,7 +46,7 @@ WHERE {
 """
 
 def test_distances_mtx(kg_test_data):
-    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    subgraph = Frame2D(kg=kg_test_data, sparql=QUERY1)
 
     dist = subgraph.get_distances(subgraph.to_adjacency())
     np.testing.assert_allclose(
@@ -55,7 +55,7 @@ def test_distances_mtx(kg_test_data):
     )
 
 def test_shortest_path(kg_test_data):
-    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    subgraph = Frame2D(kg=kg_test_data, sparql=QUERY1)
 
     try:
         subgraph.get_shortest_path(2, 6)
@@ -73,7 +73,7 @@ def test_shortest_path(kg_test_data):
         pass
 
 def test_describe(kg_test_data):
-    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    subgraph = Frame2D(kg=kg_test_data, sparql=QUERY1)
     print(subgraph.describe())
     
 

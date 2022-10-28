@@ -1,4 +1,5 @@
 """
+The `Frame` class to access subgraphs' functionalities.
 Subgraph transforms for visualization, graph algorithms, etc.
 
 see license https://github.com/DerwenAI/kglab#license-and-copyright
@@ -26,13 +27,14 @@ if get_gpu_count() > 0:
     import cugraph # type: ignore # pylint: disable=W0611
 
 
-class Subgraph:
+class Frame:
     """
+Handle operations on subgraphs.
 Base class for projection of an RDF graph into an *algebraic object* such as a *vector*,
  *matrix*, or *tensor* representation, to support integration with non-RDF graph libraries.
  In other words, this class provides means to vectorize selected portions of a graph as a
  [*dimension*](https://mathworld.wolfram.com/Dimension.html).
- See <https://derwen.ai/docs/kgl/concepts/#subgraph>
+ See <https://derwen.ai/docs/kgl/concepts/#frame>
 
 Features support several areas of use cases, including:
 
@@ -155,8 +157,8 @@ None
         """
         if self.kg is None:
             raise ValueError(
-                """`Subgraph`'s `kg` should be initialized:
-                `kglab.Subgraph(kg)`"""
+                """`Frame`'s `kg` should be initialized:
+                `kglab.Frame(kg)`"""
             )
 
         # create an empty `nx.DiGraph` if none is present
@@ -165,8 +167,9 @@ None
             self.nx_graph = self.build_nx_graph(nx.DiGraph())  # pylint: disable=E1101
 
 
-class SubgraphMatrix (Subgraph, AlgebraMixin, NetAnalysisMixin):  # pylint: disable=W0223
+class Frame2D (Frame, AlgebraMixin, NetAnalysisMixin):  # pylint: disable=W0223
     """
+Frame as a Matrix (2-Dimensional array).
 Projection of a RDF graph to a [*matrix*](https://mathworld.wolfram.com/AdjacencyMatrix.html) representation.
 Typical use cases include integration with non-RDF graph libraries for *graph algorithms*.
 
@@ -232,7 +235,7 @@ the populated `DataFrame` object; uses the [RAPIDS `cuDF` library](https://docs.
 
         if self.sparql is None and self.kg.use_gpus is True:
             raise ValueError("""To use GPUs is necessary to provide a SPARQL query to define a subgraph:
-                            `kglab.SubgraphMatrix(kg, sparql)` or `SubgraphTensor(...)`""")
+                            `kglab.Frame2D(kg, sparql)` or `FrameND(...)`""")
         row_iter = self.kg.query(self.sparql, bindings=self.bindings)
 
         if not show_symbols:
@@ -346,7 +349,7 @@ the populated  `iGraph` graph object
         return int(np.sum(self.to_adjacency()))
 
 
-class SubgraphTensor (Subgraph):
+class FrameND (Frame):
     """
 Projection of a RDF graph to a [*tensor*](https://mathworld.wolfram.com/Tensor.html) representation.
 Typical use cases include integration with non-RDF graph libraries for *visualization* and *embedding*.

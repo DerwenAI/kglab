@@ -18,9 +18,9 @@ if __name__ == "__main__":
 
     class_list = [
         "KnowledgeGraph",
-        "Subgraph",
-        "SubgraphMatrix",
-        "SubgraphTensor",
+        "Frame",
+        "Frame2D",
+        "FrameND",
         "Measure",
         "Simplex0",
         "Simplex1",

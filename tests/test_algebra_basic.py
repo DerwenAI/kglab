@@ -2,7 +2,7 @@ import pytest
 import numpy as np
 
 import kglab
-from kglab.subg import SubgraphMatrix
+from kglab.frame import Frame2D
 
 from .__init__ import DAT_FILES_DIR
 
@@ -43,7 +43,7 @@ WHERE {
 """
 
 def test_adj_mtx(kg_test_data):
-    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    subgraph = Frame2D(kg=kg_test_data, sparql=QUERY1)
     n_array = subgraph.to_adjacency()
     np.testing.assert_allclose(
         n_array[:3,:6],
@@ -57,7 +57,7 @@ def test_adj_mtx(kg_test_data):
 
 
 def test_incidence(kg_test_data):
-    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    subgraph = Frame2D(kg=kg_test_data, sparql=QUERY1)
     n_array = subgraph.to_incidence()
     np.testing.assert_allclose(
         n_array[:3,:6],
@@ -70,7 +70,7 @@ def test_incidence(kg_test_data):
     )
 
 def test_laplacian(kg_test_data):
-    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    subgraph = Frame2D(kg=kg_test_data, sparql=QUERY1)
     n_array = subgraph.to_laplacian()
     np.testing.assert_allclose(
         n_array[:3,:6],
@@ -83,7 +83,7 @@ def test_laplacian(kg_test_data):
     )
 
 def test_scipy_sparse(kg_test_data):
-    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    subgraph = Frame2D(kg=kg_test_data, sparql=QUERY1)
     n_array = subgraph.to_scipy_sparse()
     assert n_array.getformat() == "csr"
 
@@ -94,7 +94,7 @@ def test_scipy_sparse(kg_test_data):
     assert all(i not in get_items(n_array) for i in not_set_)
 
 def test_get_numbers(kg_test_data):
-    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    subgraph = Frame2D(kg=kg_test_data, sparql=QUERY1)
     subgraph.check_attributes()
     
     assert subgraph._get_n_nodes() == 256

@@ -5,7 +5,7 @@ from .kglab import KnowledgeGraph
 
 from .graph import NodeRef, PropertyStore
 
-from .subg import Subgraph, SubgraphMatrix, SubgraphTensor
+from .frame import Frame, Frame2D, FrameND
 
 from .topo import Measure, Simplex0, Simplex1
 
