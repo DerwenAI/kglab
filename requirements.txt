@@ -25,3 +25,4 @@ scipy >= 1.8.0
 statsmodels >= 0.13
 tqdm >= 4.63
 urlpath >= 1.2
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
