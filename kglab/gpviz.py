@@ -34,6 +34,8 @@ by Peb Ruswono Aryan <https://github.com/pebbie>
         "lazy",
         "service_string",
         "term",
+        "start",  # used by LIMIT
+        "length"  # used by LIMIT
     ]
 
     # colorcet glasbey_category10 first 16 colors
