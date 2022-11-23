@@ -1,5 +1,12 @@
 # `kglab` changelog
 
+## 0.6.2
+
+2022-11-23
+
+  * update to `setuptools` to workaround potential vulnerabilities
+
+
 ## 0.6.1
 
 2022-04-20
