@@ -10,13 +10,14 @@ import networkx as nx
 from networkx.exception import NetworkXError
 from scipy.spatial.distance import pdist, squareform
 
-from kglab.util import Mixin
+from .util import Mixin
 
-class NetAnalysisMixin(Mixin):
+
+class NetAnalysisMixin (Mixin):
     """
 Provides methods for network analysis tools to work with `KnowledgeGraph`.
     """
-    def get_distances(self, adj_mtx):
+    def get_distances (self, adj_mtx):
         """
 Compute distances according to an adjacency matrix.
 
@@ -24,9 +25,10 @@ Compute distances according to an adjacency matrix.
 numpy.array: square matrix of distances.
         """
         self.check_attributes()
-        return squareform(pdist(adj_mtx, metric='euclidean'))
+        return squareform(pdist(adj_mtx, metric="euclidean"))
 
-    def get_shortest_path(self, src, dst):
+
+    def get_shortest_path (self, src, dst):
         """
 Return shortest path from sources to destinations.
 
@@ -41,7 +43,8 @@ list of int: a path of indices
         self.check_attributes()
         return nx.shortest_path(self.nx_graph, source=src, target=dst)
 
-    def describe(self):
+
+    def describe (self):
         """
 Return a summary for subgraph statistics.
 NOTE: we may cache these methods calls if we create something like a `GraphFrame` object.
@@ -50,7 +53,7 @@ NOTE: we may cache these methods calls if we create something like a `GraphFrame
         return:
 dict: a dictionary with stats
         """
-        def msg_if_raise(f, g, r):
+        def msg_if_raise (f, g, r):
             """Handle error messages by adding a message key in the results"""
             try:
                 return f(g)
@@ -69,7 +72,8 @@ dict: a dictionary with stats
             "eccentricity": msg_if_raise(nx.eccentricity, self.nx_graph, results)
         }}
 
-    def describe_more(self):
+
+    def describe_more (self):
         """
 Return a summary with more graph statistics.
         """

@@ -12,8 +12,8 @@ import typing
 import pandas as pd  # type: ignore  # pylint: disable=E0401
 import rdflib  # type: ignore  # pylint: disable=E0401
 
-from kglab import KnowledgeGraph
-from kglab.pkg_types import Census_Item, Census_Dyad_Tally
+from .kglab import KnowledgeGraph
+from .pkg_types import Census_Item, Census_Dyad_Tally
 
 
 class Simplex0:

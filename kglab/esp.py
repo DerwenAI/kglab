@@ -15,9 +15,11 @@ import typing
 import pandas as pd  # type: ignore
 import rdflib  # type: ignore
 
-from kglab import KnowledgeGraph, Measure, Subgraph
-from kglab.pkg_types import RDF_Node, SPARQL_Bindings
-import kglab.util
+from .kglab import KnowledgeGraph
+from .topo import Measure
+from .subg import Subgraph
+from .pkg_types import RDF_Node, SPARQL_Bindings
+from .util import calc_quantile_bins, root_mean_square, stripe_column
 
 
 SerializedEvoEdge = typing.Tuple[int, int]
@@ -366,14 +368,14 @@ Rank this `shape` within a dataframe generated from the given `board` object.
 
         # normalize by column
         df2 = df1.apply(lambda x: x/x.max(), axis=0)
-        bins = kglab.util.calc_quantile_bins(len(df2.index))
+        bins = calc_quantile_bins(len(df2.index))
 
         # stripe each column to approximate a pareto front
-        stripes = [ kglab.util.stripe_column(values, bins) for _, values in df2.items() ]
+        stripes = [ stripe_column(values, bins) for _, values in df2.items() ]
         df3 = pd.DataFrame(stripes).T
 
         # rank based on RMS of striped indices per row
-        df1["rank"] = df3.apply(kglab.util.root_mean_square, axis=1)
+        df1["rank"] = df3.apply(root_mean_square, axis=1)
         df1["shape"] = pd.Series(board, index=df1.index)
 
         # sort descending
