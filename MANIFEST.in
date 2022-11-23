@@ -1,3 +1,55 @@
 include README.md
 include changelog.txt
+include .pre-commit-hooks.yaml
+include *.in
+include *.md
+include *.py
+include *.txt
+include *.yaml
+include *.yml
+include CITATION
+include Makefile
+include pylintrc
+recursive-include bin *.py
+recursive-include bin *.sh
+recursive-include dat *.csv
+recursive-include dat *.db
+recursive-include dat *.ipynb
+recursive-include dat *.json
+recursive-include dat *.jsonld
+recursive-include dat *.parquet
+recursive-include dat *.ttl
+recursive-include dat *.txt
+recursive-include dat *.yml
+recursive-include docker *.Dockerfile
+recursive-include docker *.common
+recursive-include docker *.notebook
+recursive-include docker *.sh
+recursive-include docker *.testsuite
+recursive-include docs *.css
+recursive-include docs *.graffle
+recursive-include docs *.js
+recursive-include docs *.md
+recursive-include docs *.png
+recursive-include examples *.ipynb
+recursive-include scripts *.py
+recursive-include tests *.csv
+recursive-include tests *.gitkeep
+recursive-include tests *.html
+recursive-include tests *.json
+recursive-include tests *.jsonld
+recursive-include tests *.md
+recursive-include tests *.parquet
+recursive-include tests *.py
+recursive-include tests *.rdf
+recursive-include tests *.rq
+recursive-include tests *.ru
+recursive-include tests *.srj
+recursive-include tests *.srx
+recursive-include tests *.tsv
+recursive-include tests *.ttl
+recursive-include wip *.ipynb
+recursive-include wip *.pth
+recursive-include wip *.py
+recursive-include wip *.template
 

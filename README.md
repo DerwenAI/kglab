@@ -235,4 +235,4 @@ and
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=derwenai/pytextrank&type=Date)](https://star-history.com/#derwenai/pytextrank&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=derwenai/kglab&type=Date)](https://star-history.com/#derwenai/kglab&Date)

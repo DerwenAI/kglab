@@ -17,13 +17,13 @@ import rdflib  # type: ignore
 import rdflib.plugin  # type: ignore
 
 ## kglab - core classes
-from kglab.pkg_types import GraphLike, RDF_Node
-from kglab.util import get_gpu_count
-from kglab.version import _check_version
-import kglab.query.sparql
-from kglab.query.mixin import QueryingMixin
-from kglab.serde import SerdeMixin
-from kglab.standards import ShaclOwlRdfSkosMixin
+from .pkg_types import GraphLike, RDF_Node
+from .util import get_gpu_count
+from .version import _check_version
+from .query.sparql import SparqlQueryable
+from .query.mixin import QueryingMixin
+from .serde import SerdeMixin
+from .standards import ShaclOwlRdfSkosMixin
 
 
 ## pre-constructor set-up
@@ -125,7 +125,7 @@ a dictionary of [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rd
                 self.add_ns(prefix, iri) # pylint: disable=E1101
 
         # backwards compatibility for class refactoring
-        self.sparql = kglab.query.sparql.SparqlQueryable(self)
+        self.sparql = SparqlQueryable(self)
 
 
     def build_blank_graph (

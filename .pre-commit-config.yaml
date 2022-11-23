@@ -9,7 +9,6 @@ repos:
     rev: v3.4.0
     hooks:
     -   id: check-builtin-literals
-    -   id: check-executables-have-shebangs
     -   id: check-merge-conflict
     -   id: debug-statements
     -   id: detect-private-key

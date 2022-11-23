@@ -4,7 +4,8 @@
 
 2022-11-23
 
-  * update to `setuptools` to workaround potential vulnerabilities
+  * update `setuptools` to workaround potential vulnerabilities
+  * create `pyproject.toml` to support upcoming `pip` release
 
 
 ## 0.6.1

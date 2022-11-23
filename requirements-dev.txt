@@ -2,6 +2,7 @@ bandit >= 1.7
 codespell >= 2.1
 coverage >= 6.3
 flask >= 2.0
+flit >= 3.8
 grayskull >= 1.1
 jupyterlab >= 3.3
 mistune >= 0.8

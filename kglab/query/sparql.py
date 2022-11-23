@@ -5,6 +5,7 @@
 """
 SPARQL query abstractions.
 """
+
 import re
 import typing
 
@@ -12,9 +13,9 @@ import pandas as pd  # type: ignore  # pylint: disable=E0401
 import pyvis  # type: ignore  # pylint: disable=E0401
 import rdflib  # type: ignore  # pylint: disable=E0401
 
-from kglab.gpviz import GPViz
-from kglab.pkg_types import RDF_Node
-from kglab.util import get_gpu_count
+from ..pkg_types import RDF_Node
+from ..gpviz import GPViz
+from ..util import get_gpu_count
 
 from .base import Queryable
 
