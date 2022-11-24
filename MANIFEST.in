@@ -1,9 +1,3 @@
-exclude bin/
-exclude docker/
-exclude docs/
-exclude tests/
-exclude wip/
-exclude *.py
 include *.md
 include .pre-commit-hooks.yaml
 include CITATION
@@ -35,3 +29,8 @@ include requirements-tut.txt
 include requirements.txt
 include sample.py
 include setup.py
+exclude bin/*
+exclude docker/*
+exclude docs/*
+exclude tests/*
+exclude wip/*
