@@ -1,9 +1,10 @@
 # `kglab` changelog
 
-## 0.6.5
+## 0.6.6
 
 2022-11-23
 
+  * something is not quite right about source distributions... kudos to <https://stackoverflow.com/questions/608855/excluding-a-top-level-directory-from-a-setuptools-package>
   * update `setuptools` to workaround potential vulnerabilities
   * create `pyproject.toml` to support upcoming `pip` release
   * remove tests and other unnecessary files from source distribution
