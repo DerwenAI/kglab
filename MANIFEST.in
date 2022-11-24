@@ -1,3 +1,9 @@
+exclude bin/
+exclude docker/
+exclude docs/
+exclude tests/
+exclude wip/
+exclude *.py
 include *.md
 include .pre-commit-hooks.yaml
 include CITATION
