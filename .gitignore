@@ -146,4 +146,3 @@ dmypy.json
 report-*
 Pipfile.lock
 poetry.lock
-/BKUP_pyproject.toml.bkup
