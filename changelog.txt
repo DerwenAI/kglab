@@ -1,11 +1,12 @@
 # `kglab` changelog
 
-## 0.6.4
+## 0.6.5
 
 2022-11-23
 
   * update `setuptools` to workaround potential vulnerabilities
   * create `pyproject.toml` to support upcoming `pip` release
+  * remove tests and other unnecessary files from source distribution
 
 
 ## 0.6.1
