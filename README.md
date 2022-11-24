@@ -38,18 +38,46 @@ Morph-KGC, pythonPSL, and many more.
 See the ["Getting Started"](https://derwen.ai/docs/kgl/start/)
 section of the online documentation.
 
-We recommend installing from [PyPi](https://pypi.python.org/pypi/kglab):
+## Useing kglab as a package for your project
+
+### We recommend installing from [PyPi](https://pypi.python.org/pypi/kglab):
+
+#### pip
 ```bash
 python3 -m pip install kglab
 ```
 
+#### pipenv
+```bash
+pipenv install kglab
+```
+
+#### poetry
+```bash
+potery add kglab
+```
+
+#### conda
+```bash
+conda env create -n kglab
+conda activate kglab
+pip install kglab
+```
+
+### Or, install from source:
 If you work directly from this Git repo, be sure to install the 
 dependencies:
+#### pip
 ```bash
 python3 -m pip install -U pip
 python3 -m pip install -r requirements.txt
 ```
 
+#### pipenv
+```bash
+pipenv install --dev
+# NEED TO HAVE a Pipfile
+```
 Alternatively, to install dependencies using `conda`:
 ```bash
 conda env create -f environment.yml --force
