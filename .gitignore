@@ -7,6 +7,8 @@ examples/foo.ttl
 examples/tmp.*
 kgl.tgz
 dask-worker-space/
+.ipynb_checkpoints/
+kglab/.ipynb_checkpoints/
 
 # codecov.io
 .cc_token

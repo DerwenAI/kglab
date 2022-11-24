@@ -24,11 +24,10 @@ import rdflib.plugin  # type: ignore
 import rdflib.plugins.parsers.notation3 as rdf_n3  # type: ignore
 
 ## kglab - core classes
-from kglab.decorators import multifile
-from kglab.pkg_types import IOPathLike, PathLike
-from kglab.util import get_gpu_count
-from kglab.version import _check_version
-from kglab.util import Mixin
+from .decorators import multifile
+from .pkg_types import IOPathLike, PathLike
+from .util import get_gpu_count, Mixin
+from .version import _check_version
 
 
 ## pre-constructor set-up
@@ -38,7 +37,7 @@ if get_gpu_count() > 0:
     import cudf  # type: ignore  # pylint: disable=E0401
 
 
-class SerdeMixin(Mixin):
+class SerdeMixin (Mixin):
     """
 Provide serialization and deserialization methods for `KnowledgeGraph`:
 * RDF

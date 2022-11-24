@@ -13,12 +13,12 @@ import pyvis.network  # type: ignore
 import networkx as nx  # type: ignore
 import numpy as np  # type: ignore
 
-from kglab import KnowledgeGraph
-from kglab.topo import Measure
-from kglab.pkg_types import NodeLike, RDF_Node, RDF_Triple
-from kglab.algebra import AlgebraMixin
-from kglab.networks import NetAnalysisMixin
-from kglab.util import get_gpu_count
+from .kglab import KnowledgeGraph
+from .topo import Measure
+from .pkg_types import NodeLike, RDF_Node, RDF_Triple
+from .algebra import AlgebraMixin
+from .networks import NetAnalysisMixin
+from .util import get_gpu_count
 
 
 if get_gpu_count() > 0:

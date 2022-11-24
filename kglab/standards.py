@@ -13,11 +13,11 @@ import owlrl  # type: ignore
 import pyshacl  # type: ignore
 
 ## kglab - core classes
-from kglab.pkg_types import GraphLike
-from kglab.util import Mixin
+from .pkg_types import GraphLike
+from .util import Mixin
 
 
-class ShaclOwlRdfSkosMixin(Mixin):
+class ShaclOwlRdfSkosMixin (Mixin):
     """
 Provide methods for SHACL- OWL- and RDF-related operations.
     """

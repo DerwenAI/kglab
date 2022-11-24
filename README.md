@@ -69,7 +69,7 @@ If you work directly from this Git repo, be sure to install the
 dependencies:
 #### pip
 ```bash
-python3 -m pip install -U pip
+python3 -m pip install -U pip wheel
 python3 -m pip install -r requirements.txt
 ```
 
@@ -259,3 +259,8 @@ and
  alt="kglab contributors"
  src="https://contributors-img.web.app/image?repo=derwenai/kglab"
 />
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=derwenai/kglab&type=Date)](https://star-history.com/#derwenai/kglab&Date)

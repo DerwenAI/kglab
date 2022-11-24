@@ -7,12 +7,12 @@ Utility functions used within `kglab` and related applications.
 """
 
 import math
+import typing
 
 import numpy as np  # type: ignore  # pylint: disable=E0401
 import pandas as pd  # type: ignore  # pylint: disable=E0401
 
-import typing
-from kglab.pkg_types import GraphLike
+from .pkg_types import GraphLike
 
 GPU_COUNT: int = 0
 

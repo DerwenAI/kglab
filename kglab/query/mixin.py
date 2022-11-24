@@ -16,11 +16,10 @@ import rdflib  # type: ignore
 import rdflib.plugin  # type: ignore
 
 ## kglab - core classes
-from kglab.pkg_types import RDF_Node
-from kglab.gpviz import GPViz
-from kglab.util import get_gpu_count
-from kglab.version import _check_version
-from kglab.util import Mixin
+from ..pkg_types import RDF_Node
+from ..gpviz import GPViz
+from ..util import get_gpu_count, Mixin
+from ..version import _check_version
 
 
 ## pre-constructor set-up
