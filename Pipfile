@@ -63,4 +63,9 @@ types-requests = ">=2.27"
 xmltodict = ">=0.12"
 
 [requires]
-python_version = ">=python 3.7"
+# python_version = "3.11"
+# python_version = "3.10"
+# python_version = "3.9"
+# python_version = "3.8"
+# python_version = "3.7"
+# python_version = "3"
