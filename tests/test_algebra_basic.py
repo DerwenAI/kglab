@@ -101,3 +101,53 @@ def test_get_numbers(kg_test_data):
     assert subgraph._get_n_edges() == 1078
     assert subgraph.nx_graph.number_of_nodes() == 256
     assert subgraph.nx_graph.number_of_edges() == 1078
+
+
+def test_adj_mtx_with_zarr(kg_test_data):
+    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    n_array = subgraph.to_zarr("to_adjacency")
+
+    assert(n_array.shape == (256, 256))
+    
+    np.testing.assert_allclose(
+        n_array[:3,:6],
+        np.array(
+            [[0, 1, 1, 1, 1, 1],
+            [0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0]]
+        ),
+        rtol=1e-5, atol=0
+    )
+
+
+def test_incidence_with_zarr(kg_test_data):
+    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    n_array = subgraph.to_zarr("to_incidence")
+
+    assert(n_array.shape == (256, 1078))
+
+    np.testing.assert_allclose(
+        n_array[:3,:6],
+        np.array(
+            [[1, 1, 1, 1, 1, 1],
+            [1, 0, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 0]]
+        ),
+        rtol=1e-5, atol=0
+    )
+
+def test_laplacian_with_zarr(kg_test_data):
+    subgraph = SubgraphMatrix(kg=kg_test_data, sparql=QUERY1)
+    n_array = subgraph.to_zarr("to_laplacian")
+
+    assert(n_array.shape == (256, 256))
+
+    np.testing.assert_allclose(
+        n_array[:3,:6],
+        np.array(
+            [[6, -1, -1, -1, -1, -1],
+            [-1, 190, 0, 0, 0, 0],
+            [-1, 0, 147, 0, 0, 0]]
+        ),
+        rtol=1e-5, atol=0
+    )
