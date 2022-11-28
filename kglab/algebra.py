@@ -96,7 +96,7 @@ zzarr.core.Array: values of requested `func`
             raise ImportError("To use Zarr you need to install kglab with the required extra package: pip install kglab[with-zarr]")
 
         data = getattr(self, func)()
-        array = zarr.create(data.shape, chunks=(10, 10))
+        array = zarr.create(data.shape, chunks=True)
         array[:] = data
 
         return array
