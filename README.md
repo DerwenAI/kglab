@@ -48,11 +48,20 @@ python3 -m pip install kglab
 ```
 
 #### pipenv
+Kglab supports python 3.7 and above. 
+You will need to specify the python version in your Pipfile or whne creating the pipenv
+If you have specified the python version in your Pipfile, you can install kglab with:
 ```bash
 pipenv install kglab
 ```
 
+If you have not specified the python version in your Pipfile, you can install kglab with:
+```bash
+pipenv install --python 3.7 kglab
+```
+
 #### poetry
+You can install into you existing poetry project with:
 ```bash
 potery add kglab
 ```
