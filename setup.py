@@ -76,8 +76,16 @@ if __name__ == "__main__":
         long_description_content_type = "text/markdown",
 
         python_requires = ">=" + kglab_version._versify(kglab_version.MIN_PY_VERSION),  # pylint: disable=W0212
-        packages = setuptools.find_packages(exclude=[ "docs", "examples" ]),
         zip_safe = False,
+
+        packages = setuptools.find_packages(
+            exclude = [
+                "dat",
+                "docs",
+                "examples",
+                "scripts",
+                "tests",
+            ]),
 
         install_requires = base_packages,
         extras_require = {
@@ -114,12 +122,11 @@ if __name__ == "__main__":
         url = "https://derwen.ai/docs/kgl/",
         project_urls = {
             "DOI": "https://doi.org/10.5281/zenodo.6360664",
-            "Community Survey": "https://forms.gle/FMHgtmxHYWocprMn6",
-            "Discussion Forum": "https://www.linkedin.com/groups/6725785/",
+            "Discussions": "https://www.linkedin.com/groups/6725785/",
             "DockerHub": "https://hub.docker.com/r/derwenai/kglab",
-            "Hands-on Tutorial": "https://derwen.ai/docs/kgl/tutorial/",
-            "Issue Tracker": "https://github.com/DerwenAI/kglab/issues",
-            "Source Code": "https://github.com/DerwenAI/kglab",
+            "Tutorial": "https://derwen.ai/docs/kgl/tutorial/",
+            "Issues": "https://github.com/DerwenAI/kglab/issues",
+            "Source": "https://github.com/DerwenAI/kglab",
         },
 
         entry_points = {
