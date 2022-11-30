@@ -78,3 +78,25 @@ SciPy sparse matrix: Graph adjacency matrix.
         """
         self.check_attributes()
         return nx.to_scipy_sparse_array(self.nx_graph)
+
+    def to_zarr (self, func: str) -> "zzarr.core.Array":  # type: ignore
+        """
+Return value of a function in `kglab.algebra` in [Zarr format](https://pypi.org/project/zarr/).
+
+       Args:
+func str: a name of one functions in `kglab.algebra`: `to_undirect`, `to_adjacency`, `to_incidence`, `to_laplacian`
+
+       returns:
+zzarr.core.Array: values of requested `func`
+        """
+        self.check_attributes()  # type: ignore
+        try:
+            import zarr  # type: ignore
+        except ImportError:
+            raise ImportError("To use Zarr you need to install kglab with the required extra package: pip install kglab[with-zarr]")
+
+        data = getattr(self, func)()
+        array = zarr.create(data.shape, chunks=True)
+        array[:] = data
+
+        return array

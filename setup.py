@@ -55,6 +55,10 @@ def parse_requirements_file (
 
         return results
 
+with_zarr_extras = {
+   'with_zarr': ['simplejson>=3.5.3']
+}
+
 
 if __name__ == "__main__":
     spec = importlib.util.spec_from_file_location("kglab.version", "kglab/version.py")
@@ -92,6 +96,7 @@ if __name__ == "__main__":
             "base": base_packages,
             "docs": docs_packages,
             "tutorial": tut_packages,
+            "with-zarr": ["zarr>=2.13.3"]
         },
 
         author = "Paco Nathan",
