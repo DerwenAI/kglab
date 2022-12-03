@@ -26,7 +26,7 @@ repos:
     rev: pylint-2.7.2
     hooks:
     -   id: pylint
-        exclude: ^wip/,^tests/
+        exclude: ^wip/,^tests/,^env_install_test/
         files: ^kglab/
 -   repo: https://github.com/codespell-project/codespell
     rev: v2.0.0
@@ -44,9 +44,8 @@ repos:
     -   id: poetry-export
         # TODO: check is it a single argument or multiple arguments
         args: ["-f", "requirements.txt", "-o", "requirements.txt"]
-        args: ["--dev", "-f", "requirements-dev.txt", "-o", "requirements-dev.txt"]
-        args: ["--tut"-f", "requirements-tut.txt", "-o", "requirements-tut.txt"]
-
+        # args: ["--dev", "-f", "requirements-dev.txt", "-o", "requirements-dev.txt"]
+        # args: ["--tut"-f", "requirements-tut.txt", "-o", "requirements-tut.txt"]
         verbose: true
 
 
