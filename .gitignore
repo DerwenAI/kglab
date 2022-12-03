@@ -106,7 +106,7 @@ ipython_config.py
 #   However, in case of collaboration, if having platform-specific dependencies or dependencies
 #   having no cross-platform support, pipenv may install dependencies that don't work, or not
 #   install all needed dependencies.
-#Pipfile.lock
+Pipfile.lock
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
@@ -148,3 +148,7 @@ dmypy.json
 report-*
 Pipfile.lock
 poetry.lock
+/*.zip
+env_install_test/pipenv_install/*
+env_install_test/poetry_install/*
+
