@@ -28,3 +28,6 @@ types-python-dateutil >= 2.8
 types-requests >= 2.27
 wheel >= 0.37
 xmltodict >= 0.12
+
+# test requirements for extra packages
+zarr >= 2.13.3
