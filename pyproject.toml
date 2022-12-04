@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "kglab"
-version = "0.1.0"
+version = "0.1.1a3"
 description = "a simple abstraction layer in Python for building knowledge graphs"
 license = "MIT"
 authors = ["Paco Nathan, Derwen, Inc"]
-maintainers = ["KGLab Contributors <"]
+maintainers = ["KGLab Team <KGLabr@ContributorA.coms>"]
 repository = "https://github.com/DerwenAI/kglab"
-homepage = "derwen.ai"
+homepage = "https://derwen.ai"
 readme = "README.md"
 documentation = "https://derwen.ai/docs/kgl/"
 keywords = [
@@ -31,7 +31,7 @@ classifiers = [
     "Topic :: Text Processing :: Indexing",
             ]
 
-
+exclude = ["tests/rdf_tests/*"]
 
 
 [tool.poetry.dependencies]
@@ -85,7 +85,6 @@ pre-commit = "^2.20.0"
 mypy = "^0.971"
 black = "^22.8.0"
 flake8 = "^5.0.4"
-mypy = "^0.971"
 pylint = "^2.15.2"
 flake8-pylint = "^0.1.3"
 bandit = "^1.7.4"
@@ -102,9 +101,10 @@ leidenalg = "^0.8"
 matplotlib = "^3.3.4"
 pylev = "^1.3"
 
-tool.poetry.scripts = [
-    "Makefile = Makefile:main"
-]
+# tool.poetry.scripts = [
+  #  "Makefile = Makefile:main"
+#]
+
 
 [build-system]
 requires = ["poetry-core"]

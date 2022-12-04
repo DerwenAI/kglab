@@ -151,4 +151,4 @@ poetry.lock
 /*.zip
 env_install_test/pipenv_install/*
 env_install_test/poetry_install/*
-
+env_install_test/build
