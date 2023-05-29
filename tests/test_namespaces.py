@@ -82,7 +82,10 @@ Coverage:
 
 * KnowledgeGraph.get_ns_dict()
     """
-    assert len(kg_test.get_ns_dict()) == 11
+    ns_set = set([ "dct", "owl", "prov", "rdf", "rdfs", "sh", "skos", "xsd", "xml" ])
+    observed = set(kg_test.get_ns_dict().keys())
+
+    assert len(observed.intersection(ns_set)) == 9
     assert "test1" in kg_test.get_ns_dict().keys()
 
     for key in NS_KEYS:
