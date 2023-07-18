@@ -4,6 +4,7 @@ coverage >= 6.3
 flask >= 2.0
 flit >= 3.8
 grayskull >= 1.1
+ipython >= 8.10.0 # not directly required, pinned by Snyk to avoid a vulnerability
 jupyterlab >= 3.3
 mistune >= 0.8
 mkdocs-git-revision-date-plugin >= 0.3
