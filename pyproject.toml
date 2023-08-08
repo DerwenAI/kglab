@@ -1,4 +1,75 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+    "setuptools",
+]
+
 [project]
-dynamic = ["dependencies"]
+name = "kglab"
+version = "0.6.7"
+authors = [
+    {name = "Paco Nathan", email = "paco@derwen.ai"},
+]
+description = "a simple abstraction layer in Python for building knowledge graphs"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+keywords = [
+    "controlled vocabulary",
+    "cugraph",
+    "deep learning",
+    "embedding",
+    "gpu",
+    "graph algorithms",
+    "igraph",
+    "inference",
+    "interactive visualization",
+    "json-ld",
+    "knowledge graph",
+    "managing namespaces",
+    "morph-kgc",
+    "n3",
+    "networkx",
+    "owl",
+    "pandas",
+    "parquet",
+    "probabilistic soft logic",
+    "psl",
+    "pyvis",
+    "rapids",
+    "rdf",
+    "rml",
+    "roam research",
+    "serialization",
+    "shacl",
+    "skos",
+    "sparql",
+    "statistical relational learning",
+    "topology",
+    "turtle",
+    "validation"
+]
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Human Machine Interfaces",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Indexing"
+]
+dynamic = ["dependencies", "readme"]
+
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
+readme = {file = ["README.md"]}
