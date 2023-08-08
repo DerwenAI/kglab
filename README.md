@@ -6,9 +6,7 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DerwenAI/kglab?style=plastic)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/DerwenAI/kglab.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/DerwenAI/kglab/context:python)
 ![CI](https://github.com/DerwenAI/kglab/workflows/CI/badge.svg)
-[![Docker Pulls](https://img.shields.io/docker/pulls/derwenai/kglab.svg?maxAge=604800)](https://hub.docker.com/r/derwenai/kglab/)
 ![downloads](https://img.shields.io/pypi/dm/kglab)
 ![sponsor](https://img.shields.io/github/sponsors/ceteri)
 
@@ -165,7 +163,7 @@ Source code for **kglab** plus its logo, documentation, and examples
 have an [MIT license](https://spdx.org/licenses/MIT.html) which is
 succinct and simplifies use in commercial applications.
 
-All materials herein are Copyright &copy; 2020-2022 Derwen, Inc.
+All materials herein are Copyright &copy; 2020-2023 Derwen, Inc.
 </details>
 
 
@@ -206,15 +204,15 @@ and to our contributors:
 [@louisguitton](https://github.com/louisguitton),
 [@tomaarsen](https://github.com/tomaarsen),
 [@Mec-iS](https://github.com/Mec-iS),
-[@cutterkom](https://github.com/cutterkom),
-[@RishiKumarRay](https://github.com/RishiKumarRay),
+[@jake-aft](https://github.com/jake-aft),
 [@Tpt](https://github.com/Tpt),
 [@ArenasGuerreroJulian](https://github.com/ArenasGuerreroJulian),
 [@fils](https://github.com/fils),
+[@cutterkom](https://github.com/cutterkom),
+[@RishiKumarRay](https://github.com/RishiKumarRay),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@pebbie](https://github.com/pebbie),
 [@CatChenal](https://github.com/CatChenal),
-[@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247),
 plus general support from [Derwen, Inc.](https://derwen.ai/);
 the [Knowledge Graph Conference](https://www.knowledgegraph.tech/)
