@@ -6,9 +6,7 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DerwenAI/kglab?style=plastic)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/DerwenAI/kglab.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/DerwenAI/kglab/context:python)
 ![CI](https://github.com/DerwenAI/kglab/workflows/CI/badge.svg)
-[![Docker Pulls](https://img.shields.io/docker/pulls/derwenai/kglab.svg?maxAge=604800)](https://hub.docker.com/r/derwenai/kglab/)
 ![downloads](https://img.shields.io/pypi/dm/kglab)
 ![sponsor](https://img.shields.io/github/sponsors/ceteri)
 
@@ -38,26 +36,24 @@ Morph-KGC, pythonPSL, and many more.
 See the ["Getting Started"](https://derwen.ai/docs/kgl/start/)
 section of the online documentation.
 
-## Useing kglab as a package for your project
 
-### We recommend installing from [PyPi](https://pypi.python.org/pypi/kglab):
+### Using `kglab` as a library for your Python project
 
-#### pip
+We recommend installing from [PyPi](https://pypi.python.org/pypi/kglab) or [conda](https://anaconda.org/anaconda/conda):
+
+#### `pip`
+
 ```bash
 python3 -m pip install kglab
 ```
 
-#### pipenv
+#### `pipenv`
+
 ```bash
 pipenv install kglab
 ```
 
-#### poetry
-```bash
-potery add kglab
-```
-
-#### conda
+#### `conda`
 ```bash
 conda env create -n kglab
 conda activate kglab
@@ -65,26 +61,34 @@ pip install kglab
 ```
 
 ### Or, install from source:
+
 If you work directly from this Git repo, be sure to install the 
 dependencies:
+
 #### pip
+
 ```bash
 python3 -m pip install -U pip wheel
 python3 -m pip install -r requirements.txt
 ```
 
 #### pipenv
+
 ```bash
 pipenv install --dev
-# NEED TO HAVE a Pipfile
 ```
+
 Alternatively, to install dependencies using `conda`:
+
 ```bash
 conda env create -f environment.yml --force
 conda activate kglab
 ```
 
+### Sample Code
+
 Then to run some simple uses of this library:
+
 ```python
 import kglab
 
@@ -129,12 +133,14 @@ Also, container images for each release are available on DockerHub:
 <https://hub.docker.com/repository/docker/derwenai/kglab>
 
 To build a container image and run it for the tutorials:
+
 ```bash
 docker build --pull --rm -f "docker/Dockerfile" -t kglab:latest .
 docker run -p 8888:8888 -it kglab
 ```
 
 To build and run a container image for testing:
+
 ```bash
 docker build --pull --rm -f "docker/testsuite.Dockerfile" -t kglabtest:latest .
 docker run --rm -it kglabtest
@@ -193,7 +199,7 @@ Source code for **kglab** plus its logo, documentation, and examples
 have an [MIT license](https://spdx.org/licenses/MIT.html) which is
 succinct and simplifies use in commercial applications.
 
-All materials herein are Copyright &copy; 2020-2022 Derwen, Inc.
+All materials herein are Copyright &copy; 2020-2023 Derwen, Inc.
 </details>
 
 
@@ -234,15 +240,15 @@ and to our contributors:
 [@louisguitton](https://github.com/louisguitton),
 [@tomaarsen](https://github.com/tomaarsen),
 [@Mec-iS](https://github.com/Mec-iS),
-[@cutterkom](https://github.com/cutterkom),
-[@RishiKumarRay](https://github.com/RishiKumarRay),
+[@jake-aft](https://github.com/jake-aft),
 [@Tpt](https://github.com/Tpt),
 [@ArenasGuerreroJulian](https://github.com/ArenasGuerreroJulian),
 [@fils](https://github.com/fils),
+[@cutterkom](https://github.com/cutterkom),
+[@RishiKumarRay](https://github.com/RishiKumarRay),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@pebbie](https://github.com/pebbie),
 [@CatChenal](https://github.com/CatChenal),
-[@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247),
 plus general support from [Derwen, Inc.](https://derwen.ai/);
 the [Knowledge Graph Conference](https://www.knowledgegraph.tech/)

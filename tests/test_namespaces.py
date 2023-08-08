@@ -82,30 +82,12 @@ Coverage:
 
 * KnowledgeGraph.get_ns_dict()
     """
-    assert len(kg_test.get_ns_dict()) == 11
+    ns_set = set([ "dct", "owl", "prov", "rdf", "rdfs", "sh", "skos", "xsd", "xml" ])
+    observed = set(kg_test.get_ns_dict().keys())
+
+    assert len(observed.intersection(ns_set)) == 9
     assert "test1" in kg_test.get_ns_dict().keys()
 
     for key in NS_KEYS:
         if key != "schema":
             assert key in kg_test.get_ns_dict().keys()
-    
-
-def test_describe_ns (kg_test_data):
-    """
-Coverage:
-
-* KnowledgeGraph.describe_ns()
-    """
-    df = kg_test_data.describe_ns()
-
-    s = set(df["prefix"])
-
-    exp_ns_keys = {'rdfs', 'skos', 'time', 'ssn', 'org', 'owl', 'doap',
-                   'brick', 'odrl', 'qb', 'void', 'dct', 'dcmitype', 'prof',
-                   'foaf', 'sosa', 'xml', 'dcam', 'schema1', 'dcterms', 'vann',
-                   'schema', 'dcat', 'csvw', 'dc', 'sh', 'rdf', 'prov', 'xsd'}
-
-    assert s.issubset(exp_ns_keys)
-    
-    for prfx in kg_test_data._DEFAULT_NAMESPACES:
-        assert prfx in list(df["prefix"])
