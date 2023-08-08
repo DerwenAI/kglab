@@ -11,15 +11,15 @@ and to our contributors:
 [@louisguitton](https://github.com/louisguitton),
 [@tomaarsen](https://github.com/tomaarsen),
 [@Mec-iS](https://github.com/Mec-iS),
-[@cutterkom](https://github.com/cutterkom),
-[@RishiKumarRay](https://github.com/RishiKumarRay),
+[@jake-aft](https://github.com/jake-aft),
 [@Tpt](https://github.com/Tpt),
 [@ArenasGuerreroJulian](https://github.com/ArenasGuerreroJulian),
 [@fils](https://github.com/fils),
+[@cutterkom](https://github.com/cutterkom),
+[@RishiKumarRay](https://github.com/RishiKumarRay),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@pebbie](https://github.com/pebbie),
 [@CatChenal](https://github.com/CatChenal),
-[@jake-aft](https://github.com/jake-aft),
 [@dmoore247](https://github.com/dmoore247);
 plus general support from [Derwen, Inc.](https://derwen.ai/);
 the [Knowledge Graph Conference](https://www.knowledgegraph.tech/)
@@ -109,7 +109,7 @@ Source code for **kglab** plus its logo, documentation, and examples
 have an [MIT license](https://spdx.org/licenses/MIT.html) which is
 succinct and simplifies use in commercial applications.
 
-All materials herein are Copyright &copy; 2020-2022 Derwen, Inc.
+All materials herein are Copyright &copy; 2020-2023 Derwen, Inc.
 
 [![logo for Derwen, Inc.](https://derwen.ai/static/block_logo.png)](https://derwen.ai/)
 
