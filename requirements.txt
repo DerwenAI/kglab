@@ -28,4 +28,3 @@ scipy >= 1.8.0
 statsmodels >= 0.13
 tqdm >= 4.63
 urlpath >= 1.2
-

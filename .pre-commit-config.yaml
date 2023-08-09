@@ -36,18 +36,3 @@ repos:
         exclude: ^examples\/|.*\.ipynb
         language: python
         types: [text]
--   repo: https://github.com/python-poetry/poetry
-    rev: ''  # add version here
-    hooks:
-    -   id: poetry-check
-    -   id: poetry-lock
-    -   id: poetry-export
-        # TODO: check is it a single argument or multiple arguments
-        args: ["-f", "requirements.txt", "-o", "requirements.txt"]
-        args: ["--dev", "-f", "requirements-dev.txt", "-o", "requirements-dev.txt"]
-        args: ["--tut"-f", "requirements-tut.txt", "-o", "requirements-tut.txt"]
-
-        verbose: true
-
-
-
