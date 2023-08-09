@@ -1,3 +1,6 @@
+greenlet == 2.0.1  # >= 2.0.2 fails to build wheel (2023-08-08)
+setuptools >= 65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
+
 aiohttp >= 3.8
 chocolate >= 0.0.2
 csvwlib >= 0.3.2
@@ -25,4 +28,3 @@ scipy >= 1.8.0
 statsmodels >= 0.13
 tqdm >= 4.63
 urlpath >= 1.2
-setuptools >= 65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability

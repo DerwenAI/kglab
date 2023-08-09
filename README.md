@@ -36,35 +36,24 @@ Morph-KGC, pythonPSL, and many more.
 See the ["Getting Started"](https://derwen.ai/docs/kgl/start/)
 section of the online documentation.
 
-## Useing kglab as a package for your project
 
-### We recommend installing from [PyPi](https://pypi.python.org/pypi/kglab):
+### Using `kglab` as a library for your Python project
 
-#### pip
+We recommend installing from [PyPi](https://pypi.python.org/pypi/kglab) or [conda](https://anaconda.org/anaconda/conda):
+
+#### `pip`
+
 ```bash
 python3 -m pip install kglab
 ```
 
-#### pipenv
-Kglab supports python 3.7 and above. 
-You will need to specify the python version in your Pipfile or whne creating the pipenv
-If you have specified the python version in your Pipfile, you can install kglab with:
+#### `pipenv`
+
 ```bash
 pipenv install kglab
 ```
 
-If you have not specified the python version in your Pipfile, you can install kglab with:
-```bash
-pipenv install --python 3.7 kglab
-```
-
-#### poetry
-You can install into you existing poetry project with:
-```bash
-potery add kglab
-```
-
-#### conda
+#### `conda`
 ```bash
 conda env create -n kglab
 conda activate kglab
@@ -72,26 +61,34 @@ pip install kglab
 ```
 
 ### Or, install from source:
+
 If you work directly from this Git repo, be sure to install the 
 dependencies:
+
 #### pip
+
 ```bash
 python3 -m pip install -U pip wheel
 python3 -m pip install -r requirements.txt
 ```
 
 #### pipenv
+
 ```bash
 pipenv install --dev
-# NEED TO HAVE a Pipfile
 ```
+
 Alternatively, to install dependencies using `conda`:
+
 ```bash
 conda env create -f environment.yml --force
 conda activate kglab
 ```
 
+### Sample Code
+
 Then to run some simple uses of this library:
+
 ```python
 import kglab
 
@@ -136,12 +133,14 @@ Also, container images for each release are available on DockerHub:
 <https://hub.docker.com/repository/docker/derwenai/kglab>
 
 To build a container image and run it for the tutorials:
+
 ```bash
 docker build --pull --rm -f "docker/Dockerfile" -t kglab:latest .
 docker run -p 8888:8888 -it kglab
 ```
 
 To build and run a container image for testing:
+
 ```bash
 docker build --pull --rm -f "docker/testsuite.Dockerfile" -t kglabtest:latest .
 docker run --rm -it kglabtest
