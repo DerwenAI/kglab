@@ -249,6 +249,7 @@ and to our contributors:
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@pebbie](https://github.com/pebbie),
 [@CatChenal](https://github.com/CatChenal),
+[@jorisSchaller](https://github.com/jorisSchaller),
 [@dmoore247](https://github.com/dmoore247),
 plus general support from [Derwen, Inc.](https://derwen.ai/);
 the [Knowledge Graph Conference](https://www.knowledgegraph.tech/)
