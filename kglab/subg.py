@@ -503,6 +503,7 @@ optional style dictionary
         *,
         notebook: bool = False,
         style: dict = None,
+        directed: bool = False,
         ) -> pyvis.network.Network:
         """
 Factory pattern to create a [`pyvis.network.Network`](https://pyvis.readthedocs.io/en/latest/documentation.html?highlight=network#pyvis.network.Network) object, populated by transforms in this subgraph.
@@ -517,7 +518,7 @@ optional style dictionary
     returns:
 a `PyVis` network object
         """
-        pyvis_graph = pyvis.network.Network(notebook=notebook)
+        pyvis_graph = pyvis.network.Network(notebook=notebook, directed=directed)
 
         if not style:
             style = {}
