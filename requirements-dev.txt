@@ -33,3 +33,4 @@ xmltodict >= 0.12
 # test requirements for extra packages
 zarr >= 2.13.3
 tornado>=6.3.3 # not directly required, pinned by Snyk to avoid a vulnerability
+jupyter-server>=2.11.2 # not directly required, pinned by Snyk to avoid a vulnerability
