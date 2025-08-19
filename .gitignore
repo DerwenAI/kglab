@@ -6,6 +6,9 @@ docs/ex[0-9]*_files
 examples/foo.ttl
 examples/tmp.*
 kgl.tgz
+report-*
+*.zip
+.DS_Store
 dask-worker-space/
 .ipynb_checkpoints/
 kglab/.ipynb_checkpoints/
@@ -144,11 +147,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-report-*
-
-# poetry lock file
-poetry.lock
-
-*.zip
-.DS_Store
