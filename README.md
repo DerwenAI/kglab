@@ -6,7 +6,6 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DerwenAI/kglab?style=plastic)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
-![CI](https://github.com/DerwenAI/kglab/workflows/CI/badge.svg)
 [![Docker Pulls](https://img.shields.io/docker/pulls/derwenai/kglab.svg?maxAge=604800)](https://hub.docker.com/r/derwenai/kglab/)
 ![downloads](https://img.shields.io/pypi/dm/kglab)
 
@@ -16,13 +15,7 @@ Welcome to *Graph Data Science*:
 
 The **kglab** library provides a simple abstraction layer in Python 3.7+
 for building knowledge graphs, leveraging Pandas, NetworkX, RAPIDS, RDFLib,
-Morph-KGC, pythonPSL, and many more.
-
-
-## Reviews
-
-[@kaaloo](https://github.com/kaaloo): 
-> "Feels like it's a Hugging Face for graphs! 🤯"
+Morph-KGC, and many more.
 
 
 ## Getting Started
