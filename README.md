@@ -142,7 +142,7 @@ Source code for **kglab** plus its logo, documentation, and examples
 have an [MIT license](https://spdx.org/licenses/MIT.html) which is
 succinct and simplifies use in commercial applications.
 
-All materials herein are Copyright &copy; 2020-2022 Derwen, Inc.
+All materials herein are Copyright &copy; 2020-2025 Derwen, Inc.
 </details>
 
 
