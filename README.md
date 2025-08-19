@@ -41,7 +41,7 @@ python3 -m pip install kglab
 
 #### poetry
 ```bash
-potery add kglab
+poetry add kglab
 ```
 
 #### conda

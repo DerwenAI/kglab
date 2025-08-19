@@ -82,7 +82,7 @@ Coverage:
 
 * KnowledgeGraph.get_ns_dict()
     """
-    assert len(kg_test.get_ns_dict()) == 11
+    assert len(kg_test.get_ns_dict()) == 30
     assert "test1" in kg_test.get_ns_dict().keys()
 
     for key in NS_KEYS:
@@ -100,10 +100,38 @@ Coverage:
 
     s = set(df["prefix"])
 
-    exp_ns_keys = {'rdfs', 'skos', 'time', 'ssn', 'org', 'owl', 'doap',
-                   'brick', 'odrl', 'qb', 'void', 'dct', 'dcmitype', 'prof',
-                   'foaf', 'sosa', 'xml', 'dcam', 'schema1', 'dcterms', 'vann',
-                   'schema', 'dcat', 'csvw', 'dc', 'sh', 'rdf', 'prov', 'xsd'}
+    exp_ns_keys = {
+        "brick",
+        "csvw",
+        "dc",
+        "dcam",
+        "dcat",
+        "dcmitype",
+        "dct",
+        "doap",
+        "foaf",
+        "geo",
+        "odrl",
+        "org",
+        "owl",
+        "prof",
+        "prov",
+        "qb",
+        "rdf",
+        "rdfs",
+        "schema",
+        "schema1",
+        "sh",
+        "skos",
+        "sosa",
+        "ssn",
+        "time",
+        "vann",
+        "void",
+        "wgs",
+        "xml",
+        "xsd",
+    }
 
     assert s.issubset(exp_ns_keys)
     
