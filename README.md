@@ -23,21 +23,17 @@ Morph-KGC, and many more.
 See the ["Getting Started"](https://derwen.ai/docs/kgl/start/)
 section of the online documentation.
 
-## Useing kglab as a package for your project
-
-### We recommend installing from [PyPi](https://pypi.python.org/pypi/kglab):
-
-#### pip
+# pip
 ```bash
 python3 -m pip install kglab
 ```
 
-#### poetry
+# poetry
 ```bash
 poetry add kglab
 ```
 
-#### conda
+# conda
 ```bash
 conda env create -n kglab
 conda activate kglab
