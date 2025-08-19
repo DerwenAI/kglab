@@ -199,11 +199,9 @@ the [Knowledge Graph Conference](https://www.knowledgegraph.tech/)
 and [Connected Data World](https://connected-data.world/);
 plus an even larger scope of [use cases](https://derwen.ai/docs/kgl/use_case/)
 represented by their communities;
+and support from
 [Kubuntu Focus](https://kfocus.org/),
-the [RAPIDS team @ NVIDIA](https://rapids.ai/),
-[Gradient Flow](https://gradientflow.com/),
-and
-[Manning Publications](https://www.manning.com/).
+and the [RAPIDS team @ NVIDIA](https://rapids.ai/).
 
 <img
  alt="kglab contributors"
