@@ -44,22 +44,6 @@ conda activate kglab
 pip install kglab
 ```
 
-### Or, install from source:
-If you work directly from this Git repo, be sure to install the 
-dependencies:
-
-#### pip
-```bash
-python3 -m pip install -U pip wheel
-python3 -m pip install -r requirements.txt
-```
-
-#### conda
-```bash
-conda env create -f environment.yml --force
-conda activate kglab
-```
-
 Then to run some simple uses of this library:
 ```python
 import kglab
@@ -86,13 +70,6 @@ See the **tutorial notebooks** in the `examples` subdirectory for
 sample code and patterns to use in integrating **kglab** with other
 graph libraries in Python:
 <https://derwen.ai/docs/kgl/tutorial/>
-
-
-> **WARNING when installing in an existing environment:**  
-> Installing a new package in an existing environment may reveal  
-> or create version conflicts. See the **kglab** requirements  
-> in `requirements.txt` before you do. For example, there are  
-> [known version conflicts](https://github.com/DerwenAI/kglab/issues/160) regarding NumPy (>= 1.19.4) and [TensorFlow 2+](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/pip_package/setup.py) (~-1.19.2)
 
 
 <details>
