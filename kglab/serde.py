@@ -4,16 +4,16 @@ see license https://github.com/DerwenAI/kglab#license-and-copyright
 """
 
 ## Python standard libraries
+import codecs
 import datetime
 import io
 import json
-import typing
-import codecs
-import urlpath
 import pathlib
+import typing
 
 ### third-parties libraries
 from icecream import ic  # type: ignore
+import apeye.url
 import chocolate  # type: ignore
 import csvwlib  # type: ignore
 import morph_kgc  # type: ignore
@@ -135,7 +135,7 @@ a string as a file name or URL to a file reference
         """
         if not path:
             filename = None
-        elif isinstance(path, urlpath.URL):
+        elif isinstance(path, apeye.url.URL):
             filename = str(path)
         elif isinstance(path, pathlib.Path):
             filename = path.as_posix()

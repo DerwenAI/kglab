@@ -76,12 +76,12 @@ python-dateutil = "^2.9.0.post0"
 icecream = "^2.1.7"
 cryptography = "^45.0.6"
 pynvml = "^12.0.0"
-urlpath = "^1.2.0"
 requests = "^2.32.5"
 gcsfs = "^2025.7.0"
 pyarrow = "^21.0.0"
 tqdm = "^4.67.1"
 igraph = "^0.11.9"
+apeye = "^1.4.1"
 
 
 [tool.poetry.group.dev.dependencies]

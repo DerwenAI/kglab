@@ -11,10 +11,10 @@ import typing
 
 import pandas as pd  # type: ignore  # pylint: disable=E0401
 import rdflib  # type: ignore  # pylint: disable=E0401
-import urlpath  # type: ignore  # pylint: disable=E0401
+import apeye.url
 
 
-PathLike = typing.Union[ str, pathlib.Path, urlpath.URL ]
+PathLike = typing.Union[ str, pathlib.Path, apeye.url.URL ]
 IOPathLike = typing.Union[ PathLike, typing.IO ]
 
 RDF_Node = typing.Union[ rdflib.term.Node, rdflib.term.URIRef, rdflib.term.Literal, rdflib.term.BNode ]

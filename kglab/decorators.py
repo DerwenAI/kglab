@@ -15,15 +15,15 @@ import pathlib
 import typing
 
 from icecream import ic  #  type: ignore # pylint: disable=W0611,E0401
-import urlpath  # type: ignore # pylint: disable=E0401
+import apeye.url
 
 
 def _test_path (
-    path: typing.Union[ pathlib.Path, urlpath.URL ]
+    path: typing.Union[ pathlib.Path, apeye.url.URL ]
     ) -> bool:
     """
 Semi-private function to test whether the given path parameter is an
-instance of `pathlib.Path`, `urlpath.URL`, or a related class.
+instance of `pathlib.Path`, `apeye.url.URL`, or a related class.
 
     path:
 parameter to be tested
@@ -31,7 +31,7 @@ parameter to be tested
     returns:
 test condition
     """
-    return isinstance(path, (pathlib.Path, urlpath.URL))
+    return isinstance(path, (pathlib.Path, apeye.url.URL))
 
 
 def multifile (

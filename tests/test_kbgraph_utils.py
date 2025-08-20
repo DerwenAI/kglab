@@ -48,8 +48,8 @@ def test_get_filename(kg_test_data):
     assert test1 is None
 
     # an address
-    from urlpath import URL
-    test2 = kg_test_data._get_filename(URL("gs://kglab-tutorial/foaf.parquet"))
+    import apeye.url
+    test2 = kg_test_data._get_filename(apeye.url.URL("gs://kglab-tutorial/foaf.parquet"))
     assert type(test2) == str
     assert test2 == "gs://kglab-tutorial/foaf.parquet"
 
