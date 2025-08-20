@@ -13,7 +13,7 @@
 Welcome to *Graph Data Science*:
 <https://derwen.ai/docs/kgl/>
 
-The **kglab** library provides a simple abstraction layer in Python 3.7+
+The **kglab** library provides a simple abstraction layer in Python 3.11+
 for building knowledge graphs, leveraging Pandas, NetworkX, RAPIDS, RDFLib,
 Morph-KGC, and many more.
 

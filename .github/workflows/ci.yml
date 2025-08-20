@@ -1,0 +1,45 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      EVENT: ${{ github.event.number }}
+
+    strategy:
+      matrix:
+        python-version: [ "3.9", "3.10", "3.11", "3.12", "3.13" ]
+      fail-fast: false
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: install poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "PATH=$HOME/.local/bin:$PATH" >> $GITHUB_ENV
+
+      - name: install dependencies with poetry
+        run: |
+          cd kglab
+          poetry install --with dev
+
+      - name: set env to include the source directory
+        run: echo "PYTHONPATH=$PWD/kglab" >> $GITHUB_ENV
+
+      - name: run tests
+        run: |
+          cd kglab
+          poetry run pytest
