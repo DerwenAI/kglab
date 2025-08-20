@@ -57,7 +57,8 @@ classifiers = [
 ]
 
 exclude = [
-    "tests/rdf_tests/*"
+    "tests/rdf_tests/*",
+    "archive/*",
 ]
 
 

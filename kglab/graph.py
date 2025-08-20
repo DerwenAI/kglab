@@ -333,13 +333,13 @@ Returns the set of contexts
         return { ctx for _, _, _, _, ctx in self._tuples }
 
 
-    def bind (
+    def bind (  # pylint: disable=W0221
         self,
         prefix: str,
         namespace: str,
         ) -> None:
         """
-Bar.
+Foo.
         """
         self.__prefix[namespace] = prefix
         self.__namespace[prefix] = namespace

@@ -387,15 +387,15 @@ this `KnowledgeGraph` object – used for method chaining
         if hasattr(path, "read"):
             f = path
         else:
-            f = open(path, "r", encoding=encoding)  # type: ignore
+            f = open(path, "r", encoding = encoding)  # type: ignore  # pylint: disable=R1732
 
         # load JSON from file (to verify format and trap exceptions at
         # this level) then dump to string – which is expected by the
         # JSON-LD plugin for RDFlib
         self._g.parse( # type: ignore
-            data=json.dumps(json.load(f)),  # type: ignore
-            format="json-ld",
-            encoding=encoding,
+            data = json.dumps(json.load(f)),  # type: ignore
+            format = "json-ld",
+            encoding = encoding,
             **args,
         )
 
@@ -426,17 +426,17 @@ optional text encoding value, which defaults to `"utf-8"`; must be in the [Pytho
 
             f = path
         else:
-            f = open(self._get_filename(path), "wb") # type: ignore
+            f = open(self._get_filename(path), "wb")  # type: ignore  # pylint: disable=R1732
 
         # error checking for the `encoding` parameter
         self._check_encoding(encoding)
 
         f.write( # type: ignore
-            self._g.serialize( # type: ignore
-                format="json-ld",
-                context=self.get_context(),
-                indent=2,
-                encoding=encoding,
+            self._g.serialize(  # type: ignore
+                format = "json-ld",
+                context = self.get_context(),
+                indent = 2,
+                encoding = encoding,
                 **args,
             )
         )
@@ -469,7 +469,7 @@ must be a file name (str) to a local file reference – possibly a glob with a w
 this `KnowledgeGraph` object – used for method chaining
         """
         if self.use_gpus:
-            df = cudf.read_parquet(
+            df = cudf.read_parquet(  # pylint: disable=E0606
                 path,
                 **chocolate.filter_args(kwargs, pd.read_parquet)
             ).to_pandas()
@@ -618,7 +618,7 @@ The `uid` identifier for the parsed object
             elif "string" in obj:
                 descrip = obj["string"]
 
-            self.add(node, self.get_ns("skos").definition, rdflib.Literal(descrip))
+            self.add(node, self.get_ns("skos").definition, rdflib.Literal(descrip))  # pylint: disable=E0606
 
             # represent the user who created/edited this object
             user_uid = obj[":edit/user"][":user/uid"]
@@ -626,7 +626,7 @@ The `uid` identifier for the parsed object
 
             # convert millisec timestamp to Unix epoch times (UTC) to datetime
             dt = datetime.datetime.utcfromtimestamp(round(obj["edit-time"] / 1000.0))
-            self.add(node, self.get_ns("dct").Date, rdflib.Literal(dt.isoformat(), datatype=rdflib.XSD.dateTime))
+            self.add(node, self.get_ns("dct").Date, rdflib.Literal(dt.isoformat(), datatype = rdflib.XSD.dateTime))
 
             if "children" in obj:
                 for child_obj in obj["children"]:
@@ -670,7 +670,7 @@ a list of identifiers for the top-level nodes added from the Roam Research graph
         if hasattr(path, "read"):
             f = path
         else:
-            f = open(path, "r", encoding=encoding)  # type: ignore
+            f = open(path, "r", encoding = encoding)  # type: ignore  # pylint: disable=R1732
 
         # add a `roam:` prefix for a pseudo-namespace to use here,
         # which applications may need to parameterize later?

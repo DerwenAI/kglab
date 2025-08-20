@@ -63,11 +63,10 @@ initial variable bindings
         if not bindings:
             bindings = {}
 
-        for row in self._g.query( # type: ignore
+        yield from self._g.query(  # type: ignore
                 sparql,
-                initBindings=bindings,
-            ):
-            yield row
+                initBindings = bindings,
+            )
 
 
     def query_as_df (
@@ -100,15 +99,15 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
         if not bindings:
             bindings = {}
 
-        row_iter = self._g.query(sparql, initBindings=bindings) # type: ignore
+        row_iter = self._g.query(sparql, initBindings = bindings) # type: ignore
 
         if simplify:
-            rows_list = [ self.n3fy_row(r.asdict(), pythonify=pythonify) for r in row_iter ]
+            rows_list = [ self.n3fy_row(r.asdict(), pythonify = pythonify) for r in row_iter ]
         else:
             rows_list = [ r.asdict() for r in row_iter ]
 
         if self.use_gpus:
-            df = cudf.DataFrame(rows_list)
+            df = cudf.DataFrame(rows_list)  # pylint: disable=E0606
         else:
             df = pd.DataFrame(rows_list)
 

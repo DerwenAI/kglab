@@ -64,11 +64,10 @@ initial variable bindings
         if not bindings:
             bindings = {}
 
-        for row in self.kg._g.query(  # pylint: disable=W0212
+        yield from self.kg._g.query(  # pylint: disable=W0212
                 query,
-                initBindings=bindings,
-            ):
-            yield row
+                initBindings = bindings,
+            )
 
 
     def query_as_df (  # pylint: disable=W0221
@@ -108,7 +107,7 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
             rows_list = [ r.asdict() for r in row_iter ]
 
         if self.kg.use_gpus:
-            df = cudf.DataFrame(rows_list)
+            df = cudf.DataFrame(rows_list)  # pylint: disable=E0606
         else:
             df = pd.DataFrame(rows_list)
 

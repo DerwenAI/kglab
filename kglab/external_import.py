@@ -69,7 +69,8 @@ an [`rdflib.Graph`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?
             url,
             auth = (username, password),
             data = json.dumps(payload),
-            )
+            timeout = 10,
+        )
 
         # raise an error on unsuccessful status codes
         response.raise_for_status()

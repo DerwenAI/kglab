@@ -269,9 +269,9 @@ a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/ap
         ]
 
         if self.use_gpus:
-            df = cudf.DataFrame(rows_list, columns=col_names)
+            df = cudf.DataFrame(rows_list, columns = col_names)  # pylint: disable=E0606
         else:
-            df = pd.DataFrame(rows_list, columns=col_names)
+            df = pd.DataFrame(rows_list, columns = col_names)
 
         return df
 

@@ -89,7 +89,7 @@ optionally, use the NVidia GPU devices with the [RAPIDS libraries](https://rapid
 the striped column values, as a [`numpy.ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html); uses the [RAPIDS `cuDF` library](https://docs.rapids.ai/api/cudf/stable/) if GPUs are enabled
     """
     if use_gpus:
-        s = cudf.Series(values)
+        s = cudf.Series(values)  # pylint: disable=E0606
     else:
         s = pd.Series(values)
 
