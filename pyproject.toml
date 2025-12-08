@@ -82,6 +82,7 @@ pyarrow = "^21.0.0"
 tqdm = "^4.67.1"
 igraph = "^0.11.9"
 apeye = "^1.4.1"
+pyjelly = { version = ">=0.7.1", extras = ["rdflib"] }
 
 
 [tool.poetry.group.dev.dependencies]
