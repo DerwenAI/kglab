@@ -16,7 +16,10 @@ from icecream import ic  # type: ignore  # pylint: disable=E0401,W0611
 import chocolate  # type: ignore  # pylint: disable=E0401
 import numpy as np  # type: ignore  # pylint: disable=E0401
 
+from rdflib.plugins.sparql.sparql import Query, Update
+from rdflib.query import Result
 from rdflib.store import Store  # type: ignore # pylint: disable=E0401
+from rdflib.term import Identifier
 import rdflib  # type: ignore  # pylint: disable=E0401
 
 
@@ -336,7 +339,8 @@ Returns the set of contexts
     def bind (  # pylint: disable=W0221
         self,
         prefix: str,
-        namespace: str,
+        namespace: rdflib.term.URIRef,
+        override: bool = True,
         ) -> None:
         """
 Foo.
@@ -348,11 +352,11 @@ Foo.
     def namespace (
         self,
         prefix: str,
-        ) -> str:
+        ) -> rdflib.term.URIRef:
         """
 Bar.
         """
-        return self.__namespace.get(prefix, None)
+        return self.__namespace.get(prefix, None)  # type: ignore
 
 
     def prefix (
@@ -362,12 +366,12 @@ Bar.
         """
 Bar.
         """
-        return self.__prefix.get(namespace, None)
+        return self.__prefix.get(namespace, None)  # type: ignore
 
 
     def namespaces (
         self
-        ) -> typing.Iterable:
+        ) -> typing.Iterator[ tuple[ str, rdflib.term.URIRef ] ]:
         """
 Bar.
         """
@@ -377,12 +381,12 @@ Bar.
 
     def query (  # pylint: disable=W0235
         self,
-        query: str,
-        initNs: dict,
-        initBindings: dict,
-        queryGraph: typing.Any,
+        query: Query | str,
+        initNs: typing.Mapping[ str, typing.Any ],
+        initBindings: typing.Mapping[ str, Identifier ],
+        queryGraph: str,
         **kwargs: typing.Any,
-        ) -> None:
+        ) -> Result:
         """
 queryGraph is None, a URIRef or '__UNION__'
 
@@ -392,10 +396,10 @@ If URIRef it specifies the graph to query,
 
 If  '__UNION__' the union of all named graphs should be queried
 
-This is used by ConjunctiveGraphs
+This is used by Datasets
 Values other than None obviously only makes sense for context-aware stores.)
         """
-        super().query(
+        return super().query(
             query,
             initNs,
             initBindings,
@@ -406,10 +410,10 @@ Values other than None obviously only makes sense for context-aware stores.)
 
     def update (  # pylint: disable=W0235
         self,
-        update: str,
-        initNs: dict,
-        initBindings: dict,
-        queryGraph: typing.Any,
+        update: Update | str,
+        initNs: typing.Mapping[ str, typing.Any ],
+        initBindings: typing.Mapping[ str, Identifier ],
+        queryGraph: str,
         **kwargs: typing.Any,
         ) -> None:
         """
@@ -421,7 +425,7 @@ If URIRef it specifies the graph to query,
 
 If  '__UNION__' the union of all named graphs should be queried
 
-This is used by ConjunctiveGraphs
+This is used by Datasets
 Values other than None obviously only makes sense for context-aware stores.)
         """
         super().update(

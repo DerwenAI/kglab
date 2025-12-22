@@ -47,7 +47,7 @@ Constructor.
         self,
         query: str,
         *,
-        bindings: dict = None,
+        bindings: typing.Optional[ dict ] = None,
         ) -> typing.Iterable:
         """
 Wrapper for [`rdflib.Graph.query()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=query#rdflib.Graph.query) to perform a SPARQL query on the RDF graph.
@@ -74,7 +74,7 @@ initial variable bindings
         self,
         query: str,
         *,
-        bindings: dict = None,
+        bindings: typing.Optional[ dict ] = None,
         simplify: bool = True,
         pythonify: bool = True,
         ) -> pd.DataFrame:

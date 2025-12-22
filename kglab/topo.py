@@ -59,7 +59,7 @@ Accessor for the item counts.
     returns:
 a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) with the count distribution, sorted in ascending order
         """
-        self.df = pd.DataFrame.from_dict(
+        self.df = pd.DataFrame.from_dict(  # type: ignore
             self.count,
             orient="index",
             columns=["count"],
@@ -132,7 +132,7 @@ a tuple of a [`pandas.DataFrame`](https://pandas.pydata.org/pandas-docs/stable/r
             item0, item1 = index
             self.link_map[item0].add(item1)
 
-        return self.df, self.link_map
+        return self.df, self.link_map  # type: ignore
 
 
 class Measure:

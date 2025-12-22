@@ -21,8 +21,7 @@ RDF_Node = typing.Union[ rdflib.term.Node, rdflib.term.URIRef, rdflib.term.Liter
 RDF_Triple = typing.Tuple[ RDF_Node, RDF_Node, RDF_Node ]
 NodeLike = typing.Union[ typing.Optional[str], RDF_Node ]
 
-ConjunctiveLike = typing.Union[ rdflib.ConjunctiveGraph, rdflib.Dataset ]
-GraphLike = typing.Union[ ConjunctiveLike, rdflib.Graph ]
+GraphLike = typing.Union[ rdflib.Dataset, rdflib.Graph ]
 
 SPARQL_Bindings = typing.Tuple[ str, dict ]
 

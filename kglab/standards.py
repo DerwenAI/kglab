@@ -70,7 +70,7 @@ abort validation on the first error
 a tuple of `conforms` (RDF graph passes the validation rules) + `report_graph` (report as a `KnowledgeGraph` object) + `report_text` (report formatted as text)
         """
         conforms, report_graph_data, report_text = pyshacl.validate(
-            self._g,
+            self._g,  # type: ignore
             shacl_graph=shacl_graph,
             shacl_graph_format=shacl_graph_format,
             ont_graph=ont_graph,

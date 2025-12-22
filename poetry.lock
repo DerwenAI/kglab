@@ -2769,6 +2769,21 @@ files = [
 ]
 
 [[package]]
+name = "numpy-typing-compat"
+version = "20251206.2.4"
+description = "Static typing compatibility layer for older versions of NumPy"
+optional = false
+python-versions = ">=3.11"
+groups = ["dev"]
+files = [
+    {file = "numpy_typing_compat-20251206.2.4-py3-none-any.whl", hash = "sha256:a82e723bd20efaa4cf2886709d4264c144f1f2b609bda83d1545113b7e47a5b5"},
+    {file = "numpy_typing_compat-20251206.2.4.tar.gz", hash = "sha256:59882d23aaff054a2536da80564012cdce33487657be4d79c5925bb8705fcabc"},
+]
+
+[package.dependencies]
+numpy = ">=2.4rc1,<2.5"
+
+[[package]]
 name = "nvidia-ml-py"
 version = "13.590.44"
 description = "Python Bindings for the NVIDIA Management Library"
@@ -2796,6 +2811,26 @@ files = [
 rsa = ["cryptography (>=3.0.0)"]
 signals = ["blinker (>=1.4.0)"]
 signedtoken = ["cryptography (>=3.0.0)", "pyjwt (>=2.0.0,<3)"]
+
+[[package]]
+name = "optype"
+version = "0.15.0"
+description = "Building Blocks for Precise & Flexible Type Hints"
+optional = false
+python-versions = ">=3.11"
+groups = ["dev"]
+files = [
+    {file = "optype-0.15.0-py3-none-any.whl", hash = "sha256:caba40ece9ea39b499fa76c036a82e0d452a432dd4dd3e8e0d30892be2e8c76c"},
+    {file = "optype-0.15.0.tar.gz", hash = "sha256:457d6ca9e7da19967ec16d42bdf94e240b33b5d70a56fbbf5b427e5ea39cf41e"},
+]
+
+[package.dependencies]
+numpy = {version = ">=1.25", optional = true, markers = "extra == \"numpy\""}
+numpy-typing-compat = {version = ">=20250818.1.25,<20251207", optional = true, markers = "extra == \"numpy\""}
+typing-extensions = {version = ">=4.10", markers = "python_full_version < \"3.13.0\""}
+
+[package.extras]
+numpy = ["numpy (>=1.25)", "numpy-typing-compat (>=20250818.1.25,<20251207)"]
 
 [[package]]
 name = "outcome"
@@ -3425,24 +3460,6 @@ pyyaml = "*"
 extra = ["pygments (>=2.19.1)"]
 
 [[package]]
-name = "pynvml"
-version = "13.0.1"
-description = "Python utilities for the NVIDIA Management Library"
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "pynvml-13.0.1-py3-none-any.whl", hash = "sha256:e2b20e0a501eeec951e2455b7ab444759cf048e0e13a57b08049fa2775266aa8"},
-    {file = "pynvml-13.0.1.tar.gz", hash = "sha256:1245991d9db786b4d2f277ce66869bd58f38ac654e38c9397d18f243c8f6e48f"},
-]
-
-[package.dependencies]
-nvidia-ml-py = ">=12.0.0"
-
-[package.extras]
-test = ["pytest (>=3.6)", "pytest-cov", "pytest-runner"]
-
-[[package]]
 name = "pyoxigraph"
 version = "0.3.22"
 description = "Python bindings of Oxigraph, a SPARQL database and RDF toolkit"
@@ -4070,6 +4087,24 @@ doc = ["intersphinx_registry", "jupyterlite-pyodide-kernel", "jupyterlite-sphinx
 test = ["Cython", "array-api-strict (>=2.3.1)", "asv", "gmpy2", "hypothesis (>=6.30)", "meson", "mpmath", "ninja ; sys_platform != \"emscripten\"", "pooch", "pytest (>=8.0.0)", "pytest-cov", "pytest-timeout", "pytest-xdist", "scikit-umfpack", "threadpoolctl"]
 
 [[package]]
+name = "scipy-stubs"
+version = "1.16.3.3"
+description = "Type annotations for SciPy"
+optional = false
+python-versions = ">=3.11"
+groups = ["dev"]
+files = [
+    {file = "scipy_stubs-1.16.3.3-py3-none-any.whl", hash = "sha256:f6316b36cd0fb272c994ae5b10c4a73c644a7e156ed8d32bcd9c35303d0e1b7e"},
+    {file = "scipy_stubs-1.16.3.3.tar.gz", hash = "sha256:af47578875d5557567225a16ec1b9b38a48c4c4377d92396413ebd65406c44ee"},
+]
+
+[package.dependencies]
+optype = {version = ">=0.14.0,<0.16", extras = ["numpy"]}
+
+[package.extras]
+scipy = ["scipy (>=1.16.3,<1.17)"]
+
+[[package]]
 name = "selenium"
 version = "4.39.0"
 description = "Official Python bindings for Selenium WebDriver"
@@ -4279,6 +4314,21 @@ files = [
 outcome = ">=1.2.0"
 trio = ">=0.11"
 wsproto = ">=0.14"
+
+[[package]]
+name = "types-networkx"
+version = "3.6.1.20251220"
+description = "Typing stubs for networkx"
+optional = false
+python-versions = ">=3.10"
+groups = ["dev"]
+files = [
+    {file = "types_networkx-3.6.1.20251220-py3-none-any.whl", hash = "sha256:417ccbe7841f335a4c2b8e7515c3bc97a00fb5f686f399a763ef64392b209eac"},
+    {file = "types_networkx-3.6.1.20251220.tar.gz", hash = "sha256:caf95e0d7777b969e50ceeb2c430d9d4dfe6b7bdee43c42dc9879a2d4408a790"},
+]
+
+[package.dependencies]
+numpy = ">=1.20"
 
 [[package]]
 name = "types-python-dateutil"
@@ -4661,4 +4711,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<3.14"
-content-hash = "8069eced54101e0606360deff8de3921f7790cb1418406ca2ad1be0a5763dc74"
+content-hash = "10e3ad1c97c8c67ccb2fcefe6f5daf415f4db64dc0682bf678c86517095b1ef7"

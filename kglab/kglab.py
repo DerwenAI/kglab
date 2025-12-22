@@ -151,7 +151,7 @@ Accessor for the RDF graph.
     returns:
 the [`rdflib.Graph`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=graph#graph) object
         """
-        return self._g
+        return self._g  # type: ignore
 
 
     ######################################################################
