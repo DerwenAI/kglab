@@ -153,7 +153,7 @@ a string as a file name or URL to a file reference
         path: IOPathLike,
         *,
         format: str = "ttl",
-        base: str = None,
+        base: typing.Optional[ str ] = None,
         **args: typing.Any,
         ) -> "KnowledgeGraph": # type: ignore
         """
@@ -188,7 +188,7 @@ this `KnowledgeGraph` object – used for method chaining
         try:
             if hasattr(path, "read"):
                 self._g.parse(  # type: ignore
-                    path,
+                    path,  # type: ignore
                     format=format,
                     publicID=base,
                     **args,
@@ -212,7 +212,7 @@ this `KnowledgeGraph` object – used for method chaining
         data: typing.AnyStr,
         *,
         format: str = "ttl",
-        base: str = None,
+        base: typing.Optional[ str ] = None,
         **args: typing.Any,
         ) -> "KnowledgeGraph": # type: ignore
         """
@@ -255,7 +255,7 @@ this `KnowledgeGraph` object – used for method chaining
         path: IOPathLike,
         *,
         format: str = "ttl",
-        base: str = None,
+        base: typing.Optional[ str ] = None,
         encoding: str = "utf-8",
         **args: typing.Any,
         ) -> None:
@@ -295,7 +295,7 @@ optional text encoding value, defaults to `"utf-8"`, must be in the [Python code
 
             try:
                 self._g.serialize( # type: ignore
-                    destination=path,
+                    destination=path,  # type: ignore
                     format=format,
                     base=base,
                     encoding=encoding,
@@ -319,10 +319,10 @@ optional text encoding value, defaults to `"utf-8"`, must be in the [Python code
         self,
         *,
         format: str = "ttl",
-        base: str = None,
+        base: typing.Optional[ str ] = None,
         encoding: str = "utf-8",
         **args: typing.Any,
-        ) -> typing.AnyStr:
+        ) -> str:
         """
 Wrapper for [`rdflib.Graph.serialize()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=serialize#rdflib.Graph.serialize) which serializes the RDF graph to a string.
 
@@ -481,11 +481,11 @@ this `KnowledgeGraph` object – used for method chaining
             )
 
         df.apply(
-            lambda row: self._g.parse( # type: ignore
-                data=f"{ row[0] } { row[1] } { row[2] } .",
-                format="ttl",
+            lambda row: self._g.parse(  # type: ignore
+                data = f"{ row.iloc[0] } { row.iloc[1] } { row.iloc[2] } .",
+                format = "ttl",
             ),
-            axis=1,
+            axis = 1,
         )
 
         return self
@@ -496,7 +496,7 @@ this `KnowledgeGraph` object – used for method chaining
         path: IOPathLike,
         *,
         compression: str = "snappy",
-        storage_options: dict = None, # pylint: disable=W0613
+        storage_options: typing.Optional[ dict ] = None,  # pylint: disable=W0613
         **kwargs: typing.Any,
         ) -> None:
         """
@@ -588,7 +588,7 @@ this `KnowledgeGraph` object – used for method chaining
     def _walk_roam_graph (
         self,
         obj: dict,
-        seen_uid: typing.Set[str] = None,
+        seen_uid: typing.Optional[ typing.Set[ str ] ] = None,
         ) -> str:
         """
 Semiprivate method to traverse the Roam Research exported graph recursively, converting its objects into RDF representation.
