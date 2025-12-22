@@ -85,6 +85,7 @@ Provide serialization and deserialization methods for `KnowledgeGraph`:
         "trig",
         # JsonLDParser
         "json-ld",
+        "jelly",
     )
 
     _ERROR_ENCODE: str = "The text `encoding` value does not match anything in the Python codec registry"
