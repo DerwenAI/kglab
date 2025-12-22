@@ -29,7 +29,7 @@ if get_gpu_count() > 0:
     import cudf  # type: ignore  # pylint: disable=E0401
 
 
-class QueryingMixin(Mixin):
+class QueryingMixin (Mixin):
     """
 This class implements querying for `KnowledgeGraph`
 
@@ -46,7 +46,7 @@ Authored by: Paco Nathan
         self,
         sparql: str,
         *,
-        bindings: dict = None,
+        bindings: typing.Optional[ dict ] = None,
         ) -> typing.Iterable:
         """
 Wrapper for [`rdflib.Graph.query()`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=query#rdflib.Graph.query) to perform a SPARQL query on the RDF graph.
@@ -64,16 +64,16 @@ initial variable bindings
             bindings = {}
 
         yield from self._g.query(  # type: ignore
-                sparql,
-                initBindings = bindings,
-            )
+            sparql,
+            initBindings = bindings,
+        )
 
 
     def query_as_df (
         self,
         sparql: str,
         *,
-        bindings: dict = None,
+        bindings: typing.Optional[ dict ] = None,
         simplify: bool = True,
         pythonify: bool = True,
         ) -> pd.DataFrame:
@@ -102,9 +102,9 @@ the query result set represented as a [`pandas.DataFrame`](https://pandas.pydata
         row_iter = self._g.query(sparql, initBindings = bindings) # type: ignore
 
         if simplify:
-            rows_list = [ self.n3fy_row(r.asdict(), pythonify = pythonify) for r in row_iter ]
+            rows_list = [ self.n3fy_row(r.asdict(), pythonify = pythonify) for r in row_iter ]  # type: ignore
         else:
-            rows_list = [ r.asdict() for r in row_iter ]
+            rows_list = [ r.asdict() for r in row_iter ]  # type: ignore
 
         if self.use_gpus:
             df = cudf.DataFrame(rows_list)  # pylint: disable=E0606

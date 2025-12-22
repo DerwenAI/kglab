@@ -1,37 +1,48 @@
-[build-system]
-
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-
-[tool.poetry]
+[project]
 
 name = "kglab"
-version = "0.7.0"
+version = "1.0.0"
+
 description = "a simple abstraction layer in Python for building knowledge graphs"
-license = "MIT"
 
-authors = [ "Paco Nathan, Derwen, Inc" ]
-repository = "https://github.com/DerwenAI/kglab"
-homepage = "https://derwen.ai"
+authors = [
+    { name = "Paco Nathan", email = "paco@senzing.com" },
+]
+
 readme = "README.md"
-documentation = "https://derwen.ai/docs/kgl/"
 
-keywords = [
-    "cugraph",
-    "gpu",
-    "graph algorithms",
-    "inference",
-    "interactive visualization",
-    "knowledge graph",
-    "managing namespaces",
-    "morph-kgc",
-    "probabilistic soft logic",
-    "psl",
-    "rdf",
-    "rml",
-    "statistical relational learning",
-    "validation",
+license = "MIT"
+license-files = [ "LICENSE" ]
+
+requires-python = ">=3.11,<3.14"
+
+dependencies = [
+    "rdflib (>=7.4.0,<8.0.0)",
+    "owlrl (>=7.1.4)",
+    "jpype1 (>=1.6.0)",
+    "pyshacl (>=0.30.1)",
+    "csvwlib (>=0.3.2)",
+    "morph-kgc (>=2.8.1)",
+    "pyjelly[rdflib] (>=0.7.1,<0.8.0)",
+
+    "networkx (>=3.5)",
+    "igraph (>=0.11.9)",
+    "pyvis (>=0.3.2)",
+
+    "nvidia-ml-py (>=13.590.44,<14.0.0)",
+    "pyarrow (>=21.0.0)",
+
+    "chocolate (>=0.0.2)",
+    "decorator (>=5.2.1)",
+    "python-dateutil (>=2.9.0)",
+
+    "requests (>=2.32.5)",
+    "cryptography (>=45.0.6)",
+    "tqdm (>=4.67.1)",
+    "apeye (>=1.4.1)",
+    "gcsfs (>=2025.7.0)",
+
+    "icecream (>=2.1.7)",
 ]
 
 classifiers = [
@@ -39,6 +50,7 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Operating System :: OS Independent",
     "License :: OSI Approved :: MIT License",
     "Development Status :: 5 - Production/Stable",
@@ -53,6 +65,20 @@ classifiers = [
     "Topic :: Text Processing :: Indexing",
 ]
 
+keywords = [
+    "cugraph",
+    "gpu",
+    "graph algorithms",
+    "inference",
+    "interactive visualization",
+    "knowledge graph",
+    "managing namespaces",
+    "morph-kgc",
+    "rdf",
+    "rml",
+    "validation",
+]
+
 exclude = [
     "tests/rdf_tests/*",
     "archive/*",
@@ -61,7 +87,7 @@ exclude = [
 
 [tool.poetry.dependencies]
 
-python = ">=3.11,<3.13"
+python = ">=3.11,<3.14"
 rdflib = "^7.1.4"
 csvwlib = "^0.3.2"
 morph-kgc = "^2.8.1"
@@ -87,20 +113,45 @@ pyjelly = { version = ">=0.7.1", extras = ["rdflib"] }
 
 [tool.poetry.group.dev.dependencies]
 
-pytest = "^8.4.1"
-pre-commit = "^4.3.0"
-mypy = "^1.17.1"
-pylint = "^3.3.8"
 bandit = "^1.8.6"
 codespell = "^2.4.1"
 coverage = "^7.10.4"
-xmltodict = "^0.14.2"
-selenium = "^4.35.0"
+mkdocs-git-revision-date-plugin = "^0.3.2"
+mkdocs-material = "^9.6.17"
+mypy = "^1.17.1"
+pygments = "^2.19.2"
+pylint = "^3.3.8"
+pytest = "^8.4.1"
 responses = "^0.25.8"
+scikit-learn = "^1.7.1"
+scipy-stubs = "^1.16.3.3"
+selenium = "^4.35.0"
+types-networkx = "^3.6.1.20251220"
 types-python-dateutil = "^2.9.0.20250809"
 types-requests = "^2.32.4.20250809"
-mkdocs-material = "^9.6.17"
-mkdocs-git-revision-date-plugin = "^0.3.2"
-pygments = "^2.19.2"
-scikit-learn = "^1.7.1"
+xmltodict = "^0.14.2"
 zarr = "^3.1.1"
+
+
+[tool.pylint.main]
+
+ignore-paths = [
+    "archive",
+    "tests/rdf_tests",
+]
+
+
+[project.urls]
+
+repository = "https://github.com/DerwenAI/kglab"
+homepage = "https://derwen.ai"
+documentation = "https://derwen.ai/docs/kgl/"
+
+
+[build-system]
+
+requires = [
+    "poetry-core>=2.0.0,<3.0.0"
+]
+
+build-backend = "poetry.core.masonry.api"

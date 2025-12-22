@@ -85,7 +85,7 @@ constructed decorator
             # handle a list of Path objects
             elif isinstance(path, list):
                 for p in path:
-                    if _test_path(path):
+                    if _test_path(p):
                         path_list.append(p)
                     else:
                         raise ValueError(f"Invalid path: {p}")
