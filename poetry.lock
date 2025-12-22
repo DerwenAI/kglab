@@ -425,7 +425,7 @@ files = [
     {file = "cffi-2.0.0-cp39-cp39-win_amd64.whl", hash = "sha256:b882b3df248017dba09d6b16defe9b5c407fe32fc7c65a9c69798e6175601be9"},
     {file = "cffi-2.0.0.tar.gz", hash = "sha256:44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529"},
 ]
-markers = {main = "platform_python_implementation != \"PyPy\"", dev = "implementation_name != \"pypy\" and os_name == \"nt\""}
+markers = {main = "platform_python_implementation != \"PyPy\"", dev = "os_name == \"nt\" and implementation_name != \"pypy\""}
 
 [package.dependencies]
 pycparser = {version = "*", markers = "implementation_name != \"PyPy\""}
@@ -1293,8 +1293,8 @@ googleapis-common-protos = ">=1.56.2,<2.0.0"
 grpcio = {version = ">=1.49.1,<2.0.0", optional = true, markers = "python_version >= \"3.11\" and extra == \"grpc\""}
 grpcio-status = {version = ">=1.49.1,<2.0.0", optional = true, markers = "python_version >= \"3.11\" and extra == \"grpc\""}
 proto-plus = [
-    {version = ">=1.25.0,<2.0.0", markers = "python_version >= \"3.13\""},
     {version = ">=1.22.3,<2.0.0"},
+    {version = ">=1.25.0,<2.0.0", markers = "python_version >= \"3.13\""},
 ]
 protobuf = ">=3.19.5,<3.20.0 || >3.20.0,<3.20.1 || >3.20.1,<4.21.0 || >4.21.0,<4.21.1 || >4.21.1,<4.21.2 || >4.21.2,<4.21.3 || >4.21.3,<4.21.4 || >4.21.4,<4.21.5 || >4.21.5,<7.0.0"
 requests = ">=2.18.0,<3.0.0"
@@ -1414,8 +1414,8 @@ google-auth = ">=2.14.1,<2.24.0 || >2.24.0,<2.25.0 || >2.25.0,<3.0.0"
 grpc-google-iam-v1 = ">=0.14.0,<1.0.0"
 grpcio = ">=1.33.2,<2.0.0"
 proto-plus = [
+    {version = ">=1.22.3,<2.0.0"},
     {version = ">=1.25.0,<2.0.0", markers = "python_version >= \"3.13\""},
-    {version = ">=1.22.3,<2.0.0", markers = "python_version < \"3.13\""},
 ]
 protobuf = ">=3.20.2,<4.21.0 || >4.21.0,<4.21.1 || >4.21.1,<4.21.2 || >4.21.2,<4.21.3 || >4.21.3,<4.21.4 || >4.21.4,<4.21.5 || >4.21.5,<7.0.0"
 
@@ -2596,7 +2596,7 @@ version = "1.1.0"
 description = "Type system extensions for programs checked with the mypy type checker."
 optional = false
 python-versions = ">=3.8"
-groups = ["dev"]
+groups = ["main", "dev"]
 files = [
     {file = "mypy_extensions-1.1.0-py3-none-any.whl", hash = "sha256:1be4cccdb0f2482337c4743e60421de3a356cd97508abadd57d47403e94f5505"},
     {file = "mypy_extensions-1.1.0.tar.gz", hash = "sha256:52e68efc3284861e772bbcd66823fde5ae21fd2fdb51c62a211403730b916558"},
@@ -2957,8 +2957,8 @@ files = [
 
 [package.dependencies]
 numpy = [
-    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
     {version = ">=1.23.2", markers = "python_version == \"3.11\""},
+    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
 ]
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
@@ -3395,7 +3395,7 @@ files = [
     {file = "pycparser-2.23-py3-none-any.whl", hash = "sha256:e5c6e8d3fbad53479cab09ac03729e0a9faf2bee3db8208a550daf5af81a5934"},
     {file = "pycparser-2.23.tar.gz", hash = "sha256:78816d4f24add8f10a06d6f05b4d424ad9e96cfebf68a4ddc99c65c0720d00c2"},
 ]
-markers = {main = "platform_python_implementation != \"PyPy\" and implementation_name != \"PyPy\"", dev = "implementation_name != \"pypy\" and implementation_name != \"PyPy\" and os_name == \"nt\""}
+markers = {main = "platform_python_implementation != \"PyPy\" and implementation_name != \"PyPy\"", dev = "os_name == \"nt\" and implementation_name != \"pypy\" and implementation_name != \"PyPy\""}
 
 [[package]]
 name = "pygments"
@@ -3413,6 +3413,62 @@ files = [
 windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
+name = "pyjelly"
+version = "0.7.1"
+description = "Jelly-RDF implementation for Python"
+optional = false
+python-versions = "<3.15,>=3.10"
+groups = ["main"]
+files = [
+    {file = "pyjelly-0.7.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:b61defdbe9384ef19f0bd93ccf56fdf7960bf3517dd3b6b07910fa0623f8f746"},
+    {file = "pyjelly-0.7.1-cp310-cp310-macosx_11_0_x86_64.whl", hash = "sha256:78098be20bf9b6fa09a3d44586759c69e9bd3587bde688f896500e13de1954db"},
+    {file = "pyjelly-0.7.1-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:ddf868dca9304896080c5be7a3be538f230d2a4e64e60fa96369b9de3d2d1115"},
+    {file = "pyjelly-0.7.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:a57c075cb32ff0dcab113615493781d814f7bef948d3901361cdf4b9c605ce4e"},
+    {file = "pyjelly-0.7.1-cp310-cp310-musllinux_1_2_aarch64.whl", hash = "sha256:c0e8097bb7b3d8e0a47adac8a87a30045167392b7409085d9e3b5c6818abf6fe"},
+    {file = "pyjelly-0.7.1-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:8a42965fda14063cc94a1550674a671b83831afebbef5d4a2bb34987bd9e666c"},
+    {file = "pyjelly-0.7.1-cp310-cp310-win_amd64.whl", hash = "sha256:9b85be8cbce443026defc2325cfc665b58ddc6fc169ae3b6d364a2c8572c23af"},
+    {file = "pyjelly-0.7.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:9586ede41f04c8d153600ad689cda77a3c4f528aa33ccdc006223cd2ed1db9c3"},
+    {file = "pyjelly-0.7.1-cp311-cp311-macosx_11_0_x86_64.whl", hash = "sha256:eeb2839754443a95f6f1ec6793f6c76018d7bee6982d2624f39b648c66ec7e66"},
+    {file = "pyjelly-0.7.1-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:fb526906946d883c48a419d7ca3dfd8788866f835c792543b3a59aaa738e0ce2"},
+    {file = "pyjelly-0.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:7b3c79a7567df40424807b8f6c0e59446a545b9934523a8a614647c50aa224d4"},
+    {file = "pyjelly-0.7.1-cp311-cp311-musllinux_1_2_aarch64.whl", hash = "sha256:11de0a791b5b13723ffb2ffff574522a71fa6d0675aac2a7260efb2a848cc727"},
+    {file = "pyjelly-0.7.1-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:8fd03f9ca37a6f5f6551c4a38844b48d3fdc6a6d1db9f5bb8d4bd749c31f695f"},
+    {file = "pyjelly-0.7.1-cp311-cp311-win_amd64.whl", hash = "sha256:686bf6cf16eaebc7df7f589d3da64ab87078adc52db6eaa78034aa1a9bf8157b"},
+    {file = "pyjelly-0.7.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:22a0db31f0bbb6e52dfdadfd8c46dc6cc67f8801edbc72c5f573544733bc1538"},
+    {file = "pyjelly-0.7.1-cp312-cp312-macosx_11_0_x86_64.whl", hash = "sha256:acf70e066342e1e2899fd46ab9ec8d7ba031f7f5aa5d29ff57573cb2d399c307"},
+    {file = "pyjelly-0.7.1-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:e70eebd873c7a6c6499d1b1e20a1f8e3554c0104f22873641fb7bfa74a448c01"},
+    {file = "pyjelly-0.7.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:1976d0cbd70b8dd1d266f0b7d7aeae7bda09b7a652b06ce507f01c2cf7c54dba"},
+    {file = "pyjelly-0.7.1-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:3fa49f5878ec1298b107e5c90e83f8964de10d85c27358795a06960e1acf52e3"},
+    {file = "pyjelly-0.7.1-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:49773b3d9efad7a1c2a54dd46bfbfde9f09116205077ce17c0b0926e8f2c973c"},
+    {file = "pyjelly-0.7.1-cp312-cp312-win_amd64.whl", hash = "sha256:c3fa0797ad175152db23d2e9510b88d9038ff61fc002d6d34d21059962654f21"},
+    {file = "pyjelly-0.7.1-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:b2f8e9e685b1f8a311ba37fe7500543d554347abb85e36e4b9e0bf752d573a77"},
+    {file = "pyjelly-0.7.1-cp313-cp313-macosx_11_0_x86_64.whl", hash = "sha256:976e99d95fb48cd800f6fdeffd0f9c96a1fa6253790be53bef0e766e99eb79ac"},
+    {file = "pyjelly-0.7.1-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:a094a11aba4e95e50ac154cf0aad9e869add4461aebe4b7cb33a6782d8f18e83"},
+    {file = "pyjelly-0.7.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:a60f96b70d61e52c6aef8957f02dbd160ecdd74d9b6397a595d779cc303c0f3c"},
+    {file = "pyjelly-0.7.1-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:180495038e96ff166e6062ba0f3668846193bf7ca142a60902593f6443496c1b"},
+    {file = "pyjelly-0.7.1-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:912df32809488a32fb5ac1a8ee64cccc090d03d54de2ba67f69b0675c1fcab06"},
+    {file = "pyjelly-0.7.1-cp313-cp313-win_amd64.whl", hash = "sha256:7504a043ad73b5512ee6f46314aae4d78dda41222f689545600009ffcbbf7579"},
+    {file = "pyjelly-0.7.1-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:cfc989c67662e45dae0de7508d639b5f94b07699324da895ac4532105d372b5f"},
+    {file = "pyjelly-0.7.1-cp314-cp314-macosx_11_0_x86_64.whl", hash = "sha256:61126767b2f92980e175e8ea05c01d868daba5d308be4a3f5130940018d049b0"},
+    {file = "pyjelly-0.7.1-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:1678af2975d472ca5baeb3e00a845375c7f9525a91106ce8fe4f3f468f79398f"},
+    {file = "pyjelly-0.7.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:e49b3227fe747049f4e302e2d1bf7f516c7e5c6ffbf92224af0b69b2da0785b6"},
+    {file = "pyjelly-0.7.1-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:b036fbb47cc4ace44aded3e776ae14ce6356e95d2f32f7f87ea1f32e2b837589"},
+    {file = "pyjelly-0.7.1-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:ae139c4fe806cc9eae4d6c7519ca22f959fe6df3340dc8a219c4d0b0d0afc0f1"},
+    {file = "pyjelly-0.7.1-cp314-cp314-win_amd64.whl", hash = "sha256:cfd22b32a50514a2c5cabdd6e9d8d6500a2b36bf88c2dcdf902f38daeac3bc2b"},
+    {file = "pyjelly-0.7.1-py3-none-any.whl", hash = "sha256:6a01dc7269311a7f587db9cd969cd311faae854d2477883bc7dc9f5541f17eef"},
+    {file = "pyjelly-0.7.1.tar.gz", hash = "sha256:09131e4dc9fc0b3f2870bcb2c871922e46788d6bb577e2709ce1a45a0051e352"},
+]
+
+[package.dependencies]
+mypy-extensions = ">=1.0.0"
+protobuf = ">=6.30.0"
+rdflib = {version = ">=7.1.4", optional = true, markers = "extra == \"rdflib\""}
+typing-extensions = ">=4.12.2"
+
+[package.extras]
+rdflib = ["rdflib (>=7.1.4)"]
+
+[[package]]
 name = "pylint"
 version = "3.3.9"
 description = "python code static checker"
@@ -3428,8 +3484,8 @@ files = [
 astroid = ">=3.3.8,<=3.4.0.dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
 dill = [
+    {version = ">=0.3.6", markers = "python_version >= \"3.11\""},
     {version = ">=0.3.7", markers = "python_version >= \"3.12\""},
-    {version = ">=0.3.6", markers = "python_version == \"3.11\""},
 ]
 isort = ">=4.2.5,<5.13 || >5.13,<7"
 mccabe = ">=0.6,<0.8"
@@ -3508,14 +3564,14 @@ files = [
 
 [[package]]
 name = "pyparsing"
-version = "3.2.5"
+version = "3.3.0"
 description = "pyparsing - Classes and methods to define and execute parsing grammars"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "pyparsing-3.2.5-py3-none-any.whl", hash = "sha256:e38a4f02064cf41fe6593d328d0512495ad1f3d8a91c4f73fc401b3079a59a5e"},
-    {file = "pyparsing-3.2.5.tar.gz", hash = "sha256:2df8d5b7b2802ef88e8d016a2eb9c7aeaa923529cd251ed0fe4608275d4105b6"},
+    {file = "pyparsing-3.3.0-py3-none-any.whl", hash = "sha256:d15038408e0097d3a01e7e0846731f7f2450c5b6e4a75a52baabd6bbf24585be"},
+    {file = "pyparsing-3.3.0.tar.gz", hash = "sha256:0de16f2661afbab11fe6645d9472c3b96968d2fffea5b0cc9da88f5be286f039"},
 ]
 
 [package.extras]
@@ -3538,8 +3594,8 @@ importlib-metadata = {version = ">6", markers = "python_version < \"3.12\""}
 owlrl = ">=7.1.2,<8"
 packaging = ">=21.3"
 prettytable = [
-    {version = ">=3.7.0", markers = "python_version >= \"3.12\""},
     {version = ">=3.5.0", markers = "python_version < \"3.12\""},
+    {version = ">=3.7.0", markers = "python_version >= \"3.12\""},
 ]
 rdflib = {version = ">=7.1.1,<7.1.2 || >7.1.2,<8.0", extras = ["html"]}
 
@@ -4711,4 +4767,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<3.14"
-content-hash = "10e3ad1c97c8c67ccb2fcefe6f5daf415f4db64dc0682bf678c86517095b1ef7"
+content-hash = "e238b4939faeaf899382c6f7be655f11b7e9d2e180a778fbba2a706d89286a40"
