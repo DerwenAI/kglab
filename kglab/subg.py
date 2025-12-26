@@ -507,6 +507,7 @@ optional style dictionary
         self,
         *,
         notebook: bool = False,
+        cdn_resources: str = "in_line",
         style: dict | None = None,
         ) -> pyvis.network.Network:
         """
@@ -522,7 +523,10 @@ optional style dictionary
     returns:
 a `PyVis` network object
         """
-        pyvis_graph = pyvis.network.Network(notebook = notebook)
+        pyvis_graph = pyvis.network.Network(
+            notebook = notebook,
+            cdn_resources = cdn_resources,
+        )
 
         if style is None:
             style = {}
