@@ -42,6 +42,9 @@ dependencies = [
     "apeye (>=1.4.1)",
     "gcsfs (>=2025.7.0)",
 
+    "jupyterlab (>=4.5.1,<5.0.0)",
+    "jupyterlab-execute-time>=3.2.0",
+    "watermark>=2.5.0",
     "icecream (>=2.1.7)",
 ]
 

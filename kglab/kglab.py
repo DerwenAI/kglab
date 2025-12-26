@@ -33,7 +33,7 @@ if get_gpu_count() > 0:
     import cudf  # type: ignore
 
 
-class KnowledgeGraph(QueryingMixin, SerdeMixin, ShaclOwlRdfSkosMixin):
+class KnowledgeGraph (QueryingMixin, SerdeMixin, ShaclOwlRdfSkosMixin):
     """
 This is the primary class used to represent RDF graphs, on which the other classes are dependent.
 See <https://derwen.ai/docs/kgl/concepts/#knowledge-graph>
@@ -48,7 +48,7 @@ Core feature areas include:
   * inference based on OWL-RL, RDFS, SKOS (see `standards` module)
     """
 
-    _DEFAULT_NAMESPACES: dict = {
+    _DEFAULT_NAMESPACES: dict[ str, str ] = {
         "dct":    "http://purl.org/dc/terms/",
         "owl":    "http://www.w3.org/2002/07/owl#",
         "prov":   "http://www.w3.org/ns/prov#",
@@ -135,7 +135,7 @@ a dictionary of [*namespace*](https://rdflib.readthedocs.io/en/stable/apidocs/rd
 Build a new `rdflib.Graph` object, based on storage plugin configuration.
         """
         if self.store is not None:
-            g = rdflib.Graph(store=self.store)
+            g = rdflib.Graph(store = self.store)
         else:
             g = rdflib.Graph()
 
@@ -203,11 +203,11 @@ replace any existing prefix with the new namespace
         if replace or prefix not in self._ns:
             self._ns[prefix] = rdflib.Namespace(iri)
 
-        self._g.namespace_manager.bind( # type: ignore
+        self._g.namespace_manager.bind(  # type: ignore
             prefix,
             self._ns[prefix],
-            override=override,
-            replace=replace,
+            override = override,
+            replace = replace,
         )
 
 
@@ -313,8 +313,12 @@ timezones as a dict, used by
     returns:
 [`rdflib.Literal`](https://rdflib.readthedocs.io/en/stable/rdf_terms.html#literals) formatted as an XML Schema 2 `dateTime` value
         """
-        date_tz = dup.parse(dt, tzinfos=tzinfos)
-        return rdflib.Literal(date_tz, datatype=self.get_ns("xsd").dateTime) # pylint: disable=E1101
+        date_tz = dup.parse(dt, tzinfos = tzinfos)
+
+        return rdflib.Literal(  # pylint: disable=E1101
+            date_tz,
+            datatype = self.get_ns("xsd").dateTime,
+        )
 
 
     def add (
@@ -342,7 +346,7 @@ must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/r
 must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal); otherwise throws a `TypeError` exception
         """
         try:
-            self._g.add((s, p, o,))  # type: ignore
+            self._g.add(( s, p, o, ))  # type: ignore
         except AssertionError as e:
             traceback.print_exc()
             ic(s)
@@ -376,7 +380,7 @@ must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/r
 must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Node) or [`rdflib.term.Terminal`](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.html?highlight=Node#rdflib.term.Literal); otherwise throws a `TypeError` exception
         """
         try:
-            self._g.remove((s, p, o,)) # type: ignore
+            self._g.remove(( s, p, o, )) # type: ignore
         except AssertionError as e:
             traceback.print_exc()
             ic(s)
@@ -385,7 +389,11 @@ must be a [`rdflib.term.Node`](https://rdflib.readthedocs.io/en/stable/apidocs/r
             raise TypeError(str(e))
 
 
-    def graph_factory(self, name, graph):
+    def graph_factory (
+        self,
+        name: str,
+        graph: GraphLike,
+        ) -> "KnowledgeGraph":
         """
 Utility function to generate graphs from mixins
 
@@ -396,7 +404,7 @@ name of the graph
 initial graph
         """
         return KnowledgeGraph(
-            name=name,
-            namespaces=self.get_ns_dict(),
-            import_graph=graph,
+            name = name,
+            namespaces = self.get_ns_dict(),
+            import_graph = graph,
         )
