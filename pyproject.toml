@@ -89,7 +89,7 @@ exclude = [
 
 bandit = "^1.8.6"
 codespell = "^2.4.1"
-coverage = "^7.10.4"
+coverage = "^7.13.1"
 mkdocs-git-revision-date-plugin = "^0.3.2"
 mkdocs-material = "^9.6.17"
 mypy = "^1.17.1"
