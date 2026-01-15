@@ -4151,21 +4151,21 @@ test = ["Cython", "array-api-strict (>=2.3.1)", "asv", "gmpy2", "hypothesis (>=6
 
 [[package]]
 name = "scipy-stubs"
-version = "1.16.3.3"
+version = "1.17.0.1"
 description = "Type annotations for SciPy"
 optional = false
 python-versions = ">=3.11"
 groups = ["dev"]
 files = [
-    {file = "scipy_stubs-1.16.3.3-py3-none-any.whl", hash = "sha256:f6316b36cd0fb272c994ae5b10c4a73c644a7e156ed8d32bcd9c35303d0e1b7e"},
-    {file = "scipy_stubs-1.16.3.3.tar.gz", hash = "sha256:af47578875d5557567225a16ec1b9b38a48c4c4377d92396413ebd65406c44ee"},
+    {file = "scipy_stubs-1.17.0.1-py3-none-any.whl", hash = "sha256:235bdebce396a9bb48236525aedf04a6efa66dcca8b46105549f35f1f5c4cbb7"},
+    {file = "scipy_stubs-1.17.0.1.tar.gz", hash = "sha256:029ef77b3984be53a914ac90af3b78c5543af7275eb126c8cec09e7bc72f623c"},
 ]
 
 [package.dependencies]
 optype = {version = ">=0.14.0,<0.16", extras = ["numpy"]}
 
 [package.extras]
-scipy = ["scipy (>=1.16.3,<1.17)"]
+scipy = ["scipy (>=1.17.0,<1.18)"]
 
 [[package]]
 name = "selenium"
@@ -4774,4 +4774,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<3.14"
-content-hash = "e238b4939faeaf899382c6f7be655f11b7e9d2e180a778fbba2a706d89286a40"
+content-hash = "10d33211f150f5b2c3988e4b7d4870c36d96f8955f0c5601b95210baded57b18"
