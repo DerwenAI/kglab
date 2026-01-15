@@ -1637,14 +1637,14 @@ files = [
 
 [[package]]
 name = "icecream"
-version = "2.1.8"
+version = "2.1.9"
 description = "Never use print() to debug again: inspect variables, expressions, and program execution with a single, simple function call."
 optional = false
 python-versions = "*"
 groups = ["main"]
 files = [
-    {file = "icecream-2.1.8-py3-none-any.whl", hash = "sha256:10b1c39dcb54cb28eb487bac56c35dbf9c2b2f406d24340e1a615c3f17274852"},
-    {file = "icecream-2.1.8.tar.gz", hash = "sha256:37269bbc62b02f0d85bfaf3a0eb4df272c967fad059f7ddcdaee5303ea2b2a62"},
+    {file = "icecream-2.1.9-py3-none-any.whl", hash = "sha256:07eac8b1ebd8a77ea9147b043d0ee642a0605678ce5b3c8e0e2e8cd3c918e6d3"},
+    {file = "icecream-2.1.9.tar.gz", hash = "sha256:e47b6477d29848949ee5050127aeb88fd30f1908e5cf29772e8a1a0fcdf15473"},
 ]
 
 [package.dependencies]
