@@ -5,8 +5,6 @@
 ![Repo size](https://img.shields.io/github/repo-size/DerwenAI/kglab)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DerwenAI/kglab?style=plastic)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
-[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
-[![Docker Pulls](https://img.shields.io/docker/pulls/derwenai/kglab.svg?maxAge=604800)](https://hub.docker.com/r/derwenai/kglab/)
 
 
 Welcome to *Graph Data Science*:
@@ -190,6 +188,7 @@ and to our contributors:
 [@fils](https://github.com/fils),
 [@lapkinvladimir](https://github.com/lapkinvladimir),
 [@akuckartz](https://github.com/akuckartz),
+[@tommybbq](https://github.com/tommybbq),
 [@gauravjaglan](https://github.com/gauravjaglan),
 [@pebbie](https://github.com/pebbie),
 [@CatChenal](https://github.com/CatChenal),

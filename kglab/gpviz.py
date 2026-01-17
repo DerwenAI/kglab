@@ -3,6 +3,8 @@
 
 """
 Visualization of SPARQL queries.
+
+see license https://github.com/DerwenAI/kglab#license-and-copyright
 """
 
 import collections
@@ -363,6 +365,7 @@ PyVis graph into which the triples get rendered
         self,
         *,
         notebook: bool = False,
+        cdn_resources: str = "in_line",
         ) -> pyvis.network.Network:
         """
 Visualize the SPARQL query as a PyVis network.
@@ -370,7 +373,10 @@ Visualize the SPARQL query as a PyVis network.
         returns:
 PyVis graph to be rendered
         """
-        pyvis_graph = pyvis.network.Network(notebook=notebook)
+        pyvis_graph = pyvis.network.Network(
+            notebook = notebook,
+            cdn_resources = cdn_resources,
+        )
 
         self._render_triples(pyvis_graph)
         self._render_literals(pyvis_graph)

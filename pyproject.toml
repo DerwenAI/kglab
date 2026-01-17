@@ -23,14 +23,21 @@ dependencies = [
     "pyshacl (>=0.30.1)",
     "csvwlib (>=0.3.2)",
     "morph-kgc (>=2.8.1)",
+    "sqlalchemy (>=2.0.45,<3.0.0)",
     "pyjelly[rdflib] (>=0.7.1,<0.8.0)",
 
     "networkx (>=3.5)",
     "igraph (>=0.11.9)",
     "pyvis (>=0.3.2)",
+    "statsmodels (>=0.14.6,<0.15.0)",
 
     "nvidia-ml-py (>=13.590.44,<14.0.0)",
     "pyarrow (>=21.0.0)",
+
+    "jupyterlab (>=4.5.1,<5.0.0)",
+    "jupyterlab-execute-time>=3.2.0",
+    "watermark>=2.5.0",
+    "icecream (>=2.1.7)",
 
     "chocolate (>=0.0.2)",
     "decorator (>=5.2.1)",
@@ -41,8 +48,6 @@ dependencies = [
     "tqdm (>=4.67.1)",
     "apeye (>=1.4.1)",
     "gcsfs (>=2025.7.0)",
-
-    "icecream (>=2.1.7)",
 ]
 
 classifiers = [

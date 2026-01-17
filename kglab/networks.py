@@ -17,6 +17,7 @@ class NetAnalysisMixin (Mixin):
     """
 Provides methods for network analysis tools to work with `KnowledgeGraph`.
     """
+
     def get_distances (self, adj_mtx):
         """
 Compute distances according to an adjacency matrix.
@@ -53,6 +54,7 @@ NOTE: we may cache these methods calls if we create something like a `GraphFrame
         return:
 dict: a dictionary with stats
         """
+
         def msg_if_raise (f, g, r):
             """Handle error messages by adding a message key in the results"""
             try:
