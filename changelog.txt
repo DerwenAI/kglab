@@ -5,6 +5,8 @@
 2025-12-22
 
   * preparing for the v1.0.0 release (finally!)
+  * impl #338 for Food.com changes, kudos @tommybbq
+  * cutover to using `poetry`
 
 
 ## 0.6.6
