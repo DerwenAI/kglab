@@ -92,7 +92,7 @@ exclude = [
 
 [tool.poetry.group.dev.dependencies]
 
-bandit = "^1.8.6"
+bandit = "^1.9.3"
 codespell = "^2.4.1"
 coverage = "^7.10.4"
 mkdocs-git-revision-date-plugin = "^0.3.2"
