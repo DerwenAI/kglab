@@ -22,7 +22,6 @@ dependencies = [
     "jpype1 (>=1.6.0)",
     "pyshacl (>=0.30.1)",
     "csvwlib (>=0.3.2)",
-    "morph-kgc (>=2.8.1)",
     "sqlalchemy (>=2.0.45,<3.0.0)",
     "pyjelly[rdflib] (>=0.7.1,<0.8.0)",
 
