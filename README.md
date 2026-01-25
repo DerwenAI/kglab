@@ -5,6 +5,7 @@
 ![Repo size](https://img.shields.io/github/repo-size/DerwenAI/kglab)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DerwenAI/kglab?style=plastic)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/DerwenAI/kglab)
 
 
 Welcome to *Graph Data Science*:
@@ -194,9 +195,10 @@ and to our contributors:
 [@CatChenal](https://github.com/CatChenal),
 [@dmoore247](https://github.com/dmoore247),
 plus general support from [Derwen, Inc.](https://derwen.ai/);
-the [Knowledge Graph Conference](https://www.knowledgegraph.tech/)
-and [Connected Data World](https://connected-data.world/);
-plus an even larger scope of [use cases](https://derwen.ai/docs/kgl/use_case/)
+the [Knowledge Graph Conference](https://www.knowledgegraph.tech/),
+[Connected Data World](https://connected-data.world/),
+and [GraphGeeks](https://www.graphgeeks.org/);
+plus the larger scope of [use cases](https://derwen.ai/docs/kgl/use_case/)
 represented by their communities;
 and support from
 [Kubuntu Focus](https://kfocus.org/),
